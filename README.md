@@ -7,6 +7,7 @@ Folgende thematischen Inhalte, welche teilweise gemäß dem Lehrplan für diese 
   2. Cäsar-Verschlüsselung
   3. Variante der Cäsar-Verschlüsselungs
   4. Vigenère-Verschlüsselung
+
 Die  BenutzerInnen erleben während dem Bearbeiten der Übungsaufgabeneine virtuelle Weltreise zusammen mit Alice und Bob, auf der sie die letzten existierenden "Floppy-Disks" im Auftrag des "Nationalen Informatiker Verbands" (NIV) einsammeln müssen.
 Jedoch hat sich auch die böse Eve auf den Weg gemacht, um die "Floppy-Disks" zu finden. Ein Wettlauf gegen die Zeit ist gestartet. 
 Verdeutlicht wird dies durch einen Timer pro Station. 
