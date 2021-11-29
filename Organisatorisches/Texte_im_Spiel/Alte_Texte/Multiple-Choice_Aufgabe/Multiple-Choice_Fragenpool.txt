@@ -6,7 +6,8 @@ Warum war der Text verschlüsselt? Hat das irgend einen bestimmten Grund?
 Welche Gefahren kann es geben, wenn eine Nachricht unverschlüsselt verschickt wird? (Mehrere Antworten möglich)
     Jeder kann mitlesen
     Die Nachricht kann verändert werden
-    Die Identität des Absenders kann nicht mit Sicherheit bestimmt werden Es gibt keine Gefahren
+    Die Identität des Absenders kann nicht mit Sicherheit bestimmt werden 
+    Es gibt keine Gefahren
 
 Was ist Kryptoanalyse
     Austausch von Informationen, die nicht für alle bestimmt sind.
