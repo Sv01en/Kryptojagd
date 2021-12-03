@@ -35,7 +35,7 @@
                 ],
                 "verschluesselungsaufgabe":[
                     {
-                        "Aufgabenstellung":"Verschlüssle den folgenden Text mit dem Cäsar Verfahren. Der Schlüssel lautet 'G':",
+                        "Aufgabenstellung":"Verschlüssle den folgenden Text mit dem Cäsar Verfahren. Der Schlüssel lautet '7':",
                         "zuVerschluesselnderText":"haben zweite Floppy-Disk",
                     }
                 ]
@@ -56,7 +56,7 @@
                 ],
                 "verschluesselungsaufgabe":[
                     {
-                        "Aufgabenstellung":"Verschlüssle den folgenden Text mit dem Cäsar-Variante Verfahren. Der SChlüssel lautet 'K':",
+                        "Aufgabenstellung":"Verschlüssle den folgenden Text mit dem Cäsar-Variante Verfahren. Der SChlüssel lautet '11':",
                         "zuVerschluesselnderText":"haben dritte Floppy-Disk",
                     }
                 ]
@@ -83,7 +83,27 @@
                 ]
         }
     ],
-
+    "level5":[
+        {
+                "entschluesselungsaufgabe":[
+                    {
+                        "raetseltextAlsKlartext": "In dem Land gibt es eine Stadt mit großer historischer Bedeutung. Sie wurde nach einem Zwilling benannt und ist von sieben Huegeln umgeben.\nIn einem halb zerfallenen Amphitheater ist die Disk versteckt.\nDen Weg werdet ihr mit Sicherheit finden, schließlich sollen doch alle Wege in diese Stadt fuehren.",
+                        "verschluesselungsverfahren":"Beaufort Verschlüsselung",
+                        "auswahlmoeglichkeitenVerschluesselungsverfahrens":["AES Verschlüsselung", "Beaufort Verschlüsselung", "Cäsar Verschlüsselung"],
+                        "richtigesVerfahren":1,
+                        "auswahlmoeglichkeitenStadt":["Budapest", "Zürich", "Rom"],
+                        "richtigeStadt":2,
+                        "timerstartNachStadtauswahl":"Ihr seid gerade in Rom gelandet.\nAber eure Erzfeindin Eve ist euch immer noch auf den Fersen.\nAlso verschiebt den Espresso auf ein Anderes Mal, denn ihr müsst euch beeilen, damit Eve euch nicht zuvorkommt.\nSCHNELL!",
+                    }
+                ],
+                "verschluesselungsaufgabe":[
+                    {
+                        "Aufgabenstellung":"Verschlüssle den folgenden Text mit dem Vigenère Verfahren. Der SChlüssel lautet 'Fernsehturm':",
+                        "zuVerschluesselnderText":"haben fuenfte Floppy-Disk",
+                    }
+                ]
+        }
+    ],
 
 
 
