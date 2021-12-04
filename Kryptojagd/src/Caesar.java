@@ -1,12 +1,12 @@
 /**
- * Stellt Methoden zum ver- und entschluesseln von Texten mit der Cäsarverschluesselung bereit
+ * Stellt Methoden zum ver- und entschluesseln von Texten mit der Caesar-Verschluesselung bereit
  */
  public class Caesar {
 
     /**
      * Verschluesselt einen String mit einem zufaellig generierten Schluessel
      * @param text Zu verschluesselnder Text
-     * @return encode-Methode, die unverschluesselten Text und Schluessel entgegennimmt
+     * @return Verschluesselter Text in uppercase
      */
     public static String encode (String text) {
 
@@ -41,10 +41,10 @@
     }
 
     /**
-     * Entschluesselt einen Verschluesselten Text mit dem dazugehoerigen key
-     * @param text Zu verschluesselnder Text
+     * Entschluesselt einen Verschluesselten Text mit dem dazugehoerigen Schluessel
+     * @param text Zu entschluesselnder Text
      * @param key Uebergebener Schluessel
-     * @return Entschluesselter Text
+     * @return Entschluesselter Text in uppercase
      */
     public static String decode (String text, int key) {
         
@@ -66,9 +66,9 @@
 
     /**
      * Shiftet ein gegebenen char mit dem gegebenen Schluessel zyklisch entlang des uppercase ASCII Alphabets.
-     * @param symbol Zeichen des uppercase ASCII Alphabets
+     * @param symbol Beliebiges char
      * @param key Uebergebener Schluessel
-     * @return Geschifftetes Chararray Element
+     * @return Geschifftetes char falls es im uppercase ASCII Alphabet ist und sonst das ungeshifftete char symbol
      */
     private static char shift (char symbol, int key) {
         
