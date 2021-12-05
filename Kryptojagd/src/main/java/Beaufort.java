@@ -1,5 +1,7 @@
 /**
 * Stellt Methoden zum ver- und entschluesseln von Texten mit der Beaufort-Verschluesselung bereit
+ *
+ * @author Leah Schlimm
 */
 public class Beaufort {
 

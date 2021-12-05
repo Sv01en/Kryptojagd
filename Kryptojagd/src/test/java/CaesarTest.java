@@ -2,6 +2,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Die Klasse enthaelt Testfaelle fuer die Caesar-Verschluesselung
+ *
+ * @author Leah Schlimm
+ */
 public class CaesarTest {
 
     //Decode-Methode kein Text

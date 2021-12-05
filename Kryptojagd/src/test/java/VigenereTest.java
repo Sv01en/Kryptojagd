@@ -2,6 +2,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Die Klasse enthaelt Testfaelle fuer die Vigenere-Verschluesselung
+ *
+ * @author Leah Schlimm
+ */
 public class VigenereTest {
 
 
