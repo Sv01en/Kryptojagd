@@ -59,7 +59,7 @@
     public static String decode (String text, int key) {
         
         if (key < 0 || key > 26) {
-            return text;
+            return text.toUpperCase();
         }
 
         char[] textCharArr;

@@ -3,17 +3,34 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d6913faa-4d2a-4646-8e83-2c26bd39fe14" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kryptojagd.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Beaufort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Caesar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vigenere.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Beaufort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Beaufort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Caesar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Caesar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Vigenere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vigenere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BeaufortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BeaufortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CaesarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CaesarTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/VigenereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VigenereTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Organisatorisches/Backlogs/Produkt_Backlog.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../Organisatorisches/Backlogs/Produkt_Backlog.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +61,48 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="JUnit.CaesarTest">
+    <configuration name="BeaufortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Kryptojagd" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BeaufortTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BeaufortTest.testEmptyValidKeyEncodeLowercaseKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Kryptojagd" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BeaufortTest" />
+      <option name="METHOD_NAME" value="testEmptyValidKeyEncodeLowercaseKey" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BeaufortTest.testTextValidKeyDecodeOverflow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Kryptojagd" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BeaufortTest" />
+      <option name="METHOD_NAME" value="testTextValidKeyDecodeOverflow" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BeaufortTest.testTextValidKeyEncodeOverflow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Kryptojagd" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BeaufortTest" />
+      <option name="METHOD_NAME" value="testTextValidKeyEncodeOverflow" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CaesarTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Kryptojagd" />
       <option name="PACKAGE_NAME" value="" />
@@ -55,53 +112,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CaesarTest.testGenerateKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Kryptojagd" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CaesarTest" />
-      <option name="METHOD_NAME" value="testGenerateKey" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CaesarTest.testTextValidKeyDecodeUppercaseLowerBorder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Kryptojagd" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CaesarTest" />
-      <option name="METHOD_NAME" value="testTextValidKeyDecodeUppercaseLowerBorder" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CaesarTest.testTextValidKeyDecodeUppercaseUpperBorder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Kryptojagd" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CaesarTest" />
-      <option name="METHOD_NAME" value="testTextValidKeyDecodeUppercaseUpperBorder" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CaesarTest.testTextValidKeyEncodeUppercaseUpperBorder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Kryptojagd" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CaesarTest" />
-      <option name="METHOD_NAME" value="testTextValidKeyEncodeUppercaseUpperBorder" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CaesarTest" />
-        <item itemvalue="JUnit.CaesarTest.testTextValidKeyDecodeUppercaseUpperBorder" />
-        <item itemvalue="JUnit.CaesarTest.testTextValidKeyDecodeUppercaseLowerBorder" />
-        <item itemvalue="JUnit.CaesarTest.testGenerateKey" />
-        <item itemvalue="JUnit.CaesarTest.testTextValidKeyEncodeUppercaseUpperBorder" />
+        <item itemvalue="JUnit.BeaufortTest" />
+        <item itemvalue="JUnit.BeaufortTest.testTextValidKeyEncodeOverflow" />
+        <item itemvalue="JUnit.BeaufortTest.testTextValidKeyDecodeOverflow" />
+        <item itemvalue="JUnit.BeaufortTest.testEmptyValidKeyEncodeLowercaseKey" />
       </list>
     </recent_temporary>
   </component>
@@ -115,5 +132,22 @@
       <updated>1638663584019</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Beaufort_java$VigenereTest.ic" NAME="VigenereTest Coverage Results" MODIFIED="1638745023483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Beaufort_java$BeaufortTest.ic" NAME="BeaufortTest Coverage Results" MODIFIED="1638745415938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Beaufort_java$CaesarTest.ic" NAME="CaesarTest Coverage Results" MODIFIED="1638745440340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

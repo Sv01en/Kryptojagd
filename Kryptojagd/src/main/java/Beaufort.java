@@ -6,7 +6,26 @@ public class Beaufort {
 
     private final static char[] alphabet = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
     private final static char[] normalAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-    
+
+    /**
+     * Generierte eine zufaellige Zahl zwischen 4 und 6
+     * @return Zufaelliger int Wert
+     */
+    public static int keyLength () {
+
+        return (int) (Math.random() * (7 - 4) + 4);
+    }
+
+    /**
+     * Generiert eine zufaellige Zahl zwischen 0 und 25
+     * @return Zufaelliger int Wert
+     */
+    public static int keySymbolIndex () {
+
+        return (int) (Math.random() * (26 - 0) + 0);
+
+    }
+
     /**
      * Verschluesselt einen String mit einem zufaellig generierten Schluessel
      * @param text Zu verschluesselnder Text
@@ -15,9 +34,9 @@ public class Beaufort {
     public static String encode(String text) {
         String key = "";
 
-        int keyLength = (int) (Math.random() * (7 - 4 + 1) + 4);
+        int keyLength = keyLength();
         for (int i = 0; i < keyLength; i++) {
-            int symbolIndex = (int) (Math.random() * (26 - 0 + 1) + 0);
+            int symbolIndex = keySymbolIndex();
             key = key + alphabet[symbolIndex];
         }
 
@@ -34,12 +53,19 @@ public class Beaufort {
  
         String encodedText = "";
 
+        key = key.toUpperCase();
+        text = text.toUpperCase();
+
         if (key.length() == 0) {
             return text.toUpperCase();
         }
 
-        text = text.toUpperCase();
-        key = key.toUpperCase();
+        for (int i = 0; i < key.length(); i++){
+            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
+                return text.toUpperCase();
+            }
+        }
+
  
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
@@ -66,7 +92,17 @@ public class Beaufort {
 
         text = text.toUpperCase();
         key = key.toUpperCase();
- 
+
+        if (key.length() == 0) {
+            return text.toUpperCase();
+        }
+
+        for (int i = 0; i < key.length(); i++){
+            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
+                return text.toUpperCase();
+            }
+        }
+
         for (int i = 0; i < text.length(); i++) {
             int charIndex = getAlphabetIndex(text.charAt(i));
             if (charIndex != -1) {

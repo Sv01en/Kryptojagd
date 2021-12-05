@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CaesarTest {
 
-    //Decode-Methode Empty Key und kein Text
+    //Decode-Methode kein Text
 
     @Test
     void testEmptyValidKeyDecode(){
@@ -12,12 +12,12 @@ public class CaesarTest {
     }
 
     @Test
-    void testEmptyKeyLowerDecodeBorder(){
+    void testEmptyKeyDecodeLowerBorder(){
         assertEquals("", Caesar.decode("", 0));
     }
 
     @Test
-    void testEmptyKeyUpperDecodeBorder(){
+    void testEmptyKeyDecodeUpperBorder(){
         assertEquals("", Caesar.decode("", 26));
     }
 
@@ -34,6 +34,7 @@ public class CaesarTest {
 
 
     //Encode-Methode Empty Key und kein Text
+
     @Test
     void testEmptyNoKeyEncode(){
         assertEquals("", Caesar.encode(""));
@@ -45,12 +46,12 @@ public class CaesarTest {
     }
 
     @Test
-    void testEmptyKeyLowerEncodeBorder(){
+    void testEmptyKeyEncodeLowerBorder(){
         assertEquals("", Caesar.encode("", 0));
     }
 
     @Test
-    void testEmptyKeyUpperEncodeBorder(){
+    void testEmptyKeyEncodeUpperBorder(){
         assertEquals("", Caesar.encode("", 26));
     }
 
@@ -63,8 +64,6 @@ public class CaesarTest {
     void testEmptyUnvalidKeyEncodeToHigh(){
         assertEquals("", Caesar.encode("", 27));
     }
-
-
 
 
 
@@ -89,6 +88,17 @@ public class CaesarTest {
     void testTextValidKeyDecodeUppercaseUpperBorder(){
         assertEquals("HALLO WELT!", Caesar.decode("Hallo Welt!", 26));
     }
+
+    @Test
+    void testTextUnvalidKeyDecodeToLow(){
+        assertEquals("HALLO WELT!", Caesar.decode("Hallo Welt!", -1));
+    }
+
+    @Test
+    void testTextUnvalidKeyDecodeToHigh(){
+        assertEquals("HALLO WELT!", Caesar.decode("Hallo Welt!", 27));
+    }
+
 
 
 
