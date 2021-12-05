@@ -4,6 +4,16 @@
  public class Caesar {
 
     /**
+     * Generiert einen zufaelligen Zahl zwischen 1 und 25
+     * @return Zufaelliger int Wert
+     */
+     public static int generateKey () {
+
+        return (int) (Math.random() * (26 - 1) + 1);
+
+    }
+
+    /**
      * Verschluesselt einen String mit einem zufaellig generierten Schluessel
      * @param text Zu verschluesselnder Text
      * @return Verschluesselter Text in uppercase
@@ -11,7 +21,7 @@
     public static String encode (String text) {
 
         // key zwischen [1,26), damit 0 nicht als Schluessel verwendet wird
-        int key = (int) (Math.random() * (26 - 1 + 1) + 1);
+        int key = generateKey();
 
         return encode(text, key);
     }
@@ -25,7 +35,7 @@
     public static String encode (String text, int key) {
 
         if (key < 0 || key > 26) {
-            return text;
+            return text.toUpperCase();
         }
 
         char[] textCharArr;
