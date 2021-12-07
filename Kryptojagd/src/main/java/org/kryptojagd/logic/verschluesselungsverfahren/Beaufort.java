@@ -1,10 +1,14 @@
+package org.kryptojagd.logic.verschluesselungsverfahren;
+
 /**
- * Stellt Methoden zum ver- und entschluesseln von Texten mit der Vigenere-Verschluesselung bereit
+* Stellt Methoden zum ver- und entschluesseln von Texten mit der Beaufort-Verschluesselung bereit
  *
  * @author Leah Schlimm
- */
-public class Vigenere {
+*/
+public class Beaufort {
 
+
+    private final static char[] alphabet = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
     private final static char[] normalAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
@@ -37,24 +41,24 @@ public class Vigenere {
         int keyLength = keyLength();
         for (int i = 0; i < keyLength; i++) {
             int symbolIndex = keySymbolIndex();
-            key = key + normalAlphabet[symbolIndex];
+            key = key + alphabet[symbolIndex];
         }
 
         return encode(text, key);
     }
-
+    
     /**
      * Verschluesselt einen String mit einem gegebenen Schluessel
      * @param text Zu verschluesselnder Text
      * @param key Uebergebener Schluessel
-     * @return encode-Methode, die unverschluesselten Text und Schluessel entgegennimmt
+     * @return Verschluesselter Text in uppercase
      */
     public static String encode(String text, String key) {
-        
+ 
         String encodedText = "";
 
-        text = text.toUpperCase();
         key = key.toUpperCase();
+        text = text.toUpperCase();
 
         if (key.length() == 0) {
             return text.toUpperCase();
@@ -69,10 +73,7 @@ public class Vigenere {
  
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
-                int result = (text.charAt(i) + getNormalAlphabetIndex(key.charAt(i % key.length())));
-                if (result > 'Z') {
-                    result = result - 26;
-                }
+                int result = alphabet[(text.charAt(i) + key.charAt(i % key.length())) % 26];
                 encodedText = encodedText + (char) result;
             } else {
                 encodedText = encodedText + text.charAt(i);
@@ -89,7 +90,7 @@ public class Vigenere {
      * @param key Uebergebener Schluessel
      * @return Entschluesselter Text
      */
-    public static String decode(String text, String key) {
+    public static String decode (String text, String key) {
  
         String decodedText = "";
 
@@ -105,15 +106,17 @@ public class Vigenere {
                 return text.toUpperCase();
             }
         }
- 
+
         for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
+            int charIndex = getAlphabetIndex(text.charAt(i));
+            if (charIndex != -1) {
                 int result;
-                if (getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length())) < 0) {
-                    result = normalAlphabet[getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length())) + 26];
+                if (charIndex - getNormalAlphabetIndex(key.charAt(i % key.length())) < 0) {
+                    result = normalAlphabet[26 + charIndex - getNormalAlphabetIndex(key.charAt(i % key.length()))];
                 } else {
-                    result = normalAlphabet[getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length()))];
+                    result = normalAlphabet[charIndex - getNormalAlphabetIndex(key.charAt(i % key.length()))];
                 }
+                
                 decodedText = decodedText + (char) result;
             } else {
                 decodedText = decodedText + text.charAt(i);
@@ -126,9 +129,25 @@ public class Vigenere {
     }
 
     /**
+     * Sucht ein Zeichen im alphabet und gibt dessen Index zurueck, falls es enthalten ist
+     * @param symbol Zu suchendes char im Alphabet
+     * @return Falls symbol in alphabet enthalten, dann Index des Zeichens im Alphabet, sonst -1
+     */
+    private static int getAlphabetIndex(char symbol) {
+        if (symbol >= 'A' && symbol <= 'Z') {
+            for (int i = 0; i < alphabet.length; i++) {
+                if (alphabet[i] == symbol) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
      * Sucht ein Zeichen im normalAlphabet und gibt dessen Index zurueck, falls es enthalten ist
      * @param symbol Zu suchendes char im Alphabet
-     * @return Falls symbol in normalAlphabet enthalten dann, Index des Zeichens im Alphabet, sonst -1
+     * @return Falls symbol in normalAlphabet enthalten, dann Index des Zeichens im Alphabet, sonst -1
      */
     private static int getNormalAlphabetIndex(char symbol) {
         if (symbol >= 'A' && symbol <= 'Z') {
@@ -140,4 +159,5 @@ public class Vigenere {
         }
         return -1;
     }
+
 }
