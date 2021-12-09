@@ -5,7 +5,7 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
  *
  * @author Leah Schlimm
  */
-public class Vigenere {
+public class Vigenere implements EncryptionInterface {
 
     private final static char[] normalAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
