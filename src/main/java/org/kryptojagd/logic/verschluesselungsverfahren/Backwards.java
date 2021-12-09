@@ -13,6 +13,7 @@ public class Backwards implements EncryptionInterface {
      * Encrypts a text using word wise reverse encryption
      * 
      * @param text Text to be encrypted
+     * @param key Key field needed because of the interface, will not be used here
      * @return Encrypted text
      */
     public static String encode(String text, String key) {
@@ -33,6 +34,8 @@ public class Backwards implements EncryptionInterface {
                 words.add("" + text.charAt(i));
             }
         }
+
+        words.add(tmp);
 
         // Remove unnecessary empty words
         for (int i = 0; i < words.size(); i++) {
@@ -62,6 +65,7 @@ public class Backwards implements EncryptionInterface {
      * Decrypt a text that has been encrypted with reverse encryption
      * 
      * @param text Text to be decrypted
+     * @param key Key field needed because of the interface, will not be used here
      * @return Encrypted text
      */
     public static String decode(String text, String key) {
