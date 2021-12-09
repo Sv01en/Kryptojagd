@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Teamprojekt-Lehramt-Informatik-KIT.iml" filepath="$PROJECT_DIR$/.idea/Teamprojekt-Lehramt-Informatik-KIT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Kryptojagd.iml" filepath="$PROJECT_DIR$/.idea/Kryptojagd.iml" />
       <module fileurl="file://$PROJECT_DIR$/VerschluesselungsTool/VerschluesselungsTool.iml" filepath="$PROJECT_DIR$/VerschluesselungsTool/VerschluesselungsTool.iml" />
     </modules>
   </component>
