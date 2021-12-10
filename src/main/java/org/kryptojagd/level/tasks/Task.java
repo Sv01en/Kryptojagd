@@ -1,11 +1,13 @@
 package org.kryptojagd.level.tasks;
 
+import org.kryptojagd.verschluesselungsverfahren.Encryption;
+
 /**
  * The interface describes the form of a task in the game
  *
  * @author Sonja
  */
-public abstract class Task {
+public interface Task {
 
 
     /**
@@ -13,16 +15,12 @@ public abstract class Task {
      *
      * @return true, if the answer is correct
      */
-    public boolean proofAnswer(String answer) {
-        return false;
-    }
+    boolean proofAnswer(String answer);
 
     /**
      * Returns the task as string
      *
      * @return the task as string
      */
-    public String toString() {
-        return "";
-    }
+    String toString();
 }

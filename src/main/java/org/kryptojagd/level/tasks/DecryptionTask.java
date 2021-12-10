@@ -1,10 +1,14 @@
 package org.kryptojagd.level.tasks;
 
-import java.util.HashMap;
+import org.kryptojagd.verschluesselungsverfahren.Encryption;
+
 
 public class DecryptionTask implements Task {
 
-    public DecryptionTask(HashMap<String,Object> input) {
+    private Encryption encryption;
+
+    public DecryptionTask(Encryption encryption) {
+        this.encryption = encryption;
     }
 
     @Override
