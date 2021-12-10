@@ -11,7 +11,7 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
      * Generiert einen zufaelligen Zahl zwischen 1 und 25
      * @return Zufaelliger int Wert
      */
-     public static int generateKey () {
+     public static int generateKey() {
 
         return (int) (Math.random() * (26 - 1) + 1);
 
@@ -22,7 +22,7 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
      * @param text Zu verschluesselnder Text
      * @return Verschluesselter Text in uppercase
      */
-    public static String encode (String text) {
+    public static String encode(String text) {
 
         // key zwischen [1,26), damit 0 nicht als Schluessel verwendet wird
         int key = generateKey();
@@ -32,20 +32,22 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
 
     /**
      * Verschluesselt einen String mit einem gegebenen Schluessel
-     * @param text Zu verschluesselnder Text
+     * @param inputText Zu verschluesselnder Text
      * @param key Uebergebener Schluessel
      * @return Verschluesselter Text in uppercase
      */
-    public static String encode (String text, int key) {
+    public static String encode(String inputText, int key) {
+
+        String text;
 
         if (key < 0 || key > 26) {
-            return text.toUpperCase();
+            return inputText.toUpperCase();
         }
 
         char[] textCharArr;
         String encodedText = "";
 
-        text = text.toUpperCase();
+        text = inputText.toUpperCase();
         textCharArr = text.toCharArray();
 
         for (int i = 0; i < textCharArr.length; i++) {
@@ -56,20 +58,22 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
 
     /**
      * Entschluesselt einen Verschluesselten Text mit dem dazugehoerigen Schluessel
-     * @param text Zu entschluesselnder Text
+     * @param inputText Zu entschluesselnder Text
      * @param key Uebergebener Schluessel
      * @return Entschluesselter Text in uppercase
      */
-    public static String decode (String text, int key) {
+    public static String decode(String inputText, int key) {
+
+        String text;
         
         if (key < 0 || key > 26) {
-            return text.toUpperCase();
+            return inputText.toUpperCase();
         }
 
         char[] textCharArr;
         String decodedText = "";
 
-        text = text.toUpperCase();
+        text = inputText.toUpperCase();
         textCharArr = text.toCharArray();
 
         for (int i = 0; i < textCharArr.length; i++) {
@@ -80,14 +84,16 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
 
     /**
      * Shiftet ein gegebenen char mit dem gegebenen Schluessel zyklisch entlang des uppercase ASCII Alphabets.
-     * @param symbol Beliebiges char
+     * @param inputSymbol Beliebiges char
      * @param key Uebergebener Schluessel
      * @return Geschifftetes char falls es im uppercase ASCII Alphabet ist und sonst das ungeshifftete char symbol
      */
-    private static char shift (char symbol, int key) {
+    private static char shift(char inputSymbol, int key) {
+
+        char symbol = inputSymbol;
         
-        if (symbol >= 'A' && symbol <= 'Z') {
-            symbol = (char) (symbol + key);
+        if (inputSymbol >= 'A' && inputSymbol <= 'Z') {
+            symbol = (char) (inputSymbol + key);
             
             if (symbol > 'Z') {
                 symbol = (char) (symbol - 26);

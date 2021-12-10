@@ -7,14 +7,13 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
  */
 public class Vigenere {
 
-    private final static char[] normalAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
      * Generierte eine zufaellige Zahl zwischen 4 und 6
      * @return Zufaelliger int Wert
      */
-    public static int keyLength () {
-
+    public static int keyLength() {
         return (int) (Math.random() * (7 - 4) + 4);
     }
 
@@ -22,10 +21,8 @@ public class Vigenere {
      * Generiert eine zufaellige Zahl zwischen 0 und 25
      * @return Zufaelliger int Wert
      */
-    public static int keySymbolIndex () {
-
+    public static int keySymbolIndex() {
         return (int) (Math.random() * (26 - 0) + 0);
-
     }
 
     /**
@@ -39,7 +36,7 @@ public class Vigenere {
         int keyLength = keyLength();
         for (int i = 0; i < keyLength; i++) {
             int symbolIndex = keySymbolIndex();
-            key = key + normalAlphabet[symbolIndex];
+            key = key + NORMALALPHABET[symbolIndex];
         }
 
         return encode(text, key);
@@ -47,23 +44,26 @@ public class Vigenere {
 
     /**
      * Verschluesselt einen String mit einem gegebenen Schluessel
-     * @param text Zu verschluesselnder Text
-     * @param key Uebergebener Schluessel
+     * @param inputText Zu verschluesselnder Text
+     * @param inputKey Uebergebener Schluessel
      * @return encode-Methode, die unverschluesselten Text und Schluessel entgegennimmt
      */
-    public static String encode(String text, String key) {
+    public static String encode(String inputText, String inputKey) {
         
         String encodedText = "";
 
-        text = text.toUpperCase();
-        key = key.toUpperCase();
+        String text;
+        String key;
+
+        text = inputText.toUpperCase();
+        key = inputKey.toUpperCase();
 
         if (key.length() == 0) {
             return text.toUpperCase();
         }
 
-        for (int i = 0; i < key.length(); i++){
-            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
+        for (int i = 0; i < key.length(); i++) {
+            if (key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
                 return text.toUpperCase();
             }
         }
@@ -87,23 +87,26 @@ public class Vigenere {
 
     /**
      * Entschluesselt einen Verschluesselten Text mit dem dazugehoerigen Schluessel
-     * @param text Zu entschluesselnder Text
-     * @param key Uebergebener Schluessel
+     * @param inputText Zu entschluesselnder Text
+     * @param inputKey Uebergebener Schluessel
      * @return Entschluesselter Text
      */
-    public static String decode(String text, String key) {
+    public static String decode(String inputText, String inputKey) {
  
         String decodedText = "";
 
-        text = text.toUpperCase();
-        key = key.toUpperCase();
+        String text;
+        String key;
+
+        text = inputText.toUpperCase();
+        key = inputKey.toUpperCase();
 
         if (key.length() == 0) {
             return text.toUpperCase();
         }
 
-        for (int i = 0; i < key.length(); i++){
-            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
+        for (int i = 0; i < key.length(); i++) {
+            if (key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
                 return text.toUpperCase();
             }
         }
@@ -112,9 +115,11 @@ public class Vigenere {
             if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
                 int result;
                 if (getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length())) < 0) {
-                    result = normalAlphabet[getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length())) + 26];
+                    result = NORMALALPHABET[getNormalAlphabetIndex(text.charAt(i))
+                            - getNormalAlphabetIndex(key.charAt(i % key.length())) + 26];
                 } else {
-                    result = normalAlphabet[getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length()))];
+                    result = NORMALALPHABET[getNormalAlphabetIndex(text.charAt(i))
+                            - getNormalAlphabetIndex(key.charAt(i % key.length()))];
                 }
                 decodedText = decodedText + (char) result;
             } else {
@@ -134,8 +139,8 @@ public class Vigenere {
      */
     private static int getNormalAlphabetIndex(char symbol) {
         if (symbol >= 'A' && symbol <= 'Z') {
-            for (int i = 0; i < normalAlphabet.length; i++) {
-                if (normalAlphabet[i] == symbol) {
+            for (int i = 0; i < NORMALALPHABET.length; i++) {
+                if (NORMALALPHABET[i] == symbol) {
                     return i;
                 }
             }
