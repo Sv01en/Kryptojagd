@@ -1,5 +1,7 @@
 package org.kryptojagd.util;
 
-public class Util {
+import java.util.ResourceBundle;
 
+public class Util {
+	
 }
