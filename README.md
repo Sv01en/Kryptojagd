@@ -1,5 +1,5 @@
 # Teamprojekt-Lehramt-Informatik-KIT
-Das Programm soll in der ̈Ubungsphase der achten Klasse eines allgemeinbildenden Gymnasiums in Baden-Württemberg eingesetzt werden. 
+Das Programm soll in der &Uuml;bungsphase der achten Klasse eines allgemeinbildenden Gymnasiums in Baden-Württemberg eingesetzt werden. 
 
 Die BenutzerInnen sollen sich mithilfe verschiedener Übungsaufgaben intensiv mit dem Thema "Kryptographie und Verschlüsselung" auseinandersetzen und das bereits Gelernte spielerisch vertiefen. 
 Folgende thematischen Inhalte, welche teilweise gemäß dem Lehrplan für diese Jahrgangstufe vorgesehen sind, bieten die Grundlage für die jeweiligen Level:
