@@ -1,4 +1,14 @@
-package org.kryptojagd.level;
+package org.kryptojagd.level.tasks;
 
-public class MultipleChoiceTask {
+import java.util.HashMap;
+
+public class MultipleChoiceTask implements Task {
+
+    public MultipleChoiceTask(HashMap<String,Object> input) {
+    }
+
+    @Override
+    public boolean proofAnswer(String answer) {
+        return false;
+    }
 }

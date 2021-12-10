@@ -1,3 +1,5 @@
+package org.kryptojagd.level.tasks;
+
 /**
  * The interface describes the form of a task in the game
  *
