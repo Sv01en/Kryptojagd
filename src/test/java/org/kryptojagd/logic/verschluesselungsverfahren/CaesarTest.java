@@ -1,6 +1,7 @@
 package org.kryptojagd.logic.verschluesselungsverfahren;
 
 import org.junit.jupiter.api.Test;
+import org.kryptojagd.verschluesselungsverfahren.Caesar;
 
 import static org.junit.jupiter.api.Assertions.*;
 

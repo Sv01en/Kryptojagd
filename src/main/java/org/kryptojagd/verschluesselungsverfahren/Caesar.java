@@ -1,4 +1,4 @@
-package org.kryptojagd.logic.verschluesselungsverfahren;
+package org.kryptojagd.verschluesselungsverfahren;
 
 /**
  * Stellt Methoden zum ver- und entschluesseln von Texten mit der Caesar-Verschluesselung bereit

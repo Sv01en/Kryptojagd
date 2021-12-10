@@ -1,4 +1,4 @@
-package org.kryptojagd.main;
+package org.kryptojagd;
 
 public class Main {
 

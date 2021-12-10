@@ -1,14 +1,12 @@
-package org.kryptojagd.logic.verschluesselungsverfahren;
+package org.kryptojagd.verschluesselungsverfahren;
 
 /**
-* Stellt Methoden zum ver- und entschluesseln von Texten mit der Beaufort-Verschluesselung bereit
+ * Stellt Methoden zum ver- und entschluesseln von Texten mit der Vigenere-Verschluesselung bereit
  *
  * @author Leah Schlimm
-*/
-public class Beaufort {
+ */
+public class Vigenere {
 
-
-    private static final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
@@ -16,7 +14,6 @@ public class Beaufort {
      * @return Zufaelliger int Wert
      */
     public static int keyLength() {
-
         return (int) (Math.random() * (7 - 4) + 4);
     }
 
@@ -25,9 +22,7 @@ public class Beaufort {
      * @return Zufaelliger int Wert
      */
     public static int keySymbolIndex() {
-
         return (int) (Math.random() * (26 - 0) + 0);
-
     }
 
     /**
@@ -41,26 +36,27 @@ public class Beaufort {
         int keyLength = keyLength();
         for (int i = 0; i < keyLength; i++) {
             int symbolIndex = keySymbolIndex();
-            key = key + ALPHABET[symbolIndex];
+            key = key + NORMALALPHABET[symbolIndex];
         }
 
         return encode(text, key);
     }
-    
+
     /**
      * Verschluesselt einen String mit einem gegebenen Schluessel
      * @param inputText Zu verschluesselnder Text
      * @param inputKey Uebergebener Schluessel
-     * @return Verschluesselter Text in uppercase
+     * @return encode-Methode, die unverschluesselten Text und Schluessel entgegennimmt
      */
     public static String encode(String inputText, String inputKey) {
- 
+        
         String encodedText = "";
-        String key;
-        String text;
 
-        key = inputKey.toUpperCase();
+        String text;
+        String key;
+
         text = inputText.toUpperCase();
+        key = inputKey.toUpperCase();
 
         if (key.length() == 0) {
             return text.toUpperCase();
@@ -75,7 +71,10 @@ public class Beaufort {
  
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
-                int result = ALPHABET[(text.charAt(i) + key.charAt(i % key.length())) % 26];
+                int result = (text.charAt(i) + getNormalAlphabetIndex(key.charAt(i % key.length())));
+                if (result > 'Z') {
+                    result = result - 26;
+                }
                 encodedText = encodedText + (char) result;
             } else {
                 encodedText = encodedText + text.charAt(i);
@@ -95,8 +94,9 @@ public class Beaufort {
     public static String decode(String inputText, String inputKey) {
  
         String decodedText = "";
-        String key;
+
         String text;
+        String key;
 
         text = inputText.toUpperCase();
         key = inputKey.toUpperCase();
@@ -110,17 +110,17 @@ public class Beaufort {
                 return text.toUpperCase();
             }
         }
-
+ 
         for (int i = 0; i < text.length(); i++) {
-            int charIndex = getAlphabetIndex(text.charAt(i));
-            if (charIndex != -1) {
+            if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
                 int result;
-                if (charIndex - getNormalAlphabetIndex(key.charAt(i % key.length())) < 0) {
-                    result = NORMALALPHABET[26 + charIndex - getNormalAlphabetIndex(key.charAt(i % key.length()))];
+                if (getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length())) < 0) {
+                    result = NORMALALPHABET[getNormalAlphabetIndex(text.charAt(i))
+                            - getNormalAlphabetIndex(key.charAt(i % key.length())) + 26];
                 } else {
-                    result = NORMALALPHABET[charIndex - getNormalAlphabetIndex(key.charAt(i % key.length()))];
+                    result = NORMALALPHABET[getNormalAlphabetIndex(text.charAt(i))
+                            - getNormalAlphabetIndex(key.charAt(i % key.length()))];
                 }
-                
                 decodedText = decodedText + (char) result;
             } else {
                 decodedText = decodedText + text.charAt(i);
@@ -133,25 +133,9 @@ public class Beaufort {
     }
 
     /**
-     * Sucht ein Zeichen im alphabet und gibt dessen Index zurueck, falls es enthalten ist
-     * @param symbol Zu suchendes char im Alphabet
-     * @return Falls symbol in alphabet enthalten, dann Index des Zeichens im Alphabet, sonst -1
-     */
-    private static int getAlphabetIndex(char symbol) {
-        if (symbol >= 'A' && symbol <= 'Z') {
-            for (int i = 0; i < ALPHABET.length; i++) {
-                if (ALPHABET[i] == symbol) {
-                    return i;
-                }
-            }
-        }
-        return -1;
-    }
-
-    /**
      * Sucht ein Zeichen im normalAlphabet und gibt dessen Index zurueck, falls es enthalten ist
      * @param symbol Zu suchendes char im Alphabet
-     * @return Falls symbol in normalAlphabet enthalten, dann Index des Zeichens im Alphabet, sonst -1
+     * @return Falls symbol in normalAlphabet enthalten dann, Index des Zeichens im Alphabet, sonst -1
      */
     private static int getNormalAlphabetIndex(char symbol) {
         if (symbol >= 'A' && symbol <= 'Z') {
@@ -163,5 +147,4 @@ public class Beaufort {
         }
         return -1;
     }
-
 }
