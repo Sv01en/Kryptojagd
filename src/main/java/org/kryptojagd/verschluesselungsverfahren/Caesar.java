@@ -5,7 +5,7 @@ package org.kryptojagd.verschluesselungsverfahren;
  *
  * @author Leah Schlimm
  */
- public class Caesar {
+ public class Caesar extends Encryption {
 
     /**
      * Generiert einen zufaelligen Zahl zwischen 1 und 25

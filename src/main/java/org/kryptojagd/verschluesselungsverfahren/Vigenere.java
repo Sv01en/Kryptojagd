@@ -5,7 +5,7 @@ package org.kryptojagd.verschluesselungsverfahren;
  *
  * @author Leah Schlimm
  */
-public class Vigenere {
+public class Vigenere extends Encryption {
 
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 

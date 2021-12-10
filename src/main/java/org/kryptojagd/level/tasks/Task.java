@@ -5,7 +5,7 @@ package org.kryptojagd.level.tasks;
  *
  * @author Sonja
  */
-public interface Task {
+public abstract class Task {
 
 
     /**
@@ -13,12 +13,16 @@ public interface Task {
      *
      * @return true, if the answer is correct
      */
-    boolean proofAnswer(String answer);
+    public boolean proofAnswer(String answer) {
+        return false;
+    }
 
     /**
      * Returns the task as string
      *
      * @return the task as string
      */
-    String toString();
+    public String toString() {
+        return "";
+    }
 }
