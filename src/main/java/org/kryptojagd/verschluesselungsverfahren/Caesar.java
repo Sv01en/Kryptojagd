@@ -1,28 +1,28 @@
 package org.kryptojagd.verschluesselungsverfahren;
 
 /**
- * Stellt Methoden zum ver- und entschluesseln von Texten mit der Caesar-Verschluesselung bereit
+ * Provides methods for encrypting and decrypting texts with the Caesar encryption
  *
  * @author Leah Schlimm
  */
- public class Caesar {
+ public class Caesar implements EncryptionInterface {
 
     /**
-     * Generiert einen zufaelligen Zahl zwischen 1 und 25
-     * @return Zufaelliger int Wert
+     * Generates a random number between 1 and 25
+     * @return Random int value
      */
-     public static int generateKey() {
+     public static int generateKey () {
 
         return (int) (Math.random() * (26 - 1) + 1);
 
     }
 
     /**
-     * Verschluesselt einen String mit einem zufaellig generierten Schluessel
-     * @param text Zu verschluesselnder Text
-     * @return Verschluesselter Text in uppercase
+     * Encrypts a string with a randomly generated key
+     * @param text Text to be encrypted
+     * @return Encrypted text in uppercase
      */
-    public static String encode(String text) {
+    public static String encode (String text) {
 
         // key zwischen [1,26), damit 0 nicht als Schluessel verwendet wird
         int key = generateKey();
@@ -31,23 +31,21 @@ package org.kryptojagd.verschluesselungsverfahren;
     }
 
     /**
-     * Verschluesselt einen String mit einem gegebenen Schluessel
-     * @param inputText Zu verschluesselnder Text
-     * @param key Uebergebener Schluessel
-     * @return Verschluesselter Text in uppercase
+     * Encrypts a string with a given key
+     * @param text Text to be encrypted
+     * @param key Passed key
+     * @return Encrypted text in uppercase
      */
-    public static String encode(String inputText, int key) {
-
-        String text;
+    public static String encode (String text, int key) {
 
         if (key < 0 || key > 26) {
-            return inputText.toUpperCase();
+            return text.toUpperCase();
         }
 
         char[] textCharArr;
         String encodedText = "";
 
-        text = inputText.toUpperCase();
+        text = text.toUpperCase();
         textCharArr = text.toCharArray();
 
         for (int i = 0; i < textCharArr.length; i++) {
@@ -57,23 +55,21 @@ package org.kryptojagd.verschluesselungsverfahren;
     }
 
     /**
-     * Entschluesselt einen Verschluesselten Text mit dem dazugehoerigen Schluessel
-     * @param inputText Zu entschluesselnder Text
-     * @param key Uebergebener Schluessel
-     * @return Entschluesselter Text in uppercase
+     * Decrypts an encrypted text with the corresponding key
+     * @param text Text to be deciphered
+     * @param key Passed key
+     * @return Deciphered text in uppercase
      */
-    public static String decode(String inputText, int key) {
-
-        String text;
+    public static String decode (String text, int key) {
         
         if (key < 0 || key > 26) {
-            return inputText.toUpperCase();
+            return text.toUpperCase();
         }
 
         char[] textCharArr;
         String decodedText = "";
 
-        text = inputText.toUpperCase();
+        text = text.toUpperCase();
         textCharArr = text.toCharArray();
 
         for (int i = 0; i < textCharArr.length; i++) {
@@ -83,17 +79,15 @@ package org.kryptojagd.verschluesselungsverfahren;
     }
 
     /**
-     * Shiftet ein gegebenen char mit dem gegebenen Schluessel zyklisch entlang des uppercase ASCII Alphabets.
-     * @param inputSymbol Beliebiges char
-     * @param key Uebergebener Schluessel
-     * @return Geschifftetes char falls es im uppercase ASCII Alphabet ist und sonst das ungeshifftete char symbol
+     * Shifts a given char with the given key cyclically along the uppercase ASCII alphabet.
+     * @param symbol Any char
+     * @param key Passed key
+     * @return Shipped char if it is in the uppercase ASCII alphabet and otherwise the unshipped char symbol
      */
-    private static char shift(char inputSymbol, int key) {
-
-        char symbol = inputSymbol;
+    private static char shift (char symbol, int key) {
         
-        if (inputSymbol >= 'A' && inputSymbol <= 'Z') {
-            symbol = (char) (inputSymbol + key);
+        if (symbol >= 'A' && symbol <= 'Z') {
+            symbol = (char) (symbol + key);
             
             if (symbol > 'Z') {
                 symbol = (char) (symbol - 26);

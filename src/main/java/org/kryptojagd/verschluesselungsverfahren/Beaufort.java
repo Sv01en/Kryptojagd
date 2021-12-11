@@ -5,7 +5,7 @@ package org.kryptojagd.verschluesselungsverfahren;
  *
  * @author Leah Schlimm
 */
-public class Beaufort {
+public class Beaufort implements EncryptionInterface {
 
 
     private static final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
