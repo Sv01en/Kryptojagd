@@ -18,6 +18,13 @@ public class Level {
 		level.add(multipleChoiceTask);
 	}
 
+	public Task giveNextTask() {
+		currentTask = level.iterator().next();
+		return currentTask;
+	}
 
+	public boolean proofCurrentTask(String answer) {
+		return currentTask.proofAnswer(answer);
+	}
 
 }
