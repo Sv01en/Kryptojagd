@@ -1,34 +1,37 @@
 package org.kryptojagd.verschluesselungsverfahren;
 
 /**
- * Stellt Methoden zum ver- und entschluesseln von Texten mit der Vigenere-Verschluesselung bereit
+ * Provides methods for encrypting and decrypting texts with Vigenere encryption
  *
  * @author Leah Schlimm
  */
 public class Vigenere implements EncryptionInterface {
 
-    private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    private final static char[] normalAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
-     * Generierte eine zufaellige Zahl zwischen 4 und 6
-     * @return Zufaelliger int Wert
+     * Generated a random number between 4 and 6
+     * @return Random int value
      */
-    public static int keyLength() {
+    public static int keyLength () {
+
         return (int) (Math.random() * (7 - 4) + 4);
     }
 
     /**
-     * Generiert eine zufaellige Zahl zwischen 0 und 25
-     * @return Zufaelliger int Wert
+     * Generates a random number between 0 and 25
+     * @return Random int value
      */
-    public static int keySymbolIndex() {
+    public static int keySymbolIndex () {
+
         return (int) (Math.random() * (26 - 0) + 0);
+
     }
 
     /**
-     * Verschluesselt einen String mit einem zufaellig generierten Schluessel
-     * @param text Zu verschluesselnder Text
-     * @return Verschluesselter Text in uppercase
+     * Encrypts a string with a randomly generated key
+     * @param text Text to be encrypted
+     * @return Encrypted text in uppercase
      */
     public static String encode(String text) {
         String key = "";
@@ -36,34 +39,31 @@ public class Vigenere implements EncryptionInterface {
         int keyLength = keyLength();
         for (int i = 0; i < keyLength; i++) {
             int symbolIndex = keySymbolIndex();
-            key = key + NORMALALPHABET[symbolIndex];
+            key = key + normalAlphabet[symbolIndex];
         }
 
         return encode(text, key);
     }
 
     /**
-     * Verschluesselt einen String mit einem gegebenen Schluessel
-     * @param inputText Zu verschluesselnder Text
-     * @param inputKey Uebergebener Schluessel
-     * @return encode-Methode, die unverschluesselten Text und Schluessel entgegennimmt
+     * Encrypts a string with a given key
+     * @param text Text to be encrypted
+     * @param key Passed key
+     * @return encode method that accepts unencrypted text and keys
      */
-    public static String encode(String inputText, String inputKey) {
+    public static String encode(String text, String key) {
         
         String encodedText = "";
 
-        String text;
-        String key;
-
-        text = inputText.toUpperCase();
-        key = inputKey.toUpperCase();
+        text = text.toUpperCase();
+        key = key.toUpperCase();
 
         if (key.length() == 0) {
             return text.toUpperCase();
         }
 
-        for (int i = 0; i < key.length(); i++) {
-            if (key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
+        for (int i = 0; i < key.length(); i++){
+            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
                 return text.toUpperCase();
             }
         }
@@ -86,27 +86,24 @@ public class Vigenere implements EncryptionInterface {
     }
 
     /**
-     * Entschluesselt einen Verschluesselten Text mit dem dazugehoerigen Schluessel
-     * @param inputText Zu entschluesselnder Text
-     * @param inputKey Uebergebener Schluessel
-     * @return Entschluesselter Text
+     * Decrypts an encrypted text with the corresponding key
+     * @param text Text to be deciphered
+     * @param key Passed key
+     * @return Decrypted text
      */
-    public static String decode(String inputText, String inputKey) {
+    public static String decode(String text, String key) {
  
         String decodedText = "";
 
-        String text;
-        String key;
-
-        text = inputText.toUpperCase();
-        key = inputKey.toUpperCase();
+        text = text.toUpperCase();
+        key = key.toUpperCase();
 
         if (key.length() == 0) {
             return text.toUpperCase();
         }
 
-        for (int i = 0; i < key.length(); i++) {
-            if (key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
+        for (int i = 0; i < key.length(); i++){
+            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
                 return text.toUpperCase();
             }
         }
@@ -115,11 +112,9 @@ public class Vigenere implements EncryptionInterface {
             if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
                 int result;
                 if (getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length())) < 0) {
-                    result = NORMALALPHABET[getNormalAlphabetIndex(text.charAt(i))
-                            - getNormalAlphabetIndex(key.charAt(i % key.length())) + 26];
+                    result = normalAlphabet[getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length())) + 26];
                 } else {
-                    result = NORMALALPHABET[getNormalAlphabetIndex(text.charAt(i))
-                            - getNormalAlphabetIndex(key.charAt(i % key.length()))];
+                    result = normalAlphabet[getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length()))];
                 }
                 decodedText = decodedText + (char) result;
             } else {
@@ -133,14 +128,14 @@ public class Vigenere implements EncryptionInterface {
     }
 
     /**
-     * Sucht ein Zeichen im normalAlphabet und gibt dessen Index zurueck, falls es enthalten ist
-     * @param symbol Zu suchendes char im Alphabet
-     * @return Falls symbol in normalAlphabet enthalten dann, Index des Zeichens im Alphabet, sonst -1
+     * Searches for a character in the normal alphabet and returns its index if it is contained
+     * @param symbol Character to search for in the alphabet
+     * @return If symbol is contained in normalAlphabet then the index of the character in the alphabet, otherwise -1
      */
     private static int getNormalAlphabetIndex(char symbol) {
         if (symbol >= 'A' && symbol <= 'Z') {
-            for (int i = 0; i < NORMALALPHABET.length; i++) {
-                if (NORMALALPHABET[i] == symbol) {
+            for (int i = 0; i < normalAlphabet.length; i++) {
+                if (normalAlphabet[i] == symbol) {
                     return i;
                 }
             }

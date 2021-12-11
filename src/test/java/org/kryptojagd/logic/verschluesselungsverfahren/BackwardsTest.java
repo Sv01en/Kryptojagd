@@ -4,33 +4,56 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The class contains test cases for the Backward encryption
+ *
+ * @author Leah Schlimm
+ */
 public class BackwardsTest {
 
+    /**
+     * Tests the encode method with an empty text string and no key
+     */
     @Test
     void testEmptyTextEncode() {
         assertEquals("", Backwards.encode("", ""));
     }
 
+    /**
+     * Tests whether the encode method reads "HELLO" correctly encrypted
+     */
     @Test
     void testNotEmptyTextNoWhitespaceEncode() {
         assertEquals("OLLEH", Backwards.encode("Hello", ""));
     }
 
+    /**
+     * Tests whether the encode method reads "Hello,   World!" correctly encrypted
+     */
     @Test
     void testNotEmptyTextWhiteSpaceEncode() {
         assertEquals("OLLEH,   DLROW!", Backwards.encode("Hello,   World!", ""));
     }
 
+    /**
+     * Tests the decode method with an empty text string and no key
+     */
     @Test
     void testEmptyTextDecode() {
         assertEquals("", Backwards.decode("", ""));
     }
 
+    /**
+     * Tests whether the decode method reads "OLLEH" correctly decrypted
+     */
     @Test
     void testNotEmptyTextNoWhitespaceDecode() {
         assertEquals("HELLO", Backwards.decode("OLLEH", ""));
     }
 
+    /**
+     * Tests whether the decode method reads "OLLEH,   DLROW!" correctly decrypted
+     */
     @Test
     void testNotEmptyTextWhiteSpaceDecode() {
         assertEquals("HELLO,   WORLD!", Backwards.decode("OLLEH,   DLROW!", ""));
