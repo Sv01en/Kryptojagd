@@ -32,11 +32,13 @@ public class EntschluesselungController extends AbstractController{
     @FXML
     void klickVerfahren2(ActionEvent event) {
     	System.out.println("Verfahren 2 wurde ausgewählt.");
+        hs.wechsleFenster("WrongChoice.fxml");
     }
 
     @FXML
     void klickVerfahren3(ActionEvent event) {
     	System.out.println("Verfahren 3 wurde ausgewählt.");
+        hs.wechsleFenster("WrongChoice.fxml");
     }
 
   
