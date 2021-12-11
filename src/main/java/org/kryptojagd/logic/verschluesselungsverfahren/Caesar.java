@@ -1,15 +1,15 @@
 package org.kryptojagd.logic.verschluesselungsverfahren;
 
 /**
- * Stellt Methoden zum ver- und entschluesseln von Texten mit der Caesar-Verschluesselung bereit
+ * Provides methods for encrypting and decrypting texts with the Caesar encryption
  *
  * @author Leah Schlimm
  */
  public class Caesar implements EncryptionInterface {
 
     /**
-     * Generiert einen zufaelligen Zahl zwischen 1 und 25
-     * @return Zufaelliger int Wert
+     * Generates a random number between 1 and 25
+     * @return Random int value
      */
      public static int generateKey () {
 
@@ -18,9 +18,9 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
     }
 
     /**
-     * Verschluesselt einen String mit einem zufaellig generierten Schluessel
-     * @param text Zu verschluesselnder Text
-     * @return Verschluesselter Text in uppercase
+     * Encrypts a string with a randomly generated key
+     * @param text Text to be encrypted
+     * @return Encrypted text in uppercase
      */
     public static String encode (String text) {
 
@@ -31,10 +31,10 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
     }
 
     /**
-     * Verschluesselt einen String mit einem gegebenen Schluessel
-     * @param text Zu verschluesselnder Text
-     * @param key Uebergebener Schluessel
-     * @return Verschluesselter Text in uppercase
+     * Encrypts a string with a given key
+     * @param text Text to be encrypted
+     * @param key Passed key
+     * @return Encrypted text in uppercase
      */
     public static String encode (String text, int key) {
 
@@ -55,10 +55,10 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
     }
 
     /**
-     * Entschluesselt einen Verschluesselten Text mit dem dazugehoerigen Schluessel
-     * @param text Zu entschluesselnder Text
-     * @param key Uebergebener Schluessel
-     * @return Entschluesselter Text in uppercase
+     * Decrypts an encrypted text with the corresponding key
+     * @param text Text to be deciphered
+     * @param key Passed key
+     * @return Deciphered text in uppercase
      */
     public static String decode (String text, int key) {
         
@@ -79,10 +79,10 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
     }
 
     /**
-     * Shiftet ein gegebenen char mit dem gegebenen Schluessel zyklisch entlang des uppercase ASCII Alphabets.
-     * @param symbol Beliebiges char
-     * @param key Uebergebener Schluessel
-     * @return Geschifftetes char falls es im uppercase ASCII Alphabet ist und sonst das ungeshifftete char symbol
+     * Shifts a given char with the given key cyclically along the uppercase ASCII alphabet.
+     * @param symbol Any char
+     * @param key Passed key
+     * @return Shipped char if it is in the uppercase ASCII alphabet and otherwise the unshipped char symbol
      */
     private static char shift (char symbol, int key) {
         

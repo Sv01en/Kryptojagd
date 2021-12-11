@@ -66,7 +66,7 @@ public class Backwards implements EncryptionInterface {
      * 
      * @param text Text to be decrypted
      * @param key Key field needed because of the interface, will not be used here
-     * @return Encrypted text
+     * @return Decrypted text
      */
     public static String decode(String text, String key) {
         return encode(text, key);
