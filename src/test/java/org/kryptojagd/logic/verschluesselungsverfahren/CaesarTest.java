@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Die Klasse enthaelt Testfaelle fuer die Caesar-Verschluesselung
+ * The class contains test cases for the Caesar encryption
  *
  * @author Leah Schlimm
  */
@@ -14,7 +14,7 @@ public class CaesarTest {
     //Decode-Methode kein Text
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String und gueltigem Schluessel 5
+     * Tests the decode method with an empty text string and a valid key 5
      */
     @Test
     void testEmptyValidKeyDecode(){
@@ -22,7 +22,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String und dem kleinsten gueltigem Schluessel 0
+     * Tests the decode method with an empty text string and the smallest valid key 0
      */
     @Test
     void testEmptyKeyDecodeLowerBorder(){
@@ -30,7 +30,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String und dem groessten gueltigem Schluessel 26
+     * Tests the decode method with an empty text string and the largest valid key 26
      */
     @Test
     void testEmptyKeyDecodeUpperBorder(){
@@ -38,7 +38,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String und einem zu kleinen Schluessel -1
+     * Tests the decode method with an empty text string and a key that is too small, -1
      */
     @Test
     void testEmptyUnvalidKeyDecodeToLow(){
@@ -46,7 +46,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String und einem zu grossen Schluessel -1
+     * Tests the decode method with an empty text string and a key that is too large -1
      */
     @Test
     void testEmptyUnvalidKeyDecodeToHigh() {
@@ -58,7 +58,7 @@ public class CaesarTest {
     //Encode-Methode Empty Key und kein Text
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und keinem Schluessel
+     * Tests the encode method with an empty text string and no key
      */
     @Test
     void testEmptyNoKeyEncode(){
@@ -66,7 +66,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und gueltigem Schluessel 5
+     * Tests the encode method with an empty text string and a valid key 5
      */
     @Test
     void testEmptyValidKeyEncode(){
@@ -74,7 +74,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und dem kleinsten gueltigem Schluessel 0
+     * Tests the encode method with an empty text string and the smallest valid key 0
      */
     @Test
     void testEmptyKeyEncodeLowerBorder(){
@@ -82,7 +82,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und dem groessten gueltigem Schluessel 26
+     * Tests the encode method with an empty text string and the largest valid key 26
      */
     @Test
     void testEmptyKeyEncodeUpperBorder(){
@@ -90,7 +90,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und einem zu kleinen Schluessel -1
+     * Tests the encode method with an empty text string and a key that is too small -1
      */
     @Test
     void testEmptyUnvalidKeyEncodeToLow(){
@@ -98,7 +98,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und einem zu grossen Schluessel -1
+     * Tests the encode method with an empty text string and a key that is too large -1
      */
     @Test
     void testEmptyUnvalidKeyEncodeToHigh(){
@@ -110,7 +110,7 @@ public class CaesarTest {
     //Decode-Methode mit Key und Text
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den Text "IBMMP XFMU!" korrekt entschluesselt
+     * Tests whether the decode method reads "IBMMP XFMU!" correctly deciphered
      */
     @Test
     void testTextValidKeyDecode(){
@@ -118,7 +118,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den Text "Ibmmp Xfmu!" korrekt entschluesselt und in Uppercase ausgibt
+     * Tests whether the decode method reads "Ibmmp Xfmu!" correctly decrypted and output in uppercase
      */
     @Test
     void testTextValidKeyDecodeUppercase(){
@@ -126,7 +126,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den Text "Hallo Welt!" mit dem Schluessel 0 entschluesselt und in Uppercase ausgibt
+     * Tests whether the decode method reads "Hallo Welt!" decrypted with key 0 and output in uppercase
      */
     @Test
     void testTextValidKeyDecodeUppercaseLowerBorder(){
@@ -134,7 +134,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den Text "Hallo Welt!" mit dem Schluessel 26 entschluesselt und in Uppercase ausgibt
+     * Tests whether the decode method reads "Hallo Welt!" decrypted with key 26 and output in uppercase
      */
     @Test
     void testTextValidKeyDecodeUppercaseUpperBorder(){
@@ -142,7 +142,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den gegebenen Text immer noch verschluesselt und in Uppercase ausgibt
+     * Tests whether the decode method still encrypts the given text and outputs it in uppercase
      */
     @Test
     void testTextUnvalidKeyDecodeToLow(){
@@ -150,7 +150,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den gegebenen Text immer noch verschluesselt und in Uppercase ausgibt
+     * Tests whether the decode method still encrypts the given text and outputs it in uppercase
      */
     @Test
     void testTextUnvalidKeyDecodeToHigh(){
@@ -163,7 +163,7 @@ public class CaesarTest {
     //Encode-Methode mit Key und Text
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den Text "HALLO WELT!" korrekt verschluesselt
+     * Tests whether the encode method reads "HALLO WELT!" correctly encrypted
      */
     @Test
     void testTextValidKeyEncode(){
@@ -171,7 +171,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den Text "Hallo Welt!" korrekt verschluesselt und in Uppercase ausgibt
+     * Tests whether the encode method reads "Hallo Welt!" correctly encrypted and output in uppercase
      */
     @Test
     void testTextValidKeyEncodeUppercase(){
@@ -179,7 +179,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den Text "Hallo Welt!" mit dem Schluessel 0 verschluesselt und in Uppercase ausgibt
+     * Tests whether the encode method reads "Hallo Welt!" Encrypted with the key 0 and output in Uppercase
      */
     @Test
     void testTextValidKeyEncodeUppercaseLowerBorder(){
@@ -187,7 +187,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den Text "Hallo Welt!" mit dem Schluessel 26 verschluesselt und in Uppercase ausgibt
+     * Tests whether the encode method reads "Hallo Welt!" encrypted with the key 26 and issued in the uppercase
      */
     @Test
     void testTextValidKeyEncodeUppercaseUpperBorder(){
@@ -195,7 +195,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den gegebenen Text unverschluesselt und in Uppercase ausgibt
+     * Tests whether the encode method outputs the given text unencrypted and in uppercase
      */
     @Test
     void testTextUnvalidKeyEncodeToLow(){
@@ -203,7 +203,7 @@ public class CaesarTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode den gegebenen Text unverschluesselt und in Uppercase ausgibt
+     * Tests whether the encode method outputs the given text unencrypted and in uppercase
      */
     @Test
     void testTextUnvalidKeyEncodeToHigh(){
@@ -215,7 +215,7 @@ public class CaesarTest {
     // Key-Generierung
 
     /**
-     * Testet, ob die Methode einen zufaelligen int-Wert zwischen echt groesser 0 und echt kleiner 25 generiert
+     * Tests whether the method generates a random int value between really greater than 0 and really less than 25
      */
     @Test
     void testGenerateKey(){

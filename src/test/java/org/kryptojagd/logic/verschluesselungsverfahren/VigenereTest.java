@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Die Klasse enthaelt Testfaelle fuer die Vigenere-Verschluesselung
+ * The class contains test cases for the Vigenere encryption
  *
  * @author Leah Schlimm
  */
@@ -15,7 +15,7 @@ public class VigenereTest {
     //Decode-Methode kein Text
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String und gueltigem Schluessel "ABCDE"
+     * Tests the decryption method with an empty text string and a valid key "ABCDE"
      */
     @Test
     void testEmptyValidKeyDecode(){
@@ -23,7 +23,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String und ungueltigem Schluessel "ABC%"
+     * Tests the decryption method with an empty text string and an invalid key "ABC%"
      */
     @Test
     void testEmptyUnvalidKeyDecode(){
@@ -31,7 +31,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String leerem Schluessel-String
+     * Tests the decryption method with an empty text string, empty key string
      */
     @Test
     void testEmptyDecodeNoKey() {
@@ -39,7 +39,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String und gueltigem, nicht komplett in Uppercase geschriebenen Schluessel "abCde"
+     * Tests the decryption method with an empty text string and a valid key "abCde" that is not completely written in uppercase
      */
     @Test
     void testEmptyValidKeyDecodeNoUppercaseKey() {
@@ -47,7 +47,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet die Entschluesselungs-Methode mit leerem Text-String und gueltigem Schluessel in Lowercase "abcde"
+     * Tests the decryption method with an empty text string and a valid key in lowercase "abcde"
      */
     @Test
     void testEmptyValidKeyDecodeLowercaseKey() {
@@ -59,7 +59,7 @@ public class VigenereTest {
     //Encode-Methode kein Text
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und ohne Schluessel
+     * Tests the encryption method with an empty text string and without a key
      */
     @Test
     void testEmptyNoKeyEncode(){
@@ -67,7 +67,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und gueltigem Schluessel "ABCDE"
+     * Tests the encryption method with an empty text string and a valid key "ABCDE"
      */
     @Test
     void testEmptyValidKeyEncode(){
@@ -75,7 +75,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und ungueltigem Schluessel "ABC%"
+     * Tests the encryption method with an empty text string and an invalid key "ABC%"
      */
     @Test
     void testEmptyUnvalidKeyEncode(){
@@ -83,7 +83,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und leerem Schluessel-String
+     * Tests the encryption method with an empty text string and an empty key string
      */
     @Test
     void testEmptyEncodeNoKey() {
@@ -91,13 +91,13 @@ public class VigenereTest {
     }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und gueltigem, nicht komplett in Uppercase geschriebenen Schluessel "abCde"
+     * Tests the encryption method with an empty text string and a valid key "abCde" that is not completely written in uppercase
      */
     @Test
     void testEmptyValidKeyEncodeNoUppercaseKey() { assertEquals("", Vigenere.encode("", "abCde")); }
 
     /**
-     * Testet die Verschluesselungs-Methode mit leerem Text-String und gueltigem Schluessel in Lowercase "abcde"
+     * Tests the encryption method with an empty text string and a valid key in lowercase "abcde"
      */
     @Test
     void testEmptyValidKeyEncodeLowercaseKey() { assertEquals("", Vigenere.encode("", "abcde")); }
@@ -107,7 +107,7 @@ public class VigenereTest {
     //Decode-Methode mit Key und Text
 
     /**
-     * Testet, ob die Entschluesselungs-Methode mit "HBNOS XGOX!" und dem Schluessel "ABCDE" die korrekte Entschluesselung liefert
+     * Tests whether the decryption method with "HBNOS XGOX!" and the key "ABCDE" provides the correct decryption
      */
     @Test
     void testTextValidKeyDecode(){
@@ -115,7 +115,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode mit "Hbnos Xgox!" und dem Schluessel "ABCDE" die korrekte Entschluesselung in Uppercase liefert
+     * Tests whether the decryption method with "Hbnos Xgox!" and the key "ABCDE" provides the correct decryption in uppercase
      */
     @Test
     void testTextValidKeyDecodeUppercase(){
@@ -123,7 +123,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode mit "Hbnos Xgox!" und dem ungültigen Schluessel "ABC%" die verschluesselte Eingabe in Uppercase liefert
+     * Tests whether the decryption method with "Hbnos Xgox!" and the invalid key "ABC%" returns the encrypted entry in uppercase
      */
     @Test
     void testTextUnvalidKeyDecode(){
@@ -131,7 +131,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode mit "Hbnos Xgox!" und dem leeren Schluessel-String die verschluesselte Eingabe in Uppercase liefert
+     * Tests whether the decryption method with "Hbnos Xgox!" and returns the encrypted input in Uppercase to the empty key string
      */
     @Test
     void testTextDecodeNoKey() {
@@ -139,7 +139,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode mit "Hbnos Xgox!" und dem Schluessel "abCde" die korrekte Entschluesselung in Uppercase liefert
+     * Tests whether the decryption method with "Hbnos Xgox!" and the key "abCde" provides the correct decryption in uppercase
      */
     @Test
     void testTextValidKeyDecodeNoUppercaseKey() {
@@ -147,7 +147,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Entschluesselungs-Methode mit "Hbnos Xgox!" und dem Schluessel "abcde" die korrekte Entschluesselung in Uppercase liefert
+     * Tests whether the decryption method with "Hbnos Xgox!" and the key "abcde" provides the correct decryption in uppercase
      */
     @Test
     void testTextValidKeyDecodeLowercaseKey() {
@@ -155,7 +155,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob das zyklische shiften funktioniert
+     * Tests whether the cyclical shifting works
      */
     @Test
     void testTextValidKeyDecodeOverflow(){
@@ -167,7 +167,7 @@ public class VigenereTest {
     //Encode-Methode mit Key und Text
 
     /**
-     * Testet, ob die Entschluesselungs-Methode mit "HALLO WELT!" und dem Schluessel "ABCDE" die korrekte Verschluesselung liefert
+     * Tests whether the decryption method with "HALLO WELT!" and the key "ABCDE" provides the correct encryption
      */
     @Test
     void testTextValidKeyEncode(){
@@ -175,7 +175,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Verschluesselungs-Methode mit "Hallo Welt!" und dem Schluessel "ABCDE" die korrekte Verschluesselung in Uppercase liefert
+     * Tests whether the encryption method with "Hallo Welt!" and the key "ABCDE" provides the correct encryption in uppercase
      */
     @Test
     void testTextValidKeyEncodeUppercase(){
@@ -183,7 +183,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Verschluesselungs-Methode mit "Hallo Welt!" und dem ungültigen Schluessel "ABC%" die unverschluesselte Eingabe in Uppercase liefert
+     * Tests whether the encryption method with "Hallo Welt!" and the invalid key "ABC%" returns the unencrypted input in uppercase
      */
     @Test
     void testTextUnvalidKeyEncode() {
@@ -191,7 +191,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Verschluesselungs-Methode mit "Hallo Welt!" und dem leeren Schluessel-String die unverschluesselte Eingabe in Uppercase liefert
+     * Tests whether the encryption method with "Hallo Welt!" and returns the unencrypted input in uppercase to the empty key string
      */
     @Test
     void testTextEncodeNoKey() {
@@ -199,7 +199,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Verschluesselungs-Methode mit "Hallo Welt!" und dem Schluessel "abCde" die korrekte Verschluesselung in Uppercase liefert
+     * Tests whether the encryption method with "Hallo Welt!" and the key "abCde" provides the correct encryption in uppercase
      */
     @Test
     void testTextValidKeyEncodeNoUppercaseKey(){
@@ -207,7 +207,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob die Verschluesselungs-Methode mit "Hallo Welt!" und dem Schluessel "abcde" die korrekte Verschluesselung in Uppercase liefert
+     * Tests whether the encryption method with "Hallo Welt!" and the key "abcde" provides the correct encryption in uppercase
      */
     @Test
     void testTextValidKeyEncodeLowercaseKey(){
@@ -215,7 +215,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob das zyklische shiften funktioniert
+     * Tests whether the cyclical shifting works
      */
     @Test
     void testTextValidKeyEncodeOverflow(){
@@ -227,7 +227,7 @@ public class VigenereTest {
     // Key-Generierung
 
     /**
-     * Testet, ob bei der Methode ein zufaelligen int-Wert zwischen echt groesser 3 und echt kleiner 7 generiert wird
+     * Tests whether the method generates a random int value between really greater than 3 and really less than 7
      */
     @Test
     void testGenerateKeyLength(){
@@ -241,7 +241,7 @@ public class VigenereTest {
     }
 
     /**
-     * Testet, ob bei der Methode ein zufaelligen int-Wert zwischen groesser gleich 0 und echt kleiner 26 generiert wird
+     * Tests whether the method generates a random int value between greater than or equal to 0 and truly less than 26
      */
     @Test
     void testGenerateKeySymbolIndex(){

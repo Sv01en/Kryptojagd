@@ -1,7 +1,7 @@
 package org.kryptojagd.logic.verschluesselungsverfahren;
 
 /**
-* Stellt Methoden zum ver- und entschluesseln von Texten mit der Beaufort-Verschluesselung bereit
+* Provides methods for encrypting and decrypting texts with Beaufort encryption
  *
  * @author Leah Schlimm
 */
@@ -12,8 +12,8 @@ public class Beaufort implements EncryptionInterface {
     private final static char[] normalAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
-     * Generierte eine zufaellige Zahl zwischen 4 und 6
-     * @return Zufaelliger int Wert
+     * Generated a random number between 4 and 6
+     * @return Random int value
      */
     public static int keyLength () {
 
@@ -21,8 +21,8 @@ public class Beaufort implements EncryptionInterface {
     }
 
     /**
-     * Generiert eine zufaellige Zahl zwischen 0 und 25
-     * @return Zufaelliger int Wert
+     * Generates a random number between 0 and 25
+     * @return Random int value
      */
     public static int keySymbolIndex () {
 
@@ -31,9 +31,9 @@ public class Beaufort implements EncryptionInterface {
     }
 
     /**
-     * Verschluesselt einen String mit einem zufaellig generierten Schluessel
-     * @param text Zu verschluesselnder Text
-     * @return Verschluesselter Text in uppercase
+     * Encrypts a string with a randomly generated key
+     * @param text Text to be encrypted
+     * @return Encrypted text in uppercase
      */
     public static String encode(String text) {
         String key = "";
@@ -48,10 +48,10 @@ public class Beaufort implements EncryptionInterface {
     }
     
     /**
-     * Verschluesselt einen String mit einem gegebenen Schluessel
+     * Encrypts a string with a given key
      * @param text Zu verschluesselnder Text
-     * @param key Uebergebener Schluessel
-     * @return Verschluesselter Text in uppercase
+     * @param key Text to be encrypted
+     * @return Encrypted text in uppercase
      */
     public static String encode(String text, String key) {
  
@@ -85,10 +85,10 @@ public class Beaufort implements EncryptionInterface {
     }
 
     /**
-     * Entschluesselt einen Verschluesselten Text mit dem dazugehoerigen Schluessel
-     * @param text Zu entschluesselnder Text
-     * @param key Uebergebener Schluessel
-     * @return Entschluesselter Text
+     * Decrypts an encrypted text with the corresponding key
+     * @param text Text to be deciphered
+     * @param key Passed key
+     * @return Deciphered text
      */
     public static String decode (String text, String key) {
  
@@ -129,9 +129,9 @@ public class Beaufort implements EncryptionInterface {
     }
 
     /**
-     * Sucht ein Zeichen im alphabet und gibt dessen Index zurueck, falls es enthalten ist
-     * @param symbol Zu suchendes char im Alphabet
-     * @return Falls symbol in alphabet enthalten, dann Index des Zeichens im Alphabet, sonst -1
+     * Searches for a character in the alphabet and returns its index if it is included
+     * @param symbol Character to search for in the alphabet
+     * @return If symbol is in alphabet, then the index of the character in the alphabet, otherwise -1
      */
     private static int getAlphabetIndex(char symbol) {
         if (symbol >= 'A' && symbol <= 'Z') {
@@ -145,9 +145,9 @@ public class Beaufort implements EncryptionInterface {
     }
 
     /**
-     * Sucht ein Zeichen im normalAlphabet und gibt dessen Index zurueck, falls es enthalten ist
-     * @param symbol Zu suchendes char im Alphabet
-     * @return Falls symbol in normalAlphabet enthalten, dann Index des Zeichens im Alphabet, sonst -1
+     * Searches for a character in the normal alphabet and returns its index if it is contained
+     * @param symbol Character to search for in the alphabet
+     * @return If symbol is contained in normalAlphabet, then index of the character in the alphabet, otherwise -1
      */
     private static int getNormalAlphabetIndex(char symbol) {
         if (symbol >= 'A' && symbol <= 'Z') {
