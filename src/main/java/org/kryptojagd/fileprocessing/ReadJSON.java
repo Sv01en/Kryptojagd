@@ -11,14 +11,10 @@ import org.json.simple.parser.ParseException;
 
 import com.google.gson.Gson;
 
-<<<<<<< HEAD:src/main/java/org/kryptojagd/fileprocessing/ReadJSON.java
 import org.kryptojagd.level.DecryptionTask;
 import org.kryptojagd.level.MultipleChoiceQuestion;
 
 public class ReadJSON {
-=======
-public class AufgabenEinlesen {
->>>>>>> 720278078edb37aa760bdf7d21f5ca5bec41b96c:src/main/java/org/kryptojagd/dateiverarbeitung/AufgabenEinlesen.java
 	
 	// gibt Mul
 	public static MultipleChoiceQuestion createMultiChoiceQuestion() {

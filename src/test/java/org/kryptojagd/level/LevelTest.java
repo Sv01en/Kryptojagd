@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
-import org.kryptojagd.verschluesselungsverfahren.Caesar;
+import org.kryptojagd.encryptionmethods.Caesar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
