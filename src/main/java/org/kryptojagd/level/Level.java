@@ -10,11 +10,21 @@ import java.util.LinkedList;
 public class Level {
 
 	private LinkedList<Task> level = new LinkedList<>();
+	private Task currentTask = level.getFirst();
 	
 	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask, MultipleChoiceTask multipleChoiceTask) {
 		level.add(decryptionTask);
 		level.add(encryptionTask);
 		level.add(multipleChoiceTask);
+	}
+
+	public Task giveNextTask() {
+		currentTask = level.iterator().next();
+		return currentTask;
+	}
+
+	public boolean proofCurrentTask(String answer) {
+		return currentTask.proofAnswer(answer);
 	}
 
 }
