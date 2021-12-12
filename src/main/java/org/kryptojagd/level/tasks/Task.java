@@ -1,7 +1,5 @@
 package org.kryptojagd.level.tasks;
 
-import org.kryptojagd.verschluesselungsverfahren.Encryption;
-
 /**
  * The interface describes the form of a task in the game
  *
