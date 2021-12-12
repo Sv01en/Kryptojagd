@@ -1,6 +1,6 @@
 package org.kryptojagd.level.tasks;
 
-import org.kryptojagd.verschluesselungsverfahren.Encryption;
+import org.kryptojagd.encryptionmethods.Encryption;
 
 
 public class DecryptionTask implements Task {

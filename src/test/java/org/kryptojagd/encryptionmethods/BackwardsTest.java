@@ -1,6 +1,7 @@
-package org.kryptojagd.verschluesselungsverfahren;
+package org.kryptojagd.encryptionmethods;
 
 import org.junit.jupiter.api.Test;
+import org.kryptojagd.encryptionmethods.Backwards;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,7 +1,7 @@
-package org.kryptojagd.logic.verschluesselungsverfahren;
+package org.kryptojagd.encryptionmethods;
 
 import org.junit.jupiter.api.Test;
-import org.kryptojagd.verschluesselungsverfahren.Vigenere;
+import org.kryptojagd.encryptionmethods.Vigenere;
 
 import static org.junit.jupiter.api.Assertions.*;
 

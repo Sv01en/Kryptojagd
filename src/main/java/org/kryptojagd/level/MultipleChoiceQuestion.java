@@ -2,9 +2,9 @@ package org.kryptojagd.level;
 
 import java.util.HashMap;
 
-public class MultipleChoiceFrage {
+public class MultipleChoiceQuestion {
 
-	public MultipleChoiceFrage(HashMap<String,Object> map) {
+	public MultipleChoiceQuestion(HashMap<String,Object> map) {
 		
 	}
 }

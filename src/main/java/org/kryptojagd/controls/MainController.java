@@ -1,26 +1,26 @@
-package org.kryptojagd.steuerung;
+package org.kryptojagd.controls;
 
 import java.util.List;
 
 import org.kryptojagd.level.Level;
-import org.kryptojagd.praesentation.Fensterverwaltung;
+import org.kryptojagd.presentation.PresentationManager;
 
-public class Hauptsteuerung {
+public class MainController {
 	
-	private Fensterverwaltung fw;
+	private PresentationManager fw;
 	
 	private List<Level> levelListe;
 	
-	public Hauptsteuerung(Fensterverwaltung fw) {
+	public MainController(PresentationManager fw) {
 		this.fw = fw;
-		AbstractController.setzeHauptsteuerung(this);
+		AbstractController.setMainController(this);
 	}
 	
-	public void wechsleFenster(String str) {
-		fw.wechsleFenster(str);
+	public void switchWindow(String str) {
+		fw.switchWindow(str);
 	}
 	
-	private void initialisiereLevel() {
+	private void initiliazeLevel() {
 		
 	}
 	

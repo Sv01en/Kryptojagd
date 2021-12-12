@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="406.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.steuerung.LevelabschlussController">
+<BorderPane prefHeight="406.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.steuerung.LevelFinishedController">
    <center>
       <Label text="Herzlichen Glückwunsch! Du hast das Level gelöst." BorderPane.alignment="CENTER" />
    </center>

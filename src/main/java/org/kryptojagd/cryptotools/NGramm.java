@@ -1,4 +1,4 @@
-package org.kryptojagd.kryptotools;
+package org.kryptojagd.cryptotools;
 
 public class NGramm {
 

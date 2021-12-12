@@ -1,4 +1,4 @@
-package org.kryptojagd.verschluesselungsverfahren;
+package org.kryptojagd.encryptionmethods;
 
 /**
  * Provides methods for encrypting and decrypting texts with the Caesar encryption

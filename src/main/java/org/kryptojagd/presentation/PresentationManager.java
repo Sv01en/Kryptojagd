@@ -1,4 +1,4 @@
-package org.kryptojagd.praesentation;
+package org.kryptojagd.presentation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -10,15 +10,15 @@ import javafx.stage.Stage;
 
 
 
-public class Fensterverwaltung {
+public class PresentationManager {
 	
 	private Stage stage;
 	
-	public Fensterverwaltung(Stage primaryStage) {
+	public PresentationManager(Stage primaryStage) {
 		this.stage = primaryStage;
 	}
 	
-	public void wechsleFenster(String str) {
+	public void switchWindow(String str) {
 		Parent root;
 		try {
 			

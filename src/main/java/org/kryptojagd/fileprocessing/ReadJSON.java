@@ -1,4 +1,4 @@
-package org.kryptojagd.dateiverarbeitung;
+package org.kryptojagd.fileprocessing;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,22 +11,22 @@ import org.json.simple.parser.ParseException;
 
 import com.google.gson.Gson;
 
-import org.kryptojagd.level.AufgabeVerschluesselung;
-import org.kryptojagd.level.MultipleChoiceFrage;
+import org.kryptojagd.level.DecryptionTask;
+import org.kryptojagd.level.MultipleChoiceQuestion;
 
-public class AufgabenEinlesen {
+public class ReadJSON {
 	
 	// gibt Mul
-	public static MultipleChoiceFrage erstelleMultiChoiceFrage() {
+	public static MultipleChoiceQuestion createMultiChoiceQuestion() {
 		
-		MultipleChoiceFrage frage = null;
+		MultipleChoiceQuestion frage = null;
 		
 		try {
 			JSONParser parser = new JSONParser();
 			Object obj2 = parser.parse(new FileReader("/home/mp/eclipse-workspace/TestProjekt/src/test.json"));
 			JSONObject jsonObject =  (JSONObject) obj2;
 			HashMap<String, Object> yourHashMap = new Gson().fromJson(jsonObject.toString(), HashMap.class);
-			frage = new MultipleChoiceFrage(yourHashMap);
+			frage = new MultipleChoiceQuestion(yourHashMap);
 			
 			
 		} catch (FileNotFoundException e) {
@@ -43,16 +43,16 @@ public class AufgabenEinlesen {
 		
 	}
 	
-	public static AufgabeVerschluesselung erstelleAufgabeVerschluesselung() {
+	public static DecryptionTask createEncryptionTask() {
 		
-		AufgabeVerschluesselung aufgabe = null;
+		DecryptionTask aufgabe = null;
 		
 		try {
 			JSONParser parser = new JSONParser();
 			Object obj2 = parser.parse(new FileReader("/home/mp/eclipse-workspace/TestProjekt/src/test.json"));
 			JSONObject jsonObject =  (JSONObject) obj2;
 			HashMap<String, Object> yourHashMap = new Gson().fromJson(jsonObject.toString(), HashMap.class);
-			aufgabe = new AufgabeVerschluesselung(yourHashMap);
+			aufgabe = new DecryptionTask(yourHashMap);
 			
 			
 		} catch (FileNotFoundException e) {

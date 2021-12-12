@@ -2,9 +2,9 @@ package org.kryptojagd.level;
 
 import java.util.HashMap;
 
-public class AufgabeVerschluesselung {
+public class DecryptionTask {
 
-	public AufgabeVerschluesselung(HashMap<String,Object> map) {
+	public DecryptionTask(HashMap<String,Object> map) {
 		
 	}
 }

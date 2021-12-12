@@ -1,4 +1,4 @@
-package org.kryptojagd.steuerung;
+package org.kryptojagd.controls;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ public class QuizController extends AbstractController{
     @FXML
     void klickAntwort1(ActionEvent event) {
     	System.out.println("Antwort 1 wurde ausgewäht!");
-    	hs.wechsleFenster("Levelabschluss.fxml");
+    	mainController.switchWindow("Levelabschluss.fxml");
     }
 
     @FXML

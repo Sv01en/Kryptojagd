@@ -12,14 +12,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.kryptojagd.praesentation.Fensterverwaltung;
-import org.kryptojagd.steuerung.Hauptsteuerung;
+
+import org.kryptojagd.controls.MainController;
+import org.kryptojagd.presentation.PresentationManager;
 
 
 public class MainApp extends Application {
 
-	private Fensterverwaltung fw;	
-	private Hauptsteuerung hs;
+	private PresentationManager fw;	
+	private MainController hs;
 	
     public void start(Stage stage) {
         
@@ -37,8 +38,8 @@ public class MainApp extends Application {
 
 			
 			stage.show();
-			fw = new Fensterverwaltung(stage);
-			hs = new Hauptsteuerung(fw);
+			fw = new PresentationManager(stage);
+			hs = new MainController(fw);
 			
 			
 			

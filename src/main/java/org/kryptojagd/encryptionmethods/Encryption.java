@@ -1,4 +1,4 @@
-package org.kryptojagd.verschluesselungsverfahren;
+package org.kryptojagd.encryptionmethods;
 
 public abstract class Encryption {
 

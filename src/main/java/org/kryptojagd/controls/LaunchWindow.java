@@ -1,10 +1,10 @@
-package org.kryptojagd.steuerung;
+package org.kryptojagd.controls;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class StartfensterController extends AbstractController {
+public class LaunchWindow extends AbstractController {
 	
 	
 
@@ -25,13 +25,13 @@ public class StartfensterController extends AbstractController {
     @FXML
     void klickInfo(ActionEvent event) {
     	System.out.println("Es wurde auf Info geklickt!");
-    	hs.wechsleFenster("Infotext.fxml");
+    	mainController.switchWindow("Infotext.fxml");
     }
 
     @FXML
     void klickStart(ActionEvent event) {
     	System.out.println("Es wurde auf Start geklickt!");
-    	hs.wechsleFenster("Entschluesselung.fxml");
+    	mainController.switchWindow("Entschluesselung.fxml");
     }
     
  

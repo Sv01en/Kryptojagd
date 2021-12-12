@@ -1,4 +1,4 @@
-package org.kryptojagd.steuerung;
+package org.kryptojagd.controls;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +9,7 @@ public class WrongChoiceController extends AbstractController{
 	 @FXML
 	 void schliesseInfotext(ActionEvent event) {
 		 System.out.println("Es wurde auf Schließen geklickt!");
-		 hs.wechsleFenster("Entschluesselung.fxml");
+		 mainController.switchWindow("Entschluesselung.fxml");
 	 }
 
 
