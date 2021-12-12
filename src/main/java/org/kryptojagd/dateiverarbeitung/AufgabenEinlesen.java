@@ -11,9 +11,6 @@ import org.json.simple.parser.ParseException;
 
 import com.google.gson.Gson;
 
-import org.kryptojagd.level.AufgabeVerschluesselung;
-import org.kryptojagd.level.MultipleChoiceFrage;
-
 public class AufgabenEinlesen {
 	
 	// gibt Mul
