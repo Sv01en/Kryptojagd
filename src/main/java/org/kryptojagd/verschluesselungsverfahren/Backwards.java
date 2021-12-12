@@ -38,7 +38,7 @@ public class Backwards implements EncryptionInterface {
         words.add(tmp);
 
         // Remove unnecessary empty words
-        for (int i = 0; i < words.size(); i++) {
+        for (int i = words.size() - 1; i >= 0 ; i++) {
             if (words.get(i).equals("")) {
                 words.remove(i);
             }
