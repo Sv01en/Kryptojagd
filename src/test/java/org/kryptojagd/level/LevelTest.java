@@ -17,9 +17,7 @@ public class LevelTest {
 
     @BeforeEach
     void setUp() {
-        decryptionTask = new DecryptionTask(new Caesar());
-        encryptionTask = new EncryptionTask(new Caesar());
-        multipleChoiceTask = new MultipleChoiceTask(null, null, null);
+
     }
 
 }
