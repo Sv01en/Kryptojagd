@@ -14,8 +14,8 @@ import java.util.LinkedList;
  */
 public class Level {
 
-	private LinkedList<Task> level = new LinkedList<>();
-	private Task currentTask = level.getFirst();
+	private final LinkedList<Task> level = new LinkedList<>();
+	private Task currentTask;
 
 	/**
 	 * Creates a {@link Level}
@@ -28,6 +28,7 @@ public class Level {
 		level.add(decryptionTask);
 		level.add(encryptionTask);
 		level.add(multipleChoiceTask);
+		this.currentTask = level.getFirst();
 	}
 
 	/**
