@@ -1,4 +1,4 @@
-package org.kryptojagd.logic.verschluesselungsverfahren;
+package org.kryptojagd.verschluesselungsverfahren;
 
 import org.junit.jupiter.api.Test;
 

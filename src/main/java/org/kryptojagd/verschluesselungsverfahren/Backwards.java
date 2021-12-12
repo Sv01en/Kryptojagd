@@ -1,4 +1,4 @@
-package org.kryptojagd.logic.verschluesselungsverfahren;
+package org.kryptojagd.verschluesselungsverfahren;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class Backwards implements EncryptionInterface {
      * @return Encrypted text
      */
     public static String encode(String text, String key) {
-        text = text.toUpperCase();
+        String inputText = text.toUpperCase();
 
         String encryptedText = "";
         ArrayList<String> words = new ArrayList<>();
@@ -25,13 +25,13 @@ public class Backwards implements EncryptionInterface {
 
         // Separate input text with spaces and special characters
         String tmp = "";
-        for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
-                tmp = tmp + text.charAt(i);
+        for (int i = 0; i < inputText.length(); i++) {
+            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
+                tmp = tmp + inputText.charAt(i);
             } else {
                 words.add(tmp);
                 tmp = "";
-                words.add("" + text.charAt(i));
+                words.add("" + inputText.charAt(i));
             }
         }
 

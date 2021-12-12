@@ -1,4 +1,4 @@
-package org.kryptojagd.logic.verschluesselungsverfahren;
+package org.kryptojagd.verschluesselungsverfahren;
 
 /**
  * Provides methods for encrypting and decrypting texts with Vigenere encryption
@@ -7,13 +7,13 @@ package org.kryptojagd.logic.verschluesselungsverfahren;
  */
 public class Vigenere implements EncryptionInterface {
 
-    private final static char[] normalAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
      * Generated a random number between 4 and 6
      * @return Random int value
      */
-    public static int keyLength () {
+    public static int keyLength() {
 
         return (int) (Math.random() * (7 - 4) + 4);
     }
@@ -22,7 +22,7 @@ public class Vigenere implements EncryptionInterface {
      * Generates a random number between 0 and 25
      * @return Random int value
      */
-    public static int keySymbolIndex () {
+    public static int keySymbolIndex() {
 
         return (int) (Math.random() * (26 - 0) + 0);
 
@@ -39,7 +39,7 @@ public class Vigenere implements EncryptionInterface {
         int keyLength = keyLength();
         for (int i = 0; i < keyLength; i++) {
             int symbolIndex = keySymbolIndex();
-            key = key + normalAlphabet[symbolIndex];
+            key = key + NORMALALPHABET[symbolIndex];
         }
 
         return encode(text, key);
@@ -55,29 +55,29 @@ public class Vigenere implements EncryptionInterface {
         
         String encodedText = "";
 
-        text = text.toUpperCase();
-        key = key.toUpperCase();
+        String inputText = text.toUpperCase();
+        String inputKey = key.toUpperCase();
 
-        if (key.length() == 0) {
-            return text.toUpperCase();
+        if (inputKey.length() == 0) {
+            return inputText.toUpperCase();
         }
 
-        for (int i = 0; i < key.length(); i++){
-            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
-                return text.toUpperCase();
+        for (int i = 0; i < inputKey.length(); i++) {
+            if (inputKey.charAt(i) < 'A' || inputKey.charAt(i) > 'Z') {
+                return inputText.toUpperCase();
             }
         }
 
  
-        for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
-                int result = (text.charAt(i) + getNormalAlphabetIndex(key.charAt(i % key.length())));
+        for (int i = 0; i < inputText.length(); i++) {
+            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
+                int result = (inputText.charAt(i) + getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length())));
                 if (result > 'Z') {
                     result = result - 26;
                 }
                 encodedText = encodedText + (char) result;
             } else {
-                encodedText = encodedText + text.charAt(i);
+                encodedText = encodedText + inputText.charAt(i);
             }
         }
  
@@ -95,30 +95,33 @@ public class Vigenere implements EncryptionInterface {
  
         String decodedText = "";
 
-        text = text.toUpperCase();
-        key = key.toUpperCase();
+        String inputText = text.toUpperCase();
+        String inputKey = key.toUpperCase();
 
-        if (key.length() == 0) {
-            return text.toUpperCase();
+        if (inputKey.length() == 0) {
+            return inputText.toUpperCase();
         }
 
-        for (int i = 0; i < key.length(); i++){
-            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
-                return text.toUpperCase();
+        for (int i = 0; i < inputKey.length(); i++) {
+            if (inputKey.charAt(i) < 'A' || inputKey.charAt(i) > 'Z') {
+                return inputText.toUpperCase();
             }
         }
  
-        for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
+        for (int i = 0; i < inputText.length(); i++) {
+            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
                 int result;
-                if (getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length())) < 0) {
-                    result = normalAlphabet[getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length())) + 26];
+                if (getNormalAlphabetIndex(inputText.charAt(i))
+                        - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length())) < 0) {
+                    result = NORMALALPHABET[getNormalAlphabetIndex(inputText.charAt(i))
+                            - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length())) + 26];
                 } else {
-                    result = normalAlphabet[getNormalAlphabetIndex(text.charAt(i)) - getNormalAlphabetIndex(key.charAt(i % key.length()))];
+                    result = NORMALALPHABET[getNormalAlphabetIndex(inputText.charAt(i))
+                            - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length()))];
                 }
                 decodedText = decodedText + (char) result;
             } else {
-                decodedText = decodedText + text.charAt(i);
+                decodedText = decodedText + inputText.charAt(i);
             }
             
         }
@@ -134,8 +137,8 @@ public class Vigenere implements EncryptionInterface {
      */
     private static int getNormalAlphabetIndex(char symbol) {
         if (symbol >= 'A' && symbol <= 'Z') {
-            for (int i = 0; i < normalAlphabet.length; i++) {
-                if (normalAlphabet[i] == symbol) {
+            for (int i = 0; i < NORMALALPHABET.length; i++) {
+                if (NORMALALPHABET[i] == symbol) {
                     return i;
                 }
             }
