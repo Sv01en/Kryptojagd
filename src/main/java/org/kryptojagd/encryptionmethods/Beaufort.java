@@ -8,14 +8,14 @@ package org.kryptojagd.encryptionmethods;
 public class Beaufort implements EncryptionInterface {
 
 
-    private final static char[] alphabet = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
-    private final static char[] normalAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    private static final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
+    private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
      * Generated a random number between 4 and 6
      * @return Random int value
      */
-    public static int keyLength () {
+    public static int keyLength() {
 
         return (int) (Math.random() * (7 - 4) + 4);
     }
@@ -24,7 +24,7 @@ public class Beaufort implements EncryptionInterface {
      * Generates a random number between 0 and 25
      * @return Random int value
      */
-    public static int keySymbolIndex () {
+    public static int keySymbolIndex() {
 
         return (int) (Math.random() * (26 - 0) + 0);
 
@@ -41,7 +41,7 @@ public class Beaufort implements EncryptionInterface {
         int keyLength = keyLength();
         for (int i = 0; i < keyLength; i++) {
             int symbolIndex = keySymbolIndex();
-            key = key + alphabet[symbolIndex];
+            key = key + ALPHABET[symbolIndex];
         }
 
         return encode(text, key);
@@ -57,26 +57,26 @@ public class Beaufort implements EncryptionInterface {
  
         String encodedText = "";
 
-        key = key.toUpperCase();
-        text = text.toUpperCase();
+        String inputKey = key.toUpperCase();
+        String inputText = text.toUpperCase();
 
-        if (key.length() == 0) {
-            return text.toUpperCase();
+        if (inputKey.length() == 0) {
+            return inputText.toUpperCase();
         }
 
-        for (int i = 0; i < key.length(); i++){
-            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
-                return text.toUpperCase();
+        for (int i = 0; i < inputKey.length(); i++) {
+            if (inputKey.charAt(i) < 'A' || inputKey.charAt(i) > 'Z') {
+                return inputText.toUpperCase();
             }
         }
 
  
-        for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
-                int result = alphabet[(text.charAt(i) + key.charAt(i % key.length())) % 26];
+        for (int i = 0; i < inputText.length(); i++) {
+            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
+                int result = ALPHABET[(inputText.charAt(i) + inputKey.charAt(i % inputKey.length())) % 26];
                 encodedText = encodedText + (char) result;
             } else {
-                encodedText = encodedText + text.charAt(i);
+                encodedText = encodedText + inputText.charAt(i);
             }
         }
  
@@ -90,36 +90,37 @@ public class Beaufort implements EncryptionInterface {
      * @param key Passed key
      * @return Deciphered text
      */
-    public static String decode (String text, String key) {
+    public static String decode(String text, String key) {
  
         String decodedText = "";
 
-        text = text.toUpperCase();
-        key = key.toUpperCase();
+        String inputText = text.toUpperCase();
+        String inputKey = key.toUpperCase();
 
-        if (key.length() == 0) {
-            return text.toUpperCase();
+        if (inputKey.length() == 0) {
+            return inputText.toUpperCase();
         }
 
-        for (int i = 0; i < key.length(); i++){
-            if(key.charAt(i) < 'A' || key.charAt(i) > 'Z') {
-                return text.toUpperCase();
+        for (int i = 0; i < inputKey.length(); i++) {
+            if (inputKey.charAt(i) < 'A' || inputKey.charAt(i) > 'Z') {
+                return inputText.toUpperCase();
             }
         }
 
-        for (int i = 0; i < text.length(); i++) {
-            int charIndex = getAlphabetIndex(text.charAt(i));
+        for (int i = 0; i < inputText.length(); i++) {
+            int charIndex = getAlphabetIndex(inputText.charAt(i));
             if (charIndex != -1) {
                 int result;
-                if (charIndex - getNormalAlphabetIndex(key.charAt(i % key.length())) < 0) {
-                    result = normalAlphabet[26 + charIndex - getNormalAlphabetIndex(key.charAt(i % key.length()))];
+                if (charIndex - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length())) < 0) {
+                    result = NORMALALPHABET[26
+                            + charIndex - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length()))];
                 } else {
-                    result = normalAlphabet[charIndex - getNormalAlphabetIndex(key.charAt(i % key.length()))];
+                    result = NORMALALPHABET[charIndex - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length()))];
                 }
                 
                 decodedText = decodedText + (char) result;
             } else {
-                decodedText = decodedText + text.charAt(i);
+                decodedText = decodedText + inputText.charAt(i);
             }
             
         }
@@ -135,8 +136,8 @@ public class Beaufort implements EncryptionInterface {
      */
     private static int getAlphabetIndex(char symbol) {
         if (symbol >= 'A' && symbol <= 'Z') {
-            for (int i = 0; i < alphabet.length; i++) {
-                if (alphabet[i] == symbol) {
+            for (int i = 0; i < ALPHABET.length; i++) {
+                if (ALPHABET[i] == symbol) {
                     return i;
                 }
             }
@@ -151,8 +152,8 @@ public class Beaufort implements EncryptionInterface {
      */
     private static int getNormalAlphabetIndex(char symbol) {
         if (symbol >= 'A' && symbol <= 'Z') {
-            for (int i = 0; i < normalAlphabet.length; i++) {
-                if (normalAlphabet[i] == symbol) {
+            for (int i = 0; i < NORMALALPHABET.length; i++) {
+                if (NORMALALPHABET[i] == symbol) {
                     return i;
                 }
             }
