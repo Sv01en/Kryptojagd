@@ -1,0 +1,32 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Kryptojagd:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Kryptojagd_jar</output-path>
+    <root id="archive" name="Kryptojagd.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="Kryptojagd" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/16/javafx-controls-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/16/javafx-base-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/16/javafx-fxml-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/16/javafx-graphics-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.7/gson-2.8.7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/16/javafx-controls-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/16/javafx-base-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/16/javafx-fxml-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/junit/junit/4.10/junit-4.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/16/javafx-graphics-16-win.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/../javafx-sdk-17.0.1/lib/javafx-swt.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/../javafx-sdk-17.0.1/lib/javafx.base.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/../javafx-sdk-17.0.1/lib/javafx.controls.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/../javafx-sdk-17.0.1/lib/javafx.fxml.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/../javafx-sdk-17.0.1/lib/javafx.graphics.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/../javafx-sdk-17.0.1/lib/javafx.media.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/../javafx-sdk-17.0.1/lib/javafx.properties" />
+      <element id="file-copy" path="$PROJECT_DIR$/../javafx-sdk-17.0.1/lib/javafx.swing.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/../javafx-sdk-17.0.1/lib/javafx.web.jar" />
+    </root>
+  </artifact>
+</component>
