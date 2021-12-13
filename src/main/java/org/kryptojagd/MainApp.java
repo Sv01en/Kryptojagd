@@ -29,7 +29,7 @@ public class MainApp extends Application {
 			
 
 			
-			root = FXMLLoader.load(getClass().getResource("praesentation/Startfenster.fxml"));
+			root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
 			
 			System.out.println(getClass().toString());
 			Scene scene = new Scene(root);		
