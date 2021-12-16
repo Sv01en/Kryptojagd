@@ -21,7 +21,7 @@ Das Programm ist eine Desktopanwendung, soll in Einzelarbeit bearbeitet werden u
 
 ## Regeln für die Nutzung unseres Github-Respotories
 
-1. Jeder neu eröffnete Branch gilt nur für einen spezifischen Task, welcher im Miro-Board definiert ist.
+1. Jeder neu eröffnete Branch gilt nur für eine spezifischen Userstory, welche im Miro-Board definiert ist.
 2. Jeder Merge in den main-Branch muss via Pull-Request überprüft werden.
 3. Die Paketstruktur darf nur im main-Branch geändert werden, nachdem dies in der Gruppe abgesprochen worden ist.
 4. Commit-Messages werden auf Englisch verfasst.
