@@ -26,3 +26,4 @@ Das Programm ist eine Desktopanwendung, soll in Einzelarbeit bearbeitet werden u
 3. Die Paketstruktur darf nur im main-Branch geändert werden, nachdem dies in der Gruppe abgesprochen worden ist.
 4. Commit-Messages werden auf Englisch verfasst.
 5. CodeProbleme werden als Issues auf Github festgehalten.
+6. Die Branches werden nach den Userstorys benannt.
