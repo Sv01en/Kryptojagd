@@ -1,4 +1,7 @@
-# Teamprojekt-Lehramt-Informatik-KIT
+# Teamprojekt-Lehramt-Informatik-KIT (Kryptojagd)
+
+## Projektbeschreibung
+
 Das Programm soll in der &Uuml;bungsphase der achten Klasse eines allgemeinbildenden Gymnasiums in Baden-Württemberg eingesetzt werden. 
 
 Die BenutzerInnen sollen sich mithilfe verschiedener Übungsaufgaben intensiv mit dem Thema "Kryptographie und Verschlüsselung" auseinandersetzen und das bereits Gelernte spielerisch vertiefen. 
@@ -15,3 +18,11 @@ Verdeutlicht wird dies durch einen Timer pro Station.
 Bei jeder Station der Weltreise müssen verschiedene Aufgaben zu jeweils einer Verschlüsselungstechnik gelöst werden. Diese Aufgaben umfassen das Ver- und Entschlüsseln gegebener Texte sowie das Beantworten von Fragen in Form von Multiple-Choice Aufgaben oder Lückentexten zum Thema "Datenschutz" und "Kryptographie".
 
 Das Programm ist eine Desktopanwendung, soll in Einzelarbeit bearbeitet werden und mit Java Version 11 laufen.
+
+## Regeln für die Nutzung unseres Github-Respotories
+
+1. Jeder neu eröffnete Branch gilt nur für einen spezifischen Task, welcher im Miro-Board definiert ist.
+2. Jeder Merge in den main-Branch muss via Pull-Request überprüft werden.
+3. Die Paketstruktur darf nur im main-Branch geändert werden, nachdem dies in der Gruppe abgesprochen worden ist.
+4. Commit-Messages werden auf Englisch verfasst.
+5. CodeProbleme werden als Issues auf Github festgehalten.
