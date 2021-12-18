@@ -15,7 +15,17 @@ public class LevelController {
         this.level = level;
     }
 
-    public void runMultipleChoice(){
+    /**
+     * Runs the whole level, with every task
+     */
+    public void runLevel() {
+
+    }
+
+    /**
+     * Runs the multiple choice tasks
+     */
+    private void runMultipleChoice(){
 
     }
 
