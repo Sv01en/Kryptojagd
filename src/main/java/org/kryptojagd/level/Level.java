@@ -39,8 +39,8 @@ public class Level {
 		return encryptionTask;
 	}
 
-	public LinkedList<MultipleChoiceTask> getMultipleChoiceTasks() {
-		return multipleChoiceTasks;
+	public MultipleChoiceTask getCurrentMultipleChoiceTask() {
+		return multipleChoiceTasks.getFirst();
 	}
 
 	/**
