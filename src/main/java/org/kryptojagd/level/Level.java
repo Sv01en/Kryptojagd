@@ -14,41 +14,40 @@ import java.util.LinkedList;
  */
 public class Level {
 
-	private final LinkedList<Task> level = new LinkedList<>();
-	private Task currentTask;
+	private DecryptionTask decryptionTask;
+	private EncryptionTask encryptionTask;
+	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
 
 	/**
 	 * Creates a {@link Level}
 	 *
 	 * @param decryptionTask first task in level is a decryptionTask
 	 * @param encryptionTask second task in level is a encryptionTask
-	 * @param multipleChoiceTask third and last task is a Collection of multiple choice questions
+	 * @param multipleChoiceTasks third and last task is a LinkedList of multiple choice questions
 	 */
-	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask, MultipleChoiceTask multipleChoiceTask) {
-		level.add(decryptionTask);
-		level.add(encryptionTask);
-		level.add(multipleChoiceTask);
-		this.currentTask = level.getFirst();
+	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask, LinkedList<MultipleChoiceTask> multipleChoiceTasks) {
+		this.decryptionTask = decryptionTask;
+		this.encryptionTask = encryptionTask;
+		this.multipleChoiceTasks = multipleChoiceTasks;
 	}
 
-	/**
-	 * Gives the next Task in the chronology of the level
-	 *
-	 * @return the current task in level
-	 */
-	public Task giveNextTask() {
-		currentTask = level.iterator().next();
-		return currentTask;
-	}
 
 	/**
-	 * Checks the answer to the current task
+	 * Proofs the answer of the current multiple choice task,
+	 * if the answer is false, it returns the same question,
+	 * if the answer is true, it returns the next question
+	 * and removes the right answered question
 	 *
-	 * @param answer the answer which is given
-	 * @return trur, if the answer is correct
+	 * @param answer answer of the player to the multipleChoiceTask
+	 * @return the same question, if the answer is false
+	 * 			the next question, if the answer is true
 	 */
-	public boolean proofCurrentTask(String answer) {
-		return currentTask.proofAnswer(answer);
+	public String proofMultipleChoice(String answer) {
+		if(!this.multipleChoiceTasks.getFirst().proofAnswer(answer)) {
+			return this.multipleChoiceTasks.getFirst().getQuestion();
+		}
+		this.multipleChoiceTasks.pop();
+		return this.multipleChoiceTasks.getFirst().getQuestion();
 	}
 
 }
