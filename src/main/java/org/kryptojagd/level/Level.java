@@ -31,6 +31,17 @@ public class Level {
 		this.multipleChoiceTasks = multipleChoiceTasks;
 	}
 
+	public DecryptionTask getDecryptionTask() {
+		return decryptionTask;
+	}
+
+	public EncryptionTask getEncryptionTask() {
+		return encryptionTask;
+	}
+
+	public LinkedList<MultipleChoiceTask> getMultipleChoiceTasks() {
+		return multipleChoiceTasks;
+	}
 
 	/**
 	 * Proofs the answer of the current multiple choice task,
