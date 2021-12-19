@@ -34,6 +34,7 @@ public class LevelController {
         String output;
         output = level.getCurrentMultipleChoiceTask().getQuestion();
         String input = "";
+        level.proofMultipleChoice(input);
         while (!level.multipleChoiceIsFinished()) {
             output = level.proofMultipleChoice(input);
         }
