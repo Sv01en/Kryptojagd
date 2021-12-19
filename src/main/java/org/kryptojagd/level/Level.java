@@ -58,6 +58,9 @@ public class Level {
 			return this.multipleChoiceTasks.getFirst().getQuestion();
 		}
 		this.multipleChoiceTasks.pop();
+		if(multipleChoiceIsFinished()) {
+			return "Glueckwunsch, du hast alle Fragen beantwortet";
+		}
 		return this.multipleChoiceTasks.getFirst().getQuestion();
 	}
 
