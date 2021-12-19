@@ -24,6 +24,14 @@ public class MultipleChoiceTask implements Task {
         this.possibilities = possibilities;
     }
 
+    public String getQuestion() {
+        return question;
+    }
+
+    public String[] getPossibilities() {
+        return possibilities;
+    }
+
     @Override
     public boolean proofAnswer(String answer) {
         return this.answer.equals(answer);
