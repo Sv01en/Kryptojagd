@@ -1,0 +1,38 @@
+Warum war der Text verschlüsselt? Hat das irgend einen bestimmten Grund?
+    Nein, der Verfasser wollte sich nur einen Spaß erlauben.
+    Ja, der Text kann sonst von jedem gelesen werden und das wäre nicht sicher.
+    Ja, denn der Verfasser kommt vermutlich aus einem Land indem es üblich ist rückwärts zu schreiben.
+
+Welche Gefahren kann es geben, wenn eine Nachricht unverschlüsselt verschickt wird? (Mehrere Antworten möglich)
+    Jeder kann mitlesen
+    Die Nachricht kann verändert werden
+    Die Identität des Absenders kann nicht mit Sicherheit bestimmt werden 
+    Es gibt keine Gefahren
+
+Was ist Kryptoanalyse
+    Austausch von Informationen, die nicht für alle bestimmt sind.
+    Verschlüsseln und Entschlüsseln von Nachrichten mit einem Schlüssel Brechen bzw. Knacken von Chiffre, ohne den Schlüssel zu kennen
+
+Ist die Cäsar-Chiffre sicher?
+    Ja, weil nicht jeder den Text lesen kann
+    Es kommt darauf an, wie weit verschoben wurde
+    Nein, die Verschlüsselung ist leicht zu lösen
+
+Wie funktioniert die Cäsar-Chiffre?
+    Zahlen statt Buchstaben
+    Einzelne Buchstaben weglassen
+    Buchstaben im Alphabet verschieben
+
+Für welche Internet-Aktivitäten kann man unter anderem eine Abmahnung erhalten? 
+    Memes und GIFs über WhatsApp an Freunde versenden
+    Cheats für Spiele posten
+    Herunterladen von Raubkopien eines Kinofilms aus dem Internet
+    Filesharing von illegalen Mediendateien
+    Verletzung von Urheberrechten an Bildern im Netz
+    Verletzung des Persöhnlichkeits- oder Markenrechts
+
+Bringt es etwas, wenn man Caesar mehrmals anwendet?
+    Ja
+    Nein
+
+Welche Probleme können (für den Angreifer) entstehen wenn man nur ein Wort mit Caesar verschlüsselt?
