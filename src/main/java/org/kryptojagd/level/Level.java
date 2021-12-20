@@ -61,5 +61,15 @@ public class Level {
 		return this.multipleChoiceTasks.getFirst().getQuestion();
 	}
 
+	/**
+	 * Proofs, if every multiple choice task is answered
+	 *
+	 * @return true, if there is no more multiple choice task
+	 */
+	public boolean multipleChoiceIsFinished() {
+		return this.multipleChoiceTasks.isEmpty();
+	}
+
 }
+
 
