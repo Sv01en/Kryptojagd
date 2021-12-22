@@ -27,9 +27,9 @@
     "Antwort7":["Ja", "Nein"],
     "richtigeAntwort7":1,
 
-    "Frage8":"Welche Probleme können (für den Angreifer) entstehen wenn man nur ein Wort mit Caesar verschlüsselt?",
-    "Antwort8":["", "", ""],
-    "richtigeAntwort8":,
+    "Frage8":"Was versteht man in der Informatik unter einem Verweis?",
+    "Antwort8":["Eine Textstelle", "Eine Bilddatei", "Ein Hinweis auf eine andere Textstelle"],
+    "richtigeAntwort8":3,
 
     "Frage9": "Was ist eine Festplatte?",
     "Antwort9":["Ein Speichermedium, das anhand eines Lasers die Daten sichert", "Ein Laufwerk mit magnetischer Aufzeichnungstechnik", "Die Hauptplatine eines Computers"],
@@ -93,7 +93,7 @@
 
     "Frage24": "Wie viele Zustände kann man mit zwei Bits herstellen? ",
     "Antwort24": ["2", "4", "6"],
-    "richtigeAntwort24":4,
+    "richtigeAntwort24":2,
 
     "Frage25": "Das Hexadezimalsystem ist ein Stellenwertsystem zur welcher Basis?",
     "Antwort25": ["8", "10", "16"],
@@ -103,5 +103,31 @@
     "Antwort26": ["Eine Software, die sich mehrere Nutzer teilen können", "Eine Software, die als kostenlose Testversion zur Verfügung gestellt wird", "Eine Cloud, die die Verbreitung von besonders vielen Daten zulässt"],
     "richtige Antwort26":2,
 
+    "Frage27": "Welche Aufgabe hat eine URL?",
+    "Antwort27": ["Eindeutige Adressierung einer Seite im Internet", "Eindeutiger Namen eines Objekts", "Eindeutiger Name einer Methode"],
+    "richtigeAntwort27":2,
 
+    "Frage28": "Was bedeutet HTML?",
+    "Antwort28": ["Hypertext Markup Language", "Hyper Type Markup Language", "Hypertext Max Language"],
+    "richtigeAntwort28":1,
+
+    "Frage29": "Was ist eine Klasse (in der Informatik)?",
+    "Antwort29": ["Eine Methode", "Eine bestimmte Art von Objekten", "Ein Bauplan für Objekte"],
+    "richtigeAntwort29":3,
+
+    "Frage30": "Was versteht man unter einem Objekt?",
+    "Antwort30": ["Etwas, das nur Eigenschaften hat", "Etwas, das nur Methoden hat", "Etwas, das real existiert und Informationen enthält"],
+    "richtigeAntwort30":3,
+
+    "Frage31": "Was ist ein Router?",
+    "Antwort31": ["Ein Client", "Ein Vermittlerrechner", "Ein Server"],
+    "richtigeAntwort31":2,
+
+    "Frage32": "Wovon spricht man, wenn ein Betriebssystem mehrere Prozesse gleichzeitig ausführen kann?",
+    "Antwort32": ["Multitasking", "Parallel Processing", "Multimanagement"],
+    "richtigeAntwort32":1,
+
+    "Frage33": "Wie heißt die Software für die Ablaufsteuerung in einem Computer?",
+    "Antwort33": ["Interface", "Betriebssystem", "Intrasoft"],
+    "richtigeAntwort33":2
 }
