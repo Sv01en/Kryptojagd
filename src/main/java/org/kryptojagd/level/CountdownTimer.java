@@ -17,7 +17,8 @@ public class CountdownTimer {
      *
      * @param startValue given timer duration in seconds
      */
-    private void countdownTimer(int startValue) {
+    public void countdownTimer(int startValue) {
+        //TODO: public not private
         final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         final Runnable runnable = new Runnable() {
             int countdownStartValue = startValue;

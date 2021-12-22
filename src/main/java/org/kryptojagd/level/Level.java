@@ -25,7 +25,8 @@ public class Level {
 	 * @param encryptionTask second task in level is a encryptionTask
 	 * @param multipleChoiceTasks third and last task is a LinkedList of multiple choice questions
 	 */
-	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask, LinkedList<MultipleChoiceTask> multipleChoiceTasks) {
+	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask,
+				 LinkedList<MultipleChoiceTask> multipleChoiceTasks) {
 		this.decryptionTask = decryptionTask;
 		this.encryptionTask = encryptionTask;
 		this.multipleChoiceTasks = multipleChoiceTasks;
@@ -69,7 +70,6 @@ public class Level {
 	public boolean multipleChoiceIsFinished() {
 		return this.multipleChoiceTasks.isEmpty();
 	}
-
 }
 
 
