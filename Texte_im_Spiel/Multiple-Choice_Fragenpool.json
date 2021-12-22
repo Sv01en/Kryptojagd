@@ -1,7 +1,7 @@
 {
     "Frage1":"Warum werden Text verschlüsselt? Hat das irgend einen bestimmten Grund?",
     "Antwort1":["Nein, der Verfasser wollte sich nur einen Spaß erlauben.", "Ja, der Text kann sonst von jedem gelesen werden und das wäre nicht sicher.", "Ja, denn der Verfasser kommt vermutlich aus einem Land indem es üblich ist Texte so zu schreiben."],
-    "richtigeAntwort1":1,
+    "richtigeAntwort1":2,
 
     "Frage2":"Welche Gefahren kann es geben, wenn eine Nachricht unverschlüsselt verschickt wird? (Mehrere Antworten möglich)",
     "Antwort2":["Jeder kann mitlesen", "Die Nachricht kann verändert werden", "Die Identität des Absenders kann nicht mit Sicherheit bestimmt werden", "Es gibt keine Gefahren"],
@@ -13,11 +13,11 @@
 
     "Frage4":"Ist die Cäsar-Chiffre sicher?",
     "Antwort4":["Ja, weil nicht jeder den Text lesen kann", "Es kommt darauf an, wie weit verschoben wurde", "Nein, die Verschlüsselung ist leicht zu lösen"],
-    "richtigeAntwort4":2,
+    "richtigeAntwort4":3,
 
     "Frage5":"Wie funktioniert die Cäsar-Chiffre?",
     "Antwort5":["Zahlen statt Buchstaben", "Einzelne Buchstaben weglassen", "Buchstaben im Alphabet verschieben"],
-    "richtigeAntwort5":2,
+    "richtigeAntwort5":3,
 
     "Frage6":"Für welche Internet-Aktivitäten kann man unter anderem eine Abmahnung erhalten?",
     "Antwort6":["Memes und GIFs über WhatsApp an Freunde versenden", "Cheats für Spiele posten", "Herunterladen von Raubkopien eines Kinofilms aus dem Internet","Filesharing von illegalen Mediendateien", "Verletzung von Urheberrechten an Bildern im Netz", "Verletzung des Persönlichkeits- oder Markenrechts"],
