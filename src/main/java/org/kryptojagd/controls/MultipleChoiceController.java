@@ -3,29 +3,13 @@ package org.kryptojagd.controls;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import org.kryptojagd.level.Level;
 
 public class MultipleChoiceController extends AbstractController{
 
-    private Level level;
-
-    /**
-     * Runs the multiple choice tasks
-     * First it gives the first multiple choice question.
-     * Than it proofs the given answer and proofs the next multiple choice question
-     * until every question is answered
-     *
-     */
-    private void runMultipleChoice(){
-        //Isn't finished!
-        String output;
-        output = level.getCurrentMultipleChoiceTask().getQuestion();
-        String input = "";
-        level.proofMultipleChoice(input);
-        while (!level.multipleChoiceIsFinished()) {
-            level.proofMultipleChoice(input);
-        }
-    }
+    @FXML
+    private Label QuestionField;
 
     @FXML
     private Button antwort1;
@@ -36,15 +20,20 @@ public class MultipleChoiceController extends AbstractController{
     @FXML
     private Button antwort3;
 
+    private final Level level = mainController.getCurrentLevel();
+
+    private void init(){
+        QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
+
+    }
+
+
+
     @FXML
     void clickAnswer1(ActionEvent event) {
         level.proofMultipleChoice(antwort1.getText());
     }
 
-    @FXML
-    void setMultipleChoiceQuestion(ActionEvent event) {
-
-    }
 
     @FXML
     void klickAntwort1(ActionEvent event) {
