@@ -23,7 +23,7 @@ public class MultipleChoiceController extends AbstractController{
         String input = "";
         level.proofMultipleChoice(input);
         while (!level.multipleChoiceIsFinished()) {
-            output = level.proofMultipleChoice(input);
+            level.proofMultipleChoice(input);
         }
     }
 
@@ -35,6 +35,16 @@ public class MultipleChoiceController extends AbstractController{
 
     @FXML
     private Button antwort3;
+
+    @FXML
+    void clickAnswer1(ActionEvent event) {
+        level.proofMultipleChoice(antwort1.getText());
+    }
+
+    @FXML
+    void setMultipleChoiceQuestion(ActionEvent event) {
+
+    }
 
     @FXML
     void klickAntwort1(ActionEvent event) {
