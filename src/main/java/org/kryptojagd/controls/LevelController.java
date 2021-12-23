@@ -22,22 +22,6 @@ public class LevelController {
 
     }
 
-    /**
-     * Runs the multiple choice tasks
-     * First it gives the first multiple choice question.
-     * Than it proofs the given answer and proofs the next multiple choice question
-     * until every question is answered
-     *
-     */
-    private void runMultipleChoice(){
-        //Isn't finished!
-        String output;
-        output = level.getCurrentMultipleChoiceTask().getQuestion();
-        String input = "";
-        level.proofMultipleChoice(input);
-        while (!level.multipleChoiceIsFinished()) {
-            output = level.proofMultipleChoice(input);
-        }
-    }
+
 
 }
