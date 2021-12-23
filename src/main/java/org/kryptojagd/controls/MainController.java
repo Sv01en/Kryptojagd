@@ -31,16 +31,16 @@ public class MainController {
 
 	/**
 	 * Runs the multiple choice tasks
-	 * First it sets the first multiple choice question.
-	 * Than it proofs the given answer and proofs the next multiple choice question
-	 * until every question is answered
+	 *
+	 * If every multiple choice task is answered, it switches the window to the leveEnd
+	 * if not, it switches the window to a new multiple choice task
 	 *
 	 */
 	public void runMultipleChoice(){
-		//####### Isn't finished! ############
 		if(!currentLevel.multipleChoiceIsFinished()) {
 			switchWindow("MultipleChoice.fxml");
 		}
+		switchWindow("Levelabschluss.fxml");
 	}
 
 }

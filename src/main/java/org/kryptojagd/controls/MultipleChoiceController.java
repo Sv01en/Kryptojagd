@@ -38,7 +38,6 @@ public class MultipleChoiceController extends AbstractController{
     }
 
 
-
     @FXML
     void clickAnswer1(ActionEvent event) {
         level.proofMultipleChoice(answer1.getText());
