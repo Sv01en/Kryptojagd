@@ -39,8 +39,9 @@ public class MainController {
 	public void runMultipleChoice(){
 		if(!currentLevel.multipleChoiceIsFinished()) {
 			switchWindow("MultipleChoice.fxml");
+		} else {
+			switchWindow("Levelabschluss.fxml");
 		}
-		switchWindow("Levelabschluss.fxml");
 	}
 
 }

@@ -43,21 +43,4 @@ public class MultipleChoiceController extends AbstractController{
         level.proofMultipleChoice(answer1.getText());
     }
 
-
-    @FXML
-    void klickAntwort1(ActionEvent event) {
-    	System.out.println("Antwort 1 wurde ausgewäht!");
-    	mainController.switchWindow("Levelabschluss.fxml");
-    }
-
-    @FXML
-    void klickAntwort2(ActionEvent event) {
-    	System.out.println("Antwort 2 wurde ausgewäht!");
-    }
-
-    @FXML
-    void klickAntwort3(ActionEvent event) {
-    	System.out.println("Antwort 3 wurde ausgewäht!");
-    }
-
 }
