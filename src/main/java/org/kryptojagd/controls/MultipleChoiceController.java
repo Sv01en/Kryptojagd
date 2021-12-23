@@ -23,7 +23,11 @@ public class MultipleChoiceController extends AbstractController{
     private final Level level = mainController.getCurrentLevel();
 
     /**
-     * Initialize a MultipleChoiceController
+     * Initializes a MultipleChoiceController
+     *
+     * Sets the Question of the MultipleChoicetask
+     * and sets their answers
+     *
      */
     private void init(){
         QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());

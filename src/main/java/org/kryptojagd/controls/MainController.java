@@ -26,7 +26,7 @@ public class MainController {
 	}
 
 	private void initiliazeLevel() {
-		
+
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class MainController {
 	 * until every question is answered
 	 *
 	 */
-	public void questionFinished(){
+	public void runMultipleChoice(){
 		//####### Isn't finished! ############
 		if(!currentLevel.multipleChoiceIsFinished()) {
 			switchWindow("MultipleChoice.fxml");
