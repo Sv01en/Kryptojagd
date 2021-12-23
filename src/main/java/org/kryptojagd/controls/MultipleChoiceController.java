@@ -30,7 +30,7 @@ public class MultipleChoiceController extends AbstractController{
     /**
      * Initializes a MultipleChoiceController
      *
-     * Sets the Question of the MultipleChoicetask
+     * Sets the Question of the MultipleChoiceTask
      * and sets their answers
      *
      */

@@ -43,5 +43,4 @@ public class MainController {
 			switchWindow("Levelabschluss.fxml");
 		}
 	}
-
 }
