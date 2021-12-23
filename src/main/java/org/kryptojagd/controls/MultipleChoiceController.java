@@ -6,6 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.kryptojagd.level.Level;
 
+/**
+ * The class controls a window of a multipleChoiceTask
+ *
+ * @author Sonja, Michail
+ */
 public class MultipleChoiceController extends AbstractController{
 
     @FXML
@@ -29,7 +34,8 @@ public class MultipleChoiceController extends AbstractController{
      * and sets their answers
      *
      */
-    private void init(){
+    @FXML
+    public void initialize(){
         QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
         String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
         for (String answer : possibilities) {
