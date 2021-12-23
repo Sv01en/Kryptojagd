@@ -11,9 +11,9 @@
             <Label fx:id="QuestionField" text="Multiple-Choice-Frage" />
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button fx:id="answer1" mnemonicParsing="false" onAction="#klickAntwort1" text="Antwort 1" />
-                  <Button fx:id="answer2" mnemonicParsing="false" onAction="#klickAntwort2" text="Antwort 2" />
-                  <Button fx:id="answer3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#klickAntwort3" text="Antwort 3" />
+                  <Button fx:id="answer1" mnemonicParsing="false" onAction="#clickAnswer1" text="Antwort 1" />
+                  <Button fx:id="answer2" mnemonicParsing="false" onAction="#clickAnswer2" text="Antwort 2" />
+                  <Button fx:id="answer3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickAnswer3" text="Antwort 3" />
                </children>
             </HBox>
          </children>
