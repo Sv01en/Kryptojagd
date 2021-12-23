@@ -12,26 +12,32 @@ public class MultipleChoiceController extends AbstractController{
     private Label QuestionField;
 
     @FXML
-    private Button antwort1;
+    private Button answer1;
 
     @FXML
-    private Button antwort2;
+    private Button answer2;
 
     @FXML
-    private Button antwort3;
+    private Button answer3;
 
     private final Level level = mainController.getCurrentLevel();
 
+    /**
+     * Initialize a MultipleChoiceController
+     */
     private void init(){
         QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
-
+        String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
+        for (String answer : possibilities) {
+            answer1.setText(answer);
+        }
     }
 
 
 
     @FXML
     void clickAnswer1(ActionEvent event) {
-        level.proofMultipleChoice(antwort1.getText());
+        level.proofMultipleChoice(answer1.getText());
     }
 
 
