@@ -48,21 +48,16 @@ public class Level {
 	 * if the answer is false, it returns the same question,
 	 * if the answer is true, it returns the next question
 	 * and removes the right answered question
-	 * if every multiple choice task is completed, it returns a message
 	 *
 	 * @param answer answer of the player to the multipleChoiceTask
 	 * @return the same question, if the answer is false
 	 * 			the next question, if the answer is true
-	 * 			a message, if every multiple choice task is completed
 	 */
 	public String proofMultipleChoice(String answer) {
 		if(!this.multipleChoiceTasks.getFirst().proofAnswer(answer)) {
 			return this.multipleChoiceTasks.getFirst().getQuestion();
 		}
 		this.multipleChoiceTasks.pop();
-		if(multipleChoiceIsFinished()) {
-			return "Glueckwunsch, du hast alle Fragen beantwortet";
-		}
 		return this.multipleChoiceTasks.getFirst().getQuestion();
 	}
 
@@ -76,4 +71,5 @@ public class Level {
 	}
 
 }
+
 

@@ -1,0 +1,10 @@
+{
+	"plainText": "In der Stadt mit einem eisernen Turm und der glaesernen Pyramide befindet sich die Disk.\nSie wird bewacht von der Frau mit dem geheimnisvollen Laecheln und hat den besten Blick auf den glitzernden Fluss der die Stadt teilt.\nJeden morgen kann sie die vielseitigen Klaenge der Glocken hoeren, die Quasimodo liebevoll umsorgt.",
+	"encryptionMethod":"Rückwärtsverschlüsselung",
+	"answerOptionsEncryption":["Rückwärtsverschlüsselung", "RSA Verschlüsselung", "Cäsar Verschlüsselung"],
+	"correctAnswerEncryption": 0,
+	"answerOptionsCity":["Prag", "Paris", "Stockholm"],
+	"correctAnswerCity":1,
+	"textAfterStart":"Ihr seid gerade in Paris gelandet.\nEure Kontaktperson wurde jedoch kurz vor eurer Ankunft gewarnt, dass eure Erzfeindin Eve ebenfalls auf der Suche nach den antiken Floppy-Disks ist.\nIhr müsst euch beeilen, damit sie euch nicht zuvor kommt.\nSCHNELL!",
+	"timeInSec": 300
+}

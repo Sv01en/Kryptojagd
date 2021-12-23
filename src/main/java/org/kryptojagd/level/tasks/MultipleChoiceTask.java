@@ -39,4 +39,3 @@ public class MultipleChoiceTask implements Task {
     }
 
 }
-
