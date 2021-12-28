@@ -20,6 +20,12 @@ public class Level {
 	private boolean isRunning;
 
 	/**
+	 * Just for working. Not necessary later.....
+	 * @author Sven Strasser
+	 */
+	public Level() {}
+
+	/**
 	 * Creates a {@link Level}
 	 *
 	 * @param decryptionTask first task in level is a decryptionTask
