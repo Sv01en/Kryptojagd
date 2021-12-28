@@ -17,6 +17,7 @@ public class Level {
 	private DecryptionTask decryptionTask;
 	private EncryptionTask encryptionTask;
 	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
+	private boolean isRunning;
 
 	/**
 	 * Creates a {@link Level}
@@ -30,6 +31,7 @@ public class Level {
 		this.decryptionTask = decryptionTask;
 		this.encryptionTask = encryptionTask;
 		this.multipleChoiceTasks = multipleChoiceTasks;
+		this.isRunning = true;
 	}
 
 	public DecryptionTask getDecryptionTask() {
@@ -69,6 +71,14 @@ public class Level {
 	 */
 	public boolean multipleChoiceIsFinished() {
 		return this.multipleChoiceTasks.isEmpty();
+	}
+
+	private void isFinished() {
+		this.isRunning = false;
+	}
+
+	public boolean getIsRunnig() {
+		return this.isRunning;
 	}
 }
 

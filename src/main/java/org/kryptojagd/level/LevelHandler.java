@@ -3,7 +3,7 @@ package org.kryptojagd.level;
 import java.util.List;
 
 /**
- * All available levels are provided through this class.
+ * Starts the concrete leve.
  * If necessary, levels are restarted here.
  *
  * @author Sven Strasser
@@ -11,21 +11,19 @@ import java.util.List;
  */
 public class LevelHandler {
 
-    /**
-     * Stores all available levels for the game.
-     */
-    private List<Level> levelList;
+    private Level level;
 
-    public LevelHandler() {
-        this.addConcreteLevels();
+
+    public void initializeLevel() {
+        this.level = new Level();
     }
 
-    /**
-     * Adds all available levels from a specific package to {@link LevelHandler#levelList}.
-     */
-    private void addConcreteLevels() {
+    private void restartLevel() {
 
     }
 
+    private void nextLevel() {
+
+    }
 
 }
