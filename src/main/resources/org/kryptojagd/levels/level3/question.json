@@ -1,18 +1,27 @@
 {
     "$schema": "./quest_schema.json",
-    "question": "Warum werden Texte verschlüsselt? Hat das irgend einen bestimmten Grund?",
-    "answerOptions": ["Nein, der Verfasser wollte sich nur einen Spaß erlauben.", "Ja, der Text kann sonst von jedem gelesen werden und das wäre nicht sicher.", "Ja, denn der Verfasser kommt vermutlich aus einem Land indem es üblich ist Texte so zu schreiben."],
-    "correctAnswer": 2,
-    "timeInSec": 60,
+    "question8":"Was versteht man in der Informatik unter einem Verweis?",
+    "answerOptions8":["Eine Textstelle", "Eine Bilddatei", "Ein Hinweis auf eine andere Textstelle"],
+    "correctAnswer8":3,
+    "timeInSec8": 60,
 
-    "question2":"Welche Gefahren kann es geben, wenn eine Nachricht unverschlüsselt verschickt wird? (Mehrere Antworten möglich)",
-    "answerOptions2":["Jeder kann mitlesen", "Die Nachricht kann verändert werden", "Die Identität des Absenders kann nicht mit Sicherheit bestimmt werden", "Es gibt keine Gefahren"],
-    "correctAnswer2":[1, 2, 3],
-    "timeInSec2": 60,
+    "question9": "Was ist eine Festplatte?",
+    "answerOptions9":["Ein Speichermedium, das anhand eines Lasers die Daten sichert", "Ein Laufwerk mit magnetischer Aufzeichnungstechnik", "Die Hauptplatine eines Computers"],
+    "correctAnswer9":2,
+    "timeInSec9": 60,
 
-    "question3":"Was ist Kryptoanalyse",
-    "answerOptions3":["Austausch von Informationen, die nicht für alle bestimmt sind.", "Verschlüsseln und Entschlüsseln von Nachrichten mit einem Schlüssel Brechen bzw. Knacken von Chiffre, ohne den Schlüssel zu kennen"],
-    "correctAnswer3":2,
-    "timeInSec3": 60
+    "question10": "Wieviel Bit hat ein Kilobyte?",
+    "answerOptions10": ["100", "1000", "1024"],
+    "correctAnswer10":3,
+    "timeInSec10": 60,
 
+    "question11": "Wann und durch wen wurde der erste programmierbare mechanische Rechner erfunden?",
+    "answerOptions11": ["1938 Konrad Zuse", "1976 Steve Jobs", "1949 Lee Commodore"],
+    "correctAnswer11":1,
+    "timeInSec11": 60,
+
+    "question18": "Wie viele Bit hat ein Byte?",
+    "answerOptions18": ["8", "16", "24"],
+    "correctAnswer18":1,
+    "timeInSec18": 60
 }

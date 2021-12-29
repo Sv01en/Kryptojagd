@@ -1,18 +1,27 @@
 {
     "$schema": "./quest_schema.json",
-    "question": "Warum werden Texte verschlüsselt? Hat das irgend einen bestimmten Grund?",
-    "answerOptions": ["Nein, der Verfasser wollte sich nur einen Spaß erlauben.", "Ja, der Text kann sonst von jedem gelesen werden und das wäre nicht sicher.", "Ja, denn der Verfasser kommt vermutlich aus einem Land indem es üblich ist Texte so zu schreiben."],
-    "correctAnswer": 2,
-    "timeInSec": 60,
+  "question4":"Ist die Cäsar-Chiffre sicher?",
+  "answerOptions4":["Ja, weil nicht jeder den Text lesen kann", "Es kommt darauf an, wie weit verschoben wurde", "Nein, die Verschlüsselung ist leicht zu lösen"],
+  "correctAnswer4":3,
+  "timeInSec4": 60,
 
-    "question2":"Welche Gefahren kann es geben, wenn eine Nachricht unverschlüsselt verschickt wird? (Mehrere Antworten möglich)",
-    "answerOptions2":["Jeder kann mitlesen", "Die Nachricht kann verändert werden", "Die Identität des Absenders kann nicht mit Sicherheit bestimmt werden", "Es gibt keine Gefahren"],
-    "correctAnswer2":[1, 2, 3],
-    "timeInSec2": 60,
+  "question5":"Wie funktioniert die Cäsar-Chiffre?",
+  "answerOptions5":["Zahlen statt Buchstaben", "Einzelne Buchstaben weglassen", "Buchstaben im Alphabet verschieben"],
+  "correctAnswer5":3,
+  "timeInSec5": 60,
 
-    "question3":"Was ist Kryptoanalyse",
-    "answerOptions3":["Austausch von Informationen, die nicht für alle bestimmt sind.", "Verschlüsseln und Entschlüsseln von Nachrichten mit einem Schlüssel Brechen bzw. Knacken von Chiffre, ohne den Schlüssel zu kennen"],
-    "correctAnswer3":2,
-    "timeInSec3": 60
+  "question7":"Bringt es etwas für die Sicherheit des Verfahrens, wenn man Cäsar mehrmals anwendet?",
+  "answerOptions7":["Ja", "Nein", "Vielleicht"],
+  "correctAnswer7":2,
+  "timeInSec7": 60,
 
+  "question13": "Durch welche Technik wird eine CD oder DVD gelesen?",
+  "answerOptions13": ["Magnetismus", "Laser", "Chip"],
+  "correctAnswer13":2,
+  "timeInSec13": 60,
+
+  "question14": "Wieviel Speicherplatz hat ein normaler DVD Rohling?",
+  "answerOptions14": ["700 MB", "2,4 GB", "4,7 GB"],
+  "correctAnswer14":3,
+  "timeInSec14": 60
 }

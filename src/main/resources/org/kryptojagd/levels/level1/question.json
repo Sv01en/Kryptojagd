@@ -13,6 +13,15 @@
     "question3":"Was ist Kryptoanalyse",
     "answerOptions3":["Austausch von Informationen, die nicht für alle bestimmt sind.", "Verschlüsseln und Entschlüsseln von Nachrichten mit einem Schlüssel Brechen bzw. Knacken von Chiffre, ohne den Schlüssel zu kennen"],
     "correctAnswer3":2,
-    "timeInSec3": 60
+    "timeInSec3": 60,
 
+    "question12": "Was bedeutet das www bei Internet Webseiten?",
+    "answerOptions12": ["World Wide Web", "Wlan World Wide", "Wow Wow Wubbzy"],
+    "correctAnswer12":1,
+    "timeInSec12": 60,
+
+    "question15": "Wofür steht die Abkürzung PC?",
+    "answerOptions15": ["Program Computer", "Personal Computer", "Practical Computer"],
+    "correctAnswer15":2,
+    "timeInSec15": 60
 }

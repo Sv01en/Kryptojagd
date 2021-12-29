@@ -1,62 +1,12 @@
 {
 
-
-
-    "Frage4":"Ist die Cäsar-Chiffre sicher?",
-    "Antwort4":["Ja, weil nicht jeder den Text lesen kann", "Es kommt darauf an, wie weit verschoben wurde", "Nein, die Verschlüsselung ist leicht zu lösen"],
-    "richtigeAntwort4":3,
-
-    "Frage5":"Wie funktioniert die Cäsar-Chiffre?",
-    "Antwort5":["Zahlen statt Buchstaben", "Einzelne Buchstaben weglassen", "Buchstaben im Alphabet verschieben"],
-    "richtigeAntwort5":3,
-
-    "Frage7":"Bringt es etwas für die Sicherheit des Verfahrens, wenn man Cäsar mehrmals anwendet?",
-    "Antwort7":["Ja", "Nein", "Vielleicht"],
-    "richtigeAntwort7":2,
-
-    "Frage8":"Was versteht man in der Informatik unter einem Verweis?",
-    "Antwort8":["Eine Textstelle", "Eine Bilddatei", "Ein Hinweis auf eine andere Textstelle"],
-    "richtigeAntwort8":3,
-
-    "Frage9": "Was ist eine Festplatte?",
-    "Antwort9":["Ein Speichermedium, das anhand eines Lasers die Daten sichert", "Ein Laufwerk mit magnetischer Aufzeichnungstechnik", "Die Hauptplatine eines Computers"],
-    "richtigeAntwort9":2,
-
-    "Frage10": "Wieviel Bit hat ein Kilobyte?",
-    "Antwort10": ["100", "1000", "1024"],
-    "richtigeAntwort10":3,
-
-    "Frage11": "Wann und durch wen wurde der erste programmierbare mechanische Rechner erfunden?",
-    "Antwort11": ["1938 Konrad Zuse", "1976 Steve Jobs", "1949 Lee Commodore"],
-    "richtigeAntwort11":1,
-
-    "Frage12": "Was bedeutet das www bei Internet Webseiten?",
-    "Antwort12": ["World Wide Web", "Wlan World Wide", "Wow Wow Wubbzy"],
-    "richtigeAntwort12":1,
-
-    "Frage13": "Durch welche Technik wird eine CD oder DVD gelesen?",
-    "Antwort13": ["Magnetismus", "Laser", "Chip"],
-    "richtigeAntwort13":2,
-
-    "Frage14": "Wieviel Speicherplatz hat ein normaler DVD Rohling?",
-    "Antwort14": ["700 MB", "2,4 GB", "4,7 GB"],
-    "richtigeAntwort14":3,
-
-    "Frage15": "Wofür steht die Abkürzung PC?",
-    "Antwort15": ["Program Computer", "Personal Computer", "Practical Computer"],
-    "richtigeAntwort15":2,
-
     "Frage16": "Wie heißt das Gerät, um den Computer über die Telefonleitung mit dem Internet zu verbinden?",
     "Antwort16": ["W-Lan", "Telex", "Modem"],
     "richtigeAntwort16":3,
 
     "Frage17": "Spam Emails sind nervig, jeder kennt sie. Doch was bedeutet SPAM wortwörtlich?",
-    "Antwort17": ["Servie Program and Mail", "Strange Post and Mail", "Spiced Ham"],
+    "Antwort17": ["Service Program and Mail", "Strange Post and Mail", "Spiced Ham"],
     "richtigeAntwort17":3,
-
-    "Frage18": "Wie viele Bit hat ein Byte?",
-    "Antwort18": ["8", "16", "24"],
-    "richtigeAntwort18":1,
 
     "Frage19": "Was bedeutet Malware?",
     "Antwort19": ["bösartige Schadsoftware", "Interne Software", "Cloud-basierte Software"],
