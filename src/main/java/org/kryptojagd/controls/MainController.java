@@ -10,6 +10,7 @@ public class MainController {
 	private PresentationManager fw;
 	
 	private List<Level> levelListe;
+	private Level currentLevel;
 	
 	public MainController(PresentationManager fw) {
 		this.fw = fw;
@@ -19,10 +20,27 @@ public class MainController {
 	public void switchWindow(String str) {
 		fw.switchWindow(str);
 	}
-	
-	private void initiliazeLevel() {
-		
-	}
-	
 
+	public Level getCurrentLevel() {
+		return currentLevel;
+	}
+
+	private void initiliazeLevel() {
+
+	}
+
+	/**
+	 * Runs the multiple choice tasks
+	 *
+	 * If every multiple choice task is answered, it switches the window to the leveEnd
+	 * if not, it switches the window to a new multiple choice task
+	 *
+	 */
+	public void runMultipleChoice(){
+		if(!currentLevel.multipleChoiceIsFinished()) {
+			switchWindow("MultipleChoice.fxml");
+		} else {
+			switchWindow("Levelabschluss.fxml");
+		}
+	}
 }

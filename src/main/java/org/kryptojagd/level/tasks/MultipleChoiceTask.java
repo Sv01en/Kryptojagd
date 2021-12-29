@@ -24,6 +24,10 @@ public class MultipleChoiceTask implements Task {
         this.possibilities = possibilities;
     }
 
+    public String[] getPossibilities() {
+        return possibilities;
+    }
+
     public String getQuestion() {
         return question;
     }

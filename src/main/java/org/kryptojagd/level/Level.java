@@ -45,20 +45,18 @@ public class Level {
 
 	/**
 	 * Proofs the answer of the current multiple choice task,
-	 * if the answer is false, it returns the same question,
-	 * if the answer is true, it returns the next question
-	 * and removes the right answered question
+	 * if the answer is true, it removes the right answered question
 	 *
 	 * @param answer answer of the player to the multipleChoiceTask
-	 * @return the same question, if the answer is false
-	 * 			the next question, if the answer is true
+	 * @return true, if the answer is false
+	 * 			false, if the answer is true
 	 */
-	public String proofMultipleChoice(String answer) {
+	public boolean proofMultipleChoice(String answer) {
 		if(!this.multipleChoiceTasks.getFirst().proofAnswer(answer)) {
-			return this.multipleChoiceTasks.getFirst().getQuestion();
+			return false;
 		}
 		this.multipleChoiceTasks.pop();
-		return this.multipleChoiceTasks.getFirst().getQuestion();
+		return true;
 	}
 
 	/**
