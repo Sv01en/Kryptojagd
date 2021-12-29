@@ -1,5 +1,8 @@
 package org.kryptojagd.level;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -12,22 +15,33 @@ import java.util.concurrent.TimeUnit;
  */
 public class CountdownTimer {
 
+    public static int DURATION;
+
+    private int startValue;
+
+    private int actuelValue;
+
+    private StringProperty outputValue = new SimpleStringProperty(this, "");
+
+    public CountdownTimer(int startValue) {
+        this.startValue = startValue;
+        DURATION = startValue;
+    }
+
     /**
      * Initializes and executes a countdown timer.
-     *
-     * @param startValue given timer duration in seconds
      */
-    public void countdownTimer(int startValue) {
+    public void countdownTimer() {
         //TODO: public not private
         final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         final Runnable runnable = new Runnable() {
             int countdownStartValue = startValue;
             @Override
             public void run() {
-               returnTime(countdownStartValue);
+               setActuelValue(countdownStartValue);
                 countdownStartValue--;
                 if (countdownStartValue < 0) {
-                    returnTime(0);
+                    setActuelValue(countdownStartValue);
                     scheduler.shutdown();
                 }
             }
@@ -36,11 +50,19 @@ public class CountdownTimer {
     }
 
     /**
-     * Returns the remaining seconds from the {@link CountdownTimer#countdownTimer(int)} as an integer.
-     * @param givenSeconds remaining seconds
-     * @return remaining seconds as an integer
+     * Returns the remaining seconds from the {@link CountdownTimer} as a string.
+     * @return remaining seconds as a string
      */
-    public int returnTime(int givenSeconds) {
-        return givenSeconds;
+    public StringProperty getActuelValue() {
+        return this.outputValue;
+    }
+
+    /**
+     * Set the remaining time in a readable format for the system
+     * @param givenValue remaining time as an integer
+     */
+    private void setActuelValue(int givenValue) {
+        String input = Integer.toString(givenValue);
+        this.outputValue.set(input);
     }
 }

@@ -80,4 +80,11 @@ public class LevelHandler {
         this.level = initializeLevel();
     }
 
+    /**
+     *
+     */
+    public Level getLevel() {
+        return this.level;
+    }
+
 }
