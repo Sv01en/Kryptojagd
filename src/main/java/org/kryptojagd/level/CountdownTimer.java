@@ -3,9 +3,15 @@ package org.kryptojagd.level;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import java.util.concurrent.*;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * Provides the functionalities required for a countdown timer.
@@ -19,9 +25,15 @@ public class CountdownTimer {
 
     private int startValue;
 
-    private int actuelValue;
+    private long actuelValue;
 
-    private StringProperty outputValue = new SimpleStringProperty(this, "");
+    private String outputValue;
+
+    private int minutes;
+
+    private int seconds;
+
+    private Timer timer;
 
     public CountdownTimer(int startValue) {
         this.startValue = startValue;
@@ -31,29 +43,15 @@ public class CountdownTimer {
     /**
      * Initializes and executes a countdown timer.
      */
-    public void countdownTimer() {
-        //TODO: public not private
-        final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        final Runnable runnable = new Runnable() {
-            int countdownStartValue = startValue;
-            @Override
-            public void run() {
-               setActuelValue(countdownStartValue);
-                countdownStartValue--;
-                if (countdownStartValue < 0) {
-                    setActuelValue(countdownStartValue);
-                    scheduler.shutdown();
-                }
-            }
-        };
-        scheduler.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
+    public static void countdownTimer(int setTime) {
+        //TODO: implement timer function
     }
 
     /**
      * Returns the remaining seconds from the {@link CountdownTimer} as a string.
      * @return remaining seconds as a string
      */
-    public StringProperty getActuelValue() {
+    public String getActuelValue() {
         return this.outputValue;
     }
 
@@ -63,6 +61,11 @@ public class CountdownTimer {
      */
     private void setActuelValue(int givenValue) {
         String input = Integer.toString(givenValue);
-        this.outputValue.set(input);
+        this.actuelValue = givenValue;
+        this.outputValue = input;
+    }
+
+    public long getActuelValueAsLong() {
+        return this.actuelValue;
     }
 }

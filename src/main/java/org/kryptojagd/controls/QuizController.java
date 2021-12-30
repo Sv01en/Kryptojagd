@@ -1,22 +1,22 @@
 package org.kryptojagd.controls;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.kryptojagd.level.CountdownTimer;
-
-import javax.swing.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
- * @author Michael, Sven Strasser
+ * @author Michael Petermann, Sven Strasser
  * @version 1.0
  */
-public class QuizController extends AbstractController{
+public class QuizController extends AbstractController {
 
     private CountdownTimer countdownTimer = new CountdownTimer(20);
 
@@ -30,43 +30,48 @@ public class QuizController extends AbstractController{
     private Button antwort3;
 
     @FXML
-    private Label timer;
+    private Label timer = new Label();
+
+    public QuizController() {
+        updateTimer();
+    }
 
     @FXML
     void klickAntwort1(ActionEvent event) {
-    	System.out.println("Antwort 1 wurde ausgewäht!");
-    	mainController.switchWindow("Levelabschluss.fxml");
+        System.out.println("Antwort 1 wurde ausgewäht!");
+        mainController.switchWindow("Levelabschluss.fxml");
     }
 
     @FXML
     void klickAntwort2(ActionEvent event) {
-    	System.out.println("Antwort 2 wurde ausgewäht!");
+        System.out.println("Antwort 2 wurde ausgewäht!");
     }
 
     @FXML
     void klickAntwort3(ActionEvent event) {
-    	System.out.println("Antwort 3 wurde ausgewäht!");
+        System.out.println("Antwort 3 wurde ausgewäht!");
     }
 
     /**
      * Updates the timer in the corresponding window.
-     *
-     * This does not currently work.
+     * <p>
+     * Updating now works. Timer function does not work at the moment.
      *
      * @author Sven Strasser
      */
     @FXML
     void updateTimer() {
-        //TODO: Does not work yet. Does not update the timer label yet
-        timer.textProperty().bind(countdownTimer.getActuelValue());
-        System.out.println("Test");
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0),
-                actionEvent -> countdownTimer.countdownTimer()),
-                new KeyFrame(Duration.seconds(CountdownTimer.DURATION)));
-
-        timeline.setCycleCount(CountdownTimer.DURATION);
+        DateFormat timeFormat = new SimpleDateFormat( "mm:ss" );
+        final Timeline timeline = new Timeline(
+                new KeyFrame(
+                        Duration.seconds(1),
+                        event -> {
+                            timer.setText(timeFormat.format(countdownTimer.getActuelValueAsLong()));
+                            System.out.println(countdownTimer.getActuelValueAsLong());
+                        }
+                )
+        );
+        timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
-
     }
-
 }

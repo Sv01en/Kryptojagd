@@ -27,6 +27,7 @@ public class DecryptionController extends AbstractController{
     void klickVerfahren1(ActionEvent event) {
     	System.out.println("Verfahren 1 wurde ausgewählt.");
     	mainController.switchWindow("Quiz.fxml");
+
     }
 
     @FXML
