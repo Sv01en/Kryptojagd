@@ -1,24 +1,18 @@
-package org.kryptojagd.level;
-
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+package org.kryptojagd.level.countdown;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import java.util.concurrent.*;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * Provides the functionalities required for a countdown timer.
  *
- * @author Sven Strasser
+ *  @author Sven Strasser
  * @version 1.0
  */
+
+//TODO: correct handling with given values, just working values.
 public class CountdownTimer {
 
     public static int DURATION;
@@ -35,7 +29,8 @@ public class CountdownTimer {
 
     private Timer timer;
 
-    public CountdownTimer(int startValue) {
+    public CountdownTimer(int given) {
+        this.countdownTimer(given);
         this.startValue = startValue;
         DURATION = startValue;
     }
@@ -43,8 +38,23 @@ public class CountdownTimer {
     /**
      * Initializes and executes a countdown timer.
      */
-    public static void countdownTimer(int setTime) {
-        //TODO: implement timer function
+    public long countdownTimer(int setTime) {
+        actuelValue = 20;
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (actuelValue > 0)
+                    actuelValue--;
+                    setActuelValue(actuelValue);
+                if (actuelValue == 0) {
+                    System.out.println("Time over");
+                }
+            }
+        };
+        timer.schedule(task, 0, 1000);
+        System.out.println(actuelValue);
+        return actuelValue;
     }
 
     /**
@@ -59,13 +69,9 @@ public class CountdownTimer {
      * Set the remaining time in a readable format for the system
      * @param givenValue remaining time as an integer
      */
-    private void setActuelValue(int givenValue) {
-        String input = Integer.toString(givenValue);
+    private void setActuelValue(long givenValue) {
+        String input = Long.toString(givenValue);
         this.actuelValue = givenValue;
         this.outputValue = input;
-    }
-
-    public long getActuelValueAsLong() {
-        return this.actuelValue;
     }
 }

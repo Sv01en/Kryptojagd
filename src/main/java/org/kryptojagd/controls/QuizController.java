@@ -1,6 +1,5 @@
 package org.kryptojagd.controls;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -8,17 +7,23 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
-import org.kryptojagd.level.CountdownTimer;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import org.kryptojagd.level.countdown.CountdownTimer;
+
+import java.util.concurrent.ExecutionException;
 
 /**
+ * Handles the corresponding fxml-file.
  * @author Michael Petermann, Sven Strasser
  * @version 1.0
  */
 public class QuizController extends AbstractController {
 
-    private CountdownTimer countdownTimer = new CountdownTimer(20);
+    private CountdownTimer countdownTimer;
+
+    /**
+     * The remaining time for the countdown timer functionality.
+     */
+    private long actuelTime;
 
     @FXML
     private Button antwort1;
@@ -32,7 +37,9 @@ public class QuizController extends AbstractController {
     @FXML
     private Label timer = new Label();
 
-    public QuizController() {
+    public QuizController() throws InterruptedException, ExecutionException {
+        //TODO: implement correct time handling, maybe the level must be ajusted.....
+        this.countdownTimer = new CountdownTimer(20);
         updateTimer();
     }
 
@@ -54,24 +61,25 @@ public class QuizController extends AbstractController {
 
     /**
      * Updates the timer in the corresponding window.
-     * <p>
-     * Updating now works. Timer function does not work at the moment.
      *
      * @author Sven Strasser
      */
     @FXML
     void updateTimer() {
-        DateFormat timeFormat = new SimpleDateFormat( "mm:ss" );
-        final Timeline timeline = new Timeline(
-                new KeyFrame(
-                        Duration.seconds(1),
-                        event -> {
-                            timer.setText(timeFormat.format(countdownTimer.getActuelValueAsLong()));
-                            System.out.println(countdownTimer.getActuelValueAsLong());
-                        }
-                )
-        );
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+        updateLabel.start();
     }
+
+    /**
+     * Thread starts process to update the label in fxml-file.
+     */
+    Thread updateLabel = new Thread(() -> {
+        Timeline time = new Timeline();
+        time.setCycleCount(Timeline.INDEFINITE);
+        time.stop();
+        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
+            timer.setText(countdownTimer.getActuelValue());
+        });
+        time.getKeyFrames().add(frame);
+        time.playFromStart();
+    });
 }
