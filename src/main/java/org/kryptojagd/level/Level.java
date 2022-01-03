@@ -17,6 +17,13 @@ public class Level {
 	private DecryptionTask decryptionTask;
 	private EncryptionTask encryptionTask;
 	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
+	private boolean isRunning;
+
+	/**
+	 * Just for working. Not necessary later.....
+	 * @author Sven Strasser
+	 */
+	public Level() {}
 
 	/**
 	 * Creates a {@link Level}
@@ -25,10 +32,12 @@ public class Level {
 	 * @param encryptionTask second task in level is a encryptionTask
 	 * @param multipleChoiceTasks third and last task is a LinkedList of multiple choice questions
 	 */
-	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask, LinkedList<MultipleChoiceTask> multipleChoiceTasks) {
+	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask,
+				 LinkedList<MultipleChoiceTask> multipleChoiceTasks) {
 		this.decryptionTask = decryptionTask;
 		this.encryptionTask = encryptionTask;
 		this.multipleChoiceTasks = multipleChoiceTasks;
+		this.isRunning = true;
 	}
 
 	public DecryptionTask getDecryptionTask() {
@@ -39,6 +48,12 @@ public class Level {
 		return encryptionTask;
 	}
 
+	/**
+	 * TODO: Now the removes the used task. Otherwise every time it provides the same question
+	 * @author Sonja Kuklok, modified by Sven Strasser
+	 *
+	 * @return
+	 */
 	public MultipleChoiceTask getCurrentMultipleChoiceTask() {
 		return multipleChoiceTasks.getFirst();
 	}
@@ -68,6 +83,13 @@ public class Level {
 		return this.multipleChoiceTasks.isEmpty();
 	}
 
+	private void isFinished() {
+		this.isRunning = false;
+	}
+
+	public boolean getIsRunnig() {
+		return this.isRunning;
+	}
 }
 
 
