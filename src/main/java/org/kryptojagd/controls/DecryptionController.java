@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 
 public class DecryptionController extends AbstractController{
 
-	
+
     @FXML
     private Label verschluesselterRaetseltext;
 
@@ -25,21 +25,21 @@ public class DecryptionController extends AbstractController{
 
     @FXML
     void klickVerfahren1(ActionEvent event) {
-    	System.out.println("Verfahren 1 wurde ausgewählt.");
-    	mainController.switchWindow("MultipleChoice.fxml");
+        System.out.println("Verfahren 1 wurde ausgewählt.");
+        mainController.switchWindow("MultipleChoice.fxml");
     }
 
     @FXML
     void klickVerfahren2(ActionEvent event) {
-    	System.out.println("Verfahren 2 wurde ausgewählt.");
+        System.out.println("Verfahren 2 wurde ausgewählt.");
         mainController.switchWindow("WrongChoice.fxml");
     }
 
     @FXML
     void klickVerfahren3(ActionEvent event) {
-    	System.out.println("Verfahren 3 wurde ausgewählt.");
+        System.out.println("Verfahren 3 wurde ausgewählt.");
         mainController.switchWindow("WrongChoice.fxml");
     }
 
-  
+
 }
