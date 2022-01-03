@@ -16,6 +16,23 @@ public class Level {
 
 	private final LinkedList<Task> level = new LinkedList<>();
 	private Task currentTask;
+	
+	// ################### NEW (START) ##########################
+	
+	public Level() {
+		
+	}
+	
+	public void addToTaskList(Task task) {
+		level.add(task);
+	}
+	
+	public int getSizeOfList() {
+		return level.size();
+	}
+	
+	// ################### NEW (END) ##########################
+
 
 	/**
 	 * Creates a {@link Level}
