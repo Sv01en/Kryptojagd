@@ -3,8 +3,6 @@ package org.kryptojagd.level.countdown;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import java.util.concurrent.*;
-
 /**
  * Provides the functionalities required for a countdown timer.
  *

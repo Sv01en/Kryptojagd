@@ -5,7 +5,10 @@ import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Starts the game, initialize the required levels and restart the levels according to the rules if necessary.
@@ -18,13 +21,13 @@ public class LevelHandler {
     private Level level;
     private Level restartLevel;
 
+    private List<Level> levels = new ArrayList<>();
+
     /**
      *
      */
-    private void initializeGame() {
-        this.level = new Level(this.initializeDecryptionTask(), this.initializeEncryptionTask(),
-                this.initializeMultiplechoiceTask());
-        //TODO: Check if this.level.getIsRunning is true, maybe new thread for this task
+    private void initializeGame() throws IOException {
+       //TODO: read all files in the folder, maybe one folder for all levels is better.....
     }
 
     /**
