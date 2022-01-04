@@ -26,10 +26,15 @@ public class MainApp extends Application {
 	private MainController hs;
 	
     public void start(Stage stage) {
-        
-    	HashMap<Integer, Level> allLevels = ReadDirectory.initialize();
 
-    	Parent root;
+		HashMap<Integer, Level> allLevels = null;
+		try {
+			allLevels = ReadDirectory.initialize();
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+
+		Parent root;
 		try {
 			
 			root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));

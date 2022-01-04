@@ -18,7 +18,7 @@ public class ReadDirectory {
 	private final static String path = "src/main/resources/org/kryptojagd/levels";
 	
 	
-	public static HashMap<Integer, Level> initialize() {
+	public static HashMap<Integer, Level> initialize() throws Exception {
 				
 		HashMap<Integer, Level> map = new HashMap<Integer, Level>();
 		
