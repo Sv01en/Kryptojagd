@@ -1,5 +1,6 @@
 package org.kryptojagd.controls;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.kryptojagd.level.Level;
@@ -9,11 +10,12 @@ public class MainController {
 	
 	private PresentationManager fw;
 	
-	private List<Level> levelListe;
+	private HashMap levelListe;
 	private Level currentLevel;
 	
-	public MainController(PresentationManager fw) {
+	public MainController(PresentationManager fw, HashMap levels) {
 		this.fw = fw;
+		this.levelListe = levels;
 		AbstractController.setMainController(this);
 	}
 	
@@ -23,10 +25,6 @@ public class MainController {
 
 	public Level getCurrentLevel() {
 		return currentLevel;
-	}
-
-	private void initiliazeLevel() {
-
 	}
 
 	/**

@@ -42,7 +42,7 @@ public class MainApp extends Application {
 			
 			stage.show();
 			fw = new PresentationManager(stage);
-			hs = new MainController(fw);
+			hs = new MainController(fw, allLevels);
 			
 			
 			
