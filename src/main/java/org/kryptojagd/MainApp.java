@@ -47,6 +47,7 @@ public class MainApp extends Application {
 			
 			stage.show();
 			fw = new PresentationManager(stage);
+			assert allLevels != null;
 			hs = new MainController(fw, allLevels);
 			
 			
