@@ -1,9 +1,7 @@
 package org.kryptojagd.fileprocessing;
 
 import java.io.File;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
@@ -45,38 +43,48 @@ public class ReadDirectory {
 		return map;
 		
 	}
-	
-	private static Level readLevelDirectory(String path) {
-		
-		Level level = new Level();
-		
+
+//ToDo proof, if decryptionTask and encryptionTask exists as a file
+	/**
+	 * Reads the files with the information for a level and creates it.
+	 *
+	 * @param path filepath to the files with the information for a level
+	 * @return level, with the given information of the files
+	 * @throws Exception if there is an unknown file
+	 */
+	private static Level readLevelDirectory(String path) throws Exception {
+
+		LinkedList<MultipleChoiceTask> multipleChoiceTasks = new LinkedList<>();
+		String pathToDecryptionTask = "";
+		String pathToEncryptionTask = "";
+
 		File levelFolder = new File(path);
 		File[] listOfFiles = levelFolder.listFiles();
-		
+
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
 				String fileName = file.getName();
 				String pathToFile = file.getAbsolutePath();
 				
 				if (fileName.contains("decryption")) {
-					DecryptionTask d = ReadJSON.createDecryptionTask(pathToFile);
-					level.addToTaskList(d);
-					
+					pathToDecryptionTask = pathToFile;
+
 				} else if (fileName.contains("encryption")) {
-					EncryptionTask e = ReadJSON.createEncryptionTask(pathToFile);
-					level.addToTaskList(e);
+					pathToEncryptionTask = pathToFile;
 					
 				} else if (fileName.contains("question")) {
-					MultipleChoiceTask m = ReadJSON.createMultiChoiceQuestion(pathToFile);
-					level.addToTaskList(m);
+					MultipleChoiceTask multipleChoiceTask = ReadJSON.createMultiChoiceQuestion(pathToFile);
+					multipleChoiceTasks.add(multipleChoiceTask);
 					
 				} else {
-					System.out.println("Unbekannte Datei");
+					throw new Exception("Unbekannte Datei");
 				}
 			}
 		}
+		DecryptionTask decryptionTask = ReadJSON.createDecryptionTask(pathToDecryptionTask);
+		EncryptionTask encryptionTask = ReadJSON.createEncryptionTask(pathToEncryptionTask);
 		
-		return level;
+		return new Level(decryptionTask, encryptionTask, multipleChoiceTasks);
 		
 	}
 
