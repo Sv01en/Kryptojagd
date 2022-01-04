@@ -34,6 +34,12 @@ public class LaunchWindowController extends AbstractController {
     	mainController.switchWindow("Entschluesselung.fxml");
     }
     
+   
+    @FXML
+    public void initialize() {
+    	
+    }
+    
  
 
 }

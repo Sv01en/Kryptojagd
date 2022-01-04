@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.fileprocessing.ReadJSON;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -24,6 +25,11 @@ public class Main {
     public static void main(String[] args) {
     	System.out.println("Starte Programm!");
     	MainApp.main(args);
+    	
+    	// ######################## TO DELETE (START) ########################
+    	// ReadDirectory.initialize();
+    	
+    	// ######################## TO DELETE (END) ########################
     	
     	
     	
