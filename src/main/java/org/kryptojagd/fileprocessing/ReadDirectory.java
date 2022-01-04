@@ -47,9 +47,7 @@ public class ReadDirectory {
 	}
 	
 	private static Level readLevelDirectory(String path) {
-		
-		Level level = new Level();
-		
+
 		File levelFolder = new File(path);
 		File[] listOfFiles = levelFolder.listFiles();
 		
@@ -58,26 +56,16 @@ public class ReadDirectory {
 				String fileName = file.getName();
 				String pathToFile = file.getAbsolutePath();
 				
-				if (fileName.contains("decryption")) {
-					DecryptionTask d = ReadJSON.createDecryptionTask(pathToFile);
-					level.addToTaskList(d);
-					
-				} else if (fileName.contains("encryption")) {
-					EncryptionTask e = ReadJSON.createEncryptionTask(pathToFile);
-					level.addToTaskList(e);
-					
-				} else if (fileName.contains("question")) {
-					MultipleChoiceTask m = ReadJSON.createMultiChoiceQuestion(pathToFile);
-					level.addToTaskList(m);
-					
+				if (fileName.contains("decryption") && fileName.contains("encryption") && fileName.contains("question")) {
+					DecryptionTask decryptionTask = ReadJSON.createDecryptionTask(pathToFile);
+					EncryptionTask encryptionTask = ReadJSON.createEncryptionTask(pathToFile);
+					MultipleChoiceTask multipleChoiceTask = ReadJSON.createMultiChoiceQuestion(pathToFile);
+					return new Level(decryptionTask, encryptionTask, multipleChoiceTask);
 				} else {
 					System.out.println("Unbekannte Datei");
 				}
 			}
 		}
-		
-		return level;
-		
 	}
 
 }
