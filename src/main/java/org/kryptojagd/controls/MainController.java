@@ -7,18 +7,19 @@ import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
 
 public class MainController {
-	
+
 	private PresentationManager fw;
-	
-	private HashMap levelListe;
+
+	private HashMap<Integer, Level> allLevels;
 	private Level currentLevel;
-	
-	public MainController(PresentationManager fw, HashMap levels) {
+
+	public MainController(PresentationManager fw, HashMap<Integer, Level> levels) {
 		this.fw = fw;
-		this.levelListe = levels;
+		this.allLevels = levels;
+		this.currentLevel = levels.get(1);
 		AbstractController.setMainController(this);
 	}
-	
+
 	public void switchWindow(String str) {
 		fw.switchWindow(str);
 	}
