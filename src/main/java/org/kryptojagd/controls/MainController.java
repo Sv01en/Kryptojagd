@@ -6,8 +6,11 @@ import java.util.List;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
 
+/**
+ * The class controls every kind of controller and puts them together
+ */
 public class MainController {
-
+	
 	private PresentationManager fw;
 
 	private HashMap<Integer, Level> allLevels;
