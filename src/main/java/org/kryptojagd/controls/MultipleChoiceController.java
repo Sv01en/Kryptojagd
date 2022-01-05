@@ -52,22 +52,25 @@ public class MultipleChoiceController extends AbstractController{
         }
         this.countdownTimer = new CountdownTimer(20);
         updateTimer();
+        mainController.nextWindow = false;
     }
-
 
     @FXML
     void clickAnswer1(ActionEvent event) {
         level.proofMultipleChoice(answer1.getText());
+        mainController.nextWindow = true;
     }
 
     @FXML
     void clickAnswer2(ActionEvent event) {
         level.proofMultipleChoice(answer2.getText());
+        mainController.nextWindow = true;
     }
 
     @FXML
     void clickAnswer3(ActionEvent event) {
         level.proofMultipleChoice(answer3.getText());
+        mainController.nextWindow = true;
     }
 
     /**

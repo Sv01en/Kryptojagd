@@ -15,6 +15,7 @@ public class MainController {
 	private PresentationManager fw;
 
 	private Level currentLevel;
+	protected boolean nextWindow;
 
 	public MainController(PresentationManager fw, Level currentLevel) {
 		this.fw = fw;
@@ -61,12 +62,12 @@ public class MainController {
 	/**
 	 * Runs the multiple choice tasks
 	 *
-	 * If every multiple choice task is answered, it switches the window to the leveEnd
+	 * If every multiple choice task is answered, it switches the window to the levelEnd
 	 * if not, it switches the window to a new multiple choice task
 	 *
 	 */
 	private void runMultipleChoice(){
-		if(!currentLevel.multipleChoiceIsFinished()) {
+		if (!currentLevel.multipleChoiceIsFinished()) {
 			switchWindow("MultipleChoice.fxml");
 		} else {
 			switchWindow("Levelabschluss.fxml");
