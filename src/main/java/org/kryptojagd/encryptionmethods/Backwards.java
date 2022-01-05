@@ -5,9 +5,9 @@ import java.util.ArrayList;
 /**
  * Class that contains methods for encrypting and decrypting text using backward encryption.
  * 
- * @author Leah Schlimm
+ * @author Leah Schlimm, Sven
  */
-public class Backwards implements EncryptionInterface {
+public class Backwards extends Encryption {
 
     /**
      * Encrypts a text using word wise reverse encryption
@@ -16,7 +16,7 @@ public class Backwards implements EncryptionInterface {
      * @param key Key field needed because of the interface, will not be used here
      * @return Encrypted text
      */
-    public static String encode(String text, String key) {
+    public String encode(String text, String key) {
         String inputText = text.toUpperCase();
 
         String encryptedText = "";
@@ -68,7 +68,7 @@ public class Backwards implements EncryptionInterface {
      * @param key Key field needed because of the interface, will not be used here
      * @return Decrypted text
      */
-    public static String decode(String text, String key) {
+    public String decode(String text, String key) {
         return encode(text, key);
     }
 }

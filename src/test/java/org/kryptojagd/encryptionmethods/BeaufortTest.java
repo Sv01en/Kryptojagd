@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Leah Schlimm
  */
-public class BeaufortTest {
+/*public class BeaufortTest {
 
 
     //Decode-Methode kein Text
@@ -18,7 +18,7 @@ public class BeaufortTest {
     /**
      * Tests the decryption method with an empty text string and a valid key "ABCDE"
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyDecode(){
         assertEquals("", Beaufort.decode("", "ABCDE"));
     }
@@ -26,7 +26,7 @@ public class BeaufortTest {
     /**
      * Tests the decryption method with an empty text string and an invalid key "ABC%"
      */
-    @Test
+    /*@Test
     void testEmptyUnvalidKeyDecode(){
         assertEquals("", Beaufort.decode("", "ABC%"));
     }
@@ -34,7 +34,7 @@ public class BeaufortTest {
     /**
      * Tests the decryption method with an empty text string, empty key string
      */
-    @Test
+    /*@Test
     void testEmptyDecodeNoKey() {
         assertEquals("", Beaufort.decode("", ""));
     }
@@ -42,7 +42,7 @@ public class BeaufortTest {
     /**
      * Tests the decryption method with an empty text string and a valid key "abCde" that is not completely written in Uppercase
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyDecodeNoUppercaseKey() {
         assertEquals("", Beaufort.decode("", "abCde"));
     }
@@ -50,7 +50,7 @@ public class BeaufortTest {
     /**
      * Tests the decryption method with an empty text string and a valid key in Lowercase "abcde"
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyDecodeLowercaseKey() {
         assertEquals("", Beaufort.decode("", "abcde"));
     }
@@ -62,7 +62,7 @@ public class BeaufortTest {
     /**
      * Tests the encryption method with an empty text string and without a key
      */
-    @Test
+    /*@Test
     void testEmptyNoKeyEncode(){
         assertEquals("", Beaufort.encode(""));
     }
@@ -70,7 +70,7 @@ public class BeaufortTest {
     /**
      * Tests the encryption method with an empty text string and a valid key "ABCDE"
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyEncode(){
         assertEquals("", Beaufort.encode("", "ABCDE"));
     }
@@ -78,7 +78,7 @@ public class BeaufortTest {
     /**
      * Tests the encryption method with an empty text string and an invalid key "ABC%"
      */
-    @Test
+    /*@Test
     void testEmptyUnvalidKeyEncode(){
         assertEquals("", Beaufort.encode("", "ABC%"));
     }
@@ -86,7 +86,7 @@ public class BeaufortTest {
     /**
      * Tests the encryption method with an empty text string and an empty key string
      */
-    @Test
+    /*@Test
     void testEmptyEncodeNoKey() {
         assertEquals("", Beaufort.encode("", ""));
     }
@@ -94,13 +94,13 @@ public class BeaufortTest {
     /**
      * Tests the encryption method with an empty text string and a valid key "abCde" that is not completely written in uppercase
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyEncodeNoUppercaseKey() { assertEquals("", Beaufort.encode("", "abCde")); }
 
     /**
      * Tests the encryption method with an empty text string and a valid key in lowercase "abcde"
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyEncodeLowercaseKey() { assertEquals("", Beaufort.encode("", "abcde")); }
 
 
@@ -110,7 +110,7 @@ public class BeaufortTest {
     /**
      * Tests whether the decryption method with "SYMLH CTLC!" and the key "ABCDE" provides the correct decryption
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecode(){
         assertEquals("HALLO WELT!", Beaufort.decode("SYMLH CTLC!", "ABCDE"));
     }
@@ -118,7 +118,7 @@ public class BeaufortTest {
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and the key "ABCDE" provides the correct decryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecodeUppercase(){
         assertEquals("HALLO WELT!", Beaufort.decode("Symlh Ctlc!", "ABCDE"));
     }
@@ -126,7 +126,7 @@ public class BeaufortTest {
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and the invalid key "ABC%" returns the encrypted input in uppercase
      */
-    @Test
+    /*@Test
     void testTextUnvalidKeyDecode(){
         assertEquals("SYMLH CTLC!", Beaufort.decode("Symlh Ctlc!", "ABC%"));
     }
@@ -134,7 +134,7 @@ public class BeaufortTest {
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and returns the encrypted input in uppercase to the empty key string
      */
-    @Test
+    /*@Test
     void testTextDecodeNoKey() {
         assertEquals("HALLO WELT!", Beaufort.decode("Hallo Welt!", ""));
     }
@@ -142,7 +142,7 @@ public class BeaufortTest {
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and the key "abCde" provides the correct decryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecodeNoUppercaseKey() {
         assertEquals("HALLO WELT!", Beaufort.decode("Symll Bsof!", "abCd"));
     }
@@ -150,7 +150,7 @@ public class BeaufortTest {
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and the key "abcde" provides the correct decryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecodeLowercaseKey() {
         assertEquals("HALLO WELT!", Beaufort.decode("Symll Bsof!", "abcd"));
     }
@@ -158,7 +158,7 @@ public class BeaufortTest {
     /**
      * Tests whether the cyclical shifting works
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecodeOverflow(){
         assertEquals("HALLO WELT!", Beaufort.decode("ZVWVS LCVC!", "TEST"));
     }
@@ -170,7 +170,7 @@ public class BeaufortTest {
     /**
      * Tests whether the decryption method with "SYMLH CTLC!" and the key "ABCDE" provides the correct encryption
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncode(){
         assertEquals("HALLO WELT!", Beaufort.encode("SYMLH CTLC!", "ABCDE"));
     }
@@ -178,7 +178,7 @@ public class BeaufortTest {
     /**
      * Tests whether the encryption method with "Symlh Ctlc!" and the key "ABCDE" provides the correct encryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncodeUppercase(){
         assertEquals("HALLO WELT!", Beaufort.encode("Symlh Ctlc!", "ABCDE"));
     }
@@ -186,7 +186,7 @@ public class BeaufortTest {
     /**
      * Tests whether the encryption method with "Symlh Ctlc!" and the invalid key "ABC%" returns the unencrypted input in uppercase
      */
-    @Test
+    /*@Test
     void testTextUnvalidKeyEncode() {
         assertEquals("SYMLH CTLC!", Beaufort.encode("Symlh Ctlc!", "ABC%"));
     }
@@ -194,7 +194,7 @@ public class BeaufortTest {
     /**
      * Tests whether the encryption method with "Symlh Ctlc!" and returns the unencrypted input in uppercase to the empty key string
      */
-    @Test
+    /*@Test
     void testTextEncodeNoKey() {
         assertEquals("SYMLH CTLC!", Beaufort.encode("Symlh Ctlc!", ""));
     }
@@ -202,7 +202,7 @@ public class BeaufortTest {
     /**
      * Testet, ob die Verschluesselungs-Methode mit "Symlh Ctlc!" und dem Schluessel "abCde" die korrekte Verschluesselung in uppercase liefert
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncodeNoUppercaseKey(){
         assertEquals("HALLO WELT!", Beaufort.encode("Symll Bsof!", "abCd"));
     }
@@ -210,7 +210,7 @@ public class BeaufortTest {
     /**
      * Tests whether the encryption method with "Symlh Ctlc!" and the key "abcde" provides the correct encryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncodeLowercaseKey(){
         assertEquals("HALLO WELT!", Beaufort.encode("Symll Bsof!", "abcd"));
     }
@@ -218,7 +218,7 @@ public class BeaufortTest {
     /**
      * Tests whether the cyclical shifting works
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncodeOverflow(){
         assertEquals("ZVWVS LCVC!", Beaufort.encode("HALLO WELT!", "TEST"));
     }
@@ -230,7 +230,7 @@ public class BeaufortTest {
     /**
      * Tests whether the method generates a random int value between really greater than 3 and really less than 7
      */
-    @Test
+    /*@Test
     void testGenerateKeyLength(){
         for (int i = 0; i < 1000; i++){
             int keyLength = Beaufort.keyLength();
@@ -244,7 +244,7 @@ public class BeaufortTest {
     /**
      * Tests whether the method generates a random int value between greater than or equal to 0 and truly less than 26
      */
-    @Test
+    /*@Test
     void testGenerateKeySymbolIndex(){
         for (int i = 0; i < 1000; i++){
             int keySymbolIndex = Beaufort.keySymbolIndex();
@@ -254,4 +254,4 @@ public class BeaufortTest {
         }
         assertTrue(true);
     }
-}
+}*/

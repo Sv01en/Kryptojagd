@@ -7,7 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
+import org.kryptojagd.level.tasks.DecryptionTask;
 
 /**
  * The class controls a window of a decryption task.
@@ -23,7 +25,7 @@ public class DecryptionController extends AbstractController{
 
 
     @FXML
-    private Label verschluesselterRaetseltext;
+    private Label encryptedPuzzleText = new Label();
 
     @FXML
     private Label frage;
@@ -37,30 +39,33 @@ public class DecryptionController extends AbstractController{
     @FXML
     private Button verfahren3;
 
+    private final Level level = mainController.getCurrentLevel();
+
     /**
      * Initializes a DecryptionController
      *
      */
     @FXML
     public void initialize(){
+        encryptedPuzzleText.setText(level.getDecryptionTask().ge);
         this.countdownTimer = new CountdownTimer(20);
         updateTimer();
     }
 
     @FXML
-    void klickVerfahren1(ActionEvent event) {
+    void clickProcedure1(ActionEvent event) {
         System.out.println("Verfahren 1 wurde ausgewählt.");
         mainController.switchWindow("MultipleChoice.fxml");
     }
 
     @FXML
-    void klickVerfahren2(ActionEvent event) {
+    void clickProcedure2(ActionEvent event) {
         System.out.println("Verfahren 2 wurde ausgewählt.");
         mainController.switchWindow("WrongChoice.fxml");
     }
 
     @FXML
-    void klickVerfahren3(ActionEvent event) {
+    void clickProcedure3(ActionEvent event) {
         System.out.println("Verfahren 3 wurde ausgewählt.");
         mainController.switchWindow("WrongChoice.fxml");
     }
@@ -76,11 +81,19 @@ public class DecryptionController extends AbstractController{
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             timer.setText(countdownTimer.getCurrentValue());
             if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
-                mainController.switchWindow("Entschluesselung.fxml");
+                mainController.switchWindow("Decryption.fxml");
                 time.stop();
             }
         });
         time.getKeyFrames().add(frame);
         time.playFromStart();
+    }
+
+    /**
+     *
+     */
+    private void descryptionTask() {
+        DecryptionTask task = level.getDecryptionTask();
+
     }
 }

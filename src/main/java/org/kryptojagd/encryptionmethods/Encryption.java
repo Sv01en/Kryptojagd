@@ -1,13 +1,18 @@
 package org.kryptojagd.encryptionmethods;
 
-//redundant class, because we are not sure if we use interface or abstract class
+/**
+ * Abstract class for encryption and decryption procedures.
+ *
+ * @author Sven Strasser
+ * @version 1.0
+ */
 public abstract class Encryption {
 
-    static String encode(String text, String key) {
+    public String encode(String text, String key) {
         return null;
     }
 
-    static String decode(String text, String key) {
+   public String decode(String text, String key) {
         return null;
     }
 }

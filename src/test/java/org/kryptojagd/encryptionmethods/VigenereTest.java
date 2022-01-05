@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Leah Schlimm
  */
-public class VigenereTest {
+/*public class VigenereTest {
 
 
     //Decode-Methode kein Text
@@ -18,7 +18,7 @@ public class VigenereTest {
     /**
      * Tests the decryption method with an empty text string and a valid key "ABCDE"
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyDecode(){
         assertEquals("", Vigenere.decode("", "ABCDE"));
     }
@@ -26,7 +26,7 @@ public class VigenereTest {
     /**
      * Tests the decryption method with an empty text string and an invalid key "ABC%"
      */
-    @Test
+    /*@Test
     void testEmptyUnvalidKeyDecode(){
         assertEquals("", Vigenere.decode("", "ABC%"));
     }
@@ -34,7 +34,7 @@ public class VigenereTest {
     /**
      * Tests the decryption method with an empty text string, empty key string
      */
-    @Test
+    /*@Test
     void testEmptyDecodeNoKey() {
         assertEquals("", Vigenere.decode("", ""));
     }
@@ -42,7 +42,7 @@ public class VigenereTest {
     /**
      * Tests the decryption method with an empty text string and a valid key "abCde" that is not completely written in uppercase
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyDecodeNoUppercaseKey() {
         assertEquals("", Vigenere.decode("", "abCde"));
     }
@@ -50,7 +50,7 @@ public class VigenereTest {
     /**
      * Tests the decryption method with an empty text string and a valid key in lowercase "abcde"
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyDecodeLowercaseKey() {
         assertEquals("", Vigenere.decode("", "abcde"));
     }
@@ -62,7 +62,7 @@ public class VigenereTest {
     /**
      * Tests the encryption method with an empty text string and without a key
      */
-    @Test
+    /*@Test
     void testEmptyNoKeyEncode(){
         assertEquals("", Vigenere.encode(""));
     }
@@ -70,7 +70,7 @@ public class VigenereTest {
     /**
      * Tests the encryption method with an empty text string and a valid key "ABCDE"
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyEncode(){
         assertEquals("", Vigenere.encode("", "ABCDE"));
     }
@@ -78,7 +78,7 @@ public class VigenereTest {
     /**
      * Tests the encryption method with an empty text string and an invalid key "ABC%"
      */
-    @Test
+    /*@Test
     void testEmptyUnvalidKeyEncode(){
         assertEquals("", Vigenere.encode("", "ABC%"));
     }
@@ -86,7 +86,7 @@ public class VigenereTest {
     /**
      * Tests the encryption method with an empty text string and an empty key string
      */
-    @Test
+    /*@Test
     void testEmptyEncodeNoKey() {
         assertEquals("", Vigenere.encode("", ""));
     }
@@ -94,13 +94,13 @@ public class VigenereTest {
     /**
      * Tests the encryption method with an empty text string and a valid key "abCde" that is not completely written in uppercase
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyEncodeNoUppercaseKey() { assertEquals("", Vigenere.encode("", "abCde")); }
 
     /**
      * Tests the encryption method with an empty text string and a valid key in lowercase "abcde"
      */
-    @Test
+    /*@Test
     void testEmptyValidKeyEncodeLowercaseKey() { assertEquals("", Vigenere.encode("", "abcde")); }
 
 
@@ -110,7 +110,7 @@ public class VigenereTest {
     /**
      * Tests whether the decryption method with "HBNOS XGOX!" and the key "ABCDE" provides the correct decryption
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecode(){
         assertEquals("HALLO WELT!", Vigenere.decode("HBNOS XGOX!", "ABCDE"));
     }
@@ -118,7 +118,7 @@ public class VigenereTest {
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and the key "ABCDE" provides the correct decryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecodeUppercase(){
         assertEquals("HALLO WELT!", Vigenere.decode("Hbnos Xgox!", "ABCDE"));
     }
@@ -126,7 +126,7 @@ public class VigenereTest {
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and the invalid key "ABC%" returns the encrypted entry in uppercase
      */
-    @Test
+    /*@Test
     void testTextUnvalidKeyDecode(){
         assertEquals("HBNOS XGOX!", Vigenere.decode("Hbnos Xgox!", "ABC%"));
     }
@@ -134,7 +134,7 @@ public class VigenereTest {
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and returns the encrypted input in Uppercase to the empty key string
      */
-    @Test
+    /*@Test
     void testTextDecodeNoKey() {
         assertEquals("HBNOS XGOX!", Vigenere.decode("Hbnos Xgox!", ""));
     }
@@ -142,7 +142,7 @@ public class VigenereTest {
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and the key "abCde" provides the correct decryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecodeNoUppercaseKey() {
         assertEquals("HALLO WELT!", Vigenere.decode("Hbnos Xgox!", "abCde"));
     }
@@ -150,7 +150,7 @@ public class VigenereTest {
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and the key "abcde" provides the correct decryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecodeLowercaseKey() {
         assertEquals("HALLO WELT!", Vigenere.decode("Hbnos Xgox!", "abcde"));
     }
@@ -158,7 +158,7 @@ public class VigenereTest {
     /**
      * Tests whether the cyclical shifting works
      */
-    @Test
+    /*@Test
     void testTextValidKeyDecodeOverflow(){
         assertEquals("ZUM BEISPIEL:", Vigenere.decode("Awp Gfkvtnfn:", "BCDEF"));
     }
@@ -170,7 +170,7 @@ public class VigenereTest {
     /**
      * Tests whether the decryption method with "HALLO WELT!" and the key "ABCDE" provides the correct encryption
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncode(){
         assertEquals("HBNOS XGOX!", Vigenere.encode("Hallo Welt!", "ABCDE"));
     }
@@ -178,7 +178,7 @@ public class VigenereTest {
     /**
      * Tests whether the encryption method with "Hallo Welt!" and the key "ABCDE" provides the correct encryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncodeUppercase(){
         assertEquals("HBNOS XGOX!", Vigenere.encode("Hallo Welt!", "ABCDE"));
     }
@@ -186,7 +186,7 @@ public class VigenereTest {
     /**
      * Tests whether the encryption method with "Hallo Welt!" and the invalid key "ABC%" returns the unencrypted input in uppercase
      */
-    @Test
+    /*@Test
     void testTextUnvalidKeyEncode() {
         assertEquals("HALLO WELT!", Vigenere.encode("Hallo Welt!", "ABC%"));
     }
@@ -194,7 +194,7 @@ public class VigenereTest {
     /**
      * Tests whether the encryption method with "Hallo Welt!" and returns the unencrypted input in uppercase to the empty key string
      */
-    @Test
+    /*@Test
     void testTextEncodeNoKey() {
         assertEquals("HALLO WELT!", Vigenere.encode("Hallo Welt!", ""));
     }
@@ -202,7 +202,7 @@ public class VigenereTest {
     /**
      * Tests whether the encryption method with "Hallo Welt!" and the key "abCde" provides the correct encryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncodeNoUppercaseKey(){
         assertEquals("HBNOS XGOX!", Vigenere.encode("Hallo Welt!", "abCde"));
     }
@@ -210,7 +210,7 @@ public class VigenereTest {
     /**
      * Tests whether the encryption method with "Hallo Welt!" and the key "abcde" provides the correct encryption in uppercase
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncodeLowercaseKey(){
         assertEquals("HBNOS XGOX!", Vigenere.encode("Hallo Welt!", "abcde"));
     }
@@ -218,7 +218,7 @@ public class VigenereTest {
     /**
      * Tests whether the cyclical shifting works
      */
-    @Test
+    /*@Test
     void testTextValidKeyEncodeOverflow(){
         assertEquals("AWP GFKVTNFN:", Vigenere.encode("Zum Beispiel:", "BCDEF"));
     }
@@ -230,7 +230,7 @@ public class VigenereTest {
     /**
      * Tests whether the method generates a random int value between really greater than 3 and really less than 7
      */
-    @Test
+    /*@Test
     void testGenerateKeyLength(){
         for (int i = 0; i < 1000; i++){
             int keyLength = Vigenere.keyLength();
@@ -244,7 +244,7 @@ public class VigenereTest {
     /**
      * Tests whether the method generates a random int value between greater than or equal to 0 and truly less than 26
      */
-    @Test
+    /*@Test
     void testGenerateKeySymbolIndex(){
         for (int i = 0; i < 1000; i++){
             int keySymbolIndex = Vigenere.keySymbolIndex();
@@ -254,4 +254,4 @@ public class VigenereTest {
         }
         assertTrue(true);
     }
-}
+}*/
