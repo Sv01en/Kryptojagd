@@ -10,6 +10,7 @@ import javafx.util.Duration;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 
+import java.util.concurrent.ExecutionException;
 /**
  * The class controls a window of a multipleChoiceTask
  *
@@ -50,11 +51,13 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     public void initialize(){
-        QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
+        //TODO: not working in the moment. Caused an exception.
+        /*QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
         String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
         for (String answer : possibilities) {
             answer1.setText(answer);
-        }
+        }*/
+        //TODO: implement correct time handling, maybe the level must be ajusted.....
         this.countdownTimer = new CountdownTimer(20);
         updateTimer();
     }
@@ -78,6 +81,7 @@ public class MultipleChoiceController extends AbstractController{
     /**
      * Updates the timer in the corresponding window.
      *
+     * @author Sven Strasser
      */
     @FXML
     void updateTimer() {
@@ -85,7 +89,11 @@ public class MultipleChoiceController extends AbstractController{
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(countdownTimer.getCurrentValue());
+            timer.setText(countdownTimer.getActuelValue());
+            if (Integer.parseInt(countdownTimer.getActuelValue()) == 0) {
+                mainController.switchWindow("Entschluesselung.fxml");
+                time.stop();
+            }
         });
         time.getKeyFrames().add(frame);
         time.playFromStart();

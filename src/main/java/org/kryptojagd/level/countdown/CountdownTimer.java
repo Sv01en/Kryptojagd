@@ -43,6 +43,7 @@ public class CountdownTimer {
                     setCurrentValue(actuelValue);
                 if (actuelValue == 0) {
                     System.out.println("Time over");
+                    this.cancel();
                 }
             }
         };
