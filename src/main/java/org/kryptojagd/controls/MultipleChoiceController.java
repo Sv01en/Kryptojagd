@@ -7,66 +7,71 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 
 /**
- * The class controls a window of a decryption task.
+ * The class controls a window of a multiple choice task.
  *
- * @author Michail, Sven
+ * @author Sonja, Michail, Sven
  */
-public class DecryptionController extends AbstractController{
+public class MultipleChoiceController extends AbstractController{
 
     private CountdownTimer countdownTimer;
 
     @FXML
     private Label timer = new Label();
 
+    @FXML
+    private Label QuestionField;
 
     @FXML
-    private Label verschluesselterRaetseltext;
+    private Button answer1;
 
     @FXML
-    private Label frage;
+    private Button answer2;
 
     @FXML
-    private Button verfahren1;
+    private Button answer3;
 
-    @FXML
-    private Button verfahren2;
-
-    @FXML
-    private Button verfahren3;
+    private final Level level = mainController.getCurrentLevel();
 
     /**
-     * Initializes a DecryptionController
+     * Initializes a MultipleChoiceController
+     *
+     * Sets the Question of the MultipleChoiceTask
+     * and sets their answers
      *
      */
     @FXML
     public void initialize(){
+        QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
+        String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
+        for (String answer : possibilities) {
+            answer1.setText(answer);
+        }
         this.countdownTimer = new CountdownTimer(20);
         updateTimer();
     }
 
+
     @FXML
-    void klickVerfahren1(ActionEvent event) {
-        System.out.println("Verfahren 1 wurde ausgewählt.");
-        mainController.switchWindow("MultipleChoice.fxml");
+    void clickAnswer1(ActionEvent event) {
+        level.proofMultipleChoice(answer1.getText());
     }
 
     @FXML
-    void klickVerfahren2(ActionEvent event) {
-        System.out.println("Verfahren 2 wurde ausgewählt.");
-        mainController.switchWindow("WrongChoice.fxml");
+    void clickAnswer2(ActionEvent event) {
+        level.proofMultipleChoice(answer2.getText());
     }
 
     @FXML
-    void klickVerfahren3(ActionEvent event) {
-        System.out.println("Verfahren 3 wurde ausgewählt.");
-        mainController.switchWindow("WrongChoice.fxml");
+    void clickAnswer3(ActionEvent event) {
+        level.proofMultipleChoice(answer3.getText());
     }
 
     /**
-     * Updates the {@link DecryptionController#timer} every second in the corresponding fxml-file.
+     * Updates the {@link MultipleChoiceController#timer} every second in the corresponding fxml-file.
      */
     @FXML
     void updateTimer() {

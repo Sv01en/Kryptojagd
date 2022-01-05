@@ -8,33 +8,33 @@ package org.kryptojagd.level.tasks;
 public class MultipleChoiceTask implements Task {
 
     private String question;
-    private String answer;
-    private String[] possibilities;
+    private String correctAnswer;
+    private String[] answerOptions;
 
     /**
      * Creates a {@link MultipleChoiceTask}
      *
      * @param question the question, which you have to answer
-     * @param answer the right answer of the question
-     * @param possibilities the possibilities to answer
+     * @param correctAnswer the right answer of the question
+     * @param answerOptions the possibilities to answer
      */
-    public MultipleChoiceTask(String question, String answer, String[] possibilities) {
+    public MultipleChoiceTask(String question, String[] answerOptions, String correctAnswer) {
         this.question = question;
-        this.answer = answer;
-        this.possibilities = possibilities;
+        this.correctAnswer = correctAnswer;
+        this.answerOptions = answerOptions;
+    }
+
+    public String[] getPossibilities() {
+        return answerOptions;
     }
 
     public String getQuestion() {
         return question;
     }
 
-    public String[] getPossibilities() {
-        return possibilities;
-    }
-
     @Override
     public boolean proofAnswer(String answer) {
-        return this.answer.equals(answer);
+        return this.correctAnswer.equals(answer);
     }
 
     @Override
@@ -43,4 +43,3 @@ public class MultipleChoiceTask implements Task {
     }
 
 }
-

@@ -1,6 +1,8 @@
 package org.kryptojagd;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import org.kryptojagd.controls.MainController;
+import org.kryptojagd.fileprocessing.ReadDirectory;
+import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
 
 
@@ -23,11 +27,16 @@ public class MainApp extends Application {
 	private MainController hs;
 	
     public void start(Stage stage) {
-        
-    	Parent root;
-		try {
-			
 
+		ArrayList<Level> allLevels = null;
+		try {
+			allLevels = ReadDirectory.initialize();
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+
+		Parent root;
+		try {
 			
 			root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
 			
@@ -39,11 +48,10 @@ public class MainApp extends Application {
 			
 			stage.show();
 			fw = new PresentationManager(stage);
-			hs = new MainController(fw);
-			
-			
-			
-			
+			assert allLevels != null;
+			hs = new MainController(fw, allLevels);
+
+			hs.runLevel();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

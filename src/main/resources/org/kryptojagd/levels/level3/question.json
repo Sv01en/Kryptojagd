@@ -1,0 +1,47 @@
+{
+    "$schema": "./quest_schema.json",
+    "question8":"Was versteht man in der Informatik unter einem Verweis?",
+    "answerOptions8":["Eine Textstelle", "Eine Bilddatei", "Ein Hinweis auf eine andere Textstelle"],
+    "correctAnswer8":3,
+    "timeInSec8": 60,
+
+    "question9": "Was ist eine Festplatte?",
+    "answerOptions9":["Ein Speichermedium, das anhand eines Lasers die Daten sichert", "Ein Laufwerk mit magnetischer Aufzeichnungstechnik", "Die Hauptplatine eines Computers"],
+    "correctAnswer9":2,
+    "timeInSec9": 60,
+
+    "question10": "Wieviel Bit hat ein Kilobyte?",
+    "answerOptions10": ["100", "1000", "1024"],
+    "correctAnswer10":3,
+    "timeInSec10": 60,
+
+    "question11": "Wann und durch wen wurde der erste programmierbare mechanische Rechner erfunden?",
+    "answerOptions11": ["1938 Konrad Zuse", "1976 Steve Jobs", "1949 Lee Commodore"],
+    "correctAnswer11":1,
+    "timeInSec11": 60,
+
+    "question18": "Wie viele Bit hat ein Byte?",
+    "answerOptions18": ["8", "16", "24"],
+    "correctAnswer18":1,
+    "timeInSec18": 60,
+
+    "question31": "Was ist ein Router?",
+    "answerOptions31": ["Ein Client", "Ein Vermittlerrechner", "Ein Server"],
+    "correctAnswer31":2,
+    "timeInSec31": 60,
+
+    "question23": "Wofür steht die Abkürzung WLAN?",
+    "answerOptions23": ["Wireless Low Administration Net ", "Wireless Local-Area Network ", "Wireless Local Administration Network"],
+    "correctAnswer23":2,
+    "timeInSec23": 60,
+
+    "question22": "Wie nennt man den Teilbereich der Informatik, der untersucht wie natürliche Sprache mit dem Computer verarbeitet werden kann?",
+    "answerOptions22": ["Computerlinguistik ", "Informatische Linguistik ", "Sprachinformatik "],
+    "correctAnswer22":1,
+    "timeInSec22": 60,
+
+    "question17": "Spam Emails sind nervig, jeder kennt sie. Doch was bedeutet SPAM wortwörtlich?",
+    "answerOptions17": ["Service Program and Mail", "Strange Post and Mail", "Spiced Ham"],
+    "correctAnswer17":3,
+    "timeInSec17": 60
+}

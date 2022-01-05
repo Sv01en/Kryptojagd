@@ -1,0 +1,17 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"type": "object",
+	"required": ["question", "answerOptions", "correctAnswer"],
+	"properties": {
+		"$schema": {},
+		"question": {
+			"type": "string"
+		},
+		"correctAnswer": {
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 3
+		}
+	
+	}
+}

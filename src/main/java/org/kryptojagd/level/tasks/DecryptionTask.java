@@ -10,20 +10,20 @@ import org.kryptojagd.encryptionmethods.Encryption;
  */
 public class DecryptionTask implements Task {
 
-    private Encryption encryption;
+	private Encryption encryption;
 
-    /**
-     * Creates a {@link DecryptionTask}
-     *
-     * @param encryption the encryption, in which you have to decrypt the text
-     */
-    public DecryptionTask(Encryption encryption) {
-        this.encryption = encryption;
-    }
+	/**
+	 * Creates a {@link DecryptionTask}
+	 *
+	 * @param encryption the encryption, in which you have to decrypt the text
+	 */
+	public DecryptionTask(Encryption encryption) {
+		this.encryption = encryption;
+	}
 
-    @Override
-    public boolean proofAnswer(String answer) {
-        return false;
-    }
+	@Override
+	public boolean proofAnswer(String answer) {
+		return false;
+	}
 
 }

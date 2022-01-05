@@ -1,5 +1,6 @@
 package org.kryptojagd;
 
+
 /**
  * The class runs the program.
  *
@@ -10,5 +11,6 @@ public class Main {
     public static void main(String[] args) {
     	System.out.println("Starte Programm!");
     	MainApp.main(args);
+
     }
 }
