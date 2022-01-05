@@ -12,7 +12,6 @@ public class DecryptionTask implements Task {
 
 	/**
 	<prev>JUST FOR WORKING</prev>
-	 @author Sven
 	 */
 	private String testKey = "HalloWelt";
 
