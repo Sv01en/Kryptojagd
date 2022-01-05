@@ -1,7 +1,6 @@
 package org.kryptojagd.level.tasks;
 
 
-import org.kryptojagd.encryptionmethods.Backwards;
 import org.kryptojagd.encryptionmethods.Encryption;
 
 /**
@@ -11,7 +10,13 @@ import org.kryptojagd.encryptionmethods.Encryption;
  */
 public class DecryptionTask implements Task {
 
-	Backwards test = new Backwards();
+	/**
+	<prev>JUST FOR WORKING</prev>
+	 @author Sven
+	 */
+	private String testKey = "HalloWelt";
+
+	private String key;
 
 	private Encryption encryption;
 
@@ -26,15 +31,16 @@ public class DecryptionTask implements Task {
 	 *
 	 * @param encryption the encryption, in which you have to decrypt the text
 	 */
-	public DecryptionTask(Encryption encryption, String givenText) {
+	public DecryptionTask(Encryption encryption, String givenText, String key) {
+		this.key = key;
 		this.encryption = encryption;
 		this.textForDecryption = givenText;
-		this.decryptedText = Encryption.decode()
+		this.decryptedText = this.encryption.decode(givenText, testKey);
 	}
 
 	@Override
 	public boolean proofAnswer(String answer) {
-		if (answer.equ)
+		return false;
 	}
 
 	//################# NEW ######################################
