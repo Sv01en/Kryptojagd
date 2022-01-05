@@ -51,13 +51,11 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     public void initialize(){
-        //TODO: not working in the moment. Caused an exception.
-        /*QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
+        QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
         String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
         for (String answer : possibilities) {
             answer1.setText(answer);
-        }*/
-        //TODO: implement correct time handling, maybe the level must be ajusted.....
+        }
         this.countdownTimer = new CountdownTimer(20);
         updateTimer();
     }
