@@ -78,17 +78,9 @@ public class MultipleChoiceController extends AbstractController{
     /**
      * Updates the timer in the corresponding window.
      *
-     * @author Sven Strasser
      */
     @FXML
     void updateTimer() {
-        updateLabel.start();
-    }
-
-    /**
-     * Thread starts process to update the label in fxml-file.
-     */
-    Thread updateLabel = new Thread(() -> {
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
@@ -97,5 +89,5 @@ public class MultipleChoiceController extends AbstractController{
         });
         time.getKeyFrames().add(frame);
         time.playFromStart();
-    });
+    }
 }
