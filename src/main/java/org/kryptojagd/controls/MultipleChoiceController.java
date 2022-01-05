@@ -10,7 +10,6 @@ import javafx.util.Duration;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 
-import java.util.concurrent.ExecutionException;
 /**
  * The class controls a window of a multipleChoiceTask
  *
@@ -94,7 +93,7 @@ public class MultipleChoiceController extends AbstractController{
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(countdownTimer.getActuelValue());
+            timer.setText(countdownTimer.getCurrentValue());
         });
         time.getKeyFrames().add(frame);
         time.playFromStart();
