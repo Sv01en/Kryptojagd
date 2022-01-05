@@ -49,10 +49,8 @@ public class MainApp extends Application {
 			fw = new PresentationManager(stage);
 			assert allLevels != null;
 			hs = new MainController(fw, allLevels);
-			
-			
-			
-			
+
+			hs.runLevel();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

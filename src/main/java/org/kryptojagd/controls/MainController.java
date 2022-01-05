@@ -23,6 +23,16 @@ public class MainController {
 		AbstractController.setMainController(this);
 	}
 
+	/**
+	 * Runs a whole level which each task
+	 *
+	 */
+	public void runLevel() {
+		runDecryptionTask();
+		runEncryptionTask();
+		runMultipleChoice();
+	}
+
 	public void switchWindow(String str) {
 		fw.switchWindow(str);
 	}
@@ -32,13 +42,31 @@ public class MainController {
 	}
 
 	/**
+	 * Runs the encryption tasks
+	 *
+	 *
+	 */
+	private void runEncryptionTask() {
+
+	}
+
+	/**
+	 * Runs the decryption tasks
+	 *
+	 *
+	 */
+	private void runDecryptionTask() {
+
+	}
+
+	/**
 	 * Runs the multiple choice tasks
 	 *
 	 * If every multiple choice task is answered, it switches the window to the leveEnd
 	 * if not, it switches the window to a new multiple choice task
 	 *
 	 */
-	public void runMultipleChoice(){
+	private void runMultipleChoice(){
 		if(!currentLevel.multipleChoiceIsFinished()) {
 			switchWindow("MultipleChoice.fxml");
 		} else {
