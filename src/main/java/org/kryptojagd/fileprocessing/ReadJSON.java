@@ -10,6 +10,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -109,8 +110,22 @@ public class ReadJSON {
 	}
 	
 	public static int readTime(String path) {
-		
-		return 0;
+		int time = 0;
+		try {
+			Object obj2 = parser.parse(new FileReader(path));
+			JsonObject jsonObject = gson.fromJson( obj2.toString(), JsonObject.class);
+			time = Integer.parseInt(jsonObject.get("time").getAsString());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return time;
 	}
 
 }
