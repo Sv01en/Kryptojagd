@@ -85,20 +85,17 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void updateTimer() {
-        updateLabel.start();
-    }
-
-    /**
-     * Thread starts process to update the label in fxml-file.
-     */
-    Thread updateLabel = new Thread(() -> {
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             timer.setText(countdownTimer.getActuelValue());
+            if (Integer.parseInt(countdownTimer.getActuelValue()) == 0) {
+                mainController.switchWindow("Entschluesselung.fxml");
+                time.stop();
+            }
         });
         time.getKeyFrames().add(frame);
         time.playFromStart();
-    });
+    }
 }

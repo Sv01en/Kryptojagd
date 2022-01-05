@@ -37,7 +37,7 @@ public class CountdownTimer {
      * Initializes and executes a countdown timer.
      */
     public long countdownTimer(int setTime) {
-        actuelValue = 20;
+        actuelValue = setTime;
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -47,6 +47,7 @@ public class CountdownTimer {
                     setActuelValue(actuelValue);
                 if (actuelValue == 0) {
                     System.out.println("Time over");
+                    this.cancel();
                 }
             }
         };
