@@ -50,7 +50,7 @@ public class MainApp extends Application {
 			fw = new PresentationManager(stage);
 			assert allLevels != null;
 			//ToDo: Structure of game, finish level, start next level
-			hs = new MainController(fw, allLevels.get(1));
+			hs = new MainController(fw, allLevels.get(0));
 			hs.runLevel();
 			
 		} catch (IOException e) {

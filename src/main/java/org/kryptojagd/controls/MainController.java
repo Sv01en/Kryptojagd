@@ -32,6 +32,10 @@ public class MainController {
 		runMultipleChoice();
 	}
 
+	public Level getCurrentLevel() {
+		return currentLevel;
+	}
+
 	public void switchWindow(String str) {
 		fw.switchWindow(str);
 	}
