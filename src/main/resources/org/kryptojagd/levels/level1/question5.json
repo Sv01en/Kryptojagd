@@ -1,0 +1,9 @@
+{
+  "question": "Wofür steht die Abkürzung PC?",
+  "answerOption": [
+    "Program Computer",
+    "Personal Computer",
+    "Practical Computer"
+  ],
+  "correctAnswer":"Personal Computer"
+}

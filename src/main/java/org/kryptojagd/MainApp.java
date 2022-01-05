@@ -1,6 +1,7 @@
 package org.kryptojagd;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javafx.application.Application;
@@ -27,7 +28,7 @@ public class MainApp extends Application {
 	
     public void start(Stage stage) {
 
-		HashMap<Integer, Level> allLevels = null;
+		ArrayList<Level> allLevels = null;
 		try {
 			allLevels = ReadDirectory.initialize();
 		} catch (Exception exception) {
@@ -49,10 +50,8 @@ public class MainApp extends Application {
 			fw = new PresentationManager(stage);
 			assert allLevels != null;
 			hs = new MainController(fw, allLevels);
-			
-			
-			
-			
+
+			hs.runLevel();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

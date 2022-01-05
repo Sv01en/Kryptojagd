@@ -18,6 +18,8 @@ public class Level {
 	private EncryptionTask encryptionTask;
 	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
 	private boolean isRunning;
+	private int timeInSec;
+	private int id;
 
 	/**
 	 * Creates a {@link Level}
@@ -27,10 +29,11 @@ public class Level {
 	 * @param multipleChoiceTasks third and last task is a LinkedList of multiple choice questions
 	 */
 	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask,
-				 LinkedList<MultipleChoiceTask> multipleChoiceTasks) {
+				 LinkedList<MultipleChoiceTask> multipleChoiceTasks, int timeInSec) {
 		this.decryptionTask = decryptionTask;
 		this.encryptionTask = encryptionTask;
 		this.multipleChoiceTasks = multipleChoiceTasks;
+		this.timeInSec = timeInSec;
 		this.isRunning = true;
 	}
 
@@ -84,6 +87,15 @@ public class Level {
 	public boolean getIsRunnig() {
 		return this.isRunning;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
 
 }
 
