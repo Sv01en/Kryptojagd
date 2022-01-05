@@ -38,8 +38,8 @@ public class MainApp extends Application {
 		Parent root;
 		try {
 			
-			root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
-			
+			//root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
+			root = FXMLLoader.load(getClass().getResource("presentation/Encryption.fxml"));
 			System.out.println(getClass().toString());
 			Scene scene = new Scene(root);		
 
