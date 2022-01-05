@@ -10,20 +10,14 @@ import javafx.util.Duration;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 
-import java.util.concurrent.ExecutionException;
 /**
- * The class controls a window of a multipleChoiceTask
+ * The class controls a window of a multiple choice task.
  *
  * @author Sonja, Michail, Sven
  */
 public class MultipleChoiceController extends AbstractController{
 
     private CountdownTimer countdownTimer;
-
-    /**
-     * The remaining time for the countdown timer functionality.
-     */
-    private long actuelTime;
 
     @FXML
     private Label timer = new Label();
@@ -51,13 +45,11 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     public void initialize(){
-        //TODO: not working in the moment. Caused an exception.
-        /*QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
+        QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
         String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
         for (String answer : possibilities) {
             answer1.setText(answer);
-        }*/
-        //TODO: implement correct time handling, maybe the level must be ajusted.....
+        }
         this.countdownTimer = new CountdownTimer(20);
         updateTimer();
     }
@@ -79,9 +71,7 @@ public class MultipleChoiceController extends AbstractController{
     }
 
     /**
-     * Updates the timer in the corresponding window.
-     *
-     * @author Sven Strasser
+     * Updates the {@link MultipleChoiceController#timer} every second in the corresponding fxml-file.
      */
     @FXML
     void updateTimer() {
@@ -89,8 +79,8 @@ public class MultipleChoiceController extends AbstractController{
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(countdownTimer.getActuelValue());
-            if (Integer.parseInt(countdownTimer.getActuelValue()) == 0) {
+            timer.setText(countdownTimer.getCurrentValue());
+            if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
                 mainController.switchWindow("Entschluesselung.fxml");
                 time.stop();
             }

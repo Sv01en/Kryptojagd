@@ -32,7 +32,7 @@ public class CountdownTimer {
     /**
      * Initializes and executes a countdown timer.
      */
-    public long countdownTimer(int setTime) {
+    private long countdownTimer(int setTime) {
         actuelValue = setTime;
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -68,5 +68,14 @@ public class CountdownTimer {
         String input = Long.toString(givenValue);
         this.actuelValue = givenValue;
         this.outputValue = input;
+    }
+
+    /**
+     * After an incorrect entry in the game, the timer will be reduced by the given time in seconds.
+     * @param given time to be reduced in seconds
+     */
+    public void reduceTimer(int given) {
+        actuelValue = actuelValue - given;
+        this.outputValue = Long.toString(actuelValue);
     }
 }
