@@ -14,13 +14,11 @@ public class MainController {
 	
 	private PresentationManager fw;
 
-	private ArrayList<Level> allLevels;
 	private Level currentLevel;
 
-	public MainController(PresentationManager fw, ArrayList<Level> levels) {
+	public MainController(PresentationManager fw, Level currentLevel) {
 		this.fw = fw;
-		this.allLevels = levels;
-		this.currentLevel = levels.get(1);
+		this.currentLevel = currentLevel;
 		AbstractController.setMainController(this);
 	}
 
@@ -36,10 +34,6 @@ public class MainController {
 
 	public void switchWindow(String str) {
 		fw.switchWindow(str);
-	}
-
-	public Level getCurrentLevel() {
-		return currentLevel;
 	}
 
 	/**
