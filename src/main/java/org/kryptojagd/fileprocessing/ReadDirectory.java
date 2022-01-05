@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.*;
 
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.LevelComparator;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
@@ -18,9 +19,9 @@ public class ReadDirectory {
 	private final static String path = "src/main/resources/org/kryptojagd/levels";
 	
 	
-	public static HashMap<Integer, Level> initialize() throws Exception {
+	public static ArrayList<Level> initialize() throws Exception {
 				
-		HashMap<Integer, Level> map = new HashMap<Integer, Level>();
+		ArrayList<Level> allLevels = new ArrayList<Level>();
 		
 		File levelsFolder = new File(path);
 		File[] listOfFolders = levelsFolder.listFiles();
@@ -35,12 +36,16 @@ public class ReadDirectory {
 				int levelNum = Integer.parseInt(folder.getName().substring(5));
 				System.out.println(levelNum);
 				
-				map.put(levelNum, level);
+				// 
+				level.setId(levelNum);
+				allLevels.add(level);
+				//
 				
 			}
 		}
 
-		return map;
+		Collections.sort(allLevels, new LevelComparator());
+		return allLevels;
 		
 	}
 
@@ -55,6 +60,7 @@ public class ReadDirectory {
 	private static Level readLevelDirectory(String path) throws Exception {
 
 		LinkedList<MultipleChoiceTask> multipleChoiceTasks = new LinkedList<>();
+		int timeInSec = 300;
 		String pathToDecryptionTask = "";
 		String pathToEncryptionTask = "";
 
@@ -76,6 +82,8 @@ public class ReadDirectory {
 					MultipleChoiceTask multipleChoiceTask = ReadJSON.createMultiChoiceQuestion(pathToFile);
 					multipleChoiceTasks.add(multipleChoiceTask);
 					
+				} else if (fileName.contains("time")) {
+					timeInSec = ReadJSON.readTime(pathToFile);
 				} else {
 					throw new Exception("Unbekannte Datei");
 				}
@@ -84,7 +92,7 @@ public class ReadDirectory {
 		DecryptionTask decryptionTask = ReadJSON.createDecryptionTask(pathToDecryptionTask);
 		EncryptionTask encryptionTask = ReadJSON.createEncryptionTask(pathToEncryptionTask);
 		
-		return new Level(decryptionTask, encryptionTask, multipleChoiceTasks);
+		return new Level(decryptionTask, encryptionTask, multipleChoiceTasks, timeInSec);
 		
 	}
 

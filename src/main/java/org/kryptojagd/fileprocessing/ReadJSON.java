@@ -106,6 +106,11 @@ public class ReadJSON {
 			}
 			
 			return null;
-		}
+	}
+	
+	public static int readTime(String path) {
+		
+		return 0;
+	}
 
 }
