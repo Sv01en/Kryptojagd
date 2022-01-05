@@ -10,20 +10,14 @@ import javafx.util.Duration;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 
-import java.util.concurrent.ExecutionException;
 /**
- * The class controls a window of a multipleChoiceTask
+ * The class controls a window of a multiple choice task.
  *
  * @author Sonja, Michail, Sven
  */
 public class MultipleChoiceController extends AbstractController{
 
     private CountdownTimer countdownTimer;
-
-    /**
-     * The remaining time for the countdown timer functionality.
-     */
-    private long actuelTime;
 
     @FXML
     private Label timer = new Label();
@@ -77,26 +71,21 @@ public class MultipleChoiceController extends AbstractController{
     }
 
     /**
-     * Updates the timer in the corresponding window.
-     *
-     * @author Sven Strasser
+     * Updates the {@link MultipleChoiceController#timer} every second in the corresponding fxml-file.
      */
     @FXML
     void updateTimer() {
-        updateLabel.start();
-    }
-
-    /**
-     * Thread starts process to update the label in fxml-file.
-     */
-    Thread updateLabel = new Thread(() -> {
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(countdownTimer.getActuelValue());
+            timer.setText(countdownTimer.getCurrentValue());
+            if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
+                mainController.switchWindow("Entschluesselung.fxml");
+                time.stop();
+            }
         });
         time.getKeyFrames().add(frame);
         time.playFromStart();
-    });
+    }
 }
