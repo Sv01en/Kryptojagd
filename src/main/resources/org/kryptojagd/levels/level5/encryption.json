@@ -1,5 +1,6 @@
 {
-	"Aufgabenstellung":"Verschlüssle den folgenden Text mit dem Vigenère Verfahren. Der SChlüssel lautet 'Fernsehturm':",
-	"zuVerschluesselnderText":"haben fuenfte Floppy-Disk"
+	"task":"Verschlüssle den folgenden Text mit dem Vigenère Verfahren. Der SChlüssel lautet 'Fernsehturm':",
+	"text":"haben fuenfte Floppy-Disk",
+	"timeInSec": 300
 }
 
