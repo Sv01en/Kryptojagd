@@ -26,9 +26,10 @@ public class ReadJSON {
 	private static JSONParser parser = new JSONParser();
 	
 	/**
-	 * 
-	 * @param path
-	 * @return
+	 * Reads the files with the information for a MultipleChoiceTask and creates it.
+	 *
+	 * @param path filepath to the files with the information for a MultipleChoiceTask
+	 * @return MultipleChoiceTask, with the given information of the files
 	 */
 	public static MultipleChoiceTask createMultiChoiceQuestion(String path) {
 		
@@ -50,7 +51,6 @@ public class ReadJSON {
 		}
 		
 		return null;
-		
 		
 	}
 	
