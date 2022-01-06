@@ -31,8 +31,7 @@ public class EncryptionController extends AbstractController {
     }
 
     public void initialize() {
-         label1.setText(level.getEncryptionTask().getTask());
-         label2.setText(level.getEncryptionTask().getText());
+        label1.setText(level.getEncryptionTask().getTask());
+        label2.setText(level.getEncryptionTask().getText());
     }
 }
-
