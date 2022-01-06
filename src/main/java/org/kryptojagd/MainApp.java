@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -41,10 +42,10 @@ public class MainApp extends Application {
 			root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
 			
 			System.out.println(getClass().toString());
-			Scene scene = new Scene(root);		
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("css/startwindow.css").toExternalForm());
 
 			stage.setScene(scene);
-
 			
 			stage.show();
 			fw = new PresentationManager(stage);

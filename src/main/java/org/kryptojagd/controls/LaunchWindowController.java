@@ -19,7 +19,7 @@ public class LaunchWindowController extends AbstractController {
 
     @FXML
     void klickEinstellungen(ActionEvent event) {
-
+        mainController.switchWindowWithCSS("Startfenster.fxml", "../css/Berlin.css");
     }
 
     @FXML
