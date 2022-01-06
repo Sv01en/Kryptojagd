@@ -5,7 +5,7 @@ package org.kryptojagd.encryptionmethods;
  *
  * @author Leah Schlimm
  */
-public class Caesar implements EncryptionInterface {
+public class Caesar extends Encryption {
 
     /**
      * Generates a random number between 1 and 25

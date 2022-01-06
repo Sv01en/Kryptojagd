@@ -5,7 +5,7 @@ package org.kryptojagd.encryptionmethods;
  *
  * @author Leah Schlimm
  */
-public class Vigenere implements EncryptionInterface {
+public class Vigenere extends Encryption {
 
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
