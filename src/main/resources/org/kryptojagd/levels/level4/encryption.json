@@ -1,5 +1,6 @@
 {
   "task":"Verschlüssle den folgenden Text mit dem Vigenère Verfahren. Der SChlüssel lautet 'Fernsehturm':",
   "text":"Vierte Floppy-Disk gefunden",
+  "encryption": "Vigenere",
   "timeInSec": 300
 }

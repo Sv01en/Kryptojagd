@@ -32,6 +32,9 @@ public class EncryptionTask implements Task {
     public String getText() {
         return text;
     }
+    public Encryption getEncryption(){
+        return encryption;
+    }
 
     @Override
     public boolean proofAnswer(String answer) {

@@ -1,5 +1,6 @@
 {
   "task":"Verschlüssle den folgenden Text mit dem Cäsar-Variante Verfahren. Der SChlüssel lautet '11':",
   "text":"Dritte Floppy-Disk gefunden",
+  "encryption": "Caesar",
   "timeInSec": 300
 }
