@@ -10,4 +10,8 @@ public abstract class Encryption {
     static String decode(String text, String key) {
         return null;
     }
+
+    public String enccode(String text, String key) {
+        return null;
+    }
 }

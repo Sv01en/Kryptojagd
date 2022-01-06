@@ -10,7 +10,9 @@ import org.kryptojagd.encryptionmethods.Encryption;
 public class EncryptionTask implements Task {
     private String task;
     private String text;
-    private Encryption encryption;
+    private String key;
+    //private Encryption encryption;
+    private Encryption encryptionType;
 
     /**
      * Creates a {@link EncryptionTask}
@@ -18,11 +20,13 @@ public class EncryptionTask implements Task {
      * @param encryption the encryption, in which you have to encrypt the text
      *
      */
-    public EncryptionTask(String task, String text, Encryption encryption) {
+    public EncryptionTask(String task, String text,Encryption encryptionType, String key){//} Encryption encryption) {
 
-        this.encryption = encryption;
+        this.encryptionType = encryptionType;
         this.task = task;
-        this.text= text;
+        this.text = text;
+        this.key = key;
+
     }
 
     public String getTask() {
@@ -33,7 +37,10 @@ public class EncryptionTask implements Task {
         return text;
     }
     public Encryption getEncryption(){
-        return encryption;
+       return encryptionType;
+    }
+    public String getKey(){
+        return key;
     }
 
     @Override
