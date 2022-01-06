@@ -5,19 +5,32 @@ import org.kryptojagd.encryptionmethods.Encryption;
 /**
  * The class describes a task, where you have to encrypt text
  *
- * @author Sonja
+ * @author Sonja, Bartosz
  */
 public class EncryptionTask implements Task {
-
+    private String task;
+    private String text;
     private Encryption encryption;
 
     /**
      * Creates a {@link EncryptionTask}
      *
      * @param encryption the encryption, in which you have to encrypt the text
+     *
      */
-    public EncryptionTask(Encryption encryption) {
+    public EncryptionTask(String task, String text, Encryption encryption) {
+
         this.encryption = encryption;
+        this.task = task;
+        this.text= text;
+    }
+
+    public String getTask() {
+        return task;
+    }
+
+    public String getText() {
+        return text;
     }
 
     @Override

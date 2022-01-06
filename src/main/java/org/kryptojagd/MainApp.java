@@ -38,8 +38,8 @@ public class MainApp extends Application {
 		Parent root;
 		try {
 			
-			//root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
-			root = FXMLLoader.load(getClass().getResource("presentation/Encryption.fxml"));
+			root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
+
 			System.out.println(getClass().toString());
 			Scene scene = new Scene(root);		
 
@@ -50,6 +50,7 @@ public class MainApp extends Application {
 			fw = new PresentationManager(stage);
 			assert allLevels != null;
 			hs = new MainController(fw, allLevels);
+
 
 			hs.runLevel();
 			

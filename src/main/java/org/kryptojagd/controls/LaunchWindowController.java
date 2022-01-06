@@ -19,7 +19,8 @@ public class LaunchWindowController extends AbstractController {
 
     @FXML
     void klickEinstellungen(ActionEvent event) {
-
+        System.out.println("Das ist ein Test");
+        mainController.switchWindow("Encryption.fxml");
     }
 
     @FXML
