@@ -22,7 +22,7 @@ public class EncryptionController extends AbstractController {
     @FXML
     private TextField textField1;
 
-    private final Level level = mainController.getCurrentLevel();
+    //private final Level level = mainController.getCurrentLevel();
 
 
     @FXML
@@ -30,7 +30,8 @@ public class EncryptionController extends AbstractController {
 
     }
 
-    public void initialize () {
-        label1.setText(level.getEncryptionTask());
+    public void initialize() {
+        // label1.setText(level.getEncryptionTask());
     }
+}
 
