@@ -38,6 +38,10 @@ public class MainController {
 		fw.switchWindow(str);
 	}
 
+	public void switchWindowWithCSS(String path, String css) {
+		fw.switchWindowWithCSS(path, css);
+	}
+
 	public Level getCurrentLevel() {
 		return currentLevel;
 	}
