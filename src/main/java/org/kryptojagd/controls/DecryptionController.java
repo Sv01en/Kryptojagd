@@ -47,7 +47,7 @@ public class DecryptionController extends AbstractController{
      */
     @FXML
     public void initialize(){
-        encryptedPuzzleText.setText(level.getDecryptionTask().ge);
+        encryptedPuzzleText.setText("Hallo");
         this.countdownTimer = new CountdownTimer(20);
         updateTimer();
     }

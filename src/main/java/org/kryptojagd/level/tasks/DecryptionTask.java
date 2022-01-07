@@ -3,6 +3,8 @@ package org.kryptojagd.level.tasks;
 
 import org.kryptojagd.encryptionmethods.Encryption;
 
+import java.util.ArrayList;
+
 /**
  * The class describes a task, where you have to decrypt text
  *
@@ -10,40 +12,44 @@ import org.kryptojagd.encryptionmethods.Encryption;
  */
 public class DecryptionTask implements Task {
 
-	/**
-	<prev>JUST FOR WORKING</prev>
-	 */
-	private String testKey = "HalloWelt";
-
-	private String key;
-
 	private Encryption encryption;
 
 	private String textForDecryption;
 
 	private String decryptedText;
 
-	private String procedure;
+	private ArrayList<String> possibleSolutions;
 
-	/**
-	 * Creates a {@link DecryptionTask}
-	 *
-	 * @param encryption the encryption, in which you have to decrypt the text
-	 */
-	public DecryptionTask(Encryption encryption, String givenText, String key) {
-		this.key = key;
-		this.encryption = encryption;
+	private String correctAnswer;
+
+	public DecryptionTask(String method, String givenText, ArrayList<String> possibleSolutions, String correctAnswer) {
 		this.textForDecryption = givenText;
-		this.decryptedText = this.encryption.decode(givenText, testKey);
+		this.decryptedText = this.encryption.decode(givenText, "Test");
+		this.possibleSolutions = possibleSolutions;
+		this.correctAnswer = correctAnswer;
 	}
 
 	@Override
 	public boolean proofAnswer(String answer) {
+		if (answer.equals(correctAnswer)) {
+			return true;
+		}
 		return false;
 	}
 
-	//################# NEW ######################################
+	public ArrayList<String> getPossibleSolutions() {
+		return this.possibleSolutions;
+	}
 
+	public String getDecryptedText() {
+		return this.decryptedText;
+	}
 
+	public String getTextForDecryption() {
+		return this.textForDecryption;
+	}
 
+	public String getCorrectAnswer() {
+		return this.correctAnswer;
+	}
 }

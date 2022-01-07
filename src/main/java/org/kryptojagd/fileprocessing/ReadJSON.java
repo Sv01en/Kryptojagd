@@ -3,8 +3,12 @@ package org.kryptojagd.fileprocessing;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import com.google.gson.JsonArray;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -88,11 +92,24 @@ public class ReadJSON {
 	 * @return
 	 */
 	public static DecryptionTask createDecryptionTask(String path) {
-			
+
 			DecryptionTask decryptionTask;
 			try {
 				Object obj2 = parser.parse(new FileReader(path));
-				decryptionTask = gson.fromJson(obj2.toString(), DecryptionTask.class);
+				JsonObject jsonObject = gson.fromJson( obj2.toString(), JsonObject.class);
+				String plainText = jsonObject.get("plainText").getAsString();
+				String encryptionMethod = jsonObject.get("encryptionMethod").getAsString();
+				String correctAnswer = jsonObject.get("encryptionMethod").getAsString();
+				JsonArray possibleSolutions = jsonObject.getAsJsonArray("answerOptionsEncryption");
+				int length = possibleSolutions.size();
+				ArrayList<String> possibleSolutionsAsString = new ArrayList<>();
+				if (length > 0) {
+					for (int i = 0; i < length; i++) {
+						possibleSolutionsAsString.add(possibleSolutions.get(i).getAsString());
+					}
+				}
+				decryptionTask = new DecryptionTask(encryptionMethod, plainText, possibleSolutionsAsString,
+						correctAnswer);
 				return decryptionTask;
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
