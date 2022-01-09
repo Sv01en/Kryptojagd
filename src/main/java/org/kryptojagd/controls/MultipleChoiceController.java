@@ -46,9 +46,9 @@ public class MultipleChoiceController extends AbstractController{
     public void initialize(){
         QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
         String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
-        for (String answer : possibilities) {
-            answer1.setText(answer);
-        }
+        answer1.setText(possibilities[0]);
+        answer2.setText(possibilities[1]);
+        answer3.setText(possibilities[2]);
         this.countdownTimer = new CountdownTimer(20);
         updateTimer();
     }
@@ -61,13 +61,13 @@ public class MultipleChoiceController extends AbstractController{
 
     @FXML
     void clickAnswer2(ActionEvent event) {
-        mainController.taskSucceeded = level.proofMultipleChoice(answer1.getText());
+        mainController.taskSucceeded = level.proofMultipleChoice(answer2.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
     @FXML
     void clickAnswer3(ActionEvent event) {
-        mainController.taskSucceeded = level.proofMultipleChoice(answer1.getText());
+        mainController.taskSucceeded = level.proofMultipleChoice(answer3.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
