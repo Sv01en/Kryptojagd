@@ -1,10 +1,5 @@
 package org.kryptojagd.level.tasks;
 
-
-import org.kryptojagd.encryptionmethods.Encryption;
-
-import java.util.ArrayList;
-
 /**
  * The class describes a task, where you have to decrypt text
  *
@@ -12,44 +7,73 @@ import java.util.ArrayList;
  */
 public class DecryptionTask implements Task {
 
-	private Encryption encryption;
+	private String plainText;
 
-	private String textForDecryption;
+	private String encryptionMethod;
 
-	private String decryptedText;
+	private String[] answerOptionsEncryption;
 
-	private ArrayList<String> possibleSolutions;
+	private int correctAnswerEncryption;
 
-	private String correctAnswer;
+	private String[] answerOptionsCity;
 
-	public DecryptionTask(String method, String givenText, ArrayList<String> possibleSolutions, String correctAnswer) {
-		this.textForDecryption = givenText;
-		this.decryptedText = this.encryption.decode(givenText, "Test");
-		this.possibleSolutions = possibleSolutions;
-		this.correctAnswer = correctAnswer;
+	private int correctAnswerCity;
+
+	private String textAfterStart;
+
+	private int timeInSec;
+
+	public DecryptionTask(String plainText, String encryptionMethod, String[] answerOptionsEncryption,
+						  int correctAnswerEncryption, String[] answerOptionsCity, int correctAnswerCity,
+						  String textAfterStart, int timeInSec) {
+		this.plainText = plainText;
+		this.encryptionMethod = encryptionMethod;
+		this.answerOptionsEncryption = answerOptionsEncryption;
+		this.correctAnswerEncryption = correctAnswerEncryption;
+		this.answerOptionsCity = answerOptionsCity;
+		this.correctAnswerCity = correctAnswerCity;
+		this.textAfterStart = textAfterStart;
+		this.timeInSec = timeInSec;
+
 	}
 
 	@Override
 	public boolean proofAnswer(String answer) {
-		if (answer.equals(correctAnswer)) {
+		if (answer.equals(this.encryptionMethod)) {
 			return true;
 		}
 		return false;
 	}
 
-	public ArrayList<String> getPossibleSolutions() {
-		return this.possibleSolutions;
+	public String getPlainText() {
+		return this.plainText;
 	}
 
-	public String getDecryptedText() {
-		return this.decryptedText;
+	public String getEncryptionMethod() {
+		return this.encryptionMethod;
 	}
 
-	public String getTextForDecryption() {
-		return this.textForDecryption;
+	public String[] getAnswerOptionsEncryption() {
+		return this.answerOptionsEncryption;
 	}
 
-	public String getCorrectAnswer() {
-		return this.correctAnswer;
+	public int getCorrectAnswerEncryption() {
+		return this.correctAnswerEncryption;
+	}
+
+	public String[] getAnswerOptionsCity() {
+		return this.answerOptionsCity;
+	}
+
+	public int getCorrectAnswerCity() {
+		return this.correctAnswerCity;
+	}
+
+	public String getTextAfterStart() {
+		return this.textAfterStart;
+	}
+
+	public int getTimeInSec() {
+		return this.timeInSec;
 	}
 }

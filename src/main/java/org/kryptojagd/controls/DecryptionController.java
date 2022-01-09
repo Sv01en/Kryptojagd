@@ -28,16 +28,16 @@ public class DecryptionController extends AbstractController{
     private Label encryptedPuzzleText = new Label();
 
     @FXML
-    private Label frage;
+    private Label frage = new Label();
 
     @FXML
-    private Button verfahren1;
+    private Button procedure1;
 
     @FXML
-    private Button verfahren2;
+    private Button procedure2;
 
     @FXML
-    private Button verfahren3;
+    private Button procedure3;
 
     private final Level level = mainController.getCurrentLevel();
 
@@ -47,8 +47,12 @@ public class DecryptionController extends AbstractController{
      */
     @FXML
     public void initialize(){
-        encryptedPuzzleText.setText("Hallo");
-        this.countdownTimer = new CountdownTimer(20);
+        String[] possibleProcedures = level.getDecryptionTask().getAnswerOptionsEncryption();
+        encryptedPuzzleText.setText(level.getDecryptionTask().getPlainText());
+        procedure1.setText(possibleProcedures[0]);
+        procedure2.setText(possibleProcedures[1]);
+        procedure3.setText(possibleProcedures[2]);
+        this.countdownTimer = new CountdownTimer(level.getDecryptionTask().getTimeInSec());
         updateTimer();
     }
 
@@ -89,11 +93,8 @@ public class DecryptionController extends AbstractController{
         time.playFromStart();
     }
 
-    /**
-     *
-     */
-    private void descryptionTask() {
-        DecryptionTask task = level.getDecryptionTask();
+    @FXML
+    private void handleDescryptionTask() {
 
     }
 }
