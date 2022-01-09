@@ -31,7 +31,7 @@ public class LaunchWindowController extends AbstractController {
     @FXML
     void klickStart(ActionEvent event) {
     	System.out.println("Es wurde auf Start geklickt!");
-    	mainController.switchWindow("Entschluesselung.fxml");
+    	mainController.runLevel();
     }
     
    
