@@ -41,6 +41,10 @@ public class MainController {
 		fw.switchWindow(str);
 	}
 
+	public void switchWindowWithCSS(String path, String css) {
+		fw.switchWindowWithCSS(path, css);
+	}
+
 	/**
 	 * Runs the encryption tasks
 	 *
