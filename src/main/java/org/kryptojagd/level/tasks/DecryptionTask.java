@@ -25,6 +25,8 @@ public class DecryptionTask implements Task {
 
 	private int timeInSec;
 
+	private boolean correctAnswer;
+
 	public DecryptionTask(String plainText, String encryptionMethod, String[] answerOptionsEncryption,
 						  int correctAnswerEncryption, String[] answerOptionsCity, int correctAnswerCity,
 						  String textAfterStart, int timeInSec) {
@@ -36,14 +38,16 @@ public class DecryptionTask implements Task {
 		this.correctAnswerCity = correctAnswerCity;
 		this.textAfterStart = textAfterStart;
 		this.timeInSec = timeInSec;
-
+		this.correctAnswer = false;
 	}
 
 	@Override
 	public boolean proofAnswer(String answer) {
 		if (answer.equals(this.encryptionMethod)) {
+			this.correctAnswer = true;
 			return true;
 		}
+		this.correctAnswer = false;
 		return false;
 	}
 
@@ -51,31 +55,15 @@ public class DecryptionTask implements Task {
 		return this.plainText;
 	}
 
-	public String getEncryptionMethod() {
-		return this.encryptionMethod;
-	}
-
 	public String[] getAnswerOptionsEncryption() {
 		return this.answerOptionsEncryption;
-	}
-
-	public int getCorrectAnswerEncryption() {
-		return this.correctAnswerEncryption;
-	}
-
-	public String[] getAnswerOptionsCity() {
-		return this.answerOptionsCity;
-	}
-
-	public int getCorrectAnswerCity() {
-		return this.correctAnswerCity;
-	}
-
-	public String getTextAfterStart() {
-		return this.textAfterStart;
 	}
 
 	public int getTimeInSec() {
 		return this.timeInSec;
 	}
-}
+
+	public boolean getCorrectAnswer() {
+		return this.correctAnswer;
+	}
+ }

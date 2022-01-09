@@ -40,7 +40,7 @@ public class TaskFinishedController extends AbstractController{
 		this.countdownTimer = new CountdownTimer(20);
 		updateTimer();
 		if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
-			if (mainController.taskSucceeded) {
+			if (mainController.MultipleChoiceTaskSucceeded) {
 				feedbackText.setText("Richtig, weiter so!");
 			} else {
 				feedbackText.setText("Leider falsch, versuche es noch einmal. Du musst dich beeilen!");
@@ -50,12 +50,6 @@ public class TaskFinishedController extends AbstractController{
 		}
 	}
 
-	/**
-	 * Switches the window to the end of the level, if every question of a level is answered
-	 * otherwise switches to the next multiple choice question
-	 *
-	 * @param event
-	 */
 	 @FXML
 	 void switchMultipleChoice(ActionEvent event) {
 	 	if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {

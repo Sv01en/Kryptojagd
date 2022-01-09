@@ -48,26 +48,26 @@ public class DecryptionController extends AbstractController{
         procedure1.setText(possibleProcedures[0]);
         procedure2.setText(possibleProcedures[1]);
         procedure3.setText(possibleProcedures[2]);
-        this.countdownTimer = new CountdownTimer(level.getDecryptionTask().getTimeInSec());
+        this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer();
     }
 
     @FXML
     void clickProcedure1(ActionEvent event) {
-        System.out.println("Verfahren 1 wurde ausgewählt.");
-        mainController.switchWindow("MultipleChoice.fxml");
+        mainController.DecryptionTaskSucceeded = level.proofDecryptionTask(procedure1.getText());
+        mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
     @FXML
     void clickProcedure2(ActionEvent event) {
-        System.out.println("Verfahren 2 wurde ausgewählt.");
-        mainController.switchWindow("TaskFinished.fxml");
+        mainController.DecryptionTaskSucceeded = level.proofDecryptionTask(procedure2.getText());
+        mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
     @FXML
     void clickProcedure3(ActionEvent event) {
-        System.out.println("Verfahren 3 wurde ausgewählt.");
-        mainController.switchWindow("TaskFinished.fxml");
+        mainController.DecryptionTaskSucceeded = level.proofDecryptionTask(procedure3.getText());
+        mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
     /**
@@ -80,6 +80,7 @@ public class DecryptionController extends AbstractController{
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             timer.setText(countdownTimer.getCurrentValue());
+            mainController.getCurrentLevel().setTimeInSec(Integer.parseInt(countdownTimer.getCurrentValue()));
             if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
                 mainController.switchWindow("Decryption.fxml");
                 time.stop();

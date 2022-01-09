@@ -13,13 +13,16 @@ public class MainController {
 	private PresentationManager fw;
 
 	private Level currentLevel;
-	protected boolean taskSucceeded;
+
+	protected boolean MultipleChoiceTaskSucceeded;
+
+	protected boolean DecryptionTaskSucceeded;
 
 	/**
 	 * Constractor of a MainController
 	 *
 	 * @param fw
-	 * @param currentLevel the current Level, whisch is played
+	 * @param currentLevel the current Level, which is played
 	 */
 	public MainController(PresentationManager fw, Level currentLevel) {
 		this.fw = fw;
@@ -33,8 +36,6 @@ public class MainController {
 	 */
 	public void runLevel() {
 		runDecryptionTask();
-		runEncryptionTask();
-		runMultipleChoice();
 	}
 
 	public Level getCurrentLevel() {
@@ -64,7 +65,11 @@ public class MainController {
 	 *
 	 */
 	private void runDecryptionTask() {
-
+		if (!currentLevel.decryptionIsFinished()) {
+			switchWindow("Decryption.fxml");
+		} else {
+			switchWindow("MultipleChoice.fxml");
+		}
 	}
 
 	/**
