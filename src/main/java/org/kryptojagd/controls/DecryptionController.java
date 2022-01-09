@@ -56,13 +56,13 @@ public class DecryptionController extends AbstractController{
     @FXML
     void klickVerfahren2(ActionEvent event) {
         System.out.println("Verfahren 2 wurde ausgewählt.");
-        mainController.switchWindow("WrongChoice.fxml");
+        mainController.switchWindow("TaskFinished.fxml");
     }
 
     @FXML
     void klickVerfahren3(ActionEvent event) {
         System.out.println("Verfahren 3 wurde ausgewählt.");
-        mainController.switchWindow("WrongChoice.fxml");
+        mainController.switchWindow("TaskFinished.fxml");
     }
 
     /**
