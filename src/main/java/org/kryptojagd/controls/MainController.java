@@ -6,7 +6,7 @@ import org.kryptojagd.presentation.PresentationManager;
 /**
  * The class controls every kind of controller and puts them together
  *
- * @author Micha, Sonja
+ * @author Micha, Sonja, Sven
  */
 public class MainController {
 	

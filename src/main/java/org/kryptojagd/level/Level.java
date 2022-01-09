@@ -10,7 +10,7 @@ import java.util.LinkedList;
 /**
  * The class describes a level in the game
  *
- * @author Sonja
+ * @author Sonja, Sven
  */
 public class Level {
 
