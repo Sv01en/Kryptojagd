@@ -27,9 +27,6 @@ public class DecryptionController extends AbstractController{
     private Label encryptedPuzzleText = new Label();
 
     @FXML
-    private Label frage = new Label();
-
-    @FXML
     private Button procedure1;
 
     @FXML
