@@ -18,6 +18,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 public class MultipleChoiceController extends AbstractController{
 
     private CountdownTimer countdownTimer;
+    private final Level level = mainController.getCurrentLevel();
 
     @FXML
     private Label timer = new Label();
@@ -33,8 +34,6 @@ public class MultipleChoiceController extends AbstractController{
 
     @FXML
     private Button answer3;
-
-    private final Level level = mainController.getCurrentLevel();
 
     /**
      * Initializes a MultipleChoiceController
@@ -52,25 +51,24 @@ public class MultipleChoiceController extends AbstractController{
         }
         this.countdownTimer = new CountdownTimer(20);
         updateTimer();
-        mainController.nextWindow = false;
     }
 
     @FXML
     void clickAnswer1(ActionEvent event) {
-        level.proofMultipleChoice(answer1.getText());
-        mainController.nextWindow = true;
+        mainController.taskSucceeded = level.proofMultipleChoice(answer1.getText());
+        mainController.switchWindow("TaskFinished.xml");
     }
 
     @FXML
     void clickAnswer2(ActionEvent event) {
-        level.proofMultipleChoice(answer2.getText());
-        mainController.nextWindow = true;
+        mainController.taskSucceeded = level.proofMultipleChoice(answer1.getText());
+        mainController.switchWindow("TaskFinished.xml");
     }
 
     @FXML
     void clickAnswer3(ActionEvent event) {
-        level.proofMultipleChoice(answer3.getText());
-        mainController.nextWindow = true;
+        mainController.taskSucceeded = level.proofMultipleChoice(answer1.getText());
+        mainController.switchWindow("TaskFinished.xml");
     }
 
     /**

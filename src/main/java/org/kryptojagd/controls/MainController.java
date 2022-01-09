@@ -15,7 +15,7 @@ public class MainController {
 	private PresentationManager fw;
 
 	private Level currentLevel;
-	protected boolean nextWindow;
+	protected boolean taskSucceeded;
 
 	public MainController(PresentationManager fw, Level currentLevel) {
 		this.fw = fw;
