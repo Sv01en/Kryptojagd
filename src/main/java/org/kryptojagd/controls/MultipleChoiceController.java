@@ -53,18 +53,36 @@ public class MultipleChoiceController extends AbstractController{
         updateTimer();
     }
 
+    /**
+     * when you click on the button answer1,
+     * it proves the answer and switches the window
+     *
+     * @param event
+     */
     @FXML
     void clickAnswer1(ActionEvent event) {
         mainController.taskSucceeded = level.proofMultipleChoice(answer1.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
+    /**
+     * when you click on the button answer2,
+     * it proves the answer and switches the window
+     *
+     * @param event
+     */
     @FXML
     void clickAnswer2(ActionEvent event) {
         mainController.taskSucceeded = level.proofMultipleChoice(answer2.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
+    /**
+     * when you click on the button answer3,
+     * it proves the answer and switches the window
+     *
+     * @param event
+     */
     @FXML
     void clickAnswer3(ActionEvent event) {
         mainController.taskSucceeded = level.proofMultipleChoice(answer3.getText());
