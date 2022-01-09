@@ -52,7 +52,6 @@ public class MainApp extends Application {
 			assert allLevels != null;
 			//ToDo: Structure of game, finish level, start next level
 			hs = new MainController(fw, allLevels.get(0));
-			hs.runLevel();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

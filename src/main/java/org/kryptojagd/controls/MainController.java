@@ -1,22 +1,26 @@
 package org.kryptojagd.controls;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
 
 /**
  * The class controls every kind of controller and puts them together
+ *
+ * @author Micha, Sonja
  */
 public class MainController {
 	
 	private PresentationManager fw;
 
 	private Level currentLevel;
-	protected boolean nextWindow;
+	protected boolean taskSucceeded;
 
+	/**
+	 * Constractor of a MainController
+	 *
+	 * @param fw
+	 * @param currentLevel the current Level, whisch is played
+	 */
 	public MainController(PresentationManager fw, Level currentLevel) {
 		this.fw = fw;
 		this.currentLevel = currentLevel;

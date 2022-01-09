@@ -19,20 +19,19 @@ public class LaunchWindowController extends AbstractController {
 
     @FXML
     void klickEinstellungen(ActionEvent event) {
-        //mainController.switchWindowWithCSS("Startfenster.fxml", "../css/Berlin.css");
+
     }
 
     @FXML
     void klickInfo(ActionEvent event) {
     	System.out.println("Es wurde auf Info geklickt!");
-    	mainController.switchWindowWithCSS("Infotext.fxml", "../css/startwindow.css");
+    	mainController.switchWindow("Infotext.fxml");
     }
 
     @FXML
     void klickStart(ActionEvent event) {
     	System.out.println("Es wurde auf Start geklickt!");
-    	//mainController.switchWindow("Entschluesselung.fxml");
-        mainController.switchWindowWithCSS("Decryption.fxml", "../css/Berlin.css");
+    	mainController.runLevel();
     }
     
    

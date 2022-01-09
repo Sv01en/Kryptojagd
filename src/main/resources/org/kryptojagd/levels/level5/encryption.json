@@ -1,11 +1,6 @@
 {
-	"plainText": "In dem Land gibt es eine Stadt mit großer historischer Bedeutung. Sie wurde nach einem Zwilling benannt und ist von sieben Huegeln umgeben.\nIn einem halb zerfallenen Amphitheater ist die Disk versteckt.\nDen Weg werdet ihr mit Sicherheit finden, schließlich sollen doch alle Wege in diese Stadt fuehren.",
-	"encryptionMethod":"Beaufort Verschlüsselung",
-	"answerOptionsEncryption":["AES Verschlüsselung", "Beaufort Verschlüsselung", "Cäsar Verschlüsselung"],
-	"correctAnswerEncryption":1,
-	"answerOptionsCity":["Budapest", "Zürich", "Rom"],
-	"correctAnswerCity":2,
-	"textAfterStart":"Ihr seid gerade in Rom gelandet.\nAber eure Erzfeindin Eve ist euch immer noch auf den Fersen.\nAlso verschiebt den Espresso auf ein Anderes Mal, denn ihr müsst euch beeilen, damit Eve euch nicht zuvorkommt.\nSCHNELL!",
+	"task":"Verschlüssle den folgenden Text mit dem Vigenère Verfahren. Der Schlüssel lautet 'Fernsehturm':",
+	"text":"Fuenfte Floppy-Disk gefunden",
 	"timeInSec": 300
 }
 
