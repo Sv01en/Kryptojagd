@@ -14,6 +14,7 @@ public class MainController {
 	
 	private PresentationManager fw;
 
+	private ArrayList<Level> allLevels;
 	private Level currentLevel;
 	protected boolean taskSucceeded;
 
@@ -33,12 +34,16 @@ public class MainController {
 		runMultipleChoice();
 	}
 
-	public Level getCurrentLevel() {
-		return currentLevel;
-	}
-
 	public void switchWindow(String str) {
 		fw.switchWindow(str);
+	}
+
+	public void switchWindowWithCSS(String path, String css) {
+		fw.switchWindowWithCSS(path, css);
+	}
+
+	public Level getCurrentLevel() {
+		return currentLevel;
 	}
 
 	/**

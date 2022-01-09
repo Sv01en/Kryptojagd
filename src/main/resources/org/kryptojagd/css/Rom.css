@@ -1,0 +1,15 @@
+#box{
+
+    -fx-background-size: cover;
+    -fx-background-position: bottom, bottom, bottom, bottom, bottom, bottom;
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-image: url("../../../img/Rom.png");
+}
+
+.label {
+    -fx-label-padding: 10,10,10,10;
+    -fx-background-color: white;
+    -fx-text-fill: black;
+
+}
