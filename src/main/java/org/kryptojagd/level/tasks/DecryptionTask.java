@@ -1,5 +1,7 @@
 package org.kryptojagd.level.tasks;
 
+import java.util.Arrays;
+
 /**
  * The class describes a task, where you have to decrypt text
  *

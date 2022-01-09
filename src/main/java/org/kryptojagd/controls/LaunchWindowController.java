@@ -32,7 +32,7 @@ public class LaunchWindowController extends AbstractController {
     void klickStart(ActionEvent event) {
     	System.out.println("Es wurde auf Start geklickt!");
     	//mainController.switchWindow("Entschluesselung.fxml");
-        mainController.switchWindowWithCSS("Entschluesselung.fxml", "../css/Berlin.css");
+        mainController.switchWindowWithCSS("Decryption.fxml", "../css/Berlin.css");
     }
     
    

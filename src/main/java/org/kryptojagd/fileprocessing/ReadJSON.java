@@ -7,14 +7,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.google.gson.JsonArray;
+import com.google.gson.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -65,7 +62,6 @@ public class ReadJSON {
 	 * @return
 	 */
 	public static EncryptionTask createEncryptionTask(String path) {
-		
 		EncryptionTask encryptionTask;
 		try {
 			Object obj2 = parser.parse(new FileReader(path));
@@ -92,15 +88,13 @@ public class ReadJSON {
 	 * @return
 	 */
 	public static DecryptionTask createDecryptionTask(String path) {
-
+		DecryptionTask decryptionTask = null;
 			try {
-				DecryptionTask decryptionTask;
 				Object obj2 = parser.parse(new FileReader(path));
 				decryptionTask = gson.fromJson(obj2.toString(), DecryptionTask.class);
-				return decryptionTask;
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				System.out.println("Datei wurde nicht gefunden!");
+				System.out.println("Decryption Datei wurde nicht gefunden!");
 				// e.printStackTrace();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -109,8 +103,7 @@ public class ReadJSON {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			return null;
+		return decryptionTask;
 	}
 	
 	public static int readTime(String path) {

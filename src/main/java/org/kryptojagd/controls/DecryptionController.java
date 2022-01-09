@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
-import org.kryptojagd.level.tasks.DecryptionTask;
 
 /**
  * The class controls a window of a decryption task.

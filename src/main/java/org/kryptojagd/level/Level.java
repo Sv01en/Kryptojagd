@@ -38,7 +38,7 @@ public class Level {
 	}
 
 	public DecryptionTask getDecryptionTask() {
-		return decryptionTask;
+		return this.decryptionTask;
 	}
 
 	public EncryptionTask getEncryptionTask() {
