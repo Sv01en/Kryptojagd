@@ -88,9 +88,4 @@ public class DecryptionController extends AbstractController{
         time.getKeyFrames().add(frame);
         time.playFromStart();
     }
-
-    @FXML
-    private void handleDescryptionTask() {
-
-    }
 }
