@@ -51,7 +51,8 @@ public class TaskFinishedController extends AbstractController{
 	}
 
 	/**
-	 * and switches the window to the end of the level
+	 * Switches the window to the end of the level, if every question of a level is answered
+	 * otherwise switches to the next multiple choice question
 	 *
 	 * @param event
 	 */
