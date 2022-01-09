@@ -14,13 +14,12 @@ public class MainController {
 	
 	private PresentationManager fw;
 
-	private ArrayList<Level> allLevels;
 	private Level currentLevel;
+	protected boolean taskSucceeded;
 
-	public MainController(PresentationManager fw, ArrayList<Level> levels) {
+	public MainController(PresentationManager fw, Level currentLevel) {
 		this.fw = fw;
-		this.allLevels = levels;
-		this.currentLevel = levels.get(1);
+		this.currentLevel = currentLevel;
 		AbstractController.setMainController(this);
 	}
 
@@ -34,12 +33,12 @@ public class MainController {
 		runMultipleChoice();
 	}
 
-	public void switchWindow(String str) {
-		fw.switchWindow(str);
-	}
-
 	public Level getCurrentLevel() {
 		return currentLevel;
+	}
+
+	public void switchWindow(String str) {
+		fw.switchWindow(str);
 	}
 
 	/**
@@ -63,12 +62,12 @@ public class MainController {
 	/**
 	 * Runs the multiple choice tasks
 	 *
-	 * If every multiple choice task is answered, it switches the window to the leveEnd
+	 * If every multiple choice task is answered, it switches the window to the levelEnd
 	 * if not, it switches the window to a new multiple choice task
 	 *
 	 */
 	private void runMultipleChoice(){
-		if(!currentLevel.multipleChoiceIsFinished()) {
+		if (!currentLevel.multipleChoiceIsFinished()) {
 			switchWindow("MultipleChoice.fxml");
 		} else {
 			switchWindow("Levelabschluss.fxml");
