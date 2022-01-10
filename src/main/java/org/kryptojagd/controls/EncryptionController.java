@@ -27,10 +27,10 @@ public class EncryptionController extends AbstractController {
 
     @FXML
     void checkEncryption(ActionEvent event) {
-        if (textField1.getText().equals(level.getEncryptionTask().getEncryption().enccode(level.getEncryptionTask().getText(), level.getEncryptionTask().getKey()))) {
+        if (textField1.getText().equals(level.getEncryptionTask().getEncryption().encode(level.getEncryptionTask().getText(), level.getEncryptionTask().getKey()))) {
            // System.out.println(textField1.getText());
         } else {
-            System.out.println(textField1.getText());
+            System.out.println(level.getEncryptionTask().getEncryption());
         }
     }
     public void initialize() {

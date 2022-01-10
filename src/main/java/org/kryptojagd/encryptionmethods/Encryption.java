@@ -3,7 +3,7 @@ package org.kryptojagd.encryptionmethods;
 //redundant class, because we are not sure if we use interface or abstract class
 public abstract class Encryption {
 
-    static String encode(String text, String key) {
+    public static String encode(String text, String key) {
         return null;
     }
 
@@ -11,7 +11,5 @@ public abstract class Encryption {
         return null;
     }
 
-    public String enccode(String text, String key) {
-        return null;
-    }
+
 }

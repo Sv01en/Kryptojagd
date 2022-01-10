@@ -36,6 +36,7 @@ public class EncryptionTask implements Task {
     public String getText() {
         return text;
     }
+
     public Encryption getEncryption(){
        return encryptionType;
     }
