@@ -5,7 +5,7 @@ package org.kryptojagd.encryptionmethods;
  *
  * @author Leah Schlimm
 */
-public class Beaufort implements EncryptionInterface {
+public class Beaufort extends Encryption {
 
 
     private static final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * 
  * @author Leah Schlimm
  */
-public class Backwards implements EncryptionInterface {
+public class Backwards extends Encryption {
 
     /**
      * Encrypts a text using word wise reverse encryption
