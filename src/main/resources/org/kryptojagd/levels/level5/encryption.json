@@ -1,6 +1,8 @@
 {
 	"task":"Verschlüssle den folgenden Text mit dem Vigenère Verfahren. Der Schlüssel lautet 'Fernsehturm':",
 	"text":"Fuenfte Floppy-Disk gefunden",
+	"encryptionTyp": "Beaufort",
+	"key": "Fernsehturm",
 	"timeInSec": 300
 }
 

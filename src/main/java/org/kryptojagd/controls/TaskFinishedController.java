@@ -26,11 +26,11 @@ public class TaskFinishedController extends AbstractController{
 
 	/**
 	 * Initializes a TaskFinishedController
-	 *
+	 * <p></p>
 	 * Gives the right feedback to a multipleChoice and switches the window.
-	 *
-	 * If the answer was right, it prints out "Richtig, weiter so!"
-	 * If the answer was wrong, it prints out "Leider falsch, versuche es noch einmal. Du musst dich beeilen!"
+	 *<p></p>
+	 * If the answer was right, it prints out "Richtig, weiter so!"<p></p>
+	 * If the answer was wrong, it prints out "Leider falsch, versuche es noch einmal. Du musst dich beeilen!"<p></p>
 	 * in both cases it switchs to a new multiple choice window
 	 * if every question of a level is answered, it prints out "Glückwunsch, du hast alle Fragen richtig beantwortet!"
 	 *
@@ -40,7 +40,7 @@ public class TaskFinishedController extends AbstractController{
 		this.countdownTimer = new CountdownTimer(20);
 		updateTimer();
 		if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
-			if (mainController.taskSucceeded) {
+			if (mainController.MultipleChoiceTaskSucceeded) {
 				feedbackText.setText("Richtig, weiter so!");
 			} else {
 				feedbackText.setText("Leider falsch, versuche es noch einmal. Du musst dich beeilen!");
@@ -50,12 +50,6 @@ public class TaskFinishedController extends AbstractController{
 		}
 	}
 
-	/**
-	 * Switches the window to the end of the level, if every question of a level is answered
-	 * otherwise switches to the next multiple choice question
-	 *
-	 * @param event
-	 */
 	 @FXML
 	 void switchMultipleChoice(ActionEvent event) {
 	 	if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
@@ -76,7 +70,7 @@ public class TaskFinishedController extends AbstractController{
 		KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
 			timer.setText(countdownTimer.getCurrentValue());
 			if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
-				mainController.switchWindow("Entschluesselung.fxml");
+				mainController.switchWindow("MultipleChoice.fxml");
 				time.stop();
 			}
 		});

@@ -49,25 +49,43 @@ public class MultipleChoiceController extends AbstractController{
         answer1.setText(possibilities[0]);
         answer2.setText(possibilities[1]);
         answer3.setText(possibilities[2]);
-        this.countdownTimer = new CountdownTimer(20);
+        this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer();
     }
 
+    /**
+     * when you click on the button answer1,
+     * it proves the answer and switches the window
+     *
+     * @param event
+     */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        mainController.taskSucceeded = level.proofMultipleChoice(answer1.getText());
+        mainController.MultipleChoiceTaskSucceeded = level.proofMultipleChoice(answer1.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
+    /**
+     * when you click on the button answer2,
+     * it proves the answer and switches the window
+     *
+     * @param event
+     */
     @FXML
     void clickAnswer2(ActionEvent event) {
-        mainController.taskSucceeded = level.proofMultipleChoice(answer2.getText());
+        mainController.MultipleChoiceTaskSucceeded = level.proofMultipleChoice(answer2.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
+    /**
+     * when you click on the button answer3,
+     * it proves the answer and switches the window
+     *
+     * @param event
+     */
     @FXML
     void clickAnswer3(ActionEvent event) {
-        mainController.taskSucceeded = level.proofMultipleChoice(answer3.getText());
+        mainController.MultipleChoiceTaskSucceeded = level.proofMultipleChoice(answer3.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
@@ -81,8 +99,9 @@ public class MultipleChoiceController extends AbstractController{
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             timer.setText(countdownTimer.getCurrentValue());
+            mainController.getCurrentLevel().setTimeInSec(Integer.parseInt(countdownTimer.getCurrentValue()));
             if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
-                mainController.switchWindow("Entschluesselung.fxml");
+                mainController.switchWindow("Decryption.fxml");
                 time.stop();
             }
         });

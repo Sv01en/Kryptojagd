@@ -3,9 +3,9 @@ package org.kryptojagd.encryptionmethods;
 /**
  * Provides methods for encrypting and decrypting texts with the Caesar encryption
  *
- * @author Leah Schlimm
+ * @author Leah Schlimm, Sven
  */
-public class Caesar implements EncryptionInterface {
+public class Caesar extends Encryption {
 
     /**
      * Generates a random number between 1 and 25
@@ -22,7 +22,7 @@ public class Caesar implements EncryptionInterface {
      * @param text Text to be encrypted
      * @return Encrypted text in uppercase
      */
-    public static String encode(String text) {
+    public String encode(String text) {
 
         // key zwischen [1,26), damit 0 nicht als Schluessel verwendet wird
         int key = generateKey();
@@ -36,7 +36,7 @@ public class Caesar implements EncryptionInterface {
      * @param key Passed key
      * @return Encrypted text in uppercase
      */
-    public static String encode(String text, int key) {
+    public String encode(String text, int key) {
 
         if (key < 0 || key > 26) {
             return text.toUpperCase();
@@ -60,7 +60,7 @@ public class Caesar implements EncryptionInterface {
      * @param key Passed key
      * @return Deciphered text in uppercase
      */
-    public static String decode(String text, int key) {
+    public String decode(String text, int key) {
         
         if (key < 0 || key > 26) {
             return text.toUpperCase();

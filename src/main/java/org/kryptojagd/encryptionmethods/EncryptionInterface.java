@@ -3,7 +3,11 @@ package org.kryptojagd.encryptionmethods;
 /**
  * Interface for encryption procedures
  *
- * @author Leah Schlimm
+ * @author Leah Schlimm, Sven Strasser
+ *
+ *<pre>
+ * NOT USED ANYMORE
+ * </pre>
  */
 public interface EncryptionInterface {
 
@@ -26,4 +30,8 @@ public interface EncryptionInterface {
     static String decode(String text, String key) {
         return null;
     }
+
+    public String provideEncode(String text, String key);
+
+    public String provideDecode(String text, String key);
 }

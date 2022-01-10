@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <BorderPane id="box" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.DecryptionController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="verschluesselterRaetseltext" text="Verschlüsselter Rätseltext" />
-            <Label fx:id="frage" text="Um welches Verschlüsselungsverfahren handelt es sich?" />
+            <Label fx:id="encryptedPuzzleText"/>
+            <Label fx:id="question" text="Um welches Verschlüsselungsverfahren handelt es sich?" />
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button fx:id="verfahren1" mnemonicParsing="false" onAction="#klickVerfahren1" text="Verfahren 1" />
-                  <Button fx:id="verfahren2" mnemonicParsing="false" onAction="#klickVerfahren2" text="Verfahren 2" />
-                  <Button fx:id="verfahren3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#klickVerfahren3" text="Verfahren 3" />
+                  <Button fx:id="procedure1" mnemonicParsing="false" onAction="#clickProcedure1" text="Verfahren 1" />
+                  <Button fx:id="procedure2" mnemonicParsing="false" onAction="#clickProcedure2" text="Verfahren 2" />
+                  <Button fx:id="procedure3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickProcedure3" text="Verfahren 3" />
                </children>
             </HBox>
          </children>
