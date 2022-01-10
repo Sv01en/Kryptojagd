@@ -18,6 +18,8 @@ public class MainController {
 
 	protected boolean DecryptionTaskSucceeded;
 
+	protected boolean EncryptionTaskSucceeded;
+
 	/**
 	 * Constractor of a MainController
 	 *

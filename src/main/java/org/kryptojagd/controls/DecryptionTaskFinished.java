@@ -57,7 +57,7 @@ public class DecryptionTaskFinished extends AbstractController{
     @FXML
     void switchMultipleChoice(ActionEvent event) {
         if (mainController.getCurrentLevel().decryptionIsFinished()) {
-            mainController.switchWindow("MultipleChoice.fxml");
+            mainController.switchWindow("Encryption.fxml");
         } else {
             mainController.switchWindow("Decryption.fxml");
         }

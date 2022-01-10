@@ -15,4 +15,8 @@ public abstract class Encryption {
    public String decode(String text, String key) {
         return null;
     }
+
+    public String enccode(String text, String key) {
+        return null;
+    }
 }
