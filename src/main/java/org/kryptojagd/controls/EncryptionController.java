@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.kryptojagd.encryptionmethods.Backwards;
 import org.kryptojagd.level.Level;
 
 
@@ -28,10 +29,11 @@ public class EncryptionController extends AbstractController {
 
     @FXML
     void checkEncryption(ActionEvent event) {
-        if (textField1.getText().equals(level.getEncryptionTask().getEncryption().encode(level.getEncryptionTask().getText(), level.getEncryptionTask().getKey()))) {
-           // System.out.println(textField1.getText());
+        level.proveEncryptionMethod(level.getEncryptionTask().getEncryption());
+        if (textField1.getText().equals(level.getEncryptionTask().getEncryptionMethod().encode(level.getEncryptionTask().getText(), level.getEncryptionTask().getKey()))) {
+            System.out.println("Jausa");
         } else {
-            System.out.println(level.getEncryptionTask().getEncryption());
+            System.out.println("Scheiße!");
         }
     }
     public void initialize() {

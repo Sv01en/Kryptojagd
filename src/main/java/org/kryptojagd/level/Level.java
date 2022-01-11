@@ -1,5 +1,6 @@
 package org.kryptojagd.level;
 
+import org.kryptojagd.encryptionmethods.*;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
@@ -10,13 +11,17 @@ import java.util.LinkedList;
 /**
  * The class describes a level in the game
  *
- * @author Sonja, Sven
+ * @author Sonja, Sven, Amelie, Bartosz
  */
 public class Level {
 
 	private DecryptionTask decryptionTask;
 	private EncryptionTask encryptionTask;
 	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
+	private Backwards backwards;
+	private Caesar caesar;
+	private Vigenere vigenere;
+	private Beaufort beaufort;
 	private boolean isRunning;
 	private int timeInSec;
 	private int id;
@@ -74,6 +79,27 @@ public class Level {
 	public boolean proofDecryptionTask(String answer) {
 		System.out.println(this.decryptionTask.proofAnswer(answer));
 		return this.decryptionTask.proofAnswer(answer);
+	}
+
+	public void proveEncryptionMethod(String encryptionMethod){
+		switch (encryptionMethod){
+			case "Backwards":
+				encryptionTask.setEncryptionMethod(backwards);
+				break;
+			case ("Caesar"):
+				encryptionTask.setEncryptionMethod(caesar);
+				break;
+			case("Vigenere"):
+				encryptionTask.setEncryptionMethod(vigenere);
+				break;
+			case("Beaufort"):
+				encryptionTask.setEncryptionMethod(beaufort);
+				break;
+			default:
+				System.out.println("Error while trying to get Encryption.");
+				break;
+		}
+
 	}
 
 	/**
