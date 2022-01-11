@@ -3,7 +3,7 @@ package org.kryptojagd.encryptionmethods;
 /**
 * Provides methods for encrypting and decrypting texts with Beaufort encryption
  *
- * @author Leah Schlimm
+ * @author Leah Schlimm, Sven
 */
 public class Beaufort extends Encryption {
 
@@ -35,7 +35,7 @@ public class Beaufort extends Encryption {
      * @param text Text to be encrypted
      * @return Encrypted text in uppercase
      */
-    public static String encode(String text) {
+    public String encode(String text) {
         String key = "";
 
         int keyLength = keyLength();
@@ -53,7 +53,7 @@ public class Beaufort extends Encryption {
      * @param key Text to be encrypted
      * @return Encrypted text in uppercase
      */
-    public static String encode(String text, String key) {
+    public String encode(String text, String key) {
  
         String encodedText = "";
 
@@ -90,7 +90,7 @@ public class Beaufort extends Encryption {
      * @param key Passed key
      * @return Deciphered text
      */
-    public static String decode(String text, String key) {
+    public String decode(String text, String key) {
  
         String decodedText = "";
 
@@ -160,5 +160,4 @@ public class Beaufort extends Encryption {
         }
         return -1;
     }
-
 }

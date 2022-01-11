@@ -18,6 +18,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 public class MultipleChoiceController extends AbstractController{
 
     private CountdownTimer countdownTimer;
+    private final Level level = mainController.getCurrentLevel();
 
     @FXML
     private Label timer = new Label();
@@ -34,8 +35,6 @@ public class MultipleChoiceController extends AbstractController{
     @FXML
     private Button answer3;
 
-    private final Level level = mainController.getCurrentLevel();
-
     /**
      * Initializes a MultipleChoiceController
      *
@@ -47,27 +46,47 @@ public class MultipleChoiceController extends AbstractController{
     public void initialize(){
         QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
         String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
-        for (String answer : possibilities) {
-            answer1.setText(answer);
-        }
-        this.countdownTimer = new CountdownTimer(20);
+        answer1.setText(possibilities[0]);
+        answer2.setText(possibilities[1]);
+        answer3.setText(possibilities[2]);
+        this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer();
     }
 
-
+    /**
+     * when you click on the button answer1,
+     * it proves the answer and switches the window
+     *
+     * @param event
+     */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        level.proofMultipleChoice(answer1.getText());
+        mainController.MultipleChoiceTaskSucceeded = level.proofMultipleChoice(answer1.getText());
+        mainController.switchWindow("TaskFinished.fxml");
     }
 
+    /**
+     * when you click on the button answer2,
+     * it proves the answer and switches the window
+     *
+     * @param event
+     */
     @FXML
     void clickAnswer2(ActionEvent event) {
-        level.proofMultipleChoice(answer2.getText());
+        mainController.MultipleChoiceTaskSucceeded = level.proofMultipleChoice(answer2.getText());
+        mainController.switchWindow("TaskFinished.fxml");
     }
 
+    /**
+     * when you click on the button answer3,
+     * it proves the answer and switches the window
+     *
+     * @param event
+     */
     @FXML
     void clickAnswer3(ActionEvent event) {
-        level.proofMultipleChoice(answer3.getText());
+        mainController.MultipleChoiceTaskSucceeded = level.proofMultipleChoice(answer3.getText());
+        mainController.switchWindow("TaskFinished.fxml");
     }
 
     /**
@@ -80,8 +99,9 @@ public class MultipleChoiceController extends AbstractController{
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             timer.setText(countdownTimer.getCurrentValue());
+            mainController.getCurrentLevel().setTimeInSec(Integer.parseInt(countdownTimer.getCurrentValue()));
             if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
-                mainController.switchWindow("Entschluesselung.fxml");
+                mainController.switchWindow("Decryption.fxml");
                 time.stop();
             }
         });

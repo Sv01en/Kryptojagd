@@ -3,7 +3,7 @@ package org.kryptojagd.encryptionmethods;
 /**
  * Provides methods for encrypting and decrypting texts with Vigenere encryption
  *
- * @author Leah Schlimm
+ * @author Leah Schlimm, Sven
  */
 public class Vigenere extends Encryption {
 
@@ -33,7 +33,7 @@ public class Vigenere extends Encryption {
      * @param text Text to be encrypted
      * @return Encrypted text in uppercase
      */
-    public static String encode(String text) {
+    public String encode(String text) {
         String key = "";
 
         int keyLength = keyLength();
@@ -51,7 +51,7 @@ public class Vigenere extends Encryption {
      * @param key Passed key
      * @return encode method that accepts unencrypted text and keys
      */
-    public static String encode(String text, String key) {
+    public String encode(String text, String key) {
         
         String encodedText = "";
 
@@ -91,7 +91,7 @@ public class Vigenere extends Encryption {
      * @param key Passed key
      * @return Decrypted text
      */
-    public static String decode(String text, String key) {
+    public String decode(String text, String key) {
  
         String decodedText = "";
 

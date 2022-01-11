@@ -10,7 +10,7 @@ import java.util.LinkedList;
 /**
  * The class describes a level in the game
  *
- * @author Sonja
+ * @author Sonja, Sven
  */
 public class Level {
 
@@ -38,7 +38,7 @@ public class Level {
 	}
 
 	public DecryptionTask getDecryptionTask() {
-		return decryptionTask;
+		return this.decryptionTask;
 	}
 
 	public EncryptionTask getEncryptionTask() {
@@ -71,6 +71,11 @@ public class Level {
 		return true;
 	}
 
+	public boolean proofDecryptionTask(String answer) {
+		System.out.println(this.decryptionTask.proofAnswer(answer));
+		return this.decryptionTask.proofAnswer(answer);
+	}
+
 	/**
 	 * Proofs, if every multiple choice task is answered
 	 *
@@ -78,6 +83,10 @@ public class Level {
 	 */
 	public boolean multipleChoiceIsFinished() {
 		return this.multipleChoiceTasks.isEmpty();
+	}
+
+	public boolean decryptionIsFinished() {
+		return this.decryptionTask.getCorrectAnswer();
 	}
 
 	private void isFinished() {
@@ -95,7 +104,14 @@ public class Level {
 	public int getId() {
 		return id;
 	}
-	
+
+	public int getTimeInSec() {
+		return this.timeInSec;
+	}
+
+	public void setTimeInSec(int given) {
+		this.timeInSec = given;
+	}
 
 }
 
