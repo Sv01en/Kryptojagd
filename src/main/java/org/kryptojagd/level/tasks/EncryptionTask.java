@@ -12,7 +12,8 @@ public class EncryptionTask implements Task {
     private String text;
     private String key;
     //private Encryption encryption;
-    private Encryption encryptionType;
+    // private Encryption encryptionType;
+    private String encryptionType;
 
     /**
      * Creates a {@link EncryptionTask}
@@ -20,7 +21,7 @@ public class EncryptionTask implements Task {
      * @param encryption the encryption, in which you have to encrypt the text
      *
      */
-    public EncryptionTask(String task, String text,Encryption encryptionType, String key){//} Encryption encryption) {
+    public EncryptionTask(String task, String text,String encryptionType, String key){//} Encryption encryption) {
 
         this.encryptionType = encryptionType;
         this.task = task;
@@ -38,7 +39,8 @@ public class EncryptionTask implements Task {
     }
 
     public Encryption getEncryption(){
-       return encryptionType;
+       // return encryptionType;
+       return null;
     }
     public String getKey(){
         return key;

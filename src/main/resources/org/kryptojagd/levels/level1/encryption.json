@@ -2,6 +2,6 @@
 {
 	"task":"Verschlüssle den folgenden Text mit dem Rückwärtsverschlüsselungsverfahren:",
 	"text":"Erste Floppy-Disk gefunden",
-	"encryptionTyp": "Backwards",
+	"encryptionType": "Backwards",
 	"timeInSec": 300
 }
