@@ -38,7 +38,7 @@ public class EncryptionController extends AbstractController {
         if (textField1.getText().equals(level.getEncryptionTask().getEncryptionMethod().
                 encode(level.getEncryptionTask().getText(), level.getEncryptionTask().getKey()))) {
             System.out.println("Super, das hat geklappt!");
-
+            mainController.switchWindow("MultipleChoice.fxml");
         } else {
             System.out.println("Probiere es nochmal");
         }
