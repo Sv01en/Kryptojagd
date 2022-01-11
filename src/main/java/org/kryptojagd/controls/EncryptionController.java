@@ -1,18 +1,16 @@
 package org.kryptojagd.controls;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.kryptojagd.encryptionmethods.Backwards;
 import org.kryptojagd.level.Level;
 
 /**
- * Encryption Controller for the corresponding fxml-file
+ * The class controls a window of a Encryption task.
  *
- * @author Amelie, Bartok, Sven
+ * @author Amelie, Bartosz, Sven
  * @version 1.0
  */
 public class EncryptionController extends AbstractController {
@@ -32,6 +30,11 @@ public class EncryptionController extends AbstractController {
     private final Level level = mainController.getCurrentLevel();
 
 
+    /**
+     * Check if user input is correctly encrypted.
+     *
+     * @param event the event
+     */
     @FXML
     void checkEncryption(ActionEvent event) {
         level.proveEncryptionMethod(level.getEncryptionTask().getEncryption());
@@ -43,9 +46,12 @@ public class EncryptionController extends AbstractController {
             System.out.println("Probiere es nochmal");
         }
     }
+
+    /**
+     * Initializes a encryption task.
+     */
     public void initialize() {
         label1.setText(level.getEncryptionTask().getTask());
         label2.setText(level.getEncryptionTask().getText());
     }
-
 }

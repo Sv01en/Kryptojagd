@@ -38,10 +38,20 @@ public class Level {
 		this.isRunning = true;
 	}
 
+	/**
+	 * Gets decryption task.
+	 *
+	 * @return the decryption task
+	 */
 	public DecryptionTask getDecryptionTask() {
 		return this.decryptionTask;
 	}
 
+	/**
+	 * Gets encryption task.
+	 *
+	 * @return the encryption task
+	 */
 	public EncryptionTask getEncryptionTask() {
 		return encryptionTask;
 	}
@@ -65,20 +75,31 @@ public class Level {
 	 * 			false, if the answer is true
 	 */
 	public boolean proofMultipleChoice(String answer) {
-		if(!this.multipleChoiceTasks.getFirst().proofAnswer(answer)) {
+		if (!this.multipleChoiceTasks.getFirst().proofAnswer(answer)) {
 			return false;
 		}
 		this.multipleChoiceTasks.pop();
 		return true;
 	}
 
+	/**
+	 * Proof decryption task boolean.
+	 *
+	 * @param answer the answer
+	 * @return the boolean
+	 */
 	public boolean proofDecryptionTask(String answer) {
 		System.out.println(this.decryptionTask.proofAnswer(answer));
 		return this.decryptionTask.proofAnswer(answer);
 	}
 
-	public void proveEncryptionMethod(String encryptionMethod){
-		switch (encryptionMethod){
+	/**
+	 * Prove which encryption method is given in JSON and initializes encryption method.
+	 *
+	 * @param encryptionMethod the encryption method
+	 */
+	public void proveEncryptionMethod(String encryptionMethod) {
+		switch (encryptionMethod) {
 			case "Backwards":
 				encryptionTask.setEncryptionMethod(new Backwards());
 				break;
