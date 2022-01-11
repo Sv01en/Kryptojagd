@@ -18,10 +18,6 @@ public class Level {
 	private DecryptionTask decryptionTask;
 	private EncryptionTask encryptionTask;
 	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
-	private Backwards backwards;
-	private Caesar caesar;
-	private Vigenere vigenere;
-	private Beaufort beaufort;
 	private boolean isRunning;
 	private int timeInSec;
 	private int id;
@@ -84,16 +80,16 @@ public class Level {
 	public void proveEncryptionMethod(String encryptionMethod){
 		switch (encryptionMethod){
 			case "Backwards":
-				encryptionTask.setEncryptionMethod(backwards);
+				encryptionTask.setEncryptionMethod(new Backwards());
 				break;
 			case ("Caesar"):
-				encryptionTask.setEncryptionMethod(caesar);
+				encryptionTask.setEncryptionMethod(new Caesar());
 				break;
 			case("Vigenere"):
-				encryptionTask.setEncryptionMethod(vigenere);
+				encryptionTask.setEncryptionMethod(new Vigenere());
 				break;
 			case("Beaufort"):
-				encryptionTask.setEncryptionMethod(beaufort);
+				encryptionTask.setEncryptionMethod(new Beaufort());
 				break;
 			default:
 				System.out.println("Error while trying to get Encryption.");
