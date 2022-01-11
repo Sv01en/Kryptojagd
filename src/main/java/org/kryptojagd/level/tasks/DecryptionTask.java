@@ -1,5 +1,7 @@
 package org.kryptojagd.level.tasks;
 
+import org.kryptojagd.encryptionmethods.Encryption;
+
 import java.util.Arrays;
 
 /**
@@ -12,6 +14,8 @@ public class DecryptionTask implements Task {
 	private String plainText;
 
 	private String encryptionMethod;
+
+	private Encryption encryptionMethod1;
 
 	private String[] answerOptionsEncryption;
 
@@ -66,4 +70,8 @@ public class DecryptionTask implements Task {
 	public boolean getCorrectAnswer() {
 		return this.correctAnswer;
 	}
- }
+
+	public void setEncryptionMethod(String encryptionMethod) {
+		this.encryptionMethod = encryptionMethod;
+	}
+}
