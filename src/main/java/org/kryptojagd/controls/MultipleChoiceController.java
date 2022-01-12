@@ -98,9 +98,8 @@ public class MultipleChoiceController extends AbstractController{
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(countdownTimer.getCurrentValue());
-            mainController.getCurrentLevel().setTimeInSec(Integer.parseInt(countdownTimer.getCurrentValue()));
-            if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
+            timer.setText(Integer.toString(level.getTimeInSec()));
+            if (level.getTimeInSec() == 0) {
                 mainController.switchWindow("Decryption.fxml");
                 time.stop();
             }
