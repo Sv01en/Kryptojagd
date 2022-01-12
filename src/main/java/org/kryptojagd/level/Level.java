@@ -69,6 +69,7 @@ public class Level {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 			return false;
 		}
+		//TODO: last multiplechoice questions not appear
 		this.multipleChoiceTasks.pop();
 		return true;
 	}
@@ -81,12 +82,10 @@ public class Level {
 	}
 
 	public boolean proveEncryptionTask(String answer) {
-		if (answer.equals(this.encryptionTask.getEncryptionMethod().
-				encode(this.encryptionTask.getText(), this.encryptionTask.getKey()))) {
+		if (this.encryptionTask.proofAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 		}
-		return answer.equals(this.encryptionTask.getEncryptionMethod().
-				encode(this.encryptionTask.getText(), this.encryptionTask.getKey()));
+		return this.encryptionTask.proofAnswer(answer);
 	}
 
 	private void proveEncryptionMethod(String encryptionMethod){
@@ -115,7 +114,8 @@ public class Level {
 	 * @return true, if there is no more multiple choice task
 	 */
 	public boolean multipleChoiceIsFinished() {
-		return this.multipleChoiceTasks.isEmpty();
+		//TODO: just for testing, TODO above
+		return this.multipleChoiceTasks.size() <= 1;
 	}
 
 	public boolean decryptionIsFinished() {

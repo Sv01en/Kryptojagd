@@ -16,8 +16,6 @@ import org.kryptojagd.level.countdown.CountdownTimer;
  */
 public class TaskFinishedController extends AbstractController{
 
-	private CountdownTimer countdownTimer;
-
 	@FXML
 	private Label timer = new Label();
 
@@ -37,7 +35,6 @@ public class TaskFinishedController extends AbstractController{
 	 */
 	@FXML
 	public void initialize(){
-		this.countdownTimer = new CountdownTimer(20);
 		updateTimer();
 		if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
 			if (mainController.MultipleChoiceTaskSucceeded) {
@@ -55,7 +52,7 @@ public class TaskFinishedController extends AbstractController{
 	 	if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
 			mainController.switchWindow("MultipleChoice.fxml");
 		} else {
-			mainController.switchWindow("Levelabschluss.fxml");
+			mainController.switchWindow("Startfenster.fxml");
 		}
 	 }
 
@@ -68,9 +65,9 @@ public class TaskFinishedController extends AbstractController{
 		time.setCycleCount(Timeline.INDEFINITE);
 		time.stop();
 		KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-			timer.setText(countdownTimer.getCurrentValue());
-			if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
-				mainController.switchWindow("MultipleChoice.fxml");
+			timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
+			if (mainController.getCurrentLevel().getTimeInSec() == 0) {
+				mainController.switchWindow("Decryption.fxml");
 				time.stop();
 			}
 		});
