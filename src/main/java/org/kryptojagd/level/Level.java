@@ -1,10 +1,10 @@
 package org.kryptojagd.level;
 
 import org.kryptojagd.encryptionmethods.*;
+import org.kryptojagd.level.countdown.CountdownTimer;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
-import org.kryptojagd.level.tasks.Task;
 
 import java.util.LinkedList;
 
@@ -21,6 +21,7 @@ public class Level {
 	private boolean isRunning;
 	private int timeInSec;
 	private int id;
+	private CountdownTimer countdownTimer;
 
 	/**
 	 * Creates a {@link Level}
@@ -46,12 +47,6 @@ public class Level {
 		return encryptionTask;
 	}
 
-	/**
-	 * TODO: Now the removes the used task. Otherwise every time it provides the same question
-	 * @author Sonja Kuklok, modified by Sven Strasser
-	 *
-	 * @return
-	 */
 	public MultipleChoiceTask getCurrentMultipleChoiceTask() {
 		return multipleChoiceTasks.getFirst();
 	}
@@ -128,14 +123,20 @@ public class Level {
 	}
 
 	public int getTimeInSec() {
+		this.timeInSec = Integer.parseInt(this.countdownTimer.getCurrentValue());
 		return this.timeInSec;
 	}
 
+	/**
+	 * @deprecated
+	 * @param given
+	 */
 	public void setTimeInSec(int given) {
 		this.timeInSec = given;
 	}
 
+	public void startCountdown() {
+		this.countdownTimer = new CountdownTimer(this.getTimeInSec());
+	}
+
 }
-
-
-
