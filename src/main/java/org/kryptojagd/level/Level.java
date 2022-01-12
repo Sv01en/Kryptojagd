@@ -122,6 +122,10 @@ public class Level {
 		return this.decryptionTask.getCorrectAnswer();
 	}
 
+	public boolean encryptionTaskFinished() {
+		return this.encryptionTask.getTaskCompleted();
+	}
+
 	private void isFinished() {
 		this.isRunning = false;
 	}

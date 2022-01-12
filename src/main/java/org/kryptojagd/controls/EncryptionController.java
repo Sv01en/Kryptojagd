@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
-import org.kryptojagd.encryptionmethods.Backwards;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 
@@ -50,12 +49,9 @@ public class EncryptionController extends AbstractController {
 
     @FXML
     void checkEncryption(ActionEvent event) {
-        if (level.proveEncryptionTask(textField1.getText())) {
-            System.out.println("Super, das hat geklappt!");
-            mainController.switchWindow("MultipleChoice.fxml");
-        } else {
-            System.out.println("Probiere es nochmal");
-        }
+        mainController.EncryptionTaskSucceeded = mainController.getCurrentLevel().proveEncryptionTask(
+                textField1.getText());
+        mainController.switchWindow("EncryptionTaskFinished.fxml");
     }
 
     /**

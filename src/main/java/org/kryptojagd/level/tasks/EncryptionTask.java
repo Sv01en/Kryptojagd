@@ -5,14 +5,16 @@ import org.kryptojagd.encryptionmethods.Encryption;
 /**
  * The class describes a task, where you have to encrypt the given text
  *
- * @author Sonja, Amelie, Bartosz
+ * @author Sonja, Amelie, Bartosz, Sven
  */
 public class EncryptionTask implements Task {
+
     private String task;
     private String text;
     private String key;
     private Encryption encryptionMethod;
     private String encryptionType;
+    private boolean taskCompleted;
 
     /**
      * Creates a {@link EncryptionTask}
@@ -24,13 +26,12 @@ public class EncryptionTask implements Task {
      * @param encryptionMethod the encryption method, in which you have to encrypt the text
      */
     public EncryptionTask(String task, String text, String encryptionType, String key, Encryption encryptionMethod) {
-
         this.encryptionType = encryptionType;
         this.task = task;
         this.text = text;
         this.key = key;
         this.encryptionMethod = encryptionMethod;
-
+        this.taskCompleted = false;
     }
 
     /**
@@ -90,7 +91,12 @@ public class EncryptionTask implements Task {
 
     @Override
     public boolean proofAnswer(String answer) {
-        return false;
+        this.taskCompleted = answer.equals(this.encryptionMethod.encode(this.text, this.key));
+        return answer.equals(this.encryptionMethod.encode(this.text, this.key));
+    }
+
+    public boolean getTaskCompleted() {
+        return this.taskCompleted;
     }
 
 }
