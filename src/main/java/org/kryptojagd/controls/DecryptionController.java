@@ -7,8 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
-import org.kryptojagd.level.Level;
-import org.kryptojagd.level.countdown.CountdownTimer;
 
 /**
  * The class controls a window of a decryption task.
@@ -16,8 +14,6 @@ import org.kryptojagd.level.countdown.CountdownTimer;
  * @author Michail, Sven
  */
 public class DecryptionController extends AbstractController{
-
-    private CountdownTimer countdownTimer;
 
     @FXML
     private Label timer = new Label();
@@ -35,17 +31,15 @@ public class DecryptionController extends AbstractController{
     @FXML
     private Button procedure3;
 
-    private final Level level = mainController.getCurrentLevel();
-
     /**
      * Initializes a DecryptionController
      *
      */
     @FXML
     public void initialize(){
-        level.startCountdown();
-        String[] possibleProcedures = level.getDecryptionTask().getAnswerOptionsEncryption();
-        encryptedPuzzleText.setText(level.getDecryptionTask().getPlainText());
+        mainController.getCurrentLevel().startCountdown();
+        String[] possibleProcedures = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsEncryption();
+        encryptedPuzzleText.setText(mainController.getCurrentLevel().getDecryptionTask().getPlainText());
         procedure1.setText(possibleProcedures[0]);
         procedure2.setText(possibleProcedures[1]);
         procedure3.setText(possibleProcedures[2]);
@@ -54,19 +48,22 @@ public class DecryptionController extends AbstractController{
 
     @FXML
     void clickProcedure1(ActionEvent event) {
-        mainController.DecryptionTaskSucceeded = level.proveDecryptionTask(procedure1.getText());
+        mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+                procedure1.getText());
         mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
     @FXML
     void clickProcedure2(ActionEvent event) {
-        mainController.DecryptionTaskSucceeded = level.proveDecryptionTask(procedure2.getText());
+        mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+                procedure2.getText());
         mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
     @FXML
     void clickProcedure3(ActionEvent event) {
-        mainController.DecryptionTaskSucceeded = level.proveDecryptionTask(procedure3.getText());
+        mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+                procedure3.getText());
         mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
@@ -79,8 +76,8 @@ public class DecryptionController extends AbstractController{
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(Integer.toString(level.getTimeInSec()));
-            if (level.getTimeInSec() == 0) {
+            timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
+            if (mainController.getCurrentLevel().getTimeInSec() == 0) {
                 mainController.switchWindow("Decryption.fxml");
                 time.stop();
             }

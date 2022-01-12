@@ -39,6 +39,7 @@ public class Level {
 		this.timeInSec = timeInSec;
 		this.isRunning = true;
 		//Just for working....
+		//TODO: Add penalty time to the json file.
 		this.timePenalty = 20;
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
@@ -65,7 +66,7 @@ public class Level {
 	 */
 	public boolean proveMultipleChoice(String answer) {
 		if(!this.multipleChoiceTasks.getFirst().proofAnswer(answer)) {
-			reducetimePenalty();
+			this.countdownTimer.reduceTimer(this.timePenalty);
 			return false;
 		}
 		this.multipleChoiceTasks.pop();
@@ -74,7 +75,7 @@ public class Level {
 
 	public boolean proveDecryptionTask(String answer) {
 		if (!this.decryptionTask.proofAnswer(answer)) {
-			reducetimePenalty();
+			this.countdownTimer.reduceTimer(this.timePenalty);
 		}
 		return this.decryptionTask.proofAnswer(answer);
 	}
@@ -82,7 +83,7 @@ public class Level {
 	public boolean proveEncryptionTask(String answer) {
 		if (answer.equals(this.encryptionTask.getEncryptionMethod().
 				encode(this.encryptionTask.getText(), this.encryptionTask.getKey()))) {
-			reducetimePenalty();
+			this.countdownTimer.reduceTimer(this.timePenalty);
 		}
 		return answer.equals(this.encryptionTask.getEncryptionMethod().
 				encode(this.encryptionTask.getText(), this.encryptionTask.getKey()));
@@ -106,7 +107,6 @@ public class Level {
 				System.out.println("Error while trying to get Encryption.");
 				break;
 		}
-
 	}
 
 	/**
@@ -147,11 +147,6 @@ public class Level {
 
 	public void startCountdown() {
 		this.countdownTimer = new CountdownTimer(this.getTimeInSec());
-	}
-
-	private void reducetimePenalty() {
-		this.timeInSec = Integer.parseInt(this.countdownTimer.getCurrentValue());
-		this.timeInSec = this.timeInSec - this.timePenalty;
 	}
 
 }

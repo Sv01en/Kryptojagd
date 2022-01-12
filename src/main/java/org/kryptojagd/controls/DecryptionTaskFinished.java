@@ -16,8 +16,6 @@ import org.kryptojagd.level.countdown.CountdownTimer;
  */
 public class DecryptionTaskFinished extends AbstractController{
 
-    private CountdownTimer countdownTimer;
-
     @FXML
     private Label timer = new Label();
 
@@ -37,7 +35,6 @@ public class DecryptionTaskFinished extends AbstractController{
      */
     @FXML
     public void initialize(){
-        this.countdownTimer = new CountdownTimer(20);
         updateTimer();
         if (mainController.getCurrentLevel().decryptionIsFinished()) {
             if (mainController.DecryptionTaskSucceeded) {
@@ -72,8 +69,8 @@ public class DecryptionTaskFinished extends AbstractController{
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(countdownTimer.getCurrentValue());
-            if (Integer.parseInt(countdownTimer.getCurrentValue()) == 0) {
+            timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
+            if (mainController.getCurrentLevel().getTimeInSec() == 0) {
                 mainController.switchWindow("Decryption.fxml");
                 time.stop();
             }
