@@ -145,14 +145,6 @@ public class Level {
 		return this.timeInSec;
 	}
 
-	/**
-	 * @deprecated
-	 * @param given
-	 */
-	public void setTimeInSec(int given) {
-		this.timeInSec = given;
-	}
-
 	public void startCountdown() {
 		this.countdownTimer = new CountdownTimer(this.getTimeInSec());
 	}
