@@ -54,19 +54,19 @@ public class DecryptionController extends AbstractController{
 
     @FXML
     void clickProcedure1(ActionEvent event) {
-        mainController.DecryptionTaskSucceeded = level.proofDecryptionTask(procedure1.getText());
+        mainController.DecryptionTaskSucceeded = level.proveDecryptionTask(procedure1.getText());
         mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
     @FXML
     void clickProcedure2(ActionEvent event) {
-        mainController.DecryptionTaskSucceeded = level.proofDecryptionTask(procedure2.getText());
+        mainController.DecryptionTaskSucceeded = level.proveDecryptionTask(procedure2.getText());
         mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
     @FXML
     void clickProcedure3(ActionEvent event) {
-        mainController.DecryptionTaskSucceeded = level.proofDecryptionTask(procedure3.getText());
+        mainController.DecryptionTaskSucceeded = level.proveDecryptionTask(procedure3.getText());
         mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 

@@ -50,9 +50,7 @@ public class EncryptionController extends AbstractController {
 
     @FXML
     void checkEncryption(ActionEvent event) {
-        level.proveEncryptionMethod(level.getEncryptionTask().getEncryption());
-        if (textField1.getText().equals(level.getEncryptionTask().getEncryptionMethod().
-                encode(level.getEncryptionTask().getText(), level.getEncryptionTask().getKey()))) {
+        if (level.proveEncryptionTask(textField1.getText())) {
             System.out.println("Super, das hat geklappt!");
             mainController.switchWindow("MultipleChoice.fxml");
         } else {

@@ -61,7 +61,7 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        mainController.MultipleChoiceTaskSucceeded = level.proofMultipleChoice(answer1.getText());
+        mainController.MultipleChoiceTaskSucceeded = level.proveMultipleChoice(answer1.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
@@ -73,7 +73,7 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void clickAnswer2(ActionEvent event) {
-        mainController.MultipleChoiceTaskSucceeded = level.proofMultipleChoice(answer2.getText());
+        mainController.MultipleChoiceTaskSucceeded = level.proveMultipleChoice(answer2.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
@@ -85,7 +85,7 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void clickAnswer3(ActionEvent event) {
-        mainController.MultipleChoiceTaskSucceeded = level.proofMultipleChoice(answer3.getText());
+        mainController.MultipleChoiceTaskSucceeded = level.proveMultipleChoice(answer3.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 

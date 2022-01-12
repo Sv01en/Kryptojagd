@@ -21,6 +21,7 @@ public class Level {
 	private boolean isRunning;
 	private int timeInSec;
 	private int id;
+	private int timePenalty;
 	private CountdownTimer countdownTimer;
 
 	/**
@@ -37,6 +38,9 @@ public class Level {
 		this.multipleChoiceTasks = multipleChoiceTasks;
 		this.timeInSec = timeInSec;
 		this.isRunning = true;
+		//Just for working....
+		this.timePenalty = 20;
+		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
 
 	public DecryptionTask getDecryptionTask() {
@@ -59,20 +63,32 @@ public class Level {
 	 * @return true, if the answer is false
 	 * 			false, if the answer is true
 	 */
-	public boolean proofMultipleChoice(String answer) {
+	public boolean proveMultipleChoice(String answer) {
 		if(!this.multipleChoiceTasks.getFirst().proofAnswer(answer)) {
+			reducetimePenalty();
 			return false;
 		}
 		this.multipleChoiceTasks.pop();
 		return true;
 	}
 
-	public boolean proofDecryptionTask(String answer) {
-		System.out.println(this.decryptionTask.proofAnswer(answer));
+	public boolean proveDecryptionTask(String answer) {
+		if (!this.decryptionTask.proofAnswer(answer)) {
+			reducetimePenalty();
+		}
 		return this.decryptionTask.proofAnswer(answer);
 	}
 
-	public void proveEncryptionMethod(String encryptionMethod){
+	public boolean proveEncryptionTask(String answer) {
+		if (answer.equals(this.encryptionTask.getEncryptionMethod().
+				encode(this.encryptionTask.getText(), this.encryptionTask.getKey()))) {
+			reducetimePenalty();
+		}
+		return answer.equals(this.encryptionTask.getEncryptionMethod().
+				encode(this.encryptionTask.getText(), this.encryptionTask.getKey()));
+	}
+
+	private void proveEncryptionMethod(String encryptionMethod){
 		switch (encryptionMethod){
 			case "Backwards":
 				encryptionTask.setEncryptionMethod(new Backwards());
@@ -137,6 +153,11 @@ public class Level {
 
 	public void startCountdown() {
 		this.countdownTimer = new CountdownTimer(this.getTimeInSec());
+	}
+
+	private void reducetimePenalty() {
+		this.timeInSec = Integer.parseInt(this.countdownTimer.getCurrentValue());
+		this.timeInSec = this.timeInSec - this.timePenalty;
 	}
 
 }
