@@ -43,12 +43,12 @@ public class DecryptionController extends AbstractController{
      */
     @FXML
     public void initialize(){
+        level.startCountdown();
         String[] possibleProcedures = level.getDecryptionTask().getAnswerOptionsEncryption();
         encryptedPuzzleText.setText(level.getDecryptionTask().getPlainText());
         procedure1.setText(possibleProcedures[0]);
         procedure2.setText(possibleProcedures[1]);
         procedure3.setText(possibleProcedures[2]);
-        this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer();
     }
 
