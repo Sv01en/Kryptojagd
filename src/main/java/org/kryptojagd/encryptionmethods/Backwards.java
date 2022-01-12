@@ -38,7 +38,7 @@ public class Backwards extends Encryption {
         words.add(tmp);
 
         // Remove unnecessary empty words
-        for (int i = words.size() - 1; i >= 0 ; i--) {
+        for (int i = words.size() - 1; i >= 0; i--) {
             if (words.get(i).equals("")) {
                 words.remove(i);
             }

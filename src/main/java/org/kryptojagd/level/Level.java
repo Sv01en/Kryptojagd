@@ -139,7 +139,9 @@ public class Level {
 	}
 
 	public int getTimeInSec() {
-		this.timeInSec = Integer.parseInt(this.countdownTimer.getCurrentValue());
+		if (this.countdownTimer != null) {
+			this.timeInSec = Integer.parseInt(this.countdownTimer.getCurrentValue());
+		}
 		return this.timeInSec;
 	}
 

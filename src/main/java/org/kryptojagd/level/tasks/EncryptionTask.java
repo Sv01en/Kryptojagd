@@ -3,7 +3,7 @@ package org.kryptojagd.level.tasks;
 import org.kryptojagd.encryptionmethods.Encryption;
 
 /**
- * The class describes a task, where you have to encrypt text
+ * The class describes a task, where you have to encrypt the given text
  *
  * @author Sonja, Amelie, Bartosz
  */
@@ -17,10 +17,13 @@ public class EncryptionTask implements Task {
     /**
      * Creates a {@link EncryptionTask}
      *
-     * @param encryptionMethod the encryption, in which you have to encrypt the text
-     *
+     * @param task             the task
+     * @param text             the text to be encrypted
+     * @param encryptionType   the encryption method as a String
+     * @param key              the key
+     * @param encryptionMethod the encryption method, in which you have to encrypt the text
      */
-    public EncryptionTask(String task, String text,String encryptionType, String key, Encryption encryptionMethod){//} Encryption encryption) {
+    public EncryptionTask(String task, String text, String encryptionType, String key, Encryption encryptionMethod) {
 
         this.encryptionType = encryptionType;
         this.task = task;
@@ -30,26 +33,57 @@ public class EncryptionTask implements Task {
 
     }
 
+    /**
+     * Gets task.
+     *
+     * @return the task
+     */
     public String getTask() {
         return task;
     }
 
+    /**
+     * Gets text.
+     *
+     * @return the text
+     */
     public String getText() {
         return text;
     }
 
-    public String getEncryption(){
+    /**
+     * Get encryption as a String.
+     *
+     * @return the string
+     */
+    public String getEncryption() {
         return encryptionType;
     }
-    public String getKey(){
+
+    /**
+     * Get key as a String.
+     *
+     * @return the string
+     */
+    public String getKey() {
         return key;
     }
 
 
+    /**
+     * Sets encryption method.
+     *
+     * @param encryptionMethod the encryption method
+     */
     public void setEncryptionMethod(Encryption encryptionMethod) {
         this.encryptionMethod = encryptionMethod;
     }
 
+    /**
+     * Gets encryption method.
+     *
+     * @return the encryption method
+     */
     public Encryption getEncryptionMethod() {
         return encryptionMethod;
     }
