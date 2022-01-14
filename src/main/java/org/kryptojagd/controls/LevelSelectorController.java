@@ -21,6 +21,9 @@ import java.util.List;
 public class LevelSelectorController extends AbstractController {
 
     @FXML
+    public BorderPane borderBox;
+
+    @FXML
     public void initialize() {
         ArrayList<Level> allLevels = mainController.getAllLevels();
         ArrayList<Button> buttons = new ArrayList<>();
@@ -30,7 +33,11 @@ public class LevelSelectorController extends AbstractController {
             button.setOnAction(event -> {
                 setMainController(new MainController(mainController.getPresentationManager(), allLevels.get(finalI), allLevels, mainController.getClearedLevels()));
                 System.out.println("Button " + finalI + " pressed!");
+                mainController.runLevel();
             });
+            if (i > mainController.getClearedLevels()) {
+                button.setDisable(true);
+            }
             buttons.add(button);
         }
         VBox vbox = new VBox(10);
@@ -39,19 +46,7 @@ public class LevelSelectorController extends AbstractController {
             vbox.getChildren().add(buttons.get(i));
         }
 
-        Button backBtn = new Button("Zurück");
-        backBtn.setOnAction(event -> clickBack(event));
-
-        BorderPane pane = (BorderPane) mainController.getStage().getScene().getRoot();
-        System.out.println(pane);
-        pane.setOpaqueInsets(new Insets(10, 10, 10, 10));
-        pane.setPadding(new Insets(20, 20, 20, 20));
-        pane.setAlignment(backBtn, Pos.BOTTOM_CENTER);
-
-        pane.setBottom(backBtn);
-        pane.setCenter(vbox);
-
-        mainController.getStage().setScene(new Scene(pane));
+        borderBox.setCenter(vbox);
     }
 
     @FXML
