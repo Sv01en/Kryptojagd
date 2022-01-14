@@ -31,6 +31,10 @@ public class DecryptionTask implements Task {
 
 	private boolean correctAnswer;
 
+	private boolean correctAnswerCityBool;
+
+	private boolean isCityTaskShowing;
+
 	public DecryptionTask(String plainText, String encryptionMethod, String[] answerOptionsEncryption,
 						  int correctAnswerEncryption, String[] answerOptionsCity, int correctAnswerCity,
 						  String textAfterStart, int timeInSec) {
@@ -43,6 +47,8 @@ public class DecryptionTask implements Task {
 		this.textAfterStart = textAfterStart;
 		this.timeInSec = timeInSec;
 		this.correctAnswer = false;
+		this.correctAnswerCityBool = false;
+		this.isCityTaskShowing = false;
 	}
 
 	@Override
@@ -53,6 +59,10 @@ public class DecryptionTask implements Task {
 		}
 		this.correctAnswer = false;
 		return false;
+	}
+
+	public void setCityShowing() {
+		this.isCityTaskShowing = true;
 	}
 
 	public String getPlainText() {
@@ -73,5 +83,34 @@ public class DecryptionTask implements Task {
 
 	public void setEncryptionMethod(String encryptionMethod) {
 		this.encryptionMethod = encryptionMethod;
+	}
+
+	public boolean proofCityAnswer(int answer) {
+		if (answer == correctAnswerCity) {
+			this.correctAnswerCityBool = true;
+			return true;
+		}
+		this.correctAnswerCityBool = false;
+		return false;
+	}
+
+	public String getCityQuestion() {
+		return "In welcher Stadt befindet sich die Floppy-Disk?";
+	}
+
+	public String[] getAnswerOptionsCity() {
+		return answerOptionsCity;
+	}
+
+	public boolean getCorrectAnswerCity() {
+		return correctAnswerCityBool;
+	}
+
+	public boolean isCityTaskShowing() {
+		return isCityTaskShowing;
+	}
+
+	public String getCity() {
+		return answerOptionsCity[correctAnswerCity];
 	}
 }
