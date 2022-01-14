@@ -68,6 +68,8 @@ public class DecryptionTaskFinished extends AbstractController{
     @FXML
     void switchMultipleChoice(ActionEvent event) {
         if (mainController.getCurrentLevel().decryptionIsFinished() && mainController.getCurrentLevel().cityIsFinished()) {
+            //String city = mainController.getCurrentLevel().getCity();
+            //String css = "../css/" + city + ".css";
             //mainController.switchWindow("Encryption.fxml");
             mainController.runLevel();
         } else {

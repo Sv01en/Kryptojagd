@@ -104,10 +104,12 @@ public class MainController {
 		} else if (!currentLevel.cityIsFinished() && currentLevel.decryptionIsFinished()) {
 			System.out.println("Run city task");
 			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
-		} else {
+		} else if (currentLevel.decryptionIsFinished() && currentLevel.cityIsFinished() && !currentLevel.multipleChoiceIsFinished()) {
 			String city = currentLevel.getCity();
 			String css = "../css/" + city + ".css";
 			switchWindowWithCSS("MultipleChoice.fxml", css);
+		} else {
+			switchWindow("Encryption.fxml");
 		}
 	}
 

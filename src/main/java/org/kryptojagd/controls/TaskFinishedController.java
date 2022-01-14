@@ -52,7 +52,8 @@ public class TaskFinishedController extends AbstractController{
 	 	if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
 			mainController.switchWindow("MultipleChoice.fxml");
 		} else {
-			mainController.switchWindow("Startfenster.fxml");
+			//mainController.switchWindow("Startfenster.fxml");
+			mainController.runLevel();
 		}
 	 }
 

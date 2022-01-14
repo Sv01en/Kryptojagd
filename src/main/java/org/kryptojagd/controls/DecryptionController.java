@@ -16,6 +16,9 @@ import javafx.util.Duration;
 public class DecryptionController extends AbstractController{
 
     @FXML
+    public Label question;
+
+    @FXML
     private Label timer = new Label();
 
 
@@ -49,8 +52,9 @@ public class DecryptionController extends AbstractController{
         } else {
             mainController.getCurrentLevel().setCityShowing();
             String[] cities = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsCity();
-            String question = mainController.getCurrentLevel().getDecryptionTask().getCityQuestion();
-            encryptedPuzzleText.setText(question);
+            String questionStr = mainController.getCurrentLevel().getDecryptionTask().getCityQuestion();
+            question.setText(questionStr);
+            encryptedPuzzleText.setText(mainController.getCurrentLevel().getDecryptionTask().getPlainText());
             procedure1.setText(cities[0]);
             procedure2.setText(cities[1]);
             procedure3.setText(cities[2]);

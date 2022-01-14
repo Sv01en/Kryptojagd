@@ -8,8 +8,8 @@
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="360.0" prefWidth="1280.0">
          <children>
              <Label fx:id="timer" alignment="CENTER" contentDisplay="CENTER" layoutX="462.0" layoutY="14.0" prefHeight="37.0" prefWidth="106.0" text="timer" textAlignment="CENTER" />
-            <Label fx:id="label1" alignment="CENTER" contentDisplay="CENTER" layoutX="-5.0" layoutY="61.0" prefHeight="37.0" prefWidth="598.0" text="label1" textAlignment="CENTER" />
-            <Label fx:id="label2" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="106.0" prefHeight="100.0" prefWidth="592.0" text="label2" textAlignment="CENTER" />
+            <Label fx:id="label1" alignment="CENTER" contentDisplay="CENTER" layoutX="-5.0" layoutY="61.0" prefHeight="120.0" prefWidth="598.0" text="label1" textAlignment="CENTER" />
+            <Label fx:id="label2" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="200.0" prefHeight="37.0" prefWidth="592.0" text="label2" textAlignment="CENTER" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="360.0" prefWidth="1280.0">
          <children>
