@@ -12,7 +12,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 /**
  * Gives the right feedback to a task and switches the window.
  *
- * @author Sonja
+ * @author Sonja, Leah
  */
 public class TaskFinishedController extends AbstractController{
 
@@ -47,6 +47,10 @@ public class TaskFinishedController extends AbstractController{
 		}
 	}
 
+	/**
+	 * Handles the switch to eather the next multiple choice question or the next task
+	 * @param event that is received
+	 */
 	 @FXML
 	 void switchMultipleChoice(ActionEvent event) {
 	 	if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {

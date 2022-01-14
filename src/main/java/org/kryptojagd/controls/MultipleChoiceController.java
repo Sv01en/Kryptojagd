@@ -13,7 +13,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 /**
  * The class controls a window of a multiple choice task.
  *
- * @author Sonja, Michail, Sven
+ * @author Sonja, Michail, Sven, Leah
  */
 public class MultipleChoiceController extends AbstractController{
 

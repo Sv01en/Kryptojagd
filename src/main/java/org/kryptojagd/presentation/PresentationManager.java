@@ -11,14 +11,26 @@ import javafx.stage.Stage;
 import org.kryptojagd.Main;
 
 
+/**
+ * Class that manages the current window and the window switching
+ * @author Leah
+ */
 public class PresentationManager {
 	
 	private Stage stage;
-	
+
+	/**
+	 * Constructor of the PresentationManager
+	 * @param primaryStage
+	 */
 	public PresentationManager(Stage primaryStage) {
 		this.stage = primaryStage;
 	}
-	
+
+	/**
+	 * Switches the window without a style
+	 * @param str window to switch to
+	 */
 	public void switchWindow(String str) {
 		Parent root;
 		try {
@@ -34,6 +46,11 @@ public class PresentationManager {
 		}
 	}
 
+	/**
+	 * Switches the window and applies a style to it
+	 * @param path window to switch to
+	 * @param css style to apply
+	 */
 	public void switchWindowWithCSS(String path, String css) {
 		try {
 			System.out.println(getClass().toString());
@@ -47,10 +64,6 @@ public class PresentationManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public Stage getStage() {
-		return stage;
 	}
 
 }
