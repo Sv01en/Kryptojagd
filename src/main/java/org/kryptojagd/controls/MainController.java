@@ -97,9 +97,9 @@ public class MainController {
 	 */
 	private void runDecryptionTask() {
 		if (!currentLevel.decryptionIsFinished()) {
-			switchWindow("Decryption.fxml");
+			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
 		} else {
-			switchWindow("MultipleChoice.fxml");
+			switchWindowWithCSS("MultipleChoice.fxml", "../css/startwindow.css");
 		}
 	}
 
