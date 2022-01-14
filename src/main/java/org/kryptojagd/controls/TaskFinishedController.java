@@ -50,7 +50,10 @@ public class TaskFinishedController extends AbstractController{
 	 @FXML
 	 void switchMultipleChoice(ActionEvent event) {
 	 	if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
-			mainController.switchWindow("MultipleChoice.fxml");
+			String city = mainController.getCurrentLevel().getCity();
+			String css = "../css/" + city + ".css";
+
+			mainController.switchWindowWithCSS("MultipleChoice.fxml", css);
 		} else {
 			//mainController.switchWindow("Startfenster.fxml");
 			mainController.runLevel();

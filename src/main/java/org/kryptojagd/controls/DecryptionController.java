@@ -72,7 +72,7 @@ public class DecryptionController extends AbstractController{
             mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(0);
         }
 
-        mainController.switchWindow("DecryptionTaskFinished.fxml");
+        mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
     }
 
     @FXML
@@ -84,7 +84,7 @@ public class DecryptionController extends AbstractController{
             mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(1);
         }
 
-        mainController.switchWindow("DecryptionTaskFinished.fxml");
+        mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
     }
 
     @FXML
@@ -96,7 +96,7 @@ public class DecryptionController extends AbstractController{
             mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(2);
         }
 
-        mainController.switchWindow("DecryptionTaskFinished.fxml");
+        mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
     }
 
     /**
