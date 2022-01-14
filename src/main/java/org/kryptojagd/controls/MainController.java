@@ -1,7 +1,10 @@
 package org.kryptojagd.controls;
 
+import javafx.stage.Stage;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
+
+import java.util.ArrayList;
 
 /**
  * The class controls every kind of controller and puts them together
@@ -13,6 +16,10 @@ public class MainController {
 	private PresentationManager fw;
 
 	private Level currentLevel;
+
+	private ArrayList<Level> allLevels;
+
+	private int clearedLevels;
 
 	protected boolean MultipleChoiceTaskSucceeded;
 
@@ -26,9 +33,11 @@ public class MainController {
 	 * @param fw
 	 * @param currentLevel the current Level, which is played
 	 */
-	public MainController(PresentationManager fw, Level currentLevel) {
+	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels) {
 		this.fw = fw;
 		this.currentLevel = currentLevel;
+		this.allLevels = allLevels;
+		this.clearedLevels = clearedLevels;
 		AbstractController.setMainController(this);
 	}
 
@@ -52,6 +61,26 @@ public class MainController {
 		fw.switchWindowWithCSS(path, css);
 	}
 
+	public int getClearedLevels() {
+		return clearedLevels;
+	}
+
+	public int getAllLevelCount() {
+		return allLevels.size();
+	}
+
+	public ArrayList<Level> getAllLevels() {
+		return allLevels;
+	}
+
+	public PresentationManager getPresentationManager() {
+		return fw;
+	}
+
+	public Stage getStage() {
+		return fw.getStage();
+	}
+
 	/**
 	 * Runs the encryption tasks
 	 *
@@ -68,9 +97,9 @@ public class MainController {
 	 */
 	private void runDecryptionTask() {
 		if (!currentLevel.decryptionIsFinished()) {
-			switchWindow("Decryption.fxml");
+			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
 		} else {
-			switchWindow("MultipleChoice.fxml");
+			switchWindowWithCSS("MultipleChoice.fxml", "../css/startwindow.css");
 		}
 	}
 

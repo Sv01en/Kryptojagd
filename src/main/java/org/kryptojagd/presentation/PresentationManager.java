@@ -49,4 +49,8 @@ public class PresentationManager {
 		}
 	}
 
+	public Stage getStage() {
+		return stage;
+	}
+
 }

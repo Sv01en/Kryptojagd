@@ -20,13 +20,14 @@ public class LaunchWindowController extends AbstractController {
     @FXML
     void klickEinstellungen(ActionEvent event) {
         System.out.println("Das ist ein Test");
-        mainController.switchWindow("Encryption.fxml");
+        mainController.switchWindowWithCSS("Encryption.fxml", "../css/startwindow.css");
     }
 
     @FXML
     void klickInfo(ActionEvent event) {
     	System.out.println("Es wurde auf Info geklickt!");
-    	mainController.switchWindow("Infotext.fxml");
+        mainController.switchWindowWithCSS("Infotext.fxml", "../css/startwindow.css");
+    	//mainController.switchWindow("Infotext.fxml");
     }
 
     @FXML
@@ -40,8 +41,10 @@ public class LaunchWindowController extends AbstractController {
     public void initialize() {
     	
     }
-    
- 
 
+    @FXML
+    public void klickLevelSelector(ActionEvent event) {
+        mainController.switchWindowWithCSS("LevelSelector.fxml", "../css/startwindow.css");
+    }
 }
 
