@@ -3,13 +3,9 @@ package org.kryptojagd.fileprocessing;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
 
 import com.google.gson.*;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -33,7 +29,7 @@ public class ReadJSON {
 	 * @param path filepath to the files with the information for a MultipleChoiceTask
 	 * @return MultipleChoiceTask, with the given information of the files
 	 */
-	public static MultipleChoiceTask createMultiChoiceQuestion(String path) {
+	public static MultipleChoiceTask createMultipleChoiceTask(String path) {
 		
 		MultipleChoiceTask multipleChoiceTask;
 		try {

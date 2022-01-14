@@ -79,7 +79,7 @@ public class ReadDirectory {
 					pathToEncryptionTask = pathToFile;
 					
 				} else if (fileName.contains("question")) {
-					MultipleChoiceTask multipleChoiceTask = ReadJSON.createMultiChoiceQuestion(pathToFile);
+					MultipleChoiceTask multipleChoiceTask = ReadJSON.createMultipleChoiceTask(pathToFile);
 					multipleChoiceTasks.add(multipleChoiceTask);
 					
 				} else if (fileName.contains("time")) {
