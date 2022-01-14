@@ -26,6 +26,8 @@ public class MainApp extends Application {
 
 	private PresentationManager fw;	
 	private MainController hs;
+
+	private int clearedLevels = 0;
 	
     public void start(Stage stage) {
 
@@ -51,7 +53,7 @@ public class MainApp extends Application {
 			fw = new PresentationManager(stage);
 			assert allLevels != null;
 			//ToDo: Structure of game, finish level, start next level
-			hs = new MainController(fw, allLevels.get(0));
+			hs = new MainController(fw, allLevels.get(0), allLevels, clearedLevels);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
