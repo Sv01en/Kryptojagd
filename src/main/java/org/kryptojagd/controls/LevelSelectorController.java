@@ -33,7 +33,7 @@ public class LevelSelectorController extends AbstractController {
             });
             buttons.add(button);
         }
-        VBox vbox = new VBox();
+        VBox vbox = new VBox(10);
         vbox.setAlignment(Pos.CENTER);
         for (int i = 0; i < buttons.size(); i++) {
             vbox.getChildren().add(buttons.get(i));
