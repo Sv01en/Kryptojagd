@@ -39,7 +39,9 @@ public class DecryptionController extends AbstractController{
     public void initialize(){
         mainController.getCurrentLevel().startCountdown();
         String[] possibleProcedures = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsEncryption();
-        encryptedPuzzleText.setText(mainController.getCurrentLevel().getDecryptionTask().getPlainText());
+        String plaintext = mainController.getCurrentLevel().getDecryptionTask().getPlainText();
+        encryptedPuzzleText.setText(mainController.getCurrentLevel().getEncryptionTask().getEncryptionMethod().
+                encode(plaintext, mainController.getCurrentLevel().getEncryptionTask().getKey()));
         procedure1.setText(possibleProcedures[0]);
         procedure2.setText(possibleProcedures[1]);
         procedure3.setText(possibleProcedures[2]);
