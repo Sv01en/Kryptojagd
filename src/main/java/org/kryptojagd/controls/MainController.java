@@ -27,6 +27,8 @@ public class MainController {
 
 	protected boolean EncryptionTaskSucceeded;
 
+	protected boolean CityTaskFinished;
+
 	/**
 	 * Constractor of a MainController
 	 *
@@ -96,10 +98,16 @@ public class MainController {
 	 *
 	 */
 	private void runDecryptionTask() {
-		if (!currentLevel.decryptionIsFinished()) {
+		if (!currentLevel.decryptionIsFinished() && !currentLevel.cityIsFinished()) {
+			System.out.println("Run decryption task");
+			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
+		} else if (!currentLevel.cityIsFinished() && currentLevel.decryptionIsFinished()) {
+			System.out.println("Run city task");
 			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
 		} else {
-			switchWindowWithCSS("MultipleChoice.fxml", "../css/startwindow.css");
+			String city = currentLevel.getCity();
+			String css = "../css/" + city + ".css";
+			switchWindowWithCSS("MultipleChoice.fxml", css);
 		}
 	}
 

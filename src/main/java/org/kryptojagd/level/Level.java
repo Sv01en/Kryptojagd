@@ -92,6 +92,13 @@ public class Level {
 		return this.decryptionTask.proofAnswer(answer);
 	}
 
+	public boolean proofCityTask(int answer) {
+		if (!decryptionTask.proofCityAnswer(answer)) {
+			countdownTimer.reduceTimer(timePenalty);
+		}
+		return decryptionTask.proofCityAnswer(answer);
+	}
+
 	public boolean proveEncryptionTask(String answer) {
 		if (this.encryptionTask.proofAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
@@ -130,6 +137,22 @@ public class Level {
 
 	public boolean decryptionIsFinished() {
 		return this.decryptionTask.getCorrectAnswer();
+	}
+
+	public boolean cityIsFinished() {
+		return this.decryptionTask.getCorrectAnswerCity();
+	}
+
+	public String getCity() {
+		return decryptionTask.getCity();
+	}
+
+	public boolean isCityTaskShowing() {
+		return decryptionTask.isCityTaskShowing();
+	}
+
+	public void setCityShowing() {
+		decryptionTask.setCityShowing();
 	}
 
 	public boolean encryptionTaskFinished() {

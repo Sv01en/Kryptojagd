@@ -36,13 +36,27 @@ public class DecryptionTaskFinished extends AbstractController{
     @FXML
     public void initialize(){
         updateTimer();
-        if (mainController.getCurrentLevel().decryptionIsFinished()) {
-            if (mainController.DecryptionTaskSucceeded) {
-                feedbackText.setText("Richtig, weiter so!");
-            } else {
-                feedbackText.setText("Leider falsch, versuche es noch einmal. Du musst dich beeilen!");
-            }
+
+        if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.DecryptionTaskSucceeded || mainController.CityTaskFinished) {
+            feedbackText.setText("Die Antwort war richtig, weiter so!");
+        } else {
+            feedbackText.setText("Die Antwort war leider falsch! Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
         }
+
+
+        /*if (mainController.getCurrentLevel().decryptionIsFinished() && !mainController.getCurrentLevel().cityIsFinished()) {
+            if (!mainController.CityTaskFinished) {
+                feedbackText.setText("Die Antwort war leider falsch! Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");            } else
+            if (mainController.DecryptionTaskSucceeded && mainController.CityTaskFinished) {
+                feedbackText.setText("Die Antwort war richtig, weiter so!");
+            } else if (!mainController.CityTaskFinished) {
+                feedbackText.setText("A");
+            } else {
+                feedbackText.setText("Die Antwort war leider falsch! Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
+            }
+        } else {
+            feedbackText.setText("Die Antwort war leider falsch! Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
+        }*/
     }
 
     /**
@@ -53,10 +67,12 @@ public class DecryptionTaskFinished extends AbstractController{
      */
     @FXML
     void switchMultipleChoice(ActionEvent event) {
-        if (mainController.getCurrentLevel().decryptionIsFinished()) {
-            mainController.switchWindow("Encryption.fxml");
+        if (mainController.getCurrentLevel().decryptionIsFinished() && mainController.getCurrentLevel().cityIsFinished()) {
+            //mainController.switchWindow("Encryption.fxml");
+            mainController.runLevel();
         } else {
-            mainController.switchWindow("Decryption.fxml");
+            //mainController.switchWindow("Decryption.fxml");
+            mainController.runLevel();
         }
     }
 

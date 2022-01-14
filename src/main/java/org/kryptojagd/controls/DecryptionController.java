@@ -37,35 +37,61 @@ public class DecryptionController extends AbstractController{
      */
     @FXML
     public void initialize(){
-        mainController.getCurrentLevel().startCountdown();
-        String[] possibleProcedures = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsEncryption();
-        String plaintext = mainController.getCurrentLevel().getDecryptionTask().getPlainText();
-        encryptedPuzzleText.setText(mainController.getCurrentLevel().getEncryptionTask().getEncryptionMethod().
-                encode(plaintext, mainController.getCurrentLevel().getEncryptionTask().getKey()));
-        procedure1.setText(possibleProcedures[0]);
-        procedure2.setText(possibleProcedures[1]);
-        procedure3.setText(possibleProcedures[2]);
+        if (!mainController.getCurrentLevel().decryptionIsFinished()) {
+            mainController.getCurrentLevel().startCountdown();
+            String[] possibleProcedures = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsEncryption();
+            String plaintext = mainController.getCurrentLevel().getDecryptionTask().getPlainText();
+            encryptedPuzzleText.setText(mainController.getCurrentLevel().getEncryptionTask().getEncryptionMethod().
+                    encode(plaintext, mainController.getCurrentLevel().getEncryptionTask().getKey()));
+            procedure1.setText(possibleProcedures[0]);
+            procedure2.setText(possibleProcedures[1]);
+            procedure3.setText(possibleProcedures[2]);
+        } else {
+            mainController.getCurrentLevel().setCityShowing();
+            String[] cities = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsCity();
+            String question = mainController.getCurrentLevel().getDecryptionTask().getCityQuestion();
+            encryptedPuzzleText.setText(question);
+            procedure1.setText(cities[0]);
+            procedure2.setText(cities[1]);
+            procedure3.setText(cities[2]);
+        }
+
         updateTimer();
     }
 
     @FXML
     void clickProcedure1(ActionEvent event) {
-        mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
-                procedure1.getText());
+        if (!mainController.getCurrentLevel().decryptionIsFinished()) {
+            mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+                    procedure1.getText());
+        } else {
+            mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(0);
+        }
+
         mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
     @FXML
     void clickProcedure2(ActionEvent event) {
-        mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
-                procedure2.getText());
+        if (!mainController.getCurrentLevel().decryptionIsFinished()) {
+            mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+                    procedure2.getText());
+        } else {
+            mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(1);
+        }
+
         mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
     @FXML
     void clickProcedure3(ActionEvent event) {
-        mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
-                procedure3.getText());
+        if (!mainController.getCurrentLevel().decryptionIsFinished()) {
+            mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+                    procedure3.getText());
+        } else {
+            mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(2);
+        }
+
         mainController.switchWindow("DecryptionTaskFinished.fxml");
     }
 
