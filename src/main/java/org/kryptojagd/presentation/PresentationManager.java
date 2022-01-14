@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.kryptojagd.Main;
 
 
@@ -24,6 +25,7 @@ public class PresentationManager {
 	 * @param primaryStage
 	 */
 	public PresentationManager(Stage primaryStage) {
+		primaryStage.setResizable(false);
 		this.stage = primaryStage;
 	}
 

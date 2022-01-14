@@ -3,6 +3,7 @@ package org.kryptojagd.controls;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.shape.Box;
 
 /**
  * Controller for the Launch Window
@@ -56,7 +57,7 @@ public class LaunchWindowController extends AbstractController {
    
     @FXML
     public void initialize() {
-    	
+
     }
 
     /**
