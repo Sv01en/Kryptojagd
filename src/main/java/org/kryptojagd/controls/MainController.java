@@ -107,6 +107,10 @@ public class MainController {
 		return fw;
 	}
 
+	public void setClearedLevels() {
+		this.clearedLevels++;
+	}
+
 	/**
 	 * Runs the encryption tasks
 	 *

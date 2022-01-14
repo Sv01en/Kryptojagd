@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
     "$schema": "/quest_schema.json",
   "question4":"Ist die Cäsar-Chiffre sicher?",
@@ -44,14 +43,10 @@
   "question16": "Wie heißt das Gerät, um den Computer über die Telefonleitung mit dem Internet zu verbinden?",
   "answerOptions16": ["W-Lan", "Telex", "Modem"],
   "correctAnswer16":3,
-  "timeInSec16": 60
-}
-=======
-{
-    "$schema": "./quest_schema.json",
+  "timeInSec16": 60,
+
     "question": "Warum werden Text verschlüsselt? Hat das irgend einen bestimmten Grund?",
     "answerOptions": ["Nein, der Verfasser wollte sich nur einen Spaß erlauben.", "Ja, der Text kann sonst von jedem gelesen werden und das wäre nicht sicher.", "Ja, denn der Verfasser kommt vermutlich aus einem Land indem es üblich ist Texte so zu schreiben."],
     "correctAnswer": 1,
     "timeInSec": 60
 }
->>>>>>> multipleChoiceRun13

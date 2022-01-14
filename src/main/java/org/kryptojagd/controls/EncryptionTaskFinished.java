@@ -54,7 +54,7 @@ public class EncryptionTaskFinished extends AbstractController{
     void switchMultipleChoice(ActionEvent event) {
         if (mainController.getCurrentLevel().encryptionTaskFinished()) {
             //mainController.switchWindow("MultipleChoice.fxml");
-            mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
+            mainController.switchWindow("LevelFinishedSelector.fxml");
         } else {
             mainController.switchWindow("Encryption.fxml");
         }
