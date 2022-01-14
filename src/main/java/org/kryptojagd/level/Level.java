@@ -17,12 +17,17 @@ public class Level {
 
 	private DecryptionTask decryptionTask;
 	private EncryptionTask encryptionTask;
+	private CountdownTimer countdownTimer;
+
 	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
+
 	private boolean isRunning;
 	private int timeInSec;
+	private int currentTime;
 	private int id;
 	private int timePenalty;
-	private CountdownTimer countdownTimer;
+	private int currentMultipleChoiceTask;
+	private boolean multipleChoiceFinished;
 
 	/**
 	 * Creates a {@link Level}
@@ -41,6 +46,9 @@ public class Level {
 		//Just for working....
 		//TODO: Add penalty time to the json file.
 		this.timePenalty = 20;
+		this.currentTime = this.timeInSec;
+		this.currentMultipleChoiceTask = 0;
+		this.multipleChoiceFinished = false;
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
 
@@ -53,7 +61,7 @@ public class Level {
 	}
 
 	public MultipleChoiceTask getCurrentMultipleChoiceTask() {
-		return multipleChoiceTasks.getFirst();
+		return multipleChoiceTasks.get(this.currentMultipleChoiceTask);
 	}
 
 	/**
@@ -65,13 +73,16 @@ public class Level {
 	 * 			false, if the answer is true
 	 */
 	public boolean proveMultipleChoice(String answer) {
-		if(!this.multipleChoiceTasks.getFirst().proofAnswer(answer)) {
+		if(!this.multipleChoiceTasks.get(this.currentMultipleChoiceTask).proofAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 			return false;
 		}
-		//TODO: last multiplechoice questions not appear
-		this.multipleChoiceTasks.pop();
+		this.currentMultipleChoiceTask++;
+		if (this.currentMultipleChoiceTask == this.multipleChoiceTasks.size()) {
+			this.multipleChoiceFinished = true;
+		}
 		return true;
+
 	}
 
 	public boolean proveDecryptionTask(String answer) {
@@ -114,8 +125,7 @@ public class Level {
 	 * @return true, if there is no more multiple choice task
 	 */
 	public boolean multipleChoiceIsFinished() {
-		//TODO: just for testing, TODO above
-		return this.multipleChoiceTasks.size() <= 1;
+		return this.multipleChoiceFinished;
 	}
 
 	public boolean decryptionIsFinished() {
@@ -126,7 +136,7 @@ public class Level {
 		return this.encryptionTask.getTaskCompleted();
 	}
 
-	private void isFinished() {
+	public void isFinished() {
 		this.isRunning = false;
 	}
 
@@ -144,9 +154,9 @@ public class Level {
 
 	public int getTimeInSec() {
 		if (this.countdownTimer != null) {
-			this.timeInSec = Integer.parseInt(this.countdownTimer.getCurrentValue());
+			this.currentTime = Integer.parseInt(this.countdownTimer.getCurrentValue());
 		}
-		return this.timeInSec;
+		return this.currentTime;
 	}
 
 	public void startCountdown() {

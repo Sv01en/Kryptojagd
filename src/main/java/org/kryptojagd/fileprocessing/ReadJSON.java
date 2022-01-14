@@ -49,6 +49,8 @@ public class ReadJSON {
 			e.printStackTrace();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
+			System.out.println(e.getUnexpectedObject());
+			System.out.println(e.getPosition());
 			e.printStackTrace();
 		}
 		

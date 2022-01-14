@@ -18,6 +18,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 public class MultipleChoiceController extends AbstractController{
 
     private CountdownTimer countdownTimer;
+
     private final Level level = mainController.getCurrentLevel();
 
     @FXML
@@ -44,12 +45,12 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     public void initialize(){
-        QuestionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
-        String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
+        QuestionField.setText(mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getQuestion());
+        String[] possibilities = mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getPossibilities();
         answer1.setText(possibilities[0]);
         answer2.setText(possibilities[1]);
         answer3.setText(possibilities[2]);
-        this.countdownTimer = new CountdownTimer(level.getTimeInSec());
+        this.countdownTimer = new CountdownTimer(mainController.getCurrentLevel().getTimeInSec());
         updateTimer();
     }
 
@@ -61,7 +62,8 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        mainController.MultipleChoiceTaskSucceeded = level.proveMultipleChoice(answer1.getText());
+        mainController.MultipleChoiceTaskSucceeded = mainController.getCurrentLevel()
+                .proveMultipleChoice(answer1.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
@@ -73,7 +75,8 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void clickAnswer2(ActionEvent event) {
-        mainController.MultipleChoiceTaskSucceeded = level.proveMultipleChoice(answer2.getText());
+        mainController.MultipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
+                .proveMultipleChoice(answer2.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
@@ -85,7 +88,8 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void clickAnswer3(ActionEvent event) {
-        mainController.MultipleChoiceTaskSucceeded = level.proveMultipleChoice(answer3.getText());
+        mainController.MultipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
+                .proveMultipleChoice(answer3.getText());
         mainController.switchWindow("TaskFinished.fxml");
     }
 
@@ -98,8 +102,8 @@ public class MultipleChoiceController extends AbstractController{
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(Integer.toString(level.getTimeInSec()));
-            if (level.getTimeInSec() == 0) {
+            timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
+            if (mainController.getCurrentLevel().getTimeInSec() == 0) {
                 mainController.switchWindow("Decryption.fxml");
                 time.stop();
             }
