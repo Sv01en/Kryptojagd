@@ -2,6 +2,7 @@ package org.kryptojagd.presentation;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  * Class that manages the current window and the window switching
- * @author Leah
+ * @author Leah, Bartosz
  */
 public class PresentationManager {
 	
@@ -39,6 +40,10 @@ public class PresentationManager {
 			Scene scene = new Scene(root);	
 			stage.setScene(scene);
 			stage.show();
+			stage.setOnCloseRequest(event -> {
+				Platform.exit();
+				System.exit(0);
+			});
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,6 +64,10 @@ public class PresentationManager {
 			scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
 			stage.setScene(scene);
 			stage.show();
+			stage.setOnCloseRequest(event -> {
+				Platform.exit();
+				System.exit(0);
+			});
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
