@@ -2,27 +2,26 @@ package org.kryptojagd.controls;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import org.kryptojagd.level.Level;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Controller for the level selector window
+ * @author Leah
+ */
 public class LevelSelectorController extends AbstractController {
 
     @FXML
     public BorderPane borderBox;
 
+    /**
+     * Initializes the level selector screen. Only the next not played level can be clicked at most
+     */
     @FXML
     public void initialize() {
         ArrayList<Level> allLevels = mainController.getAllLevels();
@@ -49,13 +48,13 @@ public class LevelSelectorController extends AbstractController {
         borderBox.setCenter(vbox);
     }
 
+    /**
+     * Handles press on back button
+     * @param event that is received
+     */
     @FXML
     void clickBack(ActionEvent event) {
         System.out.println("Gehe zurück zum Startmenü!");
         mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
-    }
-
-    @FXML
-    void clickLevel1(ActionEvent event) {
     }
 }

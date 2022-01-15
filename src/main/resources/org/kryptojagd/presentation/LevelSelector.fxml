@@ -12,7 +12,7 @@
 <center>
 </center>
 <bottom>
-    <Button fx:id="backButton" mnemonicParsing="false" onAction="#clickBack" prefHeight="24.0" prefWidth="234.0" text="Zurück" BorderPane.alignment="BOTTOM_CENTER"/>
+    <Button fx:id="backButton" mnemonicParsing="false" onAction="#clickBack" prefHeight="24.0" prefWidth="234.0" text="Schließen" BorderPane.alignment="BOTTOM_CENTER"/>
 </bottom>
     <opaqueInsets>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

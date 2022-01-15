@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * The class controls every kind of controller and puts them together
  *
- * @author Micha, Sonja, Sven
+ * @author Micha, Sonja, Sven, Leah
  */
 public class MainController {
 	
@@ -45,42 +45,70 @@ public class MainController {
 
 	/**
 	 * Runs a whole level which each task
-	 *
 	 */
 	public void runLevel() {
 		runDecryptionTask();
 	}
 
+	/**
+	 * Getter for current level
+	 * @return the current level
+	 */
 	public Level getCurrentLevel() {
 		return currentLevel;
 	}
 
+	/**
+	 * Switches windows
+	 * @param str Window to switch to
+	 */
 	public void switchWindow(String str) {
 		fw.switchWindow(str);
 	}
 
+	/**
+	 * Switches windows and sets a style to the window
+	 * @param path Window to switch to
+	 * @param css Style to apply
+	 */
 	public void switchWindowWithCSS(String path, String css) {
 		fw.switchWindowWithCSS(path, css);
 	}
 
+	/**
+	 * Getter for the count of cleared Levels
+	 * @return cleared level count
+	 */
 	public int getClearedLevels() {
 		return clearedLevels;
 	}
 
+	/**
+	 * Getter for the count of total levels in the game
+	 * @return level count
+	 */
 	public int getAllLevelCount() {
 		return allLevels.size();
 	}
 
+	/**
+	 * Getter for the list of levels
+	 * @return list of levels
+	 */
 	public ArrayList<Level> getAllLevels() {
 		return allLevels;
 	}
 
+	/**
+	 * Getter for the presentationManager
+	 * @return current presentationmanager
+	 */
 	public PresentationManager getPresentationManager() {
 		return fw;
 	}
 
-	public Stage getStage() {
-		return fw.getStage();
+	public void setClearedLevels() {
+		this.clearedLevels++;
 	}
 
 	/**

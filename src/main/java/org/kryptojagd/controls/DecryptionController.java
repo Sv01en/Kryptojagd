@@ -11,7 +11,7 @@ import javafx.util.Duration;
 /**
  * The class controls a window of a decryption task.
  *
- * @author Michail, Sven
+ * @author Michail, Sven, Leah
  */
 public class DecryptionController extends AbstractController{
 
@@ -35,7 +35,7 @@ public class DecryptionController extends AbstractController{
     private Button procedure3;
 
     /**
-     * Initializes a DecryptionController
+     * Initializes a DecryptionController either with the city question or the decryption task
      *
      */
     @FXML
@@ -63,6 +63,10 @@ public class DecryptionController extends AbstractController{
         updateTimer();
     }
 
+    /**
+     * Handles press on first button
+     * @param event that is received
+     */
     @FXML
     void clickProcedure1(ActionEvent event) {
         if (!mainController.getCurrentLevel().decryptionIsFinished()) {
@@ -72,9 +76,13 @@ public class DecryptionController extends AbstractController{
             mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(0);
         }
 
-        mainController.switchWindow("DecryptionTaskFinished.fxml");
+        mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
     }
 
+    /**
+     * Handles press on second button
+     * @param event that is received
+     */
     @FXML
     void clickProcedure2(ActionEvent event) {
         if (!mainController.getCurrentLevel().decryptionIsFinished()) {
@@ -84,9 +92,13 @@ public class DecryptionController extends AbstractController{
             mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(1);
         }
 
-        mainController.switchWindow("DecryptionTaskFinished.fxml");
+        mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
     }
 
+    /**
+     * Handles press on third button
+     * @param event that is received
+     */
     @FXML
     void clickProcedure3(ActionEvent event) {
         if (!mainController.getCurrentLevel().decryptionIsFinished()) {
@@ -96,7 +108,7 @@ public class DecryptionController extends AbstractController{
             mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(2);
         }
 
-        mainController.switchWindow("DecryptionTaskFinished.fxml");
+        mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
     }
 
     /**

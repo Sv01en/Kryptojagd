@@ -11,7 +11,7 @@ import java.util.LinkedList;
 /**
  * The class describes a level in the game
  *
- * @author Sonja, Sven, Amelie, Bartosz
+ * @author Sonja, Sven, Amelie, Bartosz, Leah
  */
 public class Level {
 
@@ -52,14 +52,26 @@ public class Level {
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
 
+	/**
+	 * Getter for the decryption task
+	 * @return decryption task of the level
+	 */
 	public DecryptionTask getDecryptionTask() {
 		return this.decryptionTask;
 	}
 
+	/**
+	 * Getter for encryption task
+	 * @return encryption task of the level
+	 */
 	public EncryptionTask getEncryptionTask() {
 		return encryptionTask;
 	}
 
+	/**
+	 * Getter for multiple choice task
+	 * @return multiple choice task of the level
+	 */
 	public MultipleChoiceTask getCurrentMultipleChoiceTask() {
 		return multipleChoiceTasks.get(this.currentMultipleChoiceTask);
 	}
@@ -92,6 +104,11 @@ public class Level {
 		return this.decryptionTask.proofAnswer(answer);
 	}
 
+	/**
+	 * Checks if the given answer is the correct city
+	 * @param answer answer to check
+	 * @return true if the answer is correct else false
+	 */
 	public boolean proofCityTask(int answer) {
 		if (!decryptionTask.proofCityAnswer(answer)) {
 			countdownTimer.reduceTimer(timePenalty);
@@ -139,18 +156,33 @@ public class Level {
 		return this.decryptionTask.getCorrectAnswer();
 	}
 
+	/**
+	 * Getter to detect if the city task is finished
+	 * @return true if it is, else false
+	 */
 	public boolean cityIsFinished() {
 		return this.decryptionTask.getCorrectAnswerCity();
 	}
 
+	/**
+	 * Getter for the correct city name
+	 * @return correct city name
+	 */
 	public String getCity() {
 		return decryptionTask.getCity();
 	}
 
+	/**
+	 * Getter, if the city task is currently showing
+	 * @return true if it is showing, else false
+	 */
 	public boolean isCityTaskShowing() {
 		return decryptionTask.isCityTaskShowing();
 	}
 
+	/**
+	 * Switches from the decryption the the city task
+	 */
 	public void setCityShowing() {
 		decryptionTask.setCityShowing();
 	}

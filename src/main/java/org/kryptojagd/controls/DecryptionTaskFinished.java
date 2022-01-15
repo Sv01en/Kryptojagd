@@ -12,7 +12,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 /**
  * Gives the right feedback to a task and switches the window.
  *
- * @author Sonja, Sven
+ * @author Sonja, Sven, Leah
  */
 public class DecryptionTaskFinished extends AbstractController{
 
@@ -42,21 +42,6 @@ public class DecryptionTaskFinished extends AbstractController{
         } else {
             feedbackText.setText("Die Antwort war leider falsch! Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
         }
-
-
-        /*if (mainController.getCurrentLevel().decryptionIsFinished() && !mainController.getCurrentLevel().cityIsFinished()) {
-            if (!mainController.CityTaskFinished) {
-                feedbackText.setText("Die Antwort war leider falsch! Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");            } else
-            if (mainController.DecryptionTaskSucceeded && mainController.CityTaskFinished) {
-                feedbackText.setText("Die Antwort war richtig, weiter so!");
-            } else if (!mainController.CityTaskFinished) {
-                feedbackText.setText("A");
-            } else {
-                feedbackText.setText("Die Antwort war leider falsch! Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
-            }
-        } else {
-            feedbackText.setText("Die Antwort war leider falsch! Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
-        }*/
     }
 
     /**

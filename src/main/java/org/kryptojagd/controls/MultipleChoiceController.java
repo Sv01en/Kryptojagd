@@ -13,7 +13,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 /**
  * The class controls a window of a multiple choice task.
  *
- * @author Sonja, Michail, Sven
+ * @author Sonja, Michail, Sven, Leah
  */
 public class MultipleChoiceController extends AbstractController{
 
@@ -64,7 +64,11 @@ public class MultipleChoiceController extends AbstractController{
     void clickAnswer1(ActionEvent event) {
         mainController.MultipleChoiceTaskSucceeded = mainController.getCurrentLevel()
                 .proveMultipleChoice(answer1.getText());
-        mainController.switchWindow("TaskFinished.fxml");
+
+        String city = mainController.getCurrentLevel().getCity();
+        String css = "../css/" + city + ".css";
+
+        mainController.switchWindowWithCSS("TaskFinished.fxml", css);
     }
 
     /**
@@ -77,7 +81,11 @@ public class MultipleChoiceController extends AbstractController{
     void clickAnswer2(ActionEvent event) {
         mainController.MultipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
                 .proveMultipleChoice(answer2.getText());
-        mainController.switchWindow("TaskFinished.fxml");
+
+        String city = mainController.getCurrentLevel().getCity();
+        String css = "../css/" + city + ".css";
+
+        mainController.switchWindowWithCSS("TaskFinished.fxml", css);
     }
 
     /**
@@ -90,7 +98,11 @@ public class MultipleChoiceController extends AbstractController{
     void clickAnswer3(ActionEvent event) {
         mainController.MultipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
                 .proveMultipleChoice(answer3.getText());
-        mainController.switchWindow("TaskFinished.fxml");
+
+        String city = mainController.getCurrentLevel().getCity();
+        String css = "../css/" + city + ".css";
+
+        mainController.switchWindowWithCSS("TaskFinished.fxml", css);
     }
 
     /**
