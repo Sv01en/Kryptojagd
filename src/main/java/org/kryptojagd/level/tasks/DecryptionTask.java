@@ -177,4 +177,10 @@ public class DecryptionTask implements Task {
 	public String getCity() {
 		return answerOptionsCity[correctAnswerCity];
 	}
+
+	public void clearDecryptionTask() {
+		this.correctAnswer = false;
+		this.correctAnswerCityBool = false;
+		this.isCityTaskShowing = false;
+	}
 }

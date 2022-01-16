@@ -1,7 +1,7 @@
 package org.kryptojagd.controls;
 
-import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 /**
  * Controls the TimeOver file
@@ -9,14 +9,17 @@ import javafx.event.ActionEvent;
  * @author Sven Strasser
  * @version 1.0
  */
-public class TimeOverController {
+public class TimeOverController extends AbstractController {
 
     /**
      * Restarts the current level.
      */
     @FXML
     void restartAction(ActionEvent e) {
-
+        mainController.EncryptionTaskSucceeded = false;
+        mainController.DecryptionTaskSucceeded = false;
+        mainController.MultipleChoiceTaskSucceeded = false;
+        mainController.switchWindowWithCSS("Decryption.fxml", "../css/Paris.css");
     }
 
     /**
@@ -24,7 +27,10 @@ public class TimeOverController {
      */
     @FXML
     void menuAction(ActionEvent e) {
-
+        mainController.EncryptionTaskSucceeded = false;
+        mainController.DecryptionTaskSucceeded = false;
+        mainController.MultipleChoiceTaskSucceeded = false;
+        mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
     }
 
     /**

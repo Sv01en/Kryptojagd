@@ -97,6 +97,11 @@ public class Level {
 
 	}
 
+	/**
+	 *
+	 * @param answer
+	 * @return
+	 */
 	public boolean proveDecryptionTask(String answer) {
 		if (!this.decryptionTask.proofAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
@@ -109,13 +114,18 @@ public class Level {
 	 * @param answer answer to check
 	 * @return true if the answer is correct else false
 	 */
-	public boolean proofCityTask(int answer) {
+	public boolean proveCityTask(int answer) {
 		if (!decryptionTask.proofCityAnswer(answer)) {
 			countdownTimer.reduceTimer(timePenalty);
 		}
 		return decryptionTask.proofCityAnswer(answer);
 	}
 
+	/**
+	 *
+	 * @param answer
+	 * @return
+	 */
 	public boolean proveEncryptionTask(String answer) {
 		if (this.encryptionTask.proofAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
@@ -123,6 +133,10 @@ public class Level {
 		return this.encryptionTask.proofAnswer(answer);
 	}
 
+	/**
+	 *
+	 * @param encryptionMethod
+	 */
 	private void proveEncryptionMethod(String encryptionMethod){
 		switch (encryptionMethod){
 			case "Backwards":
@@ -144,7 +158,8 @@ public class Level {
 	}
 
 	/**
-	 * Proofs, if every multiple choice task is answered
+	 * Proofs, if every multiple choice task is answered.
+	 * If true, the counter for the current multiple choice question is set to 0
 	 *
 	 * @return true, if there is no more multiple choice task
 	 */
@@ -152,6 +167,10 @@ public class Level {
 		return this.multipleChoiceFinished;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public boolean decryptionIsFinished() {
 		return this.decryptionTask.getCorrectAnswer();
 	}
@@ -187,26 +206,34 @@ public class Level {
 		decryptionTask.setCityShowing();
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public boolean encryptionTaskFinished() {
 		return this.encryptionTask.getTaskCompleted();
 	}
 
-	public void isFinished() {
-		this.isRunning = false;
-	}
-
-	public boolean getIsRunnig() {
-		return this.isRunning;
-	}
-	
+	/**
+	 * Sets the id of the level.
+	 * @param id given as an integer
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
+	/**
+	 * Returns the id of the level.
+	 * @return id of the level as an integer
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * Returns the remaining time from the {@link CountdownTimer} as an integer.
+	 * @return
+	 */
 	public int getTimeInSec() {
 		if (this.countdownTimer != null) {
 			this.currentTime = Integer.parseInt(this.countdownTimer.getCurrentValue());
@@ -214,8 +241,21 @@ public class Level {
 		return this.currentTime;
 	}
 
+	/**
+	 * Starts the countdown.
+	 */
 	public void startCountdown() {
 		this.countdownTimer = new CountdownTimer(this.getTimeInSec());
+	}
+
+	/**
+	 * Clears the level attributes at the end of the level.
+	 */
+	public void clearLevel() {
+		this.multipleChoiceFinished = false;
+		this.currentMultipleChoiceTask = 0;
+		this.currentTime = this.timeInSec;
+		this.decryptionTask.clearDecryptionTask();
 	}
 
 }

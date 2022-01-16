@@ -36,7 +36,6 @@ public class DecryptionController extends AbstractController{
 
     /**
      * Initializes a DecryptionController either with the city question or the decryption task
-     *
      */
     @FXML
     public void initialize(){
@@ -65,6 +64,7 @@ public class DecryptionController extends AbstractController{
 
     /**
      * Handles press on first button
+     *
      * @param event that is received
      */
     @FXML
@@ -73,7 +73,7 @@ public class DecryptionController extends AbstractController{
             mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
                     procedure1.getText());
         } else {
-            mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(0);
+            mainController.CityTaskFinished = mainController.getCurrentLevel().proveCityTask(0);
         }
 
         mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
@@ -81,6 +81,7 @@ public class DecryptionController extends AbstractController{
 
     /**
      * Handles press on second button
+     *
      * @param event that is received
      */
     @FXML
@@ -89,7 +90,7 @@ public class DecryptionController extends AbstractController{
             mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
                     procedure2.getText());
         } else {
-            mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(1);
+            mainController.CityTaskFinished = mainController.getCurrentLevel().proveCityTask(1);
         }
 
         mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
@@ -97,6 +98,7 @@ public class DecryptionController extends AbstractController{
 
     /**
      * Handles press on third button
+     *
      * @param event that is received
      */
     @FXML
@@ -105,7 +107,7 @@ public class DecryptionController extends AbstractController{
             mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
                     procedure3.getText());
         } else {
-            mainController.CityTaskFinished = mainController.getCurrentLevel().proofCityTask(2);
+            mainController.CityTaskFinished = mainController.getCurrentLevel().proveCityTask(2);
         }
 
         mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");

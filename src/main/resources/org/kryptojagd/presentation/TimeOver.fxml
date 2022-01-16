@@ -32,4 +32,7 @@
          </children>
       </HBox>
    </bottom>
+   <top>
+      <Label fx:id="timer" alignment="TOP_RIGHT" text="timer" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>
