@@ -77,4 +77,12 @@ public class CountdownTimer {
         actuelValue = actuelValue - given;
         this.outputValue = Long.toString(actuelValue);
     }
+
+    /**
+     * Returns true if the remaining time in the timer has expired.
+     * @return true if time is up, false otherwise
+     */
+    public boolean timeIsUp() {
+        return this.actuelValue <= 0;
+    }
 }

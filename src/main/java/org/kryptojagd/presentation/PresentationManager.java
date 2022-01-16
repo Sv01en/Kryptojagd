@@ -34,7 +34,7 @@ public class PresentationManager {
 	public void switchWindow(String str) {
 		Parent root;
 		try {
-			
+
 			root = FXMLLoader.load(getClass().getResource(str));
 			// root = loader.load();
 			Scene scene = new Scene(root);	
