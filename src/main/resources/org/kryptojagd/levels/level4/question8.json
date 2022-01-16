@@ -1,5 +1,5 @@
 {
-    "question28": "Was bedeutet HTML?",
-    "answerOptions28": ["Hypertext Markup Language", "Hyper Type Markup Language", "Hypertext Max Language"],
-    "correctAnswer28":1
+    "question22": "Wie nennt man den Teilbereich der Informatik, der untersucht wie natürliche Sprache mit dem Computer verarbeitet werden kann?",
+    "answerOptions22": ["Computerlinguistik", "Informatische Linguistik", "Sprachinformatik"],
+    "correctAnswer22": "Computerlinguistik"
 }

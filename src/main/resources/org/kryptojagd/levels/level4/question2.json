@@ -1,5 +1,5 @@
 {
   "question24": "Wie viele Zustände kann man mit zwei Bits herstellen? ",
   "answerOptions24": ["2", "4", "6"],
-  "correctAnswer24":2
+  "correctAnswer24": "4"
 }

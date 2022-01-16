@@ -1,5 +1,5 @@
 {
   "question10": "Wieviel Bit hat ein Kilobyte?",
   "answerOptions10": ["100", "1000", "1024"],
-  "correctAnswer10":3
+  "correctAnswer10": "1024"
 }

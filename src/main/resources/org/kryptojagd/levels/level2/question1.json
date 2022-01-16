@@ -1,6 +1,10 @@
 {
     "question":"Ist die Cäsar-Chiffre sicher?",
-    "answerOptions":["Ja, weil nicht jeder den Text lesen kann", "Es kommt darauf an, wie weit verschoben wurde", "Nein, die Verschlüsselung ist leicht zu lösen"],
-    "correctAnswer":3
+    "answerOptions":[
+        "Ja, weil nicht jeder den Text lesen kann",
+        "Es kommt darauf an, wie weit verschoben wurde",
+        "Nein, die Verschlüsselung ist leicht zu lösen"
+    ],
+    "correctAnswer": "Nein, die Verschlüsselung ist leicht zu lösen"
 
 }

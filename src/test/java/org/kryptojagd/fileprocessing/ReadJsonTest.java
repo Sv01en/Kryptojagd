@@ -2,6 +2,7 @@ package org.kryptojagd.fileprocessing;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.kryptojagd.level.tasks.DecryptionTask;
@@ -26,7 +27,8 @@ class ReadJsonTest {
 
     MultipleChoiceTask q = ReadJson.createMultipleChoiceTask(pathToQuestion);
     // assert(q.proofAnswer(correctAnswer));
-    assertEquals(q.proofAnswer(correctAnswer), true);
+    assert q != null;
+    assertTrue(q.proofAnswer(correctAnswer));
     assertEquals(q.getQuestion(), question);
     assertEquals(q.getPossibilities()[0], possibilities[0]);
     assertEquals(q.getPossibilities()[1], possibilities[1]);

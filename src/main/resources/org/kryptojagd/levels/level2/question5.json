@@ -1,5 +1,5 @@
 {
   "question": "Wieviel Speicherplatz hat ein normaler DVD Rohling?",
   "answerOptions": ["700 MB", "2,4 GB", "4,7 GB"],
-  "correctAnswer":3
+  "correctAnswer": "4,7 GB"
 }

@@ -1,5 +1,5 @@
 {
     "question8":"Was versteht man in der Informatik unter einem Verweis?",
     "answerOptions8":["Eine Textstelle", "Eine Bilddatei", "Ein Hinweis auf eine andere Textstelle"],
-    "correctAnswer8":3
+    "correctAnswer8": "Ein Hinweis auf eine andere Textstelle"
 }

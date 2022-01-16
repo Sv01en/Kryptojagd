@@ -1,5 +1,7 @@
 {
-    "question22": "Wie nennt man den Teilbereich der Informatik, der untersucht wie natürliche Sprache mit dem Computer verarbeitet werden kann?",
-    "answerOptions22": ["Computerlinguistik ", "Informatische Linguistik ", "Sprachinformatik "],
-    "correctAnswer22":1
+    "question30": "Was versteht man unter einem Objekt?",
+    "answerOptions30": ["Etwas, das nur Eigenschaften hat",
+        "Etwas, das nur Methoden hat",
+        "Etwas, das real existiert und Informationen enthält"],
+    "correctAnswer30": "Etwas, das real existiert und Informationen enthält"
 }
