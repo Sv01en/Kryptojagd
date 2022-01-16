@@ -16,14 +16,14 @@ class ReadJsonTest {
   @Test
   void testCreateMultipleChoiceQuestion() {
     String pathToQuestion = path + "question1.json";
-    String question = "Warum werden Texte verschlüsselt? Hat das irgend einen bestimmten Grund?";
-    String correctAnswer = "Ja, der Text kann sonst von jedem gelesen werden und das wäre nicht "
+    String question = "Warum werden Texte verschluesselt? Hat das irgend einen bestimmten Grund?";
+    String correctAnswer = "Ja, der Text kann sonst von jedem gelesen werden und das waere nicht "
         + "sicher.";
-    String[] possibilities = {"Nein, der Verfasser wollte sich nur einen Spaß erlauben.", 
+    String[] possibilities = {"Nein, der Verfasser wollte sich nur einen Spass erlauben.",
         "Ja, der Text kann sonst von jedem gelesen werden und "
-          + "das wäre nicht sicher.",
+          + "das waere nicht sicher.",
         "Ja, denn der Verfasser kommt vermutlich aus einem Land "
-          + "indem es üblich ist Texte so zu schreiben."};
+          + "indem es ueblich ist Texte so zu schreiben."};
 
     MultipleChoiceTask q = ReadJson.createMultipleChoiceTask(pathToQuestion);
     // assert(q.proofAnswer(correctAnswer));
@@ -40,11 +40,13 @@ class ReadJsonTest {
     String pathToEncryption = path + "encryption.json";
     String encType = "Backwards";
     String text = "Erste Floppy-Disk gefunden";
-    String task = "Verschlüssle den folgenden Text mit dem Rückwärtsverschlüsselungsverfahren:\n\nHinweise\n1. Gib deine Lösung in Upper Case ein\n2. Verschlüssle jedes Wort einzeln, unabhängig von den Sonderzeichen.\n";
+    String task = "Verschluessle den folgenden Text mit dem Rueckwaertsverschluesselungsverfahren:\n\nHinweise\n1." +
+    " Gib deine Loesung in Upper Case ein\n2. Verschluessle jedes Wort einzeln, unabhaengig von den Sonderzeichen.\n";
 
     EncryptionTask enc = ReadJson.createEncryptionTask(pathToEncryption);
 
 
+    assert enc != null;
     assertEquals(enc.getEncryption(), encType);
     assertEquals(enc.getTask(), task);
     assertEquals(enc.getText(), text);
