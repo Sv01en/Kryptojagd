@@ -1,0 +1,5 @@
+{
+  "question":"Wie funktioniert die Cäsar-Chiffre?",
+  "answerOptions":["Zahlen statt Buchstaben", "Einzelne Buchstaben weglassen", "Buchstaben im Alphabet verschieben"],
+  "correctAnswer":3
+}

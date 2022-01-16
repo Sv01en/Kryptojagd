@@ -1,0 +1,5 @@
+{
+  "question32": "Wovon spricht man, wenn ein Betriebssystem mehrere Prozesse gleichzeitig ausführen kann?",
+  "answerOptions32": ["Multitasking", "Parallel Processing", "Multimanagement"],
+  "correctAnswer32":1
+}

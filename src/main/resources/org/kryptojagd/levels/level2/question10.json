@@ -1,0 +1,5 @@
+{
+    "question": "Warum werden Text verschlüsselt? Hat das irgend einen bestimmten Grund?",
+    "answerOptions": ["Nein, der Verfasser wollte sich nur einen Spaß erlauben.", "Ja, der Text kann sonst von jedem gelesen werden und das wäre nicht sicher.", "Ja, denn der Verfasser kommt vermutlich aus einem Land indem es üblich ist Texte so zu schreiben."],
+    "correctAnswer": 1
+}

@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 /**
  * Class that manages the current window and the window switching
+ *
  * @author Leah Schlimm, Bartosz Treyde
  */
 public class PresentationManager {
@@ -28,7 +29,7 @@ public class PresentationManager {
 	}
 
 	/**
-	 * Switches the window without a style
+	 * Switches the window without a style and exits program if window is closed
 	 * @param str window to switch to
 	 */
 	public void switchWindow(String str) {
@@ -51,7 +52,7 @@ public class PresentationManager {
 	}
 
 	/**
-	 * Switches the window and applies a style to it
+	 * Switches the window and applies a style to it and exits program if window is closed
 	 * @param path window to switch to
 	 * @param css style to apply
 	 */

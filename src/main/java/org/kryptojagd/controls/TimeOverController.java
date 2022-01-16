@@ -20,7 +20,7 @@ public class TimeOverController extends AbstractController {
         mainController.DecryptionTaskSucceeded = false;
         mainController.MultipleChoiceTaskSucceeded = false;
         mainController.getCurrentLevel().clearLevel();
-        mainController.switchWindowWithCSS("Decryption.fxml", "../css/Paris.css");
+        mainController.switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
     }
 
     /**

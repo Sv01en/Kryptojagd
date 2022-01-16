@@ -1,11 +1,9 @@
 package org.kryptojagd.level.tasks;
 
-import org.kryptojagd.encryptionmethods.Encryption;
-
 /**
  * The interface describes the form of a task in the game
  *
- * @author Sonja
+ * @author Sonja Kuklok
  */
 public interface Task {
 
