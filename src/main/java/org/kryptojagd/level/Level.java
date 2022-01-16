@@ -11,7 +11,7 @@ import java.util.LinkedList;
 /**
  * The class describes a level in the game
  *
- * @author Sonja, Sven, Amelie, Bartosz, Leah
+ * @author Sonja Kuklok, Sven Strasser, Amelie Reichert, Bartosz Treyde, Leah Schlimm
  */
 public class Level {
 

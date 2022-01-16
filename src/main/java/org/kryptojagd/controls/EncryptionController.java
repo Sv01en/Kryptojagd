@@ -15,7 +15,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 /**
  * Encryption Controller for the corresponding fxml-file
  *
- * @author Amelie, Bartosz, Sven
+ * @author Amelie Reichert, Bartosz Treyde, Sven Strasser
  * @version 1.0
  */
 public class EncryptionController extends AbstractController {

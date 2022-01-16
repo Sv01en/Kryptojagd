@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * Controller for the level selector window
- * @author Leah
+ * @author Leah Schlimm
  */
 public class LevelSelectorController extends AbstractController {
 

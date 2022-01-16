@@ -12,7 +12,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 /**
  * Gives the right feedback to a task and switches the window.
  *
- * @author Sonja, Leah
+ * @author Sonja Kuklok, Leah Schlimm
  */
 public class TaskFinishedController extends AbstractController{
 

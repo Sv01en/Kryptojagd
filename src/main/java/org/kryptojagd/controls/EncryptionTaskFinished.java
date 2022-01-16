@@ -11,7 +11,7 @@ import javafx.util.Duration;
 /**
  * Gives the right feedback to a task and switches the window.
  *
- * @author Sonja, Sven, Leah
+ * @author Sonja Kuklok, Sven Strasser, Leah Schlimm
  */
 public class EncryptionTaskFinished extends AbstractController{
 

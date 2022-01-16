@@ -3,7 +3,7 @@ package org.kryptojagd.encryptionmethods;
 /**
 * Provides methods for encrypting and decrypting texts with Beaufort encryption
  *
- * @author Leah Schlimm, Sven
+ * @author Leah Schlimm, Sven Strasser
 */
 public class Beaufort extends Encryption {
 

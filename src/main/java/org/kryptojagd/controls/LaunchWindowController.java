@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 /**
  * Controller for the Launch Window
  *
- * @author Leah
+ * @author Leah Schlimm
  */
 public class LaunchWindowController extends AbstractController {
 	
