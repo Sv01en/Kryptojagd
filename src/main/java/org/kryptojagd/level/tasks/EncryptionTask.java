@@ -5,15 +5,20 @@ import org.kryptojagd.encryptionmethods.Encryption;
 /**
  * The class describes a task, where you have to encrypt the given text
  *
- * @author Sonja, Amelie, Bartosz, Sven
+ * @author Sonja Kuklok, Sven Strasser, Amelie Reichert, Bartosz Treyde
  */
 public class EncryptionTask implements Task {
 
     private String task;
+
     private String text;
+
     private String key;
+
     private Encryption encryptionMethod;
+
     private String encryptionType;
+
     private boolean taskCompleted;
 
     /**
@@ -97,6 +102,11 @@ public class EncryptionTask implements Task {
         return answer.equals(this.encryptionMethod.encode(this.text, this.key));
     }
 
+    /**
+     * Returns if the task is complete
+     *
+     * @return true or false as boolean
+     */
     public boolean getTaskCompleted() {
         return this.taskCompleted;
     }

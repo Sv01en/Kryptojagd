@@ -2,12 +2,10 @@ package org.kryptojagd.level.tasks;
 
 import org.kryptojagd.encryptionmethods.Encryption;
 
-import java.util.Arrays;
-
 /**
  * The class describes a task, where you have to decrypt text
  *
- * @author Sonja, Sven, Leah
+ * @author Sonja Kuklok, Sven Strasser, Leah Schlimm
  */
 public class DecryptionTask implements Task {
 
@@ -125,14 +123,6 @@ public class DecryptionTask implements Task {
 	 */
 	public boolean getCorrectAnswer() {
 		return this.correctAnswer;
-	}
-
-	/**
-	 * Setter for the encryption method
-	 * @param encryptionMethod method to set
-	 */
-	public void setEncryptionMethod(String encryptionMethod) {
-		this.encryptionMethod = encryptionMethod;
 	}
 
 	/**
