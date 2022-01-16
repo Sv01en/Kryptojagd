@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
-import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 
 /**
@@ -18,8 +17,6 @@ import org.kryptojagd.level.countdown.CountdownTimer;
 public class MultipleChoiceController extends AbstractController{
 
     private CountdownTimer countdownTimer;
-
-    private final Level level = mainController.getCurrentLevel();
 
     @FXML
     private Label timer = new Label();

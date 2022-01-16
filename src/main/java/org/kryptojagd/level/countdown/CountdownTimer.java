@@ -21,6 +21,10 @@ public class CountdownTimer {
      */
     private String outputValue;
 
+    private TimerTask task;
+
+    private Timer timer = new Timer();
+
     /**
      * Initializes with a given time in seconds and calls {@link #countdownTimer(int)}
      * @param given Countdown duration in seconds, passed as an integer
@@ -34,8 +38,7 @@ public class CountdownTimer {
      */
     private long countdownTimer(int setTime) {
         actuelValue = setTime;
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
+        this.task = new TimerTask() {
             @Override
             public void run() {
                 if (actuelValue > 0)
@@ -46,8 +49,7 @@ public class CountdownTimer {
                 }
             }
         };
-        timer.schedule(task, 0, 1000);
-        System.out.println(actuelValue);
+        this.timer.schedule(task, 0, 1000);
         return actuelValue;
     }
 
@@ -79,10 +81,10 @@ public class CountdownTimer {
     }
 
     /**
-     * Returns true if the remaining time in the timer has expired.
-     * @return true if time is up, false otherwise
+     * Cancel the running {@link TimerTask} and {@link Timer}.
      */
-    public boolean timeIsUp() {
-        return this.actuelValue <= 0;
+    public void cancelTimerTask() {
+        this.task.cancel();
+        this.timer.cancel();
     }
 }

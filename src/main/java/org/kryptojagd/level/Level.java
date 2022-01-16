@@ -245,7 +245,7 @@ public class Level {
 	 * Starts the countdown.
 	 */
 	public void startCountdown() {
-		this.countdownTimer = new CountdownTimer(this.getTimeInSec());
+		this.countdownTimer = new CountdownTimer(this.currentTime);
 	}
 
 	/**
@@ -255,6 +255,7 @@ public class Level {
 		this.multipleChoiceFinished = false;
 		this.currentMultipleChoiceTask = 0;
 		this.currentTime = this.timeInSec;
+		this.countdownTimer.cancelTimerTask();
 		this.decryptionTask.clearDecryptionTask();
 	}
 
