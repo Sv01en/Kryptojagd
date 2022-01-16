@@ -19,16 +19,23 @@ import java.util.LinkedList;
 public class Level {
 
 	private DecryptionTask decryptionTask;
+
 	private EncryptionTask encryptionTask;
+
 	private CountdownTimer countdownTimer;
 
 	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
 
 	private int timeInSec;
+
 	private int currentTime;
+
 	private int id;
+
 	private int timePenalty;
+
 	private int currentMultipleChoiceTask;
+
 	private boolean multipleChoiceFinished;
 
 	/**
