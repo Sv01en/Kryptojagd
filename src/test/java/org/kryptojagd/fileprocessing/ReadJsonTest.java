@@ -38,7 +38,7 @@ class ReadJsonTest {
     String pathToEncryption = path + "encryption.json";
     String encType = "Backwards";
     String text = "Erste Floppy-Disk gefunden";
-    String task = "Verschlüssle den folgenden Text mit dem Rückwärtsverschlüsselungsverfahren:";
+    String task = "Verschlüssle den folgenden Text mit dem Rückwärtsverschlüsselungsverfahren:\n\nHinweise\n1. Gib deine Lösung in Upper Case ein\n2. Verschlüssle jedes Wort einzeln, unabhängig von den Sonderzeichen.\n";
 
     EncryptionTask enc = ReadJson.createEncryptionTask(pathToEncryption);
 
