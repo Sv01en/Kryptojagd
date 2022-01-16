@@ -21,49 +21,54 @@ import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
 
-
+/**
+ * This is the main app of the software.
+ *
+ * @author Leah Schlimm, Amelie Reichert, Bartosz Treyde, Sven Strasser, 
+ *     Michail Petermann, Sonja Kuklok
+ *
+ */
 public class MainApp extends Application {
 
-	private PresentationManager fw;	
-	private MainController hs;
+  private PresentationManager fw;
+  private MainController hs;
 
-	private int clearedLevels = 0;
-	
-    public void start(Stage stage) {
+  private int clearedLevels = 0;
 
-		ArrayList<Level> allLevels = null;
-		try {
-			allLevels = ReadDirectory.initialize();
-		} catch (Exception exception) {
-			exception.printStackTrace();
-		}
+  /**
+   * This method starts the software and loads the 
+   * presentation elements.
+   * 
+   */
+  public void start(Stage stage) {
 
-		Parent root;
-		try {
-			
-			root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
-			
-			System.out.println(getClass().toString());
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("css/startwindow.css").toExternalForm());
-
-			stage.setScene(scene);
-			
-			stage.show();
-			fw = new PresentationManager(stage);
-			assert allLevels != null;
-			//ToDo: Structure of game, finish level, start next level
-			hs = new MainController(fw, allLevels.get(0), allLevels, clearedLevels);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+    ArrayList<Level> allLevels = null;
+    try {
+      allLevels = ReadDirectory.initialize();
+    } catch (Exception exception) {
+      exception.printStackTrace();
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    Parent root;
+    try {
+
+      root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
+      Scene scene = new Scene(root);
+      scene.getStylesheets().add(getClass().getResource("css/startwindow.css").toExternalForm());
+      stage.setScene(scene);
+      stage.show();
+      fw = new PresentationManager(stage);
+      assert allLevels != null;
+      //TODO: Structure of game, finish level, start next level
+      hs = new MainController(fw, allLevels.get(0), allLevels, clearedLevels);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
+  }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
 
 }
