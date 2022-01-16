@@ -6,5 +6,6 @@
   "answerOptionsCity":["New York", "Wien", "Moskau"],
   "correctAnswerCity":0,
   "textAfterStart":"\"Ihr seid gerade in New York gelandet.\\nAber eure Erzfeindin Eve ist euch immer noch auf den Fersen.\\nAlso verschiebt den Broadway-Besuch auf ein Anderes Mal, denn ihr müsst euch beeilen, damit Eve euch nicht zuvorkommt.\\nSCHNELL!",
-  "timeInSec": 300
+  "timeInSec": 300,
+  "timePenalty": 20
 }

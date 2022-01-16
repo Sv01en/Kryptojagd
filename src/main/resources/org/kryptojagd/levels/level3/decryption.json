@@ -6,6 +6,7 @@
   "answerOptionsCity":["Brüssel", "Warschau", "London"],
   "correctAnswerCity":2,
   "textAfterStart":"Ihr seid gerade in London gelandet.\nAber eure Erzfeindin Eve ist euch immer noch auf den Fersen.\nAlso verschiebt den vier-Uhr-Tee auf ein Anderes Mal, denn ihr müsst euch beeilen, damit Eve euch nicht zuvorkommt.\nSCHNELL!",
-  "timeInSec": 300
+  "timeInSec": 300,
+  "timePenalty": 20
 }
 

@@ -6,5 +6,6 @@
   "answerOptionsCity":["Amsterdam", "Berlin", "San Francisco"],
   "correctAnswerCity":1,
   "textAfterStart":"Ihr seid gerade in Berlin gelandet.\nAber eure Erzfeindin Eve ist euch immer noch auf den Fersen.\nAlso verschiebt die Currywurst auf ein Anderes Mal, denn ihr müsst euch beeilen, damit Eve euch nicht zuvorkommt.\nSCHNELL!",
-  "timeInSec": 300
+  "timeInSec": 300,
+  "timePenalty": 20
 }
