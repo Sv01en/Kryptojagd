@@ -18,16 +18,16 @@ import java.util.LinkedList;
  */
 public class Level {
 
-	private final DecryptionTask decryptionTask;
-	private final EncryptionTask encryptionTask;
+	private DecryptionTask decryptionTask;
+	private EncryptionTask encryptionTask;
 	private CountdownTimer countdownTimer;
 
-	private final LinkedList<MultipleChoiceTask> multipleChoiceTasks;
+	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
 
-	private final int timeInSec;
+	private int timeInSec;
 	private int currentTime;
 	private int id;
-	private final int timePenalty;
+	private int timePenalty;
 	private int currentMultipleChoiceTask;
 	private boolean multipleChoiceFinished;
 
@@ -39,12 +39,12 @@ public class Level {
 	 * @param multipleChoiceTasks third and last task is a LinkedList of multiple choice questions
 	 */
 	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask,
-				 LinkedList<MultipleChoiceTask> multipleChoiceTasks, int timeInSec, int timePenalty) {
+				 LinkedList<MultipleChoiceTask> multipleChoiceTasks, int timeInSec) {
 		this.decryptionTask = decryptionTask;
 		this.encryptionTask = encryptionTask;
 		this.multipleChoiceTasks = multipleChoiceTasks;
 		this.timeInSec = timeInSec;
-		this.timePenalty = timePenalty;
+		this.timePenalty = this.decryptionTask.getTimePenalty();
 		this.currentTime = this.timeInSec;
 		this.currentMultipleChoiceTask = 0;
 		this.multipleChoiceFinished = false;

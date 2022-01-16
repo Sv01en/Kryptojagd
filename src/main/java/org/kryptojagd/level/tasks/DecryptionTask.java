@@ -29,6 +29,8 @@ public class DecryptionTask implements Task {
 
 	private int timeInSec;
 
+	private int timePenalty;
+
 	private boolean correctAnswer;
 
 	private boolean correctAnswerCityBool;
@@ -48,7 +50,7 @@ public class DecryptionTask implements Task {
 	 */
 	public DecryptionTask(String plainText, String encryptionMethod, String[] answerOptionsEncryption,
 						  int correctAnswerEncryption, String[] answerOptionsCity, int correctAnswerCity,
-						  String textAfterStart, int timeInSec) {
+						  String textAfterStart, int timeInSec, int timePenalty) {
 		this.plainText = plainText;
 		this.encryptionMethod = encryptionMethod;
 		this.answerOptionsEncryption = answerOptionsEncryption;
@@ -60,6 +62,15 @@ public class DecryptionTask implements Task {
 		this.correctAnswer = false;
 		this.correctAnswerCityBool = false;
 		this.isCityTaskShowing = false;
+		this.timePenalty = timePenalty;
+	}
+
+	/**
+	 * Returns the time penalty as an integer
+	 * @return time as an integer
+	 */
+	public int getTimePenalty() {
+		return this.timePenalty;
 	}
 
 	/**
