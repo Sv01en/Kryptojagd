@@ -61,8 +61,8 @@ public class EncryptionController extends AbstractController {
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-            if (mainController.getCurrentLevel().getTimeInSec() == 0) {
-                mainController.switchWindow("Decryption.fxml");
+            if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+                mainController.switchWindow("TimeOver.fxml");
                 time.stop();
             }
         });
