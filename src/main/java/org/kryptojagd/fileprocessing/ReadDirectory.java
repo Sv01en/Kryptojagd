@@ -17,7 +17,7 @@ import org.kryptojagd.level.tasks.MultipleChoiceTask;
  */
 public class ReadDirectory {
 
-  private static final String path = "src/main/resources/org/kryptojagd/levels";
+  private static final String PATH = "src/main/resources/org/kryptojagd/levels";
 
   /**
    * This method initializes all levels.
@@ -29,7 +29,7 @@ public class ReadDirectory {
 
     ArrayList<Level> allLevels = new ArrayList<Level>();
 
-    File levelsFolder = new File(path);
+    File levelsFolder = new File(PATH);
     File[] listOfFolders = levelsFolder.listFiles();
 
     for (File folder : listOfFolders) {
@@ -90,5 +90,4 @@ public class ReadDirectory {
 
     return new Level(decryptionTask, encryptionTask, multipleChoiceTasks, timeInSec);
   }
-
 }

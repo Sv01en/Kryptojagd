@@ -13,7 +13,7 @@ import javafx.util.Duration;
  *
  * @author Michail Petermann, Sven Strasser, Leah Schlimm
  */
-public class DecryptionController extends AbstractController{
+public class DecryptionController extends AbstractController {
 
     @FXML
     public Label question;
@@ -38,16 +38,16 @@ public class DecryptionController extends AbstractController{
      * Initializes a DecryptionController either with the city question or the decryption task
      */
     @FXML
-    public void initialize(){
+    public void initialize() {
         if (!mainController.getCurrentLevel().decryptionIsFinished()) {
             mainController.getCurrentLevel().startCountdown();
-            String[] possibleProcedures = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsEncryption();
+            String[] possibleChoice = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsEncryption();
             String plaintext = mainController.getCurrentLevel().getDecryptionTask().getPlainText();
             encryptedPuzzleText.setText(mainController.getCurrentLevel().getEncryptionTask().getEncryptionMethod().
                     encode(plaintext, mainController.getCurrentLevel().getEncryptionTask().getKey()));
-            procedure1.setText(possibleProcedures[0]);
-            procedure2.setText(possibleProcedures[1]);
-            procedure3.setText(possibleProcedures[2]);
+            procedure1.setText(possibleChoice[0]);
+            procedure2.setText(possibleChoice[1]);
+            procedure3.setText(possibleChoice[2]);
         } else {
             mainController.getCurrentLevel().setCityShowing();
             String[] cities = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsCity();
@@ -70,10 +70,10 @@ public class DecryptionController extends AbstractController{
     @FXML
     void clickProcedure1(ActionEvent event) {
         if (!mainController.getCurrentLevel().decryptionIsFinished()) {
-            mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
                     procedure1.getText());
         } else {
-            mainController.CityTaskFinished = mainController.getCurrentLevel().proveCityTask(0);
+            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(0);
         }
 
         mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
@@ -87,10 +87,10 @@ public class DecryptionController extends AbstractController{
     @FXML
     void clickProcedure2(ActionEvent event) {
         if (!mainController.getCurrentLevel().decryptionIsFinished()) {
-            mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
                     procedure2.getText());
         } else {
-            mainController.CityTaskFinished = mainController.getCurrentLevel().proveCityTask(1);
+            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(1);
         }
 
         mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
@@ -104,10 +104,10 @@ public class DecryptionController extends AbstractController{
     @FXML
     void clickProcedure3(ActionEvent event) {
         if (!mainController.getCurrentLevel().decryptionIsFinished()) {
-            mainController.DecryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
                     procedure3.getText());
         } else {
-            mainController.CityTaskFinished = mainController.getCurrentLevel().proveCityTask(2);
+            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(2);
         }
 
         mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");

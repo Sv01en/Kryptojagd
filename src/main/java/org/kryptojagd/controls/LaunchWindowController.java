@@ -10,9 +10,7 @@ import javafx.scene.control.Button;
  * @author Leah Schlimm
  */
 public class LaunchWindowController extends AbstractController {
-	
-	
-
+    
     @FXML
     private Button startButton;
 
@@ -52,8 +50,7 @@ public class LaunchWindowController extends AbstractController {
     	System.out.println("Es wurde auf Start geklickt!");
     	mainController.runLevel();
     }
-    
-   
+
     @FXML
     public void initialize() {
 
@@ -68,4 +65,3 @@ public class LaunchWindowController extends AbstractController {
         mainController.switchWindowWithCSS("LevelSelector.fxml", "../css/startwindow.css");
     }
 }
-

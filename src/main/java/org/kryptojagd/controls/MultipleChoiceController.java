@@ -14,7 +14,7 @@ import org.kryptojagd.level.countdown.CountdownTimer;
  *
  * @author Sonja Kuklok, Michail Petermann, Sven Strasser, Leah Schlimm
  */
-public class MultipleChoiceController extends AbstractController{
+public class MultipleChoiceController extends AbstractController {
 
     private CountdownTimer countdownTimer;
 
@@ -22,7 +22,7 @@ public class MultipleChoiceController extends AbstractController{
     private Label timer = new Label();
 
     @FXML
-    private Label QuestionField;
+    private Label questionField;
 
     @FXML
     private Button answer1;
@@ -41,8 +41,8 @@ public class MultipleChoiceController extends AbstractController{
      *
      */
     @FXML
-    public void initialize(){
-        QuestionField.setText(mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getQuestion());
+    public void initialize() {
+        questionField.setText(mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getQuestion());
         String[] possibilities = mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getPossibilities();
         answer1.setText(possibilities[0]);
         answer2.setText(possibilities[1]);
@@ -59,7 +59,7 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        mainController.MultipleChoiceTaskSucceeded = mainController.getCurrentLevel()
+        mainController.multipleChoiceTaskSucceeded = mainController.getCurrentLevel()
                 .proveMultipleChoice(answer1.getText());
 
         String city = mainController.getCurrentLevel().getCity();
@@ -76,7 +76,7 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void clickAnswer2(ActionEvent event) {
-        mainController.MultipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
+        mainController.multipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
                 .proveMultipleChoice(answer2.getText());
 
         String city = mainController.getCurrentLevel().getCity();
@@ -93,7 +93,7 @@ public class MultipleChoiceController extends AbstractController{
      */
     @FXML
     void clickAnswer3(ActionEvent event) {
-        mainController.MultipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
+        mainController.multipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
                 .proveMultipleChoice(answer3.getText());
 
         String city = mainController.getCurrentLevel().getCity();

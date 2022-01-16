@@ -1,6 +1,5 @@
 package org.kryptojagd.controls;
 
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -10,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import org.kryptojagd.level.Level;
-import org.kryptojagd.level.countdown.CountdownTimer;
 
 /**
  * Encryption Controller for the corresponding fxml-file
@@ -46,7 +44,7 @@ public class EncryptionController extends AbstractController {
 
     @FXML
     void checkEncryption(ActionEvent event) {
-        mainController.EncryptionTaskSucceeded = mainController.getCurrentLevel().proveEncryptionTask(
+        mainController.encryptionTaskSucceeded = mainController.getCurrentLevel().proveEncryptionTask(
                 textField1.getText());
         mainController.switchWindow("EncryptionTaskFinished.fxml");
     }

@@ -25,6 +25,5 @@ public class LevelComparator implements Comparator<Level> {
     	} else {
     		return 1;
     	}
-
     }
 }

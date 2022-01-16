@@ -6,15 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
-import org.kryptojagd.level.countdown.CountdownTimer;
-
 
 /**
  * Gives the right feedback to a task and switches the window.
  *
  * @author Sonja Kuklok, Sven Strasser, Leah Schlimm
  */
-public class DecryptionTaskFinished extends AbstractController{
+public class DecryptionTaskFinished extends AbstractController {
 
     @FXML
     private Label timer = new Label();
@@ -34,13 +32,15 @@ public class DecryptionTaskFinished extends AbstractController{
      *
      */
     @FXML
-    public void initialize(){
+    public void initialize() {
         updateTimer();
 
-        if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.DecryptionTaskSucceeded || mainController.CityTaskFinished) {
+        if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.decryptionTaskSucceeded
+            || mainController.cityTaskFinished) {
             feedbackText.setText("Die Antwort war richtig, weiter so!");
         } else {
-            feedbackText.setText("Die Antwort war leider falsch! Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
+            feedbackText.setText("Die Antwort war leider falsch! "
+                + "Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
         }
     }
 
@@ -52,10 +52,8 @@ public class DecryptionTaskFinished extends AbstractController{
      */
     @FXML
     void switchMultipleChoice(ActionEvent event) {
-        if (mainController.getCurrentLevel().decryptionIsFinished() && mainController.getCurrentLevel().cityIsFinished()) {
-            //String city = mainController.getCurrentLevel().getCity();
-            //String css = "../css/" + city + ".css";
-            //mainController.switchWindow("Encryption.fxml");
+        if (mainController.getCurrentLevel().decryptionIsFinished()
+            && mainController.getCurrentLevel().cityIsFinished()) {
             mainController.runLevel();
         } else {
             //mainController.switchWindow("Decryption.fxml");
@@ -81,5 +79,4 @@ public class DecryptionTaskFinished extends AbstractController{
         time.getKeyFrames().add(frame);
         time.playFromStart();
     }
-
 }

@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 /**
  * @author Leah Schlimm
  */
-public class InfoTextController extends AbstractController{
+public class InfoTextController extends AbstractController {
 
 	/**
 	 * Handles button press event
@@ -17,6 +17,4 @@ public class InfoTextController extends AbstractController{
 		 System.out.println("Es wurde auf Schließen geklickt!");
 		 mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
 	 }
-
-
 }

@@ -110,5 +110,4 @@ public class EncryptionTask implements Task {
     public boolean getTaskCompleted() {
         return this.taskCompleted;
     }
-
 }

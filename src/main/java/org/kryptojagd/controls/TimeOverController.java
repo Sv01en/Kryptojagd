@@ -13,24 +13,28 @@ public class TimeOverController extends AbstractController {
 
     /**
      * Restarts the current level.
+     *
+     * @param e the e
      */
     @FXML
     void restartAction(ActionEvent e) {
-        mainController.EncryptionTaskSucceeded = false;
-        mainController.DecryptionTaskSucceeded = false;
-        mainController.MultipleChoiceTaskSucceeded = false;
+        mainController.encryptionTaskSucceeded = false;
+        mainController.decryptionTaskSucceeded = false;
+        mainController.multipleChoiceTaskSucceeded = false;
         mainController.getCurrentLevel().clearLevel();
         mainController.switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
     }
 
     /**
      * Sets all attributes to the initial value and changes the screen to the menu.
+     *
+     * @param e the e
      */
     @FXML
     void menuAction(ActionEvent e) {
-        mainController.EncryptionTaskSucceeded = false;
-        mainController.DecryptionTaskSucceeded = false;
-        mainController.MultipleChoiceTaskSucceeded = false;
+        mainController.encryptionTaskSucceeded = false;
+        mainController.decryptionTaskSucceeded = false;
+        mainController.multipleChoiceTaskSucceeded = false;
         mainController.getCurrentLevel().clearLevel();
         mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
     }
@@ -42,5 +46,4 @@ public class TimeOverController extends AbstractController {
     public void initialize() {
 
     }
-
 }

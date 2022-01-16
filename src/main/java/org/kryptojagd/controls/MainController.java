@@ -1,9 +1,7 @@
 package org.kryptojagd.controls;
 
-import javafx.stage.Stage;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
-
 import java.util.ArrayList;
 
 /**
@@ -21,19 +19,21 @@ public class MainController {
 
 	private int clearedLevels;
 
-	protected boolean MultipleChoiceTaskSucceeded;
+	protected boolean multipleChoiceTaskSucceeded;
 
-	protected boolean DecryptionTaskSucceeded;
+	protected boolean decryptionTaskSucceeded;
 
-	protected boolean EncryptionTaskSucceeded;
+	protected boolean encryptionTaskSucceeded;
 
-	protected boolean CityTaskFinished;
+	protected boolean cityTaskFinished;
 
 	/**
 	 * Constractor of a MainController
 	 *
-	 * @param fw
-	 * @param currentLevel the current Level, which is played
+	 * @param fw            the fw
+	 * @param currentLevel  the current Level, which is played
+	 * @param allLevels     the all levels
+	 * @param clearedLevels the cleared levels
 	 */
 	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels) {
 		this.fw = fw;
@@ -107,6 +107,9 @@ public class MainController {
 		return fw;
 	}
 
+	/**
+	 * Sets cleared levels plus one.
+	 */
 	public void setClearedLevels() {
 		this.clearedLevels++;
 	}
@@ -132,7 +135,8 @@ public class MainController {
 		} else if (!currentLevel.cityIsFinished() && currentLevel.decryptionIsFinished()) {
 			System.out.println("Run city task");
 			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
-		} else if (currentLevel.decryptionIsFinished() && currentLevel.cityIsFinished() && !currentLevel.multipleChoiceIsFinished()) {
+		} else if (currentLevel.decryptionIsFinished() && currentLevel.cityIsFinished()
+			&& !currentLevel.multipleChoiceIsFinished()) {
 			String city = currentLevel.getCity();
 			String css = "../css/" + city + ".css";
 			switchWindowWithCSS("MultipleChoice.fxml", css);
@@ -148,7 +152,7 @@ public class MainController {
 	 * if not, it switches the window to a new multiple choice task
 	 *
 	 */
-	private void runMultipleChoice(){
+	private void runMultipleChoice() {
 		if (!currentLevel.multipleChoiceIsFinished()) {
 			switchWindow("MultipleChoice.fxml");
 		} else {

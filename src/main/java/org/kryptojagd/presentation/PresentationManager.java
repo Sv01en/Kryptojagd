@@ -1,14 +1,12 @@
 package org.kryptojagd.presentation;
 
 import java.io.IOException;
-
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 
 /**
  * Class that manages the current window and the window switching
@@ -74,5 +72,4 @@ public class PresentationManager {
 			e.printStackTrace();
 		}
 	}
-
 }

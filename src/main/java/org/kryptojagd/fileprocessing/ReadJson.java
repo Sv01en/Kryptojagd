@@ -11,7 +11,6 @@ import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
 
-
 /**
  * This class can be used to read JSON files.
  *
@@ -126,5 +125,4 @@ public class ReadJson {
     }
     return time;
   }
-
 }

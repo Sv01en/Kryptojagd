@@ -37,14 +37,16 @@ public class DecryptionTask implements Task {
 
 	/**
 	 * Contructor of a decryption task
-	 * @param plainText text that will be displayed encrypted
-	 * @param encryptionMethod method to entcrypt plaintext with
+	 *
+	 * @param plainText               text that will be displayed encrypted
+	 * @param encryptionMethod        method to entcrypt plaintext with
 	 * @param answerOptionsEncryption answer options for decryption task
 	 * @param correctAnswerEncryption correct answer of decryption task
-	 * @param answerOptionsCity answer options for city selector
-	 * @param correctAnswerCity correct city answer
-	 * @param textAfterStart text to display after city celector was done right
-	 * @param timeInSec time in sec for the task
+	 * @param answerOptionsCity       answer options for city selector
+	 * @param correctAnswerCity       correct city answer
+	 * @param textAfterStart          text to display after city celector was done right
+	 * @param timeInSec               time in sec for the task
+	 * @param timePenalty             the time penalty
 	 */
 	public DecryptionTask(String plainText, String encryptionMethod, String[] answerOptionsEncryption,
 						  int correctAnswerEncryption, String[] answerOptionsCity, int correctAnswerCity,
@@ -179,6 +181,9 @@ public class DecryptionTask implements Task {
 		return answerOptionsCity[correctAnswerCity];
 	}
 
+	/**
+	 * Clears the decryption task.
+	 */
 	public void clearDecryptionTask() {
 		this.correctAnswer = false;
 		this.correctAnswerCityBool = false;

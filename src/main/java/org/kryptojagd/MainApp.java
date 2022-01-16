@@ -2,13 +2,11 @@ package org.kryptojagd;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import org.kryptojagd.controls.MainController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
@@ -17,9 +15,7 @@ import org.kryptojagd.presentation.PresentationManager;
 /**
  * This is the main app of the software.
  *
- * @author Leah Schlimm, Amelie Reichert, Bartosz Treyde, Sven Strasser, 
- *     Michail Petermann, Sonja Kuklok
- *
+ * @author Leah Schlimm, Amelie Reichert, Bartosz Treyde, Sven Strasser,      Michail Petermann, Sonja Kuklok
  */
 public class MainApp extends Application {
 
@@ -29,9 +25,11 @@ public class MainApp extends Application {
   private int clearedLevels = 0;
 
   /**
-   * This method starts the software and loads the 
+   * This method starts the software and loads the
    * presentation elements.
-   * 
+   *
+   * @param stage the Startstage
+   *
    */
   public void start(Stage stage) {
 
@@ -60,8 +58,12 @@ public class MainApp extends Application {
     }
   }
 
+  /**
+   * The entry point of application.
+   *
+   * @param args the input arguments
+   */
   public static void main(String[] args) {
     launch(args);
   }
-
 }

@@ -7,7 +7,6 @@ package org.kryptojagd.encryptionmethods;
 */
 public class Beaufort extends Encryption {
 
-
     private static final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 

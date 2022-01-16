@@ -41,9 +41,10 @@ public class CountdownTimer {
         this.task = new TimerTask() {
             @Override
             public void run() {
-                if (actuelValue > 0)
+                if (actuelValue > 0) {
                     actuelValue--;
                     setCurrentValue(actuelValue);
+                }
                 if (actuelValue == 0) {
                     this.cancel();
                 }

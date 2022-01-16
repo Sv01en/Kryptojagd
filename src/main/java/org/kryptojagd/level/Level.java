@@ -41,9 +41,10 @@ public class Level {
 	/**
 	 * Creates a {@link Level}
 	 *
-	 * @param decryptionTask first task in level is a decryptionTask
-	 * @param encryptionTask second task in level is a encryptionTask
+	 * @param decryptionTask      first task in level is a decryptionTask
+	 * @param encryptionTask      second task in level is a encryptionTask
 	 * @param multipleChoiceTasks third and last task is a LinkedList of multiple choice questions
+	 * @param timeInSec           the time in seconds
 	 */
 	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask,
 				 LinkedList<MultipleChoiceTask> multipleChoiceTasks, int timeInSec) {
@@ -91,7 +92,7 @@ public class Level {
 	 * 			false, if the answer is true
 	 */
 	public boolean proveMultipleChoice(String answer) {
-		if(!this.multipleChoiceTasks.get(this.currentMultipleChoiceTask).proofAnswer(answer)) {
+		if (!this.multipleChoiceTasks.get(this.currentMultipleChoiceTask).proofAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 			return false;
 		}
@@ -143,8 +144,8 @@ public class Level {
 	 * Set up the correct encryption method
 	 * @param encryptionMethod name given as a string
 	 */
-	private void proveEncryptionMethod(String encryptionMethod){
-		switch (encryptionMethod){
+	private void proveEncryptionMethod(String encryptionMethod) {
+		switch (encryptionMethod) {
 			case "Backwards":
 				encryptionTask.setEncryptionMethod(new Backwards());
 				break;
@@ -264,5 +265,4 @@ public class Level {
 		this.countdownTimer.cancelTimerTask();
 		this.decryptionTask.clearDecryptionTask();
 	}
-
 }

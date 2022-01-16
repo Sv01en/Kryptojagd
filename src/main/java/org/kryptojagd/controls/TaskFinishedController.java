@@ -6,15 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
-import org.kryptojagd.level.countdown.CountdownTimer;
-
 
 /**
  * Gives the right feedback to a task and switches the window.
  *
  * @author Sonja Kuklok, Leah Schlimm
  */
-public class TaskFinishedController extends AbstractController{
+public class TaskFinishedController extends AbstractController {
 
 	@FXML
 	private Label timer = new Label();
@@ -34,10 +32,10 @@ public class TaskFinishedController extends AbstractController{
 	 *
 	 */
 	@FXML
-	public void initialize(){
+	public void initialize() {
 		updateTimer();
 		if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
-			if (mainController.MultipleChoiceTaskSucceeded) {
+			if (mainController.multipleChoiceTaskSucceeded) {
 				feedbackText.setText("Richtig, weiter so!");
 			} else {
 				feedbackText.setText("Leider falsch, versuche es noch einmal. Du musst dich beeilen!");
@@ -82,5 +80,4 @@ public class TaskFinishedController extends AbstractController{
 		time.getKeyFrames().add(frame);
 		time.playFromStart();
 	}
-
 }

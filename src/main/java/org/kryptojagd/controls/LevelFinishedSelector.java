@@ -19,10 +19,10 @@ public class LevelFinishedSelector extends AbstractController {
     void menuAction(ActionEvent e) {
         mainController.getCurrentLevel().clearLevel();
         mainController.setClearedLevels();
-        mainController.EncryptionTaskSucceeded = false;
-        mainController.DecryptionTaskSucceeded = false;
-        mainController.MultipleChoiceTaskSucceeded = false;
-        mainController.CityTaskFinished = false;
+        mainController.encryptionTaskSucceeded = false;
+        mainController.decryptionTaskSucceeded = false;
+        mainController.multipleChoiceTaskSucceeded = false;
+        mainController.cityTaskFinished = false;
         mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
     }
 
@@ -34,10 +34,10 @@ public class LevelFinishedSelector extends AbstractController {
     void nextLevelAction(ActionEvent e) {
         mainController.getCurrentLevel().clearLevel();
         mainController.setClearedLevels();
-        mainController.EncryptionTaskSucceeded = false;
-        mainController.DecryptionTaskSucceeded = false;
-        mainController.MultipleChoiceTaskSucceeded = false;
-        mainController.CityTaskFinished = false;
+        mainController.encryptionTaskSucceeded = false;
+        mainController.decryptionTaskSucceeded = false;
+        mainController.multipleChoiceTaskSucceeded = false;
+        mainController.cityTaskFinished = false;
         mainController.switchWindowWithCSS("Decryption.fxml", "../css/Paris.css");
     }
 }

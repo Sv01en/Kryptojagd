@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.kryptojagd.level.Level;
-
 import java.util.ArrayList;
 
 /**
@@ -24,13 +23,16 @@ public class LevelSelectorController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        ArrayList<Level> allLevels = mainController.getAllLevels();
+        ArrayList<Level> levels = mainController.getAllLevels();
         ArrayList<Button> buttons = new ArrayList<>();
         for (int i = 0; i < mainController.getAllLevelCount(); i++) {
             Button button = new Button("Level " + (i + 1));
             int finalI = i;
             button.setOnAction(event -> {
-                setMainController(new MainController(mainController.getPresentationManager(), allLevels.get(finalI), allLevels, mainController.getClearedLevels()));
+                int countClearedLevels = mainController.getClearedLevels();
+                setMainController(new MainController(mainController.getPresentationManager(), levels.get(finalI),
+                    levels,
+                    countClearedLevels));
                 System.out.println("Button " + finalI + " pressed!");
                 mainController.runLevel();
             });

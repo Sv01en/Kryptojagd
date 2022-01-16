@@ -7,13 +7,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
-
 /**
  * Gives the right feedback to a task and switches the window.
  *
  * @author Sonja Kuklok, Sven Strasser, Leah Schlimm
  */
-public class EncryptionTaskFinished extends AbstractController{
+public class EncryptionTaskFinished extends AbstractController {
 
     @FXML
     private Label timer = new Label();
@@ -33,10 +32,10 @@ public class EncryptionTaskFinished extends AbstractController{
      *
      */
     @FXML
-    public void initialize(){
+    public void initialize() {
         updateTimer();
         if (mainController.getCurrentLevel().decryptionIsFinished()) {
-            if (mainController.DecryptionTaskSucceeded) {
+            if (mainController.decryptionTaskSucceeded) {
                 feedbackText.setText("Richtig, weiter so!");
             } else {
                 feedbackText.setText("Leider falsch, versuche es noch einmal. Du musst dich beeilen!");
@@ -78,5 +77,4 @@ public class EncryptionTaskFinished extends AbstractController{
         time.getKeyFrames().add(frame);
         time.playFromStart();
     }
-
 }
