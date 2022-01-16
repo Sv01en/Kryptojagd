@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  * Class that manages the current window and the window switching
- * @author Leah, Bartosz
+ * @author Leah Schlimm, Bartosz Treyde
  */
 public class PresentationManager {
 	

@@ -3,7 +3,7 @@ package org.kryptojagd.encryptionmethods;
 /**
  * Provides methods for encrypting and decrypting texts with Vigenere encryption
  *
- * @author Leah Schlimm, Sven
+ * @author Leah Schlimm, Sven Strasser
  */
 public class Vigenere extends Encryption {
 

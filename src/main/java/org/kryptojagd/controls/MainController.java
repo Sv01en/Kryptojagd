@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * The class controls every kind of controller and puts them together
  *
- * @author Micha, Sonja, Sven, Leah
+ * @author Michail Petermann, Sonja Kuklok, Sven Strasser, Leah Schlimm
  */
 public class MainController {
 	

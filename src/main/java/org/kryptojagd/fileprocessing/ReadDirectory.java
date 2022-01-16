@@ -13,7 +13,7 @@ import org.kryptojagd.level.tasks.MultipleChoiceTask;
 /**
  * This class is used to read directories.
  *
- * @author Michail
+ * @author Michail Petermann
  */
 public class ReadDirectory {
 

@@ -15,7 +15,7 @@ import org.kryptojagd.level.tasks.MultipleChoiceTask;
 /**
  * This class can be used to read JSON files.
  *
- * @author Michail
+ * @author Michail Petermann
  */
 public class ReadJson {
 

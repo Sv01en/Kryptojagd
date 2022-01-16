@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Class that contains methods for encrypting and decrypting text using backward encryption.
  * 
- * @author Leah Schlimm, Sven
+ * @author Leah Schlimm, Sven Strasser
  */
 public class Backwards extends Encryption {
 

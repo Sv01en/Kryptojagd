@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 /**
- * @author Leah
+ * @author Leah Schlimm
  */
 public class InfoTextController extends AbstractController{
 

@@ -11,7 +11,7 @@ import javafx.util.Duration;
 /**
  * The class controls a window of a decryption task.
  *
- * @author Michail, Sven, Leah
+ * @author Michail Petermann, Sven Strasser, Leah Schlimm
  */
 public class DecryptionController extends AbstractController{
 
