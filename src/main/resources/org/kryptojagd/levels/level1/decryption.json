@@ -6,5 +6,6 @@
 	"answerOptionsCity":["Prag", "Paris", "Stockholm"],
 	"correctAnswerCity":1,
 	"textAfterStart":"Ihr seid gerade in Paris gelandet.\nEure Kontaktperson wurde jedoch kurz vor eurer Ankunft gewarnt, dass eure Erzfeindin Eve ebenfalls auf der Suche nach den antiken Floppy-Disks ist.\nIhr müsst euch beeilen, damit sie euch nicht zuvor kommt.\nSCHNELL!",
-	"timeInSec": 300
+	"timeInSec": 300,
+	"timePenalty": 20
 }

@@ -1,6 +1,9 @@
 package org.kryptojagd.level;
 
-import org.kryptojagd.encryptionmethods.*;
+import org.kryptojagd.encryptionmethods.Backwards;
+import org.kryptojagd.encryptionmethods.Caesar;
+import org.kryptojagd.encryptionmethods.Beaufort;
+import org.kryptojagd.encryptionmethods.Vigenere;
 import org.kryptojagd.level.countdown.CountdownTimer;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -15,17 +18,16 @@ import java.util.LinkedList;
  */
 public class Level {
 
-	private DecryptionTask decryptionTask;
-	private EncryptionTask encryptionTask;
+	private final DecryptionTask decryptionTask;
+	private final EncryptionTask encryptionTask;
 	private CountdownTimer countdownTimer;
 
-	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
+	private final LinkedList<MultipleChoiceTask> multipleChoiceTasks;
 
-	private boolean isRunning;
-	private int timeInSec;
+	private final int timeInSec;
 	private int currentTime;
 	private int id;
-	private int timePenalty;
+	private final int timePenalty;
 	private int currentMultipleChoiceTask;
 	private boolean multipleChoiceFinished;
 
@@ -37,15 +39,12 @@ public class Level {
 	 * @param multipleChoiceTasks third and last task is a LinkedList of multiple choice questions
 	 */
 	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask,
-				 LinkedList<MultipleChoiceTask> multipleChoiceTasks, int timeInSec) {
+				 LinkedList<MultipleChoiceTask> multipleChoiceTasks, int timeInSec, int timePenalty) {
 		this.decryptionTask = decryptionTask;
 		this.encryptionTask = encryptionTask;
 		this.multipleChoiceTasks = multipleChoiceTasks;
 		this.timeInSec = timeInSec;
-		this.isRunning = true;
-		//Just for working....
-		//TODO: Add penalty time to the json file.
-		this.timePenalty = 20;
+		this.timePenalty = timePenalty;
 		this.currentTime = this.timeInSec;
 		this.currentMultipleChoiceTask = 0;
 		this.multipleChoiceFinished = false;
@@ -98,9 +97,9 @@ public class Level {
 	}
 
 	/**
-	 *
-	 * @param answer
-	 * @return
+	 * proves the decryption task.
+	 * @param answer string given by the GUI
+	 * @return true or false
 	 */
 	public boolean proveDecryptionTask(String answer) {
 		if (!this.decryptionTask.proofAnswer(answer)) {
@@ -122,9 +121,9 @@ public class Level {
 	}
 
 	/**
-	 *
-	 * @param answer
-	 * @return
+	 * Proves the input of the encryption task.
+	 * @param answer given as a string from the gui
+	 * @return true or false
 	 */
 	public boolean proveEncryptionTask(String answer) {
 		if (this.encryptionTask.proofAnswer(answer)) {
@@ -134,8 +133,8 @@ public class Level {
 	}
 
 	/**
-	 *
-	 * @param encryptionMethod
+	 * Set up the correct encryption method
+	 * @param encryptionMethod name given as a string
 	 */
 	private void proveEncryptionMethod(String encryptionMethod){
 		switch (encryptionMethod){
@@ -168,8 +167,8 @@ public class Level {
 	}
 
 	/**
-	 *
-	 * @return
+	 * Returns if the decryption task is finished
+	 * @return true if the task is finished, otherwise false
 	 */
 	public boolean decryptionIsFinished() {
 		return this.decryptionTask.getCorrectAnswer();
@@ -200,15 +199,15 @@ public class Level {
 	}
 
 	/**
-	 * Switches from the decryption the the city task
+	 * Switches from the decryption to the city task
 	 */
 	public void setCityShowing() {
 		decryptionTask.setCityShowing();
 	}
 
 	/**
-	 *
-	 * @return
+	 * Returns if the encryption task is finished
+	 * @return true if the task is finished, otherwise false
 	 */
 	public boolean encryptionTaskFinished() {
 		return this.encryptionTask.getTaskCompleted();
@@ -232,7 +231,7 @@ public class Level {
 
 	/**
 	 * Returns the remaining time from the {@link CountdownTimer} as an integer.
-	 * @return
+	 * @return the current time of the {@link CountdownTimer}
 	 */
 	public int getTimeInSec() {
 		if (this.countdownTimer != null) {
