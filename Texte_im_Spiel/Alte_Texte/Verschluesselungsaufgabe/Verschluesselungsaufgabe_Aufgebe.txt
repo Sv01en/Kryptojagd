@@ -1,3 +1,0 @@
-Verschlussel den folgenden Text mit dem Schlüssel x und dem y Verfahren
-
-y = Cäsar v Cäsar-Variante v Vigenére
