@@ -27,5 +27,6 @@ public class LevelFinishedSelector extends AbstractController {
         mainController.EncryptionTaskSucceeded = false;
         mainController.DecryptionTaskSucceeded = false;
         mainController.MultipleChoiceTaskSucceeded = false;
+        mainController.switchWindowWithCSS("Decryption.fxml", "../css/Paris.css");
     }
 }
