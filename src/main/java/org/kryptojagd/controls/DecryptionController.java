@@ -21,7 +21,6 @@ public class DecryptionController extends AbstractController {
     @FXML
     private Label timer = new Label();
 
-
     @FXML
     private Label encryptedPuzzleText = new Label();
 
