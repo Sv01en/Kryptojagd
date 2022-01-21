@@ -8,10 +8,16 @@
 }
 
 .label {
+    -fx-border-color: gainsboro;
+    -fx-border-radius: 10,10,10,10;
     -fx-label-padding: 10,10,10,10;
-    -fx-background-color: white;
+    -fx-background-color: gainsboro;
     -fx-text-fill: black;
-
+    -fx-background-radius: 10,10,10,10;
+    -fx-font-family: monospace;
+    -fx-font-size:17px;
+    -fx-font-weight: 600;
+    -fx-wrap-text: true;
 }
 .button {
     -fx-padding: 8 15 15 15;
@@ -23,8 +29,9 @@
         #d86e3a,
         radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-    -fx-font-weight: bold;
-    -fx-font-size: 1.1em;
+    -fx-font-family: monospace;
+    -fx-font-weight: 600;
+    -fx-font-size: 17px;
     -fx-text-fill: white;
 }
 .button:hover {
