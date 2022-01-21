@@ -18,6 +18,7 @@
     -fx-font-size:17px;
     -fx-font-weight: 600;
     -fx-wrap-text: true;
+    -fx-text-alignment: center;
 }
 .button {
     -fx-padding: 8 15 15 15;

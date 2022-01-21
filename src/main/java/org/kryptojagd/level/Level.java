@@ -218,6 +218,14 @@ public class Level {
 	}
 
 	/**
+	 * Getter for text to display after the city question is answered correctly
+	 * @return Text to display
+	 */
+	public String getTextAfterStartDecryption() {
+		return decryptionTask.getTextAfterStart();
+	}
+
+	/**
 	 * Returns if the encryption task is finished
 	 * @return true if the task is finished, otherwise false
 	 */

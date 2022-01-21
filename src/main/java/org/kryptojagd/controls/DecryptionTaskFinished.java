@@ -35,9 +35,10 @@ public class DecryptionTaskFinished extends AbstractController {
     public void initialize() {
         updateTimer();
 
-        if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.decryptionTaskSucceeded
-            || mainController.cityTaskFinished) {
+        if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.decryptionTaskSucceeded) {
             feedbackText.setText("Die Antwort war richtig, weiter so!");
+        } else if (mainController.cityTaskFinished) {
+            feedbackText.setText(mainController.getCurrentLevel().getTextAfterStartDecryption());
         } else {
             feedbackText.setText("Die Antwort war leider falsch! "
                 + "Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");

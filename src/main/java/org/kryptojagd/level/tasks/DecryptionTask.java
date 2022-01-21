@@ -182,6 +182,14 @@ public class DecryptionTask implements Task {
 	}
 
 	/**
+	 * Getter for text to display after the city question is answered correctly
+	 * @return text to display
+	 */
+	public String getTextAfterStart() {
+		return textAfterStart;
+	}
+
+	/**
 	 * Clears the decryption task.
 	 */
 	public void clearDecryptionTask() {
