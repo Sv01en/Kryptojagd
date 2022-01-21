@@ -18,14 +18,16 @@ public class HammingDistance {
         char[] s1 = first.toCharArray();
         char[] s2 = second.toCharArray();
 
-        int shorter = Math.min(s1.length, s2.length);
-        int longest = Math.max(s1.length, s2.length);
+        int shortWord = Math.min(s1.length, s2.length);
+        int longWord = Math.max(s1.length, s2.length);
 
         int counter = 0;
-        for (int i=0; i<shorter; i++) {
-            if (s1[i] != s2[i]) counter++;
+        for (int i = 0; i< shortWord; i++) {
+            if (s1[i] != s2[i]) {
+                counter++;
+            }
         }
-        counter += longest - shorter;
+        counter += longWord - shortWord;
 
         return counter;
     }

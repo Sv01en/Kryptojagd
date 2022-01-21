@@ -1,6 +1,7 @@
 package org.kryptojagd.level.tasks;
 
 import org.kryptojagd.encryptionmethods.Encryption;
+import org.kryptojagd.level.hamming.HammingDistance;
 
 /**
  * The class describes a task, where you have to encrypt the given text
@@ -20,6 +21,10 @@ public class EncryptionTask implements Task {
     private String encryptionType;
 
     private boolean taskCompleted;
+
+    private HammingDistance hammingDistance = new HammingDistance();
+
+    private int hammingDistanceValue;
 
     /**
      * Creates a {@link EncryptionTask}
@@ -97,8 +102,8 @@ public class EncryptionTask implements Task {
     @Override
     public boolean proveAnswer(String answer) {
         this.taskCompleted = answer.equals(this.encryptionMethod.encode(this.text, this.key));
-        System.out.println(this.taskCompleted);
-        System.out.println(this.encryptionMethod.encode(this.text, this.key));
+        this.hammingDistanceValue = hammingDistance.calculateHammingDistance(
+                this.encryptionMethod.encode(this.text, this.key), answer);
         return answer.equals(this.encryptionMethod.encode(this.text, this.key));
     }
 
@@ -109,5 +114,13 @@ public class EncryptionTask implements Task {
      */
     public boolean getTaskCompleted() {
         return this.taskCompleted;
+    }
+
+    /**
+     * Returns the calculated hamming distance.
+     * @return hamming distance as an integer
+     */
+    public int getHammingDistanceValue() {
+        return this.hammingDistanceValue;
     }
 }
