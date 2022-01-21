@@ -38,6 +38,8 @@ public class Level {
 
 	private boolean multipleChoiceFinished;
 
+	private String encryptionInput;
+
 	/**
 	 * Creates a {@link Level}
 	 *
@@ -134,10 +136,12 @@ public class Level {
 	 * @return true or false
 	 */
 	public boolean proveEncryptionTask(String answer) {
-		if (this.encryptionTask.proofAnswer(answer)) {
+		this.encryptionInput = answer;
+		String checkAnswer = answer.toUpperCase();
+		if (this.encryptionTask.proofAnswer(checkAnswer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 		}
-		return this.encryptionTask.proofAnswer(answer);
+		return this.encryptionTask.proofAnswer(checkAnswer);
 	}
 
 	/**
@@ -264,5 +268,13 @@ public class Level {
 		this.currentTime = this.timeInSec;
 		this.countdownTimer.cancelTimerTask();
 		this.decryptionTask.clearDecryptionTask();
+	}
+
+	/**
+	 * Returns the stored {@link Level#encryptionInput}.
+	 * @return {@link Level#encryptionInput} as a string.
+	 */
+	public String getEncryptionInput() {
+		return this.encryptionInput;
 	}
 }

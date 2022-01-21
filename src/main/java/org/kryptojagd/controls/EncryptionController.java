@@ -33,12 +33,13 @@ public class EncryptionController extends AbstractController {
     @FXML
     private TextField textField1;
 
-    private final Level level = mainController.getCurrentLevel();
-
     @FXML
     public void initialize() {
-        label1.setText(level.getEncryptionTask().getTask());
-        label2.setText(level.getEncryptionTask().getText());
+        if (mainController.getCurrentLevel().getEncryptionInput() != null) {
+            textField1.setText(mainController.getCurrentLevel().getEncryptionInput());
+        }
+        label1.setText(mainController.getCurrentLevel().getEncryptionTask().getTask());
+        label2.setText(mainController.getCurrentLevel().getEncryptionTask().getText());
         updateTimer();
     }
 
