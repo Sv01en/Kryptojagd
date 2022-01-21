@@ -13,7 +13,7 @@ public class HammingDistance {
      * @param second given word as a string
      * @return hamming distance as an integer
      */
-    public int calculateHammingDistance(String first, String second) {
+    public static int calculateHammingDistance(String first, String second) {
 
         char[] s1 = first.toCharArray();
         char[] s2 = second.toCharArray();

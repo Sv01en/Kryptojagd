@@ -22,8 +22,6 @@ public class EncryptionTask implements Task {
 
     private boolean taskCompleted;
 
-    private HammingDistance hammingDistance = new HammingDistance();
-
     private int hammingDistanceValue;
 
     /**
@@ -102,7 +100,7 @@ public class EncryptionTask implements Task {
     @Override
     public boolean proveAnswer(String answer) {
         this.taskCompleted = answer.equals(this.encryptionMethod.encode(this.text, this.key));
-        this.hammingDistanceValue = hammingDistance.calculateHammingDistance(
+        this.hammingDistanceValue = HammingDistance.calculateHammingDistance(
                 this.encryptionMethod.encode(this.text, this.key), answer);
         return answer.equals(this.encryptionMethod.encode(this.text, this.key));
     }
