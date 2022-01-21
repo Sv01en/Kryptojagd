@@ -79,7 +79,7 @@ public class DecryptionTask implements Task {
 	 * @return true if the answer is correct, else false
 	 */
 	@Override
-	public boolean proofAnswer(String answer) {
+	public boolean proveAnswer(String answer) {
 		if (answer.equals(this.encryptionMethod)) {
 			this.correctAnswer = true;
 			return true;

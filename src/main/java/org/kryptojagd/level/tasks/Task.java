@@ -14,7 +14,7 @@ public interface Task {
      * @param answer the answer
      * @return true, if the answer is correct
      */
-    boolean proofAnswer(String answer);
+    boolean proveAnswer(String answer);
 
     /**
      * Returns the task as string

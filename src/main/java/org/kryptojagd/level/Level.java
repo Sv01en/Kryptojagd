@@ -94,7 +94,7 @@ public class Level {
 	 * 			false, if the answer is true
 	 */
 	public boolean proveMultipleChoice(String answer) {
-		if (!this.multipleChoiceTasks.get(this.currentMultipleChoiceTask).proofAnswer(answer)) {
+		if (!this.multipleChoiceTasks.get(this.currentMultipleChoiceTask).proveAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 			return false;
 		}
@@ -112,10 +112,10 @@ public class Level {
 	 * @return true or false
 	 */
 	public boolean proveDecryptionTask(String answer) {
-		if (!this.decryptionTask.proofAnswer(answer)) {
+		if (!this.decryptionTask.proveAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 		}
-		return this.decryptionTask.proofAnswer(answer);
+		return this.decryptionTask.proveAnswer(answer);
 	}
 
 	/**
@@ -138,10 +138,10 @@ public class Level {
 	public boolean proveEncryptionTask(String answer) {
 		this.encryptionInput = answer;
 		String checkAnswer = answer.toUpperCase();
-		if (this.encryptionTask.proofAnswer(checkAnswer)) {
+		if (this.encryptionTask.proveAnswer(checkAnswer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 		}
-		return this.encryptionTask.proofAnswer(checkAnswer);
+		return this.encryptionTask.proveAnswer(checkAnswer);
 	}
 
 	/**

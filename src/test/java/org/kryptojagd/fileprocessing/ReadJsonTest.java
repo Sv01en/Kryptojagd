@@ -26,9 +26,9 @@ class ReadJsonTest {
           + "indem es ueblich ist Texte so zu schreiben."};
 
     MultipleChoiceTask q = ReadJson.createMultipleChoiceTask(pathToQuestion);
-    // assert(q.proofAnswer(correctAnswer));
+    // assert(q.proveAnswer(correctAnswer));
     assert q != null;
-    assertTrue(q.proofAnswer(correctAnswer));
+    assertTrue(q.proveAnswer(correctAnswer));
     assertEquals(q.getQuestion(), question);
     assertEquals(q.getPossibilities()[0], possibilities[0]);
     assertEquals(q.getPossibilities()[1], possibilities[1]);

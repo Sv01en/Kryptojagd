@@ -95,7 +95,7 @@ public class EncryptionTask implements Task {
     }
 
     @Override
-    public boolean proofAnswer(String answer) {
+    public boolean proveAnswer(String answer) {
         this.taskCompleted = answer.equals(this.encryptionMethod.encode(this.text, this.key));
         System.out.println(this.taskCompleted);
         System.out.println(this.encryptionMethod.encode(this.text, this.key));

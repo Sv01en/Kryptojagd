@@ -49,7 +49,7 @@ public class MultipleChoiceTask implements Task {
      * @return true or false as a boolean
      */
     @Override
-    public boolean proofAnswer(String answer) {
+    public boolean proveAnswer(String answer) {
         return this.correctAnswer.equals(answer);
     }
 
