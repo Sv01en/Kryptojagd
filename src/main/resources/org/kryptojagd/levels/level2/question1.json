@@ -1,4 +1,5 @@
 {
+    "$schema": "./quest_schema.json",
     "question":"Ist die Cäsar-Chiffre sicher?",
     "answerOptions":[
         "Ja, weil nicht jeder den Text lesen kann",
