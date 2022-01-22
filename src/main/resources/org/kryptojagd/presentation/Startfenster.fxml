@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TextField?>
 <BorderPane id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.LaunchWindowController">
    <center>
       <VBox alignment="CENTER" prefHeight="339.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
@@ -11,7 +12,7 @@
             <Button fx:id="startButton" mnemonicParsing="false" onAction="#klickStart" prefHeight="24.0" prefWidth="232.0" text="Start" />
             <Button fx:id="infoButton" mnemonicParsing="false" onAction="#klickInfo" prefHeight="24.0" prefWidth="232.0" text="Einleitung" />
             <Button fx:id="levelSelectorButton" mnemonicParsing="false" onAction="#klickLevelSelector" prefHeight="24.0" prefWidth="232.0" text="Levelauswahl" />
-            <Button fx:id="einstellungenButton" mnemonicParsing="false" onAction="#klickEinstellungen" prefHeight="24.0" prefWidth="234.0" text="Einstellungen" />
+            <Button fx:id="einstellungenButton" mnemonicParsing="false" onAction="#klickEinstellungen" prefHeight="24.0" prefWidth="232.0" text="Einstellungen" />
          </children>
       </VBox>
    </center>

@@ -141,7 +141,9 @@ public class MainController {
 			String css = "../css/" + city + ".css";
 			switchWindowWithCSS("MultipleChoice.fxml", css);
 		} else {
-			switchWindow("Encryption.fxml");
+			String city = currentLevel.getCity();
+			String css = "../css/" + city + ".css";
+			switchWindowWithCSS("Encryption.fxml", css);
 		}
 	}
 
