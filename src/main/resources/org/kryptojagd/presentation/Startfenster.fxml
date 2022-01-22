@@ -9,10 +9,10 @@
    <center>
       <VBox alignment="CENTER" prefHeight="339.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="startButton" mnemonicParsing="false" onAction="#klickStart" prefHeight="24.0" prefWidth="232.0" text="Start" />
-            <Button fx:id="infoButton" mnemonicParsing="false" onAction="#klickInfo" prefHeight="24.0" prefWidth="232.0" text="Einleitung" />
-            <Button fx:id="levelSelectorButton" mnemonicParsing="false" onAction="#klickLevelSelector" prefHeight="24.0" prefWidth="232.0" text="Levelauswahl" />
-            <Button fx:id="einstellungenButton" mnemonicParsing="false" onAction="#klickEinstellungen" prefHeight="24.0" prefWidth="232.0" text="Einstellungen" />
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#clickStart" prefHeight="24.0" prefWidth="232.0" text="Start" />
+            <Button fx:id="infoButton" mnemonicParsing="false" onAction="#clickInfo" prefHeight="24.0" prefWidth="232.0" text="Einleitung" />
+            <Button fx:id="levelSelectorButton" mnemonicParsing="false" onAction="#clickLevelSelector" prefHeight="24.0" prefWidth="232.0" text="Levelauswahl" />
+            <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#clickSettings" prefHeight="24.0" prefWidth="232.0" text="Einstellungen" />
          </children>
       </VBox>
    </center>
