@@ -32,12 +32,15 @@ public class LevelFinishedSelector extends AbstractController {
      */
     @FXML
     void nextLevelAction(ActionEvent e) {
+        String city = mainController.getCurrentLevel().getCity();
+        String css = "../css/" + city + ".css";
+
         mainController.getCurrentLevel().clearLevel();
         mainController.setClearedLevels();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.cityTaskFinished = false;
-        mainController.switchWindowWithCSS("Decryption.fxml", "../css/Paris.css");
+        mainController.switchWindowWithCSS("Decryption.fxml", css);
     }
 }

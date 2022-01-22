@@ -38,10 +38,11 @@ public class TaskFinishedController extends AbstractController {
 			if (mainController.multipleChoiceTaskSucceeded) {
 				feedbackText.setText("Richtig, weiter so!");
 			} else {
-				feedbackText.setText("Leider falsch, versuche es noch einmal. Du musst dich beeilen!");
+				feedbackText.setText("Die Antwort war leider falsch! "
+						+ "Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
 			}
 		} else {
-			feedbackText.setText("Glückwunsch, du hast alle Fragen richtig beantwortet!");
+			feedbackText.setText("Glückwunsch, du hast alle Fragen richtig beantwortet und die Floppy-Disk erhalten!\nSchicke dem NIV eine verschlüsselte Bestätigung, dass ihr die Floppy-Disk erhalten habt.");
 		}
 	}
 
@@ -72,8 +73,8 @@ public class TaskFinishedController extends AbstractController {
 		time.stop();
 		KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
 			timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-			if (mainController.getCurrentLevel().getTimeInSec() == 0) {
-				mainController.switchWindow("Decryption.fxml");
+			if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+				mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
 				time.stop();
 			}
 		});

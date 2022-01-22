@@ -10,10 +10,10 @@ import javafx.scene.control.Button;
 public class LevelFinishedController extends AbstractController {
 
   @FXML
-  private Button weiterButton;
+  private Button nextButton;
 
   @FXML
-  void klickWeiter(ActionEvent event) {
+  void clickNext(ActionEvent event) {
     System.out.println("Es wurde weiter geklickt!");
     mainController.switchWindow("Startfenster.fxml");
   }

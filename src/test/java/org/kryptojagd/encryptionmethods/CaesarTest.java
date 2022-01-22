@@ -1,5 +1,6 @@
 package org.kryptojagd.encryptionmethods;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.kryptojagd.encryptionmethods.Caesar;
 
@@ -10,48 +11,55 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Leah Schlimm
  */
-/*public class CaesarTest {
+public class CaesarTest {
+
+    static Caesar c;
+
+    @BeforeAll
+    static void init() {
+        c = new Caesar();
+    }
 
     //Decode-Methode kein Text
 
     /**
      * Tests the decode method with an empty text string and a valid key 5
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyDecode(){
-        assertEquals("", Caesar.decode("", 5));
+        assertEquals("", c.decode("", 5));
     }
 
     /**
      * Tests the decode method with an empty text string and the smallest valid key 0
      */
-    /*@Test
+    @Test
     void testEmptyKeyDecodeLowerBorder(){
-        assertEquals("", Caesar.decode("", 0));
+        assertEquals("", c.decode("", 0));
     }
 
     /**
      * Tests the decode method with an empty text string and the largest valid key 26
      */
-    /*@Test
+    @Test
     void testEmptyKeyDecodeUpperBorder(){
-        assertEquals("", Caesar.decode("", 26));
+        assertEquals("", c.decode("", 26));
     }
 
     /**
      * Tests the decode method with an empty text string and a key that is too small, -1
      */
-    /*@Test
+    @Test
     void testEmptyUnvalidKeyDecodeToLow(){
-        assertEquals("", Caesar.decode("", -1));
+        assertEquals("", c.decode("", -1));
     }
 
     /**
      * Tests the decode method with an empty text string and a key that is too large -1
      */
-    /*@Test
+    @Test
     void testEmptyUnvalidKeyDecodeToHigh() {
-        assertEquals("", Caesar.decode("", 27));
+        assertEquals("", c.decode("", 27));
     }
 
 
@@ -61,49 +69,49 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests the encode method with an empty text string and no key
      */
-    /*@Test
+    @Test
     void testEmptyNoKeyEncode(){
-        assertEquals("", Caesar.encode(""));
+        assertEquals("", c.encode(""));
     }
 
     /**
      * Tests the encode method with an empty text string and a valid key 5
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyEncode(){
-        assertEquals("", Caesar.encode("", 5));
+        assertEquals("", c.encode("", 5));
     }
 
     /**
      * Tests the encode method with an empty text string and the smallest valid key 0
      */
-    /*@Test
+    @Test
     void testEmptyKeyEncodeLowerBorder(){
-        assertEquals("", Caesar.encode("", 0));
+        assertEquals("", c.encode("", 0));
     }
 
     /**
      * Tests the encode method with an empty text string and the largest valid key 26
      */
-    /*@Test
+    @Test
     void testEmptyKeyEncodeUpperBorder(){
-        assertEquals("", Caesar.encode("", 26));
+        assertEquals("", c.encode("", 26));
     }
 
     /**
      * Tests the encode method with an empty text string and a key that is too small -1
      */
-    /*@Test
+    @Test
     void testEmptyUnvalidKeyEncodeToLow(){
-        assertEquals("", Caesar.encode("", -1));
+        assertEquals("", c.encode("", -1));
     }
 
     /**
      * Tests the encode method with an empty text string and a key that is too large -1
      */
-    /*@Test
+    @Test
     void testEmptyUnvalidKeyEncodeToHigh(){
-        assertEquals("", Caesar.encode("", 27));
+        assertEquals("", c.encode("", 27));
     }
 
 
@@ -113,49 +121,49 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the decode method reads "IBMMP XFMU!" correctly deciphered
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecode(){
-        assertEquals("HALLO WELT!", Caesar.decode("IBMMP XFMU!", 1));
+        assertEquals("HALLO WELT!", c.decode("IBMMP XFMU!", 1));
     }
 
     /**
      * Tests whether the decode method reads "Ibmmp Xfmu!" correctly decrypted and output in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeUppercase(){
-        assertEquals("HALLO WELT!", Caesar.decode("Ibmmp Xfmu!", 1));
+        assertEquals("HALLO WELT!", c.decode("Ibmmp Xfmu!", 1));
     }
 
     /**
      * Tests whether the decode method reads "Hallo Welt!" decrypted with key 0 and output in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeUppercaseLowerBorder(){
-        assertEquals("HALLO WELT!", Caesar.decode("Hallo Welt!", 0));
+        assertEquals("HALLO WELT!", c.decode("Hallo Welt!", 0));
     }
 
     /**
      * Tests whether the decode method reads "Hallo Welt!" decrypted with key 26 and output in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeUppercaseUpperBorder(){
-        assertEquals("HALLO WELT!", Caesar.decode("Hallo Welt!", 26));
+        assertEquals("HALLO WELT!", c.decode("Hallo Welt!", 26));
     }
 
     /**
      * Tests whether the decode method still encrypts the given text and outputs it in uppercase
      */
-    /*@Test
+    @Test
     void testTextUnvalidKeyDecodeToLow(){
-        assertEquals("IBMMP XFMU!", Caesar.decode("Ibmmp Xfmu!", -1));
+        assertEquals("IBMMP XFMU!", c.decode("Ibmmp Xfmu!", -1));
     }
 
     /**
      * Tests whether the decode method still encrypts the given text and outputs it in uppercase
      */
-    /*@Test
+    @Test
     void testTextUnvalidKeyDecodeToHigh(){
-        assertEquals("IBMMP XFMU!", Caesar.decode("Ibmmp Xfmu!", 27));
+        assertEquals("IBMMP XFMU!", c.decode("Ibmmp Xfmu!", 27));
     }
 
 
@@ -166,49 +174,49 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the encode method reads "HALLO WELT!" correctly encrypted
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncode(){
-        assertEquals("IBMMP XFMU!", Caesar.encode("HALLO WELT!", 1));
+        assertEquals("IBMMP XFMU!", c.encode("HALLO WELT!", 1));
     }
 
     /**
      * Tests whether the encode method reads "Hallo Welt!" correctly encrypted and output in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeUppercase(){
-        assertEquals("IBMMP XFMU!", Caesar.encode("Hallo Welt!", 1));
+        assertEquals("IBMMP XFMU!", c.encode("Hallo Welt!", 1));
     }
 
     /**
      * Tests whether the encode method reads "Hallo Welt!" Encrypted with the key 0 and output in Uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeUppercaseLowerBorder(){
-        assertEquals("HALLO WELT!", Caesar.encode("Hallo Welt!", 0));
+        assertEquals("HALLO WELT!", c.encode("Hallo Welt!", 0));
     }
 
     /**
      * Tests whether the encode method reads "Hallo Welt!" encrypted with the key 26 and issued in the uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeUppercaseUpperBorder(){
-        assertEquals("HALLO WELT!", Caesar.encode("Hallo Welt!", 26));
+        assertEquals("HALLO WELT!", c.encode("Hallo Welt!", 26));
     }
 
     /**
      * Tests whether the encode method outputs the given text unencrypted and in uppercase
      */
-    /*@Test
+    @Test
     void testTextUnvalidKeyEncodeToLow(){
-        assertEquals("HALLO WELT!", Caesar.encode("Hallo Welt!", -1));
+        assertEquals("HALLO WELT!", c.encode("Hallo Welt!", -1));
     }
 
     /**
      * Tests whether the encode method outputs the given text unencrypted and in uppercase
      */
-    /*@Test
+    @Test
     void testTextUnvalidKeyEncodeToHigh(){
-        assertEquals("HALLO WELT!", Caesar.encode("Hallo Welt!", 27));
+        assertEquals("HALLO WELT!", c.encode("Hallo Welt!", 27));
     }
 
 
@@ -218,10 +226,10 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the method generates a random int value between really greater than 0 and really less than 25
      */
-    /*@Test
+    @Test
     void testGenerateKey(){
         for (int i = 0; i < 1000; i++){
-            int key = Caesar.generateKey();
+            int key = c.generateKey();
             if(key <= 0 || key >= 26){
                 fail();
             }
@@ -229,4 +237,4 @@ import static org.junit.jupiter.api.Assertions.*;
         assertTrue(true);
     }
 
-}*/
+}

@@ -1,5 +1,7 @@
 package org.kryptojagd.encryptionmethods;
 
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.kryptojagd.encryptionmethods.Backwards;
 
@@ -10,53 +12,60 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Leah Schlimm
  */
-//public class BackwardsTest {
+public class BackwardsTest {
+
+    static Backwards b;
+
+    @BeforeAll
+    static void init() {
+        b = new Backwards();
+    }
 
     /**
      * Tests the encode method with an empty text string and no key
      */
-    /*@Test
+    @Test
     void testEmptyTextEncode() {
-        assertEquals("", Backwards.encode("", ""));
+        assertEquals("", b.encode("", ""));
     }
 
     /**
      * Tests whether the encode method reads "HELLO" correctly encrypted
      */
-    /*@Test
+    @Test
     void testNotEmptyTextNoWhitespaceEncode() {
-        assertEquals("OLLEH", Backwards.encode("Hello", ""));
+        assertEquals("OLLEH", b.encode("Hello", ""));
     }
 
     /**
      * Tests whether the encode method reads "Hello,   World!" correctly encrypted
      */
-    /*@Test
+    @Test
     void testNotEmptyTextWhiteSpaceEncode() {
-        assertEquals("OLLEH,   DLROW!", Backwards.encode("Hello,   World!", ""));
+        assertEquals("OLLEH,   DLROW!", b.encode("Hello,   World!", ""));
     }
 
     /**
      * Tests the decode method with an empty text string and no key
      */
-    /*@Test
+    @Test
     void testEmptyTextDecode() {
-        assertEquals("", Backwards.decode("", ""));
+        assertEquals("", b.decode("", ""));
     }
 
     /**
      * Tests whether the decode method reads "OLLEH" correctly decrypted
      */
-    /*@Test
+    @Test
     void testNotEmptyTextNoWhitespaceDecode() {
-        assertEquals("HELLO", Backwards.decode("OLLEH", ""));
+        assertEquals("HELLO", b.decode("OLLEH", ""));
     }
 
     /**
      * Tests whether the decode method reads "OLLEH,   DLROW!" correctly decrypted
      */
-    /*@Test
+    @Test
     void testNotEmptyTextWhiteSpaceDecode() {
-        assertEquals("HELLO,   WORLD!", Backwards.decode("OLLEH,   DLROW!", ""));
+        assertEquals("HELLO,   WORLD!", b.decode("OLLEH,   DLROW!", ""));
     }
-}*/
+}

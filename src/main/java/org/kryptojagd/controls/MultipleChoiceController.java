@@ -113,7 +113,7 @@ public class MultipleChoiceController extends AbstractController {
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
             if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
-                mainController.switchWindow("TimeOver.fxml");
+                mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
                 time.stop();
             }
         });

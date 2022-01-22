@@ -12,9 +12,9 @@
             <Label fx:id="question" text="Um welches Verschlüsselungsverfahren handelt es sich?" />
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button fx:id="procedure1" mnemonicParsing="false" onAction="#clickProcedure1" text="Verfahren 1" />
-                  <Button fx:id="procedure2" mnemonicParsing="false" onAction="#clickProcedure2" text="Verfahren 2" />
-                  <Button fx:id="procedure3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickProcedure3" text="Verfahren 3" />
+                  <Button fx:id="procedure1" mnemonicParsing="false" onAction="#clickProcedure1" text="Verfahren 1" prefHeight="24.0" prefWidth="300.0"/>
+                  <Button fx:id="procedure2" mnemonicParsing="false" onAction="#clickProcedure2" text="Verfahren 2" prefHeight="24.0" prefWidth="300.0"/>
+                  <Button fx:id="procedure3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickProcedure3" text="Verfahren 3" prefHeight="24.0" prefWidth="300.0"/>
                </children>
             </HBox>
          </children>
@@ -29,5 +29,10 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </BorderPane.margin>
       </Label>
+      <Button fx:id="help" id="helpBtn" text="?" BorderPane.alignment="TOP_LEFT">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </Button>
    </top>
 </BorderPane>

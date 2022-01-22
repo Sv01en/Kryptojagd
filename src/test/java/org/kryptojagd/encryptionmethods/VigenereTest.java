@@ -1,5 +1,6 @@
 package org.kryptojagd.encryptionmethods;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.kryptojagd.encryptionmethods.Vigenere;
 
@@ -10,7 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Leah Schlimm
  */
-/*public class VigenereTest {
+public class VigenereTest {
+
+    static Vigenere v;
+
+    @BeforeAll
+    static void init() {
+        v = new Vigenere();
+    }
 
 
     //Decode-Methode kein Text
@@ -18,41 +26,41 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests the decryption method with an empty text string and a valid key "ABCDE"
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyDecode(){
-        assertEquals("", Vigenere.decode("", "ABCDE"));
+        assertEquals("", v.decode("", "ABCDE"));
     }
 
     /**
      * Tests the decryption method with an empty text string and an invalid key "ABC%"
      */
-    /*@Test
+    @Test
     void testEmptyUnvalidKeyDecode(){
-        assertEquals("", Vigenere.decode("", "ABC%"));
+        assertEquals("", v.decode("", "ABC%"));
     }
 
     /**
      * Tests the decryption method with an empty text string, empty key string
      */
-    /*@Test
+    @Test
     void testEmptyDecodeNoKey() {
-        assertEquals("", Vigenere.decode("", ""));
+        assertEquals("", v.decode("", ""));
     }
 
     /**
      * Tests the decryption method with an empty text string and a valid key "abCde" that is not completely written in uppercase
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyDecodeNoUppercaseKey() {
-        assertEquals("", Vigenere.decode("", "abCde"));
+        assertEquals("", v.decode("", "abCde"));
     }
 
     /**
      * Tests the decryption method with an empty text string and a valid key in lowercase "abcde"
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyDecodeLowercaseKey() {
-        assertEquals("", Vigenere.decode("", "abcde"));
+        assertEquals("", v.decode("", "abcde"));
     }
 
 
@@ -62,46 +70,46 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests the encryption method with an empty text string and without a key
      */
-    /*@Test
+    @Test
     void testEmptyNoKeyEncode(){
-        assertEquals("", Vigenere.encode(""));
+        assertEquals("", v.encode(""));
     }
 
     /**
      * Tests the encryption method with an empty text string and a valid key "ABCDE"
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyEncode(){
-        assertEquals("", Vigenere.encode("", "ABCDE"));
+        assertEquals("", v.encode("", "ABCDE"));
     }
 
     /**
      * Tests the encryption method with an empty text string and an invalid key "ABC%"
      */
-    /*@Test
+    @Test
     void testEmptyUnvalidKeyEncode(){
-        assertEquals("", Vigenere.encode("", "ABC%"));
+        assertEquals("", v.encode("", "ABC%"));
     }
 
     /**
      * Tests the encryption method with an empty text string and an empty key string
      */
-    /*@Test
+    @Test
     void testEmptyEncodeNoKey() {
-        assertEquals("", Vigenere.encode("", ""));
+        assertEquals("", v.encode("", ""));
     }
 
     /**
      * Tests the encryption method with an empty text string and a valid key "abCde" that is not completely written in uppercase
      */
-    /*@Test
-    void testEmptyValidKeyEncodeNoUppercaseKey() { assertEquals("", Vigenere.encode("", "abCde")); }
+    @Test
+    void testEmptyValidKeyEncodeNoUppercaseKey() { assertEquals("", v.encode("", "abCde")); }
 
     /**
      * Tests the encryption method with an empty text string and a valid key in lowercase "abcde"
      */
-    /*@Test
-    void testEmptyValidKeyEncodeLowercaseKey() { assertEquals("", Vigenere.encode("", "abcde")); }
+    @Test
+    void testEmptyValidKeyEncodeLowercaseKey() { assertEquals("", v.encode("", "abcde")); }
 
 
 
@@ -110,57 +118,57 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the decryption method with "HBNOS XGOX!" and the key "ABCDE" provides the correct decryption
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecode(){
-        assertEquals("HALLO WELT!", Vigenere.decode("HBNOS XGOX!", "ABCDE"));
+        assertEquals("HALLO WELT!", v.decode("HBNOS XGOX!", "ABCDE"));
     }
 
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and the key "ABCDE" provides the correct decryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeUppercase(){
-        assertEquals("HALLO WELT!", Vigenere.decode("Hbnos Xgox!", "ABCDE"));
+        assertEquals("HALLO WELT!", v.decode("Hbnos Xgox!", "ABCDE"));
     }
 
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and the invalid key "ABC%" returns the encrypted entry in uppercase
      */
-    /*@Test
+    @Test
     void testTextUnvalidKeyDecode(){
-        assertEquals("HBNOS XGOX!", Vigenere.decode("Hbnos Xgox!", "ABC%"));
+        assertEquals("HBNOS XGOX!", v.decode("Hbnos Xgox!", "ABC%"));
     }
 
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and returns the encrypted input in Uppercase to the empty key string
      */
-    /*@Test
+    @Test
     void testTextDecodeNoKey() {
-        assertEquals("HBNOS XGOX!", Vigenere.decode("Hbnos Xgox!", ""));
+        assertEquals("HBNOS XGOX!", v.decode("Hbnos Xgox!", ""));
     }
 
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and the key "abCde" provides the correct decryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeNoUppercaseKey() {
-        assertEquals("HALLO WELT!", Vigenere.decode("Hbnos Xgox!", "abCde"));
+        assertEquals("HALLO WELT!", v.decode("Hbnos Xgox!", "abCde"));
     }
 
     /**
      * Tests whether the decryption method with "Hbnos Xgox!" and the key "abcde" provides the correct decryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeLowercaseKey() {
-        assertEquals("HALLO WELT!", Vigenere.decode("Hbnos Xgox!", "abcde"));
+        assertEquals("HALLO WELT!", v.decode("Hbnos Xgox!", "abcde"));
     }
 
     /**
      * Tests whether the cyclical shifting works
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeOverflow(){
-        assertEquals("ZUM BEISPIEL:", Vigenere.decode("Awp Gfkvtnfn:", "BCDEF"));
+        assertEquals("ZUM BEISPIEL:", v.decode("Awp Gfkvtnfn:", "BCDEF"));
     }
 
 
@@ -170,57 +178,57 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the decryption method with "HALLO WELT!" and the key "ABCDE" provides the correct encryption
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncode(){
-        assertEquals("HBNOS XGOX!", Vigenere.encode("Hallo Welt!", "ABCDE"));
+        assertEquals("HBNOS XGOX!", v.encode("Hallo Welt!", "ABCDE"));
     }
 
     /**
      * Tests whether the encryption method with "Hallo Welt!" and the key "ABCDE" provides the correct encryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeUppercase(){
-        assertEquals("HBNOS XGOX!", Vigenere.encode("Hallo Welt!", "ABCDE"));
+        assertEquals("HBNOS XGOX!", v.encode("Hallo Welt!", "ABCDE"));
     }
 
     /**
      * Tests whether the encryption method with "Hallo Welt!" and the invalid key "ABC%" returns the unencrypted input in uppercase
      */
-    /*@Test
+    @Test
     void testTextUnvalidKeyEncode() {
-        assertEquals("HALLO WELT!", Vigenere.encode("Hallo Welt!", "ABC%"));
+        assertEquals("HALLO WELT!", v.encode("Hallo Welt!", "ABC%"));
     }
 
     /**
      * Tests whether the encryption method with "Hallo Welt!" and returns the unencrypted input in uppercase to the empty key string
      */
-    /*@Test
+    @Test
     void testTextEncodeNoKey() {
-        assertEquals("HALLO WELT!", Vigenere.encode("Hallo Welt!", ""));
+        assertEquals("HALLO WELT!", v.encode("Hallo Welt!", ""));
     }
 
     /**
      * Tests whether the encryption method with "Hallo Welt!" and the key "abCde" provides the correct encryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeNoUppercaseKey(){
-        assertEquals("HBNOS XGOX!", Vigenere.encode("Hallo Welt!", "abCde"));
+        assertEquals("HBNOS XGOX!", v.encode("Hallo Welt!", "abCde"));
     }
 
     /**
      * Tests whether the encryption method with "Hallo Welt!" and the key "abcde" provides the correct encryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeLowercaseKey(){
-        assertEquals("HBNOS XGOX!", Vigenere.encode("Hallo Welt!", "abcde"));
+        assertEquals("HBNOS XGOX!", v.encode("Hallo Welt!", "abcde"));
     }
 
     /**
      * Tests whether the cyclical shifting works
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeOverflow(){
-        assertEquals("AWP GFKVTNFN:", Vigenere.encode("Zum Beispiel:", "BCDEF"));
+        assertEquals("AWP GFKVTNFN:", v.encode("Zum Beispiel:", "BCDEF"));
     }
 
 
@@ -230,10 +238,10 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the method generates a random int value between really greater than 3 and really less than 7
      */
-    /*@Test
+    @Test
     void testGenerateKeyLength(){
         for (int i = 0; i < 1000; i++){
-            int keyLength = Vigenere.keyLength();
+            int keyLength = v.keyLength();
             if(keyLength <= 3 || keyLength >= 7){
                 fail();
             }
@@ -244,14 +252,14 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the method generates a random int value between greater than or equal to 0 and truly less than 26
      */
-    /*@Test
+    @Test
     void testGenerateKeySymbolIndex(){
         for (int i = 0; i < 1000; i++){
-            int keySymbolIndex = Vigenere.keySymbolIndex();
+            int keySymbolIndex = v.keySymbolIndex();
             if(keySymbolIndex < 0  || keySymbolIndex >= 26){
                 fail();
             }
         }
         assertTrue(true);
     }
-}*/
+}

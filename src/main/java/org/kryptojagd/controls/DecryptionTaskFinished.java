@@ -35,12 +35,12 @@ public class DecryptionTaskFinished extends AbstractController {
     public void initialize() {
         updateTimer();
 
-        if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.decryptionTaskSucceeded
-            || mainController.cityTaskFinished) {
+        if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.decryptionTaskSucceeded) {
             feedbackText.setText("Die Antwort war richtig, weiter so!");
+        } else if (mainController.cityTaskFinished) {
+            feedbackText.setText(mainController.getCurrentLevel().getTextAfterStartDecryption());
         } else {
-            feedbackText.setText("Die Antwort war leider falsch! "
-                + "Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
+            feedbackText.setText("Leider falsch, schaue dir den Text noch einmal genauer an!");
         }
     }
 
@@ -71,8 +71,8 @@ public class DecryptionTaskFinished extends AbstractController {
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-            if (mainController.getCurrentLevel().getTimeInSec() == 0) {
-                mainController.switchWindow("Decryption.fxml");
+            if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+                mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
                 time.stop();
             }
         });

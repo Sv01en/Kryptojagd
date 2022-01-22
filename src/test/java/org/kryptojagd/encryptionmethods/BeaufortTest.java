@@ -1,5 +1,6 @@
 package org.kryptojagd.encryptionmethods;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.kryptojagd.encryptionmethods.Beaufort;
 
@@ -10,7 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Leah Schlimm
  */
-/*public class BeaufortTest {
+public class BeaufortTest {
+
+    static Beaufort b;
+
+    @BeforeAll
+    static void init() {
+        b = new Beaufort();
+    }
 
 
     //Decode-Methode kein Text
@@ -18,41 +26,41 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests the decryption method with an empty text string and a valid key "ABCDE"
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyDecode(){
-        assertEquals("", Beaufort.decode("", "ABCDE"));
+        assertEquals("", b.decode("", "ABCDE"));
     }
 
     /**
      * Tests the decryption method with an empty text string and an invalid key "ABC%"
      */
-    /*@Test
+    @Test
     void testEmptyUnvalidKeyDecode(){
-        assertEquals("", Beaufort.decode("", "ABC%"));
+        assertEquals("", b.decode("", "ABC%"));
     }
 
     /**
      * Tests the decryption method with an empty text string, empty key string
      */
-    /*@Test
+    @Test
     void testEmptyDecodeNoKey() {
-        assertEquals("", Beaufort.decode("", ""));
+        assertEquals("", b.decode("", ""));
     }
 
     /**
      * Tests the decryption method with an empty text string and a valid key "abCde" that is not completely written in Uppercase
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyDecodeNoUppercaseKey() {
-        assertEquals("", Beaufort.decode("", "abCde"));
+        assertEquals("", b.decode("", "abCde"));
     }
 
     /**
      * Tests the decryption method with an empty text string and a valid key in Lowercase "abcde"
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyDecodeLowercaseKey() {
-        assertEquals("", Beaufort.decode("", "abcde"));
+        assertEquals("", b.decode("", "abcde"));
     }
 
 
@@ -62,46 +70,46 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests the encryption method with an empty text string and without a key
      */
-    /*@Test
+    @Test
     void testEmptyNoKeyEncode(){
-        assertEquals("", Beaufort.encode(""));
+        assertEquals("", b.encode(""));
     }
 
     /**
      * Tests the encryption method with an empty text string and a valid key "ABCDE"
      */
-    /*@Test
+    @Test
     void testEmptyValidKeyEncode(){
-        assertEquals("", Beaufort.encode("", "ABCDE"));
+        assertEquals("", b.encode("", "ABCDE"));
     }
 
     /**
      * Tests the encryption method with an empty text string and an invalid key "ABC%"
      */
-    /*@Test
+    @Test
     void testEmptyUnvalidKeyEncode(){
-        assertEquals("", Beaufort.encode("", "ABC%"));
+        assertEquals("", b.encode("", "ABC%"));
     }
 
     /**
      * Tests the encryption method with an empty text string and an empty key string
      */
-    /*@Test
+    @Test
     void testEmptyEncodeNoKey() {
-        assertEquals("", Beaufort.encode("", ""));
+        assertEquals("", b.encode("", ""));
     }
 
     /**
      * Tests the encryption method with an empty text string and a valid key "abCde" that is not completely written in uppercase
      */
-    /*@Test
-    void testEmptyValidKeyEncodeNoUppercaseKey() { assertEquals("", Beaufort.encode("", "abCde")); }
+    @Test
+    void testEmptyValidKeyEncodeNoUppercaseKey() { assertEquals("", b.encode("", "abCde")); }
 
     /**
      * Tests the encryption method with an empty text string and a valid key in lowercase "abcde"
      */
-    /*@Test
-    void testEmptyValidKeyEncodeLowercaseKey() { assertEquals("", Beaufort.encode("", "abcde")); }
+    @Test
+    void testEmptyValidKeyEncodeLowercaseKey() { assertEquals("", b.encode("", "abcde")); }
 
 
 
@@ -110,57 +118,57 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the decryption method with "SYMLH CTLC!" and the key "ABCDE" provides the correct decryption
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecode(){
-        assertEquals("HALLO WELT!", Beaufort.decode("SYMLH CTLC!", "ABCDE"));
+        assertEquals("HALLO WELT!", b.decode("SYMLH CTLC!", "ABCDE"));
     }
 
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and the key "ABCDE" provides the correct decryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeUppercase(){
-        assertEquals("HALLO WELT!", Beaufort.decode("Symlh Ctlc!", "ABCDE"));
+        assertEquals("HALLO WELT!", b.decode("Symlh Ctlc!", "ABCDE"));
     }
 
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and the invalid key "ABC%" returns the encrypted input in uppercase
      */
-    /*@Test
+    @Test
     void testTextUnvalidKeyDecode(){
-        assertEquals("SYMLH CTLC!", Beaufort.decode("Symlh Ctlc!", "ABC%"));
+        assertEquals("SYMLH CTLC!", b.decode("Symlh Ctlc!", "ABC%"));
     }
 
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and returns the encrypted input in uppercase to the empty key string
      */
-    /*@Test
+    @Test
     void testTextDecodeNoKey() {
-        assertEquals("HALLO WELT!", Beaufort.decode("Hallo Welt!", ""));
+        assertEquals("HALLO WELT!", b.decode("Hallo Welt!", ""));
     }
 
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and the key "abCde" provides the correct decryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeNoUppercaseKey() {
-        assertEquals("HALLO WELT!", Beaufort.decode("Symll Bsof!", "abCd"));
+        assertEquals("HALLO WELT!", b.decode("Symll Bsof!", "abCd"));
     }
 
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and the key "abcde" provides the correct decryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeLowercaseKey() {
-        assertEquals("HALLO WELT!", Beaufort.decode("Symll Bsof!", "abcd"));
+        assertEquals("HALLO WELT!", b.decode("Symll Bsof!", "abcd"));
     }
 
     /**
      * Tests whether the cyclical shifting works
      */
-    /*@Test
+    @Test
     void testTextValidKeyDecodeOverflow(){
-        assertEquals("HALLO WELT!", Beaufort.decode("ZVWVS LCVC!", "TEST"));
+        assertEquals("HALLO WELT!", b.decode("ZVWVS LCVC!", "TEST"));
     }
 
 
@@ -170,57 +178,57 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the decryption method with "SYMLH CTLC!" and the key "ABCDE" provides the correct encryption
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncode(){
-        assertEquals("HALLO WELT!", Beaufort.encode("SYMLH CTLC!", "ABCDE"));
+        assertEquals("HALLO WELT!", b.encode("SYMLH CTLC!", "ABCDE"));
     }
 
     /**
      * Tests whether the encryption method with "Symlh Ctlc!" and the key "ABCDE" provides the correct encryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeUppercase(){
-        assertEquals("HALLO WELT!", Beaufort.encode("Symlh Ctlc!", "ABCDE"));
+        assertEquals("HALLO WELT!", b.encode("Symlh Ctlc!", "ABCDE"));
     }
 
     /**
      * Tests whether the encryption method with "Symlh Ctlc!" and the invalid key "ABC%" returns the unencrypted input in uppercase
      */
-    /*@Test
+    @Test
     void testTextUnvalidKeyEncode() {
-        assertEquals("SYMLH CTLC!", Beaufort.encode("Symlh Ctlc!", "ABC%"));
+        assertEquals("SYMLH CTLC!", b.encode("Symlh Ctlc!", "ABC%"));
     }
 
     /**
      * Tests whether the encryption method with "Symlh Ctlc!" and returns the unencrypted input in uppercase to the empty key string
      */
-    /*@Test
+    @Test
     void testTextEncodeNoKey() {
-        assertEquals("SYMLH CTLC!", Beaufort.encode("Symlh Ctlc!", ""));
+        assertEquals("SYMLH CTLC!", b.encode("Symlh Ctlc!", ""));
     }
 
     /**
      * Testet, ob die Verschluesselungs-Methode mit "Symlh Ctlc!" und dem Schluessel "abCde" die korrekte Verschluesselung in uppercase liefert
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeNoUppercaseKey(){
-        assertEquals("HALLO WELT!", Beaufort.encode("Symll Bsof!", "abCd"));
+        assertEquals("HALLO WELT!", b.encode("Symll Bsof!", "abCd"));
     }
 
     /**
      * Tests whether the encryption method with "Symlh Ctlc!" and the key "abcde" provides the correct encryption in uppercase
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeLowercaseKey(){
-        assertEquals("HALLO WELT!", Beaufort.encode("Symll Bsof!", "abcd"));
+        assertEquals("HALLO WELT!", b.encode("Symll Bsof!", "abcd"));
     }
 
     /**
      * Tests whether the cyclical shifting works
      */
-    /*@Test
+    @Test
     void testTextValidKeyEncodeOverflow(){
-        assertEquals("ZVWVS LCVC!", Beaufort.encode("HALLO WELT!", "TEST"));
+        assertEquals("ZVWVS LCVC!", b.encode("HALLO WELT!", "TEST"));
     }
 
 
@@ -230,10 +238,10 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the method generates a random int value between really greater than 3 and really less than 7
      */
-    /*@Test
+    @Test
     void testGenerateKeyLength(){
         for (int i = 0; i < 1000; i++){
-            int keyLength = Beaufort.keyLength();
+            int keyLength = b.keyLength();
             if(keyLength <= 3 || keyLength >= 7){
                 fail();
             }
@@ -244,14 +252,14 @@ import static org.junit.jupiter.api.Assertions.*;
     /**
      * Tests whether the method generates a random int value between greater than or equal to 0 and truly less than 26
      */
-    /*@Test
+    @Test
     void testGenerateKeySymbolIndex(){
         for (int i = 0; i < 1000; i++){
-            int keySymbolIndex = Beaufort.keySymbolIndex();
+            int keySymbolIndex = b.keySymbolIndex();
             if(keySymbolIndex < 0  || keySymbolIndex >= 26){
                 fail();
             }
         }
         assertTrue(true);
     }
-}*/
+}
