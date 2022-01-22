@@ -40,8 +40,7 @@ public class DecryptionTaskFinished extends AbstractController {
         } else if (mainController.cityTaskFinished) {
             feedbackText.setText(mainController.getCurrentLevel().getTextAfterStartDecryption());
         } else {
-            feedbackText.setText("Die Antwort war leider falsch! "
-                + "Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
+            feedbackText.setText("Leider falsch, schaue dir den Text noch einmal genauer an!");
         }
     }
 
