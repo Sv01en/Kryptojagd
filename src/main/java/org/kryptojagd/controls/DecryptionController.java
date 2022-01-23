@@ -15,6 +15,8 @@ import javafx.util.Duration;
  */
 public class DecryptionController extends AbstractController {
 
+    private static final String DECRYPTION_FINISHED_FXML = "DecryptionTaskFinished.fxml";
+
     @FXML
     public Label question;
 
