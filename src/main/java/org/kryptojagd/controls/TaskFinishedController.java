@@ -22,29 +22,35 @@ public class TaskFinishedController extends AbstractController {
 
 	/**
 	 * Initializes a TaskFinishedController
-	 * <p></p>
-	 * Gives the right feedback to a multipleChoice and switches the window.
-	 *<p></p>
-	 * If the answer was right, it prints out "Richtig, weiter so!"<p></p>
-	 * If the answer was wrong, it prints out "Leider falsch, versuche es noch einmal. Du musst dich beeilen!"<p></p>
-	 * in both cases it switchs to a new multiple choice window
-	 * if every question of a level is answered, it prints out "Glückwunsch, du hast alle Fragen richtig beantwortet!"
+	 *
+	 * If the answer was right, it prints out the good standard feedback
+	 * If the answer was wrong, it prints out  the bad standard feedback
+	 * if every multiple choice question of a level is answered, it prints out the finished multiple choice text
+	 * if the city question of a level is right answered, it prints out the textAfterStartDecryption
 	 *
 	 */
 	@FXML
 	public void initialize() {
 		updateTimer();
-		if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
-			if (mainController.multipleChoiceTaskSucceeded) {
-				feedbackText.setText(RESOURCE_BUNDLE.getString("standard_feedback_good"));
-			} else {
-				feedbackText.setText("Die Antwort war leider falsch! "
-						+ "Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
-			}
+		if (rightAnswered()) {
+			feedbackText.setText(RESOURCE_BUNDLE.getString("standard_feedback_good"));
+		} else if (mainController.cityTaskFinished) {
+			feedbackText.setText(mainController.getCurrentLevel().getTextAfterStartDecryption());
+		} else if (mainController.getCurrentLevel().multipleChoiceIsFinished()) {
+			feedbackText.setText(RESOURCE_BUNDLE.getString("finished_multiple_choice"));
 		} else {
-			feedbackText.setText("Glückwunsch, du hast alle Fragen richtig beantwortet und die Floppy-Disk erhalten!\nSchicke dem NIV eine verschlüsselte Bestätigung, dass ihr die Floppy-Disk erhalten habt.");
+			feedbackText.setText(RESOURCE_BUNDLE.getString("standard_feedback_bad"));
 		}
 	}
+
+	private boolean rightAnswered() {
+		if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.decryptionTaskSucceeded) {
+			return true;
+		} else if (!mainController.getCurrentLevel().multipleChoiceIsFinished() && mainController.multipleChoiceTaskSucceeded) {
+			return true;
+		} else return mainController.getCurrentLevel().decryptionIsFinished() && mainController.decryptionTaskSucceeded;
+	}
+
 
 	/**
 	 * Handles the switch to eather the next multiple choice question or the next task

@@ -103,7 +103,6 @@ public class Level {
 			this.multipleChoiceFinished = true;
 		}
 		return true;
-
 	}
 
 	/**
