@@ -5,8 +5,12 @@ package org.kryptojagd.controls.resources;
  *
  * @author Sonja Kuklok
  */
-public final class Messages {
+public final class Files {
+
+    public static final String MULTIPLE_CHOICE_WINDOW = "MultipleChoice.fxml";
+
+
 
     /* private utility-class constructor */
-    private Messages() { }
+    private Files() { }
 }

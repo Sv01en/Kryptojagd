@@ -3,6 +3,7 @@ package org.kryptojagd.controls;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * The class controls every kind of controller and puts them together
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @author Michail Petermann, Sonja Kuklok, Sven Strasser, Leah Schlimm
  */
 public class MainController {
-	
+
 	private PresentationManager fw;
 
 	private Level currentLevel;

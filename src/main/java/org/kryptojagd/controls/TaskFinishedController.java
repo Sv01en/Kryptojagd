@@ -36,7 +36,7 @@ public class TaskFinishedController extends AbstractController {
 		updateTimer();
 		if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
 			if (mainController.multipleChoiceTaskSucceeded) {
-				feedbackText.setText("Richtig, weiter so!");
+				feedbackText.setText(RESOURCE_BUNDLE.getString("standard_feedback_good"));
 			} else {
 				feedbackText.setText("Die Antwort war leider falsch! "
 						+ "Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");

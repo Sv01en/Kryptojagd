@@ -14,8 +14,7 @@ public class InfoTextController extends AbstractController {
 
 	@FXML
 	public void initialize() {
-		String text = "Du und deine Kollegen Bob und Alice wurdet von der nationalen Informatikervereinigung (NIV) beauftragt, die letzten vier antiken Floppy-Disks zu finden und sie sicher in das historische Computermuseum zu bringen.\nDie Herausforderung dabei ist, dass die Floppy-Disks auf der ganzen Welt verteilt sind. Aber ihr drei seid die besten Spürnasen weit und breit und scheut euch deshalb natürlich nicht davor, diese Herausforderung anzunehmen.\nDie NIV hat im Darknet einen verschlüsselten Hinweis zu dem Fundort der ersten Floppy-Disk entdeckt und euch diesen weitergeleitet...\n\nStarte das Spiel und finde die Floppy-Disks!";
-
+		String text = RESOURCE_BUNDLE.getString("start_text");
 		label.setText(text);
 	}
 
