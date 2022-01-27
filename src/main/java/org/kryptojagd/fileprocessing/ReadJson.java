@@ -14,12 +14,13 @@ import org.kryptojagd.level.tasks.MultipleChoiceTask;
 /**
  * This class can be used to read JSON files.
  *
- * @author Michail Petermann
+ * @author Michail Petermann, Bartosz Treyde
  */
 public class ReadJson {
 
   private static Gson gson = new Gson();
   private static JSONParser parser = new JSONParser();
+  private static int time = 0;
 
   /**
    * Reads the files with the information for a MultipleChoiceTask and creates it.
@@ -100,7 +101,7 @@ public class ReadJson {
     }
     return decryptionTask;
   }
-  
+
   /**
    * Reads the time for the level.
    *
@@ -108,7 +109,6 @@ public class ReadJson {
    * @return time in second for the level
    */
   public static int readTime(String path) {
-    int time = 0;
     try {
       Object obj2 = parser.parse(new FileReader(path));
       JsonObject jsonObject = gson.fromJson(obj2.toString(), JsonObject.class);
@@ -123,6 +123,9 @@ public class ReadJson {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+    return time;
+  }
+  public static int getTime() {
     return time;
   }
 }

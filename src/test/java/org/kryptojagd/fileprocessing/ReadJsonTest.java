@@ -1,13 +1,12 @@
 package org.kryptojagd.fileprocessing;
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.jupiter.api.Test;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
+
+import static org.junit.Assert.*;
 
 class ReadJsonTest {
 
@@ -76,13 +75,25 @@ class ReadJsonTest {
     
     //TODO
 
+    assert dec!= null;
     assertEquals(dec.getPlainText(), plainText);
+    assertEquals(dec.getEncryptionMethod(), encryptionMethod);
+    assertEquals(dec.getAnswerOptionsEncryption(), answerOptionsEncryption);
+    assertEquals(dec.getCorrectAnswerEncryption(), correctAnswerEncryption);
+    assertEquals(dec.getAnswerOptionsCity(), answerOptionsCity);
+    assertEquals(dec.getCorrectAnswerCityInt(), correctAnswerCity);
+
   }
 
   @Test
   void testReadTime() {
-    //TODO
-    // fail("Not yet implemented");
+    
+    assertNotNull(ReadJson.getTime());
+    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level1/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level1/time.json") >= 0);
+    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level2/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level2/time.json") >= 0);
+    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level3/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level3/time.json") >= 0);
+    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level4/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level4/time.json") >= 0);
+    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level5/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level5/time.json") >= 0);
   }
 
 

@@ -5,7 +5,7 @@ import org.kryptojagd.encryptionmethods.Encryption;
 /**
  * The class describes a task, where you have to decrypt text
  *
- * @author Sonja Kuklok, Sven Strasser, Leah Schlimm
+ * @author Sonja Kuklok, Sven Strasser, Leah Schlimm, Bartosz Treyde
  */
 public class DecryptionTask implements Task {
 
@@ -164,6 +164,13 @@ public class DecryptionTask implements Task {
 	public boolean getCorrectAnswerCity() {
 		return correctAnswerCityBool;
 	}
+	/**
+	 * Getter for the number of the correct city in the Array in the Json file
+	 * @return the number of the correct city in the Array in the Json file
+	 */
+	public int getCorrectAnswerCityInt() {
+		return correctAnswerCity;
+	}
 
 	/**
 	 * Getter, if the city task or the decryption task is currently showing
@@ -196,5 +203,21 @@ public class DecryptionTask implements Task {
 		this.correctAnswer = false;
 		this.correctAnswerCityBool = false;
 		this.isCityTaskShowing = false;
+	}
+
+	/**
+	 * Getter for the encryption method
+	 * @return encryption method
+	 */
+	public String getEncryptionMethod() {
+		return encryptionMethod;
+	}
+
+	/**
+	 * Getter for the number of the encryption method in the Array in the Json file
+	 * @return the number of the encryption method in the Array in the Json file
+	 */
+	public int getCorrectAnswerEncryption() {
+		return correctAnswerEncryption;
 	}
 }
