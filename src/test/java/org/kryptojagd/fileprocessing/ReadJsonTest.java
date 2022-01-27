@@ -87,13 +87,9 @@ class ReadJsonTest {
 
   @Test
   void testReadTime() {
-    
+
     assertNotNull(ReadJson.getTime());
-    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level1/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level1/time.json") >= 0);
-    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level2/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level2/time.json") >= 0);
-    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level3/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level3/time.json") >= 0);
-    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level4/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level4/time.json") >= 0);
-    assertTrue(ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level5/time.json") <= 500 && ReadJson.readTime("src/main/resources/org/kryptojagd/levels/level5/time.json") >= 0);
+    assertTrue(ReadJson.readTime(path + "time.json") <= 500 && ReadJson.readTime(path + "time.json") >= 0);
   }
 
 
