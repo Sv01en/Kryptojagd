@@ -47,6 +47,10 @@ public class MainController {
 		AbstractController.setMainController(this);
 	}
 
+	public void runLevel() {
+		switchWindow(currentLevel.getCurrentTask().toString());
+	}
+
 	/**
 	 * Getter for current level
 	 * @return the current level

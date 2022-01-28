@@ -81,11 +81,8 @@ public class DecryptionTask implements Task {
 	 */
 	@Override
 	public boolean proveAnswer(String answer) {
-		if (answer.equals(this.encryptionMethod)) {
-			this.taskCompleted = true;
-			return true;
-		}
-		return false;
+		this.taskCompleted = answer.equals(this.encryptionMethod);
+		return taskCompleted;
 	}
 
 	/**

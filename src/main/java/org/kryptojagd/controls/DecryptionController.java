@@ -48,7 +48,7 @@ public class DecryptionController extends AbstractController {
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
             encryptedPuzzleText.setText(level.getEncryptionMethod().
-                    encode(plaintext, task.getEncryptionTask().getKey()));
+                    encode(plaintext, level.getEncryptionMethod().getKey()));
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);

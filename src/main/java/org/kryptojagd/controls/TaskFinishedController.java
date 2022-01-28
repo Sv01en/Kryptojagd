@@ -30,34 +30,25 @@ public class TaskFinishedController extends AbstractController {
 	/**
 	 * Initializes a TaskFinishedController
 	 *
-	 * If the answer was right, it prints out the good standard feedback
-	 * If the answer was wrong, it prints out  the bad standard feedback
 	 * if every multiple choice question of a level is answered, it prints out the finished multiple choice text
 	 * if the city question of a level is right answered, it prints out the textAfterStartDecryption
+	 * If the task is completed, it prints out the good standard feedback
+	 * else it prints out  the bad standard feedback
 	 *
 	 */
 	@FXML
 	public void initialize() {
 		updateTimer();
-		if (rightAnswered()) {
-			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
-		} else if (mainController.cityTaskFinished) {
-			feedbackText.setText(mainController.getCurrentLevel().getTextAfterStartDecryption());
-		} else if (mainController.getCurrentLevel().isMultipleChoiceFinished()) {
+		if (level.isMultipleChoiceFinished()) {
 			feedbackText.setText(Messages.FINISHED_MULTIPLE_CHOICE);
+		} else if (mainController.cityTaskFinished && !task.getTaskCompleted()) {
+			feedbackText.setText(mainController.getCurrentLevel().getTextAfterStartDecryption());
+		} else if (task.getTaskCompleted() | level.getCurrentMultipleChoiceTask().getTaskCompleted()) {
+			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
 		} else {
 			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
 		}
 	}
-
-	private boolean rightAnswered() {
-		if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.decryptionTaskSucceeded) {
-			return true;
-		} else if (!level.isMultipleChoiceFinished() && mainController.multipleChoiceTaskSucceeded) {
-			return true;
-		} else return mainController.getCurrentLevel().decryptionIsFinished() && mainController.decryptionTaskSucceeded;
-	}
-
 
 	/**
 	 * Handles the switch to eather the next task

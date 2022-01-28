@@ -103,10 +103,10 @@ public class EncryptionTask implements Task {
     @Override
     public boolean proveAnswer(String answer) {
         String checkAnswer = answer.toUpperCase();
-        this.taskCompleted = checkAnswer.equals(this.encryptionMethod.encode(this.text, this.key));
+        this.taskCompleted = checkAnswer.equals(this.encryptionMethod.encode(this.text));
         this.hammingDistanceValue = hammingDistance.calculateHammingDistance(
-                this.encryptionMethod.encode(this.text, this.key), checkAnswer);
-        return checkAnswer.equals(this.encryptionMethod.encode(this.text, this.key));
+                this.encryptionMethod.encode(this.text), checkAnswer);
+        return taskCompleted;
     }
 
     //ToDo default
