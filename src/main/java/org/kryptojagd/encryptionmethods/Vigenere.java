@@ -9,6 +9,10 @@ public class Vigenere extends Encryption {
 
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
+    public Vigenere() {
+        super.name = "Vigenere";
+    }
+
     /**
      * Generated a random number between 4 and 6
      * @return Random int value

@@ -25,6 +25,7 @@ public class EncryptionTask implements Task {
     private HammingDistance hammingDistance = new HammingDistance();
 
     private int hammingDistanceValue;
+    private String taskName = "EncryptionTask";
 
     /**
      * Creates a {@link EncryptionTask}
@@ -101,10 +102,22 @@ public class EncryptionTask implements Task {
 
     @Override
     public boolean proveAnswer(String answer) {
-        this.taskCompleted = answer.equals(this.encryptionMethod.encode(this.text, this.key));
+        String checkAnswer = answer.toUpperCase();
+        this.taskCompleted = checkAnswer.equals(this.encryptionMethod.encode(this.text, this.key));
         this.hammingDistanceValue = hammingDistance.calculateHammingDistance(
-                this.encryptionMethod.encode(this.text, this.key), answer);
-        return answer.equals(this.encryptionMethod.encode(this.text, this.key));
+                this.encryptionMethod.encode(this.text, this.key), checkAnswer);
+        return checkAnswer.equals(this.encryptionMethod.encode(this.text, this.key));
+    }
+
+    //ToDo default
+    @Override
+    public String[] getPossibilities() {
+        return new String[0];
+    }
+
+    @Override
+    public String toString() {
+        return taskName;
     }
 
     /**

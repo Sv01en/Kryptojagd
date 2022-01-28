@@ -34,6 +34,8 @@ public class DecryptionTask implements Task {
 	private boolean correctAnswerCityBool;
 
 	private boolean isCityTaskShowing;
+	private String taskName = "DecryptionTask";
+	private boolean taskCompleted = false;
 
 	/**
 	 * Contructor of a decryption task
@@ -59,7 +61,6 @@ public class DecryptionTask implements Task {
 		this.correctAnswerCity = correctAnswerCity;
 		this.textAfterStart = textAfterStart;
 		this.timeInSec = timeInSec;
-		this.correctAnswer = false;
 		this.correctAnswerCityBool = false;
 		this.isCityTaskShowing = false;
 		this.timePenalty = timePenalty;
@@ -81,11 +82,29 @@ public class DecryptionTask implements Task {
 	@Override
 	public boolean proveAnswer(String answer) {
 		if (answer.equals(this.encryptionMethod)) {
-			this.correctAnswer = true;
+			this.taskCompleted = true;
 			return true;
 		}
-		this.correctAnswer = false;
 		return false;
+	}
+
+	/**
+	 * Getter for answer options of decryption task
+	 * @return answer options
+	 */
+	@Override
+	public String[] getPossibilities() {
+		return this.answerOptionsEncryption;
+	}
+
+	@Override
+	public boolean getTaskCompleted() {
+		return taskCompleted;
+	}
+
+	@Override
+	public String toString(){
+		return taskName;
 	}
 
 	/**
@@ -103,13 +122,6 @@ public class DecryptionTask implements Task {
 		return this.plainText;
 	}
 
-	/**
-	 * Getter for answer options of decryption task
-	 * @return answer options
-	 */
-	public String[] getAnswerOptionsEncryption() {
-		return this.answerOptionsEncryption;
-	}
 
 	/**
 	 * Getter for time in sec
@@ -117,14 +129,6 @@ public class DecryptionTask implements Task {
 	 */
 	public int getTimeInSec() {
 		return this.timeInSec;
-	}
-
-	/**
-	 * Getter, if the given answer was correct
-	 * @return true if it was, else false
-	 */
-	public boolean getCorrectAnswer() {
-		return this.correctAnswer;
 	}
 
 	/**

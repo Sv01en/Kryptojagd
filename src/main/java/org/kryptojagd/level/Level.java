@@ -1,14 +1,13 @@
 package org.kryptojagd.level;
 
-import org.kryptojagd.encryptionmethods.Backwards;
-import org.kryptojagd.encryptionmethods.Caesar;
-import org.kryptojagd.encryptionmethods.Beaufort;
-import org.kryptojagd.encryptionmethods.Vigenere;
+import org.kryptojagd.encryptionmethods.*;
 import org.kryptojagd.level.countdown.CountdownTimer;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
+import org.kryptojagd.level.tasks.Task;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -40,6 +39,8 @@ public class Level {
 
 	private String encryptionInput;
 
+	private Encryption encryptionMethod;
+
 	/**
 	 * Creates a {@link Level}
 	 *
@@ -51,6 +52,7 @@ public class Level {
 	public Level(DecryptionTask decryptionTask, EncryptionTask encryptionTask,
 				 LinkedList<MultipleChoiceTask> multipleChoiceTasks, int timeInSec) {
 		this.decryptionTask = decryptionTask;
+		this.currentTask = decryptionTask;
 		this.encryptionTask = encryptionTask;
 		this.multipleChoiceTasks = multipleChoiceTasks;
 		this.timeInSec = timeInSec;
@@ -62,19 +64,23 @@ public class Level {
 	}
 
 	/**
-	 * Getter for the decryption task
-	 * @return decryption task of the level
+	 * Sets the nextTask
+	 *
+	 * @param currentTask the current Task
 	 */
-	public DecryptionTask getDecryptionTask() {
-		return this.decryptionTask;
+	public void setNextTask(Task currentTask){
+		switch (currentTask.toString()) {
+			case "EncryptionTask": this.currentTask = decryptionTask;
+			case "DecryptionTask": this.currentTask = multipleChoiceTasks.getFirst();
+		}
 	}
 
-	/**
-	 * Getter for encryption task
-	 * @return encryption task of the level
-	 */
-	public EncryptionTask getEncryptionTask() {
-		return encryptionTask;
+	public Task getCurrentTask() {
+		return currentTask;
+	}
+
+	public Encryption getEncryptionMethod() {
+		return encryptionMethod;
 	}
 
 	/**
@@ -83,26 +89,6 @@ public class Level {
 	 */
 	public MultipleChoiceTask getCurrentMultipleChoiceTask() {
 		return multipleChoiceTasks.get(this.currentMultipleChoiceTask);
-	}
-
-	/**
-	 * Proofs the answer of the current multiple choice task,
-	 * if the answer is true, it removes the right answered question
-	 *
-	 * @param answer answer of the player to the multipleChoiceTask
-	 * @return true, if the answer is false
-	 * 			false, if the answer is true
-	 */
-	public boolean proveMultipleChoice(String answer) {
-		if (!this.multipleChoiceTasks.get(this.currentMultipleChoiceTask).proveAnswer(answer)) {
-			this.countdownTimer.reduceTimer(this.timePenalty);
-			return false;
-		}
-		this.currentMultipleChoiceTask++;
-		if (this.currentMultipleChoiceTask == this.multipleChoiceTasks.size()) {
-			this.multipleChoiceFinished = true;
-		}
-		return true;
 	}
 
 	/**
@@ -130,36 +116,22 @@ public class Level {
 	}
 
 	/**
-	 * Proves the input of the encryption task.
-	 * @param answer given as a string from the gui
-	 * @return true or false
-	 */
-	public boolean proveEncryptionTask(String answer) {
-		this.encryptionInput = answer;
-		String checkAnswer = answer.toUpperCase();
-		if (this.encryptionTask.proveAnswer(checkAnswer)) {
-			this.countdownTimer.reduceTimer(this.timePenalty);
-		}
-		return this.encryptionTask.proveAnswer(checkAnswer);
-	}
-
-	/**
 	 * Set up the correct encryption method
 	 * @param encryptionMethod name given as a string
 	 */
 	private void proveEncryptionMethod(String encryptionMethod) {
 		switch (encryptionMethod) {
 			case "Backwards":
-				encryptionTask.setEncryptionMethod(new Backwards());
+				this.encryptionMethod = new Backwards();
 				break;
 			case ("Caesar"):
-				encryptionTask.setEncryptionMethod(new Caesar());
+				this.encryptionMethod = new Caesar();
 				break;
 			case("Vigenere"):
-				encryptionTask.setEncryptionMethod(new Vigenere());
+				this.encryptionMethod = new Vigenere();
 				break;
 			case("Beaufort"):
-				encryptionTask.setEncryptionMethod(new Beaufort());
+				this.encryptionMethod = new Beaufort();
 				break;
 			default:
 				System.out.println("Error while trying to get Encryption.");
@@ -167,23 +139,6 @@ public class Level {
 		}
 	}
 
-	/**
-	 * Proofs, if every multiple choice task is answered.
-	 * If true, the counter for the current multiple choice question is set to 0
-	 *
-	 * @return true, if there is no more multiple choice task
-	 */
-	public boolean multipleChoiceIsFinished() {
-		return this.multipleChoiceFinished;
-	}
-
-	/**
-	 * Returns if the decryption task is finished
-	 * @return true if the task is finished, otherwise false
-	 */
-	public boolean decryptionIsFinished() {
-		return this.decryptionTask.getCorrectAnswer();
-	}
 
 	/**
 	 * Getter to detect if the city task is finished
@@ -222,14 +177,6 @@ public class Level {
 	 */
 	public String getTextAfterStartDecryption() {
 		return decryptionTask.getTextAfterStart();
-	}
-
-	/**
-	 * Returns if the encryption task is finished
-	 * @return true if the task is finished, otherwise false
-	 */
-	public boolean encryptionTaskFinished() {
-		return this.encryptionTask.getTaskCompleted();
 	}
 
 	/**

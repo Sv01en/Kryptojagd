@@ -10,6 +10,8 @@ public class MultipleChoiceTask implements Task {
     private String question;
     private String correctAnswer;
     private String[] answerOptions;
+    private boolean taskCompleted = false;
+    private String taskName = "MultipleChoiceTask";
 
     /**
      * Creates a {@link MultipleChoiceTask}
@@ -50,7 +52,16 @@ public class MultipleChoiceTask implements Task {
      */
     @Override
     public boolean proveAnswer(String answer) {
-        return this.correctAnswer.equals(answer);
+        if(this.correctAnswer.equals(answer)) {
+            taskCompleted = true;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean getTaskCompleted() {
+        return taskCompleted;
     }
 
     /**
@@ -60,7 +71,7 @@ public class MultipleChoiceTask implements Task {
      */
     @Override
     public String toString() {
-        return "";
+        return taskName;
     }
 
 }

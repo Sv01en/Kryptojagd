@@ -7,6 +7,10 @@ package org.kryptojagd.encryptionmethods;
  */
 public class Caesar extends Encryption {
 
+    public Caesar() {
+        super.name = "Caesar";
+    }
+
     /**
      * Generates a random number between 1 and 25
      * @return Random int value

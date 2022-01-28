@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.level.tasks.DecryptionTask;
 
 /**
  * The class controls a window of a decryption task.
@@ -14,6 +15,8 @@ import javafx.util.Duration;
  * @author Michail Petermann, Sven Strasser, Leah Schlimm
  */
 public class DecryptionController extends AbstractController {
+
+    private DecryptionTask task = (DecryptionTask) mainController.getCurrentLevel().getCurrentTask();
 
     @FXML
     public Label question;
@@ -38,11 +41,11 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        if (!mainController.getCurrentLevel().decryptionIsFinished()) {
+        if (!mainController.getCurrentLevel().cityIsFinished()) {
             mainController.getCurrentLevel().startCountdown();
-            String[] possibleChoice = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsEncryption();
-            String plaintext = mainController.getCurrentLevel().getDecryptionTask().getPlainText();
-            encryptedPuzzleText.setText(mainController.getCurrentLevel().getEncryptionTask().getEncryptionMethod().
+            String[] possibleChoice = task.getPossibilities();
+            String plaintext = task.getPlainText();
+            encryptedPuzzleText.setText(task.getEncryptionMethod().
                     encode(plaintext, mainController.getCurrentLevel().getEncryptionTask().getKey()));
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
@@ -68,8 +71,8 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure1(ActionEvent event) {
-        if (!mainController.getCurrentLevel().decryptionIsFinished()) {
-            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+        if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
+            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
                     procedure1.getText());
         } else {
             mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(0);
@@ -85,8 +88,8 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure2(ActionEvent event) {
-        if (!mainController.getCurrentLevel().decryptionIsFinished()) {
-            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+        if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
+            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
                     procedure2.getText());
         } else {
             mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(1);
@@ -102,8 +105,8 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure3(ActionEvent event) {
-        if (!mainController.getCurrentLevel().decryptionIsFinished()) {
-            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveDecryptionTask(
+        if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
+            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
                     procedure3.getText());
         } else {
             mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(2);

@@ -9,6 +9,10 @@ import java.util.ArrayList;
  */
 public class Backwards extends Encryption {
 
+    public Backwards() {
+        super.name = "Backwards";
+    }
+
     /**
      * Encrypts a text using word wise reverse encryption
      * 
