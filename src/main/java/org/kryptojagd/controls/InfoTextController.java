@@ -3,6 +3,7 @@ package org.kryptojagd.controls;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.kryptojagd.controls.resources.Messages;
 
 /**
  * @author Leah Schlimm
@@ -14,7 +15,7 @@ public class InfoTextController extends AbstractController {
 
 	@FXML
 	public void initialize() {
-		String text = RESOURCE_BUNDLE.getString("start_text");
+		String text = Messages.START_TEXT;
 		label.setText(text);
 	}
 

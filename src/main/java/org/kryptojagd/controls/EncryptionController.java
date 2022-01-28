@@ -47,7 +47,7 @@ public class EncryptionController extends AbstractController {
     void checkEncryption(ActionEvent event) {
         mainController.encryptionTaskSucceeded = mainController.getCurrentLevel().proveEncryptionTask(
                 textField1.getText());
-        mainController.switchWindow("EncryptionTaskFinished.fxml");
+        mainController.switchWindow(MainController.TASK_FINISHED_FXML);
     }
 
     /**

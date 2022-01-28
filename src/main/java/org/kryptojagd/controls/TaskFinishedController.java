@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.controls.resources.Messages;
 
 /**
  * Gives the right feedback to a task and switches the window.
@@ -33,13 +34,13 @@ public class TaskFinishedController extends AbstractController {
 	public void initialize() {
 		updateTimer();
 		if (rightAnswered()) {
-			feedbackText.setText(RESOURCE_BUNDLE.getString("standard_feedback_good"));
+			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
 		} else if (mainController.cityTaskFinished) {
 			feedbackText.setText(mainController.getCurrentLevel().getTextAfterStartDecryption());
 		} else if (mainController.getCurrentLevel().multipleChoiceIsFinished()) {
-			feedbackText.setText(RESOURCE_BUNDLE.getString("finished_multiple_choice"));
+			feedbackText.setText(Messages.FINISHED_MULTIPLE_CHOICE);
 		} else {
-			feedbackText.setText(RESOURCE_BUNDLE.getString("standard_feedback_bad"));
+			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
 		}
 	}
 

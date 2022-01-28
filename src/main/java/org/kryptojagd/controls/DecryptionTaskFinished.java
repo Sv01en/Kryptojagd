@@ -14,6 +14,7 @@ import javafx.util.Duration;
  */
 public class DecryptionTaskFinished extends AbstractController {
 
+
     @FXML
     private Label timer = new Label();
 

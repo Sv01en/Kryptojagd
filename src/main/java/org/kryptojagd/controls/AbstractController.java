@@ -11,8 +11,6 @@ public abstract class AbstractController {
 	 */
 	static MainController mainController;
 
-	public static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle("resources.Kryptojagd");
-
 	/**
 	 * Sets main controller.
 	 *

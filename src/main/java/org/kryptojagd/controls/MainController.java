@@ -28,6 +28,9 @@ public class MainController {
 
 	protected boolean cityTaskFinished;
 
+	public static final String TASK_FINISHED_FXML = "TaskFinished.fxml";
+
+
 	/**
 	 * Constractor of a MainController
 	 *

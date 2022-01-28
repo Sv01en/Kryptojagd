@@ -15,8 +15,6 @@ import javafx.util.Duration;
  */
 public class DecryptionController extends AbstractController {
 
-    private static final String DECRYPTION_FINISHED_FXML = "DecryptionTaskFinished.fxml";
-
     @FXML
     public Label question;
 
@@ -77,7 +75,7 @@ public class DecryptionController extends AbstractController {
             mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(0);
         }
 
-        mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 
     /**
@@ -94,7 +92,7 @@ public class DecryptionController extends AbstractController {
             mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(1);
         }
 
-        mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 
     /**
@@ -111,7 +109,7 @@ public class DecryptionController extends AbstractController {
             mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(2);
         }
 
-        mainController.switchWindowWithCSS("DecryptionTaskFinished.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 
     /**

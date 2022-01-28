@@ -65,7 +65,7 @@ public class MultipleChoiceController extends AbstractController {
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";
 
-        mainController.switchWindowWithCSS("TaskFinished.fxml", css);
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
     }
 
     /**
@@ -82,7 +82,7 @@ public class MultipleChoiceController extends AbstractController {
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";
 
-        mainController.switchWindowWithCSS("TaskFinished.fxml", css);
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
     }
 
     /**
@@ -99,7 +99,7 @@ public class MultipleChoiceController extends AbstractController {
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";
 
-        mainController.switchWindowWithCSS("TaskFinished.fxml", css);
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
     }
 
     /**
