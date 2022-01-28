@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
 
 /**
@@ -16,7 +17,8 @@ import org.kryptojagd.level.tasks.DecryptionTask;
  */
 public class DecryptionController extends AbstractController {
 
-    private DecryptionTask task = (DecryptionTask) mainController.getCurrentLevel().getCurrentTask();
+    private Level level = mainController.getCurrentLevel();
+    private DecryptionTask task = (DecryptionTask) level.getCurrentTask();
 
     @FXML
     public Label question;
@@ -42,20 +44,20 @@ public class DecryptionController extends AbstractController {
     @FXML
     public void initialize() {
         if (!mainController.getCurrentLevel().cityIsFinished()) {
-            mainController.getCurrentLevel().startCountdown();
+            level.startCountdown();
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
-            encryptedPuzzleText.setText(task.getEncryptionMethod().
-                    encode(plaintext, mainController.getCurrentLevel().getEncryptionTask().getKey()));
+            encryptedPuzzleText.setText(level.getEncryptionMethod().
+                    encode(plaintext, task.getEncryptionTask().getKey()));
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
         } else {
             mainController.getCurrentLevel().setCityShowing();
-            String[] cities = mainController.getCurrentLevel().getDecryptionTask().getAnswerOptionsCity();
-            String questionStr = mainController.getCurrentLevel().getDecryptionTask().getCityQuestion();
+            String[] cities = task.getAnswerOptionsCity();
+            String questionStr = task.getCityQuestion();
             question.setText(questionStr);
-            encryptedPuzzleText.setText(mainController.getCurrentLevel().getDecryptionTask().getPlainText());
+            encryptedPuzzleText.setText(task.getPlainText());
             procedure1.setText(cities[0]);
             procedure2.setText(cities[1]);
             procedure3.setText(cities[2]);

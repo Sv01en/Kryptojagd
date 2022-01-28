@@ -71,7 +71,10 @@ public class Level {
 	public void setNextTask(Task currentTask){
 		switch (currentTask.toString()) {
 			case "EncryptionTask": this.currentTask = decryptionTask;
+			break;
 			case "DecryptionTask": this.currentTask = multipleChoiceTasks.getFirst();
+			break;
+			default:
 		}
 	}
 

@@ -57,7 +57,7 @@ public class DecryptionTaskFinished extends AbstractController {
             && mainController.getCurrentLevel().cityIsFinished()) {
             mainController.runLevel();
         } else {
-            //mainController.switchWindow("Decryption.fxml");
+            //mainController.switchWindow("DecryptionTask.fxml");
             mainController.runLevel();
         }
     }

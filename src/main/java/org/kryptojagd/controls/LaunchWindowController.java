@@ -18,7 +18,7 @@ public class LaunchWindowController extends AbstractController {
     @FXML
     void clickSettings(ActionEvent event) {
         System.out.println("Das ist ein Test");
-        //mainController.switchWindowWithCSS("Encryption.fxml", "../css/startwindow.css");
+        //mainController.switchWindowWithCSS("EncryptionTask.fxml", "../css/startwindow.css");
     }
 
     /**

@@ -48,13 +48,6 @@ public class MainController {
 	}
 
 	/**
-	 * Runs a whole level which each task
-	 */
-	public void runLevel() {
-		runDecryptionTask();
-	}
-
-	/**
 	 * Getter for current level
 	 * @return the current level
 	 */
@@ -118,51 +111,4 @@ public class MainController {
 		this.clearedLevels++;
 	}
 
-	/**
-	 * Runs the encryption tasks
-	 *
-	 *
-	 */
-	private void runEncryptionTask() {
-
-	}
-
-	/**
-	 * Runs the decryption tasks
-	 *
-	 *
-	 */
-	private void runDecryptionTask() {
-		if (!currentLevel.decryptionIsFinished() && !currentLevel.cityIsFinished()) {
-			System.out.println("Run decryption task");
-			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
-		} else if (!currentLevel.cityIsFinished() && currentLevel.decryptionIsFinished()) {
-			System.out.println("Run city task");
-			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
-		} else if (currentLevel.decryptionIsFinished() && currentLevel.cityIsFinished()
-			&& !currentLevel.multipleChoiceIsFinished()) {
-			String city = currentLevel.getCity();
-			String css = "../css/" + city + ".css";
-			switchWindowWithCSS("MultipleChoice.fxml", css);
-		} else {
-			String city = currentLevel.getCity();
-			String css = "../css/" + city + ".css";
-			switchWindowWithCSS("Encryption.fxml", css);
-		}
-	}
-
-	/**
-	 * Runs the multiple choice tasks
-	 *
-	 * If every multiple choice task is answered, it switches the window to the levelEnd
-	 * if not, it switches the window to a new multiple choice task
-	 *
-	 */
-	private void runMultipleChoice() {
-		if (!currentLevel.multipleChoiceIsFinished()) {
-			switchWindow("MultipleChoice.fxml");
-		} else {
-			switchWindow("Levelabschluss.fxml");
-		}
-	}
 }

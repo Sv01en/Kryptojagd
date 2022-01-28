@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.tasks.EncryptionTask;
 
 /**
  * Encryption Controller for the corresponding fxml-file
@@ -17,6 +18,9 @@ import org.kryptojagd.level.Level;
  * @version 1.0
  */
 public class EncryptionController extends AbstractController {
+
+    private Level level = mainController.getCurrentLevel();
+    private EncryptionTask task = (EncryptionTask) level.getCurrentTask();
 
     @FXML
     private Label timer = new Label();
@@ -38,14 +42,14 @@ public class EncryptionController extends AbstractController {
         if (mainController.getCurrentLevel().getEncryptionInput() != null) {
             textField1.setText(mainController.getCurrentLevel().getEncryptionInput());
         }
-        label1.setText(mainController.getCurrentLevel().getEncryptionTask().getTask());
-        label2.setText(mainController.getCurrentLevel().getEncryptionTask().getText());
+        label1.setText(task.getTaskText());
+        label2.setText(task.getText());
         updateTimer();
     }
 
     @FXML
     void checkEncryption(ActionEvent event) {
-        mainController.encryptionTaskSucceeded = mainController.getCurrentLevel().proveEncryptionTask(
+        mainController.encryptionTaskSucceeded = task.proveAnswer(
                 textField1.getText());
         mainController.switchWindow(MainController.TASK_FINISHED_FXML);
     }

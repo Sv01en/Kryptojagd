@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.kryptojagd.controls.resources.Messages;
+import org.kryptojagd.level.Level;
+import org.kryptojagd.level.tasks.EncryptionTask;
 
 /**
  * Gives the right feedback to a task and switches the window.
@@ -14,6 +16,10 @@ import org.kryptojagd.controls.resources.Messages;
  * @author Sonja Kuklok, Leah Schlimm
  */
 public class TaskFinishedController extends AbstractController {
+
+	private Level level = mainController.getCurrentLevel();
+	private EncryptionTask task = (EncryptionTask) level.getCurrentTask();
+	private static final String BACK_TO_MENU = "LevelFinishedSelector.fxml";
 
 	@FXML
 	private Label timer = new Label();
@@ -37,7 +43,7 @@ public class TaskFinishedController extends AbstractController {
 			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
 		} else if (mainController.cityTaskFinished) {
 			feedbackText.setText(mainController.getCurrentLevel().getTextAfterStartDecryption());
-		} else if (mainController.getCurrentLevel().multipleChoiceIsFinished()) {
+		} else if (mainController.getCurrentLevel().isMultipleChoiceFinished()) {
 			feedbackText.setText(Messages.FINISHED_MULTIPLE_CHOICE);
 		} else {
 			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
@@ -47,14 +53,17 @@ public class TaskFinishedController extends AbstractController {
 	private boolean rightAnswered() {
 		if (!mainController.getCurrentLevel().isCityTaskShowing() && mainController.decryptionTaskSucceeded) {
 			return true;
-		} else if (!mainController.getCurrentLevel().multipleChoiceIsFinished() && mainController.multipleChoiceTaskSucceeded) {
+		} else if (!level.isMultipleChoiceFinished() && mainController.multipleChoiceTaskSucceeded) {
 			return true;
 		} else return mainController.getCurrentLevel().decryptionIsFinished() && mainController.decryptionTaskSucceeded;
 	}
 
 
 	/**
-	 * Handles the switch to eather the next multiple choice question or the next task
+	 * Handles the switch to eather the next task
+	 * If the the multiple choice as last task is answerd,
+	 * it switches the window to the menu
+	 *
 	 * @param event that is received
 	 */
 	 @FXML

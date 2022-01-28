@@ -41,6 +41,6 @@ public class LevelFinishedSelector extends AbstractController {
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.cityTaskFinished = false;
-        mainController.switchWindowWithCSS("Decryption.fxml", css);
+        mainController.switchWindowWithCSS("DecryptionTask.fxml", css);
     }
 }

@@ -50,7 +50,7 @@ public class EncryptionTask implements Task {
      *
      * @return the task
      */
-    public String getTask() {
+    public String getTaskText() {
         return task;
     }
 
