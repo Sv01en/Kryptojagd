@@ -1,6 +1,7 @@
 package org.kryptojagd.fileprocessing;
 
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -27,11 +28,11 @@ class ReadJsonTest {
     MultipleChoiceTask q = ReadJson.createMultipleChoiceTask(pathToQuestion);
     // assert(q.proveAnswer(correctAnswer));
     assert q != null;
-    assertTrue(q.proveAnswer(correctAnswer));
-    assertEquals(q.getQuestion(), question);
-    assertEquals(q.getPossibilities()[0], possibilities[0]);
-    assertEquals(q.getPossibilities()[1], possibilities[1]);
-    assertEquals(q.getPossibilities()[2], possibilities[2]);
+    Assertions.assertTrue(q.proveAnswer(correctAnswer));
+    Assertions.assertEquals(q.getQuestion(), question);
+    Assertions.assertEquals(q.getPossibilities()[0], possibilities[0]);
+    Assertions.assertEquals(q.getPossibilities()[1], possibilities[1]);
+    Assertions.assertEquals(q.getPossibilities()[2], possibilities[2]);
   }
 
   @Test
@@ -46,9 +47,9 @@ class ReadJsonTest {
 
 
     assert enc != null;
-    assertEquals(enc.getEncryption(), encType);
-    assertEquals(enc.getTask(), task);
-    assertEquals(enc.getText(), text);
+    Assertions.assertEquals(enc.getEncryption(), encType);
+    Assertions.assertEquals(enc.getTask(), task);
+    Assertions.assertEquals(enc.getText(), text);
   }
 
   @Test
@@ -76,20 +77,19 @@ class ReadJsonTest {
     //TODO
 
     assert dec!= null;
-    assertEquals(dec.getPlainText(), plainText);
-    assertEquals(dec.getEncryptionMethod(), encryptionMethod);
-    assertEquals(dec.getAnswerOptionsEncryption(), answerOptionsEncryption);
-    assertEquals(dec.getCorrectAnswerEncryption(), correctAnswerEncryption);
-    assertEquals(dec.getAnswerOptionsCity(), answerOptionsCity);
-    assertEquals(dec.getCorrectAnswerCityInt(), correctAnswerCity);
+    Assertions.assertEquals(dec.getPlainText(), plainText);
+    Assertions.assertEquals(dec.getEncryptionMethod(), encryptionMethod);
+    Assertions.assertArrayEquals(dec.getAnswerOptionsEncryption(), answerOptionsEncryption);
+    Assertions.assertEquals(dec.getCorrectAnswerEncryption(), correctAnswerEncryption);
+    Assertions.assertArrayEquals(dec.getAnswerOptionsCity(), answerOptionsCity);
+    Assertions.assertEquals(dec.getCorrectAnswerCityInt(), correctAnswerCity);
 
   }
 
   @Test
   void testReadTime() {
 
-    assertNotNull(ReadJson.getTime());
-    assertTrue(ReadJson.readTime(path + "time.json") <= 500 && ReadJson.readTime(path + "time.json") >= 0);
+    Assertions.assertTrue(ReadJson.readTime(path + "time.json") <= 500 && ReadJson.readTime(path + "time.json") >= 0);
   }
 
 

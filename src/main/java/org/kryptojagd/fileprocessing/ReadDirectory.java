@@ -13,10 +13,11 @@ import org.kryptojagd.level.tasks.MultipleChoiceTask;
 /**
  * This class is used to read directories.
  *
- * @author Michail Petermann
+ * @author Michail Petermann, Bartosz Treyde
  */
 public class ReadDirectory {
 
+  private static Level level;
   private static final String PATH = "src/main/resources/org/kryptojagd/levels";
 
   /**
@@ -87,7 +88,11 @@ public class ReadDirectory {
     }
     DecryptionTask decryptionTask = ReadJson.createDecryptionTask(pathToDecryptionTask);
     EncryptionTask encryptionTask = ReadJson.createEncryptionTask(pathToEncryptionTask);
+    level = new Level(decryptionTask, encryptionTask, multipleChoiceTasks, timeInSec);
 
-    return new Level(decryptionTask, encryptionTask, multipleChoiceTasks, timeInSec);
+    return level;
+  }
+  public static Level getLevel() {
+    return level;
   }
 }

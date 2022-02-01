@@ -125,7 +125,4 @@ public class ReadJson {
     }
     return time;
   }
-  public static int getTime() {
-    return time;
-  }
 }

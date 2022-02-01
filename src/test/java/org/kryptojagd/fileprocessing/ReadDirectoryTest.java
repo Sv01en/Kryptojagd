@@ -5,11 +5,25 @@ import org.junit.jupiter.api.Test;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class ReadDirectoryTest {
 
   @Test
   void testInitialize() throws Exception {
     ArrayList<Level> levels = ReadDirectory.initialize();
+    for( Level level : levels){
+      assertNotNull(level);
+    }
+    assertEquals(5, levels.size());
+  }
+  @Test
+  void testReadLevelDirectory(){
+    Level level = ReadDirectory.getLevel();
+    assertNotNull(level);
+    assertNotNull(level.getDecryptionTask());
+    assertNotNull(level.getEncryptionTask());
+    assertTrue(level.getTimeInSec() != 0);
   }
 
 
