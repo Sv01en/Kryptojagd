@@ -62,7 +62,7 @@ public class TaskFinishedController extends AbstractController {
 	 	if (!level.isLevelCompleted()) {
 			String city = level.getCity();
 			String css = "../css/" + city + ".css";
-
+			level.setNextTask(level.getCurrentTask());
 			mainController.switchWindowWithCSS(level.getCurrentTask() + ".fxml", css);
 		} else {
 			mainController.switchWindow(BACK_TO_MENU);

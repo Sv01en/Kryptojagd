@@ -72,19 +72,25 @@ public class Level {
 	}
 
 	/**
-	 * Sets the nextTask
+	 * Sets the nextTask, if the current task is completed
+	 * otherwise nothing is changing
 	 *
 	 * @param currentTask the current Task
 	 */
 	public void setNextTask(Task currentTask){
-		switch (currentTask.toString()) {
-			case "EncryptionTask": this.currentTask = decryptionTask;
-			break;
-			case "DecryptionTask": this.currentTask = multipleChoiceTasks.getFirst();
-			break;
-			case "MultipleChoiceTask": levelCompleted = true;
-			default:
+		if (currentTask.getTaskCompleted()) {
+			switch (currentTask.toString()) {
+				case "EncryptionTask":
+					this.currentTask = decryptionTask;
+					break;
+				case "DecryptionTask":
+					this.currentTask = multipleChoiceTasks.getFirst();
+					break;
+				case "MultipleChoiceTask":
+					levelCompleted = true;
+				default:
 
+			}
 		}
 	}
 
