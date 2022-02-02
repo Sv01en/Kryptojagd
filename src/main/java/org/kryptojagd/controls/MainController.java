@@ -48,7 +48,7 @@ public class MainController {
 	}
 
 	public void runLevel() {
-		switchWindow(currentLevel.getCurrentTask().toString());
+		switchWindow(currentLevel.getCurrentTask().toString() + ".fxml");
 	}
 
 	/**
