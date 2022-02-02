@@ -43,6 +43,8 @@ public class Level {
 
 	private Task currentTask;
 
+	private boolean levelCompleted = false;
+
 	/**
 	 * Creates a {@link Level}
 	 *
@@ -65,6 +67,8 @@ public class Level {
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
 
+
+
 	/**
 	 * Sets the nextTask
 	 *
@@ -76,7 +80,9 @@ public class Level {
 			break;
 			case "DecryptionTask": this.currentTask = multipleChoiceTasks.getFirst();
 			break;
+			case "MultipleChoiceTask": levelCompleted = true;
 			default:
+
 		}
 	}
 
@@ -95,6 +101,22 @@ public class Level {
 	public MultipleChoiceTask getCurrentMultipleChoiceTask() {
 		return multipleChoiceTasks.get(this.currentMultipleChoiceTask);
 	}
+
+	/**
+	 * Proves if every multipleChoiceTask is completed
+	 *
+	 * @return true, if every task is finished
+	 */
+	public boolean isMultipleChoiceFinished() {
+		boolean finished = true;
+		for (Task multipleChoice: multipleChoiceTasks) {
+			if (!multipleChoice.getTaskCompleted()) {
+				finished = false;
+			}
+		}
+		return finished;
+	}
+
 
 	/**
 	 * proves the current task
