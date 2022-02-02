@@ -67,7 +67,9 @@ public class Level {
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
 
-
+	public boolean isLevelCompleted() {
+		return levelCompleted;
+	}
 
 	/**
 	 * Sets the nextTask

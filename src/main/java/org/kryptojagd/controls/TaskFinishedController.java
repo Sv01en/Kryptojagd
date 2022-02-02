@@ -42,7 +42,7 @@ public class TaskFinishedController extends AbstractController {
 		if (level.isMultipleChoiceFinished()) {
 			feedbackText.setText(Messages.FINISHED_MULTIPLE_CHOICE);
 		} else if (mainController.cityTaskFinished && !task.getTaskCompleted()) {
-			feedbackText.setText(mainController.getCurrentLevel().getTextAfterStartDecryption());
+			feedbackText.setText(level.getTextAfterStartDecryption());
 		} else if (task.getTaskCompleted() | level.getCurrentMultipleChoiceTask().getTaskCompleted()) {
 			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
 		} else {
@@ -51,22 +51,21 @@ public class TaskFinishedController extends AbstractController {
 	}
 
 	/**
-	 * Handles the switch to eather the next task
-	 * If the the multiple choice as last task is answerd,
+	 * Handles the switch to the next task
+	 * If the the decryption task as last task is answered,
 	 * it switches the window to the menu
 	 *
 	 * @param event that is received
 	 */
 	 @FXML
-	 void switchMultipleChoice(ActionEvent event) {
-	 	if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
-			String city = mainController.getCurrentLevel().getCity();
+	 void nextWindow(ActionEvent event) {
+	 	if (!level.isLevelCompleted()) {
+			String city = level.getCity();
 			String css = "../css/" + city + ".css";
 
-			mainController.switchWindowWithCSS("MultipleChoice.fxml", css);
+			mainController.switchWindowWithCSS(level.getCurrentTask() + ".fxml", css);
 		} else {
-			//mainController.switchWindow("Startfenster.fxml");
-			mainController.runLevel();
+			mainController.switchWindow(BACK_TO_MENU);
 		}
 	 }
 
@@ -79,8 +78,8 @@ public class TaskFinishedController extends AbstractController {
 		time.setCycleCount(Timeline.INDEFINITE);
 		time.stop();
 		KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-			timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-			if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+			timer.setText(Integer.toString(level.getTimeInSec()));
+			if (level.getTimeInSec() <= 0) {
 				mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
 				time.stop();
 			}
