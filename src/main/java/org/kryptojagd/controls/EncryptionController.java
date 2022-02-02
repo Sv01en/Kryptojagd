@@ -39,8 +39,8 @@ public class EncryptionController extends AbstractController {
 
     @FXML
     public void initialize() {
-        if (mainController.getCurrentLevel().getEncryptionInput() != null) {
-            textField1.setText(mainController.getCurrentLevel().getEncryptionInput());
+        if (level.getEncryptionInput() != null) {
+            textField1.setText(level.getEncryptionInput());
         }
         label1.setText(task.getTaskText());
         label2.setText(task.getText());
@@ -49,8 +49,7 @@ public class EncryptionController extends AbstractController {
 
     @FXML
     void checkEncryption(ActionEvent event) {
-        mainController.encryptionTaskSucceeded = task.proveAnswer(
-                textField1.getText());
+        level.proveTask(textField1.getText());
         mainController.switchWindow(MainController.TASK_FINISHED_FXML);
     }
 
@@ -63,8 +62,8 @@ public class EncryptionController extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-            if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+            timer.setText(Integer.toString(level.getTimeInSec()));
+            if (level.getTimeInSec() <= 0) {
                 mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
                 time.stop();
             }

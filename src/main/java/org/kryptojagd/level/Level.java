@@ -41,6 +41,8 @@ public class Level {
 
 	private Encryption encryptionMethod;
 
+	private Task currentTask;
+
 	/**
 	 * Creates a {@link Level}
 	 *
@@ -95,15 +97,17 @@ public class Level {
 	}
 
 	/**
-	 * proves the decryption task.
+	 * proves the current task
+	 * reduces the time, if the answer was wrong
+	 *
 	 * @param answer string given by the GUI
 	 * @return true or false
 	 */
-	public boolean proveDecryptionTask(String answer) {
-		if (!this.decryptionTask.proveAnswer(answer)) {
+	public boolean proveTask(String answer) {
+		if (!this.currentTask.proveAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 		}
-		return this.decryptionTask.proveAnswer(answer);
+		return this.currentTask.proveAnswer(answer);
 	}
 
 	/**

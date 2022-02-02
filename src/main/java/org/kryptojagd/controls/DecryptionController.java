@@ -43,7 +43,7 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        if (!mainController.getCurrentLevel().cityIsFinished()) {
+        if (!level.cityIsFinished()) {
             level.startCountdown();
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
@@ -53,7 +53,7 @@ public class DecryptionController extends AbstractController {
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
         } else {
-            mainController.getCurrentLevel().setCityShowing();
+            level.setCityShowing();
             String[] cities = task.getAnswerOptionsCity();
             String questionStr = task.getCityQuestion();
             question.setText(questionStr);
@@ -73,11 +73,11 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure1(ActionEvent event) {
-        if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
-            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
+        if (!level.getCurrentTask().getTaskCompleted()) {
+            mainController.decryptionTaskSucceeded = level.proveTask(
                     procedure1.getText());
         } else {
-            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(0);
+            mainController.cityTaskFinished = level.proveCityTask(0);
         }
 
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
@@ -90,11 +90,11 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure2(ActionEvent event) {
-        if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
-            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
+        if (!level.getCurrentTask().getTaskCompleted()) {
+            mainController.decryptionTaskSucceeded = level.proveTask(
                     procedure2.getText());
         } else {
-            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(1);
+            mainController.cityTaskFinished = level.proveCityTask(1);
         }
 
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
@@ -107,11 +107,11 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure3(ActionEvent event) {
-        if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
-            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
+        if (!level.getCurrentTask().getTaskCompleted()) {
+            mainController.decryptionTaskSucceeded = level.proveTask(
                     procedure3.getText());
         } else {
-            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(2);
+            mainController.cityTaskFinished = level.proveCityTask(2);
         }
 
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
@@ -126,8 +126,8 @@ public class DecryptionController extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-            if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+            timer.setText(Integer.toString(level.getTimeInSec()));
+            if (level.getTimeInSec() <= 0) {
                 mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
                 time.stop();
             }
