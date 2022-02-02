@@ -42,7 +42,8 @@ public class TaskFinishedController extends AbstractController {
 						+ "Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
 			}
 		} else {
-			feedbackText.setText("Glückwunsch, du hast alle Fragen richtig beantwortet und die Floppy-Disk erhalten!\nSchicke dem NIV eine verschlüsselte Bestätigung, dass ihr die Floppy-Disk erhalten habt.");
+			feedbackText.setText("Glückwunsch, du hast alle Fragen richtig beantwortet und die Floppy-Disk erhalten!"
+					+ "\nSchicke dem NIV eine verschlüsselte Bestätigung, dass ihr die Floppy-Disk erhalten habt.");
 		}
 	}
 

@@ -22,7 +22,7 @@ public class HammingDistance {
         int longWord = Math.max(s1.length, s2.length);
 
         int counter = 0;
-        for (int i = 0; i< shortWord; i++) {
+        for (int i = 0; i < shortWord; i++) {
             if (s1[i] != s2[i]) {
                 counter++;
             }
