@@ -17,10 +17,9 @@ public class Backwards extends Encryption {
      * Encrypts a text using word wise reverse encryption
      * 
      * @param text Text to be encrypted
-     * @param key Key field needed because of the interface, will not be used here
      * @return Encrypted text
      */
-    public String encode(String text, String key) {
+    public String encode(String text) {
         String inputText = text.toUpperCase();
 
         String encryptedText = "";
@@ -69,10 +68,9 @@ public class Backwards extends Encryption {
      * Decrypt a text that has been encrypted with reverse encryption
      * 
      * @param text Text to be decrypted
-     * @param key Key field needed because of the interface, will not be used here
      * @return Decrypted text
      */
     public String decode(String text, String key) {
-        return encode(text, key);
+        return encode(text);
     }
 }
