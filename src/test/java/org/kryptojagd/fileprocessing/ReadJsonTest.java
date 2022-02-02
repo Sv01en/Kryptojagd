@@ -9,10 +9,17 @@ import org.kryptojagd.level.tasks.MultipleChoiceTask;
 
 import static org.junit.Assert.*;
 
+/**
+ * The type Read json test.
+ */
 class ReadJsonTest {
 
   private final String path = "src/main/resources/org/kryptojagd/levels/level1/";
 
+  /**
+   * Test create multiple choice question.
+   * Tests if the JSon files contain the right content.
+   */
   @Test
   void testCreateMultipleChoiceQuestion() {
     String pathToQuestion = path + "question1.json";
@@ -35,6 +42,10 @@ class ReadJsonTest {
     Assertions.assertEquals(q.getPossibilities()[2], possibilities[2]);
   }
 
+  /**
+   * Test create encryption task.
+   * Tests if the JSon files contain the right content.
+   */
   @Test
   void testCreateEncryptionTask() {
     String pathToEncryption = path + "encryption.json";
@@ -52,6 +63,10 @@ class ReadJsonTest {
     Assertions.assertEquals(enc.getText(), text);
   }
 
+  /**
+   * Test create decryption task.
+   * Tests if the JSon files contain the right content.
+   */
   @Test
   void testCreateDecryptionTask() {
 
@@ -86,6 +101,10 @@ class ReadJsonTest {
 
   }
 
+  /**
+   * Test read time.
+   * Tests if the JSon files contain the right content.
+   */
   @Test
   void testReadTime() {
 

@@ -92,6 +92,12 @@ public class ReadDirectory {
 
     return level;
   }
+
+  /**
+   * Gets level.
+   *
+   * @return the level
+   */
   public static Level getLevel() {
     return level;
   }
