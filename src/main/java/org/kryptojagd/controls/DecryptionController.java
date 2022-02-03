@@ -73,14 +73,7 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure1(ActionEvent event) {
-        if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
-            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
-                    procedure1.getText());
-        } else {
-            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(0);
-        }
-
-        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
+        clickAnswer(0);
     }
 
     /**
@@ -90,14 +83,7 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure2(ActionEvent event) {
-        if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
-            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
-                    procedure2.getText());
-        } else {
-            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(1);
-        }
-
-        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
+        clickAnswer(1);
     }
 
     /**
@@ -107,14 +93,20 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure3(ActionEvent event) {
+
+        clickAnswer(2);
+    }
+
+    private void clickAnswer(int answerNumber){
         if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
             mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
                     procedure3.getText());
         } else {
-            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(2);
+            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(answerNumber);
         }
 
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
+    }
     }
 
     /**
