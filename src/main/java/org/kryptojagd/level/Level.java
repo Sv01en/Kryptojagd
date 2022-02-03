@@ -41,6 +41,10 @@ public class Level {
 
 	private Encryption encryptionMethod;
 
+	private Task currentTask;
+
+	private boolean levelCompleted = false;
+
 	/**
 	 * Creates a {@link Level}
 	 *
@@ -63,18 +67,30 @@ public class Level {
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
 
+	public boolean isLevelCompleted() {
+		return levelCompleted;
+	}
+
 	/**
-	 * Sets the nextTask
+	 * Sets the nextTask, if the current task is completed
+	 * otherwise nothing is changing
 	 *
 	 * @param currentTask the current Task
 	 */
 	public void setNextTask(Task currentTask){
-		switch (currentTask.toString()) {
-			case "EncryptionTask": this.currentTask = decryptionTask;
-			break;
-			case "DecryptionTask": this.currentTask = multipleChoiceTasks.getFirst();
-			break;
-			default:
+		if (currentTask.getTaskCompleted()) {
+			switch (currentTask.toString()) {
+				case "EncryptionTask":
+					this.currentTask = decryptionTask;
+					break;
+				case "DecryptionTask":
+					this.currentTask = multipleChoiceTasks.getFirst();
+					break;
+				case "MultipleChoiceTask":
+					levelCompleted = true;
+				default:
+
+			}
 		}
 	}
 
@@ -95,15 +111,33 @@ public class Level {
 	}
 
 	/**
-	 * proves the decryption task.
+	 * Proves if every multipleChoiceTask is completed
+	 *
+	 * @return true, if every task is finished
+	 */
+	public boolean isMultipleChoiceFinished() {
+		boolean finished = true;
+		for (Task multipleChoice: multipleChoiceTasks) {
+			if (!multipleChoice.getTaskCompleted()) {
+				finished = false;
+			}
+		}
+		return finished;
+	}
+
+
+	/**
+	 * proves the current task
+	 * reduces the time, if the answer was wrong
+	 *
 	 * @param answer string given by the GUI
 	 * @return true or false
 	 */
-	public boolean proveDecryptionTask(String answer) {
-		if (!this.decryptionTask.proveAnswer(answer)) {
+	public boolean proveTask(String answer) {
+		if (!this.currentTask.proveAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 		}
-		return this.decryptionTask.proveAnswer(answer);
+		return this.currentTask.proveAnswer(answer);
 	}
 
 	/**

@@ -43,17 +43,17 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        if (!mainController.getCurrentLevel().cityIsFinished()) {
+        if (!level.cityIsFinished()) {
             level.startCountdown();
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
             encryptedPuzzleText.setText(level.getEncryptionMethod().
-                    encode(plaintext, level.getEncryptionMethod().getKey()));
+                    encode(plaintext));
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
         } else {
-            mainController.getCurrentLevel().setCityShowing();
+            level.setCityShowing();
             String[] cities = task.getAnswerOptionsCity();
             String questionStr = task.getCityQuestion();
             question.setText(questionStr);
@@ -102,15 +102,14 @@ public class DecryptionController extends AbstractController {
      * @param answerNumber
      */
     private void clickAnswer(int answerNumber){
-        if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
-            mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
+        if (!level.getCurrentTask().getTaskCompleted()) {
+            mainController.decryptionTaskSucceeded = level.proveTask(
                     procedure3.getText());
         } else {
-            mainController.cityTaskFinished = mainController.getCurrentLevel().proveCityTask(answerNumber);
+            mainController.cityTaskFinished = level.proveCityTask(answerNumber);
         }
 
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
-    }
     }
 
     /**
@@ -122,8 +121,8 @@ public class DecryptionController extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-            if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+            timer.setText(Integer.toString(level.getTimeInSec()));
+            if (level.getTimeInSec() <= 0) {
                 mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
                 time.stop();
             }

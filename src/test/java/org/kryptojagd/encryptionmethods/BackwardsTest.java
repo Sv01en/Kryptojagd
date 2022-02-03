@@ -26,7 +26,7 @@ public class BackwardsTest {
      */
     @Test
     void testEmptyTextEncode() {
-        assertEquals("", b.encode("", ""));
+        assertEquals("", b.encode(""));
     }
 
     /**
@@ -34,7 +34,7 @@ public class BackwardsTest {
      */
     @Test
     void testNotEmptyTextNoWhitespaceEncode() {
-        assertEquals("OLLEH", b.encode("Hello", ""));
+        assertEquals("OLLEH", b.encode("Hello"));
     }
 
     /**
@@ -42,7 +42,7 @@ public class BackwardsTest {
      */
     @Test
     void testNotEmptyTextWhiteSpaceEncode() {
-        assertEquals("OLLEH,   DLROW!", b.encode("Hello,   World!", ""));
+        assertEquals("OLLEH,   DLROW!", b.encode("Hello,   World!"));
     }
 
     /**

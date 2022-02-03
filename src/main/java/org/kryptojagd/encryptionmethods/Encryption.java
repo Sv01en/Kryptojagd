@@ -30,8 +30,4 @@ public abstract class Encryption {
     public String toString() {
         return name;
     }
-
-    public String getKey() {
-        return key;
-    }
 }
