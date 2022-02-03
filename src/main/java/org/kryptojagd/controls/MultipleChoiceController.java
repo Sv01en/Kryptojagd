@@ -33,6 +33,10 @@ public class MultipleChoiceController extends AbstractController {
     @FXML
     private Button answer3;
 
+    private String a1;
+    private String a2;
+    private String a3;
+
     /**
      * Initializes a MultipleChoiceController
      *
@@ -42,11 +46,15 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        questionField.setText(mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getQuestion());
         String[] possibilities = mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getPossibilities();
-        answer1.setText(possibilities[0]);
-        answer2.setText(possibilities[1]);
-        answer3.setText(possibilities[2]);
+        a1 = possibilities[0];
+        a2 = possibilities[1];
+        a3 = possibilities[2];
+        String question = mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getQuestion() + "\n\n" + "A: " + a1 + "\n" + "B: " + a2 + "\n" + "C: " + a3;
+        questionField.setText(question);
+        answer1.setText("A");
+        answer2.setText("B");
+        answer3.setText("C");
         this.countdownTimer = new CountdownTimer(mainController.getCurrentLevel().getTimeInSec());
         updateTimer();
     }
@@ -60,7 +68,7 @@ public class MultipleChoiceController extends AbstractController {
     @FXML
     void clickAnswer1(ActionEvent event) {
         mainController.multipleChoiceTaskSucceeded = mainController.getCurrentLevel()
-                .proveMultipleChoice(answer1.getText());
+                .proveMultipleChoice(a1);
 
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";
@@ -77,7 +85,7 @@ public class MultipleChoiceController extends AbstractController {
     @FXML
     void clickAnswer2(ActionEvent event) {
         mainController.multipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
-                .proveMultipleChoice(answer2.getText());
+                .proveMultipleChoice(a2);
 
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";
@@ -94,7 +102,7 @@ public class MultipleChoiceController extends AbstractController {
     @FXML
     void clickAnswer3(ActionEvent event) {
         mainController.multipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
-                .proveMultipleChoice(answer3.getText());
+                .proveMultipleChoice(a3);
 
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";
