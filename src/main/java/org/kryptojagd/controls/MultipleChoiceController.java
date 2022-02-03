@@ -9,11 +9,6 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.kryptojagd.level.countdown.CountdownTimer;
 
-/**
- * The class controls a window of a multiple choice task.
- *
- * @author Sonja Kuklok, Michail Petermann, Sven Strasser, Leah Schlimm
- */
 public class MultipleChoiceController extends AbstractController {
 
     private CountdownTimer countdownTimer;
@@ -33,13 +28,6 @@ public class MultipleChoiceController extends AbstractController {
     @FXML
     private Button answer3;
 
-    /**
-     * Initializes a MultipleChoiceController
-     *
-     * Sets the Question of the MultipleChoiceTask
-     * and sets their answers
-     *
-     */
     @FXML
     public void initialize() {
         questionField.setText(mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getQuestion());
@@ -51,50 +39,36 @@ public class MultipleChoiceController extends AbstractController {
         updateTimer();
     }
 
-    /**
-     * when you click on the button answer1,
-     * it proves the answer and switches the window
-     *
-     * @param event
-     */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        mainController.multipleChoiceTaskSucceeded = mainController.getCurrentLevel()
-                .proveMultipleChoice(answer1.getText());
-
-        String city = mainController.getCurrentLevel().getCity();
-        String css = "../css/" + city + ".css";
-
-        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
+        clickAnswer(1);
     }
 
-    /**
-     * when you click on the button answer2,
-     * it proves the answer and switches the window
-     *
-     * @param event
-     */
     @FXML
     void clickAnswer2(ActionEvent event) {
-        mainController.multipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
-                .proveMultipleChoice(answer2.getText());
+        clickAnswer(2);
+    }
 
-        String city = mainController.getCurrentLevel().getCity();
-        String css = "../css/" + city + ".css";
-
-        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
+    @FXML
+    void clickAnswer3(ActionEvent event) {
+       clickAnswer(3);
     }
 
     /**
-     * when you click on the button answer3,
-     * it proves the answer and switches the window
-     *
-     * @param event
+     * Checks if the answer is correct.
+     * @param answerNumber
      */
-    @FXML
-    void clickAnswer3(ActionEvent event) {
-        mainController.multipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
-                .proveMultipleChoice(answer3.getText());
+    private void clickAnswer(int answerNumber){
+        if(answerNumber == 1) {
+            mainController.multipleChoiceTaskSucceeded = mainController.getCurrentLevel()
+                    .proveMultipleChoice(answer1.getText());
+        } else if(answerNumber == 2){
+            mainController.multipleChoiceTaskSucceeded = mainController.getCurrentLevel()
+                    .proveMultipleChoice(answer2.getText());
+        } else if(answerNumber == 3){
+            mainController.multipleChoiceTaskSucceeded = mainController.getCurrentLevel()
+                    .proveMultipleChoice(answer3.getText());
+        }
 
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";

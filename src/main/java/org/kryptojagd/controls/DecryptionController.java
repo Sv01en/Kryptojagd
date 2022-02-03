@@ -13,7 +13,7 @@ import org.kryptojagd.level.tasks.DecryptionTask;
 /**
  * The class controls a window of a decryption task.
  *
- * @author Michail Petermann, Sven Strasser, Leah Schlimm
+ * @author Michail Petermann, Sven Strasser, Leah Schlimm, Bartosz Treyde
  */
 public class DecryptionController extends AbstractController {
 
@@ -97,6 +97,10 @@ public class DecryptionController extends AbstractController {
         clickAnswer(2);
     }
 
+    /**
+     * Checks if the answer is correct.
+     * @param answerNumber
+     */
     private void clickAnswer(int answerNumber){
         if (!mainController.getCurrentLevel().getCurrentTask().getTaskCompleted()) {
             mainController.decryptionTaskSucceeded = mainController.getCurrentLevel().proveTask(
