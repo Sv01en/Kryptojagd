@@ -6,7 +6,9 @@
 
     -fx-background-image: url("../../../img/Rom.png");
 }
-
+#answers{
+    -fx-text-alignment: left;
+}
 .label {
     -fx-border-color: gainsboro;
     -fx-border-radius: 10,10,10,10;

@@ -16,6 +16,9 @@ import org.kryptojagd.level.countdown.CountdownTimer;
  */
 public class MultipleChoiceController extends AbstractController {
 
+    @FXML
+    public Label answers;
+
     private CountdownTimer countdownTimer;
 
     @FXML
@@ -50,7 +53,8 @@ public class MultipleChoiceController extends AbstractController {
         a1 = possibilities[0];
         a2 = possibilities[1];
         a3 = possibilities[2];
-        String question = mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getQuestion() + "\n\n" + "A: " + a1 + "\n" + "B: " + a2 + "\n" + "C: " + a3;
+        answers.setText("A: " + a1 + "\n" + "B: " + a2 + "\n" + "C: " + a3);
+        String question = mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getQuestion();
         questionField.setText(question);
         answer1.setText("A");
         answer2.setText("B");
