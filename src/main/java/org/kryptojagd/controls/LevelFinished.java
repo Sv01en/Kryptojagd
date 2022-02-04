@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
  * @author Sven Strasser
  * @version 1.0
  */
-public class LevelFinishedSelector extends AbstractController {
+public class LevelFinished extends AbstractController {
 
     /**
      *

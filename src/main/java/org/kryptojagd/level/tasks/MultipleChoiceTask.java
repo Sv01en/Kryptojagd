@@ -11,7 +11,6 @@ public class MultipleChoiceTask implements Task {
     private String correctAnswer;
     private String[] answerOptions;
     private boolean taskCompleted = false;
-    private String taskName = "MultipleChoiceTask";
 
     /**
      * Creates a {@link MultipleChoiceTask}
@@ -71,7 +70,7 @@ public class MultipleChoiceTask implements Task {
      */
     @Override
     public String toString() {
-        return taskName;
+        return "MultipleChoiceTask";
     }
 
 }

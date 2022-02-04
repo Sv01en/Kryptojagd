@@ -22,7 +22,7 @@ public class MainApp extends Application {
   private PresentationManager fw;
   private MainController hs;
 
-  private int clearedLevels = 0;
+  private int playableLevels = 0;
 
   /**
    * This method starts the software and loads the
@@ -50,8 +50,7 @@ public class MainApp extends Application {
       stage.show();
       fw = new PresentationManager(stage);
       assert allLevels != null;
-      //TODO: Structure of game, finish level, start next level
-      hs = new MainController(fw, allLevels.get(0), allLevels, clearedLevels);
+      hs = new MainController(fw, allLevels.get(0), playableLevels);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

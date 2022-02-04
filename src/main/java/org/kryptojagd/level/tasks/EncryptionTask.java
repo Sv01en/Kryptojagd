@@ -25,7 +25,6 @@ public class EncryptionTask implements Task {
     private HammingDistance hammingDistance = new HammingDistance();
 
     private int hammingDistanceValue;
-    private String taskName = "EncryptionTask";
 
     /**
      * Creates a {@link EncryptionTask}
@@ -123,7 +122,7 @@ public class EncryptionTask implements Task {
 
     @Override
     public String toString() {
-        return taskName;
+        return "EncryptionTask";
     }
 
     /**

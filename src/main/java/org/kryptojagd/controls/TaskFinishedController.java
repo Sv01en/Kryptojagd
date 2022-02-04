@@ -9,6 +9,7 @@ import javafx.util.Duration;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * Gives the right feedback to a task and switches the window.
@@ -18,8 +19,8 @@ import org.kryptojagd.level.tasks.EncryptionTask;
 public class TaskFinishedController extends AbstractController {
 
 	private Level level = mainController.getCurrentLevel();
-	private EncryptionTask task = (EncryptionTask) level.getCurrentTask();
-	private static final String BACK_TO_MENU = "LevelFinishedSelector.fxml";
+	private Task task = level.getCurrentTask();
+	private static final String LEVEL_FINISHED = "LevelFinished.fxml";
 
 	@FXML
 	private Label timer = new Label();
@@ -65,7 +66,7 @@ public class TaskFinishedController extends AbstractController {
 			level.setNextTask(level.getCurrentTask());
 			mainController.switchWindowWithCSS(level.getCurrentTask() + ".fxml", css);
 		} else {
-			mainController.switchWindow(BACK_TO_MENU);
+			mainController.switchWindow(LEVEL_FINISHED);
 		}
 	 }
 

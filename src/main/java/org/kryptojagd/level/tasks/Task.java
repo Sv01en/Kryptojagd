@@ -7,7 +7,6 @@ package org.kryptojagd.level.tasks;
  */
 public interface Task {
 
-
     /**
      * Checks the answer to the task
      *

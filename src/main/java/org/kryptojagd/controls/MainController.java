@@ -36,19 +36,17 @@ public class MainController {
 	 *
 	 * @param fw            the fw
 	 * @param currentLevel  the current Level, which is played
-	 * @param allLevels     the all levels
 	 * @param clearedLevels the cleared levels
 	 */
-	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels) {
+	public MainController(PresentationManager fw, Level currentLevel, int clearedLevels) {
 		this.fw = fw;
 		this.currentLevel = currentLevel;
-		this.allLevels = allLevels;
 		this.clearedLevels = clearedLevels;
 		AbstractController.setMainController(this);
 	}
 
-	public void runLevel() {
-		switchWindow(currentLevel.getCurrentTask().toString() + ".fxml");
+	public void startLevel() {
+		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", "../css/startwindow.css");
 	}
 
 	/**

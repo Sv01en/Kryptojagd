@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
  *
  * @author Leah Schlimm
  */
-public class LaunchWindowController extends AbstractController {
+public class StartWindowController extends AbstractController {
 
     /**
      * Handles press on settings button
@@ -39,7 +39,7 @@ public class LaunchWindowController extends AbstractController {
     @FXML
     void clickStart(ActionEvent event) {
     	System.out.println("Es wurde auf Start geklickt!");
-    	mainController.runLevel();
+    	mainController.startLevel();
     }
 
     @FXML

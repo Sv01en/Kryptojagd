@@ -34,7 +34,6 @@ public class DecryptionTask implements Task {
 	private boolean correctAnswerCityBool;
 
 	private boolean isCityTaskShowing;
-	private String taskName = "DecryptionTask";
 	private boolean taskCompleted = false;
 
 	/**
@@ -101,7 +100,7 @@ public class DecryptionTask implements Task {
 
 	@Override
 	public String toString(){
-		return taskName;
+		return "DecryptionTask";
 	}
 
 	/**
