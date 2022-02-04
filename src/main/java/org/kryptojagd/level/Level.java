@@ -81,12 +81,12 @@ public class Level {
 		if (currentTask.getTaskCompleted()) {
 			switch (currentTask.toString()) {
 				case "EncryptionTask":
-					this.currentTask = decryptionTask;
-					break;
-				case "DecryptionTask":
 					this.currentTask = multipleChoiceTasks.getFirst();
 					break;
 				case "MultipleChoiceTask":
+					this.currentTask = decryptionTask;
+					break;
+				case "DecryptionTask":
 					levelCompleted = true;
 				default:
 
