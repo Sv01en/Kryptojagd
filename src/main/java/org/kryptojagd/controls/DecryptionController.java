@@ -73,7 +73,7 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure1(ActionEvent event) {
-        clickAnswer(0);
+        clickAnswer(procedure1);
     }
 
     /**
@@ -83,7 +83,7 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure2(ActionEvent event) {
-        clickAnswer(1);
+        clickAnswer(procedure2);
     }
 
     /**
@@ -93,20 +93,19 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     void clickProcedure3(ActionEvent event) {
-
-        clickAnswer(2);
+        clickAnswer(procedure3);
     }
 
     /**
      * Checks if the answer is correct.
-     * @param answerNumber
+     * @param procedure
      */
-    private void clickAnswer(int answerNumber){
+    private void clickAnswer(Button procedure){
         if (!level.getCurrentTask().getTaskCompleted()) {
             mainController.decryptionTaskSucceeded = level.proveTask(
-                    procedure3.getText());
+                    procedure.getText());
         } else {
-            mainController.cityTaskFinished = level.proveCityTask(answerNumber);
+            mainController.cityTaskFinished = level.proveCityTask(Integer.parseInt(procedure.getText()));
         }
 
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");

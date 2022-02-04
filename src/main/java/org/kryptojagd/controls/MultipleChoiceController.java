@@ -65,7 +65,7 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        clickAnswer(1);
+        clickAnswer(answer3);
     }
 
     /**
@@ -76,7 +76,7 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer2(ActionEvent event) {
-        clickAnswer(2);
+        clickAnswer(answer2);
     }
 
     /**
@@ -87,22 +87,15 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer3(ActionEvent event) {
-       clickAnswer(3);
+       clickAnswer(answer1);
     }
 
     /**
      * Checks if the answer is correct.
-     * @param answerNumber
+     * @param answer
      */
-    private void clickAnswer(int answerNumber){
-        if(answerNumber == 1) {
-            mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer1.getText());
-        } else if(answerNumber == 2){
-            mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer2.getText());
-        } else if(answerNumber == 3){
-            mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer3.getText());
-        }
-
+    private void clickAnswer(Button answer){
+        mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer.getText());
         String city = level.getCity();
         String css = "../css/" + city + ".css";
 
