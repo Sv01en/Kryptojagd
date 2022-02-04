@@ -176,6 +176,8 @@ public class Level {
 				System.out.println("Error while trying to get Encryption.");
 				break;
 		}
+		//this.decryptionTask.setEncryptionMethod(this.encryptionMethod);
+		//this.encryptionTask.setEncryptionMethod(this.encryptionMethod);
 	}
 
 

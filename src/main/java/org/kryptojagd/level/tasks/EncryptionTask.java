@@ -90,14 +90,6 @@ public class EncryptionTask implements Task {
         this.encryptionMethod = encryptionMethod;
     }
 
-    /**
-     * Gets encryption method.
-     *
-     * @return the encryption method
-     */
-    public Encryption getEncryptionMethod() {
-        return encryptionMethod;
-    }
 
     /**
      * Proves the answer to the task and sets taskCompleted

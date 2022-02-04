@@ -11,9 +11,9 @@ public class DecryptionTask implements Task {
 
 	private String plainText;
 
-	private String encryptionMethod;
+	private String encryptionType;
 
-	private Encryption encryptionMethod1;
+	private Encryption encryptionMethod;
 
 	private String[] answerOptionsEncryption;
 
@@ -49,11 +49,11 @@ public class DecryptionTask implements Task {
 	 * @param timeInSec               time in sec for the task
 	 * @param timePenalty             the time penalty
 	 */
-	public DecryptionTask(String plainText, String encryptionMethod, String[] answerOptionsEncryption,
+	public DecryptionTask(String plainText, String encryptionType, String[] answerOptionsEncryption,
 						  int correctAnswerEncryption, String[] answerOptionsCity, int correctAnswerCity,
 						  String textAfterStart, int timeInSec, int timePenalty) {
 		this.plainText = plainText;
-		this.encryptionMethod = encryptionMethod;
+		this.encryptionType = encryptionType;
 		this.answerOptionsEncryption = answerOptionsEncryption;
 		this.correctAnswerEncryption = correctAnswerEncryption;
 		this.answerOptionsCity = answerOptionsCity;
@@ -74,13 +74,22 @@ public class DecryptionTask implements Task {
 	}
 
 	/**
+	 * Sets encryption method.
+	 *
+	 * @param encryptionMethod the encryption method
+	 */
+	public void setEncryptionMethod(Encryption encryptionMethod) {
+		this.encryptionMethod = encryptionMethod;
+	}
+
+	/**
 	 * Proofs the answer of decryption task
 	 * @param answer to proof
 	 * @return true if the answer is correct, else false
 	 */
 	@Override
 	public boolean proveAnswer(String answer) {
-		this.taskCompleted = answer.equals(this.encryptionMethod);
+		this.taskCompleted = answer.equals(this.encryptionType);
 		return taskCompleted;
 	}
 

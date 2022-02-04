@@ -1,6 +1,6 @@
 {
   "plainText": "Sie befindet sich in der Hauptstadt eines Koenigreichs.\nDas Land, in dem sich die naechste Disk befindet, ist für ihre roten Telefonzellen und Doppeldeckerbusse bekannt.\nIn der Stadt gibt es einen grossen Glockenturm, einen Palast, in dem eine sehr alte Dame lebt und ein Riesenrad direkt am Fluss.",
-  "encryptionMethod":"Cäsar-Variante Verschlüsselung",
+  "encryptionType":"Cäsar-Variante Verschlüsselung",
   "answerOptionsEncryption":["Cäsar-Variante Verschlüsselung", "AES Verschlüsselung", "Cäsar Verschlüsselung"],
   "correctAnswerEncryption":0,
   "answerOptionsCity":["Brüssel", "Warschau", "London"],
