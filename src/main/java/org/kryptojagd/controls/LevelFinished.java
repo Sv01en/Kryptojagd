@@ -34,13 +34,15 @@ public class LevelFinished extends AbstractController {
     void nextLevelAction(ActionEvent e) {
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";
-
+        mainController.setNextLevel();
         mainController.getCurrentLevel().clearLevel();
         mainController.setClearedLevels();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.cityTaskFinished = false;
-        mainController.switchWindowWithCSS("DecryptionTask.fxml", css);
+        mainController.startLevel();
     }
+
+
 }

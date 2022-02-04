@@ -31,7 +31,7 @@ public class LevelSelectorController extends AbstractController {
             button.setOnAction(event -> {
                 int countClearedLevels = mainController.getClearedLevels();
                 setMainController(
-                        new MainController(mainController.getPresentationManager(), levels.get(finalI),
+                        new MainController(mainController.getPresentationManager(), levels.get(finalI), levels,
                     countClearedLevels));
                 System.out.println("Button " + finalI + " pressed!");
                 mainController.startLevel();

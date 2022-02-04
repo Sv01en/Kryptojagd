@@ -50,7 +50,7 @@ public class MainApp extends Application {
       stage.show();
       fw = new PresentationManager(stage);
       assert allLevels != null;
-      hs = new MainController(fw, allLevels.get(0), playableLevels);
+      hs = new MainController(fw, allLevels.get(0), allLevels, playableLevels);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
