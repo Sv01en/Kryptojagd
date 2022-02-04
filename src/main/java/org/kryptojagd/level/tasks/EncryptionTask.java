@@ -101,8 +101,8 @@ public class EncryptionTask implements Task {
     public boolean proveAnswer(String answer) {
         String checkAnswer = answer.toUpperCase();
         this.taskCompleted = checkAnswer.equals(this.encryptionMethod.encode(this.text));
-        this.hammingDistanceValue = hammingDistance.calculateHammingDistance(
-                this.encryptionMethod.encode(this.text), checkAnswer);
+        //this.hammingDistanceValue = hammingDistance.calculateHammingDistance(
+          //      this.encryptionMethod.encode(this.text), checkAnswer);
         return taskCompleted;
     }
 
