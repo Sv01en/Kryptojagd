@@ -19,6 +19,7 @@ public class LevelFinished extends AbstractController {
     void menuAction(ActionEvent e) {
         mainController.getCurrentLevel().clearLevel();
         mainController.setClearedLevels();
+        mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
@@ -34,9 +35,9 @@ public class LevelFinished extends AbstractController {
     void nextLevelAction(ActionEvent e) {
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";
-        mainController.setNextLevel();
         mainController.getCurrentLevel().clearLevel();
         mainController.setClearedLevels();
+        mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
