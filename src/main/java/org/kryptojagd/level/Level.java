@@ -33,7 +33,7 @@ public class Level {
 
 	private int timePenalty;
 
-	private int currentMultipleChoiceTask;
+	private int currentMultipleChoiceTask = 0;
 
 	private boolean multipleChoiceFinished;
 
@@ -62,7 +62,6 @@ public class Level {
 		this.timeInSec = timeInSec;
 		this.timePenalty = this.decryptionTask.getTimePenalty();
 		this.currentTime = this.timeInSec;
-		this.currentMultipleChoiceTask = 0;
 		this.multipleChoiceFinished = false;
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
@@ -78,20 +77,23 @@ public class Level {
 	 * @param currentTask the current Task
 	 */
 	public void setNextTask(Task currentTask){
-		if (currentTask.getTaskCompleted()) {
+		if (currentTask.getTaskCompleted() && !isMultipleChoiceFinished()) {
 			switch (currentTask.toString()) {
-				case "EncryptionTask":
-					this.currentTask = multipleChoiceTasks.getFirst();
-					break;
-				case "MultipleChoiceTask":
-					this.currentTask = decryptionTask;
-					break;
-				case "DecryptionTask":
-					levelCompleted = true;
-				default:
-
+				case "DecryptionTask": this.currentTask = multipleChoiceTasks.get(currentMultipleChoiceTask);
+				this.currentMultipleChoiceTask++;
+				return;
+				case "MultipleChoiceTask": this.currentTask = getCurrentMultipleChoiceTask();
+				this.currentMultipleChoiceTask++;
+				return;
 			}
 		}
+		if (isMultipleChoiceFinished()) {
+			this.currentTask = encryptionTask;
+		}
+		if (!currentTask.getTaskCompleted() ) {
+			return;
+		}
+		levelCompleted = true;
 	}
 
 	public Task getCurrentTask() {

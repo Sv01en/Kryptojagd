@@ -48,8 +48,8 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        questionField.setText(level.getCurrentMultipleChoiceTask().getQuestion());
-        String[] possibilities = level.getCurrentMultipleChoiceTask().getPossibilities();
+        questionField.setText(task.getQuestion());
+        String[] possibilities = task.getPossibilities();
         answer1.setText(possibilities[0]);
         answer2.setText(possibilities[1]);
         answer3.setText(possibilities[2]);
@@ -65,7 +65,7 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        clickAnswer(answer3);
+        clickAnswer(answer1);
     }
 
     /**
@@ -87,7 +87,7 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer3(ActionEvent event) {
-       clickAnswer(answer1);
+       clickAnswer(answer3);
     }
 
     /**
