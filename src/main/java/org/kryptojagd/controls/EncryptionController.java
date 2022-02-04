@@ -50,7 +50,7 @@ public class EncryptionController extends AbstractController {
     @FXML
     void checkEncryption(ActionEvent event) {
         level.proveTask(textField1.getText());
-        mainController.switchWindow(MainController.TASK_FINISHED_FXML);
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 
     /**

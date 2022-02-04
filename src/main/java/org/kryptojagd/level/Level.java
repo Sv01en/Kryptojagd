@@ -90,10 +90,6 @@ public class Level {
 		if (isMultipleChoiceFinished()) {
 			this.currentTask = encryptionTask;
 		}
-		if (!currentTask.getTaskCompleted() ) {
-			return;
-		}
-		levelCompleted = true;
 	}
 
 	public Task getCurrentTask() {
@@ -138,6 +134,9 @@ public class Level {
 	public boolean proveTask(String answer) {
 		if (!this.currentTask.proveAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
+		}
+		if (this.encryptionTask.getTaskCompleted() ) {
+			levelCompleted = true;
 		}
 		return this.currentTask.proveAnswer(answer);
 	}

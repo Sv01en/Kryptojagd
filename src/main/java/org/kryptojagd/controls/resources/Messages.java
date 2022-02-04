@@ -16,6 +16,8 @@ public final class Messages {
             "die Floppy-Disk erhalten!\n Schicke dem NIV eine verschlu?sselte Besta?tigung, " +
             "dass ihr die Floppy-Disk erhalten habt.";
 
+    public static final String LEVEL_FINISHED = "Glückwunsch, du hast das Level erfolgreich beendet.";
+
     public static final String GO_TO_START = "Gehe zurück zum Startmenü!";
 
     public static final String START_TEXT = "Du und deine Kollegen Bob und Alice wurdet von der nationalen" +

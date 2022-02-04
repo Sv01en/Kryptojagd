@@ -1,5 +1,5 @@
 {
-  "question23": "Wofür steht die Abkürzung WLAN?",
-  "answerOptions23": ["Wireless Low Administration Net ", "Wireless Local-Area Network", "Wireless Local Administration Network"],
-  "correctAnswer23": "Wireless Local-Area Network"
+  "question": "Wofür steht die Abkürzung WLAN?",
+  "answerOptions": ["Wireless Low Administration Net ", "Wireless Local-Area Network", "Wireless Local Administration Network"],
+  "correctAnswer": "Wireless Local-Area Network"
 }

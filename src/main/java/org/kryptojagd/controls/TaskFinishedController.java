@@ -8,7 +8,9 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
+import org.kryptojagd.level.tasks.MultipleChoiceTask;
 import org.kryptojagd.level.tasks.Task;
 
 /**
@@ -40,16 +42,30 @@ public class TaskFinishedController extends AbstractController {
 	@FXML
 	public void initialize() {
 		updateTimer();
-		if (level.isMultipleChoiceFinished()) {
+		if (level.isLevelCompleted()) {
+			feedbackText.setText(Messages.LEVEL_FINISHED);
+			return;
+		}
+		if (level.isMultipleChoiceFinished() && task instanceof MultipleChoiceTask) {
 			feedbackText.setText(Messages.FINISHED_MULTIPLE_CHOICE);
-		} else if (mainController.cityTaskFinished && !task.getTaskCompleted()) {
-			feedbackText.setText(level.getTextAfterStartDecryption());
-		} else if (task.getTaskCompleted() | level.getCurrentMultipleChoiceTask().getTaskCompleted()) {
+		} else {
+			proveActualTask();
+		}
+	}
+
+	private void proveActualTask() {
+		if (task.getTaskCompleted()) {
+			if (task instanceof DecryptionTask) {
+				feedbackText.setText(level.getTextAfterStartDecryption());
+				return;
+			}
 			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
 		} else {
 			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
 		}
 	}
+
+
 
 	/**
 	 * Handles the switch to the next task
