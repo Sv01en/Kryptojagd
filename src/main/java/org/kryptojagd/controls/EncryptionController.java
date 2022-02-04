@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
-import org.kryptojagd.level.Level;
 
 /**
  * Encryption Controller for the corresponding fxml-file
@@ -33,6 +32,9 @@ public class EncryptionController extends AbstractController {
     @FXML
     private TextField textField1;
 
+    /**
+     * Initializes an EncryptionController.
+     */
     @FXML
     public void initialize() {
         if (mainController.getCurrentLevel().getEncryptionInput() != null) {
@@ -43,11 +45,26 @@ public class EncryptionController extends AbstractController {
         updateTimer();
     }
 
+    /**
+     * Check if the EcryptionTask is solved succesfully.
+     * If its true it switches to the EncryptionTaskFinished Window.
+     * If there is a wrong solution it switches to the MistakeMessage Window.
+     *
+     *
+     * @param event the event
+     */
     @FXML
     void checkEncryption(ActionEvent event) {
-        mainController.encryptionTaskSucceeded = mainController.getCurrentLevel().proveEncryptionTask(
-                textField1.getText());
-        mainController.switchWindow("EncryptionTaskFinished.fxml");
+        boolean solutionStatus = mainController.getCurrentLevel().proveEncryptionTask(textField1.getText());
+        mainController.encryptionTaskSucceeded = solutionStatus;
+        String city = mainController.getCurrentLevel().getCity();
+        String css = "../css/" + city + ".css";
+
+        if (solutionStatus) {
+            mainController.switchWindowWithCSS("EncryptionTaskFinished.fxml", css);
+        } else {
+            mainController.switchWindowWithCSS("MistakeMessage.fxml", css);
+        }
     }
 
     /**

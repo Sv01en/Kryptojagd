@@ -2,6 +2,7 @@ package org.kryptojagd.level.tasks;
 
 import org.kryptojagd.encryptionmethods.Encryption;
 import org.kryptojagd.level.hamming.HammingDistance;
+import org.kryptojagd.encryptionmethods.*;
 
 /**
  * The class describes a task, where you have to encrypt the given text
@@ -10,11 +11,35 @@ import org.kryptojagd.level.hamming.HammingDistance;
  */
 public class EncryptionTask implements Task {
 
+    /**
+     * The constant WRONGCOUNTLETTER.
+     */
+    public static final String WRONGCOUNTLETTER = "Pass auf, dass du genau so viele Buchstaben verschlüsselst wie auch in der Nachricht vorkommen.";
+    /**
+     * The constant WRONGCOUNTLETTER.
+     */
+    public static final String WRONGBACKWARDS = "Pass auf, jedes Wort sollte einzeln verschlüsselt werden.";
+    /**
+     * The constant WRONGCOUNTLETTER.
+     */
+    public static final String WRONGFLIP = "Pass auf, es scheint so als hätten sich ein oder zwei Buchstabendreher bei dir eingeschlichen.";
+    /**
+     * The constant WRONGCOUNTLETTER.
+     */
+    public static final String TYPINGERROR = "Pass auf, es scheint so als hätten sich ein paar Tippfehler bei dir eingeschlichen.";
+    /**
+     * The constant WRONGCOUNTLETTER.
+     */
+    public static final String ALLWRONG = "Schade, dass ist leider nicht richtig verschlüsselt, versuche es noch einmal.";
+
+
     private String task;
 
     private String text;
 
     private String key;
+
+    private String mistakeMsg;
 
     private Encryption encryptionMethod;
 
@@ -40,6 +65,16 @@ public class EncryptionTask implements Task {
         this.key = key;
         this.encryptionMethod = encryptionMethod;
         this.taskCompleted = false;
+        this.mistakeMsg = "Standardfehler";
+    }
+
+    /**
+     * Gets the fitting mistake message.
+     *
+     * @return the mistake msg
+     */
+    public String getMistakeMsg() {
+        return mistakeMsg;
     }
 
     /**
@@ -99,10 +134,71 @@ public class EncryptionTask implements Task {
 
     @Override
     public boolean proveAnswer(String answer) {
-        this.taskCompleted = answer.equals(this.encryptionMethod.encode(this.text, this.key));
-        this.hammingDistanceValue = HammingDistance.calculateHammingDistance(
-                this.encryptionMethod.encode(this.text, this.key), answer);
-        return answer.equals(this.encryptionMethod.encode(this.text, this.key));
+        char[] origMsg = new char[this.text.length()];
+        char[] studentSolution = new char[answer.length()];
+        String realSolutionString = this.encryptionMethod.encode(this.text, this.key);
+        char[] realSolution = new char[realSolutionString.length()];
+
+        for (int i = 0; i < this.text.length(); i++) {
+            origMsg[i] = Character.toUpperCase(this.text.charAt(i));
+        }
+        for (int i = 0; i < answer.length(); i++) {
+            studentSolution[i] = answer.charAt(i);
+        }
+        for (int i = 0; i < realSolutionString.length(); i++) {
+            realSolution[i] = realSolutionString.charAt(i);
+        }
+
+        this.taskCompleted = answer.equals(realSolutionString);
+        this.hammingDistanceValue = HammingDistance.calculateHammingDistance(realSolutionString, answer);
+        if (answer.equals(realSolutionString)) {
+            return true;
+        } else if (studentSolution.length != realSolution.length) {
+            this.mistakeMsg = WRONGCOUNTLETTER;
+        } else if ((this.encryptionMethod instanceof Backwards) && palindrome(studentSolution, origMsg)) {
+            this.mistakeMsg = WRONGBACKWARDS;
+        } else if (this.hammingDistanceValue <= 4 && flipTest(studentSolution, realSolution)) {
+            this.mistakeMsg = WRONGFLIP;
+        } else if (this.hammingDistanceValue <= 3) {
+            this.mistakeMsg = TYPINGERROR;
+        } else {
+            this.mistakeMsg = ALLWRONG;
+        }
+        return false;
+    }
+
+    /**
+     * Tests if there are one or two transposed letters in the Solution from the student.
+     *
+     * @param a1 the written Solution from the student
+     * @param a2 the original Solution
+     * @return the boolean
+     */
+    boolean flipTest(char[] a1, char[] a2) {
+        for (int i = 1; i < a1.length; i++) {
+            if ((a1[i] == a2[i - 1]) && (a1[i - 1] == a2[i]) && (a1[i - 1] != a2[i - 1]) && (a1[i] != a2[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Tests if the student has turned around the whole message
+     * instead of turning around word by word.
+     *
+     * @param a1 the written Solution from the student
+     * @param a2 the plain Text
+     * @return the boolean
+     */
+    boolean palindrome(char[] a1, char[] a2) {
+        int n = a1.length;
+        for (int i = 0; i < n; i++) {
+            if (a1[i] != a2[ n - i - 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

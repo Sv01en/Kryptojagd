@@ -138,7 +138,7 @@ public class Level {
 	public boolean proveEncryptionTask(String answer) {
 		this.encryptionInput = answer;
 		String checkAnswer = answer.toUpperCase();
-		if (this.encryptionTask.proveAnswer(checkAnswer)) {
+		if (!this.encryptionTask.proveAnswer(checkAnswer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 		}
 		return this.encryptionTask.proveAnswer(checkAnswer);
