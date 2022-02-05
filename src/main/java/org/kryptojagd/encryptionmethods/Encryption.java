@@ -25,7 +25,10 @@ public abstract class Encryption {
     public abstract String decode(String text, String key);
 
 
-
+    /**
+     * Gives the name of the Encryption
+     * @return the name of the Encryption
+     */
     public String toString() {
         return name;
     }

@@ -46,10 +46,16 @@ public class MainController {
 		AbstractController.setMainController(this);
 	}
 
+	/**
+	 * Starts the current level
+	 */
 	public void startLevel() {
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", "../css/startwindow.css");
 	}
 
+	/**
+	 * Sets the next level
+	 */
 	public void setNextLevel() {
 		this.currentLevel = allLevels.get(clearedLevels);
 	}

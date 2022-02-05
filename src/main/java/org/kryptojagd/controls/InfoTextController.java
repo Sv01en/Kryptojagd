@@ -13,6 +13,9 @@ public class InfoTextController extends AbstractController {
 	@FXML
 	public Label label;
 
+	/**
+	 * Initializes a InfoTextController with the info text
+	 */
 	@FXML
 	public void initialize() {
 		String text = Messages.START_TEXT;

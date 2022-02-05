@@ -90,13 +90,6 @@ public class EncryptionTask implements Task {
         this.encryptionMethod = encryptionMethod;
     }
 
-
-    /**
-     * Proves the answer to the task and sets taskCompleted
-     *
-     * @param answer the answer
-     * @return
-     */
     @Override
     public boolean proveAnswer(String answer) {
         String checkAnswer = answer.toUpperCase();

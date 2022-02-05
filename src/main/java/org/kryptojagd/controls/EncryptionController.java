@@ -37,6 +37,9 @@ public class EncryptionController extends AbstractController {
     @FXML
     private TextField textField1;
 
+    /**
+     * Initializes a DecryptionController with the encryption task
+     */
     @FXML
     public void initialize() {
         if (level.getEncryptionInput() != null) {
@@ -47,6 +50,10 @@ public class EncryptionController extends AbstractController {
         updateTimer();
     }
 
+    /**
+     * Proves the answer
+     * @param event
+     */
     @FXML
     void checkEncryption(ActionEvent event) {
         level.proveTask(textField1.getText());

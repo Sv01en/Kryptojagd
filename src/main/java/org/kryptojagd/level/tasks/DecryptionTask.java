@@ -81,21 +81,12 @@ public class DecryptionTask implements Task {
 		this.encryptionMethod = encryptionMethod;
 	}
 
-	/**
-	 * Proofs the answer of decryption task
-	 * @param answer to proof
-	 * @return true if the answer is correct, else false
-	 */
 	@Override
 	public boolean proveAnswer(String answer) {
 		this.taskCompleted = answer.equals(this.encryptionType);
 		return taskCompleted;
 	}
 
-	/**
-	 * Getter for answer options of decryption task
-	 * @return answer options
-	 */
 	@Override
 	public String[] getPossibilities() {
 		return this.answerOptionsEncryption;

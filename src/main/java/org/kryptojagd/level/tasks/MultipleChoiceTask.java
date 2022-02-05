@@ -7,9 +7,9 @@ package org.kryptojagd.level.tasks;
  */
 public class MultipleChoiceTask implements Task {
 
-    private String question;
-    private String correctAnswer;
-    private String[] answerOptions;
+    private final String question;
+    private final String correctAnswer;
+    private final String[] answerOptions;
     private boolean taskCompleted = false;
 
     /**
@@ -43,12 +43,7 @@ public class MultipleChoiceTask implements Task {
         return question;
     }
 
-    /**
-     * Proves the given answer.
-     *
-     * @param answer given by the gui
-     * @return true or false as a boolean
-     */
+
     @Override
     public boolean proveAnswer(String answer) {
         if(this.correctAnswer.equals(answer)) {

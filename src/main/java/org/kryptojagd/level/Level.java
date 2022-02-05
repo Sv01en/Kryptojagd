@@ -66,6 +66,10 @@ public class Level {
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
 
+	/**
+	 * Getter for levelCompleted
+	 * @return true, if the level is completed
+	 */
 	public boolean isLevelCompleted() {
 		return levelCompleted;
 	}
@@ -96,10 +100,18 @@ public class Level {
 		}
 	}
 
+	/**
+	 * Getter for current task
+	 * @return current task witch is in process
+	 */
 	public Task getCurrentTask() {
 		return currentTask;
 	}
 
+	/**
+	 * Getter for encryption method
+	 * @return multiple encryption method of the level
+	 */
 	public Encryption getEncryptionMethod() {
 		return encryptionMethod;
 	}

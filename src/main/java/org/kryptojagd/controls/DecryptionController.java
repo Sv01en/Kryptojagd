@@ -98,7 +98,7 @@ public class DecryptionController extends AbstractController {
 
     /**
      * Checks if the answer is correct.
-     * @param procedure
+     * @param procedure Button which is clicked on
      */
     private void clickAnswer(Button procedure){
         if (!level.getCurrentTask().getTaskCompleted()) {

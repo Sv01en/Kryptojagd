@@ -53,6 +53,9 @@ public class TaskFinishedController extends AbstractController {
 		}
 	}
 
+	/**
+	 * Proves the actual task and sets the right feedback text
+	 */
 	private void proveActualTask() {
 		if (task.getTaskCompleted()) {
 			if (task instanceof DecryptionTask && level.cityIsFinished()) {
