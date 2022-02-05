@@ -40,7 +40,6 @@ public class DecryptionTask implements Task {
 	 * Contructor of a decryption task
 	 *
 	 * @param plainText               text that will be displayed encrypted
-	 * @param encryptionMethod        method to entcrypt plaintext with
 	 * @param answerOptionsEncryption answer options for decryption task
 	 * @param correctAnswerEncryption correct answer of decryption task
 	 * @param answerOptionsCity       answer options for city selector

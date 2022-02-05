@@ -79,8 +79,12 @@ public class Level {
 	public void setNextTask(Task currentTask){
 		if (currentTask.getTaskCompleted() && !isMultipleChoiceFinished()) {
 			switch (currentTask.toString()) {
-				case "DecryptionTask": this.currentTask = multipleChoiceTasks.get(currentMultipleChoiceTask);
-				this.currentMultipleChoiceTask++;
+				case "DecryptionTask":
+					if (!cityIsFinished()) {
+						return;
+					}
+					this.currentTask = multipleChoiceTasks.get(currentMultipleChoiceTask);
+					this.currentMultipleChoiceTask++;
 				return;
 				case "MultipleChoiceTask": this.currentTask = getCurrentMultipleChoiceTask();
 				this.currentMultipleChoiceTask++;

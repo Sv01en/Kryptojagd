@@ -3,7 +3,6 @@ package org.kryptojagd.encryptionmethods;
 /**
  * The type Encryption.
  */
-//redundant class, because we are not sure if we use interface or abstract class
 public abstract class Encryption {
 
     protected String name = "Encryption";

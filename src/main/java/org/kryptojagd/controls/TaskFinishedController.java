@@ -55,9 +55,8 @@ public class TaskFinishedController extends AbstractController {
 
 	private void proveActualTask() {
 		if (task.getTaskCompleted()) {
-			if (task instanceof DecryptionTask) {
+			if (task instanceof DecryptionTask && level.cityIsFinished()) {
 				feedbackText.setText(level.getTextAfterStartDecryption());
-				return;
 			}
 			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
 		} else {
