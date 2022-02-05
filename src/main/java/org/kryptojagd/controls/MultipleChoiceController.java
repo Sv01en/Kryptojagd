@@ -22,6 +22,9 @@ public class MultipleChoiceController extends AbstractController {
     private Level level = mainController.getCurrentLevel();
     private MultipleChoiceTask task = (MultipleChoiceTask) level.getCurrentTask();
 
+    @FXML
+    public Label answers;
+
     private CountdownTimer countdownTimer;
 
     @FXML
@@ -39,6 +42,10 @@ public class MultipleChoiceController extends AbstractController {
     @FXML
     private Button answer3;
 
+    private String a1;
+    private String a2;
+    private String a3;
+
     /**
      * Initializes a MultipleChoiceController
      *
@@ -48,11 +55,15 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        questionField.setText(task.getQuestion());
         String[] possibilities = task.getPossibilities();
-        answer1.setText(possibilities[0]);
-        answer2.setText(possibilities[1]);
-        answer3.setText(possibilities[2]);
+        a1 = possibilities[0];
+        a2 = possibilities[1];
+        a3 = possibilities[2];
+        answers.setText("A: " + a1 + "\n" + "B: " + a2 + "\n" + "C: " + a3);
+        questionField.setText(task.getQuestion());
+        answer1.setText("A");
+        answer2.setText("B");
+        answer3.setText("C");
         this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer();
     }
@@ -65,7 +76,7 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        clickAnswer(answer1);
+        clickAnswer(a1);
     }
 
     /**
@@ -76,7 +87,7 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer2(ActionEvent event) {
-        clickAnswer(answer2);
+        clickAnswer(a2);
     }
 
     /**
@@ -87,15 +98,15 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer3(ActionEvent event) {
-       clickAnswer(answer3);
+       clickAnswer(a3);
     }
 
     /**
      * Checks if the answer is correct.
      * @param answer
      */
-    private void clickAnswer(Button answer){
-        mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer.getText());
+    private void clickAnswer(String answer){
+        mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer);
         String city = level.getCity();
         String css = "../css/" + city + ".css";
 

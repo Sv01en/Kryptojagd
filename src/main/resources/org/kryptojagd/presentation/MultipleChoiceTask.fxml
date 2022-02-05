@@ -9,11 +9,12 @@
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="questionField" text="Multiple-Choice-Frage" />
+            <Label id="answers" fx:id="answers" text="Answers go here"/>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button fx:id="answer1" mnemonicParsing="false" onAction="#clickAnswer1" text="Antwort 1" />
-                  <Button fx:id="answer2" mnemonicParsing="false" onAction="#clickAnswer2" text="Antwort 2" />
-                  <Button fx:id="answer3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickAnswer3" text="Antwort 3" />
+                  <Button fx:id="answer1" mnemonicParsing="false" onAction="#clickAnswer1" text="Antwort 1" prefHeight="24.0" prefWidth="300.0"/>
+                  <Button fx:id="answer2" mnemonicParsing="false" onAction="#clickAnswer2" text="Antwort 2" prefHeight="24.0" prefWidth="300.0"/>
+                  <Button fx:id="answer3" mnemonicParsing="false" onAction="#clickAnswer3" text="Antwort 3" prefHeight="24.0" prefWidth="300.0"/>
                </children>
             </HBox>
          </children>
