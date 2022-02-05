@@ -150,7 +150,7 @@ public class Level {
 	 * @param answer answer to check
 	 * @return true if the answer is correct else false
 	 */
-	public boolean proveCityTask(int answer) {
+	public boolean proveCityTask(String answer) {
 		if (!decryptionTask.proofCityAnswer(answer)) {
 			countdownTimer.reduceTimer(timePenalty);
 		}

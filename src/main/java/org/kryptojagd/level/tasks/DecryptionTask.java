@@ -140,8 +140,8 @@ public class DecryptionTask implements Task {
 	 * @param answer answer to proof
 	 * @return true if the answer was correct, else false
 	 */
-	public boolean proofCityAnswer(int answer) {
-		if (answer == correctAnswerCity) {
+	public boolean proofCityAnswer(String answer) {
+		if (answer.equals(answerOptionsCity[correctAnswerCity])) {
 			this.correctAnswerCityBool = true;
 			return true;
 		}

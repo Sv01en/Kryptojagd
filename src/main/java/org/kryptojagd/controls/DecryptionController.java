@@ -43,7 +43,7 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        if (!level.cityIsFinished()) {
+        if (!task.getTaskCompleted()) {
             level.startCountdown();
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
@@ -105,7 +105,7 @@ public class DecryptionController extends AbstractController {
             mainController.decryptionTaskSucceeded = level.proveTask(
                     procedure.getText());
         } else {
-            mainController.cityTaskFinished = level.proveCityTask(Integer.parseInt(procedure.getText()));
+            mainController.cityTaskFinished = level.proveCityTask(procedure.getText());
         }
 
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
