@@ -105,8 +105,8 @@ public class DecryptionTask implements Task {
 	/**
 	 * If the decryption task is finished, this has to be set to display the city task correctly
 	 */
-	public void setCityShowing() {
-		this.isCityTaskShowing = true;
+	public void setCityShowing(boolean isShowing) {
+		this.isCityTaskShowing = isShowing;
 	}
 
 	/**

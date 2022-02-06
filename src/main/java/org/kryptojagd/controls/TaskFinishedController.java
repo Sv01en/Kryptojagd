@@ -58,10 +58,20 @@ public class TaskFinishedController extends AbstractController {
 	 */
 	private void proveActualTask() {
 		if (task.getTaskCompleted()) {
-			if (task instanceof DecryptionTask && level.cityIsFinished()) {
-				feedbackText.setText(level.getTextAfterStartDecryption());
+			if (level.isCityTaskShowing()) {
+				feedBackAfterCityTask();
+				return;
 			}
 			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
+		} else {
+			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
+		}
+	}
+
+	private void feedBackAfterCityTask() {
+		if (level.cityIsFinished()) {
+			feedbackText.setText(level.getTextAfterStartDecryption());
+			level.setCityShowing(false);
 		} else {
 			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
 		}

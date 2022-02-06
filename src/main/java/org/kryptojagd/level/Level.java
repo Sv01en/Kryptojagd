@@ -223,8 +223,8 @@ public class Level {
 	/**
 	 * Switches from the decryption to the city task
 	 */
-	public void setCityShowing() {
-		decryptionTask.setCityShowing();
+	public void setCityShowing(boolean isShowing) {
+		decryptionTask.setCityShowing(isShowing);
 	}
 
 	/**

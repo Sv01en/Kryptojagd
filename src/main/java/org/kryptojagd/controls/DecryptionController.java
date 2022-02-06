@@ -53,7 +53,7 @@ public class DecryptionController extends AbstractController {
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
         } else {
-            level.setCityShowing();
+            level.setCityShowing(true);
             String[] cities = task.getAnswerOptionsCity();
             String questionStr = task.getCityQuestion();
             question.setText(questionStr);
