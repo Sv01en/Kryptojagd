@@ -12,6 +12,11 @@ public abstract class AbstractController {
 	static MainController mainController;
 
 	/**
+	 * Updates the timer in the corresponding window.
+	 */
+	void updateTimer(){}
+
+	/**
 	 * Sets main controller.
 	 *
 	 * @param hs the hs
