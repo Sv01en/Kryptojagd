@@ -7,14 +7,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
+import org.kryptojagd.level.tasks.EncryptionTask;
+import org.kryptojagd.level.tasks.MultipleChoiceTask;
 
 /**
  * The class controls a window of a multiple choice task.
  *
- * @author Sonja Kuklok, Michail Petermann, Sven Strasser, Leah Schlimm
+ * @author Sonja Kuklok, Michail Petermann, Sven Strasser, Leah Schlimm, Bartosz Treyde
  */
 public class MultipleChoiceController extends AbstractController {
+
+    private Level level = mainController.getCurrentLevel();
+    private MultipleChoiceTask task = (MultipleChoiceTask) level.getCurrentTask();
 
     @FXML
     public Label answers;
@@ -49,17 +55,16 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        String[] possibilities = mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getPossibilities();
+        String[] possibilities = task.getPossibilities();
         a1 = possibilities[0];
         a2 = possibilities[1];
         a3 = possibilities[2];
         answers.setText("A: " + a1 + "\n" + "B: " + a2 + "\n" + "C: " + a3);
-        String question = mainController.getCurrentLevel().getCurrentMultipleChoiceTask().getQuestion();
-        questionField.setText(question);
+        questionField.setText(task.getQuestion());
         answer1.setText("A");
         answer2.setText("B");
         answer3.setText("C");
-        this.countdownTimer = new CountdownTimer(mainController.getCurrentLevel().getTimeInSec());
+        this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer();
     }
 
@@ -71,13 +76,7 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer1(ActionEvent event) {
-        mainController.multipleChoiceTaskSucceeded = mainController.getCurrentLevel()
-                .proveMultipleChoice(a1);
-
-        String city = mainController.getCurrentLevel().getCity();
-        String css = "../css/" + city + ".css";
-
-        mainController.switchWindowWithCSS("TaskFinished.fxml", css);
+        clickAnswer(a1);
     }
 
     /**
@@ -88,13 +87,7 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer2(ActionEvent event) {
-        mainController.multipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
-                .proveMultipleChoice(a2);
-
-        String city = mainController.getCurrentLevel().getCity();
-        String css = "../css/" + city + ".css";
-
-        mainController.switchWindowWithCSS("TaskFinished.fxml", css);
+        clickAnswer(a2);
     }
 
     /**
@@ -105,13 +98,19 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     void clickAnswer3(ActionEvent event) {
-        mainController.multipleChoiceTaskSucceeded =  mainController.getCurrentLevel()
-                .proveMultipleChoice(a3);
+       clickAnswer(a3);
+    }
 
-        String city = mainController.getCurrentLevel().getCity();
+    /**
+     * Checks if the answer is correct.
+     * @param answer
+     */
+    private void clickAnswer(String answer){
+        mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer);
+        String city = level.getCity();
         String css = "../css/" + city + ".css";
 
-        mainController.switchWindowWithCSS("TaskFinished.fxml", css);
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
     }
 
     /**
@@ -123,8 +122,8 @@ public class MultipleChoiceController extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-            if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+            timer.setText(Integer.toString(level.getTimeInSec()));
+            if (level.getTimeInSec() <= 0) {
                 mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
                 time.stop();
             }

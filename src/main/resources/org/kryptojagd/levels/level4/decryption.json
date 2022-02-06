@@ -1,6 +1,6 @@
 {
   "plainText": "In der Stadt, in der die Floppy-Disk versteckt ist, wird wichtige Politik betrieben, aber trotzdem steppt dort auch ab und zu der Baer.\nVor allem seit im November 1989 die Mauer, die die Stadt getrennt hatte, gefallen ist.\nVon einem 368m hohen Turm laesst sich die Stadt gut ueberblicken.\nUnd dank einer grossen Kunstinstallation in der Naehe verliert man auch nie die Zeit aus den Augen, egal von welcher Zeitzone.",
-  "encryptionMethod":"Vigenère Verschlüsselung",
+  "encryptionType":"Vigenère Verschlüsselung",
   "answerOptionsEncryption":["Rückwärtsverschlüsselung", "RSA Verschlüsselung", "Vigenère Verschlüsselung"],
   "correctAnswerEncryption":2,
   "answerOptionsCity":["Amsterdam", "Berlin", "San Francisco"],

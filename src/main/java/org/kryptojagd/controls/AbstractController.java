@@ -1,5 +1,7 @@
 package org.kryptojagd.controls;
 
+import java.util.ResourceBundle;
+
 /**
  * @author Michail Petermann
  */

@@ -1,6 +1,6 @@
 {
   "plainText": "Die zweite Floppy-Disk befindet sich in einer Stadt in Amerika.\nDas Land ist bekannt für ihren Traum von Freiheit.\nIn einer der bekanntesten Staedte steht eine grosse Statue auf einer Insel mit einer Fackel in der Hand, welche sie nach oben streckt.\nAuf dem Kopf traegt sie eine Krone in ihr ist die zweite Floppy-Disk versteckt.",
-  "encryptionMethod":"Cäsar Verschlüsselung",
+  "encryptionType":"Cäsar Verschlüsselung",
   "answerOptionsEncryption":["Rückwärtsverschlüsselung", "Cäsar Verschlüsselung", "Vigenère Verschlüsselung"],
   "correctAnswerEncryption": 2,
   "answerOptionsCity":["New York", "Wien", "Moskau"],

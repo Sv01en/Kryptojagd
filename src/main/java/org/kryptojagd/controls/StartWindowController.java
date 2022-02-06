@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
  *
  * @author Leah Schlimm
  */
-public class LaunchWindowController extends AbstractController {
+public class StartWindowController extends AbstractController {
 
     /**
      * Handles press on settings button
@@ -18,7 +18,7 @@ public class LaunchWindowController extends AbstractController {
     @FXML
     void clickSettings(ActionEvent event) {
         System.out.println("Das ist ein Test");
-        //mainController.switchWindowWithCSS("Encryption.fxml", "../css/startwindow.css");
+        //mainController.switchWindowWithCSS("EncryptionTask.fxml", "../css/startwindow.css");
     }
 
     /**
@@ -39,7 +39,7 @@ public class LaunchWindowController extends AbstractController {
     @FXML
     void clickStart(ActionEvent event) {
     	System.out.println("Es wurde auf Start geklickt!");
-    	mainController.runLevel();
+    	mainController.startLevel();
     }
 
     @FXML

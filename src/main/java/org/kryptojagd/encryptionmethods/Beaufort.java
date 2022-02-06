@@ -10,6 +10,10 @@ public class Beaufort extends Encryption {
     private static final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
+    public Beaufort() {
+        super.name = "Beaufort";
+    }
+
     /**
      * Generated a random number between 4 and 6
      * @return Random int value

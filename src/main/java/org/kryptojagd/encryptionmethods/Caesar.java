@@ -7,6 +7,10 @@ package org.kryptojagd.encryptionmethods;
  */
 public class Caesar extends Encryption {
 
+    public Caesar() {
+        super.name = "Caesar";
+    }
+
     /**
      * Generates a random number between 1 and 25
      * @return Random int value
@@ -57,10 +61,11 @@ public class Caesar extends Encryption {
     /**
      * Decrypts an encrypted text with the corresponding key
      * @param text Text to be deciphered
-     * @param key Passed key
+     * @param keyString Passed key
      * @return Deciphered text in uppercase
      */
-    public String decode(String text, int key) {
+    public String decode(String text, String keyString) {
+        int key = Integer.parseInt(keyString);
         
         if (key < 0 || key > 26) {
             return text.toUpperCase();

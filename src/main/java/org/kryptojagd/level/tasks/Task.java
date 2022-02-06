@@ -7,7 +7,6 @@ package org.kryptojagd.level.tasks;
  */
 public interface Task {
 
-
     /**
      * Checks the answer to the task
      *
@@ -17,9 +16,24 @@ public interface Task {
     boolean proveAnswer(String answer);
 
     /**
+     * Returns if the task is complete
+     *
+     * @return true or false as boolean
+     */
+    boolean getTaskCompleted();
+
+    /**
+     * Returns the possibilities as a string array.
+     *
+     * @return possibilities as a string array
+     */
+    String[] getPossibilities();
+
+    /**
      * Returns the task as string
      *
      * @return the task as string
      */
     String toString();
+
 }

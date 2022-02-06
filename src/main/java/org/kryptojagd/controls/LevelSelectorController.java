@@ -30,11 +30,11 @@ public class LevelSelectorController extends AbstractController {
             int finalI = i;
             button.setOnAction(event -> {
                 int countClearedLevels = mainController.getClearedLevels();
-                setMainController(new MainController(mainController.getPresentationManager(), levels.get(finalI),
-                    levels,
+                setMainController(
+                        new MainController(mainController.getPresentationManager(), levels.get(finalI), levels,
                     countClearedLevels));
                 System.out.println("Button " + finalI + " pressed!");
-                mainController.runLevel();
+                mainController.startLevel();
             });
             if (i > mainController.getClearedLevels()) {
                 button.setDisable(true);

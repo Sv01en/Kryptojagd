@@ -3,6 +3,7 @@ package org.kryptojagd.controls;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * The class controls every kind of controller and puts them together
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @author Michail Petermann, Sonja Kuklok, Sven Strasser, Leah Schlimm
  */
 public class MainController {
-	
+
 	private PresentationManager fw;
 
 	private Level currentLevel;
@@ -27,12 +28,14 @@ public class MainController {
 
 	protected boolean cityTaskFinished;
 
+	public static final String TASK_FINISHED_FXML = "TaskFinished.fxml";
+
+
 	/**
 	 * Constractor of a MainController
 	 *
 	 * @param fw            the fw
 	 * @param currentLevel  the current Level, which is played
-	 * @param allLevels     the all levels
 	 * @param clearedLevels the cleared levels
 	 */
 	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels) {
@@ -44,10 +47,17 @@ public class MainController {
 	}
 
 	/**
-	 * Runs a whole level which each task
+	 * Starts the current level
 	 */
-	public void runLevel() {
-		runDecryptionTask();
+	public void startLevel() {
+		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", "../css/startwindow.css");
+	}
+
+	/**
+	 * Sets the next level
+	 */
+	public void setNextLevel() {
+		this.currentLevel = allLevels.get(clearedLevels);
 	}
 
 	/**
@@ -114,51 +124,4 @@ public class MainController {
 		this.clearedLevels++;
 	}
 
-	/**
-	 * Runs the encryption tasks
-	 *
-	 *
-	 */
-	private void runEncryptionTask() {
-
-	}
-
-	/**
-	 * Runs the decryption tasks
-	 *
-	 *
-	 */
-	private void runDecryptionTask() {
-		if (!currentLevel.decryptionIsFinished() && !currentLevel.cityIsFinished()) {
-			System.out.println("Run decryption task");
-			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
-		} else if (!currentLevel.cityIsFinished() && currentLevel.decryptionIsFinished()) {
-			System.out.println("Run city task");
-			switchWindowWithCSS("Decryption.fxml", "../css/startwindow.css");
-		} else if (currentLevel.decryptionIsFinished() && currentLevel.cityIsFinished()
-			&& !currentLevel.multipleChoiceIsFinished()) {
-			String city = currentLevel.getCity();
-			String css = "../css/" + city + ".css";
-			switchWindowWithCSS("MultipleChoice.fxml", css);
-		} else {
-			String city = currentLevel.getCity();
-			String css = "../css/" + city + ".css";
-			switchWindowWithCSS("Encryption.fxml", css);
-		}
-	}
-
-	/**
-	 * Runs the multiple choice tasks
-	 *
-	 * If every multiple choice task is answered, it switches the window to the levelEnd
-	 * if not, it switches the window to a new multiple choice task
-	 *
-	 */
-	private void runMultipleChoice() {
-		if (!currentLevel.multipleChoiceIsFinished()) {
-			switchWindow("MultipleChoice.fxml");
-		} else {
-			switchWindow("Levelabschluss.fxml");
-		}
-	}
 }

@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
  * @author Sven Strasser
  * @version 1.0
  */
-public class LevelFinishedSelector extends AbstractController {
+public class LevelFinished extends AbstractController {
 
     /**
      *
@@ -19,6 +19,7 @@ public class LevelFinishedSelector extends AbstractController {
     void menuAction(ActionEvent e) {
         mainController.getCurrentLevel().clearLevel();
         mainController.setClearedLevels();
+        mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
@@ -34,13 +35,15 @@ public class LevelFinishedSelector extends AbstractController {
     void nextLevelAction(ActionEvent e) {
         String city = mainController.getCurrentLevel().getCity();
         String css = "../css/" + city + ".css";
-
         mainController.getCurrentLevel().clearLevel();
         mainController.setClearedLevels();
+        mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.cityTaskFinished = false;
-        mainController.switchWindowWithCSS("Decryption.fxml", css);
+        mainController.startLevel();
     }
+
+
 }

@@ -6,6 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.controls.resources.Messages;
+import org.kryptojagd.level.Level;
+import org.kryptojagd.level.tasks.DecryptionTask;
+import org.kryptojagd.level.tasks.EncryptionTask;
+import org.kryptojagd.level.tasks.MultipleChoiceTask;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * Gives the right feedback to a task and switches the window.
@@ -13,6 +19,10 @@ import javafx.util.Duration;
  * @author Sonja Kuklok, Leah Schlimm
  */
 public class TaskFinishedController extends AbstractController {
+
+	private Level level = mainController.getCurrentLevel();
+	private Task task = level.getCurrentTask();
+	private static final String LEVEL_FINISHED = "LevelFinished.fxml";
 
 	@FXML
 	private Label timer = new Label();
@@ -22,45 +32,74 @@ public class TaskFinishedController extends AbstractController {
 
 	/**
 	 * Initializes a TaskFinishedController
-	 * <p></p>
-	 * Gives the right feedback to a multipleChoice and switches the window.
-	 *<p></p>
-	 * If the answer was right, it prints out "Richtig, weiter so!"<p></p>
-	 * If the answer was wrong, it prints out "Leider falsch, versuche es noch einmal. Du musst dich beeilen!"<p></p>
-	 * in both cases it switchs to a new multiple choice window
-	 * if every question of a level is answered, it prints out "Glückwunsch, du hast alle Fragen richtig beantwortet!"
+	 *
+	 * if every multiple choice question of a level is answered, it prints out the finished multiple choice text
+	 * if the city question of a level is right answered, it prints out the textAfterStartDecryption
+	 * If the task is completed, it prints out the good standard feedback
+	 * else it prints out  the bad standard feedback
 	 *
 	 */
 	@FXML
 	public void initialize() {
 		updateTimer();
-		if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
-			if (mainController.multipleChoiceTaskSucceeded) {
-				feedbackText.setText("Richtig, weiter so!");
-			} else {
-				feedbackText.setText("Die Antwort war leider falsch! "
-						+ "Eve ist der Floppy-Disk einen Schritt näher gekommen. Beeile dich!");
-			}
+		if (level.isLevelCompleted()) {
+			feedbackText.setText(Messages.LEVEL_FINISHED);
+			return;
+		}
+		if (level.isMultipleChoiceFinished() && task instanceof MultipleChoiceTask) {
+			feedbackText.setText(Messages.FINISHED_MULTIPLE_CHOICE);
 		} else {
-			feedbackText.setText("Glückwunsch, du hast alle Fragen richtig beantwortet und die Floppy-Disk erhalten!"
-					+ "\nSchicke dem NIV eine verschlüsselte Bestätigung, dass ihr die Floppy-Disk erhalten habt.");
+			proveActualTask();
 		}
 	}
 
 	/**
-	 * Handles the switch to eather the next multiple choice question or the next task
+	 * Proves the actual task and sets the right feedback text
+	 */
+	private void proveActualTask() {
+		if (task.getTaskCompleted()) {
+			if (level.isCityTaskShowing()) {
+				feedBackAfterCityTask();
+				return;
+			}
+			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
+		} else {
+			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
+		}
+	}
+
+	private void feedBackAfterCityTask() {
+		if (level.cityIsFinished()) {
+			feedbackText.setText(level.getTextAfterStartDecryption());
+			level.setCityShowing(false);
+		} else {
+			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
+		}
+	}
+
+
+
+	/**
+	 * Handles the switch to the next task
+	 * If the the decryption task as last task is answered,
+	 * it switches the window to the menu
+	 *
 	 * @param event that is received
 	 */
 	 @FXML
-	 void switchMultipleChoice(ActionEvent event) {
-	 	if (!mainController.getCurrentLevel().multipleChoiceIsFinished()) {
-			String city = mainController.getCurrentLevel().getCity();
-			String css = "../css/" + city + ".css";
-
-			mainController.switchWindowWithCSS("MultipleChoice.fxml", css);
+	 void nextWindow(ActionEvent event) {
+	 	if (!level.isLevelCompleted()) {
+			String css;
+	 		if (level.cityIsFinished()) {
+				String city = level.getCity();
+				css = "../css/" + city + ".css";
+			} else {
+	 			css = "../css/startwindow.css";
+			}
+			level.setNextTask(level.getCurrentTask());
+			mainController.switchWindowWithCSS(level.getCurrentTask() + ".fxml", css);
 		} else {
-			//mainController.switchWindow("Startfenster.fxml");
-			mainController.runLevel();
+			mainController.switchWindow(LEVEL_FINISHED);
 		}
 	 }
 
@@ -73,8 +112,8 @@ public class TaskFinishedController extends AbstractController {
 		time.setCycleCount(Timeline.INDEFINITE);
 		time.stop();
 		KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-			timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-			if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+			timer.setText(Integer.toString(level.getTimeInSec()));
+			if (level.getTimeInSec() <= 0) {
 				mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
 				time.stop();
 			}

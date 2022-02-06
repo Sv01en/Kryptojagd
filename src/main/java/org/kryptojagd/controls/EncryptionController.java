@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
+import org.kryptojagd.level.Level;
+import org.kryptojagd.level.tasks.EncryptionTask;
 
 /**
  * Encryption Controller for the corresponding fxml-file
@@ -16,6 +18,9 @@ import javafx.util.Duration;
  * @version 1.0
  */
 public class EncryptionController extends AbstractController {
+
+    private Level level = mainController.getCurrentLevel();
+    private EncryptionTask task = (EncryptionTask) level.getCurrentTask();
 
     @FXML
     private Label timer = new Label();
@@ -37,11 +42,11 @@ public class EncryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        if (mainController.getCurrentLevel().getEncryptionInput() != null) {
-            textField1.setText(mainController.getCurrentLevel().getEncryptionInput());
+        if (level.getEncryptionInput() != null) {
+            textField1.setText(level.getEncryptionInput());
         }
-        label1.setText(mainController.getCurrentLevel().getEncryptionTask().getTask());
-        label2.setText(mainController.getCurrentLevel().getEncryptionTask().getText());
+        label1.setText(task.getTaskText());
+        label2.setText(task.getText());
         updateTimer();
     }
 
@@ -55,12 +60,12 @@ public class EncryptionController extends AbstractController {
      */
     @FXML
     void checkEncryption(ActionEvent event) {
-        boolean solutionStatus = mainController.getCurrentLevel().proveEncryptionTask(textField1.getText());
-        mainController.encryptionTaskSucceeded = solutionStatus;
-        String city = mainController.getCurrentLevel().getCity();
+        level.proveTask(textField1.getText());
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
+        String city = level.getCity();
         String css = "../css/" + city + ".css";
 
-        if (solutionStatus) {
+        if (task.getTaskCompleted()) {
             mainController.switchWindowWithCSS("EncryptionTaskFinished.fxml", css);
         } else {
             mainController.switchWindowWithCSS("MistakeMessage.fxml", css);
@@ -76,8 +81,8 @@ public class EncryptionController extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(Integer.toString(mainController.getCurrentLevel().getTimeInSec()));
-            if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+            timer.setText(Integer.toString(level.getTimeInSec()));
+            if (level.getTimeInSec() <= 0) {
                 mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
                 time.stop();
             }

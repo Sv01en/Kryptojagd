@@ -47,6 +47,8 @@ public class EncryptionTask implements Task {
 
     private boolean taskCompleted;
 
+    private HammingDistance hammingDistance = new HammingDistance();
+
     private int hammingDistanceValue;
 
     /**
@@ -82,7 +84,7 @@ public class EncryptionTask implements Task {
      *
      * @return the task
      */
-    public String getTask() {
+    public String getTaskText() {
         return task;
     }
 
@@ -123,20 +125,11 @@ public class EncryptionTask implements Task {
         this.encryptionMethod = encryptionMethod;
     }
 
-    /**
-     * Gets encryption method.
-     *
-     * @return the encryption method
-     */
-    public Encryption getEncryptionMethod() {
-        return encryptionMethod;
-    }
-
     @Override
     public boolean proveAnswer(String answer) {
         char[] origMsg = new char[this.text.length()];
         char[] studentSolution = new char[answer.length()];
-        String realSolutionString = this.encryptionMethod.encode(this.text, this.key);
+        String realSolutionString = this.encryptionMethod.encode(this.text);
         char[] realSolution = new char[realSolutionString.length()];
 
         for (int i = 0; i < this.text.length(); i++) {
@@ -199,6 +192,17 @@ public class EncryptionTask implements Task {
             }
         }
         return true;
+    }
+
+    //ToDo default
+    @Override
+    public String[] getPossibilities() {
+        return new String[0];
+    }
+
+    @Override
+    public String toString() {
+        return "EncryptionTask";
     }
 
     /**

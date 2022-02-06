@@ -1,5 +1,5 @@
 {
-  "question19": "Was bedeutet Malware?",
-  "answerOptions19": ["bösartige Schadsoftware", "Interne Software", "Cloud-basierte Software"],
-  "correctAnswer19": "bösartige Schadsoftware"
+  "question": "Was bedeutet Malware?",
+  "answerOptions": ["bösartige Schadsoftware", "Interne Software", "Cloud-basierte Software"],
+  "correctAnswer": "bösartige Schadsoftware"
 }

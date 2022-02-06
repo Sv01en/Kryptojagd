@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.LevelFinishedSelector">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.LevelFinished">
    <children>
       <Button id="NextLevel" fx:id="NextLevel" layoutX="250.0" layoutY="248.0" mnemonicParsing="false" onAction="#nextLevelAction" text="Nächstes Level" />
       <Button id="Menu" fx:id="Menu" layoutX="276.0" layoutY="294.0" mnemonicParsing="false" onAction="#menuAction" text="Menü" />

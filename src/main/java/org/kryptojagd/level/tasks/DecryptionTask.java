@@ -11,9 +11,9 @@ public class DecryptionTask implements Task {
 
 	private String plainText;
 
-	private String encryptionMethod;
+	private String encryptionType;
 
-	private Encryption encryptionMethod1;
+	private Encryption encryptionMethod;
 
 	private String[] answerOptionsEncryption;
 
@@ -34,12 +34,12 @@ public class DecryptionTask implements Task {
 	private boolean correctAnswerCityBool;
 
 	private boolean isCityTaskShowing;
+	private boolean taskCompleted = false;
 
 	/**
 	 * Contructor of a decryption task
 	 *
 	 * @param plainText               text that will be displayed encrypted
-	 * @param encryptionMethod        method to entcrypt plaintext with
 	 * @param answerOptionsEncryption answer options for decryption task
 	 * @param correctAnswerEncryption correct answer of decryption task
 	 * @param answerOptionsCity       answer options for city selector
@@ -48,18 +48,17 @@ public class DecryptionTask implements Task {
 	 * @param timeInSec               time in sec for the task
 	 * @param timePenalty             the time penalty
 	 */
-	public DecryptionTask(String plainText, String encryptionMethod, String[] answerOptionsEncryption,
+	public DecryptionTask(String plainText, String encryptionType, String[] answerOptionsEncryption,
 						  int correctAnswerEncryption, String[] answerOptionsCity, int correctAnswerCity,
 						  String textAfterStart, int timeInSec, int timePenalty) {
 		this.plainText = plainText;
-		this.encryptionMethod = encryptionMethod;
+		this.encryptionType = encryptionType;
 		this.answerOptionsEncryption = answerOptionsEncryption;
 		this.correctAnswerEncryption = correctAnswerEncryption;
 		this.answerOptionsCity = answerOptionsCity;
 		this.correctAnswerCity = correctAnswerCity;
 		this.textAfterStart = textAfterStart;
 		this.timeInSec = timeInSec;
-		this.correctAnswer = false;
 		this.correctAnswerCityBool = false;
 		this.isCityTaskShowing = false;
 		this.timePenalty = timePenalty;
@@ -74,25 +73,40 @@ public class DecryptionTask implements Task {
 	}
 
 	/**
-	 * Proofs the answer of decryption task
-	 * @param answer to proof
-	 * @return true if the answer is correct, else false
+	 * Sets encryption method.
+	 *
+	 * @param encryptionMethod the encryption method
 	 */
+	public void setEncryptionMethod(Encryption encryptionMethod) {
+		this.encryptionMethod = encryptionMethod;
+	}
+
 	@Override
 	public boolean proveAnswer(String answer) {
-		if (answer.equals(this.encryptionMethod)) {
-			this.correctAnswer = true;
-			return true;
-		}
-		this.correctAnswer = false;
-		return false;
+		this.taskCompleted = answer.equals(this.encryptionType);
+		return taskCompleted;
+	}
+
+	@Override
+	public String[] getPossibilities() {
+		return this.answerOptionsEncryption;
+	}
+
+	@Override
+	public boolean getTaskCompleted() {
+		return taskCompleted;
+	}
+
+	@Override
+	public String toString(){
+		return "DecryptionTask";
 	}
 
 	/**
 	 * If the decryption task is finished, this has to be set to display the city task correctly
 	 */
-	public void setCityShowing() {
-		this.isCityTaskShowing = true;
+	public void setCityShowing(boolean isShowing) {
+		this.isCityTaskShowing = isShowing;
 	}
 
 	/**
@@ -103,13 +117,6 @@ public class DecryptionTask implements Task {
 		return this.plainText;
 	}
 
-	/**
-	 * Getter for answer options of decryption task
-	 * @return answer options
-	 */
-	public String[] getAnswerOptionsEncryption() {
-		return this.answerOptionsEncryption;
-	}
 
 	/**
 	 * Getter for time in sec
@@ -120,20 +127,12 @@ public class DecryptionTask implements Task {
 	}
 
 	/**
-	 * Getter, if the given answer was correct
-	 * @return true if it was, else false
-	 */
-	public boolean getCorrectAnswer() {
-		return this.correctAnswer;
-	}
-
-	/**
 	 * Proof if the selected city is correct
 	 * @param answer answer to proof
 	 * @return true if the answer was correct, else false
 	 */
-	public boolean proofCityAnswer(int answer) {
-		if (answer == correctAnswerCity) {
+	public boolean proofCityAnswer(String answer) {
+		if (answer.equals(answerOptionsCity[correctAnswerCity])) {
 			this.correctAnswerCityBool = true;
 			return true;
 		}

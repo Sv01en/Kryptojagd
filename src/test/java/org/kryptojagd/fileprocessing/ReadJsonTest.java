@@ -59,7 +59,7 @@ class ReadJsonTest {
 
     assert enc != null;
     Assertions.assertEquals(enc.getEncryption(), encType);
-    Assertions.assertEquals(enc.getTask(), task);
+    Assertions.assertEquals(enc.getTaskText(), task);
     Assertions.assertEquals(enc.getText(), text);
   }
 

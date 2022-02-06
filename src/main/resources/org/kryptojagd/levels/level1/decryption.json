@@ -1,6 +1,6 @@
 {
 	"plainText": "In der Stadt mit einem eisernen Turm und der glaesernen Pyramide befindet sich die Disk.\nSie wird bewacht von der Frau mit dem geheimnisvollen Laecheln und hat den besten Blick auf den glitzernden Fluss der die Stadt teilt.\nJeden morgen kann sie die vielseitigen Klaenge der Glocken hoeren, die Quasimodo liebevoll umsorgt.",
-	"encryptionMethod":"Rückwärtsverschlüsselung",
+	"encryptionType":"Rückwärtsverschlüsselung",
 	"answerOptionsEncryption":["Rückwärtsverschlüsselung", "RSA Verschlüsselung", "Cäsar Verschlüsselung"],
 	"correctAnswerEncryption": 0,
 	"answerOptionsCity":["Prag", "Paris", "Stockholm"],
