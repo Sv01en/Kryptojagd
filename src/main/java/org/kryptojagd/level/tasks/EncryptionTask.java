@@ -136,15 +136,15 @@ public class EncryptionTask implements Task {
             origMsg[i] = Character.toUpperCase(this.text.charAt(i));
         }
         for (int i = 0; i < answer.length(); i++) {
-            studentSolution[i] = answer.charAt(i);
+            studentSolution[i] = Character.toUpperCase(answer.charAt(i));
         }
         for (int i = 0; i < realSolutionString.length(); i++) {
             realSolution[i] = realSolutionString.charAt(i);
         }
-
-        this.taskCompleted = answer.equals(realSolutionString);
-        this.hammingDistanceValue = HammingDistance.calculateHammingDistance(realSolutionString, answer);
-        if (answer.equals(realSolutionString)) {
+        String upperAnswer = answer.toUpperCase();
+        this.taskCompleted = upperAnswer.equals(realSolutionString);
+        this.hammingDistanceValue = HammingDistance.calculateHammingDistance(realSolutionString, upperAnswer);
+        if (upperAnswer.equals(realSolutionString)) {
             return true;
         } else if (studentSolution.length != realSolution.length) {
             this.mistakeMsg = WRONGCOUNTLETTER;

@@ -21,6 +21,7 @@ public class Caesar extends Encryption {
 
     }
 
+    //ToDo
     /**
      * Encrypts a string with a randomly generated key
      * @param text Text to be encrypted
@@ -29,9 +30,9 @@ public class Caesar extends Encryption {
     public String encode(String text) {
 
         // key zwischen [1,26), damit 0 nicht als Schluessel verwendet wird
-        int key = generateKey();
+       // int key = generateKey();
 
-        return encode(text, key);
+        return encode(text, 3);
     }
 
     /**

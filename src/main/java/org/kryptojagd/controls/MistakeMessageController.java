@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.kryptojagd.level.Level;
+import org.kryptojagd.level.tasks.EncryptionTask;
+import org.kryptojagd.level.tasks.MultipleChoiceTask;
 
 /**
  * The class controls a window of the messages if a student is doing a mistake
@@ -13,6 +16,9 @@ import javafx.scene.control.Label;
  * @version 1.0
  */
 public class MistakeMessageController extends AbstractController {
+
+    private Level level = mainController.getCurrentLevel();
+    private EncryptionTask task = (EncryptionTask) level.getCurrentTask();
 
     @FXML
     private Label message1;
@@ -25,7 +31,7 @@ public class MistakeMessageController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        message1.setText(mainController.getCurrentLevel().getEncryptionTask().getMistakeMsg());
+        message1.setText(task.getMistakeMsg());
     }
 
     /**
@@ -35,9 +41,9 @@ public class MistakeMessageController extends AbstractController {
      */
     @FXML
     void clickNext(ActionEvent event) {
-        String city = mainController.getCurrentLevel().getCity();
+        String city = level.getCity();
         String css = "../css/" + city + ".css";
-        mainController.switchWindowWithCSS("Encryption.fxml", css);
+        mainController.switchWindowWithCSS("EncryptionTask.fxml", css);
     }
 
 }

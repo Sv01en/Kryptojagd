@@ -209,7 +209,7 @@ public class DecryptionTask implements Task {
 	 * @return encryption method
 	 */
 	public String getEncryptionMethod() {
-		return encryptionMethod;
+		return encryptionMethod.toString();
 	}
 
 	/**

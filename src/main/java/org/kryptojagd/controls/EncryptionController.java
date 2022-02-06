@@ -66,7 +66,7 @@ public class EncryptionController extends AbstractController {
         String css = "../css/" + city + ".css";
 
         if (task.getTaskCompleted()) {
-            mainController.switchWindowWithCSS("EncryptionTaskFinished.fxml", css);
+            mainController.switchWindowWithCSS("TaskFinished.fxml", css);
         } else {
             mainController.switchWindowWithCSS("MistakeMessage.fxml", css);
         }
