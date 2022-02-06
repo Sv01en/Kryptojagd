@@ -55,4 +55,24 @@ public class StartWindowController extends AbstractController {
     public void clickLevelSelector(ActionEvent event) {
         mainController.switchWindowWithCSS("LevelSelector.fxml", "../css/startwindow.css");
     }
+
+    /**
+     * Handles press on start button
+     * @param event that is received
+     */
+    @FXML
+    void clickCryptoCaesar(ActionEvent event) {
+        System.out.println("Es wurde auf Kryptotool Cäsar Button geklickt!");
+        mainController.startLevel();
+    }
+
+    /**
+     * Handles press on start button
+     * @param event that is received
+     */
+    @FXML
+    void clickCryptoVigeniere(ActionEvent event) {
+        System.out.println("Es wurde auf Kryptotool Vigeniére Button geklickt!");
+        mainController.startLevel();
+    }
 }
