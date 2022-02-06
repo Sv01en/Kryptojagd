@@ -117,6 +117,7 @@ public class MultipleChoiceController extends AbstractController {
      * Updates the {@link MultipleChoiceController#timer} every second in the corresponding fxml-file.
      */
     @FXML
+    @Override
     void updateTimer() {
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);

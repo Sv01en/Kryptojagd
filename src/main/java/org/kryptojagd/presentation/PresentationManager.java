@@ -1,6 +1,8 @@
 package org.kryptojagd.presentation;
 
 import java.io.IOException;
+import java.util.Objects;
+
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,7 +36,7 @@ public class PresentationManager {
 		Parent root;
 		try {
 
-			root = FXMLLoader.load(getClass().getResource(str));
+			root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(str)));
 			// root = loader.load();
 			Scene scene = new Scene(root);	
 			stage.setScene(scene);

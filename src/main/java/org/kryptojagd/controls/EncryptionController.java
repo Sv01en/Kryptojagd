@@ -64,6 +64,7 @@ public class EncryptionController extends AbstractController {
      * Updates the {@link EncryptionController#timer} every second in the corresponding fxml-file.
      */
     @FXML
+    @Override
     void updateTimer() {
         Timeline time = new Timeline();
         time.setCycleCount(Timeline.INDEFINITE);
