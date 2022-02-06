@@ -89,8 +89,13 @@ public class TaskFinishedController extends AbstractController {
 	 @FXML
 	 void nextWindow(ActionEvent event) {
 	 	if (!level.isLevelCompleted()) {
-			String city = level.getCity();
-			String css = "../css/" + city + ".css";
+			String css;
+	 		if (level.cityIsFinished()) {
+				String city = level.getCity();
+				css = "../css/" + city + ".css";
+			} else {
+	 			css = "../css/startwindow.css";
+			}
 			level.setNextTask(level.getCurrentTask());
 			mainController.switchWindowWithCSS(level.getCurrentTask() + ".fxml", css);
 		} else {
