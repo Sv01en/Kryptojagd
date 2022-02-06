@@ -12,23 +12,28 @@ import org.kryptojagd.encryptionmethods.*;
 public class EncryptionTask implements Task {
 
     /**
-     * The constant WRONGCOUNTLETTER.
+     * The constant WRONGCOUNTLETTER
+     * (if there are more or less letters in answer compared to correct answer).
      */
     public static final String WRONGCOUNTLETTER = "Pass auf, dass du genau so viele Buchstaben verschlüsselst wie auch in der Nachricht vorkommen.";
     /**
-     * The constant WRONGCOUNTLETTER.
+     * The constant WRONGBACKWARDS
+     * (if whole text is encrypted backwards instead of word by word).
      */
     public static final String WRONGBACKWARDS = "Pass auf, jedes Wort sollte einzeln verschlüsselt werden.";
     /**
-     * The constant WRONGCOUNTLETTER.
+     * The constant WRONGFLIP
+     * (if the answer is encrypted correctly except of one or two letter-flips).
      */
     public static final String WRONGFLIP = "Pass auf, es scheint so als hätten sich ein oder zwei Buchstabendreher bei dir eingeschlichen.";
     /**
-     * The constant WRONGCOUNTLETTER.
+     * The constant TYPINGERROR
+     * (if there are one, two or three typing errors).
      */
     public static final String TYPINGERROR = "Pass auf, es scheint so als hätten sich ein paar Tippfehler bei dir eingeschlichen.";
     /**
-     * The constant WRONGCOUNTLETTER.
+     * The constant WRONGCOUNTLETTER
+     * (if the answer has too many mistakes).
      */
     public static final String ALLWRONG = "Schade, dass ist leider nicht richtig verschlüsselt, versuche es noch einmal.";
 
