@@ -1,0 +1,5 @@
+{
+    "question": "Was bedeutet HTML?",
+    "answerOptions": ["Hypertext Markup Language", "Hyper Type Markup Language", "Hypertext Max Language"],
+    "correctAnswer": "Hypertext Markup Language"
+}

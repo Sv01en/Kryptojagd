@@ -1,0 +1,5 @@
+{
+  "question": "Wie wird die kleinste digitale Informationseinheit bezeichnet?",
+  "answerOptions": ["Bill", "Bit", "Byte"],
+  "correctAnswer": "Bit"
+}

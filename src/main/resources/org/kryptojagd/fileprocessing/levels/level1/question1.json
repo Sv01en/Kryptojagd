@@ -1,0 +1,10 @@
+{
+    "$schema": "./quest_schema.json",
+    "question": "Warum werden Texte verschluesselt? Hat das irgend einen bestimmten Grund?",
+    "answerOptions": [
+        "Nein, der Verfasser wollte sich nur einen Spass erlauben.",
+        "Ja, der Text kann sonst von jedem gelesen werden und das waere nicht sicher.",
+        "Ja, denn der Verfasser kommt vermutlich aus einem Land indem es ueblich ist Texte so zu schreiben."],
+    "correctAnswer": "Ja, der Text kann sonst von jedem gelesen werden und das waere nicht sicher."
+
+}

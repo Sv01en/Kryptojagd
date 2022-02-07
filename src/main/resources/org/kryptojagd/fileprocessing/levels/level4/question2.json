@@ -1,0 +1,5 @@
+{
+  "question": "Wie viele Zustände kann man mit zwei Bits herstellen? ",
+  "answerOptions": ["2", "4", "6"],
+  "correctAnswer": "4"
+}

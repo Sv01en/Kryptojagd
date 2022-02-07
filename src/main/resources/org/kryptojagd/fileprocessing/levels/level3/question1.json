@@ -1,0 +1,5 @@
+{
+    "question":"Was versteht man in der Informatik unter einem Verweis?",
+    "answerOptions":["Eine Textstelle", "Eine Bilddatei", "Ein Hinweis auf eine andere Textstelle"],
+    "correctAnswer": "Ein Hinweis auf eine andere Textstelle"
+}

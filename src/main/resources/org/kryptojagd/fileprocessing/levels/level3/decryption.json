@@ -1,0 +1,12 @@
+{
+  "plainText": "Sie befindet sich in der Hauptstadt eines Koenigreichs.\nDas Land, in dem sich die naechste Disk befindet, ist für ihre roten Telefonzellen und Doppeldeckerbusse bekannt.\nIn der Stadt gibt es einen grossen Glockenturm, einen Palast, in dem eine sehr alte Dame lebt und ein Riesenrad direkt am Fluss.",
+  "encryptionType":"Cäsar-Variante Verschlüsselung",
+  "answerOptionsEncryption":["Cäsar-Variante Verschlüsselung", "AES Verschlüsselung", "Cäsar Verschlüsselung"],
+  "correctAnswerEncryption":0,
+  "answerOptionsCity":["Brüssel", "Warschau", "London"],
+  "correctAnswerCity":2,
+  "textAfterStart":"Ihr seid gerade in London gelandet.\nAber eure Erzfeindin Eve ist euch immer noch auf den Fersen.\nAlso verschiebt den vier-Uhr-Tee auf ein Anderes Mal, denn ihr müsst euch beeilen, damit Eve euch nicht zuvorkommt.\nSCHNELL!",
+  "timeInSec": 300,
+  "timePenalty": 20
+}
+

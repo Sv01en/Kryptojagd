@@ -1,0 +1,7 @@
+{
+  "question": "Durch welche Technik wird eine CD oder DVD gelesen?",
+  "answerOptions": ["Magnetismus",
+    "Laser",
+    "Chip"],
+  "correctAnswer": "Laser"
+}

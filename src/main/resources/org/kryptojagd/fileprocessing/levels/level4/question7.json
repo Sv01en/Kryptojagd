@@ -1,0 +1,7 @@
+{
+  "question": "Welche Aufgabe hat eine URL?",
+  "answerOptions": ["Eindeutige Adressierung einer Seite im Internet",
+    "Eindeutiger Namen eines Objekts",
+    "Eindeutiger Name einer Methode"],
+  "correctAnswer": "Eindeutiger Namen eines Objekts"
+}

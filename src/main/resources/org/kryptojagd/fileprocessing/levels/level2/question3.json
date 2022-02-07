@@ -1,0 +1,7 @@
+{
+  "question":"Bringt es etwas für die Sicherheit des Verfahrens, wenn man Cäsar mehrmals anwendet?",
+  "answerOptions":["Ja",
+    "Nein",
+    "Vielleicht"],
+  "correctAnswer": "Nein"
+}

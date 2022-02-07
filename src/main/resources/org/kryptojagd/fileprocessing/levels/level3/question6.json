@@ -1,0 +1,5 @@
+{
+  "question": "Was ist ein Router?",
+  "answerOptions": ["Ein Client", "Ein Vermittlerrechner", "Ein Server"],
+  "correctAnswer": "Ein Vermittlerrechner"
+}

@@ -58,7 +58,6 @@ public class PresentationManager {
 	 */
 	public void switchWindowWithCSS(String path, String css) {
 		try {
-			System.out.println(getClass().toString());
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 			BorderPane rootLayout = (BorderPane) loader.load();
 			Scene scene = new Scene(rootLayout);

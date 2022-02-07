@@ -4,7 +4,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.TextField?>
 <BorderPane id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.StartWindowController">
    <center>
       <VBox alignment="CENTER" prefHeight="339.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
@@ -13,8 +12,8 @@
             <Button fx:id="infoButton" mnemonicParsing="false" onAction="#clickInfo" prefHeight="24.0" prefWidth="232.0" text="Einleitung" />
             <Button fx:id="levelSelectorButton" mnemonicParsing="false" onAction="#clickLevelSelector" prefHeight="24.0" prefWidth="232.0" text="Levelauswahl" />
             <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#clickSettings" prefHeight="24.0" prefWidth="232.0" text="Einstellungen" />
-            <Button fx:id="CryptoCaesarButton" mnemonicParsing="false" onAction="#clickSettings" prefHeight="24.0" prefWidth="232.0" text="Kryptotool Cäsar" />
-            <Button fx:id="CryptoVigenereButton" mnemonicParsing="false" onAction="#clickSettings" prefHeight="24.0" prefWidth="232.0" text="Kryptotool Vigeniére" />
+            <Button fx:id="CryptoCaesarButton" mnemonicParsing="false" onAction="#caesar" prefHeight="24.0" prefWidth="232.0" text="Kryptotool Cäsar" />
+            <Button fx:id="CryptoVigenereButton" mnemonicParsing="false" onAction="#vigenere" prefHeight="24.0" prefWidth="232.0" text="Kryptotool Vigeniére" />
          </children>
       </VBox>
    </center>
