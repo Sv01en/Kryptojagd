@@ -29,6 +29,11 @@ public final class Messages {
             " der ersten Floppy-Disk entdeckt und euch diesen weitergeleitet...\n" +
             "Starte das Spiel und finde die Floppy-Disks!\n";
 
+    public static final String DECRYPTION_QUESTION = "Du weißt, dass die Nachrichten immer mit einem 'Hallo' beginnen," +
+            " um die Nachricht entschlüsseln zu können musst du erst wissen, um welches Verschlüsselungsverfahren" +
+            " es sich handelt. Wähle aus:";
+
+
     /* private utility-class constructor */
     private Messages() { }
 }

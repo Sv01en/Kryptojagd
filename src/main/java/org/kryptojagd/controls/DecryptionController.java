@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
 
@@ -24,10 +25,10 @@ public class DecryptionController extends AbstractController {
     public Label question;
 
     @FXML
-    private Label timer = new Label();
+    public Label encryptedPuzzleText;
 
     @FXML
-    private Label encryptedPuzzleText = new Label();
+    private Label timer = new Label();
 
     @FXML
     private Button procedure1;
@@ -45,6 +46,7 @@ public class DecryptionController extends AbstractController {
     public void initialize() {
         if (!task.getTaskCompleted()) {
             level.startCountdown();
+            question.setText(Messages.DECRYPTION_QUESTION);
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
             encryptedPuzzleText.setText(level.getEncryptionMethod().

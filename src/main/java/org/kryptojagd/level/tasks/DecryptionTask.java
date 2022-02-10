@@ -9,6 +9,8 @@ import org.kryptojagd.encryptionmethods.Encryption;
  */
 public class DecryptionTask implements Task {
 
+	private static final String FIRST_WORD = "Hallo, ";
+
 	private String plainText;
 
 	private String encryptionType;
@@ -114,7 +116,7 @@ public class DecryptionTask implements Task {
 	 * @return plaintext
 	 */
 	public String getPlainText() {
-		return this.plainText;
+		return FIRST_WORD + this.plainText;
 	}
 
 
