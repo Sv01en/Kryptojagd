@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 public class PresentationManager {
 	
 	private Stage stage;
+	private boolean darkMode = false;
 
 	/**
 	 * Constructor of the PresentationManager
@@ -58,10 +59,22 @@ public class PresentationManager {
 	 */
 	public void switchWindowWithCSS(String path, String css) {
 		try {
+			String cssFile = "";
+			if (darkMode) {
+				char[] cssArr = css.toCharArray();
+				String tmp = "";
+				for (int i = 0; i < cssArr.length - 4; i++) {
+					tmp = tmp + cssArr[i];
+				}
+				tmp = tmp + "_dark.css";
+				cssFile = tmp;
+			} else {
+				cssFile = css;
+			}
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 			BorderPane rootLayout = (BorderPane) loader.load();
 			Scene scene = new Scene(rootLayout);
-			scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
+			scene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());
 			stage.setScene(scene);
 			stage.show();
 			stage.setOnCloseRequest(event -> {
@@ -72,5 +85,9 @@ public class PresentationManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void toggleDarkmode() {
+		this.darkMode = !this.darkMode;
 	}
 }

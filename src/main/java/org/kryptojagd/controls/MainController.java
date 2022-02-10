@@ -124,4 +124,9 @@ public class MainController {
 		this.clearedLevels++;
 	}
 
+	/**
+	 * Toggles dark mode on if its off and vice versa.
+	 */
+	public void toggleDarkmode() {fw.toggleDarkmode();}
+
 }
