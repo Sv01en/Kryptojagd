@@ -9,7 +9,7 @@
       <Label fx:id="feedbackText" text="Falsche Auswahl" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#nextWindow" text="Schließen" BorderPane.alignment="BOTTOM_CENTER" />
+      <Button mnemonicParsing="false" onAction="#nextWindow" text="Weiter" BorderPane.alignment="BOTTOM_CENTER" />
    </bottom>
    <top>
       <Label fx:id="timer" text="" BorderPane.alignment="TOP_RIGHT">

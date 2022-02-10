@@ -10,7 +10,7 @@
       <Label fx:id="label" text="Infotext" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#closeInfotext" text="Schließen" BorderPane.alignment="BOTTOM_CENTER" />
+      <Button mnemonicParsing="false" onAction="#closeInfotext" text="Weiter" BorderPane.alignment="BOTTOM_CENTER" />
    </bottom>
    <opaqueInsets>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
