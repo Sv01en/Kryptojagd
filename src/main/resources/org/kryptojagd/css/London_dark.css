@@ -1,0 +1,62 @@
+#box{
+
+    -fx-background-size: cover;
+    -fx-background-position: bottom, bottom, bottom, bottom, bottom, bottom;
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-image: url("../../../img/London_dark.png");
+}
+#answers{
+    -fx-text-alignment: left;
+}
+.label {
+    -fx-border-color: gainsboro;
+    -fx-border-radius: 10,10,10,10;
+    -fx-label-padding: 10,10,10,10;
+    -fx-background-color: gainsboro;
+    -fx-text-fill: black;
+    -fx-background-radius: 10,10,10,10;
+    -fx-font-family: monospace;
+    -fx-font-size:17px;
+    -fx-font-weight: 600;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}
+.button {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-family: monospace;
+    -fx-font-weight: 700;
+    -fx-font-size: 17px;
+    -fx-text-fill: white;
+}
+.button:hover {
+    -fx-background-color:
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+.button:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+.text-field {
+  -fx-border-color: gainsboro;
+  -fx-border-width: 1 1 1 1; // top, right, bottom, left
+  -fx-background-color: white;
+  -fx-background-radius: 10,10,10,10;
+  -fx-border-radius: 10,10,10,10;
+}
+.text-field:focused {
+    -fx-background-color: #d7663b, -fx-background ;
+    -fx-background-radius: 10,10,10,10;
+    -fx-border-radius: 10,10,10,10;
+}
