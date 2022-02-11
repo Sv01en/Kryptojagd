@@ -1,5 +1,5 @@
 {
-  "task":"Verschlüssle den folgenden Text mit dem Cäsar-Variante Verfahren. Der Schlüssel lautet '11':",
+  "task":"Verschlüssle den folgenden Text mit dem Cäsar-Variante Verfahren. Der Schlüssel lautet '11':\n\nHinweis:\nVerschluessle jedes Wort einzeln, unabhaengig von den Sonderzeichen.\n",
   "text":"Dritte Floppy-Disk gefunden",
   "encryptionType":"Caesar",
   "key": "11",
