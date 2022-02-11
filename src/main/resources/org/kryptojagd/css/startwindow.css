@@ -22,6 +22,19 @@
     -fx-wrap-text: true;
     -fx-text-alignment: center;
 }
+#feedbackLabel {
+    -fx-border-color: gainsboro;
+        -fx-border-radius: 10,10,10,10;
+        -fx-label-padding: 10,10,10,10;
+        -fx-background-color: gainsboro;
+        -fx-text-fill: #d7663b;
+        -fx-background-radius: 10,10,10,10;
+        -fx-font-family: monospace;
+        -fx-font-size:17px;
+        -fx-font-weight: 600;
+        -fx-wrap-text: true;
+        -fx-text-alignment: center;
+}
 .button {
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
