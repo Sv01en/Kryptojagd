@@ -112,7 +112,6 @@ public class DecryptionController extends AbstractController {
             vBox.getChildren().add(cryptoTool);
             vBox.setAlignment(Pos.CENTER);
         } else {
-            System.out.println("Jetzt bin ich hier");
             level.setCityShowing(true);
             String[] cities = task.getAnswerOptionsCity();
             String questionStr = task.getCityQuestion();
