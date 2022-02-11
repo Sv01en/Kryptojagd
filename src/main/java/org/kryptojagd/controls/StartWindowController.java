@@ -43,7 +43,7 @@ public class StartWindowController extends AbstractController {
     @FXML
     void clickStart(ActionEvent event) {
     	System.out.println("Es wurde auf Start geklickt!");
-    	mainController.startLevel();
+        mainController.switchWindowWithCSS("Infotext.fxml", "../css/startwindow.css");
     }
 
     @FXML

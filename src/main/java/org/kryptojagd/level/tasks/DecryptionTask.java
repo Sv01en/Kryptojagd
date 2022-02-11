@@ -35,6 +35,7 @@ public class DecryptionTask implements Task {
 
 	private boolean isCityTaskShowing;
 	private boolean taskCompleted = false;
+	private boolean encryptionTaskCompleted = false;
 
 	/**
 	 * Contructor of a decryption task
@@ -218,5 +219,20 @@ public class DecryptionTask implements Task {
 	 */
 	public int getCorrectAnswerEncryption() {
 		return correctAnswerEncryption;
+	}
+
+	/**
+	 * Getter to check if the encryption task has been completed
+	 * @return true if it is completed, else false
+	 */
+	public boolean isEncryptionTaskCompleted() {
+		return encryptionTaskCompleted;
+	}
+
+	/**
+	 * Sets the encryptionTaskCompleted variable to true
+	 */
+	public void setEncryptionFinished() {
+		encryptionTaskCompleted = true;
 	}
 }

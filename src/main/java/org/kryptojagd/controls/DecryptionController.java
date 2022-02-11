@@ -4,11 +4,20 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
+
+import java.io.IOException;
 
 /**
  * The class controls a window of a decryption task.
@@ -19,6 +28,15 @@ public class DecryptionController extends AbstractController {
 
     private Level level = mainController.getCurrentLevel();
     private DecryptionTask task = (DecryptionTask) level.getCurrentTask();
+
+    @FXML
+    public BorderPane borderPane;
+
+    @FXML
+    public HBox hBox;
+
+    @FXML
+    public VBox vBox;
 
     @FXML
     public Button home;
@@ -50,12 +68,51 @@ public class DecryptionController extends AbstractController {
             level.startCountdown();
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
-            encryptedPuzzleText.setText(level.getEncryptionMethod().
-                    encode(plaintext));
+            encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
+        } else if (!task.isEncryptionTaskCompleted()) {
+            String plaintext = task.getPlainText();
+            encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
+
+            TextField textField = new TextField();
+            textField.setMinWidth(600);
+            textField.setMinHeight(45);
+
+            Button sendButton = new Button();
+            sendButton.setMnemonicParsing(false);
+            sendButton.setText("Senden");
+            sendButton.setOnAction(this::clickSend);
+
+            HBox newHbox = new HBox(20);
+            newHbox.setAlignment(Pos.CENTER);
+            newHbox.setMinHeight(100);
+            newHbox.setMinWidth(700);
+
+            newHbox.getChildren().add(textField);
+            newHbox.getChildren().add(sendButton);
+
+            Button cryptoTool = new Button();
+            cryptoTool.setMnemonicParsing(false);
+            cryptoTool.setText("Kryptotool");
+            cryptoTool.setOnAction(this::clickCrypto);
+
+            if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Rückwärtsverschlüsselung")) {
+                question.setText("Entschlüssel die ersten vier Wörter des Textes (inklusive Hallo)!");
+                cryptoTool.setDisable(true);
+            } else if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
+                question.setText("Entschlüssel die ersten vier Wörter des Textes (inklusive Hallo)!");
+            } else {
+                question.setText("Gib das Schlüsselwort ein, mit dem der Text verschlüsselt wurde!");
+            }
+
+            vBox.getChildren().remove(hBox);
+            vBox.getChildren().add(newHbox);
+            vBox.getChildren().add(cryptoTool);
+            vBox.setAlignment(Pos.CENTER);
         } else {
+            System.out.println("Jetzt bin ich hier");
             level.setCityShowing(true);
             String[] cities = task.getAnswerOptionsCity();
             String questionStr = task.getCityQuestion();
@@ -97,6 +154,33 @@ public class DecryptionController extends AbstractController {
     @FXML
     void clickProcedure3(ActionEvent event) {
         clickAnswer(procedure3);
+    }
+
+    @FXML
+    private void clickSend(ActionEvent event) {
+        //TODO Add functionality here
+
+        task.setEncryptionFinished();
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
+    }
+
+    @FXML
+    private void clickCrypto(ActionEvent event) {
+        if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
+            try {
+                CryptoTool.caesar(new Stage());
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                CryptoTool.vigenere(new Stage());
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

@@ -28,6 +28,8 @@ public class MainController {
 
 	protected boolean cityTaskFinished;
 
+	protected boolean encryptionDecryptionFinished;
+
 	public static final String TASK_FINISHED_FXML = "TaskFinished.fxml";
 
 
