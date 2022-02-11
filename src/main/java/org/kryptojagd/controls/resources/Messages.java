@@ -20,14 +20,13 @@ public final class Messages {
 
     public static final String GO_TO_START = "Gehe zurück zum Startmenü!";
 
-    public static final String START_TEXT = "Du und deine Kollegen Bob und Alice wurdet von der nationalen" +
-            " Informatikervereinigung (NIV) beauftragt, die letzten vier antiken Floppy-Disks zu finden " +
+    public static final String START_TEXT = "Du und deine Kollegen Bob und Alice wurdet von der Nationalen" +
+            " Informatikervereinigung (NIV) beauftragt, die letzten fünf antiken Floppy-Disks zu finden " +
             "und sie sicher in das historische Computermuseum zu bringen." +
-            "Die Herausforderung dabei ist, dass die Floppy-Disks auf der ganzen Welt verteilt sind." +
+            "\nDie Herausforderung dabei ist, dass die Floppy-Disks auf der ganzen Welt verteilt sind." +
             "Aber ihr drei seid die besten Spürnasen weit und breit und scheut euch deshalb natürlich nicht davor," +
             " diese Herausforderung anzunehmen.Die NIV hat im Darknet einen verschlüsselten Hinweis zu dem Fundort" +
-            " der ersten Floppy-Disk entdeckt und euch diesen weitergeleitet...\n" +
-            "Starte das Spiel und finde die Floppy-Disks!\n";
+            " der ersten Floppy-Disk entdeckt und euch diesen weitergeleitet...\n";
 
     /* private utility-class constructor */
     private Messages() { }
