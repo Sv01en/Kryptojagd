@@ -43,7 +43,7 @@ public class MainApp extends Application {
     Parent root;
     try {
      
-      root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
+      root = FXMLLoader.load(getClass().getResource("presentation/Infotext.fxml"));
       Scene scene = new Scene(root);
       scene.getStylesheets().add(getClass().getResource("css/startwindow.css").toExternalForm());
       stage.setScene(scene);
