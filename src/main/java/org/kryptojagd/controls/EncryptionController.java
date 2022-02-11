@@ -91,4 +91,9 @@ public class EncryptionController extends AbstractController {
         time.getKeyFrames().add(frame);
         time.playFromStart();
     }
+
+    @FXML
+    public void clickMenu(ActionEvent actionEvent) {
+        mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
+    }
 }

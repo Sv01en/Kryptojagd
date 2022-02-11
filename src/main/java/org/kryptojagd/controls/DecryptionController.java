@@ -21,6 +21,9 @@ public class DecryptionController extends AbstractController {
     private DecryptionTask task = (DecryptionTask) level.getCurrentTask();
 
     @FXML
+    public Button home;
+
+    @FXML
     public Label question;
 
     @FXML
@@ -129,5 +132,10 @@ public class DecryptionController extends AbstractController {
         });
         time.getKeyFrames().add(frame);
         time.playFromStart();
+    }
+
+    @FXML
+    public void clickMenu(ActionEvent actionEvent) {
+        mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
     }
 }

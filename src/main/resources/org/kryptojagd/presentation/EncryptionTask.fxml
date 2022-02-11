@@ -34,5 +34,11 @@
             </BorderPane.margin>
         </Button>
     </top>
-
+    <bottom>
+        <Button fx:id="home" text="Menü" onAction="#clickMenu" BorderPane.alignment="BOTTOM_LEFT">
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </BorderPane.margin>
+        </Button>
+    </bottom>
 </BorderPane>
