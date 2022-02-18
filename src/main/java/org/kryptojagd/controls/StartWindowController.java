@@ -22,8 +22,7 @@ public class StartWindowController extends AbstractController {
      */
     @FXML
     void clickSettings(ActionEvent event) {
-        System.out.println("Das ist ein Test");
-        //mainController.switchWindowWithCSS("EncryptionTask.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS("Settings.fxml", "../css/startwindow.css");
     }
 
     /**
@@ -44,7 +43,7 @@ public class StartWindowController extends AbstractController {
     @FXML
     void clickStart(ActionEvent event) {
     	System.out.println("Es wurde auf Start geklickt!");
-    	mainController.startLevel();
+        mainController.switchWindowWithCSS("Infotext.fxml", "../css/startwindow.css");
     }
 
     @FXML

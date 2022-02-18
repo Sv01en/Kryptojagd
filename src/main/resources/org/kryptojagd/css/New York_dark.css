@@ -4,7 +4,7 @@
     -fx-background-position: bottom, bottom, bottom, bottom, bottom, bottom;
     -fx-background-repeat: no-repeat;
 
-    -fx-background-image: url("../../../img/London.png");
+    -fx-background-image: url("../../../img/NewYork_dark.png");
 }
 #answers{
     -fx-text-alignment: left;

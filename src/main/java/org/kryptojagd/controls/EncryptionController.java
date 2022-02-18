@@ -35,6 +35,9 @@ public class EncryptionController extends AbstractController {
     private Label label2;
 
     @FXML
+    private Label label3;
+
+    @FXML
     private TextField textField1;
 
     /**
@@ -47,6 +50,7 @@ public class EncryptionController extends AbstractController {
         }
         label1.setText(task.getTaskText());
         label2.setText(task.getText());
+        label3.setVisible(false);
         updateTimer();
     }
 
@@ -61,14 +65,18 @@ public class EncryptionController extends AbstractController {
     @FXML
     void checkEncryption(ActionEvent event) {
         level.proveTask(textField1.getText());
-        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
+        //mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
         String city = level.getCity();
         String css = "../css/" + city + ".css";
 
         if (task.getTaskCompleted()) {
             mainController.switchWindowWithCSS("TaskFinished.fxml", css);
         } else {
-            mainController.switchWindowWithCSS("MistakeMessage.fxml", css);
+            EncryptionTask task = (EncryptionTask) level.getCurrentTask();
+            String hint = task.getMistakeMsg();
+            label3.setText(hint);
+            label3.setVisible(true);
+            //mainController.switchWindowWithCSS("MistakeMessage.fxml", css);
         }
     }
 
@@ -90,5 +98,10 @@ public class EncryptionController extends AbstractController {
         });
         time.getKeyFrames().add(frame);
         time.playFromStart();
+    }
+
+    @FXML
+    public void clickMenu(ActionEvent actionEvent) {
+        mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
     }
 }

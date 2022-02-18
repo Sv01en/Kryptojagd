@@ -4,11 +4,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.LevelFinished">
-   <children>
-      <Button id="NextLevel" fx:id="NextLevel" layoutX="250.0" layoutY="248.0" mnemonicParsing="false" onAction="#nextLevelAction" text="Nächstes Level" />
-      <Button id="Menu" fx:id="Menu" layoutX="276.0" layoutY="294.0" mnemonicParsing="false" onAction="#menuAction" text="Menü" />
-      <Text layoutX="152.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Super, du hast alle Aufgaben von diesem Level gelöst" wrappingWidth="296.21630859375" />
-      <Text layoutX="152.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Möchtest du das nächste Level spielen oder zum Menü zurück?" wrappingWidth="296.21630859375" />
-   </children>
-</AnchorPane>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<BorderPane id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.LevelFinished">
+   <center>
+      <Label text="Super, du hast alle Aufgaben von diesem Level gelöst" BorderPane.alignment="CENTER"/>
+      <Label text="Möchtest du das nächste Level spielen oder zum Menü zurück?" BorderPane.alignment="CENTER"/>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="Menu" fx:id="Menu" mnemonicParsing="false" onAction="#menuAction" text="Menü">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button id="NextLevel" fx:id="NextLevel" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextLevelAction" text="Nächstes Level">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

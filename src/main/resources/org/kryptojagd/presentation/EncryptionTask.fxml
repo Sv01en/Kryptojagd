@@ -12,10 +12,12 @@
                 <Label fx:id="label2" text="label2"/>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                     <children>
-                        <Button fx:id="button1" mnemonicParsing="false" onAction="#checkEncryption" text="Senden" />
                         <TextField fx:id="textField1" minHeight="45.0" minWidth="600.0" maxWidth="600.0"/>
+                        <Button fx:id="button1" mnemonicParsing="false" onAction="#checkEncryption" text="Senden" />
+
                     </children>
                 </HBox>
+                <Label id="feedbackLabel" fx:id="label3" text="label3"/>
             </children>
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -34,5 +36,11 @@
             </BorderPane.margin>
         </Button>
     </top>
-
+    <bottom>
+        <Button fx:id="home" text="Menü" onAction="#clickMenu" BorderPane.alignment="BOTTOM_LEFT">
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </BorderPane.margin>
+        </Button>
+    </bottom>
 </BorderPane>

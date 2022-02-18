@@ -1,8 +1,8 @@
 {
-	"task":"Verschlüssle den folgenden Text mit dem Vigenère Verfahren. Der Schlüssel lautet 'Fernsehturm':",
+	"task":"Verschlüssle den folgenden Text mit dem Vigenère Verfahren. Der Schlüssel lautet 'Colosseum':\n\nHinweis:\nVerschluessle jedes Wort einzeln, unabhaengig von den Sonderzeichen.\n",
 	"text":"Fuenfte Floppy-Disk gefunden",
 	"encryptionType": "Beaufort",
-	"key": "Fernsehturm",
+	"key": "Colosseum",
 	"timeInSec": 300
 }
 

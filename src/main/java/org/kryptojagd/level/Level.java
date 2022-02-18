@@ -84,15 +84,19 @@ public class Level {
 		if (currentTask.getTaskCompleted() && !isMultipleChoiceFinished()) {
 			switch (currentTask.toString()) {
 				case "DecryptionTask":
+					if (!decryptionTask.isEncryptionTaskCompleted()) {
+						System.out.println("De-Encryption startet hier");
+						return;
+					}
 					if (!cityIsFinished()) {
 						return;
 					}
 					this.currentTask = multipleChoiceTasks.get(currentMultipleChoiceTask);
 					this.currentMultipleChoiceTask++;
-				return;
+					return;
 				case "MultipleChoiceTask": this.currentTask = getCurrentMultipleChoiceTask();
-				this.currentMultipleChoiceTask++;
-				return;
+					this.currentMultipleChoiceTask++;
+					return;
 			}
 		}
 		if (isMultipleChoiceFinished()) {
