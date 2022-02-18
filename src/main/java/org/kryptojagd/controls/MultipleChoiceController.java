@@ -116,6 +116,9 @@ public class MultipleChoiceController extends AbstractController {
     /**
      * Updates the {@link MultipleChoiceController#timer} every second in the corresponding fxml-file.
      */
+    /**
+     * Updates the {@link DecryptionController#timer} every second in the corresponding fxml-file.
+     */
     @FXML
     @Override
     void updateTimer() {
@@ -123,7 +126,8 @@ public class MultipleChoiceController extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(Integer.toString(level.getTimeInSec()));
+            System.out.println(mainController.getCurrentLevel().getTimeInSec());
+            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
             if (level.getTimeInSec() <= 0) {
                 mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
                 time.stop();

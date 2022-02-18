@@ -1,7 +1,11 @@
 package org.kryptojagd.controls;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.util.Duration;
 
 /**
  *
@@ -10,6 +14,9 @@ import javafx.fxml.FXML;
  * @version 1.0
  */
 public class LevelFinished extends AbstractController {
+
+    @FXML
+    private Label timer;
 
     /**
      *
@@ -45,5 +52,25 @@ public class LevelFinished extends AbstractController {
         mainController.startLevel();
     }
 
+    /**
+     * Updates the {@link LevelFinished#timer} every second in the corresponding fxml-file.
+     */
+    @FXML
+    @Override
+    void updateTimer() {
+        Timeline time = new Timeline();
+        time.setCycleCount(Timeline.INDEFINITE);
+        time.stop();
+        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
+            System.out.println(mainController.getCurrentLevel().getTimeInSec());
+            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
+            if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+                mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
+                time.stop();
+            }
+        });
+        time.getKeyFrames().add(frame);
+        time.playFromStart();
+    }
 
 }
