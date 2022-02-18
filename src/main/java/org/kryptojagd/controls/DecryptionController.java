@@ -37,6 +37,12 @@ public class DecryptionController extends AbstractController {
     public Label encryptedPuzzleText;
 
     @FXML
+    public VBox vBox;
+
+    @FXML
+    public HBox hBox;
+
+    @FXML
     private Label timer = new Label();
 
     @FXML
@@ -101,15 +107,6 @@ public class DecryptionController extends AbstractController {
             vBox.getChildren().add(newHbox);
             vBox.getChildren().add(cryptoTool);
             vBox.setAlignment(Pos.CENTER);
-        } else {
-            level.setCityShowing(true);
-            String[] cities = task.getAnswerOptionsCity();
-            String questionStr = task.getCityQuestion();
-            question.setText(questionStr);
-            encryptedPuzzleText.setText(task.getPlainText());
-            procedure1.setText(cities[0]);
-            procedure2.setText(cities[1]);
-            procedure3.setText(cities[2]);
         }
 
         updateTimer();

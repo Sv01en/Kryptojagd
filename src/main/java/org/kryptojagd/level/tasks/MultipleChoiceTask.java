@@ -43,6 +43,9 @@ public class MultipleChoiceTask implements Task {
         return question;
     }
 
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
 
     @Override
     public boolean proveAnswer(String answer) {

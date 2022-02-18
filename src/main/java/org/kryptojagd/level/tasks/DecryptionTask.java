@@ -11,6 +11,8 @@ public class DecryptionTask implements Task {
 
 	private static final String FIRST_WORD = "Hallo, ";
 
+	private MultipleChoiceTask cityTask;
+
 	private String plainText;
 
 	private String encryptionType;
@@ -56,6 +58,7 @@ public class DecryptionTask implements Task {
 						  String textAfterStart, int timeInSec, int timePenalty) {
 		this.plainText = plainText;
 		this.encryptionType = encryptionType;
+		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity, answerOptionsCity[correctAnswerCity]);
 		this.answerOptionsEncryption = answerOptionsEncryption;
 		this.correctAnswerEncryption = correctAnswerEncryption;
 		this.answerOptionsCity = answerOptionsCity;
@@ -67,12 +70,20 @@ public class DecryptionTask implements Task {
 		this.timePenalty = timePenalty;
 	}
 
+	public void createMultipleChoiceTasks() {
+		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity, answerOptionsCity[correctAnswerCity]);
+	}
+
 	/**
 	 * Returns the time penalty as an integer
 	 * @return time as an integer
 	 */
 	public int getTimePenalty() {
 		return this.timePenalty;
+	}
+
+	public MultipleChoiceTask getCityTask() {
+		return cityTask;
 	}
 
 	/**
@@ -135,12 +146,7 @@ public class DecryptionTask implements Task {
 	 * @return true if the answer was correct, else false
 	 */
 	public boolean proofCityAnswer(String answer) {
-		if (answer.equals(answerOptionsCity[correctAnswerCity])) {
-			this.correctAnswerCityBool = true;
-			return true;
-		}
-		this.correctAnswerCityBool = false;
-		return false;
+		return cityTask.proveAnswer(answer);
 	}
 
 	/**
@@ -152,29 +158,6 @@ public class DecryptionTask implements Task {
 	}
 
 	/**
-	 * Getter for city answer options
-	 * @return answer options
-	 */
-	public String[] getAnswerOptionsCity() {
-		return answerOptionsCity;
-	}
-
-	/**
-	 * Getter for the given answer was correct
-	 * @return true if it was, else false
-	 */
-	public boolean getCorrectAnswerCity() {
-		return correctAnswerCityBool;
-	}
-	/**
-	 * Getter for the number of the correct city in the Array in the Json file
-	 * @return the number of the correct city in the Array in the Json file
-	 */
-	public int getCorrectAnswerCityInt() {
-		return correctAnswerCity;
-	}
-
-	/**
 	 * Getter, if the city task or the decryption task is currently showing
 	 * @return true, if the city task will be shown, else false
 	 */
@@ -182,13 +165,6 @@ public class DecryptionTask implements Task {
 		return isCityTaskShowing;
 	}
 
-	/**
-	 * Getter for the correct city name
-	 * @return name of correct city
-	 */
-	public String getCity() {
-		return answerOptionsCity[correctAnswerCity];
-	}
 
 	/**
 	 * Getter for text to display after the city question is answered correctly
@@ -203,7 +179,6 @@ public class DecryptionTask implements Task {
 	 */
 	public void clearDecryptionTask() {
 		this.correctAnswer = false;
-		this.correctAnswerCityBool = false;
 		this.isCityTaskShowing = false;
 	}
 

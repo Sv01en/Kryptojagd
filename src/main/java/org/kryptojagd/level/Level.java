@@ -85,10 +85,10 @@ public class Level {
 			switch (currentTask.toString()) {
 				case "DecryptionTask":
 					if (!decryptionTask.isEncryptionTaskCompleted()) {
-						System.out.println("De-Encryption startet hier");
 						return;
 					}
 					if (!cityIsFinished()) {
+						this.currentTask = decryptionTask.getCityTask();
 						return;
 					}
 					this.currentTask = multipleChoiceTasks.get(currentMultipleChoiceTask);
@@ -110,6 +110,10 @@ public class Level {
 	 */
 	public Task getCurrentTask() {
 		return currentTask;
+	}
+
+	public String getCity() {
+		return decryptionTask.getCityTask().getCorrectAnswer();
 	}
 
 	/**
@@ -141,6 +145,10 @@ public class Level {
 			}
 		}
 		return finished;
+	}
+
+	public boolean cityIsFinished() {
+		return decryptionTask.getCityTask().getTaskCompleted();
 	}
 
 
@@ -199,22 +207,6 @@ public class Level {
 		this.encryptionTask.setEncryptionMethod(this.encryptionMethod);
 	}
 
-
-	/**
-	 * Getter to detect if the city task is finished
-	 * @return true if it is, else false
-	 */
-	public boolean cityIsFinished() {
-		return this.decryptionTask.getCorrectAnswerCity();
-	}
-
-	/**
-	 * Getter for the correct city name
-	 * @return correct city name
-	 */
-	public String getCity() {
-		return decryptionTask.getCity();
-	}
 
 	/**
 	 * Getter, if the city task is currently showing

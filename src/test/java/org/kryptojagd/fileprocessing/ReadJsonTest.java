@@ -96,8 +96,8 @@ class ReadJsonTest {
     Assertions.assertEquals(dec.getEncryptionMethod(), encryptionMethod);
     //Assertions.assertArrayEquals(dec.getAnswerOptionsEncryption(), answerOptionsEncryption);
     Assertions.assertEquals(dec.getCorrectAnswerEncryption(), correctAnswerEncryption);
-    Assertions.assertArrayEquals(dec.getAnswerOptionsCity(), answerOptionsCity);
-    Assertions.assertEquals(dec.getCorrectAnswerCityInt(), correctAnswerCity);
+    Assertions.assertArrayEquals(dec.getCityTask().getPossibilities(), answerOptionsCity);
+    Assertions.assertEquals(dec.getCityTask().getCorrectAnswer(), dec.getCityTask().getPossibilities()[correctAnswerCity]);
 
   }
 
