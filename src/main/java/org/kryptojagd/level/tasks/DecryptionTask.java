@@ -13,6 +13,8 @@ public class DecryptionTask implements Task {
 
 	private MultipleChoiceTask cityTask;
 
+	private MultipleChoiceTask encryptionTypeTask;
+
 	private String plainText;
 
 	private String encryptionType;
@@ -49,7 +51,7 @@ public class DecryptionTask implements Task {
 	 * @param correctAnswerEncryption correct answer of decryption task
 	 * @param answerOptionsCity       answer options for city selector
 	 * @param correctAnswerCity       correct city answer
-	 * @param textAfterStart          text to display after city celector was done right
+	 * @param textAfterStart          text to display after city selector was done right
 	 * @param timeInSec               time in sec for the task
 	 * @param timePenalty             the time penalty
 	 */
@@ -80,6 +82,10 @@ public class DecryptionTask implements Task {
 	 */
 	public int getTimePenalty() {
 		return this.timePenalty;
+	}
+
+	public MultipleChoiceTask getEncryptionTypeTask() {
+		return encryptionTypeTask;
 	}
 
 	public MultipleChoiceTask getCityTask() {
@@ -147,14 +153,6 @@ public class DecryptionTask implements Task {
 	 */
 	public boolean proofCityAnswer(String answer) {
 		return cityTask.proveAnswer(answer);
-	}
-
-	/**
-	 * Getter for the city question
-	 * @return question
-	 */
-	public String getCityQuestion() {
-		return "In welcher Stadt befindet sich die Floppy-Disk?";
 	}
 
 	/**

@@ -69,44 +69,7 @@ public class DecryptionController extends AbstractController {
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
         } else if (!task.isEncryptionTaskCompleted()) {
-            String plaintext = task.getPlainText();
-            encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
 
-            TextField textField = new TextField();
-            textField.setMinWidth(600);
-            textField.setMinHeight(45);
-
-            Button sendButton = new Button();
-            sendButton.setMnemonicParsing(false);
-            sendButton.setText("Senden");
-            sendButton.setOnAction(this::clickSend);
-
-            HBox newHbox = new HBox(20);
-            newHbox.setAlignment(Pos.CENTER);
-            newHbox.setMinHeight(100);
-            newHbox.setMinWidth(700);
-
-            newHbox.getChildren().add(textField);
-            newHbox.getChildren().add(sendButton);
-
-            Button cryptoTool = new Button();
-            cryptoTool.setMnemonicParsing(false);
-            cryptoTool.setText("Kryptotool");
-            cryptoTool.setOnAction(this::clickCrypto);
-
-            if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Rückwärtsverschlüsselung")) {
-                question.setText("Entschlüssel die ersten vier Wörter des Textes (inklusive Hallo)!");
-                cryptoTool.setDisable(true);
-            } else if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
-                question.setText("Entschlüssel die ersten vier Wörter des Textes (inklusive Hallo)!");
-            } else {
-                question.setText("Gib das Schlüsselwort ein, mit dem der Text verschlüsselt wurde!");
-            }
-
-            vBox.getChildren().remove(hBox);
-            vBox.getChildren().add(newHbox);
-            vBox.getChildren().add(cryptoTool);
-            vBox.setAlignment(Pos.CENTER);
         }
 
         updateTimer();

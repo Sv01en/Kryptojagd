@@ -31,6 +31,8 @@ public class Level {
 
 	private int id;
 
+	private int indexTask = 0;
+
 	private int timePenalty;
 
 	private int currentMultipleChoiceTask = 0;
@@ -40,6 +42,8 @@ public class Level {
 	private String encryptionInput;
 
 	private Encryption encryptionMethod;
+
+	private ArrayList<Task> tasks = new ArrayList<>();
 
 	private Task currentTask;
 
@@ -59,6 +63,10 @@ public class Level {
 		this.currentTask = decryptionTask;
 		this.encryptionTask = encryptionTask;
 		this.multipleChoiceTasks = multipleChoiceTasks;
+		this.tasks.add(decryptionTask);
+		this.tasks.add(decryptionTask.getCityTask());
+		this.tasks.addAll(multipleChoiceTasks);
+		this.tasks.add(encryptionTask);
 		this.timeInSec = timeInSec;
 		this.timePenalty = this.decryptionTask.getTimePenalty();
 		this.currentTime = this.timeInSec;
@@ -74,34 +82,9 @@ public class Level {
 		return levelCompleted;
 	}
 
-	/**
-	 * Sets the nextTask, if the current task is completed
-	 * otherwise nothing is changing
-	 *
-	 * @param currentTask the current Task
-	 */
-	public void setNextTask(Task currentTask){
-		if (currentTask.getTaskCompleted() && !isMultipleChoiceFinished()) {
-			switch (currentTask.toString()) {
-				case "DecryptionTask":
-					if (!decryptionTask.isEncryptionTaskCompleted()) {
-						return;
-					}
-					if (!cityIsFinished()) {
-						this.currentTask = decryptionTask.getCityTask();
-						return;
-					}
-					this.currentTask = multipleChoiceTasks.get(currentMultipleChoiceTask);
-					this.currentMultipleChoiceTask++;
-					return;
-				case "MultipleChoiceTask": this.currentTask = getCurrentMultipleChoiceTask();
-					this.currentMultipleChoiceTask++;
-					return;
-			}
-		}
-		if (isMultipleChoiceFinished()) {
-			this.currentTask = encryptionTask;
-		}
+	public void setNextTask(){
+		this.currentTask = tasks.get(indexTask);
+		indexTask++;
 	}
 
 	/**
@@ -122,14 +105,6 @@ public class Level {
 	 */
 	public Encryption getEncryptionMethod() {
 		return encryptionMethod;
-	}
-
-	/**
-	 * Getter for multiple choice task
-	 * @return multiple choice task of the level
-	 */
-	public MultipleChoiceTask getCurrentMultipleChoiceTask() {
-		return multipleChoiceTasks.get(this.currentMultipleChoiceTask);
 	}
 
 	/**
