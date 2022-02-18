@@ -152,9 +152,6 @@ public class Level {
 	 * @return true or false
 	 */
 	public boolean proveTask(String answer) {
-		if (!this.currentTask.proveAnswer(answer)) {
-			this.countdownTimer.reduceTimer(this.timePenalty);
-		}
 		if (this.encryptionTask.getTaskCompleted() ) {
 			levelCompleted = true;
 		}
@@ -167,9 +164,6 @@ public class Level {
 	 * @return true if the answer is correct else false
 	 */
 	public boolean proveCityTask(String answer) {
-		if (!decryptionTask.proofCityAnswer(answer)) {
-			countdownTimer.reduceTimer(timePenalty);
-		}
 		return decryptionTask.proofCityAnswer(answer);
 	}
 

@@ -64,8 +64,9 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
+        updateTimer();
         if (!task.getTaskCompleted()) {
-            level.startCountdown();
+            mainController.getCurrentLevel().startCountdown();
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
             encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
@@ -121,8 +122,6 @@ public class DecryptionController extends AbstractController {
             procedure2.setText(cities[1]);
             procedure3.setText(cities[2]);
         }
-
-        updateTimer();
     }
 
     /**
@@ -207,7 +206,8 @@ public class DecryptionController extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(Integer.toString(level.getTimeInSec()));
+            System.out.println(mainController.getCurrentLevel().getTimeInSec());
+            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
             if (level.getTimeInSec() <= 0) {
                 mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
                 time.stop();

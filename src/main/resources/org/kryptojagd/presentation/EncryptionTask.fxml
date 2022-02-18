@@ -24,18 +24,22 @@
             </padding>
         </VBox>
     </center>
+    <!--DO NOT TOUCH-->
     <top>
-        <Label fx:id="timer" text="" BorderPane.alignment="TOP_RIGHT">
-            <BorderPane.margin>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </BorderPane.margin>
-        </Label>
-        <Button fx:id="help" id="helpBtn" text="?" BorderPane.alignment="TOP_LEFT">
-            <BorderPane.margin>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </BorderPane.margin>
-        </Button>
+        <BorderPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <right>
+                <Label fx:id="timer" text="" BorderPane.alignment="CENTER" />
+            </right>
+
+            <left>
+                <Button fx:id="help" mnemonicParsing="false" text="?" BorderPane.alignment="CENTER" />
+            </left>
+            <padding>
+                <Insets left="10.0" right="10.0" />
+            </padding>
+        </BorderPane>
     </top>
+    <!--DO NOT TOUCH-->
     <bottom>
         <Button fx:id="home" text="Menü" onAction="#clickMenu" BorderPane.alignment="BOTTOM_LEFT">
             <BorderPane.margin>

@@ -17,6 +17,17 @@ public abstract class AbstractController {
 	void updateTimer(){}
 
 	/**
+	 * Returns the time in a better readable format.
+	 * @param timeInSeconds given seconds as an integer
+	 * @return the given seconds in the format mm:ss
+	 */
+	 String setCountdownFormat(int timeInSeconds) {
+		int minutes = (timeInSeconds % 3600) / 60;
+		int seconds = timeInSeconds % 60;
+		return String.format("%02d:%02d", minutes, seconds);
+	}
+
+	/**
 	 * Sets main controller.
 	 *
 	 * @param hs the hs

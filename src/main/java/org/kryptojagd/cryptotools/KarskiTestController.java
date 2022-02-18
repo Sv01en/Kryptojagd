@@ -6,12 +6,12 @@ import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+//import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
+//import javafx.scene.web.WebEngine;
+//import javafx.scene.web.WebView;
 
 public class KarskiTestController {
 	
