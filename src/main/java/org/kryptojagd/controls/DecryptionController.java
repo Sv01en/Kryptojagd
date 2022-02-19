@@ -37,10 +37,7 @@ public class DecryptionController extends AbstractController {
     public Label encryptedPuzzleText;
 
     @FXML
-    public VBox vBox;
-
-    @FXML
-    public HBox hBox;
+    public TextField textField;
 
     @FXML
     private Label timer = new Label();
@@ -68,10 +65,7 @@ public class DecryptionController extends AbstractController {
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
-        } else if (!task.isEncryptionTaskCompleted()) {
-
         }
-
         updateTimer();
     }
 
@@ -105,11 +99,10 @@ public class DecryptionController extends AbstractController {
         clickAnswer(procedure3);
     }
 
+
     @FXML
     private void clickSend(ActionEvent event) {
-        //TODO Add functionality here
-
-        task.setEncryptionFinished();
+        task.proveAnswer(textField.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 
@@ -137,13 +130,7 @@ public class DecryptionController extends AbstractController {
      * @param procedure Button which is clicked on
      */
     private void clickAnswer(Button procedure){
-        if (!level.getCurrentTask().getTaskCompleted()) {
-            mainController.decryptionTaskSucceeded = level.proveTask(
-                    procedure.getText());
-        } else {
-            mainController.cityTaskFinished = level.proveCityTask(procedure.getText());
-        }
-
+        mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 

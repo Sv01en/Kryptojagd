@@ -42,42 +42,8 @@ public class TaskFinishedController extends AbstractController {
 	@FXML
 	public void initialize() {
 		updateTimer();
-		if (level.isLevelCompleted()) {
-			feedbackText.setText(Messages.LEVEL_FINISHED);
-			return;
-		}
-		if (level.isMultipleChoiceFinished() && task instanceof MultipleChoiceTask) {
-			feedbackText.setText(Messages.FINISHED_MULTIPLE_CHOICE);
-		} else {
-			proveActualTask();
-		}
+		feedbackText.setText(level.getFeedback());
 	}
-
-	/**
-	 * Proves the actual task and sets the right feedback text
-	 */
-	private void proveActualTask() {
-		if (task.getTaskCompleted()) {
-			if (level.isCityTaskShowing()) {
-				feedBackAfterCityTask();
-				return;
-			}
-			feedbackText.setText(Messages.STANDARD_FEEDBACK_GOOD);
-		} else {
-			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
-		}
-	}
-
-	private void feedBackAfterCityTask() {
-		if (level.cityIsFinished()) {
-			feedbackText.setText(level.getTextAfterStartDecryption());
-			level.setCityShowing(false);
-		} else {
-			feedbackText.setText(Messages.STANDARD_FEEDBACK_BAD);
-		}
-	}
-
-
 
 	/**
 	 * Handles the switch to the next task

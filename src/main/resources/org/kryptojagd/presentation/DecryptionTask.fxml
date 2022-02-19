@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+
 <BorderPane id="box" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.DecryptionController">
    <center>
       <VBox fx:id="vBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
@@ -17,6 +18,8 @@
                   <Button fx:id="procedure3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickProcedure3" prefHeight="24.0" prefWidth="300.0" text="Verfahren 3" />
                </children>
             </HBox>
+               <TextField fx:id="textField" minHeight="45.0" minWidth="600.0" maxWidth="600.0"/>
+               <Button fx:id="button1" mnemonicParsing="false" onAction="#clickSend" text="Senden" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -36,7 +39,7 @@
       </Button>
    </top>
    <bottom>
-      <Button fx:id="home" text="Menü" onAction="#clickMenu" BorderPane.alignment="BOTTOM_LEFT">
+      <Button fx:id="home" onAction="#clickMenu" text="Menü" BorderPane.alignment="BOTTOM_LEFT">
          <BorderPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </BorderPane.margin>

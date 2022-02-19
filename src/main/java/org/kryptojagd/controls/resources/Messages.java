@@ -29,8 +29,9 @@ public final class Messages {
             " der ersten Floppy-Disk entdeckt und euch diesen weitergeleitet...\n";
 
     public static final String DECRYPTION_QUESTION = "Du weißt, dass die Nachrichten immer mit einem 'Hallo' beginnen," +
-            " um die Nachricht entschlüsseln zu können musst du erst wissen, um welches Verschlüsselungsverfahren" +
-            " es sich handelt. Wähle aus:";
+            " finde zuerst heraus, um welches Verschlüsselungsverfahren es sich handelt." +
+            " Nachdem du das richtige Verfahren ausgewählt hast, entschlüssele die letzten 3 Worte des Textes" +
+            " und sende sie der NIV";
 
 
     /* private utility-class constructor */

@@ -1,5 +1,6 @@
 package org.kryptojagd.level;
 
+import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.encryptionmethods.*;
 import org.kryptojagd.level.countdown.CountdownTimer;
 import org.kryptojagd.level.tasks.DecryptionTask;
@@ -16,6 +17,8 @@ import java.util.LinkedList;
  * @author Sonja Kuklok, Sven Strasser, Amelie Reichert, Bartosz Treyde, Leah Schlimm
  */
 public class Level {
+
+	private String feedback;
 
 	private DecryptionTask decryptionTask;
 
@@ -36,8 +39,6 @@ public class Level {
 	private int timePenalty;
 
 	private int currentMultipleChoiceTask = 0;
-
-	private boolean multipleChoiceFinished;
 
 	private String encryptionInput;
 
@@ -70,8 +71,11 @@ public class Level {
 		this.timeInSec = timeInSec;
 		this.timePenalty = this.decryptionTask.getTimePenalty();
 		this.currentTime = this.timeInSec;
-		this.multipleChoiceFinished = false;
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
+	}
+
+	public String getFeedback() {
+		return feedback;
 	}
 
 	/**
@@ -79,12 +83,17 @@ public class Level {
 	 * @return true, if the level is completed
 	 */
 	public boolean isLevelCompleted() {
+		for (Task multipleChoice: multipleChoiceTasks) {
+			levelCompleted = multipleChoice.getTaskCompleted();
+		}
 		return levelCompleted;
 	}
 
 	public void setNextTask(){
-		this.currentTask = tasks.get(indexTask);
-		indexTask++;
+		if (this.currentTask.getTaskCompleted()) {
+			this.currentTask = tasks.get(indexTask);
+			indexTask++;
+		}
 	}
 
 	/**
@@ -107,21 +116,6 @@ public class Level {
 		return encryptionMethod;
 	}
 
-	/**
-	 * Proves if every multipleChoiceTask is completed
-	 *
-	 * @return true, if every task is finished
-	 */
-	public boolean isMultipleChoiceFinished() {
-		boolean finished = true;
-		for (Task multipleChoice: multipleChoiceTasks) {
-			if (!multipleChoice.getTaskCompleted()) {
-				finished = false;
-			}
-		}
-		return finished;
-	}
-
 	public boolean cityIsFinished() {
 		return decryptionTask.getCityTask().getTaskCompleted();
 	}
@@ -137,11 +131,36 @@ public class Level {
 	public boolean proveTask(String answer) {
 		if (!this.currentTask.proveAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
+			feedback = Messages.STANDARD_FEEDBACK_BAD;
+			return this.currentTask.proveAnswer(answer);
 		}
-		if (this.encryptionTask.getTaskCompleted() ) {
-			levelCompleted = true;
+		if (this.currentTask.getTaskCompleted() ) {
+			feedback = Messages.STANDARD_FEEDBACK_GOOD;
+			alternativeFeedback();
+		}
+		if (levelCompleted) {
+			feedback = Messages.LEVEL_FINISHED;
 		}
 		return this.currentTask.proveAnswer(answer);
+	}
+
+	private void alternativeFeedback() {
+		if (this.currentTask.toString().equals("cityTask")) {
+			feedback = decryptionTask.getTextAfterCityTask();
+			return;
+		}
+		if (isMultipleChoiceFinished()) {
+			feedback = Messages.FINISHED_MULTIPLE_CHOICE;
+		}
+	}
+
+	private boolean isMultipleChoiceFinished() {
+		for (Task task : multipleChoiceTasks) {
+			if (!task.getTaskCompleted()) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -149,11 +168,14 @@ public class Level {
 	 * @param answer answer to check
 	 * @return true if the answer is correct else false
 	 */
-	public boolean proveCityTask(String answer) {
-		if (!decryptionTask.proofCityAnswer(answer)) {
+	public boolean proveEncryptionType(String answer) {
+		if (!decryptionTask.proveEncryptionType(answer)) {
 			countdownTimer.reduceTimer(timePenalty);
+			feedback = Messages.STANDARD_FEEDBACK_BAD;
+		} else {
+			feedback = Messages.STANDARD_FEEDBACK_GOOD;
 		}
-		return decryptionTask.proofCityAnswer(answer);
+		return decryptionTask.proveEncryptionType(answer);
 	}
 
 	/**
@@ -180,30 +202,6 @@ public class Level {
 		}
 		this.decryptionTask.setEncryptionMethod(this.encryptionMethod);
 		this.encryptionTask.setEncryptionMethod(this.encryptionMethod);
-	}
-
-
-	/**
-	 * Getter, if the city task is currently showing
-	 * @return true if it is showing, else false
-	 */
-	public boolean isCityTaskShowing() {
-		return decryptionTask.isCityTaskShowing();
-	}
-
-	/**
-	 * Switches from the decryption to the city task
-	 */
-	public void setCityShowing(boolean isShowing) {
-		decryptionTask.setCityShowing(isShowing);
-	}
-
-	/**
-	 * Getter for text to display after the city question is answered correctly
-	 * @return Text to display
-	 */
-	public String getTextAfterStartDecryption() {
-		return decryptionTask.getTextAfterStart();
 	}
 
 	/**
@@ -244,7 +242,6 @@ public class Level {
 	 * Clears the level attributes at the end of the level.
 	 */
 	public void clearLevel() {
-		this.multipleChoiceFinished = false;
 		this.currentMultipleChoiceTask = 0;
 		this.currentTime = this.timeInSec;
 		this.countdownTimer.cancelTimerTask();

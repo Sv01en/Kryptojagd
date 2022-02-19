@@ -13,7 +13,7 @@ public class DecryptionTask implements Task {
 
 	private MultipleChoiceTask cityTask;
 
-	private MultipleChoiceTask encryptionTypeTask;
+	private boolean choseEncryption = false;
 
 	private String plainText;
 
@@ -74,7 +74,9 @@ public class DecryptionTask implements Task {
 
 	public void createMultipleChoiceTasks() {
 		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity, answerOptionsCity[correctAnswerCity]);
+		cityTask.setName("cityTask");
 	}
+
 
 	/**
 	 * Returns the time penalty as an integer
@@ -84,9 +86,6 @@ public class DecryptionTask implements Task {
 		return this.timePenalty;
 	}
 
-	public MultipleChoiceTask getEncryptionTypeTask() {
-		return encryptionTypeTask;
-	}
 
 	public MultipleChoiceTask getCityTask() {
 		return cityTask;
@@ -101,9 +100,23 @@ public class DecryptionTask implements Task {
 		this.encryptionMethod = encryptionMethod;
 	}
 
+	public boolean proveEncryptionType(String answer) {
+		this.choseEncryption = answer.equals(this.encryptionType);
+		return choseEncryption;
+	}
+
 	@Override
 	public boolean proveAnswer(String answer) {
-		this.taskCompleted = answer.equals(this.encryptionType);
+		String[] tokens = plainText.split(" ");
+		StringBuilder decrypted = new StringBuilder();
+		for (int i = tokens.length - 3; i < tokens.length; i++) {
+			if (i < tokens.length - 1) {
+				decrypted.append(tokens[i]).append(" ");
+			} else {
+				decrypted.append(tokens[i]);
+			}
+		}
+		this.taskCompleted = answer.equals(decrypted.toString());
 		return taskCompleted;
 	}
 
@@ -168,7 +181,7 @@ public class DecryptionTask implements Task {
 	 * Getter for text to display after the city question is answered correctly
 	 * @return text to display
 	 */
-	public String getTextAfterStart() {
+	public String getTextAfterCityTask() {
 		return textAfterStart;
 	}
 
