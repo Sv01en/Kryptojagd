@@ -1,45 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane id="box" fx:id="borderPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.DecryptionController">
+<BorderPane id="box" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.DecryptionController">
    <center>
       <VBox fx:id="vBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="encryptedPuzzleText" />
-            <Label fx:id="question" text="Um welches Verschlüsselungsverfahren handelt es sich?" />
-            <HBox fx:id="hBox" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <Label fx:id="question" prefHeight="200.0" prefWidth="945.0" text="Label" />
+            <Label fx:id="encryptedPuzzleText" prefHeight="276.0" prefWidth="632.0" text="Label" />
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <Button fx:id="procedure1" mnemonicParsing="false" onAction="#clickProcedure1" prefHeight="24.0" prefWidth="300.0" text="Verfahren 1" />
                   <Button fx:id="procedure2" mnemonicParsing="false" onAction="#clickProcedure2" prefHeight="24.0" prefWidth="300.0" text="Verfahren 2" />
                   <Button fx:id="procedure3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickProcedure3" prefHeight="24.0" prefWidth="300.0" text="Verfahren 3" />
                </children>
             </HBox>
+               <TextField fx:id="textField" maxWidth="600.0" minHeight="45.0" minWidth="600.0" />
+               <Button fx:id="button1" mnemonicParsing="false" onAction="#clickSend" text="Senden" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
    </center>
-   <bottom>
-      <Button fx:id="home" onAction="#clickMenu" text="Menü" BorderPane.alignment="BOTTOM_LEFT">
-         <BorderPane.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </BorderPane.margin>
-      </Button>
-   </bottom>
    <!--DO NOT TOUCH-->
    <top>
       <BorderPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <right>
             <Label fx:id="timer" text="" BorderPane.alignment="CENTER" />
          </right>
-         
+
          <left>
             <Button fx:id="help" mnemonicParsing="false" text="?" BorderPane.alignment="CENTER" />
          </left>
@@ -49,4 +41,11 @@
       </BorderPane>
    </top>
    <!--DO NOT TOUCH-->
+   <bottom>
+      <Button fx:id="home" text="Menü" onAction="#clickMenu" BorderPane.alignment="BOTTOM_LEFT">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
 </BorderPane>

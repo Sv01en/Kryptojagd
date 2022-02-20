@@ -56,6 +56,8 @@ public class EncryptionTask implements Task {
 
     private int hammingDistanceValue;
 
+    private String name = "EncryptionTask";
+
     /**
      * Creates a {@link EncryptionTask}
      *
@@ -120,6 +122,14 @@ public class EncryptionTask implements Task {
         return key;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
 
     /**
      * Sets encryption method.

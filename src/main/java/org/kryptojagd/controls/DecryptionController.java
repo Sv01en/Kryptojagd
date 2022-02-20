@@ -30,25 +30,16 @@ public class DecryptionController extends AbstractController {
     private DecryptionTask task = (DecryptionTask) level.getCurrentTask();
 
     @FXML
-    public BorderPane borderPane;
-
-    @FXML
-    public HBox hBox;
-
-    @FXML
-    public VBox vBox;
-
-    @FXML
-    public Button home;
-
-    @FXML
     public Label question;
 
     @FXML
-    private Label timer = new Label();
+    public Label encryptedPuzzleText;
 
     @FXML
-    private Label encryptedPuzzleText = new Label();
+    public TextField textField;
+
+    @FXML
+    private Label timer = new Label();
 
     @FXML
     private Button procedure1;
@@ -66,61 +57,14 @@ public class DecryptionController extends AbstractController {
     public void initialize() {
         updateTimer();
         if (!task.getTaskCompleted()) {
-            mainController.getCurrentLevel().startCountdown();
+            level.startCountdown();
+            question.setText(Messages.DECRYPTION_QUESTION);
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
             encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
-        } else if (!task.isEncryptionTaskCompleted()) {
-            String plaintext = task.getPlainText();
-            encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
-
-            TextField textField = new TextField();
-            textField.setMinWidth(600);
-            textField.setMinHeight(45);
-
-            Button sendButton = new Button();
-            sendButton.setMnemonicParsing(false);
-            sendButton.setText("Senden");
-            sendButton.setOnAction(this::clickSend);
-
-            HBox newHbox = new HBox(20);
-            newHbox.setAlignment(Pos.CENTER);
-            newHbox.setMinHeight(100);
-            newHbox.setMinWidth(700);
-
-            newHbox.getChildren().add(textField);
-            newHbox.getChildren().add(sendButton);
-
-            Button cryptoTool = new Button();
-            cryptoTool.setMnemonicParsing(false);
-            cryptoTool.setText("Kryptotool");
-            cryptoTool.setOnAction(this::clickCrypto);
-
-            if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Rückwärtsverschlüsselung")) {
-                question.setText("Entschlüssel die ersten vier Wörter des Textes (inklusive Hallo)!");
-                cryptoTool.setDisable(true);
-            } else if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
-                question.setText("Entschlüssel die ersten vier Wörter des Textes (inklusive Hallo)!");
-            } else {
-                question.setText("Gib das Schlüsselwort ein, mit dem der Text verschlüsselt wurde!");
-            }
-
-            vBox.getChildren().remove(hBox);
-            vBox.getChildren().add(newHbox);
-            vBox.getChildren().add(cryptoTool);
-            vBox.setAlignment(Pos.CENTER);
-        } else {
-            level.setCityShowing(true);
-            String[] cities = task.getAnswerOptionsCity();
-            String questionStr = task.getCityQuestion();
-            question.setText(questionStr);
-            encryptedPuzzleText.setText(task.getPlainText());
-            procedure1.setText(cities[0]);
-            procedure2.setText(cities[1]);
-            procedure3.setText(cities[2]);
         }
     }
 
@@ -156,9 +100,7 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     private void clickSend(ActionEvent event) {
-        //TODO Add functionality here
-
-        task.setEncryptionFinished();
+        level.proveTask(textField.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 
@@ -186,13 +128,7 @@ public class DecryptionController extends AbstractController {
      * @param procedure Button which is clicked on
      */
     private void clickAnswer(Button procedure){
-        if (!level.getCurrentTask().getTaskCompleted()) {
-            mainController.decryptionTaskSucceeded = level.proveTask(
-                    procedure.getText());
-        } else {
-            mainController.cityTaskFinished = level.proveCityTask(procedure.getText());
-        }
-
+        mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 

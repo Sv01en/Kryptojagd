@@ -9,6 +9,12 @@ import org.kryptojagd.encryptionmethods.Encryption;
  */
 public class DecryptionTask implements Task {
 
+	private static final String FIRST_WORD = "Hallo, ";
+
+	private MultipleChoiceTask cityTask;
+
+	private boolean choseEncryption = false;
+
 	private String plainText;
 
 	private String encryptionType;
@@ -36,6 +42,7 @@ public class DecryptionTask implements Task {
 	private boolean isCityTaskShowing;
 	private boolean taskCompleted = false;
 	private boolean encryptionTaskCompleted = false;
+	private String name = "DecryptionTask";
 
 	/**
 	 * Contructor of a decryption task
@@ -45,7 +52,7 @@ public class DecryptionTask implements Task {
 	 * @param correctAnswerEncryption correct answer of decryption task
 	 * @param answerOptionsCity       answer options for city selector
 	 * @param correctAnswerCity       correct city answer
-	 * @param textAfterStart          text to display after city celector was done right
+	 * @param textAfterStart          text to display after city selector was done right
 	 * @param timeInSec               time in sec for the task
 	 * @param timePenalty             the time penalty
 	 */
@@ -54,6 +61,7 @@ public class DecryptionTask implements Task {
 						  String textAfterStart, int timeInSec, int timePenalty) {
 		this.plainText = plainText;
 		this.encryptionType = encryptionType;
+		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity, answerOptionsCity[correctAnswerCity]);
 		this.answerOptionsEncryption = answerOptionsEncryption;
 		this.correctAnswerEncryption = correctAnswerEncryption;
 		this.answerOptionsCity = answerOptionsCity;
@@ -65,12 +73,23 @@ public class DecryptionTask implements Task {
 		this.timePenalty = timePenalty;
 	}
 
+	public void createMultipleChoiceTasks() {
+		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity, answerOptionsCity[correctAnswerCity]);
+		cityTask.setName("cityTask");
+	}
+
+
 	/**
 	 * Returns the time penalty as an integer
 	 * @return time as an integer
 	 */
 	public int getTimePenalty() {
 		return this.timePenalty;
+	}
+
+
+	public MultipleChoiceTask getCityTask() {
+		return cityTask;
 	}
 
 	/**
@@ -82,11 +101,36 @@ public class DecryptionTask implements Task {
 		this.encryptionMethod = encryptionMethod;
 	}
 
+	public boolean proveEncryptionType(String answer) {
+		this.choseEncryption = answer.equals(this.encryptionType);
+		return choseEncryption;
+	}
+
 	@Override
 	public boolean proveAnswer(String answer) {
-		this.taskCompleted = answer.equals(this.encryptionType);
+		String[] tokens = plainText.split(" ");
+		StringBuilder decrypted = new StringBuilder();
+		for (int i = tokens.length - 3; i < tokens.length; i++) {
+			if (i < tokens.length - 1) {
+				decrypted.append(tokens[i]).append(" ");
+			} else {
+				decrypted.append(tokens[i]).deleteCharAt(decrypted.length() - 1);
+			}
+		}
+		this.taskCompleted = answer.equals(decrypted.toString());
 		return taskCompleted;
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
 
 	@Override
 	public String[] getPossibilities() {
@@ -104,18 +148,11 @@ public class DecryptionTask implements Task {
 	}
 
 	/**
-	 * If the decryption task is finished, this has to be set to display the city task correctly
-	 */
-	public void setCityShowing(boolean isShowing) {
-		this.isCityTaskShowing = isShowing;
-	}
-
-	/**
 	 * Getter for the plain text
 	 * @return plaintext
 	 */
 	public String getPlainText() {
-		return this.plainText;
+		return FIRST_WORD + this.plainText;
 	}
 
 
@@ -127,72 +164,12 @@ public class DecryptionTask implements Task {
 		return this.timeInSec;
 	}
 
-	/**
-	 * Proof if the selected city is correct
-	 * @param answer answer to proof
-	 * @return true if the answer was correct, else false
-	 */
-	public boolean proofCityAnswer(String answer) {
-		if (answer.equals(answerOptionsCity[correctAnswerCity])) {
-			this.correctAnswerCityBool = true;
-			return true;
-		}
-		this.correctAnswerCityBool = false;
-		return false;
-	}
-
-	/**
-	 * Getter for the city question
-	 * @return question
-	 */
-	public String getCityQuestion() {
-		return "In welcher Stadt befindet sich die Floppy-Disk?";
-	}
-
-	/**
-	 * Getter for city answer options
-	 * @return answer options
-	 */
-	public String[] getAnswerOptionsCity() {
-		return answerOptionsCity;
-	}
-
-	/**
-	 * Getter for the given answer was correct
-	 * @return true if it was, else false
-	 */
-	public boolean getCorrectAnswerCity() {
-		return correctAnswerCityBool;
-	}
-	/**
-	 * Getter for the number of the correct city in the Array in the Json file
-	 * @return the number of the correct city in the Array in the Json file
-	 */
-	public int getCorrectAnswerCityInt() {
-		return correctAnswerCity;
-	}
-
-	/**
-	 * Getter, if the city task or the decryption task is currently showing
-	 * @return true, if the city task will be shown, else false
-	 */
-	public boolean isCityTaskShowing() {
-		return isCityTaskShowing;
-	}
-
-	/**
-	 * Getter for the correct city name
-	 * @return name of correct city
-	 */
-	public String getCity() {
-		return answerOptionsCity[correctAnswerCity];
-	}
 
 	/**
 	 * Getter for text to display after the city question is answered correctly
 	 * @return text to display
 	 */
-	public String getTextAfterStart() {
+	public String getTextAfterCityTask() {
 		return textAfterStart;
 	}
 
@@ -201,7 +178,6 @@ public class DecryptionTask implements Task {
 	 */
 	public void clearDecryptionTask() {
 		this.correctAnswer = false;
-		this.correctAnswerCityBool = false;
 		this.isCityTaskShowing = false;
 	}
 
@@ -219,14 +195,6 @@ public class DecryptionTask implements Task {
 	 */
 	public int getCorrectAnswerEncryption() {
 		return correctAnswerEncryption;
-	}
-
-	/**
-	 * Getter to check if the encryption task has been completed
-	 * @return true if it is completed, else false
-	 */
-	public boolean isEncryptionTaskCompleted() {
-		return encryptionTaskCompleted;
 	}
 
 	/**

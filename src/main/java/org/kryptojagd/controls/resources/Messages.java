@@ -28,6 +28,12 @@ public final class Messages {
             " diese Herausforderung anzunehmen.Die NIV hat im Darknet einen verschlüsselten Hinweis zu dem Fundort" +
             " der ersten Floppy-Disk entdeckt und euch diesen weitergeleitet...\n";
 
+    public static final String DECRYPTION_QUESTION = "Du weißt, dass die Nachrichten immer mit einem 'Hallo' beginnen," +
+            " finde zuerst heraus, um welches Verschlüsselungsverfahren es sich handelt." +
+            " Nachdem du das richtige Verfahren ausgewählt hast, entschlüssele die letzten 3 Worte des Textes" +
+            " und sende sie der NIV";
+
+
     /* private utility-class constructor */
     private Messages() { }
 }
