@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
