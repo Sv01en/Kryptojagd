@@ -4,13 +4,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane id="box" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.DecryptionController">
    <center>
       <VBox fx:id="vBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="encryptedPuzzleText" prefHeight="192.0" prefWidth="585.0" text="Label" />
-            <Label fx:id="question" prefHeight="93.0" prefWidth="945.0" text="Label" />
+            <Label fx:id="question" prefHeight="200.0" prefWidth="945.0" text="Label" />
+            <Label fx:id="encryptedPuzzleText" prefHeight="276.0" prefWidth="632.0" text="Label" />
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <Button fx:id="procedure1" mnemonicParsing="false" onAction="#clickProcedure1" prefHeight="24.0" prefWidth="300.0" text="Verfahren 1" />
@@ -18,7 +17,7 @@
                   <Button fx:id="procedure3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickProcedure3" prefHeight="24.0" prefWidth="300.0" text="Verfahren 3" />
                </children>
             </HBox>
-               <TextField fx:id="textField" minHeight="45.0" minWidth="600.0" maxWidth="600.0"/>
+               <TextField fx:id="textField" maxWidth="600.0" minHeight="45.0" minWidth="600.0" />
                <Button fx:id="button1" mnemonicParsing="false" onAction="#clickSend" text="Senden" />
          </children>
          <padding>

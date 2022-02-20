@@ -105,11 +105,15 @@ public class MultipleChoiceController extends AbstractController {
      * Checks if the answer is correct.
      * @param answer
      */
-    private void clickAnswer(String answer){
+    private void clickAnswer(String answer) {
         mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer);
         String city = level.getCity();
-        String css = "../css/" + city + ".css";
-
+        String css;
+        if (level.getTask("cityTask").getTaskCompleted()) {
+            css = "../css/" + city + ".css";
+        } else {
+            css = "../css/startwindow.css";
+        }
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
     }
 

@@ -56,7 +56,7 @@ public class TaskFinishedController extends AbstractController {
 	 void nextWindow(ActionEvent event) {
 	 	if (!level.isLevelCompleted()) {
 			String css;
-	 		if (level.cityIsFinished()) {
+	 		if (level.getTask("cityTask").getTaskCompleted()) {
 				String city = level.getCity();
 				css = "../css/" + city + ".css";
 			} else {

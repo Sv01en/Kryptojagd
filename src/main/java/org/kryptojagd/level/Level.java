@@ -100,6 +100,21 @@ public class Level {
 	 * Getter for current task
 	 * @return current task witch is in process
 	 */
+	public Task getTask(String name) {
+		for (Task task : tasks) {
+			if(task.getName() != null) {
+				if (task.getName().equals(name)) {
+					return task;
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Getter for current task
+	 * @return current task witch is in process
+	 */
 	public Task getCurrentTask() {
 		return currentTask;
 	}
