@@ -80,13 +80,15 @@ public class Level {
 
 	/**
 	 * Getter for levelCompleted
-	 * @return true, if the level is completed
+	 * @return true, if every task in the level is completed
 	 */
 	public boolean isLevelCompleted() {
-		for (Task multipleChoice: multipleChoiceTasks) {
-			levelCompleted = multipleChoice.getTaskCompleted();
+		for (Task task: tasks) {
+			if (!task.getTaskCompleted()) {
+				return false;
+			}
 		}
-		return levelCompleted;
+		return true;
 	}
 
 	public void setNextTask(){
@@ -130,11 +132,6 @@ public class Level {
 	public Encryption getEncryptionMethod() {
 		return encryptionMethod;
 	}
-
-	public boolean cityIsFinished() {
-		return decryptionTask.getCityTask().getTaskCompleted();
-	}
-
 
 	/**
 	 * proves the current task

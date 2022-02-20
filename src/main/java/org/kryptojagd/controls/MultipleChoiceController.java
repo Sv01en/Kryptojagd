@@ -19,8 +19,8 @@ import org.kryptojagd.level.tasks.MultipleChoiceTask;
  */
 public class MultipleChoiceController extends AbstractController {
 
-    private Level level = mainController.getCurrentLevel();
-    private MultipleChoiceTask task = (MultipleChoiceTask) level.getCurrentTask();
+    private final Level level = mainController.getCurrentLevel();
+    private final MultipleChoiceTask task = (MultipleChoiceTask) level.getCurrentTask();
 
     @FXML
     public Label answers;
