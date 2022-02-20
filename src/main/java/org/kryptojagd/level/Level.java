@@ -48,8 +48,6 @@ public class Level {
 
 	private Task currentTask;
 
-	private boolean levelCompleted = false;
-
 	/**
 	 * Creates a {@link Level}
 	 *
@@ -150,7 +148,7 @@ public class Level {
 			feedback = Messages.STANDARD_FEEDBACK_GOOD;
 			alternativeFeedback();
 		}
-		if (levelCompleted) {
+		if (isLevelCompleted()) {
 			feedback = Messages.LEVEL_FINISHED;
 		}
 		return this.currentTask.proveAnswer(answer);
