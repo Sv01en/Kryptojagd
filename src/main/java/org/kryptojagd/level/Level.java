@@ -34,7 +34,7 @@ public class Level {
 
 	private int id;
 
-	private int indexTask = 0;
+	private int indexTask = 1;
 
 	private int timePenalty;
 
@@ -145,9 +145,11 @@ public class Level {
 	}
 
 	private void alternativeFeedback() {
-		if (this.currentTask.toString().equals("cityTask")) {
-			feedback = decryptionTask.getTextAfterCityTask();
-			return;
+		if (this.currentTask.getName() != null) {
+			if (this.currentTask.getName().equals("cityTask")) {
+				feedback = decryptionTask.getTextAfterCityTask();
+				return;
+			}
 		}
 		if (isMultipleChoiceFinished()) {
 			feedback = Messages.FINISHED_MULTIPLE_CHOICE;

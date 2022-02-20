@@ -42,6 +42,7 @@ public class DecryptionTask implements Task {
 	private boolean isCityTaskShowing;
 	private boolean taskCompleted = false;
 	private boolean encryptionTaskCompleted = false;
+	private String name = "DecryptionTask";
 
 	/**
 	 * Contructor of a decryption task
@@ -113,12 +114,23 @@ public class DecryptionTask implements Task {
 			if (i < tokens.length - 1) {
 				decrypted.append(tokens[i]).append(" ");
 			} else {
-				decrypted.append(tokens[i]);
+				decrypted.append(tokens[i]).deleteCharAt(decrypted.length() - 1);
 			}
 		}
 		this.taskCompleted = answer.equals(decrypted.toString());
 		return taskCompleted;
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
 
 	@Override
 	public String[] getPossibilities() {
@@ -136,13 +148,6 @@ public class DecryptionTask implements Task {
 	}
 
 	/**
-	 * If the decryption task is finished, this has to be set to display the city task correctly
-	 */
-	public void setCityShowing(boolean isShowing) {
-		this.isCityTaskShowing = isShowing;
-	}
-
-	/**
 	 * Getter for the plain text
 	 * @return plaintext
 	 */
@@ -157,23 +162,6 @@ public class DecryptionTask implements Task {
 	 */
 	public int getTimeInSec() {
 		return this.timeInSec;
-	}
-
-	/**
-	 * Proof if the selected city is correct
-	 * @param answer answer to proof
-	 * @return true if the answer was correct, else false
-	 */
-	public boolean proofCityAnswer(String answer) {
-		return cityTask.proveAnswer(answer);
-	}
-
-	/**
-	 * Getter, if the city task or the decryption task is currently showing
-	 * @return true, if the city task will be shown, else false
-	 */
-	public boolean isCityTaskShowing() {
-		return isCityTaskShowing;
 	}
 
 
@@ -207,14 +195,6 @@ public class DecryptionTask implements Task {
 	 */
 	public int getCorrectAnswerEncryption() {
 		return correctAnswerEncryption;
-	}
-
-	/**
-	 * Getter to check if the encryption task has been completed
-	 * @return true if it is completed, else false
-	 */
-	public boolean isEncryptionTaskCompleted() {
-		return encryptionTaskCompleted;
 	}
 
 	/**

@@ -11,7 +11,8 @@ public class MultipleChoiceTask implements Task {
     private final String correctAnswer;
     private final String[] answerOptions;
     private boolean taskCompleted = false;
-    private String name = "MultipleChoice";
+    private static final String TASK_NAME = "MultipleChoiceTask";
+    private String name = TASK_NAME;
 
     /**
      * Creates a {@link MultipleChoiceTask}
@@ -26,8 +27,14 @@ public class MultipleChoiceTask implements Task {
         this.answerOptions = answerOptions;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     /**
@@ -73,7 +80,7 @@ public class MultipleChoiceTask implements Task {
      */
     @Override
     public String toString() {
-        return name;
+        return "MultipleChoiceTask";
     }
 
 }

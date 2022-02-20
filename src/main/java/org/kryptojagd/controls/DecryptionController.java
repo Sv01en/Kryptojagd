@@ -102,7 +102,7 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     private void clickSend(ActionEvent event) {
-        task.proveAnswer(textField.getText());
+        level.proveTask(textField.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 

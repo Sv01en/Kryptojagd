@@ -15,6 +15,10 @@ public interface Task {
      */
     boolean proveAnswer(String answer);
 
+    String getName();
+
+    void setName(String name);
+
     /**
      * Returns if the task is complete
      *
