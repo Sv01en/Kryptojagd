@@ -107,6 +107,7 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     private void clickCrypto(ActionEvent event) {
+        if (level.getId() > 1)
         if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
             try {
                 CryptoTool.caesar(new Stage());
