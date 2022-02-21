@@ -16,6 +16,10 @@ public abstract class Encryption {
      */
     public abstract String encode(String text);
 
+
+    public abstract void setKey(int key);
+
+
     /**
      * Decode string.
      *

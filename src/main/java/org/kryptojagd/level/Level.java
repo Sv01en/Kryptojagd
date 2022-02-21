@@ -201,6 +201,11 @@ public class Level {
 				break;
 			case ("Caesar"):
 				this.encryptionMethod = new Caesar();
+				if (this.id == 2) {
+					this.encryptionMethod.setKey(3);
+				} else {
+					this.encryptionMethod.setKey((int) (Math.random() * (26 - 1) + 1));
+				}
 				break;
 			case("Vigenere"):
 				this.encryptionMethod = new Vigenere();

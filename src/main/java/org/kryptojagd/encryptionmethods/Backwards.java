@@ -13,6 +13,13 @@ public class Backwards extends Encryption {
         super.name = "Backwards";
     }
 
+    private int key;
+
+    @Override
+    public void setKey(int key) {
+        this.key = key;
+    }
+
     /**
      * Encrypts a text using word wise reverse encryption
      * 
