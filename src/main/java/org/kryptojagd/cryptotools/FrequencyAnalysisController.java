@@ -47,9 +47,6 @@ public class FrequencyAnalysisController {
     private Label label1;
     
     @FXML
-    private ComboBox<String> sortChoices;
-    
-    @FXML
     private TabPane tabPane;
     
     @FXML
@@ -80,55 +77,19 @@ public class FrequencyAnalysisController {
     @FXML
     public void initialize() {
     	
-    	sortChoices.setDisable(true);
-    	
     	germanLetterFrequency = sortAlphabetic(true, germanLetterFrequency);
     	
     	lettersLabels(pane, 575);
  	   
         
     	label1.setText(text);
-    	ObservableList<String> options = 
-    		    FXCollections.observableArrayList(
-    		        "alphabetisch",
-    		        "absteigend"
-    		    );
-    	sortChoices.setItems(options);
-    	
-    	sortChoices.getSelectionModel().select(0);
    
 		textLetterFrequency = FrequencyAnalysis.relativeFrequency(text);
 		
 		
 		updateChart();
 
-    }
-    
-    /**
-     * 
-     * @param event
-     */
-    @FXML
-    void comboboxItemSelected(ActionEvent event) {
-    	
-    	removeLettersLabels(); 	
-    	
-    	String selection = sortChoices.getValue();
-    	
-    	if(selection.equals("alphabetisch")) {
-    		textLetterFrequency = sortAlphabetic(true, textLetterFrequency);
-    		germanLetterFrequency = sortAlphabetic(true, germanLetterFrequency );
-    		buttonShiftRight.setDisable(false);
-    		buttonShiftLeft.setDisable(false);
-    	} else {
-    		textLetterFrequency = sortAlphabetic(false, textLetterFrequency);
-    		germanLetterFrequency = sortAlphabetic(false, germanLetterFrequency);
-    		buttonShiftRight.setDisable(true);
-    		buttonShiftLeft.setDisable(true);
-    	}
-    	lettersLabels(pane, 575);
-    	updateChart();
-    }
+    }   
 
     
     /**
@@ -186,11 +147,6 @@ public class FrequencyAnalysisController {
     	
     	for (int i = 0; i < listString.size(); i++) {
     		textLetterFrequency.put(listString.get(i), listDouble.get(i));
-    	}
-    	
-    	
-    	if (sortChoices.getValue().equals("absteigend")) {
-    		textLetterFrequency = sortAlphabetic(false, textLetterFrequency);
     	}
     	
     	updateChart();
@@ -274,7 +230,7 @@ public class FrequencyAnalysisController {
 //        final BarChart<String,Number> bc = 
 //            new BarChart<String,Number>(xAxis,yAxis);
     	
-        CustomBarChart<String, Number> bc = new CustomBarChart<String,Number>(xAxis,yAxis);
+        BarChart<String, Number> bc = new BarChart<String,Number>(xAxis,yAxis);
         
     	bc.setTitle("Häufigkeitsanalyse");
         xAxis.setLabel("Buchstaben (ohne Umlaute und ß)"); 

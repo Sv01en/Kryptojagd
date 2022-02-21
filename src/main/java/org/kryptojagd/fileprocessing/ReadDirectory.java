@@ -1,9 +1,15 @@
 package org.kryptojagd.fileprocessing;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.stream.Collectors;
+
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.LevelComparator;
 import org.kryptojagd.level.tasks.DecryptionTask;
@@ -17,9 +23,10 @@ import org.kryptojagd.level.tasks.MultipleChoiceTask;
  */
 public class ReadDirectory {
 
-  private static Level level;
-  private static final String PATH = "src/main/resources/org/kryptojagd/levels";
-
+  private static final String PREFIX = "/org/kryptojagd/levels/";
+  private static final String LEVEL = "level";
+  private static final String[] tasks = {"encryption", "decryption", "question"};
+  
   /**
    * This method initializes all levels.
    *
@@ -29,76 +36,90 @@ public class ReadDirectory {
   public static ArrayList<Level> initialize() throws Exception {
 
     ArrayList<Level> allLevels = new ArrayList<Level>();
-
-    File levelsFolder = new File(PATH);
-    File[] listOfFolders = levelsFolder.listFiles();
-
-    for (File folder : listOfFolders) {
-
-      if (folder.isDirectory() && folder.getName().substring(0, 5).equals("level")) {
-
-        Level level = readLevelDirectory(folder.getAbsolutePath());
-        int levelNum = Integer.parseInt(folder.getName().substring(5));
-        level.setId(levelNum);
-        allLevels.add(level);
-      }
+    
+    boolean[] check = {true, true, true};
+    
+    //TODO Exception, wenn Decryption, Encryption oder MultipleChoice gleich null
+    
+    for (int i = 1; ; i++) {
+    	
+    	DecryptionTask decryptionTask = null;
+    	EncryptionTask encryptionTask = null;
+    	LinkedList<MultipleChoiceTask> multipleChoiceTasks = new LinkedList<MultipleChoiceTask>(); 
+    	
+    	for (String t : tasks) {
+    		
+    		if (t.equals("question")) {
+    			
+    			for (int k = 1; k < 6; k++) {
+        			String p = PREFIX + LEVEL + i + "/" + t + k + ".json";
+        			try {
+        				InputStream configStream = ReadDirectory.class.getResourceAsStream(p);
+        			    BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, "UTF-8"));
+        			    
+        			    String content = "";
+        			    String line = configReader.readLine();
+        			  	while (line != null) {
+        			  		content += line + "\n";
+        			  		line = configReader.readLine();
+        			  	}
+	    			  	if (t.contains("question")) {
+	    			  		multipleChoiceTasks.add(ReadJson.createMultipleChoiceTask(content));
+	    				} 
+        			    
+        			} catch (Exception e) {
+        				if (k == 1) {
+        					check[2] = false;
+        				}
+        				break;
+        			}
+        		}
+    			
+    		} else {
+    			String p = PREFIX + LEVEL + i + "/" + t + ".json";
+    			try {
+    				InputStream configStream = ReadDirectory.class.getResourceAsStream(p);
+    			    BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, "UTF-8"));
+    			    
+    			    String content = "";
+    			    String line = configReader.readLine();
+    			  	while (line != null) {
+    			  		content += line + "\n";
+    			  		line = configReader.readLine();
+    			  	}
+    			  	if (t.contains("decryption")) {
+    					decryptionTask = ReadJson.createDecryptionTask(content);
+    				} else if (t.contains("encryption")) {
+    					encryptionTask = ReadJson.createEncryptionTask(content);
+    				}
+    			    
+    			} catch (Exception e) {
+    				if (t.equals("encryption")) {
+    					 check[0] = false;
+    				} else {
+    					check[1] = false;
+    				}
+    			}
+    		}
+    	}
+    	
+    	// Wenn die Pfade für Decryption, Encryption und MultipleChoiceQuestion für ein komplettes Level 
+    	// ungültig sind, wird das Einlesen abgebrochen.
+    	
+    	if (!check[0] && !check[1] && !check[2]) {
+    		System.out.println("Ordner für Level " + i + " existiert nicht. Einlesen der Level nach Level " + (i-1) + " abgebrochen.");
+    		break;
+    	} else {
+    		Level l = new Level(decryptionTask, encryptionTask, multipleChoiceTasks, 600);
+    		allLevels.add(l);
+    		check[0] = true;
+    		check[1] = true;
+    		check[2] = true;
+    	}
     }
 
     Collections.sort(allLevels, new LevelComparator());
     return allLevels;
 
-  }
-
-  //TODO prove, if decryptionTask and encryptionTask exists as a file
-  /**
-  * Reads the files with the information for a level and creates it.
-  *
-  * @param path filepath to the files with the information for a level
-  * @return level, with the given information of the files
-  * @throws Exception if there is an unknown file
-  */
-  private static Level readLevelDirectory(String path) throws Exception {
-
-    LinkedList<MultipleChoiceTask> multipleChoiceTasks = new LinkedList<>();
-    int timeInSec = 300;
-    String pathToDecryptionTask = "";
-    String pathToEncryptionTask = "";
-
-    File levelFolder = new File(path);
-    File[] listOfFiles = levelFolder.listFiles();
-
-    for (File file : listOfFiles) {
-      if (file.isFile()) {
-        String fileName = file.getName();
-        String pathToFile = file.getAbsolutePath();
-
-        if (fileName.contains("decryption")) {
-          pathToDecryptionTask = pathToFile;
-        } else if (fileName.contains("encryption")) {
-          pathToEncryptionTask = pathToFile;
-        } else if (fileName.contains("question")) {
-          MultipleChoiceTask multipleChoiceTask = ReadJson.createMultipleChoiceTask(pathToFile);
-          multipleChoiceTasks.add(multipleChoiceTask);
-        } else if (fileName.contains("time")) {
-          timeInSec = ReadJson.readTime(pathToFile);
-        } else {
-          throw new Exception("Unbekannte Datei");
-        }
-      }
-    }
-    DecryptionTask decryptionTask = ReadJson.createDecryptionTask(pathToDecryptionTask);
-    EncryptionTask encryptionTask = ReadJson.createEncryptionTask(pathToEncryptionTask);
-    level = new Level(decryptionTask, encryptionTask, multipleChoiceTasks, timeInSec);
-
-    return level;
-  }
-
-  /**
-   * Gets level.
-   *
-   * @return the level
-   */
-  public static Level getLevel() {
-    return level;
   }
 }
