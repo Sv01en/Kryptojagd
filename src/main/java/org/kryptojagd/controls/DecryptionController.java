@@ -57,16 +57,15 @@ public class DecryptionController extends AbstractController {
     @FXML
     public void initialize() {
         updateTimer();
-        if (!task.getTaskCompleted()) {
-            level.startCountdown();
-            question.setText(Messages.DECRYPTION_QUESTION);
-            String[] possibleChoice = task.getPossibilities();
-            String plaintext = task.getPlainText();
-            encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
-            procedure1.setText(possibleChoice[0]);
-            procedure2.setText(possibleChoice[1]);
-            procedure3.setText(possibleChoice[2]);
-        }
+        level.startCountdown();
+        question.setText(Messages.DECRYPTION_QUESTION);
+        String[] possibleChoice = task.getPossibilities();
+        String plaintext = task.getPlainText();
+        encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
+        procedure1.setText(possibleChoice[0]);
+        procedure2.setText(possibleChoice[1]);
+        procedure3.setText(possibleChoice[2]);
+
     }
 
     /**
@@ -99,15 +98,26 @@ public class DecryptionController extends AbstractController {
         clickAnswer(procedure3);
     }
 
+    /**
+     * Handles press on send button
+     *
+     * Proves the answer of the text field and switches the window
+     * @param event that is received
+     */
     @FXML
     private void clickSend(ActionEvent event) {
         level.proveTask(textField.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
     }
 
+    /**
+     * Handles press on cryptotool button
+     *
+     * Opens a new window with the cryptotool
+     * @param event that is received
+     */
     @FXML
     private void clickCrypto(ActionEvent event) {
-        if (level.getId() > 1)
         if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
             try {
                 CryptoTool.caesar(new Stage());

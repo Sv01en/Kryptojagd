@@ -88,7 +88,7 @@ public class ReadJson {
     try {
       Object obj2 = parser.parse(new FileReader(path));
       decryptionTask = gson.fromJson(obj2.toString(), DecryptionTask.class);
-      decryptionTask.createMultipleChoiceTasks();
+      decryptionTask.createCityTask();
     } catch (FileNotFoundException e) {
       // TODO Auto-generated catch block
       System.out.println("Decryption Datei wurde nicht gefunden!");

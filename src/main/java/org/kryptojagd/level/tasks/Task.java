@@ -15,8 +15,18 @@ public interface Task {
      */
     boolean proveAnswer(String answer);
 
+    /**
+     * Getter for the name of the task
+     *
+     * @return name of the task
+     */
     String getName();
 
+    /**
+     * Setter for the name of the task
+     *
+     * @param name of the task
+     */
     void setName(String name);
 
     /**

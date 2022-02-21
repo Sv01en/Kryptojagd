@@ -132,9 +132,13 @@ public class Level {
 	}
 
 	/**
-	 * proves the current task
-	 * reduces the time, if the answer was wrong
+	 * Proves the current task
 	 *
+	 * reduces the time, if the answer is wrong
+	 * Also sets the right feedback
+	 * good feedback, if the answer is right
+	 * bad feedback, if the answer is wrong
+	 * an alternative feedback, if a special task is over or the whole level
 	 * @param answer string given by the GUI
 	 * @return true or false
 	 */
@@ -154,6 +158,12 @@ public class Level {
 		return this.currentTask.proveAnswer(answer);
 	}
 
+	/**
+	 * Sets an alternative feedback
+	 *
+	 * if the city task is completed, it sets the text after the city task
+	 * if the whole multiple choice is finished, it sets the right {@link Messages}
+	 */
 	private void alternativeFeedback() {
 		if (this.currentTask.getName() != null) {
 			if (this.currentTask.getName().equals("cityTask")) {
@@ -166,6 +176,11 @@ public class Level {
 		}
 	}
 
+	/**
+	 * Proves if every multiple choice is completed
+	 *
+	 * @return true, if every multiple choice is completed
+	 */
 	private boolean isMultipleChoiceFinished() {
 		for (Task task : multipleChoiceTasks) {
 			if (!task.getTaskCompleted()) {
@@ -177,6 +192,11 @@ public class Level {
 
 	/**
 	 * Checks if the given answer is the correct city
+	 *
+	 * Reduces the timer, if the answer is wrong
+	 * Also sets the right feedback
+	 * good feedback, if the answer is right
+	 * bad feedback, if the answer is wrong
 	 * @param answer answer to check
 	 * @return true if the answer is correct else false
 	 */
@@ -257,7 +277,6 @@ public class Level {
 		this.currentMultipleChoiceTask = 0;
 		this.currentTime = this.timeInSec;
 		this.countdownTimer.cancelTimerTask();
-		this.decryptionTask.clearDecryptionTask();
 	}
 
 	/**

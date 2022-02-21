@@ -20,8 +20,7 @@ import org.kryptojagd.level.tasks.Task;
  */
 public class TaskFinishedController extends AbstractController {
 
-	private Level level = mainController.getCurrentLevel();
-	private Task task = level.getCurrentTask();
+	private final Level level = mainController.getCurrentLevel();
 	private static final String LEVEL_FINISHED = "LevelFinished.fxml";
 
 	@FXML
@@ -33,11 +32,7 @@ public class TaskFinishedController extends AbstractController {
 	/**
 	 * Initializes a TaskFinishedController
 	 *
-	 * if every multiple choice question of a level is answered, it prints out the finished multiple choice text
-	 * if the city question of a level is right answered, it prints out the textAfterStartDecryption
-	 * If the task is completed, it prints out the good standard feedback
-	 * else it prints out  the bad standard feedback
-	 *
+	 * Updates the timer and sets the feedback text
 	 */
 	@FXML
 	public void initialize() {
@@ -47,8 +42,10 @@ public class TaskFinishedController extends AbstractController {
 
 	/**
 	 * Handles the switch to the next task
-	 * If the the decryption task as last task is answered,
-	 * it switches the window to the menu
+	 *
+	 * If the cityTask is completed it changes the background picture
+	 * If the level is completed,
+	 * it switches the window to the level finished window
 	 *
 	 * @param event that is received
 	 */
