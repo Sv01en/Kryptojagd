@@ -27,11 +27,11 @@ public class Caesar extends Encryption {
      * Generates a random number between 1 and 25
      * @return Random int value
      */
-     /*public static int generateKey() {
+     public static int generateKey() {
 
         return (int) (Math.random() * (26 - 1) + 1);
 
-    }*/
+    }
 
     //ToDo
     /**
