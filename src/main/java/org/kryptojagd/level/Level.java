@@ -48,6 +48,8 @@ public class Level {
 
 	private Task currentTask;
 
+	private int key;
+
 	/**
 	 * Creates a {@link Level}
 	 *
@@ -203,8 +205,10 @@ public class Level {
 				this.encryptionMethod = new Caesar();
 				if (this.id == 2) {
 					this.encryptionMethod.setKey(3);
+					this.key = 3;
 				} else {
-					this.encryptionMethod.setKey((int) (Math.random() * (26 - 1) + 1));
+					this.key = (int) (Math.random() * (26 - 1) + 1);
+					this.encryptionMethod.setKey(this.key);
 				}
 				break;
 			case("Vigenere"):
@@ -219,6 +223,10 @@ public class Level {
 		}
 		this.decryptionTask.setEncryptionMethod(this.encryptionMethod);
 		this.encryptionTask.setEncryptionMethod(this.encryptionMethod);
+	}
+
+	public int getKey() {
+		return this.key;
 	}
 
 	/**
