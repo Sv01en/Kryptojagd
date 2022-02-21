@@ -258,6 +258,12 @@ public class Level {
 		this.currentTime = this.timeInSec;
 		this.countdownTimer.cancelTimerTask();
 		this.decryptionTask.clearDecryptionTask();
+		this.currentTask = decryptionTask;
+		for (Task task: tasks) {
+			if (task.getTaskCompleted()) {
+				task.setTaskCompletedEnd();
+			}
+		}
 	}
 
 	/**

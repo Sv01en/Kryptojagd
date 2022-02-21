@@ -236,4 +236,9 @@ public class EncryptionTask implements Task {
     public int getHammingDistanceValue() {
         return this.hammingDistanceValue;
     }
+
+    @Override
+    public void setTaskCompletedEnd() {
+        this.taskCompleted = false;
+    }
 }
