@@ -147,6 +147,11 @@ public class DecryptionTask implements Task {
 		return "DecryptionTask";
 	}
 
+	@Override
+	public void setTaskCompletedEnd() {
+		this.taskCompleted = false;
+	}
+
 	/**
 	 * Getter for the plain text
 	 * @return plaintext

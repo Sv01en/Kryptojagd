@@ -13,6 +13,13 @@ public class Vigenere extends Encryption {
         super.name = "Vigenere";
     }
 
+    private int key;
+
+    @Override
+    public void setKey(int key) {
+        this.key = key;
+    }
+
     /**
      * Generated a random number between 4 and 6
      * @return Random int value

@@ -14,6 +14,13 @@ public class Beaufort extends Encryption {
         super.name = "Beaufort";
     }
 
+    private int key;
+
+    @Override
+    public void setKey(int key) {
+        this.key = key;
+    }
+
     /**
      * Generated a random number between 4 and 6
      * @return Random int value

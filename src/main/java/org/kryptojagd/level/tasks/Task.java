@@ -27,6 +27,12 @@ public interface Task {
     boolean getTaskCompleted();
 
     /**
+     * Set true or false if the task is completed
+     *
+     */
+    void setTaskCompletedEnd();
+
+    /**
      * Returns the possibilities as a string array.
      *
      * @return possibilities as a string array

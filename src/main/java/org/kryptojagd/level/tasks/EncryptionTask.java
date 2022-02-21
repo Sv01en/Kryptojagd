@@ -78,6 +78,14 @@ public class EncryptionTask implements Task {
     }
 
     /**
+     * Set up the key for caesar encryption.
+     * @param key given as an integer
+     */
+    public void setCaaesarKey(int key) {
+        this.key = Integer.toString(key);
+    }
+
+    /**
      * Gets the fitting mistake message.
      *
      * @return the mistake msg
@@ -235,5 +243,10 @@ public class EncryptionTask implements Task {
      */
     public int getHammingDistanceValue() {
         return this.hammingDistanceValue;
+    }
+
+    @Override
+    public void setTaskCompletedEnd() {
+        this.taskCompleted = false;
     }
 }

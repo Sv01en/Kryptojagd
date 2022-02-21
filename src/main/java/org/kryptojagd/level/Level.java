@@ -48,6 +48,8 @@ public class Level {
 
 	private Task currentTask;
 
+	private int key;
+
 	/**
 	 * Creates a {@link Level}
 	 *
@@ -201,6 +203,13 @@ public class Level {
 				break;
 			case ("Caesar"):
 				this.encryptionMethod = new Caesar();
+				if (this.id == 2) {
+					this.encryptionMethod.setKey(3);
+					this.key = 3;
+				} else {
+					this.key = (int) (Math.random() * (26 - 1) + 1);
+					this.encryptionMethod.setKey(this.key);
+				}
 				break;
 			case("Vigenere"):
 				this.encryptionMethod = new Vigenere();
@@ -214,6 +223,10 @@ public class Level {
 		}
 		this.decryptionTask.setEncryptionMethod(this.encryptionMethod);
 		this.encryptionTask.setEncryptionMethod(this.encryptionMethod);
+	}
+
+	public int getKey() {
+		return this.key;
 	}
 
 	/**
@@ -258,6 +271,12 @@ public class Level {
 		this.currentTime = this.timeInSec;
 		this.countdownTimer.cancelTimerTask();
 		this.decryptionTask.clearDecryptionTask();
+		this.currentTask = decryptionTask;
+		for (Task task: tasks) {
+			if (task.getTaskCompleted()) {
+				task.setTaskCompletedEnd();
+			}
+		}
 	}
 
 	/**
