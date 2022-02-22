@@ -157,6 +157,7 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
+        mainController.getCurrentLevel().clearLevel();
         mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
     }
 }
