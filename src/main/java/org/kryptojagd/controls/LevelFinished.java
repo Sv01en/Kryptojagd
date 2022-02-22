@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.fileprocessing.ReadDirectory;
 
 /**
  *
@@ -31,7 +32,7 @@ public class LevelFinished extends AbstractController {
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.cityTaskFinished = false;
-        mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
 
     /**
@@ -40,8 +41,6 @@ public class LevelFinished extends AbstractController {
      */
     @FXML
     void nextLevelAction(ActionEvent e) {
-        String city = mainController.getCurrentLevel().getCity();
-        String css = "../css/" + city + ".css";
         mainController.getCurrentLevel().clearLevel();
         mainController.setClearedLevels();
         mainController.setNextLevel();
@@ -65,7 +64,7 @@ public class LevelFinished extends AbstractController {
             System.out.println(mainController.getCurrentLevel().getTimeInSec());
             timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
             if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
+                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
                 time.stop();
             }
         });

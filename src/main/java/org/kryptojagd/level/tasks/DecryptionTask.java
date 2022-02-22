@@ -12,37 +12,20 @@ public class DecryptionTask implements Task {
 	private static final String FIRST_WORD = "Hallo, ";
 
 	private MultipleChoiceTask cityTask;
-
 	private boolean choseEncryption = false;
-
 	private String plainText;
-
 	private String encryptionType;
-
 	private Encryption encryptionMethod;
-
 	private String[] answerOptionsEncryption;
-
 	private int correctAnswerEncryption;
-
 	private String[] answerOptionsCity;
-
 	private int correctAnswerCity;
-
 	private String textAfterStart;
-
 	private int timeInSec;
-
 	private int timePenalty;
-
-	private boolean correctAnswer;
-
-	private boolean correctAnswerCityBool;
-
-	private boolean isCityTaskShowing;
 	private boolean taskCompleted = false;
-	private boolean encryptionTaskCompleted = false;
 	private String name = "DecryptionTask";
+	private String key;
 
 	/**
 	 * Contructor of a decryption task
@@ -62,18 +45,63 @@ public class DecryptionTask implements Task {
 		this.plainText = plainText;
 		this.encryptionType = encryptionType;
 		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity, answerOptionsCity[correctAnswerCity]);
+		cityTask.setName("cityTask");
 		this.answerOptionsEncryption = answerOptionsEncryption;
 		this.correctAnswerEncryption = correctAnswerEncryption;
 		this.answerOptionsCity = answerOptionsCity;
 		this.correctAnswerCity = correctAnswerCity;
 		this.textAfterStart = textAfterStart;
 		this.timeInSec = timeInSec;
-		this.correctAnswerCityBool = false;
-		this.isCityTaskShowing = false;
 		this.timePenalty = timePenalty;
 	}
 
-	public void createMultipleChoiceTasks() {
+
+	/**
+	 * Getter for the plain text
+	 * @return plaintext with the first word appending
+	 */
+	public String getPlainText() {
+		return FIRST_WORD + this.plainText;
+	}
+
+	/**
+	 * Getter for time in sec
+	 * @return left time in sec
+	 */
+	public int getTimeInSec() {
+		return this.timeInSec;
+	}
+
+	/**
+	 * Getter for text to display after the city question is answered correctly
+	 * @return text to display
+	 */
+	public String getTextAfterCityTask() {
+		return textAfterStart;
+	}
+
+	/**
+	 * Getter for the encryption method
+	 * @return encryption method
+	 */
+	public String getEncryptionMethod() {
+		return encryptionMethod.toString();
+	}
+
+	/**
+	 * Getter for the number of the encryption method in the Array in the Json file
+	 * @return the number of the encryption method in the Array in the Json file
+	 */
+	public int getCorrectAnswerEncryption() {
+		return correctAnswerEncryption;
+	}
+
+	/**
+	 * Creates the cityTask as a multiple choice task with the given parameter in the class
+	 *
+	 * this method is for using, if the constructor is not used
+	 */
+	public void createCityTask() {
 		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity, answerOptionsCity[correctAnswerCity]);
 		cityTask.setName("cityTask");
 	}
@@ -87,7 +115,10 @@ public class DecryptionTask implements Task {
 		return this.timePenalty;
 	}
 
-
+	/**
+	 * Getter for the cityTask
+	 * @return cityTask
+	 */
 	public MultipleChoiceTask getCityTask() {
 		return cityTask;
 	}
@@ -101,13 +132,26 @@ public class DecryptionTask implements Task {
 		this.encryptionMethod = encryptionMethod;
 	}
 
+	/**
+	 * Proves if the given encryption type is the used encryption of the class
+	 *
+	 * It also sets the boolean, if the right encryption is chosen (choseEncryption)
+	 * @param answer given answer, which is proved
+	 * @return true, if the answer is right
+	 */
 	public boolean proveEncryptionType(String answer) {
 		this.choseEncryption = answer.equals(this.encryptionType);
 		return choseEncryption;
 	}
 
-	@Override
-	public boolean proveAnswer(String answer) {
+	/**
+	 * Proves if the given text is the last 3 words of the plaintext
+	 *
+	 * It also sets the boolean, if the task is completed (taskCompleted)
+	 * @param answer given answer, which is proved
+	 * @return true, if the answer is right
+	 */
+	private boolean proveDecryptedText(String answer) {
 		String[] tokens = plainText.split(" ");
 		StringBuilder decrypted = new StringBuilder();
 		for (int i = tokens.length - 3; i < tokens.length; i++) {
@@ -119,6 +163,36 @@ public class DecryptionTask implements Task {
 		}
 		this.taskCompleted = answer.equals(decrypted.toString());
 		return taskCompleted;
+	}
+
+	/**
+	 * Proves if the given String is the key, which was used to encrypt the plaintext
+	 *
+	 * It also sets the boolean, if the task is completed (taskCompleted)
+	 * @param answer given answer, which is proved
+	 * @return true, if the answer is right
+	 */
+	private boolean proveKey(String answer) {
+		this.taskCompleted = key.equals(answer);
+		return taskCompleted;
+	}
+
+	/**
+	 * Proves the answer to the task
+	 *
+	 * if the encryption type is ceasar or backwards, it proves the decrypted last 3 words
+	 * if the encryption type is vigenere or beaufort, it proves the right key
+	 * @param answer the answer
+	 * @return true, if the task is right answered
+	 */
+	@Override
+	public boolean proveAnswer(String answer) {
+		if(encryptionType.startsWith("Cäsar") || encryptionType.startsWith("Rückwärts")) {
+			return proveDecryptedText(answer);
+		} else if (encryptionType.startsWith("Vigenère") || encryptionType.startsWith("Beaufort")) {
+			return proveKey(answer);
+		}
+		return false;
 	}
 
 	@Override
@@ -143,69 +217,13 @@ public class DecryptionTask implements Task {
 	}
 
 	@Override
+	public void setTaskCompletedEnd() {
+
+	}
+
+	@Override
 	public String toString(){
 		return "DecryptionTask";
 	}
 
-	@Override
-	public void setTaskCompletedEnd() {
-		this.taskCompleted = false;
-	}
-
-	/**
-	 * Getter for the plain text
-	 * @return plaintext
-	 */
-	public String getPlainText() {
-		return FIRST_WORD + this.plainText;
-	}
-
-
-	/**
-	 * Getter for time in sec
-	 * @return left time in sec
-	 */
-	public int getTimeInSec() {
-		return this.timeInSec;
-	}
-
-
-	/**
-	 * Getter for text to display after the city question is answered correctly
-	 * @return text to display
-	 */
-	public String getTextAfterCityTask() {
-		return textAfterStart;
-	}
-
-	/**
-	 * Clears the decryption task.
-	 */
-	public void clearDecryptionTask() {
-		this.correctAnswer = false;
-		this.isCityTaskShowing = false;
-	}
-
-	/**
-	 * Getter for the encryption method
-	 * @return encryption method
-	 */
-	public String getEncryptionMethod() {
-		return encryptionMethod.toString();
-	}
-
-	/**
-	 * Getter for the number of the encryption method in the Array in the Json file
-	 * @return the number of the encryption method in the Array in the Json file
-	 */
-	public int getCorrectAnswerEncryption() {
-		return correctAnswerEncryption;
-	}
-
-	/**
-	 * Sets the encryptionTaskCompleted variable to true
-	 */
-	public void setEncryptionFinished() {
-		encryptionTaskCompleted = true;
-	}
 }

@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
+import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
 
@@ -65,9 +66,9 @@ public class EncryptionController extends AbstractController {
     @FXML
     void checkEncryption(ActionEvent event) {
         level.proveTask(textField1.getText());
-        //mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
+        //mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
         String city = level.getCity();
-        String css = "../css/" + city + ".css";
+        String css = ReadDirectory.CSS_FILES + city + ".css";
 
         if (task.getTaskCompleted()) {
             mainController.switchWindowWithCSS("TaskFinished.fxml", css);
@@ -93,7 +94,7 @@ public class EncryptionController extends AbstractController {
             System.out.println(mainController.getCurrentLevel().getTimeInSec());
             timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
             if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
+                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
                 time.stop();
             }
         });
@@ -103,6 +104,6 @@ public class EncryptionController extends AbstractController {
 
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
-        mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
 }

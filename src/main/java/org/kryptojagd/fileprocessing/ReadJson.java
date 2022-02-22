@@ -29,13 +29,13 @@ public class ReadJson {
    * @return MultipleChoiceTask, with the given information of the files
    */
   public static MultipleChoiceTask createMultipleChoiceTask(String jsonFile) {
-	  
+
 	  MultipleChoiceTask multipleChoiceTask;
-	  
+
 		  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
 	      multipleChoiceTask = gson.fromJson(convertedObject, MultipleChoiceTask.class);
 	      return multipleChoiceTask;
-	  
+
   }
 
   /**
@@ -45,13 +45,13 @@ public class ReadJson {
    * @return a generated task of type EncryptionTask
    */
   public static EncryptionTask createEncryptionTask(String jsonFile) {
-	  
+
 	  EncryptionTask encryptionTask;
-	  
+
 	  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
 	  encryptionTask = gson.fromJson(convertedObject, EncryptionTask.class);
       return encryptionTask;
-	  
+
   }
 
   /**
@@ -61,25 +61,26 @@ public class ReadJson {
    * @return a generated task of type DecryptionTask
    */
   public static DecryptionTask createDecryptionTask(String jsonFile) {
-	  
+
 	  DecryptionTask decryptionTask;
-	  
+
 	  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
 	  decryptionTask = gson.fromJson(convertedObject, DecryptionTask.class);
-      return decryptionTask;
-	  
+      decryptionTask.createCityTask();
+	  return decryptionTask;
+
   }
 
   /**
-   * 
+   *
    * @param jsonFile
    * @return
    */
   public static int readTime(String jsonFile) {
-	  
+
 	  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
 	  time = Integer.parseInt(convertedObject.get("time").getAsString());
       return time;
-	  
+
   }
 }

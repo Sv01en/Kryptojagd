@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.kryptojagd.controls.resources.Messages;
+import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -20,8 +21,7 @@ import org.kryptojagd.level.tasks.Task;
  */
 public class TaskFinishedController extends AbstractController {
 
-	private Level level = mainController.getCurrentLevel();
-	private Task task = level.getCurrentTask();
+	private final Level level = mainController.getCurrentLevel();
 	private static final String LEVEL_FINISHED = "LevelFinished.fxml";
 
 	@FXML
@@ -33,11 +33,7 @@ public class TaskFinishedController extends AbstractController {
 	/**
 	 * Initializes a TaskFinishedController
 	 *
-	 * if every multiple choice question of a level is answered, it prints out the finished multiple choice text
-	 * if the city question of a level is right answered, it prints out the textAfterStartDecryption
-	 * If the task is completed, it prints out the good standard feedback
-	 * else it prints out  the bad standard feedback
-	 *
+	 * Updates the timer and sets the feedback text
 	 */
 	@FXML
 	public void initialize() {
@@ -47,8 +43,10 @@ public class TaskFinishedController extends AbstractController {
 
 	/**
 	 * Handles the switch to the next task
-	 * If the the decryption task as last task is answered,
-	 * it switches the window to the menu
+	 *
+	 * If the cityTask is completed it changes the background picture
+	 * If the level is completed,
+	 * it switches the window to the level finished window
 	 *
 	 * @param event that is received
 	 */
@@ -58,16 +56,16 @@ public class TaskFinishedController extends AbstractController {
 			String css;
 	 		if (level.getTask("cityTask").getTaskCompleted()) {
 				String city = level.getCity();
-				css = "../css/" + city + ".css";
+				css = ReadDirectory.CSS_FILES+ city + ".css";
 			} else {
-	 			css = "../css/startwindow.css";
+	 			css = ReadDirectory.CSS_FILE_START;
 			}
 			level.setNextTask();
 			mainController.switchWindowWithCSS(level.getCurrentTask().toString() + ".fxml", css);
 		} else {
 		 	String css;
 			String city = level.getCity();
-			css = "../css/" + city + ".css";
+			css = ReadDirectory.CSS_FILES + city + ".css";
 			mainController.switchWindowWithCSS(LEVEL_FINISHED, css);
 		}
 	 }
@@ -85,7 +83,7 @@ public class TaskFinishedController extends AbstractController {
 			System.out.println(mainController.getCurrentLevel().getTimeInSec());
 			timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
 			if (level.getTimeInSec() <= 0) {
-				mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
+				mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
 				time.stop();
 			}
 		});

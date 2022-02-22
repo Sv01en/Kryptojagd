@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
@@ -48,7 +49,7 @@ public class MistakeMessageController extends AbstractController {
     @FXML
     void clickNext(ActionEvent event) {
         String city = level.getCity();
-        String css = "../css/" + city + ".css";
+        String css = ReadDirectory.CSS_FILES + city + ".css";
         mainController.switchWindowWithCSS("EncryptionTask.fxml", css);
     }
 
@@ -65,7 +66,7 @@ public class MistakeMessageController extends AbstractController {
             System.out.println(mainController.getCurrentLevel().getTimeInSec());
             timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
             if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
+                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
                 time.stop();
             }
         });
