@@ -1,5 +1,6 @@
 package org.kryptojagd.controls;
 
+import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class MainController {
 	 * Starts the current level
 	 */
 	public void startLevel() {
-		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", "../css/startwindow.css");
+		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", ReadDirectory.CSS_FILE_START);
 	}
 
 	/**

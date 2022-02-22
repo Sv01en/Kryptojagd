@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.kryptojagd.controls.resources.Messages;
+import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -55,16 +56,16 @@ public class TaskFinishedController extends AbstractController {
 			String css;
 	 		if (level.getTask("cityTask").getTaskCompleted()) {
 				String city = level.getCity();
-				css = "../css/" + city + ".css";
+				css = ReadDirectory.CSS_FILES+ city + ".css";
 			} else {
-	 			css = "../css/startwindow.css";
+	 			css = ReadDirectory.CSS_FILE_START;
 			}
 			level.setNextTask();
 			mainController.switchWindowWithCSS(level.getCurrentTask().toString() + ".fxml", css);
 		} else {
 		 	String css;
 			String city = level.getCity();
-			css = "../css/" + city + ".css";
+			css = ReadDirectory.CSS_FILES + city + ".css";
 			mainController.switchWindowWithCSS(LEVEL_FINISHED, css);
 		}
 	 }
@@ -82,7 +83,7 @@ public class TaskFinishedController extends AbstractController {
 			System.out.println(mainController.getCurrentLevel().getTimeInSec());
 			timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
 			if (level.getTimeInSec() <= 0) {
-				mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
+				mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
 				time.stop();
 			}
 		});

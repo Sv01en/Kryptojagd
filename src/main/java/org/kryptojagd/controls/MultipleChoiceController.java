@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -110,9 +111,9 @@ public class MultipleChoiceController extends AbstractController {
         String city = level.getCity();
         String css;
         if (level.getTask("cityTask").getTaskCompleted()) {
-            css = "../css/" + city + ".css";
+            css = ReadDirectory.CSS_FILES + city + ".css";
         } else {
-            css = "../css/startwindow.css";
+            css = ReadDirectory.CSS_FILE_START;
         }
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
     }
@@ -121,7 +122,7 @@ public class MultipleChoiceController extends AbstractController {
      * Updates the {@link MultipleChoiceController#timer} every second in the corresponding fxml-file.
      */
     /**
-     * Updates the {@link DecryptionController#timer} every second in the corresponding fxml-file.
+     * Updates the timer every second in the corresponding fxml-file.
      */
     @FXML
     @Override
@@ -133,7 +134,7 @@ public class MultipleChoiceController extends AbstractController {
             System.out.println(mainController.getCurrentLevel().getTimeInSec());
             timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
             if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
+                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
                 time.stop();
             }
         });
@@ -143,6 +144,6 @@ public class MultipleChoiceController extends AbstractController {
 
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
-        mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
 }

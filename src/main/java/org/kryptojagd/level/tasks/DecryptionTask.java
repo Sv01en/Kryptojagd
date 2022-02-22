@@ -217,6 +217,11 @@ public class DecryptionTask implements Task {
 	}
 
 	@Override
+	public void setTaskCompletedEnd() {
+
+	}
+
+	@Override
 	public String toString(){
 		return "DecryptionTask";
 	}

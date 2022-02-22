@@ -26,6 +26,8 @@ public class ReadDirectory {
   private static final String PREFIX = "/org/kryptojagd/levels/";
   private static final String LEVEL = "level";
   private static final String[] tasks = {"encryption", "decryption", "question"};
+  public static final String CSS_FILES = "/org/kryptojagd/css/";
+  public static final String CSS_FILE_START = CSS_FILES + "startwindow.css";
   
   /**
    * This method initializes all levels.

@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.kryptojagd.fileprocessing.ReadDirectory;
 
 /**
  * Controller for the Launch Window
@@ -22,7 +23,7 @@ public class StartWindowController extends AbstractController {
      */
     @FXML
     void clickSettings(ActionEvent event) {
-        mainController.switchWindowWithCSS("Settings.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS("Settings.fxml", ReadDirectory.CSS_FILE_START);
     }
 
     /**
@@ -32,7 +33,7 @@ public class StartWindowController extends AbstractController {
     @FXML
     void clickInfo(ActionEvent event) {
     	System.out.println("Es wurde auf Info geklickt!");
-        mainController.switchWindowWithCSS("Infotext.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS("Infotext.fxml", ReadDirectory.CSS_FILE_START);
     	//mainController.switchWindow("Infotext.fxml");
     }
 
@@ -43,7 +44,7 @@ public class StartWindowController extends AbstractController {
     @FXML
     void clickStart(ActionEvent event) {
     	System.out.println("Es wurde auf Start geklickt!");
-        mainController.switchWindowWithCSS("Infotext.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS("Infotext.fxml", ReadDirectory.CSS_FILE_START);
     }
 
     @FXML
@@ -57,7 +58,7 @@ public class StartWindowController extends AbstractController {
      */
     @FXML
     public void clickLevelSelector(ActionEvent event) {
-        mainController.switchWindowWithCSS("LevelSelector.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS("LevelSelector.fxml", ReadDirectory.CSS_FILE_START);
     }
 
     /**

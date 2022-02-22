@@ -29,7 +29,7 @@ public class InfoTextController extends AbstractController {
 	 @FXML
 	 void closeInfotext(ActionEvent event) {
 		 System.out.println("Es wurde auf Schließen geklickt!");
-		 //mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
+		 //mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
 		 mainController.startLevel();
 	 }
 }
