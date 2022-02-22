@@ -7,6 +7,18 @@ package org.kryptojagd.encryptionmethods;
  */
 public class Caesar extends Encryption {
 
+    private int key;
+
+    @Override
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    @Override
+    public String decode(String text, String key) {
+        return null;
+    }
+
     public Caesar() {
         super.name = "Caesar";
     }
@@ -32,7 +44,7 @@ public class Caesar extends Encryption {
         // key zwischen [1,26), damit 0 nicht als Schluessel verwendet wird
        // int key = generateKey();
 
-        return encode(text, 3);
+        return encode(text, this.key);
     }
 
     /**
@@ -62,11 +74,10 @@ public class Caesar extends Encryption {
     /**
      * Decrypts an encrypted text with the corresponding key
      * @param text Text to be deciphered
-     * @param keyString Passed key
      * @return Deciphered text in uppercase
      */
-    public String decode(String text, String keyString) {
-        int key = Integer.parseInt(keyString);
+    public String decode(String text, int key) {
+        //int key = Integer.parseInt(keyString);
         
         if (key < 0 || key > 26) {
             return text.toUpperCase();

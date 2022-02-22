@@ -28,27 +28,14 @@ public class ReadJson {
    * @param path filepath to the files with the information for a MultipleChoiceTask
    * @return MultipleChoiceTask, with the given information of the files
    */
-  public static MultipleChoiceTask createMultipleChoiceTask(String path) {
+  public static MultipleChoiceTask createMultipleChoiceTask(String jsonFile) {
 
-    MultipleChoiceTask multipleChoiceTask;
-    try {
-      Object obj2 = parser.parse(new FileReader(path));
-      multipleChoiceTask = gson.fromJson(obj2.toString(), MultipleChoiceTask.class);
-      return multipleChoiceTask;
-    } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
-      System.out.println("Datei wurde nicht gefunden!");
-      // e.printStackTrace();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (ParseException e) {
-      // TODO Auto-generated catch block
-      System.out.println(e.getUnexpectedObject());
-      System.out.println(e.getPosition());
-      e.printStackTrace();
-    }
-    return null;
+	  MultipleChoiceTask multipleChoiceTask;
+
+		  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
+	      multipleChoiceTask = gson.fromJson(convertedObject, MultipleChoiceTask.class);
+	      return multipleChoiceTask;
+
   }
 
   /**
@@ -57,24 +44,14 @@ public class ReadJson {
    * @param path to the file
    * @return a generated task of type EncryptionTask
    */
-  public static EncryptionTask createEncryptionTask(String path) {
-    EncryptionTask encryptionTask;
-    try {
-      Object obj2 = parser.parse(new FileReader(path));
-      encryptionTask = gson.fromJson(obj2.toString(), EncryptionTask.class);
+  public static EncryptionTask createEncryptionTask(String jsonFile) {
+
+	  EncryptionTask encryptionTask;
+
+	  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
+	  encryptionTask = gson.fromJson(convertedObject, EncryptionTask.class);
       return encryptionTask;
-    } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
-      System.out.println("Datei wurde nicht gefunden!");
-      // e.printStackTrace();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (ParseException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    return null;
+
   }
 
   /**
@@ -83,47 +60,27 @@ public class ReadJson {
    * @param path to the file
    * @return a generated task of type DecryptionTask
    */
-  public static DecryptionTask createDecryptionTask(String path) {
-    DecryptionTask decryptionTask = null;
-    try {
-      Object obj2 = parser.parse(new FileReader(path));
-      decryptionTask = gson.fromJson(obj2.toString(), DecryptionTask.class);
+  public static DecryptionTask createDecryptionTask(String jsonFile) {
+
+	  DecryptionTask decryptionTask;
+
+	  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
+	  decryptionTask = gson.fromJson(convertedObject, DecryptionTask.class);
       decryptionTask.createCityTask();
-    } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
-      System.out.println("Decryption Datei wurde nicht gefunden!");
-      // e.printStackTrace();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (ParseException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    return decryptionTask;
+	  return decryptionTask;
+
   }
 
   /**
-   * Reads the time for the level.
    *
-   * @param path to the file
-   * @return time in second for the level
+   * @param jsonFile
+   * @return
    */
-  public static int readTime(String path) {
-    try {
-      Object obj2 = parser.parse(new FileReader(path));
-      JsonObject jsonObject = gson.fromJson(obj2.toString(), JsonObject.class);
-      time = Integer.parseInt(jsonObject.get("time").getAsString());
-    } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (ParseException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    return time;
+  public static int readTime(String jsonFile) {
+
+	  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
+	  time = Integer.parseInt(convertedObject.get("time").getAsString());
+      return time;
+
   }
 }

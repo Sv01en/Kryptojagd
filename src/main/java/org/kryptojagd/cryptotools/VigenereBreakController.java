@@ -48,9 +48,6 @@ public class VigenereBreakController {
     @FXML
     private Label label1;
     
-    //@FXML
-    //private ScrollPane scrollPane;
-    
     @FXML 
     private TabPane tabPane;
     
@@ -106,21 +103,12 @@ public class VigenereBreakController {
     	
     	germanLetterFrequency = FrequencyAnalysisController.sortAlphabetic(true, germanLetterFrequency);
     	
-    	// hbox = new HBox();
-    	// scrollPane.setContent(hbox);
-    
-        // GridPane gridPane = new GridPane();
-        
-        // scrollPane.setContent(gridPane);
-    	
     	label1.setText(text);
     	labelEncodedText.setText(text);
     	
     	ObservableList<Integer> options = 
     		    FXCollections.observableArrayList(2, 3, 4, 5, 6, 7, 8, 9, 10);
     	lengthCodeComboBox.setItems(options);
-    	
-    	// #############################
     	
     	
     	
@@ -141,7 +129,21 @@ public class VigenereBreakController {
     		tabPane.getTabs().add(tab);
     	}
     	
+    	Tab tab = new Tab("Übersicht");
+		tabPane.getTabs().add(tab);
+		
+		System.out.println(barCharts.length);
+		
+		BarChart<String,Number> bc = new BarChart<String,Number>(barCharts[0].getXAxis(),barCharts[0].getYAxis());
+		bc.setPrefSize(200, 200);
+		
+		GridPane gridpane = new GridPane();
+    	gridpane.add(new Label("Hi"), 0, 0); // Spalte, Zeile
+    	gridpane.add(bc, 0, 1);
+    	gridpane.add(new Label("Salut"), 0, 2);
+    	gridpane.add(new Label("Hey"), 1, 0);
     	
+    	tab.setContent(gridpane);
     	
     	
     }
@@ -315,10 +317,10 @@ public class VigenereBreakController {
 		final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         
-        final BarChart<String,Number> bc = 
+        barCharts[i] = 
             new BarChart<String,Number>(xAxis,yAxis);
         
-        bc.setTitle("Häufigkeitsanalyse (" + (i +1) + ")");
+        barCharts[i].setTitle("Häufigkeitsanalyse (" + (i +1) + ")");
         xAxis.setLabel("Buchstaben");       
         yAxis.setLabel("Häufigkeit");  
         
@@ -357,15 +359,15 @@ public class VigenereBreakController {
 		}
      
 		
-		bc.getData().addAll(series1, series2);
-		bc.setLegendVisible(false);
-		bc.setPrefSize(980, 440);
+		barCharts[i].getData().addAll(series1, series2);
+		barCharts[i].setLegendVisible(false);
+		barCharts[i].setPrefSize(980, 440);
 		
-		for(Node n:bc.lookupAll(".default-color0.chart-bar")) {
+		for(Node n:barCharts[i].lookupAll(".default-color0.chart-bar")) {
 	            n.setStyle("-fx-bar-fill: red;");
 	        }
 	  
- 	    for(Node n:bc.lookupAll(".default-color1.chart-bar")) {
+ 	    for(Node n:barCharts[i].lookupAll(".default-color1.chart-bar")) {
  	            n.setStyle("-fx-bar-fill: black;");
  	        }
 		
@@ -394,6 +396,8 @@ public class VigenereBreakController {
 		
 		});
 		
+		
+		
 		Label lbl1 = new Label("A");
 		Label lbl2 = new Label("→");
 		Label lbl3 = new Label("A");
@@ -404,7 +408,7 @@ public class VigenereBreakController {
 		
 		AnchorPane pane = new AnchorPane();
 		pane.setPrefSize(990, 440);
-		pane.getChildren().add(bc);
+		pane.getChildren().add(barCharts[i]);
 		pane = letterLabels(pane);
 		vbox.getChildren().addAll(pane, hb);
 		return vbox;

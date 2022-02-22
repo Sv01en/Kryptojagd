@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -9,8 +8,6 @@
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.cryptotools.FrequencyAnalysisController">
    <children>
       <Label fx:id="label1" layoutX="14.0" layoutY="49.0" lineSpacing="2.0" maxWidth="1000.0" text="kodierter Text" wrapText="true" />
-      <ComboBox fx:id="sortChoices" layoutX="97.0" layoutY="696.0" onAction="#comboboxItemSelected" prefHeight="24.0" prefWidth="228.0" promptText="alphabetisch" />
-      <Label layoutX="14.0" layoutY="700.0" text="Sortierung:" />
       <Label layoutX="14.0" layoutY="25.0" text="Kodierter Text:" />
       <Button fx:id="buttonShiftLeft" layoutX="439.0" layoutY="696.0" mnemonicParsing="false" onAction="#shiftLeft" text="&lt;&lt;" />
       <Button fx:id="buttonShiftRight" layoutX="542.0" layoutY="696.0" mnemonicParsing="false" onAction="#shiftRight" text="&gt;&gt;" />

@@ -83,4 +83,9 @@ public class MultipleChoiceTask implements Task {
         return "MultipleChoiceTask";
     }
 
+    @Override
+    public void setTaskCompletedEnd() {
+        this.taskCompleted = false;
+    }
+
 }

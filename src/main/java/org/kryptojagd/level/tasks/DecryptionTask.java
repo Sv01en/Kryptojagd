@@ -106,6 +106,7 @@ public class DecryptionTask implements Task {
 		cityTask.setName("cityTask");
 	}
 
+
 	/**
 	 * Returns the time penalty as an integer
 	 * @return time as an integer
