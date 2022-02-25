@@ -4,8 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The class contains test cases for the Hamming distance
+ *
+ * @author Bartosz Treyde
+ */
 class HammingDistanceTest {
 
+    /**
+     * Test calculate hamming distance.
+     */
     @Test
     void testCalculateHammingDistance(){
         assertEquals(1, HammingDistance.calculateHammingDistance("TEST", "TES"));
