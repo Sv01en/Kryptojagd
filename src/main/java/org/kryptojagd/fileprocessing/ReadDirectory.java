@@ -113,6 +113,7 @@ public class ReadDirectory {
     		break;
     	} else {
     		Level l = new Level(decryptionTask, encryptionTask, multipleChoiceTasks, 600);
+			l.setId(i - 1);
     		allLevels.add(l);
     		check[0] = true;
     		check[1] = true;

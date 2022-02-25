@@ -74,17 +74,21 @@ public class DecryptionController extends AbstractController {
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
 
-            if (!(level.getId() > 1)) {
-                Cryptotool.setDisable(true);
-            }
+            Cryptotool.setDisable(true);
 
             button1.setDisable(true);
+
+            System.out.println("LevelID: " + level.getId());
 
             if (mainController.decryptionTaskSucceeded) {
                 procedure1.setDisable(true);
                 procedure2.setDisable(true);
                 procedure3.setDisable(true);
                 button1.setDisable(false);
+
+                if (level.getId() >= 1) {
+                    Cryptotool.setDisable(false);
+                }
             }
         }
     }
@@ -127,7 +131,6 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     private void clickCrypto(ActionEvent event) {
-        if (level.getId() > 1)
         if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
             try {
                 CryptoTool.caesar(new Stage());
