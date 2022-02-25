@@ -78,8 +78,6 @@ public class DecryptionController extends AbstractController {
 
             button1.setDisable(true);
 
-            System.out.println("LevelID: " + level.getId());
-
             if (mainController.decryptionTaskSucceeded) {
                 procedure1.setDisable(true);
                 procedure2.setDisable(true);
