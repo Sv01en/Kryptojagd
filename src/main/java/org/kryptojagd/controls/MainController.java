@@ -20,6 +20,7 @@ public class MainController {
 	private ArrayList<Level> allLevels;
 
 	private int clearedLevels;
+	protected ArrayList<Integer> clearedLevelIndexes = new ArrayList();
 
 	protected boolean multipleChoiceTaskSucceeded;
 
@@ -125,6 +126,9 @@ public class MainController {
 	 */
 	public void setClearedLevels() {
 		this.clearedLevels++;
+		if (!clearedLevelIndexes.contains(currentLevel.getId())) {
+			clearedLevelIndexes.add(currentLevel.getId());
+		}
 	}
 
 	/**

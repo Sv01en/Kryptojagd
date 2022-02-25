@@ -37,9 +37,16 @@ public class LevelSelectorController extends AbstractController {
                 System.out.println("Button " + finalI + " pressed!");
                 mainController.startLevel();
             });
-            if (i > mainController.getClearedLevels()) {
+            if (mainController.clearedLevelIndexes.contains(i - 1)) {
+                button.setDisable(false);
+            } else {
                 button.setDisable(true);
             }
+
+            if (i == 0) {
+                button.setDisable(false);
+            }
+            
             buttons.add(button);
         }
         VBox vbox = new VBox(10);
