@@ -25,6 +25,8 @@ public class MainController {
 
 	protected boolean decryptionTaskSucceeded;
 
+	protected boolean decryptionTextTaskSucceeded;
+
 	protected boolean encryptionTaskSucceeded;
 
 	protected boolean cityTaskFinished;

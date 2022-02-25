@@ -52,6 +52,12 @@ public class DecryptionController extends AbstractController {
     @FXML
     private Button procedure3;
 
+    @FXML
+    private Button Cryptotool;
+
+    @FXML
+    private Button button1;
+
     /**
      * Initializes a DecryptionController either with the city question or the decryption task
      */
@@ -67,6 +73,20 @@ public class DecryptionController extends AbstractController {
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
+
+            if (!(level.getId() > 1)) {
+                Cryptotool.setDisable(true);
+            }
+
+            if (mainController.decryptionTaskSucceeded) {
+                procedure1.setDisable(true);
+                procedure2.setDisable(true);
+                procedure3.setDisable(true);
+            }
+
+            /*if (mainController.decryptionTextTaskSucceeded) {
+                button1.setDisable(true);
+            }*/
         }
     }
 
@@ -102,7 +122,7 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     private void clickSend(ActionEvent event) {
-        level.proveTask(textField.getText());
+        mainController.decryptionTextTaskSucceeded = level.proveTask(textField.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }
 
