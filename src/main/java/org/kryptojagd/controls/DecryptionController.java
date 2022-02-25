@@ -78,15 +78,14 @@ public class DecryptionController extends AbstractController {
                 Cryptotool.setDisable(true);
             }
 
+            button1.setDisable(true);
+
             if (mainController.decryptionTaskSucceeded) {
                 procedure1.setDisable(true);
                 procedure2.setDisable(true);
                 procedure3.setDisable(true);
+                button1.setDisable(false);
             }
-
-            /*if (mainController.decryptionTextTaskSucceeded) {
-                button1.setDisable(true);
-            }*/
         }
     }
 

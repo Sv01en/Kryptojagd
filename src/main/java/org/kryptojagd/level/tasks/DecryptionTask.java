@@ -162,9 +162,7 @@ public class DecryptionTask implements Task {
 			}
 		}
 
-		System.out.println(decrypted.toString() + " - " + answer);
-
-		this.taskCompleted = answer.equals(decrypted.toString().toUpperCase());
+		this.taskCompleted = answer.toUpperCase().equals(decrypted.toString().toUpperCase());
 		return taskCompleted;
 	}
 
