@@ -26,7 +26,9 @@ public class LevelFinished extends AbstractController {
     @FXML
     void menuAction(ActionEvent e) {
         mainController.getCurrentLevel().clearLevel();
-        mainController.setClearedLevels();
+        if (mainController.getClearedLevels() == mainController.getCurrentLevelPosition()) {
+            mainController.setClearedLevels();
+        }
         mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
@@ -42,7 +44,9 @@ public class LevelFinished extends AbstractController {
     @FXML
     void nextLevelAction(ActionEvent e) {
         mainController.getCurrentLevel().clearLevel();
-        mainController.setClearedLevels();
+        if (mainController.getClearedLevels() == mainController.getCurrentLevelPosition()) {
+            mainController.setClearedLevels();
+        }
         mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
