@@ -288,6 +288,7 @@ public class Level {
 	 */
 	public void clearLevel() {
 		this.currentMultipleChoiceTask = 0;
+		System.out.println("Erfolgreich");
 		this.currentTime = this.timeInSec;
 		this.countdownTimer.cancelTimerTask();
 		this.currentTask = decryptionTask;
@@ -296,6 +297,8 @@ public class Level {
 				task.setTaskCompletedEnd();
 			}
 		}
+		System.out.println("Erfolgreich");
+		System.out.println("Erfolgreich");
 	}
 
 	/**
