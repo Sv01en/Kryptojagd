@@ -3,13 +3,16 @@ package org.kryptojagd.encryptionmethods;
 /**
 * Provides methods for encrypting and decrypting texts with Beaufort encryption
  *
- * @author Leah Schlimm, Sven Strasser
+ * @author Leah Schlimm, Sven Strasser, Bartosz Treyde
 */
 public class Beaufort extends Encryption {
 
     private static final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
+    /**
+     * Instantiates a new Beaufort encryption.
+     */
     public Beaufort() {
         super.name = "Beaufort";
     }

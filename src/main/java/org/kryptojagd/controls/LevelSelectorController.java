@@ -16,8 +16,11 @@ import java.util.ArrayList;
  */
 public class LevelSelectorController extends AbstractController {
 
+    /**
+     * The Border box.
+     */
     @FXML
-    public BorderPane borderBox;
+    private BorderPane borderBox;
 
     /**
      * Initializes the level selector screen. Only the next not played level can be clicked at most

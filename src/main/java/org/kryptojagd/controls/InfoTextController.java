@@ -6,12 +6,15 @@ import javafx.scene.control.Label;
 import org.kryptojagd.controls.resources.Messages;
 
 /**
- * @author Leah Schlimm
+ * @author Leah Schlimm, Bartosz Treyde
  */
 public class InfoTextController extends AbstractController {
 
+	/**
+	 * The Label.
+	 */
 	@FXML
-	public Label label;
+	private Label label;
 
 	/**
 	 * Initializes a InfoTextController with the info text

@@ -101,6 +101,11 @@ public class EncryptionController extends AbstractController {
         time.playFromStart();
     }
 
+    /**
+     * Click menu.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);

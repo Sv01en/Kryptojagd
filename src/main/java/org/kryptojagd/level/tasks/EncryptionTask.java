@@ -15,7 +15,8 @@ public class EncryptionTask implements Task {
      * The constant WRONGCOUNTLETTER
      * (if there are more or less letters in answer compared to correct answer).
      */
-    public static final String WRONGCOUNTLETTER = "Pass auf, dass du genau so viele Buchstaben verschlüsselst wie auch in der Nachricht vorkommen.";
+    public static final String WRONGCOUNTLETTER = "Pass auf, dass du genau so viele Buchstaben verschlüsselst "
+            + "wie auch in der Nachricht vorkommen.";
     /**
      * The constant WRONGBACKWARDS
      * (if whole text is encrypted backwards instead of word by word).
@@ -25,17 +26,20 @@ public class EncryptionTask implements Task {
      * The constant WRONGFLIP
      * (if the answer is encrypted correctly except of one or two letter-flips).
      */
-    public static final String WRONGFLIP = "Pass auf, es scheint so als hätten sich ein oder zwei Buchstabendreher bei dir eingeschlichen.";
+    public static final String WRONGFLIP = "Pass auf, es scheint so als hätten sich ein oder zwei Buchstabendreher "
+            + "bei dir eingeschlichen.";
     /**
      * The constant TYPINGERROR
      * (if there are one, two or three typing errors).
      */
-    public static final String TYPINGERROR = "Pass auf, es scheint so als hätten sich ein paar Tippfehler bei dir eingeschlichen.";
+    public static final String TYPINGERROR = "Pass auf, es scheint so als hätten sich ein paar Tippfehler bei dir"
+            + " eingeschlichen.";
     /**
      * The constant WRONGCOUNTLETTER
      * (if the answer has too many mistakes).
      */
-    public static final String ALLWRONG = "Schade, dass ist leider nicht richtig verschlüsselt, versuche es noch einmal.";
+    public static final String ALLWRONG = "Schade, dass ist leider nicht richtig verschlüsselt, versuche es noch "
+            + "einmal.";
 
 
     private String task;
@@ -79,6 +83,7 @@ public class EncryptionTask implements Task {
 
     /**
      * Set up the key for caesar encryption.
+     *
      * @param key given as an integer
      */
     public void setCaaesarKey(int key) {
@@ -239,6 +244,7 @@ public class EncryptionTask implements Task {
 
     /**
      * Returns the calculated hamming distance.
+     *
      * @return hamming distance as an integer
      */
     public int getHammingDistanceValue() {

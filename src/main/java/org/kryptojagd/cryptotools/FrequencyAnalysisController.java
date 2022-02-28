@@ -1,6 +1,5 @@
 package org.kryptojagd.cryptotools;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,35 +8,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
+/**
+ * The type Frequency analysis controller.
+ */
 public class FrequencyAnalysisController {
 	
 	@FXML
@@ -73,8 +60,11 @@ public class FrequencyAnalysisController {
     // TODO Falls übergebener Text eine bestimmte Länge überschreitet, soll der restliche Text im Label durch ... dargestellt werden.
     
     // TODO Siehe unten
-    
-    @FXML
+
+	/**
+	 * Initialize.
+	 */
+	@FXML
     public void initialize() {
     	
     	germanLetterFrequency = sortAlphabetic(true, germanLetterFrequency);
@@ -163,17 +153,23 @@ public class FrequencyAnalysisController {
     	List<Entry<String, Double>> list = new LinkedList<>(hashmap.entrySet());
 
         // Sorting the list based on values
-        list.sort((o1, o2) -> alphabetic ? 
-        		( o1.getKey().compareTo(o2.getKey()) == 0 ? 
-        				o1.getValue().compareTo(o2.getValue()) : o1.getKey().compareTo(o2.getKey()) ) 
+        list.sort((o1, o2) -> alphabetic
+				? (o1.getKey().compareTo(o2.getKey()) == 0
+				? o1.getValue().compareTo(o2.getValue()) : o1.getKey().compareTo(o2.getKey()))
         		
-        		: ( o2.getValue().compareTo(o1.getValue()) == 0 ? 
-        				o2.getKey().compareTo(o1.getKey()) : o2.getValue().compareTo(o1.getValue())) );
+        		: (o2.getValue().compareTo(o1.getValue()) == 0
+				? o2.getKey().compareTo(o1.getKey()) : o2.getValue().compareTo(o1.getValue())));
         
         return list.stream().collect(Collectors.toMap(Entry::getKey, Entry::getValue, (a, b) -> b, LinkedHashMap::new));
     }
-    
-    public static void lettersLabels(Pane pane, int yStart) {
+
+	/**
+	 * Letters labels.
+	 *
+	 * @param pane   the pane
+	 * @param yStart the y start
+	 */
+	public static void lettersLabels(Pane pane, int yStart) {
     	
 		int count = 0;
 		for (String key : germanLetterFrequency.keySet()) {
@@ -181,19 +177,22 @@ public class FrequencyAnalysisController {
  			label123.setStyle("-fx-font-size: 8pt; "
  					+ "-fx-font-weight: bold}");
  			pane.getChildren().add(label123);
- 			label123.relocate(105 + 34.7*count, yStart);
+ 			label123.relocate(105 + 34.7 * count, yStart);
  			count++;
 		}
     	
     }
-    
-    public void removeLettersLabels() {
+
+	/**
+	 * Remove letters labels.
+	 */
+	public void removeLettersLabels() {
     	// TODO Schöner machen
     	
     	ArrayList<Node> nodesToRemove = new ArrayList<Node>();
     	
     	for (Node n : pane.getChildren()) {
-    		if (n.getStyle().equals("-fx-font-size: 8pt; "+ "-fx-font-weight: bold}")) {
+    		if (n.getStyle().equals("-fx-font-size: 8pt; " + "-fx-font-weight: bold}")) {
     			nodesToRemove.add(n);
     		}
     	}
@@ -214,7 +213,7 @@ public class FrequencyAnalysisController {
     	Node nodeToRemove = null;
     	
     	for (Node node : this.pane.getChildren()) {
-    		if (node instanceof BarChart<?,?>) {
+    		if (node instanceof BarChart<?, ?>) {
     			nodeToRemove = node;
     		}
     	}
@@ -228,9 +227,9 @@ public class FrequencyAnalysisController {
     	final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
 //        final BarChart<String,Number> bc = 
-//            new BarChart<String,Number>(xAxis,yAxis);
+//            new BarChart<String,Number>(xAxis, yAxis);
     	
-        BarChart<String, Number> bc = new BarChart<String,Number>(xAxis,yAxis);
+        BarChart<String, Number> bc = new BarChart<String, Number>(xAxis, yAxis);
         
     	bc.setTitle("Häufigkeitsanalyse");
         xAxis.setLabel("Buchstaben (ohne Umlaute und ß)"); 
@@ -293,11 +292,11 @@ public class FrequencyAnalysisController {
 		
 		bc.setStyle("-fx-background-radius: white");
 		
-		 for(Node n:bc.lookupAll(".default-color0.chart-bar")) {
+		 for (Node n:bc.lookupAll(".default-color0.chart-bar")) {
 	            n.setStyle("-fx-bar-fill: red;");
 	        }
 	   //second bar color
-	   for(Node n:bc.lookupAll(".default-color1.chart-bar")) {
+	   for (Node n:bc.lookupAll(".default-color1.chart-bar")) {
 	            n.setStyle("-fx-bar-fill: black;");
 	        }
 	   

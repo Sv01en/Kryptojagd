@@ -74,12 +74,18 @@ public class Level {
 		proveEncryptionMethod(this.encryptionTask.getEncryption());
 	}
 
+	/**
+	 * Gets feedback.
+	 *
+	 * @return the feedback
+	 */
 	public String getFeedback() {
 		return feedback;
 	}
 
 	/**
 	 * Getter for levelCompleted
+	 *
 	 * @return true, if every task in the level is completed
 	 */
 	public boolean isLevelCompleted() {
@@ -91,7 +97,10 @@ public class Level {
 		return true;
 	}
 
-	public void setNextTask(){
+	/**
+	 * Set next task.
+	 */
+	public void setNextTask() {
 		if (this.currentTask.getTaskCompleted()) {
 			this.currentTask = tasks.get(indexTask);
 			indexTask++;
@@ -100,11 +109,13 @@ public class Level {
 
 	/**
 	 * Getter for current task
+	 *
+	 * @param name the task
 	 * @return current task witch is in process
 	 */
 	public Task getTask(String name) {
 		for (Task task : tasks) {
-			if(task.getName() != null) {
+			if (task.getName() != null) {
 				if (task.getName().equals(name)) {
 					return task;
 				}
@@ -115,18 +126,25 @@ public class Level {
 
 	/**
 	 * Getter for current task
+	 *
 	 * @return current task witch is in process
 	 */
 	public Task getCurrentTask() {
 		return currentTask;
 	}
 
+	/**
+	 * Gets city.
+	 *
+	 * @return the city
+	 */
 	public String getCity() {
 		return decryptionTask.getCityTask().getCorrectAnswer();
 	}
 
 	/**
 	 * Getter for encryption method
+	 *
 	 * @return multiple encryption method of the level
 	 */
 	public Encryption getEncryptionMethod() {
@@ -135,12 +153,13 @@ public class Level {
 
 	/**
 	 * Proves the current task
-	 *
+	 * <p>
 	 * reduces the time, if the answer is wrong
 	 * Also sets the right feedback
 	 * good feedback, if the answer is right
 	 * bad feedback, if the answer is wrong
 	 * an alternative feedback, if a special task is over or the whole level
+	 *
 	 * @param answer string given by the GUI
 	 * @return true or false
 	 */
@@ -150,7 +169,7 @@ public class Level {
 			feedback = Messages.STANDARD_FEEDBACK_BAD;
 			return this.currentTask.proveAnswer(answer);
 		}
-		if (this.currentTask.getTaskCompleted() ) {
+		if (this.currentTask.getTaskCompleted()) {
 			feedback = Messages.STANDARD_FEEDBACK_GOOD;
 			alternativeFeedback();
 		}
@@ -194,11 +213,12 @@ public class Level {
 
 	/**
 	 * Checks if the given answer is the correct city
-	 *
+	 * <p>
 	 * Reduces the timer, if the answer is wrong
 	 * Also sets the right feedback
 	 * good feedback, if the answer is right
 	 * bad feedback, if the answer is wrong
+	 *
 	 * @param answer answer to check
 	 * @return true if the answer is correct else false
 	 */
@@ -245,12 +265,18 @@ public class Level {
 		this.encryptionTask.setEncryptionMethod(this.encryptionMethod);
 	}
 
+	/**
+	 * Gets key.
+	 *
+	 * @return the key
+	 */
 	public int getKey() {
 		return this.key;
 	}
 
 	/**
 	 * Sets the id of the level.
+	 *
 	 * @param id given as an integer
 	 */
 	public void setId(int id) {
@@ -259,6 +285,7 @@ public class Level {
 
 	/**
 	 * Returns the id of the level.
+	 *
 	 * @return id of the level as an integer
 	 */
 	public int getId() {
@@ -267,6 +294,7 @@ public class Level {
 
 	/**
 	 * Returns the remaining time from the {@link CountdownTimer} as an integer.
+	 *
 	 * @return the current time of the {@link CountdownTimer}
 	 */
 	public int getTimeInSec() {
@@ -303,6 +331,7 @@ public class Level {
 
 	/**
 	 * Returns the stored {@link Level#encryptionInput}.
+	 *
 	 * @return {@link Level#encryptionInput} as a string.
 	 */
 	public String getEncryptionInput() {

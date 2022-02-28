@@ -17,6 +17,11 @@ public abstract class Encryption {
     public abstract String encode(String text);
 
 
+    /**
+     * Sets key.
+     *
+     * @param key the key
+     */
     public abstract void setKey(int key);
 
 
@@ -24,6 +29,7 @@ public abstract class Encryption {
      * Decode string.
      *
      * @param text the text
+     * @param key encryption key
      * @return the string
      */
     public abstract String decode(String text, String key);

@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 
 /**
  * The type Read json test.
+ * @author Bartosz Treyde
  */
 class ReadJsonTest {
 
@@ -88,18 +89,22 @@ class ReadJsonTest {
         + "\nEure Kontaktperson wurde jedoch kurz vor eurer Ankunft gewarnt, "
         + "dass eure Erzfeindin Eve ebenfalls auf der Suche nach den antiken Floppy-Disks ist.\n"
         + "Ihr müsst euch beeilen, damit sie euch nicht zuvor kommt.\nSCHNELL!";
+    int timeInSec = 300;
+    int timePenalty = 20;
 
     DecryptionTask dec = ReadJson.createDecryptionTask(pathToDecryption);
-    
-    //TODO
+
 
 if(dec != null) {
   Assertions.assertEquals(dec.getPlainText(), plainText);
-  //Assertions.assertEquals(dec.getEncryptionMethod(), encryptionMethod);
-  //Assertions.assertArrayEquals(dec.getAnswerOptionsEncryption(), answerOptionsEncryption);
+  Assertions.assertEquals(dec.getEncryptionMethod(), encryptionMethod);
   Assertions.assertEquals(dec.getCorrectAnswerEncryption(), correctAnswerEncryption);
   Assertions.assertArrayEquals(dec.getCityTask().getPossibilities(), answerOptionsCity);
   Assertions.assertEquals(dec.getCityTask().getCorrectAnswer(), dec.getCityTask().getPossibilities()[correctAnswerCity]);
+  Assertions.assertEquals(dec.getTextAfterStart(), textAfterStart);
+  Assertions.assertEquals(dec.getAnswerOptionsEncryption(), answerOptionsEncryption);
+  Assertions.assertEquals(timeInSec, dec.getTimeInSec());
+  Assertions.assertEquals(timePenalty, dec.getTimePenalty());
 }
   }
 
