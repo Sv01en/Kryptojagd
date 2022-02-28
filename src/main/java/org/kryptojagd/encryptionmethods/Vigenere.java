@@ -3,12 +3,15 @@ package org.kryptojagd.encryptionmethods;
 /**
  * Provides methods for encrypting and decrypting texts with Vigenere encryption
  *
- * @author Leah Schlimm, Sven Strasser
+ * @author Leah Schlimm, Sven Strasser, Bartosz Treyde
  */
 public class Vigenere extends Encryption {
 
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
+    /**
+     * Instantiates a new Vigenere encryption
+     */
     public Vigenere() {
         super.name = "Vigenere";
     }

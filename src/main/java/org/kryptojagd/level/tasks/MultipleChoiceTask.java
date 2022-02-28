@@ -55,13 +55,18 @@ public class MultipleChoiceTask implements Task {
         return question;
     }
 
+    /**
+     * Gets correct answer.
+     *
+     * @return the correct answer
+     */
     public String getCorrectAnswer() {
         return correctAnswer;
     }
 
     @Override
     public boolean proveAnswer(String answer) {
-        if(this.correctAnswer.equals(answer)) {
+        if (this.correctAnswer.equals(answer)) {
             taskCompleted = true;
             return true;
         }

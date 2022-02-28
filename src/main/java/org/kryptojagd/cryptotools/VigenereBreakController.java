@@ -2,16 +2,10 @@ package org.kryptojagd.cryptotools;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.kryptojagd.encryptionmethods.Caesar;
 import org.kryptojagd.encryptionmethods.Vigenere;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,19 +21,18 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.util.Duration;
 
+/**
+ * The type Vigenere break controller.
+ */
 public class VigenereBreakController {
 
     @FXML
@@ -88,7 +81,12 @@ public class VigenereBreakController {
     private static LinkedHashMap<String, Double> germanLetterFrequency = 
     		FrequencyAnalysis.germanLetterFrequency();
 
-    @FXML
+	/**
+	 * Length code changed.
+	 *
+	 * @param event the event
+	 */
+	@FXML
     void lengthCodeChanged(ActionEvent event) {
     	
     	frequencies = new ArrayList<LinkedHashMap<String, Double>>();
@@ -96,8 +94,11 @@ public class VigenereBreakController {
     	updateTextFields();
     	updateCharts();
     }
-    
-    @FXML
+
+	/**
+	 * Initialize.
+	 */
+	@FXML
     public void initialize() {
     	
     	germanLetterFrequency = FrequencyAnalysisController.sortAlphabetic(true, germanLetterFrequency);
@@ -123,7 +124,7 @@ public class VigenereBreakController {
     	
     	for (int i = 0; i < lengthCodeComboBox.getValue(); i++) {
     		VBox vbox = updateChart(i);
-    		Tab tab = new Tab("Diagramm " + (i +1));
+    		Tab tab = new Tab("Diagramm " + (i + 1));
     		tab.setContent(vbox);
     		tabPane.getTabs().add(tab);
     	}
@@ -133,7 +134,7 @@ public class VigenereBreakController {
 		
 		System.out.println(barCharts.length);
 		
-		BarChart<String,Number> bc = new BarChart<String,Number>(barCharts[0].getXAxis(),barCharts[0].getYAxis());
+		BarChart<String, Number> bc = new BarChart<String, Number>(barCharts[0].getXAxis(), barCharts[0].getYAxis());
 		bc.setPrefSize(200, 200);
 		
 		GridPane gridpane = new GridPane();
@@ -156,7 +157,8 @@ public class VigenereBreakController {
     		final int a = i;
     		TextField textFieldKey = new TextField("A");
     		textFieldKey.setMaxWidth(40);
-    		textFieldKey.textProperty().addListener((observable, oldValue, newValue) -> changedTextFieldValue(a, oldValue, newValue));
+    		textFieldKey.textProperty().addListener((observable, oldValue, newValue)
+					-> changedTextFieldValue(a, oldValue, newValue));
     		textFieldKey.setOnMouseClicked(new EventHandler() {
 
 				@Override
@@ -178,7 +180,7 @@ public class VigenereBreakController {
     	String codedText = text.replace(" ", "");
     	
     	for (int i = n; i < codedText.length(); i += lengthCodeComboBox.getValue()) {
-          str += codedText.substring(i, i+1);
+          str += codedText.substring(i, i + 1);
     	}
     	
     	// System.out.println(str);
@@ -250,20 +252,25 @@ public class VigenereBreakController {
  			label123.setStyle("-fx-font-size: 8pt; "
  					+ "-fx-font-weight: bold");
  			pane.getChildren().add(label123);
- 			label123.relocate(88 + 34.3*count, 390);
+ 			label123.relocate(88 + 34.3 * count, 390);
  			count++;
 		}
     	
     	return pane;
     }
-    
-    public void removeLettersLabels(AnchorPane pane) {
+
+	/**
+	 * Remove letters labels.
+	 *
+	 * @param pane the pane
+	 */
+	public void removeLettersLabels(AnchorPane pane) {
     	// TODO Schöner machen
     	
     	ArrayList<Node> nodesToRemove = new ArrayList<Node>();
     	
     	for (Node n : pane.getChildren()) {
-    		if (n.getStyle().equals("-fx-font-size: 8pt; "+ "-fx-font-weight: bold}")) {
+    		if (n.getStyle().equals("-fx-font-size: 8pt; " + "-fx-font-weight: bold}")) {
     			nodesToRemove.add(n);
     		}
     	}
@@ -317,9 +324,9 @@ public class VigenereBreakController {
         final NumberAxis yAxis = new NumberAxis();
         
         barCharts[i] = 
-            new BarChart<String,Number>(xAxis,yAxis);
+            new BarChart<String, Number>(xAxis, yAxis);
         
-        barCharts[i].setTitle("Häufigkeitsanalyse (" + (i +1) + ")");
+        barCharts[i].setTitle("Häufigkeitsanalyse (" + (i + 1) + ")");
         xAxis.setLabel("Buchstaben");       
         yAxis.setLabel("Häufigkeit");  
         
@@ -362,11 +369,11 @@ public class VigenereBreakController {
 		barCharts[i].setLegendVisible(false);
 		barCharts[i].setPrefSize(980, 440);
 		
-		for(Node n:barCharts[i].lookupAll(".default-color0.chart-bar")) {
+		for (Node n:barCharts[i].lookupAll(".default-color0.chart-bar")) {
 	            n.setStyle("-fx-bar-fill: #ff0000;");
 	        }
 	  
- 	    for(Node n:barCharts[i].lookupAll(".default-color1.chart-bar")) {
+ 	    for (Node n:barCharts[i].lookupAll(".default-color1.chart-bar")) {
  	            n.setStyle("-fx-bar-fill: black;");
  	        }
 		

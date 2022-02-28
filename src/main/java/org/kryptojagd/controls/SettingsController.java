@@ -5,17 +5,33 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 
+/**
+ * The type Settings controller.
+ */
 public class SettingsController extends AbstractController {
 
+    /**
+     * The Dark light toggle.
+     */
     @FXML
-    public Button darkLightToggle;
+    private Button darkLightToggle;
 
+    /**
+     * Click dark light toggle.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void clickDarkLightToggle(ActionEvent actionEvent) {
         mainController.toggleDarkmode();
         mainController.switchWindowWithCSS("Settings.fxml", ReadDirectory.CSS_FILE_START);
     }
 
+    /**
+     * Click back.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void clickBack(ActionEvent actionEvent) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);

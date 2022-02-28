@@ -10,7 +10,6 @@ import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
-import org.kryptojagd.level.tasks.MultipleChoiceTask;
 
 /**
  * The class controls a window of the messages if a student is doing a mistake

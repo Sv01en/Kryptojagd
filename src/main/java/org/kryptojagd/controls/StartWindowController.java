@@ -6,7 +6,6 @@ import org.kryptojagd.cryptotools.CryptoTool;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 
@@ -47,6 +46,9 @@ public class StartWindowController extends AbstractController {
         mainController.switchWindowWithCSS("Infotext.fxml", ReadDirectory.CSS_FILE_START);
     }
 
+    /**
+     * Initialize.
+     */
     @FXML
     public void initialize() {
 
@@ -80,7 +82,12 @@ public class StartWindowController extends AbstractController {
         System.out.println("Es wurde auf Kryptotool Vigeniére Button geklickt!");
         mainController.startLevel();
     }
-    
+
+    /**
+     * Caesar.
+     *
+     * @param event the event
+     */
     @FXML
     void caesar(ActionEvent event) {
     	try {
@@ -90,7 +97,12 @@ public class StartWindowController extends AbstractController {
 			e.printStackTrace();
 		}
     }
-    
+
+    /**
+     * Vigenere.
+     *
+     * @param event the event
+     */
     @FXML
     void vigenere(ActionEvent event) {
     	try {

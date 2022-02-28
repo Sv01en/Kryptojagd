@@ -2,11 +2,7 @@ package org.kryptojagd.fileprocessing;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
@@ -36,7 +32,7 @@ public class ReadJson {
           JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
           multipleChoiceTask = gson.fromJson(convertedObject, MultipleChoiceTask.class);
           return multipleChoiceTask;
-      } catch (Exception e){
+      } catch (Exception e) {
       }
       return null;
   }
@@ -54,7 +50,7 @@ try {
     JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
     encryptionTask = gson.fromJson(convertedObject, EncryptionTask.class);
     return encryptionTask;
-} catch (Exception e){
+} catch (Exception e) {
     return null;
 }
   }
@@ -74,7 +70,7 @@ try {
     decryptionTask = gson.fromJson(convertedObject, DecryptionTask.class);
     decryptionTask.createCityTask();
     return decryptionTask;
-} catch (Exception e){
+} catch (Exception e) {
     return null;
 }
 
@@ -83,14 +79,14 @@ try {
   /**
    *
    * @param jsonFile
-   * @return
+   * @return time
    */
   public static int readTime(String jsonFile) {
 try {
     JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
     time = Integer.parseInt(convertedObject.get("time").getAsString());
     return time;
-}catch (Exception e){
+} catch (Exception e) {
     return 0;
 }
   }
