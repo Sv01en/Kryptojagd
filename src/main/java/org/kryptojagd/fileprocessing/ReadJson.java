@@ -25,49 +25,59 @@ public class ReadJson {
   /**
    * Reads the files with the information for a MultipleChoiceTask and creates it.
    *
-   * @param path filepath to the files with the information for a MultipleChoiceTask
+   * @param jsonFile filepath to the files with the information for a MultipleChoiceTask
    * @return MultipleChoiceTask, with the given information of the files
    */
   public static MultipleChoiceTask createMultipleChoiceTask(String jsonFile) {
 
 	  MultipleChoiceTask multipleChoiceTask;
+      try {
 
-		  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
-	      multipleChoiceTask = gson.fromJson(convertedObject, MultipleChoiceTask.class);
-	      return multipleChoiceTask;
-
+          JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
+          multipleChoiceTask = gson.fromJson(convertedObject, MultipleChoiceTask.class);
+          return multipleChoiceTask;
+      } catch (Exception e){
+          System.out.println("Hallo0");
+      }
+      return null;
   }
 
   /**
    * Creates an EncryptionTask.
    *
-   * @param path to the file
+   * @param jsonFile  filepath to the file  with the information for a EncryptionTask
    * @return a generated task of type EncryptionTask
    */
   public static EncryptionTask createEncryptionTask(String jsonFile) {
 
 	  EncryptionTask encryptionTask;
-
-	  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
-	  encryptionTask = gson.fromJson(convertedObject, EncryptionTask.class);
-      return encryptionTask;
-
+try {
+    JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
+    encryptionTask = gson.fromJson(convertedObject, EncryptionTask.class);
+    return encryptionTask;
+} catch (Exception e){
+    return null;
+}
   }
 
   /**
    * Creates a DecryptionTask.
    *
-   * @param path to the file
+   * @param jsonFile  filepath to the file  with the information for a DecryptionTask
    * @return a generated task of type DecryptionTask
    */
   public static DecryptionTask createDecryptionTask(String jsonFile) {
 
 	  DecryptionTask decryptionTask;
+try {
 
-	  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
-	  decryptionTask = gson.fromJson(convertedObject, DecryptionTask.class);
-      decryptionTask.createCityTask();
-	  return decryptionTask;
+    JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
+    decryptionTask = gson.fromJson(convertedObject, DecryptionTask.class);
+    decryptionTask.createCityTask();
+    return decryptionTask;
+} catch (Exception e){
+    return null;
+}
 
   }
 
@@ -77,10 +87,12 @@ public class ReadJson {
    * @return
    */
   public static int readTime(String jsonFile) {
-
-	  JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
-	  time = Integer.parseInt(convertedObject.get("time").getAsString());
-      return time;
-
+try {
+    JsonObject convertedObject = new Gson().fromJson(jsonFile, JsonObject.class);
+    time = Integer.parseInt(convertedObject.get("time").getAsString());
+    return time;
+}catch (Exception e){
+    return 0;
+}
   }
 }
