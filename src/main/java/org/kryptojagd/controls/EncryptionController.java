@@ -91,7 +91,6 @@ public class EncryptionController extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            System.out.println(mainController.getCurrentLevel().getTimeInSec());
             timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
             if (level.getTimeInSec() <= 0) {
                 mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);

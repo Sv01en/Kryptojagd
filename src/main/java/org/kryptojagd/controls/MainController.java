@@ -2,6 +2,7 @@ package org.kryptojagd.controls;
 
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.presentation.PresentationManager;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -25,11 +26,13 @@ public class MainController {
 
 	protected boolean decryptionTaskSucceeded;
 
+	protected boolean decryptionTextTaskSucceeded;
+
 	protected boolean encryptionTaskSucceeded;
 
 	protected boolean cityTaskFinished;
 
-	protected boolean encryptionDecryptionFinished;
+	private int currentLevelPosition;
 
 	public static final String TASK_FINISHED_FXML = "TaskFinished.fxml";
 
@@ -44,6 +47,7 @@ public class MainController {
 	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels) {
 		this.fw = fw;
 		this.currentLevel = currentLevel;
+		this.currentLevelPosition = 0;
 		this.allLevels = allLevels;
 		this.clearedLevels = clearedLevels;
 		AbstractController.setMainController(this);
@@ -61,6 +65,7 @@ public class MainController {
 	 */
 	public void setNextLevel() {
 		this.currentLevel = allLevels.get(clearedLevels);
+		this.currentLevelPosition++;
 	}
 
 	/**
@@ -132,4 +137,22 @@ public class MainController {
 	 */
 	public void toggleDarkmode() {fw.toggleDarkmode();}
 
+	/**
+	 * Starts a level by the given position in the list.
+	 * @param id position in the list
+	 */
+	public void startLevelByPosition(int id) {
+		this.currentLevelPosition = id;
+		this.currentLevel = this.allLevels.get(id);
+		switchWindowWithCSS(currentLevel.getCurrentTask().toString() +
+				".fxml", ReadDirectory.CSS_FILE_START);
+	}
+
+	/**
+	 * Returns the position in the list of the current level.
+	 * @return position as an integer
+	 */
+	public int getCurrentLevelPosition() {
+		return this.currentLevelPosition;
+	}
 }

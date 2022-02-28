@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.kryptojagd.controls.MainController;
+import org.kryptojagd.cryptotools.VigenereBreakController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
@@ -37,6 +38,11 @@ public class MainApp extends Application {
     ArrayList<Level> allLevels = null;
     try {
       allLevels = ReadDirectory.initialize();
+
+      String text1 = "Fog tuh rpt jscuqvwüugswvs Hpzh";
+      String text2 = "DasistderverschlüsselteText";
+      System.out.println(VigenereBreakController.addSpacesAs(text1, text2));
+
     } catch (Exception exception) {
       exception.printStackTrace();
     }

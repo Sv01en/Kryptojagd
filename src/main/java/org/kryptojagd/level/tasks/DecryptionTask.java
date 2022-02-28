@@ -161,7 +161,8 @@ public class DecryptionTask implements Task {
 				decrypted.append(tokens[i]).deleteCharAt(decrypted.length() - 1);
 			}
 		}
-		this.taskCompleted = answer.equals(decrypted.toString());
+
+		this.taskCompleted = answer.toUpperCase().equals(decrypted.toString().toUpperCase());
 		return taskCompleted;
 	}
 

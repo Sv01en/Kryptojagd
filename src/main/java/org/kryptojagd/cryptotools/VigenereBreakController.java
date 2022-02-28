@@ -75,8 +75,7 @@ public class VigenereBreakController {
 //    		+ "UND SOLLTEN SIE DIESE ZEILEN NOCH IMMER LESEN SO HABE ICH ALS KLEINER BLINDTEXT ETWAS GESCHAFFT"
 //    		+ " WOVON ALL DIE RICHTIGEN UND WICHTIGEN TEXTE MEIST NUR TRAEUMEN";
     
-    private static String text = "AEDEHMUAUMFXBRCEXMFXKFDBGHLXQXMGWDOTKWUAHRKHEEFZXMUAWIF"
-    		+ "DXRCTGRWLPEJGBGZMEIAVAXRNOIJLMIZXGASLXWTXWIMMXXWBGFDBGHWKMIPMSYKXBRETGIJZBFLDXMFXGWAGG";
+    private static String text = "Fog tuh rpt jscuqvwüugswvs hpzh.";
     
    
     // TODO überflüssig
@@ -249,7 +248,7 @@ public class VigenereBreakController {
 		for (char letter = 'A'; letter <= 'Z'; letter++) {
 			Label label123 = new Label(Character.toString(letter));
  			label123.setStyle("-fx-font-size: 8pt; "
- 					+ "-fx-font-weight: bold}");
+ 					+ "-fx-font-weight: bold");
  			pane.getChildren().add(label123);
  			label123.relocate(88 + 34.3*count, 390);
  			count++;
@@ -364,7 +363,7 @@ public class VigenereBreakController {
 		barCharts[i].setPrefSize(980, 440);
 		
 		for(Node n:barCharts[i].lookupAll(".default-color0.chart-bar")) {
-	            n.setStyle("-fx-bar-fill: red;");
+	            n.setStyle("-fx-bar-fill: #ff0000;");
 	        }
 	  
  	    for(Node n:barCharts[i].lookupAll(".default-color1.chart-bar")) {
@@ -413,5 +412,32 @@ public class VigenereBreakController {
 		vbox.getChildren().addAll(pane, hb);
 		return vbox;
     }
+
+	/**
+	 * Adds spaces between the strings with the same structure as a given text
+	 *
+	 * @param stringsWithSpaces is a text with spaces between words
+	 * @param stringsWithout is a text without spaces between words
+	 * @return stringWithout text with spaces in the same place as the spaces in the given text
+	 */
+    public static String addSpacesAs(String stringsWithSpaces, String stringsWithout) {
+    	StringBuilder newString = new StringBuilder();
+    	String[] tokens = stringsWithSpaces.split(" ");
+    	int lastWordIndex = tokens.length - 1;
+		int beginIndex = 0;
+		int endIndex = 0;
+
+		for (int i = 0; i < lastWordIndex; i++) {
+			beginIndex = endIndex;
+			endIndex = tokens[i].length() + endIndex;
+
+			String currentWord = stringsWithout.substring(beginIndex, endIndex);
+			newString.append(currentWord).append(" ");
+		}
+		String lastWord = stringsWithout.substring(endIndex);
+		newString.append(lastWord);
+
+		return newString.toString();
+	}
    
 }

@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.cryptotools.CryptoTool;
+import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
 
@@ -51,6 +52,12 @@ public class DecryptionController extends AbstractController {
     @FXML
     private Button procedure3;
 
+    @FXML
+    private Button Cryptotool;
+
+    @FXML
+    private Button button1;
+
     /**
      * Initializes a DecryptionController either with the city question or the decryption task
      */
@@ -66,6 +73,21 @@ public class DecryptionController extends AbstractController {
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
+
+            Cryptotool.setDisable(true);
+
+            button1.setDisable(true);
+
+            if (mainController.decryptionTaskSucceeded) {
+                procedure1.setDisable(true);
+                procedure2.setDisable(true);
+                procedure3.setDisable(true);
+                button1.setDisable(false);
+
+                if (level.getId() >= 1) {
+                    Cryptotool.setDisable(false);
+                }
+            }
         }
     }
 
@@ -101,13 +123,12 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     private void clickSend(ActionEvent event) {
-        level.proveTask(textField.getText());
-        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
+        mainController.decryptionTextTaskSucceeded = level.proveTask(textField.getText());
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }
 
     @FXML
     private void clickCrypto(ActionEvent event) {
-        if (level.getId() > 1)
         if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
             try {
                 CryptoTool.caesar(new Stage());
@@ -131,7 +152,7 @@ public class DecryptionController extends AbstractController {
      */
     private void clickAnswer(Button procedure){
         mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
-        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, "../css/startwindow.css");
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }
 
     /**
@@ -144,10 +165,9 @@ public class DecryptionController extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            System.out.println(mainController.getCurrentLevel().getTimeInSec());
             timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
             if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", "../css/startwindow.css");
+                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
                 time.stop();
             }
         });
@@ -158,6 +178,6 @@ public class DecryptionController extends AbstractController {
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
         mainController.getCurrentLevel().clearLevel();
-        mainController.switchWindowWithCSS("Startfenster.fxml", "../css/startwindow.css");
+        mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
 }

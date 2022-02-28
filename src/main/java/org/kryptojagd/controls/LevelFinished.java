@@ -26,7 +26,9 @@ public class LevelFinished extends AbstractController {
     @FXML
     void menuAction(ActionEvent e) {
         mainController.getCurrentLevel().clearLevel();
-        mainController.setClearedLevels();
+        if (mainController.getClearedLevels() == mainController.getCurrentLevelPosition()) {
+            mainController.setClearedLevels();
+        }
         mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
@@ -42,7 +44,9 @@ public class LevelFinished extends AbstractController {
     @FXML
     void nextLevelAction(ActionEvent e) {
         mainController.getCurrentLevel().clearLevel();
-        mainController.setClearedLevels();
+        if (mainController.getClearedLevels() == mainController.getCurrentLevelPosition()) {
+            mainController.setClearedLevels();
+        }
         mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
@@ -61,7 +65,6 @@ public class LevelFinished extends AbstractController {
         time.setCycleCount(Timeline.INDEFINITE);
         time.stop();
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            System.out.println(mainController.getCurrentLevel().getTimeInSec());
             timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
             if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
                 mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
