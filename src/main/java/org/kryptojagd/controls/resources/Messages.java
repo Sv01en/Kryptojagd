@@ -3,7 +3,7 @@ package org.kryptojagd.controls.resources;
 /**
  * This class provides resources.
  *
- * @author Sonja Kuklok
+ * @author Sonja Kuklok, Bartosz Treyde
  */
 public final class Messages {
 
@@ -13,7 +13,7 @@ public final class Messages {
     + " einen Schritt näher gekommen. Beeile dich!";
 
     public static final String FINISHED_MULTIPLE_CHOICE = "Glückwunsch, du hast alle Fragen richtig beantwortet und " +
-            "die Floppy-Disk erhalten!\n Schicke dem NIV eine verschlu?sselte Besta?tigung, " +
+            "die Floppy-Disk erhalten!\n Schicke dem NIV eine verschluesselte Bestaetigung, " +
             "dass ihr die Floppy-Disk erhalten habt.";
 
     public static final String LEVEL_FINISHED = "Glückwunsch, du hast das Level erfolgreich beendet.";

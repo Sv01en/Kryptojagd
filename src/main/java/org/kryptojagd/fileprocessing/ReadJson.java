@@ -37,7 +37,6 @@ public class ReadJson {
           multipleChoiceTask = gson.fromJson(convertedObject, MultipleChoiceTask.class);
           return multipleChoiceTask;
       } catch (Exception e){
-          System.out.println("Hallo0");
       }
       return null;
   }
