@@ -60,29 +60,27 @@ public class DecryptionController extends AbstractController {
     @FXML
     public void initialize() {
         updateTimer(timer);
-        if (!task.getTaskCompleted()) {
-            level.startCountdown();
-            question.setText(Messages.DECRYPTION_QUESTION);
-            String[] possibleChoice = task.getPossibilities();
-            String plaintext = task.getPlainText();
-            encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
-            procedure1.setText(possibleChoice[0]);
-            procedure2.setText(possibleChoice[1]);
-            procedure3.setText(possibleChoice[2]);
+        level.startCountdown();
+        question.setText(Messages.DECRYPTION_QUESTION);
+        String[] possibleChoice = task.getPossibilities();
+        String plaintext = task.getPlainText();
+        encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
+        procedure1.setText(possibleChoice[0]);
+        procedure2.setText(possibleChoice[1]);
+        procedure3.setText(possibleChoice[2]);
 
-            Cryptotool.setDisable(true);
+        Cryptotool.setDisable(true);
 
-            button1.setDisable(true);
+        button1.setDisable(true);
 
-            if (mainController.decryptionTaskSucceeded) {
-                procedure1.setDisable(true);
-                procedure2.setDisable(true);
-                procedure3.setDisable(true);
-                button1.setDisable(false);
+        if (mainController.decryptionTaskSucceeded) {
+            procedure1.setDisable(true);
+            procedure2.setDisable(true);
+            procedure3.setDisable(true);
+            button1.setDisable(false);
 
-                if (level.getId() >= 1) {
-                    Cryptotool.setDisable(false);
-                }
+            if (level.getId() >= 1) {
+                Cryptotool.setDisable(false);
             }
         }
     }

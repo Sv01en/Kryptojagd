@@ -5,7 +5,6 @@ import javafx.animation.Timeline;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
-import org.kryptojagd.level.Level;
 
 /**
  * @author Michail Petermann
