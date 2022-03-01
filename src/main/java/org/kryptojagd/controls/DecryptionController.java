@@ -59,7 +59,7 @@ public class DecryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        updateTimer();
+        updateTimer(timer);
         if (!task.getTaskCompleted()) {
             level.startCountdown();
             question.setText(Messages.DECRYPTION_QUESTION);
@@ -149,26 +149,6 @@ public class DecryptionController extends AbstractController {
     private void clickAnswer(Button procedure){
         mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
-    }
-
-    /**
-     * Updates the {@link DecryptionController#timer} every second in the corresponding fxml-file.
-     */
-    @FXML
-    @Override
-    void updateTimer() {
-        Timeline time = new Timeline();
-        time.setCycleCount(Timeline.INDEFINITE);
-        time.stop();
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
-            if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
-                time.stop();
-            }
-        });
-        time.getKeyFrames().add(frame);
-        time.playFromStart();
     }
 
     /**
