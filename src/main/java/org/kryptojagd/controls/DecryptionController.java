@@ -28,13 +28,13 @@ public class DecryptionController extends AbstractController {
     private DecryptionTask task = (DecryptionTask) level.getCurrentTask();
 
     @FXML
-    private Label question;
+    public Label question;
 
     @FXML
-    private Label encryptedPuzzleText;
+    public Label encryptedPuzzleText;
 
     @FXML
-    private TextField textField;
+    public TextField textField;
 
     @FXML
     private Label timer = new Label();
@@ -49,7 +49,7 @@ public class DecryptionController extends AbstractController {
     private Button procedure3;
 
     @FXML
-    private Button cryptotool;
+    private Button Cryptotool;
 
     @FXML
     private Button button1;
@@ -70,7 +70,7 @@ public class DecryptionController extends AbstractController {
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
 
-            cryptotool.setDisable(true);
+            Cryptotool.setDisable(true);
 
             button1.setDisable(true);
 
@@ -81,7 +81,7 @@ public class DecryptionController extends AbstractController {
                 button1.setDisable(false);
 
                 if (level.getId() >= 1) {
-                    cryptotool.setDisable(false);
+                    Cryptotool.setDisable(false);
                 }
             }
         }
@@ -146,7 +146,7 @@ public class DecryptionController extends AbstractController {
      * Checks if the answer is correct.
      * @param procedure Button which is clicked on
      */
-    private void clickAnswer(Button procedure) {
+    private void clickAnswer(Button procedure){
         mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }
