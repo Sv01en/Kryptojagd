@@ -12,7 +12,7 @@ public abstract class AbstractController {
 	/**
 	 * Updates the timer in the corresponding window.
 	 */
-	void updateTimer(){}
+	void updateTimer() { }
 
 	/**
 	 * Returns the time in a better readable format.

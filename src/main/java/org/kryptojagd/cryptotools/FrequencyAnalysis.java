@@ -3,12 +3,21 @@ package org.kryptojagd.cryptotools;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+/**
+ * The type Frequency analysis.
+ */
 public class FrequencyAnalysis {
 
-	
-	public static HashMap<String,Double> absoluteFrequency(String text) {
+
+	/**
+	 * Absolute frequency hash map.
+	 *
+	 * @param text the text
+	 * @return the hash map
+	 */
+	public static HashMap<String, Double> absoluteFrequency(String text) {
 		
-		HashMap<String,Double> hashmap = new HashMap<String, Double>();
+		HashMap<String, Double> hashmap = new HashMap<String, Double>();
 		text = removeCharacters(text);
 		
 		char c = 'A';
@@ -23,10 +32,16 @@ public class FrequencyAnalysis {
 		
 		return hashmap;
 	}
-	
-public static LinkedHashMap<String,Double> relativeFrequency(String text) {
+
+	/**
+	 * Relative frequency linked hash map.
+	 *
+	 * @param text the text
+	 * @return the linked hash map
+	 */
+	public static LinkedHashMap<String, Double> relativeFrequency(String text) {
 		
-		LinkedHashMap<String,Double> hashmap = new LinkedHashMap<String, Double>();
+		LinkedHashMap<String, Double> hashmap = new LinkedHashMap<String, Double>();
 		text = removeCharacters(text);
 		double length = (double) text.length();
 		
@@ -42,11 +57,15 @@ public static LinkedHashMap<String,Double> relativeFrequency(String text) {
 		
 		return hashmap;
 	}
-	
-	
-	
+
+
+	/**
+	 * German letter frequency linked hash map.
+	 *
+	 * @return the linked hash map
+	 */
 	public static LinkedHashMap<String, Double> germanLetterFrequency() {
-		LinkedHashMap<String,Double> germanLetterFrequency = new LinkedHashMap<String, Double>();
+		LinkedHashMap<String, Double> germanLetterFrequency = new LinkedHashMap<String, Double>();
 		
     	germanLetterFrequency.put("E", 17.4);
     	germanLetterFrequency.put("N", 9.78);

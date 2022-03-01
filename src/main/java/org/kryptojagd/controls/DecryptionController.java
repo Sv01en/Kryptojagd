@@ -4,13 +4,9 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.kryptojagd.controls.resources.Messages;
@@ -32,13 +28,13 @@ public class DecryptionController extends AbstractController {
     private DecryptionTask task = (DecryptionTask) level.getCurrentTask();
 
     @FXML
-    public Label question;
+    private Label question;
 
     @FXML
-    public Label encryptedPuzzleText;
+    private Label encryptedPuzzleText;
 
     @FXML
-    public TextField textField;
+    private TextField textField;
 
     @FXML
     private Label timer = new Label();
@@ -53,7 +49,7 @@ public class DecryptionController extends AbstractController {
     private Button procedure3;
 
     @FXML
-    private Button Cryptotool;
+    private Button cryptotool;
 
     @FXML
     private Button button1;
@@ -74,7 +70,7 @@ public class DecryptionController extends AbstractController {
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
 
-            Cryptotool.setDisable(true);
+            cryptotool.setDisable(true);
 
             button1.setDisable(true);
 
@@ -85,7 +81,7 @@ public class DecryptionController extends AbstractController {
                 button1.setDisable(false);
 
                 if (level.getId() >= 1) {
-                    Cryptotool.setDisable(false);
+                    cryptotool.setDisable(false);
                 }
             }
         }
@@ -150,7 +146,7 @@ public class DecryptionController extends AbstractController {
      * Checks if the answer is correct.
      * @param procedure Button which is clicked on
      */
-    private void clickAnswer(Button procedure){
+    private void clickAnswer(Button procedure) {
         mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }
@@ -175,6 +171,11 @@ public class DecryptionController extends AbstractController {
         time.playFromStart();
     }
 
+    /**
+     * Click menu.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
         mainController.getCurrentLevel().clearLevel();

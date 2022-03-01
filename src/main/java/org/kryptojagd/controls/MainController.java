@@ -2,10 +2,8 @@ package org.kryptojagd.controls;
 
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
-import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.presentation.PresentationManager;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 /**
  * The class controls every kind of controller and puts them together
@@ -34,6 +32,9 @@ public class MainController {
 
 	private int currentLevelPosition;
 
+	/**
+	 * The constant TASK_FINISHED_FXML.
+	 */
 	public static final String TASK_FINISHED_FXML = "TaskFinished.fxml";
 
 
@@ -42,6 +43,7 @@ public class MainController {
 	 *
 	 * @param fw            the fw
 	 * @param currentLevel  the current Level, which is played
+	 * @param allLevels     the levels
 	 * @param clearedLevels the cleared levels
 	 */
 	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels) {
@@ -135,7 +137,9 @@ public class MainController {
 	/**
 	 * Toggles dark mode on if its off and vice versa.
 	 */
-	public void toggleDarkmode() {fw.toggleDarkmode();}
+	public void toggleDarkmode() {
+		fw.toggleDarkmode();
+	}
 
 	/**
 	 * Starts a level by the given position in the list.
@@ -144,8 +148,8 @@ public class MainController {
 	public void startLevelByPosition(int id) {
 		this.currentLevelPosition = id;
 		this.currentLevel = this.allLevels.get(id);
-		switchWindowWithCSS(currentLevel.getCurrentTask().toString() +
-				".fxml", ReadDirectory.CSS_FILE_START);
+		switchWindowWithCSS(currentLevel.getCurrentTask().toString()
+				+ ".fxml", ReadDirectory.CSS_FILE_START);
 	}
 
 	/**

@@ -1,15 +1,11 @@
 package org.kryptojagd.fileprocessing;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.stream.Collectors;
-
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.LevelComparator;
 import org.kryptojagd.level.tasks.DecryptionTask;
@@ -25,9 +21,15 @@ public class ReadDirectory {
 
   private static final String PREFIX = "/org/kryptojagd/levels/";
   private static final String LEVEL = "level";
-  private static final String[] tasks = {"encryption", "decryption", "question"};
-  public static final String CSS_FILES = "/org/kryptojagd/css/";
-  public static final String CSS_FILE_START = CSS_FILES + "startwindow.css";
+  private static final String[] TASKS = {"encryption", "decryption", "question"};
+	/**
+	 * The constant CSS_FILES.
+	 */
+	public static final String CSS_FILES = "/org/kryptojagd/css/";
+	/**
+	 * The constant CSS_FILE_START.
+	 */
+	public static final String CSS_FILE_START = CSS_FILES + "startwindow.css";
   
   /**
    * This method initializes all levels.
@@ -49,7 +51,7 @@ public class ReadDirectory {
     	EncryptionTask encryptionTask = null;
     	LinkedList<MultipleChoiceTask> multipleChoiceTasks = new LinkedList<MultipleChoiceTask>(); 
     	
-    	for (String t : tasks) {
+    	for (String t : TASKS) {
     		
     		if (t.equals("question")) {
     			
@@ -109,7 +111,8 @@ public class ReadDirectory {
     	// ungültig sind, wird das Einlesen abgebrochen.
     	
     	if (!check[0] && !check[1] && !check[2]) {
-    		System.out.println("Ordner für Level " + i + " existiert nicht. Einlesen der Level nach Level " + (i-1) + " abgebrochen.");
+    		System.out.println("Ordner für Level " + i + " existiert nicht. Einlesen der Level nach Level " + (i - 1)
+					+ " abgebrochen.");
     		break;
     	} else {
     		Level l = new Level(decryptionTask, encryptionTask, multipleChoiceTasks, 600);

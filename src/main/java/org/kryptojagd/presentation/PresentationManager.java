@@ -87,6 +87,9 @@ public class PresentationManager {
 		}
 	}
 
+	/**
+	 * Toggle darkmode.
+	 */
 	public void toggleDarkmode() {
 		this.darkMode = !this.darkMode;
 	}

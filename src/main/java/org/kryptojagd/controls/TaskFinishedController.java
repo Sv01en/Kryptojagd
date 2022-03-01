@@ -6,13 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
-import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
-import org.kryptojagd.level.tasks.DecryptionTask;
-import org.kryptojagd.level.tasks.EncryptionTask;
-import org.kryptojagd.level.tasks.MultipleChoiceTask;
-import org.kryptojagd.level.tasks.Task;
 
 /**
  * Gives the right feedback to a task and switches the window.
@@ -56,7 +51,7 @@ public class TaskFinishedController extends AbstractController {
 			String css;
 	 		if (level.getTask("cityTask").getTaskCompleted()) {
 				String city = level.getCity();
-				css = ReadDirectory.CSS_FILES+ city + ".css";
+				css = ReadDirectory.CSS_FILES + city + ".css";
 			} else {
 	 			css = ReadDirectory.CSS_FILE_START;
 			}

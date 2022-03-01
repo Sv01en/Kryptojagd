@@ -10,7 +10,6 @@ import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
-import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
 
 /**
@@ -23,8 +22,11 @@ public class MultipleChoiceController extends AbstractController {
     private final Level level = mainController.getCurrentLevel();
     private final MultipleChoiceTask task = (MultipleChoiceTask) level.getCurrentTask();
 
+    /**
+     * The Answers.
+     */
     @FXML
-    public Label answers;
+    private Label answers;
 
     private CountdownTimer countdownTimer;
 
@@ -141,6 +143,11 @@ public class MultipleChoiceController extends AbstractController {
         time.playFromStart();
     }
 
+    /**
+     * Click menu.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);

@@ -31,6 +31,7 @@ public class DecryptionTask implements Task {
 	 * Contructor of a decryption task
 	 *
 	 * @param plainText               text that will be displayed encrypted
+	 * @param encryptionType          encryption type for the decryption
 	 * @param answerOptionsEncryption answer options for decryption task
 	 * @param correctAnswerEncryption correct answer of decryption task
 	 * @param answerOptionsCity       answer options for city selector
@@ -188,7 +189,7 @@ public class DecryptionTask implements Task {
 	 */
 	@Override
 	public boolean proveAnswer(String answer) {
-		if(encryptionType.startsWith("Cäsar") || encryptionType.startsWith("Rückwärts")) {
+		if (encryptionType.startsWith("Cäsar") || encryptionType.startsWith("Rückwärts")) {
 			return proveDecryptedText(answer);
 		} else if (encryptionType.startsWith("Vigenère") || encryptionType.startsWith("Beaufort")) {
 			return proveKey(answer);
@@ -223,8 +224,25 @@ public class DecryptionTask implements Task {
 	}
 
 	@Override
-	public String toString(){
+	public String toString() {
 		return "DecryptionTask";
 	}
 
+	/**
+	 * Gets text after start.
+	 *
+	 * @return the text after start
+	 */
+	public String getTextAfterStart() {
+		return textAfterStart;
+	}
+
+	/**
+	 * Get answer options encryption string [ ].
+	 *
+	 * @return the string [ ]
+	 */
+	public String[] getAnswerOptionsEncryption() {
+		return answerOptionsEncryption;
+	}
 }

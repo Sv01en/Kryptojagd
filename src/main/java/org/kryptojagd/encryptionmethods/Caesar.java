@@ -3,7 +3,7 @@ package org.kryptojagd.encryptionmethods;
 /**
  * Provides methods for encrypting and decrypting texts with the Caesar encryption
  *
- * @author Leah Schlimm, Sven Strasser
+ * @author Leah Schlimm, Sven Strasser, Bartosz Treyde
  */
 public class Caesar extends Encryption {
 
@@ -19,6 +19,9 @@ public class Caesar extends Encryption {
         return null;
     }
 
+    /**
+     * Instantiates a new Caesar encryption.
+     */
     public Caesar() {
         super.name = "Caesar";
     }
@@ -74,6 +77,7 @@ public class Caesar extends Encryption {
     /**
      * Decrypts an encrypted text with the corresponding key
      * @param text Text to be deciphered
+     * @param key Encryption key
      * @return Deciphered text in uppercase
      */
     public String decode(String text, int key) {
