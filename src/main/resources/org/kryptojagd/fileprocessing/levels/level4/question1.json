@@ -1,5 +1,0 @@
-{
-  "question": "Wie bestimmt man mit der Vigenère Tabelle bei gegebenen Schlüssel den verschlüsselten Buchstaben?",
-  "answerOptions": ["Schnittpunkt der Spalte der Schlüsselbuchstaben und der jeweiligen zugehörigen Klartextbuchstaben", "Schnittpunkt von der Spalte der Klartextbuchstaben und der jeweiligen zugehörigen Schlüsselbuchstaben", "Schnittpunkt von der Spalte der Klartextbuchstaben und der jeweiligen zugehörigen verschlüsselten Buchstaben"],
-  "correctAnswer": "Schnittpunkt von der Spalte der Klartextbuchstaben und der jeweiligen zugehörigen Schlüsselbuchstaben"
-}

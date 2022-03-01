@@ -1,11 +1,15 @@
 package org.kryptojagd.level.tasks;
 
+import org.kryptojagd.level.pointSystem.PointSystem;
+
 /**
  * The interface describes the form of a task in the game
  *
  * @author Sonja Kuklok
  */
 public interface Task {
+
+    PointSystem pointSystem = new PointSystem(0);
 
     /**
      * Checks the answer to the task
@@ -48,6 +52,10 @@ public interface Task {
      * @return possibilities as a string array
      */
     String[] getPossibilities();
+
+    int getScore();
+
+    void setScore(int score);
 
     /**
      * Returns the task as string

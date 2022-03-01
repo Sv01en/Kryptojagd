@@ -1,9 +1,0 @@
-{
-  "question": "Welchen Schutz gibt es, wenn eine Nachricht verschlüsselt verschickt wird?",
-  "answerOptions": [
-    "Jeder kann mitlesen",
-    "Die Nachricht kann nicht verändert werden",
-    "Es gibt keinen Schutz"
-  ],
-  "correctAnswer": "Die Nachricht kann nicht verändert werden"
-}

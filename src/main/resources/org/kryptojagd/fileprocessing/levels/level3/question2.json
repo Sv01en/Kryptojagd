@@ -1,7 +1,0 @@
-{
-  "question": "Das Caesar-Chiffre ist ein...",
-  "answerOptions":["... symmetrisches Verschlüsselungsverfahren",
-    "... asymmetrisches Verschlüsselungsverfahren",
-    "... negierendes Verschlüsselungsverfahren"],
-  "correctAnswer": "... symmetrisches Verschlüsselungsverfahren"
-}

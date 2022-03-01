@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * Gives the right feedback to a task and switches the window.
@@ -23,6 +24,9 @@ public class TaskFinishedController extends AbstractController {
 	private Label timer = new Label();
 
 	@FXML
+	private Label score;
+
+	@FXML
 	private Label feedbackText;
 
 	/**
@@ -34,6 +38,7 @@ public class TaskFinishedController extends AbstractController {
 	public void initialize() {
 		updateTimer();
 		feedbackText.setText(level.getFeedback());
+		score.setText("Punktestand: " + Task.pointSystem.getScore());
 	}
 
 	/**

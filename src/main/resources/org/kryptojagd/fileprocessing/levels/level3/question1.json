@@ -1,5 +1,0 @@
-{
-    "question":"Mit welchem Schlüssel muss man einen Kryptotext verschlüsseln, um wieder den Klartext zu erhalten? Für das Verschlüsseln des Klartextes wurde der Schlüssel 8 verwendet.",
-    "answerOptions":["8", "10", "18"],
-    "correctAnswer": "18"
-}

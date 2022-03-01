@@ -11,6 +11,7 @@ import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * The class controls a window of a multiple choice task.
@@ -45,6 +46,9 @@ public class MultipleChoiceController extends AbstractController {
     @FXML
     private Button answer3;
 
+    @FXML
+    private Label score;
+
     private String a1;
     private String a2;
     private String a3;
@@ -67,6 +71,7 @@ public class MultipleChoiceController extends AbstractController {
         answer1.setText("A");
         answer2.setText("B");
         answer3.setText("C");
+        score.setText("Punktestand: " + Task.pointSystem.getScore());
         this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer();
     }

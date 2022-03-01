@@ -2,7 +2,9 @@ package org.kryptojagd.controls;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import org.kryptojagd.fileprocessing.ReadDirectory;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * Controls the TimeOver file
@@ -11,6 +13,9 @@ import org.kryptojagd.fileprocessing.ReadDirectory;
  * @version 1.0
  */
 public class TimeOverController extends AbstractController {
+
+    @FXML
+    private Label score;
 
     /**
      * Restarts the current level.
@@ -45,6 +50,6 @@ public class TimeOverController extends AbstractController {
      */
     @FXML
     public void initialize() {
-
+        score.setText("Punktestand: " + Task.pointSystem.getScore());
     }
 }

@@ -11,6 +11,7 @@ import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * Encryption Controller for the corresponding fxml-file
@@ -41,6 +42,9 @@ public class EncryptionController extends AbstractController {
     @FXML
     private TextField textField1;
 
+    @FXML
+    private Label score;
+
     /**
      * Initializes an EncryptionController.
      */
@@ -49,6 +53,7 @@ public class EncryptionController extends AbstractController {
         if (level.getEncryptionInput() != null) {
             textField1.setText(level.getEncryptionInput());
         }
+        score.setText("Punktestand: " + Task.pointSystem.getScore());
         label1.setText(task.getTaskText());
         label2.setText(task.getText());
         label3.setVisible(false);

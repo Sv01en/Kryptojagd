@@ -10,6 +10,7 @@ import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * The class controls a window of the messages if a student is doing a mistake
@@ -30,6 +31,10 @@ public class MistakeMessageController extends AbstractController {
     private Label timer;
 
     @FXML
+    private Label score;
+
+
+    @FXML
     private Button nextButton;
 
     /**
@@ -38,6 +43,7 @@ public class MistakeMessageController extends AbstractController {
     @FXML
     public void initialize() {
         message1.setText(task.getMistakeMsg());
+        score.setText("Punktestand: " + Task.pointSystem.getScore());
     }
 
     /**

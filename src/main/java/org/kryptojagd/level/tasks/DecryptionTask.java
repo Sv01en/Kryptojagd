@@ -1,6 +1,7 @@
 package org.kryptojagd.level.tasks;
 
 import org.kryptojagd.encryptionmethods.Encryption;
+import org.kryptojagd.level.pointSystem.PointSystem;
 
 /**
  * The class describes a task, where you have to decrypt text
@@ -142,6 +143,9 @@ public class DecryptionTask implements Task {
 	 */
 	public boolean proveEncryptionType(String answer) {
 		this.choseEncryption = answer.equals(this.encryptionType);
+		if ( choseEncryption){
+			pointSystem.setScore(pointSystem.getScore() + 5);
+		}
 		return choseEncryption;
 	}
 
@@ -164,6 +168,9 @@ public class DecryptionTask implements Task {
 		}
 
 		this.taskCompleted = answer.toUpperCase().equals(decrypted.toString().toUpperCase());
+		if (taskCompleted) {
+			pointSystem.setScore(pointSystem.getScore() + 25);
+		}
 		return taskCompleted;
 	}
 
@@ -221,6 +228,14 @@ public class DecryptionTask implements Task {
 	@Override
 	public void setTaskCompletedEnd() {
 
+	}
+
+	public void setScore(int score){
+		pointSystem.setScore(score);
+	}
+
+	public int getScore() {
+		return pointSystem.getScore();
 	}
 
 	@Override

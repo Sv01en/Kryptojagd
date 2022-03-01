@@ -175,6 +175,7 @@ public class Level {
 		}
 		if (isLevelCompleted()) {
 			feedback = Messages.LEVEL_FINISHED;
+			currentTask.setScore(currentTask.getScore() + currentTime);
 		}
 		return this.currentTask.proveAnswer(answer);
 	}

@@ -144,6 +144,14 @@ public class EncryptionTask implements Task {
         return name;
     }
 
+    public void setScore(int score){
+        pointSystem.setScore(score);
+    }
+
+    public int getScore() {
+        return pointSystem.getScore();
+    }
+
     /**
      * Sets encryption method.
      *
@@ -173,6 +181,7 @@ public class EncryptionTask implements Task {
         this.taskCompleted = upperAnswer.equals(realSolutionString);
         this.hammingDistanceValue = HammingDistance.calculateHammingDistance(realSolutionString, upperAnswer);
         if (upperAnswer.equals(realSolutionString)) {
+            pointSystem.setScore(pointSystem.getScore() + 25);
             return true;
         } else if (studentSolution.length != realSolution.length) {
             this.mistakeMsg = WRONGCOUNTLETTER;

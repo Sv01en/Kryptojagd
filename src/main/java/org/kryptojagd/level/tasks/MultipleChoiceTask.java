@@ -67,6 +67,7 @@ public class MultipleChoiceTask implements Task {
     @Override
     public boolean proveAnswer(String answer) {
         if (this.correctAnswer.equals(answer)) {
+            pointSystem.setScore(pointSystem.getScore() + 5);
             taskCompleted = true;
             return true;
         }
@@ -76,6 +77,14 @@ public class MultipleChoiceTask implements Task {
     @Override
     public boolean getTaskCompleted() {
         return taskCompleted;
+    }
+
+    public void setScore(int score){
+        pointSystem.setScore(score);
+    }
+
+    public int getScore() {
+        return pointSystem.getScore();
     }
 
     /**

@@ -1,5 +1,0 @@
-{
-    "question": "Was ist das Besondere an der Beaufort-Verschlüsselung gegenüber der Vigenère-Verschlüsselung?",
-    "answerOptions": ["Es gibt kein Unterschied, sie sind genau gleich.", "Abwechselnd den Schlüssel vorwärts und rückwärts benutzen.", "Die verwendeten Alphabete werden rückwärts eingesetzt."],
-    "correctAnswer": "Die verwendeten Alphabete werden rückwärts eingesetzt."
-}

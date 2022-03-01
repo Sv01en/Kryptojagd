@@ -1,5 +1,0 @@
-{
-  "question": "Mit welchem Verfahren kann man bei der Vigenère Verschlüsselung die Schlüssellänge nicht herausfinden?",
-  "answerOptions": ["Kerckhoffs' Prinzip", "partielle Brute Force Methode", "Kasiski Test"],
-  "correctAnswer": "Kerckhoffs' Prinzip"
-}

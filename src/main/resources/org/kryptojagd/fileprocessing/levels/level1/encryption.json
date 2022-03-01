@@ -1,7 +1,0 @@
-
-{
-	"task":"Verschluessle den folgenden Text mit dem Rueckwaertsverschluesselungsverfahren:\n\nHinweise\n1. Gib deine Loesung in Upper Case ein\n2. Verschluessle jedes Wort einzeln, unabhaengig von den Sonderzeichen.\n",
-	"text":"Erste Floppy-Disk gefunden",
-	"encryptionType": "Backwards",
-	"timeInSec": 300
-}

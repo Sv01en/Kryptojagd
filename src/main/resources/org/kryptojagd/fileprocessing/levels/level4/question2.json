@@ -1,5 +1,0 @@
-{
-  "question": "Ein Klartext wurde mit dem Schlüssel HEY verschlüsselt. Mit welchem Schlüssel muss man den Kryptotext verschlüsseln, um wieder den Klartext zu erhalten?",
-  "answerOptions": ["TWC", "CWU", "UWC"],
-  "correctAnswer": "TWC"
-}

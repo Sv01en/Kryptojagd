@@ -1,5 +1,0 @@
-{
-    "question": "Wie sicher ist die Beaufort-Verschlüsselung im Vergleich zur Vigenère-Verschlüsselung?",
-    "answerOptions": ["weniger sicher", "gleich sicher", "mehr sicher"],
-    "correctAnswer": "gleich sich"
-}
