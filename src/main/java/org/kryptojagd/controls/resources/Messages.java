@@ -3,7 +3,7 @@ package org.kryptojagd.controls.resources;
 /**
  * This class provides resources.
  *
- * @author Sonja Kuklok, Bartosz Treyde
+ * @author Sonja Kuklok, Bartosz Treyde, Amelie Reichert
  */
 public final class Messages {
 
@@ -53,6 +53,21 @@ public final class Messages {
             + " finde zuerst heraus, um welches Verschlüsselungsverfahren es sich handelt."
             + " Nachdem du das richtige Verfahren ausgewählt hast, entschlüssele die letzten 3 Worte des Textes"
             + " und sende sie der NIV";
+
+    /**
+     * The constant CITY_HELP_TEXT.
+     */
+    public static final String CITY_HELP_TEXT = "Das Punktesystem:\n"
+            + "Oben kannst du deinen aktuellen Punktestand einsehen, "
+            + "für jede richtige Entschlüsselungsaufgabebekommst du 50, "
+            + "für jede richtige Multiple Choice Aufgabe 10 und für jede richtige Verschlüsselungsaufgabe 50 Punkte. "
+            + "Am Ende wird dir die Zeit auf deinen Punktestand dazu addiert, "
+            + "wenn der Timer nicht bereits abgelaufen ist.\n\n"
+            + "Der Menü-Knopf:\n"
+            + "Du kannst zurück zum Menü gehen, wenn du …\n"
+            + "… in ein anderes Level (sofern es freigeschalten ist) springen möchtest.\n"
+            + " …in den Einstellungen den Dark Mode aktivieren/deaktivieren möchtest.\n"
+            + "… das Kryptotool für die Caesar- oder Vigenère Verschlüsselung benutzen möchtest.\n";
 
 
     /* private utility-class constructor */

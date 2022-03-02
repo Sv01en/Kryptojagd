@@ -1,12 +1,9 @@
 package org.kryptojagd.controls;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -43,7 +40,7 @@ public class MistakeMessageController extends AbstractController {
     @FXML
     public void initialize() {
         message1.setText(task.getMistakeMsg());
-        score.setText("Punktestand: " + Task.pointSystem.getScore());
+        score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
     }
 
     /**

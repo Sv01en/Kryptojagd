@@ -18,10 +18,6 @@
          <right>
             <Label fx:id="timer" text="" BorderPane.alignment="CENTER" />
          </right>
-
-         <left>
-            <Button fx:id="help" mnemonicParsing="false" text="?" BorderPane.alignment="CENTER" />
-         </left>
          <padding>
             <Insets left="10.0" right="10.0" />
          </padding>

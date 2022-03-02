@@ -1,14 +1,12 @@
 package org.kryptojagd.controls;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
@@ -21,19 +19,28 @@ import java.io.IOException;
 /**
  * The class controls a window of a decryption task.
  *
- * @author Michail Petermann, Sven Strasser, Leah Schlimm, Bartosz Treyde
+ * @author Michail Petermann, Sven Strasser, Leah Schlimm, Bartosz Treyde, Amelie Reichert
  */
 public class DecryptionController extends AbstractController {
 
     private Level level = mainController.getCurrentLevel();
     private DecryptionTask task = (DecryptionTask) level.getCurrentTask();
 
+    /**
+     * The Question.
+     */
     @FXML
     public Label question;
 
+    /**
+     * The Encrypted puzzle text.
+     */
     @FXML
     public Label encryptedPuzzleText;
 
+    /**
+     * The Text field.
+     */
     @FXML
     public TextField textField;
 
@@ -64,7 +71,7 @@ public class DecryptionController extends AbstractController {
     @FXML
     public void initialize() {
         updateTimer(timer);
-        score.setText("Punktestand: " + Task.pointSystem.getScore());
+        score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
         if (!task.getTaskCompleted()) {
             level.startCountdown();
             question.setText(Messages.DECRYPTION_QUESTION);
@@ -166,6 +173,16 @@ public class DecryptionController extends AbstractController {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * Click help opens the text based help.
+     *
+     * @param event the event
+     */
+    @FXML
+    void clickHelp(ActionEvent event) {
+        mainController.switchWindowWithCSS("HelpText.fxml", ReadDirectory.CSS_FILE_START);
     }
 
 }

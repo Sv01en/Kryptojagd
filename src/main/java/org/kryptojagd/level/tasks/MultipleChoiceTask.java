@@ -5,13 +5,14 @@ import org.kryptojagd.level.pointSystem.PointSystem;
 /**
  * The class describes a task, where you have to answer multiple choice questions
  *
- * @author Sonja Kuklok
+ * @author Sonja Kuklok, Amelie Reichert
  */
 public class MultipleChoiceTask implements Task {
 
     private final String question;
     private final String correctAnswer;
     private final String[] answerOptions;
+    private String helpText;
     private boolean taskCompleted = false;
     private static final String TASK_NAME = "MultipleChoiceTask";
     private String name = TASK_NAME;
@@ -20,16 +21,22 @@ public class MultipleChoiceTask implements Task {
     /**
      * Creates a {@link MultipleChoiceTask}
      *
-     * @param question the question, which you have to answer
-     * @param correctAnswer the right answer of the question
+     * @param question      the question, which you have to answer
      * @param answerOptions the possibilities to answer
+     * @param correctAnswer the right answer of the question
+     * @param helpText      the help text
      */
-    public MultipleChoiceTask(String question, String[] answerOptions, String correctAnswer) {
+    public MultipleChoiceTask(String question, String[] answerOptions, String correctAnswer, String helpText) {
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.answerOptions = answerOptions;
+        this.helpText = helpText;
     }
 
+    /**
+     * Set name.
+     *@param name given as a String
+     */
     @Override
     public void setName(String name) {
         this.name = name;
@@ -38,6 +45,23 @@ public class MultipleChoiceTask implements Task {
     @Override
     public String getName() {
         return name;
+    }
+
+    /**
+     * Gets the fitting text-based help.
+     *
+     * @return the helpText
+     */
+    public String getHelpText() {
+        return helpText;
+    }
+
+    /**
+     * Set helpText.
+     *@param newHelpText the new text-based help
+     */
+    public void setHelpText(String newHelpText) {
+        this.helpText = newHelpText;
     }
 
     /**
@@ -70,7 +94,7 @@ public class MultipleChoiceTask implements Task {
     @Override
     public boolean proveAnswer(String answer) {
         if (this.correctAnswer.equals(answer)) {
-            pointSystem.setScore(PointSystem.getScore() + points);
+            POINT_SYSTEM.setScore(PointSystem.getScore() + points);
             taskCompleted = true;
             return true;
         }
@@ -87,7 +111,7 @@ public class MultipleChoiceTask implements Task {
      *@param score given as an integer
      */
     public void setScore(int score) {
-        pointSystem.setScore(score);
+        POINT_SYSTEM.setScore(score);
     }
     /**
      * Gets score.

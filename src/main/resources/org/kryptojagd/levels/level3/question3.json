@@ -1,5 +1,6 @@
 {
   "question": "Wofür benutzt man heutzutage die Caesar-Verschlüsselung ROT13?",
   "answerOptions": ["Um Textinhalte wie Spoiler oder Pointen gegen unabsichtliches Lesen zu verschleiern.", "Um identifizierbare oder quasi-identifizierbare personenbezogene Daten zu verschleiern.", "Um Textinhalte für 3. unlesbar zu machen."],
-  "correctAnswer": "Um Textinhalte wie Spoiler oder Pointen gegen unabsichtliches Lesen zu verschleiern."
+  "correctAnswer": "Um Textinhalte wie Spoiler oder Pointen gegen unabsichtliches Lesen zu verschleiern.",
+  "helpText": "Das Punktesystem:\nOben kannst du deinen aktuellen Punktestand einsehen, für jede richtige Entschlüsselungsaufgabebekommst du 50, für jede richtige Multiple Choice Aufgabe 10 und für jede richtige Verschlüsselungsaufgabe 50 Punkte. Am Ende wird dir die Zeit auf deinen Punktestand dazu addiert, wenn der Timer nicht bereits abgelaufen ist.\\n\\nDer Menü-Knopf:\\nDu kannst zurück zum Menü gehen, wenn du …\\n… in ein anderes Level (sofern es freigeschalten ist) springen möchtest.\\n …in den Einstellungen den Dark Mode aktivieren/deaktivieren möchtest.\\n… das Kryptotool für die Caesar- oder Vigenère Verschlüsselung benutzen möchtest."
 }

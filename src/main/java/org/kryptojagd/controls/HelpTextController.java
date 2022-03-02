@@ -3,13 +3,15 @@ package org.kryptojagd.controls;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.level.tasks.Task;
 
 /**
- * @author Leah Schlimm, Bartosz Treyde
+ * Controller for the fxml-file for text-based Help
+ *
+ * @author Amelie Reichert
+ * @version 1.0
  */
-public class InfoTextController extends AbstractController {
+public class HelpTextController extends AbstractController {
 
 	/**
 	 * The Label.
@@ -21,11 +23,11 @@ public class InfoTextController extends AbstractController {
 	private Label score;
 
 	/**
-	 * Initializes a InfoTextController with the info text
+	 * Initializes a HelpTextController with the text-based help
 	 */
 	@FXML
 	public void initialize() {
-		String text = Messages.START_TEXT;
+		String text = mainController.getCurrentLevel().getCurrentTask().getHelpText();
 		label.setText(text);
 		score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
 	}
@@ -35,7 +37,7 @@ public class InfoTextController extends AbstractController {
 	 * @param event that is received
 	 */
 	 @FXML
-	 void closeInfotext(ActionEvent event) {
+	 void closeHelpText(ActionEvent event) {
 		 mainController.startLevel();
 	 }
 }

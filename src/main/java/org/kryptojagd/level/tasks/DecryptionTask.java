@@ -6,7 +6,7 @@ import org.kryptojagd.level.pointSystem.PointSystem;
 /**
  * The class describes a task, where you have to decrypt text
  *
- * @author Sonja Kuklok, Sven Strasser, Leah Schlimm, Bartosz Treyde
+ * @author Sonja Kuklok, Sven Strasser, Leah Schlimm, Bartosz Treyde, Amelie Reichert
  */
 public class DecryptionTask implements Task {
 
@@ -16,6 +16,7 @@ public class DecryptionTask implements Task {
 	private MultipleChoiceTask cityTask;
 	private boolean choseEncryption = false;
 	private String plainText;
+	private String helpText;
 	private String encryptionType;
 	private Encryption encryptionMethod;
 	private String[] answerOptionsEncryption;
@@ -42,13 +43,15 @@ public class DecryptionTask implements Task {
 	 * @param textAfterStart          text to display after city selector was done right
 	 * @param timeInSec               time in sec for the task
 	 * @param timePenalty             the time penalty
+	 * @param helpText                the help text
 	 */
 	public DecryptionTask(String plainText, String encryptionType, String[] answerOptionsEncryption,
 						  int correctAnswerEncryption, String[] answerOptionsCity, int correctAnswerCity,
-						  String textAfterStart, int timeInSec, int timePenalty) {
+						  String textAfterStart, int timeInSec, int timePenalty, String helpText) {
 		this.plainText = plainText;
 		this.encryptionType = encryptionType;
-		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity, answerOptionsCity[correctAnswerCity]);
+		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity,
+			answerOptionsCity[correctAnswerCity], helpText);
 		cityTask.setName("cityTask");
 		this.answerOptionsEncryption = answerOptionsEncryption;
 		this.correctAnswerEncryption = correctAnswerEncryption;
@@ -57,6 +60,7 @@ public class DecryptionTask implements Task {
 		this.textAfterStart = textAfterStart;
 		this.timeInSec = timeInSec;
 		this.timePenalty = timePenalty;
+		this.helpText = helpText;
 	}
 
 
@@ -106,7 +110,8 @@ public class DecryptionTask implements Task {
 	 * this method is for using, if the constructor is not used
 	 */
 	public void createCityTask() {
-		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity, answerOptionsCity[correctAnswerCity]);
+		this.cityTask = new MultipleChoiceTask(plainText, answerOptionsCity,
+			answerOptionsCity[correctAnswerCity], helpText);
 		cityTask.setName("cityTask");
 	}
 
@@ -146,7 +151,7 @@ public class DecryptionTask implements Task {
 	public boolean proveEncryptionType(String answer) {
 		this.choseEncryption = answer.equals(this.encryptionType);
 		if (choseEncryption) {
-			pointSystem.setScore(PointSystem.getScore() + pointsEncryptionType);
+			POINT_SYSTEM.setScore(PointSystem.getScore() + pointsEncryptionType);
 		}
 		return choseEncryption;
 	}
@@ -183,7 +188,7 @@ public class DecryptionTask implements Task {
 		String decrypted = lastWordsOfPlaintext(LAST_WORDS_NUMBER);
 		this.taskCompleted = answer.toUpperCase().equals(decrypted.toUpperCase());
 		if (taskCompleted) {
-			pointSystem.setScore(PointSystem.getScore() + pointsDecryptionTask);
+			POINT_SYSTEM.setScore(PointSystem.getScore() + pointsDecryptionTask);
 		}
 		return taskCompleted;
 	}
@@ -198,6 +203,15 @@ public class DecryptionTask implements Task {
 		return name;
 	}
 
+	@Override
+	public String getHelpText() {
+		return helpText;
+	}
+
+	@Override
+	public void setHelpText(String newHelpText) {
+		this.helpText = newHelpText;
+	}
 
 	@Override
 	public String[] getPossibilities() {
@@ -219,7 +233,7 @@ public class DecryptionTask implements Task {
 	 *@param score given as an integer
 	 */
 	public void setScore(int score) {
-		pointSystem.setScore(score);
+		POINT_SYSTEM.setScore(score);
 	}
 	/**
 	 * Gets score.
