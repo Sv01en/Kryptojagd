@@ -1,12 +1,11 @@
 package org.kryptojagd.controls;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.util.Duration;
+import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
@@ -16,7 +15,7 @@ import org.kryptojagd.level.tasks.Task;
 /**
  * The class controls a window of a multiple choice task.
  *
- * @author Sonja Kuklok, Michail Petermann, Sven Strasser, Leah Schlimm, Bartosz Treyde
+ * @author Sonja Kuklok, Michail Petermann, Sven Strasser, Leah Schlimm, Bartosz Treyde, Amelie Reichert
  */
 public class MultipleChoiceController extends AbstractController {
 
@@ -71,7 +70,7 @@ public class MultipleChoiceController extends AbstractController {
         answer1.setText("A");
         answer2.setText("B");
         answer3.setText("C");
-        score.setText("Punktestand: " + Task.pointSystem.getScore());
+        score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
         this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer(timer);
     }
@@ -134,5 +133,19 @@ public class MultipleChoiceController extends AbstractController {
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
+    }
+
+    /**
+     * Click help opens the text based help.
+     *
+     * @param event the event
+     */
+    @FXML
+    void clickHelp(ActionEvent event) {
+        if (level.getCurrentTask().getName() != null && level.getCurrentTask().getName().equals("cityTask")) {
+            mainController.getCurrentLevel().getCurrentTask().setHelpText(Messages.CITY_HELP_TEXT);
+        }
+        mainController.switchWindowWithCSS("HelpText.fxml", ReadDirectory.CSS_FILE_START);
+
     }
 }

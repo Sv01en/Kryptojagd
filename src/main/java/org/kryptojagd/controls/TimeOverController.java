@@ -50,6 +50,6 @@ public class TimeOverController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        score.setText("Punktestand: " + Task.pointSystem.getScore());
+        score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
     }
 }

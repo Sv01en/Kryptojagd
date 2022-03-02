@@ -47,6 +47,8 @@ public class EncryptionTask implements Task {
 
     private String text;
 
+    private String helpText;
+
     private String key;
 
     private String mistakeMsg;
@@ -71,8 +73,10 @@ public class EncryptionTask implements Task {
      * @param encryptionType   the encryption method as a String
      * @param key              the key
      * @param encryptionMethod the encryption method, in which you have to encrypt the text
+     * @param helpText         the help text
      */
-    public EncryptionTask(String task, String text, String encryptionType, String key, Encryption encryptionMethod) {
+    public EncryptionTask(String task, String text, String encryptionType, String key,
+                          Encryption encryptionMethod, String helpText) {
         this.encryptionType = encryptionType;
         this.task = task;
         this.text = text;
@@ -81,6 +85,7 @@ public class EncryptionTask implements Task {
         this.encryptionMethod = encryptionMethod;
         this.taskCompleted = false;
         this.mistakeMsg = "Standardfehler";
+        this.helpText = helpText;
     }
 
     /**
@@ -147,7 +152,7 @@ public class EncryptionTask implements Task {
      *@param score given as an integer
      */
     public void setScore(int score) {
-        pointSystem.setScore(score);
+        POINT_SYSTEM.setScore(score);
     }
 
     /**
@@ -157,6 +162,20 @@ public class EncryptionTask implements Task {
      */
     public int getScore() {
         return PointSystem.getScore();
+    }
+
+    /**
+     * Gets the fitting text-based Help.
+     *
+     * @return the helpText
+     */
+    public String getHelpText() {
+        return helpText;
+    }
+
+    @Override
+    public void setHelpText(String newHelpText) {
+        this.helpText = newHelpText;
     }
 
     @Override
@@ -180,7 +199,7 @@ public class EncryptionTask implements Task {
         this.taskCompleted = upperAnswer.equals(realSolutionString);
         this.hammingDistanceValue = HammingDistance.calculateHammingDistance(realSolutionString, upperAnswer);
         if (upperAnswer.equals(realSolutionString)) {
-            pointSystem.setScore(PointSystem.getScore() + pointsEncryptionTask);
+            POINT_SYSTEM.setScore(PointSystem.getScore() + pointsEncryptionTask);
             return true;
         } else if (studentSolution.length != realSolution.length) {
             this.mistakeMsg = WRONGCOUNTLETTER;
@@ -255,6 +274,11 @@ public class EncryptionTask implements Task {
         this.taskCompleted = false;
     }
 
+    /**
+     * Sets encryption method.
+     *
+     * @param encryption the encryption
+     */
     public void setEncryptionMethod(Encryption encryption) {
         this.encryptionMethod = encryption;
     }

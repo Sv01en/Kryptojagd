@@ -1,13 +1,10 @@
 package org.kryptojagd.controls;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
@@ -50,7 +47,7 @@ public class EncryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        score.setText("Punktestand: " + Task.pointSystem.getScore());
+        score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
         label1.setText(task.getTaskText());
         label2.setText(task.getText());
         label3.setVisible(false);
@@ -92,5 +89,15 @@ public class EncryptionController extends AbstractController {
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
+    }
+
+    /**
+     * Click help opens the text based help.
+     *
+     * @param event the event
+     */
+    @FXML
+    void clickHelp(ActionEvent event) {
+        mainController.switchWindowWithCSS("HelpText.fxml", ReadDirectory.CSS_FILE_START);
     }
 }

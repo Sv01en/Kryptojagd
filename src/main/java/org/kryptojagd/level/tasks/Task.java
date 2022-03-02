@@ -5,11 +5,14 @@ import org.kryptojagd.level.pointSystem.PointSystem;
 /**
  * The interface describes the form of a task in the game
  *
- * @author Sonja Kuklok
+ * @author Sonja Kuklok, Amelie Reichert
  */
 public interface Task {
 
-    PointSystem pointSystem = new PointSystem(0);
+    /**
+     * The constant POINT_SYSTEM.
+     */
+    PointSystem POINT_SYSTEM = new PointSystem(0);
 
     /**
      * Checks the answer to the task
@@ -25,6 +28,7 @@ public interface Task {
      * @return name of the task
      */
     String getName();
+
 
     /**
      * Setter for the name of the task
@@ -47,14 +51,38 @@ public interface Task {
     void setTaskCompletedEnd();
 
     /**
+     * Getter for the Content of the helpText
+     *
+     * @return name of the helpText
+     */
+    String getHelpText();
+
+    /**
+     * Setter for the Content of the helpText
+     *
+     * @param newHelpText the new help text
+     */
+    void setHelpText(String newHelpText);
+
+    /**
      * Returns the possibilities as a string array.
      *
      * @return possibilities as a string array
      */
     String[] getPossibilities();
 
+    /**
+     * Gets score.
+     *
+     * @return the score
+     */
     int getScore();
 
+    /**
+     * Sets score.
+     *
+     * @param score the score
+     */
     void setScore(int score);
 
     /**
@@ -63,5 +91,4 @@ public interface Task {
      * @return the task as string
      */
     String toString();
-
 }

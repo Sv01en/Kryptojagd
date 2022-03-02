@@ -17,6 +17,7 @@ public class DecryptionTaskTest {
     private String textAfterStart = "Ende";
     private int timeInSec = 3;
     private int timePenalty = 20;
+    private String helpText = "help text placeholder";
 
 
     // ############ Test proveAnswer() ##############
@@ -24,21 +25,21 @@ public class DecryptionTaskTest {
     @Test
     void trueAnswerTest() {
         task = new DecryptionTask(plainText, encryptionType, answerOptionsEncryption,
-                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty);
+                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty, helpText);
         Assertions.assertTrue(task.proveAnswer("Tag ist schön"));
     }
 
     @Test
     void falseAnswerTest() {
         task = new DecryptionTask(plainText, encryptionType, answerOptionsEncryption,
-                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty);
+                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty, helpText);
         Assertions.assertFalse(task.proveAnswer("schön"));
     }
 
     @Test
     void notPossibleAnswer() {
         task = new DecryptionTask(plainText, encryptionType, answerOptionsEncryption,
-                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty);
+                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty, helpText);
         Assertions.assertFalse(task.proveAnswer("abc"));
     }
 
@@ -48,21 +49,21 @@ public class DecryptionTaskTest {
     @Test
     void trueAnswer() {
         task = new DecryptionTask(plainText, encryptionType, answerOptionsEncryption,
-                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty);
+                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty, helpText);
         Assertions.assertTrue(task.proveEncryptionType("Rückwärtsverschlüsselung"));
     }
 
     @Test
     void falseAnswer() {
         task = new DecryptionTask(plainText, encryptionType, answerOptionsEncryption,
-                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty);
+                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty, helpText);
         Assertions.assertFalse(task.proveEncryptionType("test1"));
     }
 
     @Test
     void notExistingAnswer() {
         task = new DecryptionTask(plainText, encryptionType, answerOptionsEncryption,
-                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty);
+                correctAnswerEncryption, answerOptionsCity, correctAnswerCity, textAfterStart, timeInSec, timePenalty, helpText);
         Assertions.assertFalse(task.proveEncryptionType("abc"));
     }
 
