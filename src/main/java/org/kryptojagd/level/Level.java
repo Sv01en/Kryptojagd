@@ -42,6 +42,11 @@ public class Level {
 
 	private Task currentTask;
 
+	private boolean firstTryTimer = true;
+
+	public void setFirstTryTimer(boolean firstTryTimer) {
+		this.firstTryTimer = firstTryTimer;
+	}
 
 	/**
 	 * Creates a {@link Level}
@@ -159,7 +164,9 @@ public class Level {
 		}
 		if (isLevelCompleted()) {
 			feedback = Messages.LEVEL_FINISHED;
-			currentTask.setScore(currentTask.getScore() + currentTime);
+			if (this.firstTryTimer){
+				currentTask.setScore(currentTask.getScore() + currentTime);
+			}
 		}
 		return this.currentTask.proveAnswer(answer);
 	}
