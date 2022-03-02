@@ -22,6 +22,6 @@
       </HBox>
       <Button layoutX="14.0" layoutY="668.0" mnemonicParsing="false" onAction="#mainMenu" text="Menu" />
       <TextArea fx:id="textArea" layoutX="15.0" layoutY="119.0" prefHeight="260.0" prefWidth="1222.0" wrapText="true" />
-      <Label fx:id="messageLabel" layoutX="14.0" layoutY="392.0" prefHeight="50.0" prefWidth="737.0" />
+      <Label fx:id="messageLabel" layoutX="14.0" layoutY="392.0" prefHeight="50.0" prefWidth="1222.0" text="Alle nicht-alphabetischen Zeichen sowie Umlaute werden bei der Entschlüsselung ignoriert." />
    </children>
 </AnchorPane>

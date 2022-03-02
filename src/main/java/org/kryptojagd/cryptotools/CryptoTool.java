@@ -56,7 +56,6 @@ public class CryptoTool extends Application {
     public static void vigenere(Stage stage, String text) throws IOException {
     	
     	text = modifyText(text);
-    	
     	stage.setResizable(false);
         stage.setTitle("Häufigkeitsanalyse (Vigenere-Verschlüsselung)");
         
@@ -78,6 +77,10 @@ public class CryptoTool extends Application {
      * @return
      */
     private static String modifyText(String text) {
-    	return text.toUpperCase().replaceAll("Ä", "AE").replaceAll("Ü", "UE").replaceAll("Ö", "OE");
+    	char ss = 'ß';
+    	char replace = 'ɞ';
+    	text = text.replace(ss, replace);
+    	text = text.toUpperCase().replaceAll("Ä", "AE").replaceAll("Ü", "UE").replaceAll("Ö", "OE");
+    	return text.replace(replace, ss);
     }
 }

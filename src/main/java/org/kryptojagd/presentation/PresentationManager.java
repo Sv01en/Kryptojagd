@@ -73,9 +73,7 @@ public class PresentationManager {
 				cssFile = css;
 			}
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-			System.out.println("Läuft");
 			Pane rootLayout = (Pane) loader.load();
-			System.out.println("Läuft");
 			Scene scene = new Scene(rootLayout);
 			scene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());
 			stage.setScene(scene);

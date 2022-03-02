@@ -220,13 +220,9 @@ public class FrequencyAnalysisVigenereController {
     	String str = "";
     	String codedText = text.replaceAll("[^A-Z]", "");
     	
-    	System.out.println("Coded text: " + codedText);
-    	
     	for (int i = n; i < codedText.length(); i += lengthCodeComboBox.getValue()) {
           str += codedText.substring(i, i+1);
     	}
-    	
-    	System.out.println("n: " + n + " " + str);
     	
     	return str;
     }

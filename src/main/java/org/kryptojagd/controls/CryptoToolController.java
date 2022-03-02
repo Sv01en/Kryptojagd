@@ -25,10 +25,9 @@ public class CryptoToolController extends AbstractController {
     @FXML
     void caesar(ActionEvent event) {
     	String enteredText = textArea.getText();
-    	System.out.println("Eingegebener Text: " + enteredText + ".");
     	if (checktInput(enteredText)) {
 	    	try {
-				CryptoTool.caesar(new Stage(), textArea.getText());
+				CryptoTool.caesar(new Stage(), enteredText);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -44,10 +43,9 @@ public class CryptoToolController extends AbstractController {
     @FXML
     void vigenere(ActionEvent event) {
     	String enteredText = textArea.getText();
-    	System.out.println("Eingegebener Text: " + enteredText + ".");
     	if (checktInput(enteredText)) {
 	    	try {
-				CryptoTool.vigenere(new Stage(), textArea.getText());
+				CryptoTool.vigenere(new Stage(), enteredText);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,11 +55,7 @@ public class CryptoToolController extends AbstractController {
     
     boolean checktInput(String text) {
     	
-    	
-    	Pattern p = Pattern.compile("[A-Z]");
-    	Matcher m = p.matcher(text);
-    	
-    	if (m.matches()) {
+    	if (text.equals("")) {
     		messageLabel.setText("Gib einen Text ein.");
     		return false;
     	} else if (text.contentEquals("HACK THE SYSTEM")) {
