@@ -4,14 +4,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.kryptojagd.controls.resources.Messages;
+import org.kryptojagd.level.tasks.Task;
 
 /**
- * @author Leah Schlimm
+ * @author Leah Schlimm, Bartosz Treyde
  */
 public class InfoTextController extends AbstractController {
 
+	/**
+	 * The Label.
+	 */
 	@FXML
-	public Label label;
+	private Label label;
+
+	@FXML
+	private Label score;
 
 	/**
 	 * Initializes a InfoTextController with the info text
@@ -20,6 +27,7 @@ public class InfoTextController extends AbstractController {
 	public void initialize() {
 		String text = Messages.START_TEXT;
 		label.setText(text);
+		score.setText("Punktestand: " + Task.pointSystem.getScore());
 	}
 
 	/**
@@ -28,8 +36,6 @@ public class InfoTextController extends AbstractController {
 	 */
 	 @FXML
 	 void closeInfotext(ActionEvent event) {
-		 System.out.println("Es wurde auf Schließen geklickt!");
-		 //mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
 		 mainController.startLevel();
 	 }
 }

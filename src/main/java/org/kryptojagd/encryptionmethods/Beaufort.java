@@ -3,22 +3,18 @@ package org.kryptojagd.encryptionmethods;
 /**
 * Provides methods for encrypting and decrypting texts with Beaufort encryption
  *
- * @author Leah Schlimm, Sven Strasser
+ * @author Leah Schlimm, Sven Strasser, Bartosz Treyde
 */
 public class Beaufort extends Encryption {
 
     private static final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
+    /**
+     * Instantiates a new Beaufort encryption.
+     */
     public Beaufort() {
         super.name = "Beaufort";
-    }
-
-    private int key;
-
-    @Override
-    public void setKey(int key) {
-        this.key = key;
     }
 
     /**
@@ -46,14 +42,16 @@ public class Beaufort extends Encryption {
      * @return Encrypted text in uppercase
      */
     public String encode(String text) {
-        String key = "";
+        if (super.key.equals("0")) {
+            String key = "";
 
-        int keyLength = keyLength();
-        for (int i = 0; i < keyLength; i++) {
-            int symbolIndex = keySymbolIndex();
-            key = key + ALPHABET[symbolIndex];
+            int keyLength = keyLength();
+            for (int i = 0; i < keyLength; i++) {
+                int symbolIndex = keySymbolIndex();
+                key = key + ALPHABET[symbolIndex];
+            }
+            super.key = key;
         }
-
         return encode(text, key);
     }
     

@@ -1,5 +1,7 @@
 package org.kryptojagd.level.tasks;
 
+import org.kryptojagd.level.pointSystem.PointSystem;
+
 /**
  * The class describes a task, where you have to answer multiple choice questions
  *
@@ -13,6 +15,7 @@ public class MultipleChoiceTask implements Task {
     private boolean taskCompleted = false;
     private static final String TASK_NAME = "MultipleChoiceTask";
     private String name = TASK_NAME;
+    private final int points = 5;
 
     /**
      * Creates a {@link MultipleChoiceTask}
@@ -55,13 +58,19 @@ public class MultipleChoiceTask implements Task {
         return question;
     }
 
+    /**
+     * Gets correct answer.
+     *
+     * @return the correct answer
+     */
     public String getCorrectAnswer() {
         return correctAnswer;
     }
 
     @Override
     public boolean proveAnswer(String answer) {
-        if(this.correctAnswer.equals(answer)) {
+        if (this.correctAnswer.equals(answer)) {
+            pointSystem.setScore(PointSystem.getScore() + points);
             taskCompleted = true;
             return true;
         }
@@ -71,6 +80,22 @@ public class MultipleChoiceTask implements Task {
     @Override
     public boolean getTaskCompleted() {
         return taskCompleted;
+    }
+
+    /**
+     * Set score.
+     *@param score given as an integer
+     */
+    public void setScore(int score) {
+        pointSystem.setScore(score);
+    }
+    /**
+     * Gets score.
+     *
+     * @return the score
+     */
+    public int getScore() {
+        return PointSystem.getScore();
     }
 
     /**

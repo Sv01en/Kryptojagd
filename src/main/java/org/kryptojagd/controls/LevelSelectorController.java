@@ -16,17 +16,20 @@ import java.util.ArrayList;
  */
 public class LevelSelectorController extends AbstractController {
 
+    /**
+     * The Border box.
+     */
     @FXML
-    public BorderPane borderBox;
+    private BorderPane borderBox;
 
     /**
      * Initializes the level selector screen. Only the next not played level can be clicked at most
      */
     @FXML
-    public void initialize() {
-        ArrayList<Level> levels = mainController.getAllLevels();
+    public void initialize() throws Exception {
+        ArrayList<Level> levels = ReadDirectory.initialize();
         ArrayList<Button> buttons = new ArrayList<>();
-        for (int i = 0; i < mainController.getAllLevelCount(); i++) {
+        for (int i = 0; i < levels.size(); i++) {
             Button button = new Button("Level " + (i + 1));
             int finalI = i;
             button.setOnAction(event -> {
@@ -34,8 +37,7 @@ public class LevelSelectorController extends AbstractController {
                 setMainController(
                         new MainController(mainController.getPresentationManager(), levels.get(finalI), levels,
                     countClearedLevels));
-                System.out.println("Button " + finalI + " pressed!");
-                mainController.startLevel();
+                mainController.startLevelByPosition(finalI);
             });
             if (mainController.clearedLevelIndexes.contains(i - 1)) {
                 button.setDisable(false);
@@ -64,7 +66,6 @@ public class LevelSelectorController extends AbstractController {
      */
     @FXML
     void clickBack(ActionEvent event) {
-        System.out.println("Gehe zurück zum Startmenü!");
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
 }

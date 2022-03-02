@@ -17,16 +17,18 @@ public abstract class Encryption {
     public abstract String encode(String text);
 
 
-    public abstract void setKey(int key);
-
-
     /**
      * Decode string.
      *
      * @param text the text
+     * @param key encryption key
      * @return the string
      */
     public abstract String decode(String text, String key);
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
 
     /**

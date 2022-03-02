@@ -11,6 +11,7 @@ import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * Encryption Controller for the corresponding fxml-file
@@ -41,18 +42,19 @@ public class EncryptionController extends AbstractController {
     @FXML
     private TextField textField1;
 
+    @FXML
+    private Label score;
+
     /**
      * Initializes an EncryptionController.
      */
     @FXML
     public void initialize() {
-        if (level.getEncryptionInput() != null) {
-            textField1.setText(level.getEncryptionInput());
-        }
+        score.setText("Punktestand: " + Task.pointSystem.getScore());
         label1.setText(task.getTaskText());
         label2.setText(task.getText());
         label3.setVisible(false);
-        updateTimer();
+        updateTimer(timer);
     }
 
     /**
@@ -81,27 +83,12 @@ public class EncryptionController extends AbstractController {
         }
     }
 
-    /**
-     * Updates the {@link EncryptionController#timer} every second in the corresponding fxml-file.
-     */
-    @FXML
-    @Override
-    void updateTimer() {
-        Timeline time = new Timeline();
-        time.setCycleCount(Timeline.INDEFINITE);
-        time.stop();
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            System.out.println(mainController.getCurrentLevel().getTimeInSec());
-            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
-            if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
-                time.stop();
-            }
-        });
-        time.getKeyFrames().add(frame);
-        time.playFromStart();
-    }
 
+    /**
+     * Click menu.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);

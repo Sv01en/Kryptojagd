@@ -1,7 +1,7 @@
 {
-  "question": "Was ist eine Festplatte?",
-  "answerOptions":["Ein Speichermedium, das anhand eines Lasers die Daten sichert",
-    "Ein Laufwerk mit magnetischer Aufzeichnungstechnik",
-    "Die Hauptplatine eines Computers"],
-  "correctAnswer": "Ein Laufwerk mit magnetischer Aufzeichnungstechnik"
+  "question": "Das Caesar-Chiffre ist ein...",
+  "answerOptions":["... symmetrisches Verschlüsselungsverfahren",
+    "... asymmetrisches Verschlüsselungsverfahren",
+    "... negierendes Verschlüsselungsverfahren"],
+  "correctAnswer": "... symmetrisches Verschlüsselungsverfahren"
 }

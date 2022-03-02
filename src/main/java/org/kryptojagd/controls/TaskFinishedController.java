@@ -6,12 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
-import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
-import org.kryptojagd.level.tasks.DecryptionTask;
-import org.kryptojagd.level.tasks.EncryptionTask;
-import org.kryptojagd.level.tasks.MultipleChoiceTask;
 import org.kryptojagd.level.tasks.Task;
 
 /**
@@ -28,6 +24,9 @@ public class TaskFinishedController extends AbstractController {
 	private Label timer = new Label();
 
 	@FXML
+	private Label score;
+
+	@FXML
 	private Label feedbackText;
 
 	/**
@@ -37,8 +36,9 @@ public class TaskFinishedController extends AbstractController {
 	 */
 	@FXML
 	public void initialize() {
-		updateTimer();
+		updateTimer(timer);
 		feedbackText.setText(level.getFeedback());
+		score.setText("Punktestand: " + Task.pointSystem.getScore());
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class TaskFinishedController extends AbstractController {
 			String css;
 	 		if (level.getTask("cityTask").getTaskCompleted()) {
 				String city = level.getCity();
-				css = ReadDirectory.CSS_FILES+ city + ".css";
+				css = ReadDirectory.CSS_FILES + city + ".css";
 			} else {
 	 			css = ReadDirectory.CSS_FILE_START;
 			}
@@ -70,24 +70,4 @@ public class TaskFinishedController extends AbstractController {
 		}
 	 }
 
-	/**
-	 * Updates the {@link TaskFinishedController#timer} every second in the corresponding fxml-file.
-	 */
-	@FXML
-	@Override
-	void updateTimer() {
-		Timeline time = new Timeline();
-		time.setCycleCount(Timeline.INDEFINITE);
-		time.stop();
-		KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-			System.out.println(mainController.getCurrentLevel().getTimeInSec());
-			timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
-			if (level.getTimeInSec() <= 0) {
-				mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
-				time.stop();
-			}
-		});
-		time.getKeyFrames().add(frame);
-		time.playFromStart();
-	}
 }

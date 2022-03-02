@@ -3,22 +3,18 @@ package org.kryptojagd.encryptionmethods;
 /**
  * Provides methods for encrypting and decrypting texts with the Caesar encryption
  *
- * @author Leah Schlimm, Sven Strasser
+ * @author Leah Schlimm, Sven Strasser, Bartosz Treyde
  */
 public class Caesar extends Encryption {
-
-    private int key;
-
-    @Override
-    public void setKey(int key) {
-        this.key = key;
-    }
 
     @Override
     public String decode(String text, String key) {
         return null;
     }
 
+    /**
+     * Instantiates a new Caesar encryption.
+     */
     public Caesar() {
         super.name = "Caesar";
     }
@@ -33,27 +29,30 @@ public class Caesar extends Encryption {
 
     }
 
-    //ToDo
     /**
-     * Encrypts a string with a randomly generated key
+     * Encrypts a string
+     *
+     * if the key has not changed,
+     * it encrypts with a randomly generated key
      * @param text Text to be encrypted
      * @return Encrypted text in uppercase
      */
     public String encode(String text) {
-
-        // key zwischen [1,26), damit 0 nicht als Schluessel verwendet wird
-       // int key = generateKey();
-
-        return encode(text, this.key);
+        if (super.key.equals("0")) {
+            super.key = Integer.toString(generateKey());
+        }
+        return encode(text, super.key);
     }
 
     /**
      * Encrypts a string with a given key
      * @param text Text to be encrypted
-     * @param key Passed key
+     * @param keyString Passed key as a String
      * @return Encrypted text in uppercase
      */
-    public String encode(String text, int key) {
+    public String encode(String text, String keyString) {
+
+        int key = Integer.parseInt(keyString);
 
         if (key < 0 || key > 26) {
             return text.toUpperCase();
@@ -74,6 +73,7 @@ public class Caesar extends Encryption {
     /**
      * Decrypts an encrypted text with the corresponding key
      * @param text Text to be deciphered
+     * @param key Encryption key
      * @return Deciphered text in uppercase
      */
     public String decode(String text, int key) {

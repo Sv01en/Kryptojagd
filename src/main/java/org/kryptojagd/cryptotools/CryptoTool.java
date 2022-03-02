@@ -15,94 +15,72 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
  
+/**
+ * 
+ * @author mp
+ *
+ */
 public class CryptoTool extends Application {
  
     @Override public void start(Stage stage) throws IOException {
     	
-    	// haeufigkeitsanalyse(stage);
-    	vigenere(stage);
-    	//karski(stage);
+    }
+    
+    /**
+     * 
+     * @param stage
+     * @param text verschlüsselter Text
+     * @throws IOException
+     */
+    public static void caesar(Stage stage, String text) throws IOException {
+    	
+    	text = modifyText(text);
+    	stage.setResizable(false);
+        stage.setTitle("Häufigkeitsanalyse (Cäsar-Verschlüsselung)");
+        FrequencyAnalysisCaesarController.setText(text);
 
-    }
- 
-    public static void main(String[] args) {
-        launch(args);
-    	//FrequencyAnalysis f = new FrequencyAnalysis();
-    	// f.initialize();
-    }
-    
-    public static void caesar(Stage stage) throws IOException {
-    	stage.setResizable(false);
-        stage.setTitle("Häufigkeitsanalyse");
-        
-        String testText = "EJFT JTU FJO CFJTQJFMUFYU EFS NJU FJOFN LMJDL WFSTDIMÜTTFMU XFSEFO LBOO. "
-        		+ "IJFS LBOO BVDI FJO FJHFOFO UFYU IFSFJO HFTDISJFCFO, PEFS FJO HFIFJNDPEF AVN "
-        		+ "FOUTDIMÜTTFMO IFSFJO LPQJFSU XFSEFO.";
-        		
-        
-        FrequencyAnalysisController.setText(testText);
-        //FrequencyAnalysisController2.setText(testText);
-       
-        // Parent root = FXMLLoader.load(getClass().getResource("vigenere.fxml"));
-        Parent root = FXMLLoader.load(CryptoTool.class.getResource("frequencyAnalysis.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("frequencyAnalysis2.fxml"));
+        Parent root = FXMLLoader.load(CryptoTool.class.getResource("FrequencyAnalysisCaesar.fxml"));
         Scene scene = new Scene(root);
-        
-        // Scene scene  = new Scene(bc,800,450);
-        
         
         stage.setScene(scene);
         stage.show();
     	
     }
     
-    public static void vigenere(Stage stage) throws IOException {
+    /**
+     * 
+     * @param stage
+     * @param text
+     * @throws IOException
+     */
+    public static void vigenere(Stage stage, String text) throws IOException {
+    	
+    	text = modifyText(text);
     	stage.setResizable(false);
-        stage.setTitle("Häufigkeitsanalyse");
+        stage.setTitle("Häufigkeitsanalyse (Vigenere-Verschlüsselung)");
         
-        String testText = "EJFT JTU FJO CFJTQJFMUFYU EFS NJU FJOFN LMJDL WFSTDIMÜTTFMU XFSEFO LBOO. "
-        		+ "IJFS LBOO BVDI FJO FJHFOFO UFYU IFSFJO HFTDISJFCFO, PEFS FJO HFIFJNDPEF ZVN "
-        		+ "FOUTDIMÜTTFMO IFSFJO LPQJFSU XFSEFO.";
         		
         
-        FrequencyAnalysisController.setText(testText);
-        //FrequencyAnalysisController2.setText(testText);
+        FrequencyAnalysisVigenereController.setText(text);
        
-        Parent root = FXMLLoader.load(CryptoTool.class.getResource("vigenere.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("frequencyAnalysis.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("frequencyAnalysis2.fxml"));
+        Parent root = FXMLLoader.load(CryptoTool.class.getResource("FrequencyAnalysisVigenere.fxml"));
         Scene scene = new Scene(root);
-        
-        // Scene scene  = new Scene(bc,800,450);
-        
         
         stage.setScene(scene);
         stage.show();
     	
     }
     
-    public void karski(Stage stage) throws IOException {
-    	stage.setResizable(false);
-        stage.setTitle("Häufigkeitsanalyse");
-        
-        String testText = "EJFT JTU FJO CFJTQJFMUFYU EFS NJU FJOFN LMJDL WFSTDIMÜTTFMU XFSEFO LBOO. "
-        		+ "IJFS LBOO BVDI FJO FJHFOFO UFYU IFSFJO HFTDISJFCFO, PEFS FJO HFIFJNDPEF ZVN "
-        		+ "FOUTDIMÜTTFMO IFSFJO LPQJFSU XFSEFO.";
-        		
-        
-        FrequencyAnalysisController.setText(testText);
-        //FrequencyAnalysisController2.setText(testText);
-       
-        Parent root = FXMLLoader.load(getClass().getResource("karskiText.fxml"));
-        // Parent root = FXMLLoader.load(getClass().getResource("frequencyAnalysis.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("frequencyAnalysis2.fxml"));
-        Scene scene = new Scene(root);
-        
-        // Scene scene  = new Scene(bc,800,450);
-        
-        
-        stage.setScene(scene);
-        stage.show();
-    	
+    /**
+     * 
+     * @param text
+     * @return
+     */
+    private static String modifyText(String text) {
+    	char ss = 'ß';
+    	char replace = 'ɞ';
+    	text = text.replace(ss, replace);
+    	text = text.toUpperCase().replaceAll("Ä", "AE").replaceAll("Ü", "UE").replaceAll("Ö", "OE");
+    	return text.replace(replace, ss);
     }
 }

@@ -6,9 +6,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.kryptojagd.controls.MainController;
-import org.kryptojagd.cryptotools.VigenereBreakController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.presentation.PresentationManager;
@@ -16,7 +16,7 @@ import org.kryptojagd.presentation.PresentationManager;
 /**
  * This is the main app of the software.
  *
- * @author Leah Schlimm, Amelie Reichert, Bartosz Treyde, Sven Strasser,      Michail Petermann, Sonja Kuklok
+ * @author Leah Schlimm, Amelie Reichert, Bartosz Treyde, Sven Strasser, Michail Petermann, Sonja Kuklok
  */
 public class MainApp extends Application {
 
@@ -38,10 +38,6 @@ public class MainApp extends Application {
     try {
       allLevels = ReadDirectory.initialize();
 
-      String text1 = "Fog tuh rpt jscuqvwüugswvs Hpzh";
-      String text2 = "DasistderverschlüsselteText";
-      System.out.println(VigenereBreakController.addSpacesAs(text1, text2));
-
     } catch (Exception exception) {
       exception.printStackTrace();
     }
@@ -52,6 +48,7 @@ public class MainApp extends Application {
       root = FXMLLoader.load(getClass().getResource("presentation/Startfenster.fxml"));
       Scene scene = new Scene(root);
       scene.getStylesheets().add(getClass().getResource("css/startwindow.css").toExternalForm());
+      stage.getIcons().add(new Image("img/Icon.png"));
       stage.setScene(scene);
       stage.show();
       fw = new PresentationManager(stage);

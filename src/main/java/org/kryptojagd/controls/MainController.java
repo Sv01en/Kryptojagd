@@ -2,9 +2,9 @@ package org.kryptojagd.controls;
 
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.presentation.PresentationManager;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 /**
  * The class controls every kind of controller and puts them together
@@ -32,6 +32,11 @@ public class MainController {
 
 	protected boolean cityTaskFinished;
 
+	private int currentLevelPosition;
+
+	/**
+	 * The constant TASK_FINISHED_FXML.
+	 */
 	public static final String TASK_FINISHED_FXML = "TaskFinished.fxml";
 
 
@@ -40,11 +45,13 @@ public class MainController {
 	 *
 	 * @param fw            the fw
 	 * @param currentLevel  the current Level, which is played
+	 * @param allLevels     the levels
 	 * @param clearedLevels the cleared levels
 	 */
 	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels) {
 		this.fw = fw;
 		this.currentLevel = currentLevel;
+		this.currentLevelPosition = 0;
 		this.allLevels = allLevels;
 		this.clearedLevels = clearedLevels;
 		AbstractController.setMainController(this);
@@ -62,6 +69,8 @@ public class MainController {
 	 */
 	public void setNextLevel() {
 		this.currentLevel = allLevels.get(clearedLevels);
+		this.currentLevelPosition++;
+		PointSystem.setCurrentLevel(currentLevelPosition);
 	}
 
 	/**
@@ -134,6 +143,34 @@ public class MainController {
 	/**
 	 * Toggles dark mode on if its off and vice versa.
 	 */
-	public void toggleDarkmode() {fw.toggleDarkmode();}
+	public void toggleDarkmode() {
+		fw.toggleDarkmode();
+	}
 
+	/**
+	 * Starts a level by the given position in the list.
+	 * @param id position in the list
+	 */
+	public void startLevelByPosition(int id) {
+		PointSystem.setPlayedLevels(id + 1);
+		this.currentLevelPosition = id;
+		this.currentLevel = this.allLevels.get(id);
+		switchWindowWithCSS(currentLevel.getCurrentTask().toString()
+				+ ".fxml", ReadDirectory.CSS_FILE_START);
+	}
+
+	/**
+	 * Returns the position in the list of the current level.
+	 * @return position as an integer
+	 */
+	public int getCurrentLevelPosition() {
+		return this.currentLevelPosition;
+	}
+	
+	/**
+	 * 
+	 */
+	public void unlockAllLevels() {
+		this.clearedLevels = 100;
+	}
 }

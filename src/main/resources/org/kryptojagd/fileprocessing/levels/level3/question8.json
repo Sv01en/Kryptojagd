@@ -1,7 +1,0 @@
-{
-    "question": "Was versteht man unter einem Objekt?",
-    "answerOptions": ["Etwas, das nur Eigenschaften hat",
-        "Etwas, das nur Methoden hat",
-        "Etwas, das real existiert und Informationen enthält"],
-    "correctAnswer": "Etwas, das real existiert und Informationen enthält"
-}

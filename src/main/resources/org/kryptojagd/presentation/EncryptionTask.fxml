@@ -8,6 +8,7 @@
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
+                <Label fx:id="score" prefHeight="110.0" prefWidth="200.0" text="Label" />
                 <Label fx:id="label1" text="label1"/>
                 <Label fx:id="label2" text="label2"/>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">

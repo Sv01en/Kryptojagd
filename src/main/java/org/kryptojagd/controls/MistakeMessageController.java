@@ -10,7 +10,7 @@ import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.EncryptionTask;
-import org.kryptojagd.level.tasks.MultipleChoiceTask;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * The class controls a window of the messages if a student is doing a mistake
@@ -31,6 +31,10 @@ public class MistakeMessageController extends AbstractController {
     private Label timer;
 
     @FXML
+    private Label score;
+
+
+    @FXML
     private Button nextButton;
 
     /**
@@ -39,6 +43,7 @@ public class MistakeMessageController extends AbstractController {
     @FXML
     public void initialize() {
         message1.setText(task.getMistakeMsg());
+        score.setText("Punktestand: " + Task.pointSystem.getScore());
     }
 
     /**
@@ -51,27 +56,6 @@ public class MistakeMessageController extends AbstractController {
         String city = level.getCity();
         String css = ReadDirectory.CSS_FILES + city + ".css";
         mainController.switchWindowWithCSS("EncryptionTask.fxml", css);
-    }
-
-    /**
-     * Updates the {@link MistakeMessageController#timer} every second in the corresponding fxml-file.
-     */
-    @FXML
-    @Override
-    void updateTimer() {
-        Timeline time = new Timeline();
-        time.setCycleCount(Timeline.INDEFINITE);
-        time.stop();
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            System.out.println(mainController.getCurrentLevel().getTimeInSec());
-            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
-            if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
-                time.stop();
-            }
-        });
-        time.getKeyFrames().add(frame);
-        time.playFromStart();
     }
 
 }

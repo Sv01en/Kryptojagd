@@ -3,6 +3,7 @@ package org.kryptojagd.level.tasks;
 import org.kryptojagd.encryptionmethods.Encryption;
 import org.kryptojagd.level.hamming.HammingDistance;
 import org.kryptojagd.encryptionmethods.*;
+import org.kryptojagd.level.pointSystem.PointSystem;
 
 /**
  * The class describes a task, where you have to encrypt the given text
@@ -15,7 +16,8 @@ public class EncryptionTask implements Task {
      * The constant WRONGCOUNTLETTER
      * (if there are more or less letters in answer compared to correct answer).
      */
-    public static final String WRONGCOUNTLETTER = "Pass auf, dass du genau so viele Buchstaben verschlüsselst wie auch in der Nachricht vorkommen.";
+    public static final String WRONGCOUNTLETTER = "Pass auf, dass du genau so viele Buchstaben verschlüsselst "
+            + "wie auch in der Nachricht vorkommen.";
     /**
      * The constant WRONGBACKWARDS
      * (if whole text is encrypted backwards instead of word by word).
@@ -25,17 +27,20 @@ public class EncryptionTask implements Task {
      * The constant WRONGFLIP
      * (if the answer is encrypted correctly except of one or two letter-flips).
      */
-    public static final String WRONGFLIP = "Pass auf, es scheint so als hätten sich ein oder zwei Buchstabendreher bei dir eingeschlichen.";
+    public static final String WRONGFLIP = "Pass auf, es scheint so als hätten sich ein oder zwei Buchstabendreher "
+            + "bei dir eingeschlichen.";
     /**
      * The constant TYPINGERROR
      * (if there are one, two or three typing errors).
      */
-    public static final String TYPINGERROR = "Pass auf, es scheint so als hätten sich ein paar Tippfehler bei dir eingeschlichen.";
+    public static final String TYPINGERROR = "Pass auf, es scheint so als hätten sich ein paar Tippfehler bei dir"
+            + " eingeschlichen.";
     /**
      * The constant WRONGCOUNTLETTER
      * (if the answer has too many mistakes).
      */
-    public static final String ALLWRONG = "Schade, dass ist leider nicht richtig verschlüsselt, versuche es noch einmal.";
+    public static final String ALLWRONG = "Schade, dass ist leider nicht richtig verschlüsselt, versuche es noch "
+            + "einmal.";
 
 
     private String task;
@@ -52,11 +57,11 @@ public class EncryptionTask implements Task {
 
     private boolean taskCompleted;
 
-    private HammingDistance hammingDistance = new HammingDistance();
-
     private int hammingDistanceValue;
 
     private String name = "EncryptionTask";
+
+    private final int pointsEncryptionTask = 25;
 
     /**
      * Creates a {@link EncryptionTask}
@@ -72,17 +77,10 @@ public class EncryptionTask implements Task {
         this.task = task;
         this.text = text;
         this.key = key;
+        encryptionMethod.setKey(key);
         this.encryptionMethod = encryptionMethod;
         this.taskCompleted = false;
         this.mistakeMsg = "Standardfehler";
-    }
-
-    /**
-     * Set up the key for caesar encryption.
-     * @param key given as an integer
-     */
-    public void setCaaesarKey(int key) {
-        this.key = Integer.toString(key);
     }
 
     /**
@@ -117,19 +115,24 @@ public class EncryptionTask implements Task {
      *
      * @return the string
      */
-    public String getEncryption() {
+    public Encryption getEncryption() {
+        encryptionMethod.setKey(key);
+        return encryptionMethod;
+    }
+
+    /**
+     * Get encryption as a String.
+     *
+     * @return the string
+     */
+    public String getEncryptionType() {
         return encryptionType;
     }
 
     /**
-     * Get key as a String.
-     *
-     * @return the string
+     * Set name.
+     *@param name given as a String
      */
-    public String getKey() {
-        return key;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -140,16 +143,25 @@ public class EncryptionTask implements Task {
     }
 
     /**
-     * Sets encryption method.
-     *
-     * @param encryptionMethod the encryption method
+     * Set score.
+     *@param score given as an integer
      */
-    public void setEncryptionMethod(Encryption encryptionMethod) {
-        this.encryptionMethod = encryptionMethod;
+    public void setScore(int score) {
+        pointSystem.setScore(score);
+    }
+
+    /**
+     * Get score.
+     *
+     * @return the score
+     */
+    public int getScore() {
+        return PointSystem.getScore();
     }
 
     @Override
     public boolean proveAnswer(String answer) {
+        encryptionMethod.setKey(key);
         char[] origMsg = new char[this.text.length()];
         char[] studentSolution = new char[answer.length()];
         String realSolutionString = this.encryptionMethod.encode(this.text);
@@ -168,6 +180,7 @@ public class EncryptionTask implements Task {
         this.taskCompleted = upperAnswer.equals(realSolutionString);
         this.hammingDistanceValue = HammingDistance.calculateHammingDistance(realSolutionString, upperAnswer);
         if (upperAnswer.equals(realSolutionString)) {
+            pointSystem.setScore(PointSystem.getScore() + pointsEncryptionTask);
             return true;
         } else if (studentSolution.length != realSolution.length) {
             this.mistakeMsg = WRONGCOUNTLETTER;
@@ -237,16 +250,12 @@ public class EncryptionTask implements Task {
         return this.taskCompleted;
     }
 
-    /**
-     * Returns the calculated hamming distance.
-     * @return hamming distance as an integer
-     */
-    public int getHammingDistanceValue() {
-        return this.hammingDistanceValue;
-    }
-
     @Override
     public void setTaskCompletedEnd() {
         this.taskCompleted = false;
+    }
+
+    public void setEncryptionMethod(Encryption encryption) {
+        this.encryptionMethod = encryption;
     }
 }

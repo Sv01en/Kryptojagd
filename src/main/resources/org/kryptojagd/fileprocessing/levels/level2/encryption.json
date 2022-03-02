@@ -1,7 +1,0 @@
-{
-  "task":"Verschlüssle den folgenden Text mit dem Cäsar Verfahren. Der Schlüssel lautet '7':",
-  "text":"Zweite Floppy-Disk gefunden",
-  "encryptionType": "Caesar",
-  "key": "7",
-  "timeInSec": 300
-}

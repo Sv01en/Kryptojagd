@@ -5,19 +5,15 @@ import java.util.ArrayList;
 /**
  * Class that contains methods for encrypting and decrypting text using backward encryption.
  * 
- * @author Leah Schlimm, Sven Strasser
+ * @author Leah Schlimm, Sven Strasser, Bartosz Treyde
  */
 public class Backwards extends Encryption {
 
+    /**
+     * Instantiates a new Backwards encryption.
+     */
     public Backwards() {
         super.name = "Backwards";
-    }
-
-    private int key;
-
-    @Override
-    public void setKey(int key) {
-        this.key = key;
     }
 
     /**
@@ -75,6 +71,7 @@ public class Backwards extends Encryption {
      * Decrypt a text that has been encrypted with reverse encryption
      * 
      * @param text Text to be decrypted
+     * @param key encryption key
      * @return Decrypted text
      */
     public String decode(String text, String key) {

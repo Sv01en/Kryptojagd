@@ -10,8 +10,8 @@ import javafx.util.Duration;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
-import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
+import org.kryptojagd.level.tasks.Task;
 
 /**
  * The class controls a window of a multiple choice task.
@@ -23,8 +23,11 @@ public class MultipleChoiceController extends AbstractController {
     private final Level level = mainController.getCurrentLevel();
     private final MultipleChoiceTask task = (MultipleChoiceTask) level.getCurrentTask();
 
+    /**
+     * The Answers.
+     */
     @FXML
-    public Label answers;
+    private Label answers;
 
     private CountdownTimer countdownTimer;
 
@@ -42,6 +45,9 @@ public class MultipleChoiceController extends AbstractController {
 
     @FXML
     private Button answer3;
+
+    @FXML
+    private Label score;
 
     private String a1;
     private String a2;
@@ -65,8 +71,9 @@ public class MultipleChoiceController extends AbstractController {
         answer1.setText("A");
         answer2.setText("B");
         answer3.setText("C");
+        score.setText("Punktestand: " + Task.pointSystem.getScore());
         this.countdownTimer = new CountdownTimer(level.getTimeInSec());
-        updateTimer();
+        updateTimer(timer);
     }
 
     /**
@@ -118,30 +125,12 @@ public class MultipleChoiceController extends AbstractController {
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
     }
 
-    /**
-     * Updates the {@link MultipleChoiceController#timer} every second in the corresponding fxml-file.
-     */
-    /**
-     * Updates the timer every second in the corresponding fxml-file.
-     */
-    @FXML
-    @Override
-    void updateTimer() {
-        Timeline time = new Timeline();
-        time.setCycleCount(Timeline.INDEFINITE);
-        time.stop();
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            System.out.println(mainController.getCurrentLevel().getTimeInSec());
-            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
-            if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
-                time.stop();
-            }
-        });
-        time.getKeyFrames().add(frame);
-        time.playFromStart();
-    }
 
+    /**
+     * Click menu.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void clickMenu(ActionEvent actionEvent) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);

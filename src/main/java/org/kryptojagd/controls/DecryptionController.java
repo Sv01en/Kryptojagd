@@ -4,13 +4,9 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.kryptojagd.controls.resources.Messages;
@@ -18,6 +14,7 @@ import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
+import org.kryptojagd.level.tasks.Task;
 
 import java.io.IOException;
 
@@ -58,18 +55,22 @@ public class DecryptionController extends AbstractController {
     @FXML
     private Button button1;
 
+    @FXML
+    private Label score;
+
     /**
      * Initializes a DecryptionController either with the city question or the decryption task
      */
     @FXML
     public void initialize() {
-        updateTimer();
+        updateTimer(timer);
+        score.setText("Punktestand: " + Task.pointSystem.getScore());
         if (!task.getTaskCompleted()) {
             level.startCountdown();
             question.setText(Messages.DECRYPTION_QUESTION);
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
-            encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext));
+            encryptedPuzzleText.setText(task.getEncryptionMethod().encode(plaintext));
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
@@ -127,18 +128,39 @@ public class DecryptionController extends AbstractController {
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }
 
+    /**
+     * Checks if the answer is correct.
+     * @param procedure Button which is clicked on
+     */
+    private void clickAnswer(Button procedure) {
+        mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
+        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
+    }
+
+    /**
+     * Click menu.
+     *
+     * @param actionEvent the action event
+     */
+    @FXML
+    public void clickMenu(ActionEvent actionEvent) {
+        mainController.getCurrentLevel().clearLevel();
+        mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
+    }
+
     @FXML
     private void clickCrypto(ActionEvent event) {
+        String plaintext = task.getPlainText();
         if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
             try {
-                CryptoTool.caesar(new Stage());
+                CryptoTool.caesar(new Stage(), task.getEncryptionMethod().encode(plaintext));
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         } else {
             try {
-                CryptoTool.vigenere(new Stage());
+                CryptoTool.vigenere(new Stage(), task.getEncryptionMethod().encode(plaintext));
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -146,39 +168,4 @@ public class DecryptionController extends AbstractController {
         }
     }
 
-    /**
-     * Checks if the answer is correct.
-     * @param procedure Button which is clicked on
-     */
-    private void clickAnswer(Button procedure){
-        mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
-        mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
-    }
-
-    /**
-     * Updates the {@link DecryptionController#timer} every second in the corresponding fxml-file.
-     */
-    @FXML
-    @Override
-    void updateTimer() {
-        Timeline time = new Timeline();
-        time.setCycleCount(Timeline.INDEFINITE);
-        time.stop();
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            System.out.println(mainController.getCurrentLevel().getTimeInSec());
-            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
-            if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
-                time.stop();
-            }
-        });
-        time.getKeyFrames().add(frame);
-        time.playFromStart();
-    }
-
-    @FXML
-    public void clickMenu(ActionEvent actionEvent) {
-        mainController.getCurrentLevel().clearLevel();
-        mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
-    }
 }

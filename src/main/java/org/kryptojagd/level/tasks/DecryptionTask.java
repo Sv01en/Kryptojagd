@@ -1,6 +1,7 @@
 package org.kryptojagd.level.tasks;
 
 import org.kryptojagd.encryptionmethods.Encryption;
+import org.kryptojagd.level.pointSystem.PointSystem;
 
 /**
  * The class describes a task, where you have to decrypt text
@@ -10,6 +11,7 @@ import org.kryptojagd.encryptionmethods.Encryption;
 public class DecryptionTask implements Task {
 
 	private static final String FIRST_WORD = "Hallo, ";
+	private static final int LAST_WORDS_NUMBER = 3;
 
 	private MultipleChoiceTask cityTask;
 	private boolean choseEncryption = false;
@@ -25,12 +27,14 @@ public class DecryptionTask implements Task {
 	private int timePenalty;
 	private boolean taskCompleted = false;
 	private String name = "DecryptionTask";
-	private String key;
+	private final int pointsDecryptionTask = 25;
+	private final int pointsEncryptionType = 5;
 
 	/**
 	 * Contructor of a decryption task
 	 *
 	 * @param plainText               text that will be displayed encrypted
+	 * @param encryptionType          encryption type for the decryption
 	 * @param answerOptionsEncryption answer options for decryption task
 	 * @param correctAnswerEncryption correct answer of decryption task
 	 * @param answerOptionsCity       answer options for city selector
@@ -84,8 +88,8 @@ public class DecryptionTask implements Task {
 	 * Getter for the encryption method
 	 * @return encryption method
 	 */
-	public String getEncryptionMethod() {
-		return encryptionMethod.toString();
+	public Encryption getEncryptionMethod() {
+		return encryptionMethod;
 	}
 
 	/**
@@ -141,41 +145,29 @@ public class DecryptionTask implements Task {
 	 */
 	public boolean proveEncryptionType(String answer) {
 		this.choseEncryption = answer.equals(this.encryptionType);
+		if (choseEncryption) {
+			pointSystem.setScore(PointSystem.getScore() + pointsEncryptionType);
+		}
 		return choseEncryption;
 	}
 
 	/**
-	 * Proves if the given text is the last 3 words of the plaintext
+	 * Gives the last words of the plaintext
 	 *
-	 * It also sets the boolean, if the task is completed (taskCompleted)
-	 * @param answer given answer, which is proved
-	 * @return true, if the answer is right
+	 * @param number the index of the first word
+	 * @return the last 3 words of the plaintext
 	 */
-	private boolean proveDecryptedText(String answer) {
+	private String lastWordsOfPlaintext(int number) {
 		String[] tokens = plainText.split(" ");
 		StringBuilder decrypted = new StringBuilder();
-		for (int i = tokens.length - 3; i < tokens.length; i++) {
+		for (int i = tokens.length - number; i < tokens.length; i++) {
 			if (i < tokens.length - 1) {
 				decrypted.append(tokens[i]).append(" ");
 			} else {
 				decrypted.append(tokens[i]).deleteCharAt(decrypted.length() - 1);
 			}
 		}
-
-		this.taskCompleted = answer.toUpperCase().equals(decrypted.toString().toUpperCase());
-		return taskCompleted;
-	}
-
-	/**
-	 * Proves if the given String is the key, which was used to encrypt the plaintext
-	 *
-	 * It also sets the boolean, if the task is completed (taskCompleted)
-	 * @param answer given answer, which is proved
-	 * @return true, if the answer is right
-	 */
-	private boolean proveKey(String answer) {
-		this.taskCompleted = key.equals(answer);
-		return taskCompleted;
+		return decrypted.toString();
 	}
 
 	/**
@@ -188,12 +180,12 @@ public class DecryptionTask implements Task {
 	 */
 	@Override
 	public boolean proveAnswer(String answer) {
-		if(encryptionType.startsWith("Cäsar") || encryptionType.startsWith("Rückwärts")) {
-			return proveDecryptedText(answer);
-		} else if (encryptionType.startsWith("Vigenère") || encryptionType.startsWith("Beaufort")) {
-			return proveKey(answer);
+		String decrypted = lastWordsOfPlaintext(LAST_WORDS_NUMBER);
+		this.taskCompleted = answer.toUpperCase().equals(decrypted.toUpperCase());
+		if (taskCompleted) {
+			pointSystem.setScore(PointSystem.getScore() + pointsDecryptionTask);
 		}
-		return false;
+		return taskCompleted;
 	}
 
 	@Override
@@ -222,9 +214,42 @@ public class DecryptionTask implements Task {
 
 	}
 
+	/**
+	 * Set score.
+	 *@param score given as an integer
+	 */
+	public void setScore(int score) {
+		pointSystem.setScore(score);
+	}
+	/**
+	 * Gets score.
+	 *
+	 * @return the score
+	 */
+	public int getScore() {
+		return PointSystem.getScore();
+	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "DecryptionTask";
 	}
 
+	/**
+	 * Gets text after start.
+	 *
+	 * @return the text after start
+	 */
+	public String getTextAfterStart() {
+		return textAfterStart;
+	}
+
+	/**
+	 * Get answer options encryption string [ ].
+	 *
+	 * @return the string [ ]
+	 */
+	public String[] getAnswerOptionsEncryption() {
+		return answerOptionsEncryption;
+	}
 }

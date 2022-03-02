@@ -38,17 +38,15 @@ public class Level {
 
 	private int timePenalty;
 
-	private int currentMultipleChoiceTask = 0;
-
-	private String encryptionInput;
-
-	private Encryption encryptionMethod;
-
 	private ArrayList<Task> tasks = new ArrayList<>();
 
 	private Task currentTask;
 
-	private int key;
+	private boolean firstTryTimer = true;
+
+	public void setFirstTryTimer(boolean firstTryTimer) {
+		this.firstTryTimer = firstTryTimer;
+	}
 
 	/**
 	 * Creates a {@link Level}
@@ -71,15 +69,21 @@ public class Level {
 		this.timeInSec = timeInSec;
 		this.timePenalty = this.decryptionTask.getTimePenalty();
 		this.currentTime = this.timeInSec;
-		proveEncryptionMethod(this.encryptionTask.getEncryption());
+		initializeEncryptionMethod(this.encryptionTask.getEncryptionType());
 	}
 
+	/**
+	 * Gets feedback.
+	 *
+	 * @return the feedback
+	 */
 	public String getFeedback() {
 		return feedback;
 	}
 
 	/**
 	 * Getter for levelCompleted
+	 *
 	 * @return true, if every task in the level is completed
 	 */
 	public boolean isLevelCompleted() {
@@ -91,7 +95,10 @@ public class Level {
 		return true;
 	}
 
-	public void setNextTask(){
+	/**
+	 * Set next task.
+	 */
+	public void setNextTask() {
 		if (this.currentTask.getTaskCompleted()) {
 			this.currentTask = tasks.get(indexTask);
 			indexTask++;
@@ -100,11 +107,13 @@ public class Level {
 
 	/**
 	 * Getter for current task
+	 *
+	 * @param name the task
 	 * @return current task witch is in process
 	 */
 	public Task getTask(String name) {
 		for (Task task : tasks) {
-			if(task.getName() != null) {
+			if (task.getName() != null) {
 				if (task.getName().equals(name)) {
 					return task;
 				}
@@ -115,32 +124,31 @@ public class Level {
 
 	/**
 	 * Getter for current task
+	 *
 	 * @return current task witch is in process
 	 */
 	public Task getCurrentTask() {
 		return currentTask;
 	}
 
+	/**
+	 * Gets city.
+	 *
+	 * @return the city
+	 */
 	public String getCity() {
 		return decryptionTask.getCityTask().getCorrectAnswer();
 	}
 
 	/**
-	 * Getter for encryption method
-	 * @return multiple encryption method of the level
-	 */
-	public Encryption getEncryptionMethod() {
-		return encryptionMethod;
-	}
-
-	/**
 	 * Proves the current task
-	 *
+	 * <p>
 	 * reduces the time, if the answer is wrong
 	 * Also sets the right feedback
 	 * good feedback, if the answer is right
 	 * bad feedback, if the answer is wrong
 	 * an alternative feedback, if a special task is over or the whole level
+	 *
 	 * @param answer string given by the GUI
 	 * @return true or false
 	 */
@@ -150,12 +158,15 @@ public class Level {
 			feedback = Messages.STANDARD_FEEDBACK_BAD;
 			return this.currentTask.proveAnswer(answer);
 		}
-		if (this.currentTask.getTaskCompleted() ) {
+		if (this.currentTask.getTaskCompleted()) {
 			feedback = Messages.STANDARD_FEEDBACK_GOOD;
 			alternativeFeedback();
 		}
 		if (isLevelCompleted()) {
 			feedback = Messages.LEVEL_FINISHED;
+			if (this.firstTryTimer){
+				currentTask.setScore(currentTask.getScore() + currentTime);
+			}
 		}
 		return this.currentTask.proveAnswer(answer);
 	}
@@ -194,11 +205,12 @@ public class Level {
 
 	/**
 	 * Checks if the given answer is the correct city
-	 *
+	 * <p>
 	 * Reduces the timer, if the answer is wrong
 	 * Also sets the right feedback
 	 * good feedback, if the answer is right
 	 * bad feedback, if the answer is wrong
+	 *
 	 * @param answer answer to check
 	 * @return true if the answer is correct else false
 	 */
@@ -216,41 +228,32 @@ public class Level {
 	 * Set up the correct encryption method
 	 * @param encryptionMethod name given as a string
 	 */
-	private void proveEncryptionMethod(String encryptionMethod) {
+	private void initializeEncryptionMethod(String encryptionMethod) {
+		Encryption encryption = null;
 		switch (encryptionMethod) {
 			case "Backwards":
-				this.encryptionMethod = new Backwards();
+				encryption = new Backwards();
 				break;
 			case ("Caesar"):
-				this.encryptionMethod = new Caesar();
-				if (this.id == 2) {
-					this.encryptionMethod.setKey(3);
-					this.key = 3;
-				} else {
-					this.key = (int) (Math.random() * (26 - 1) + 1);
-					this.encryptionMethod.setKey(this.key);
-				}
+				encryption = new Caesar();
 				break;
 			case("Vigenere"):
-				this.encryptionMethod = new Vigenere();
+				encryption = new Vigenere();
 				break;
 			case("Beaufort"):
-				this.encryptionMethod = new Beaufort();
+				encryption = new Beaufort();
 				break;
 			default:
-				System.out.println("Error while trying to get Encryption.");
+				System.out.println("Error Encryption does not exist.");
 				break;
 		}
-		this.decryptionTask.setEncryptionMethod(this.encryptionMethod);
-		this.encryptionTask.setEncryptionMethod(this.encryptionMethod);
-	}
-
-	public int getKey() {
-		return this.key;
+		this.decryptionTask.setEncryptionMethod(encryption);
+		this.encryptionTask.setEncryptionMethod(encryption);
 	}
 
 	/**
 	 * Sets the id of the level.
+	 *
 	 * @param id given as an integer
 	 */
 	public void setId(int id) {
@@ -259,6 +262,7 @@ public class Level {
 
 	/**
 	 * Returns the id of the level.
+	 *
 	 * @return id of the level as an integer
 	 */
 	public int getId() {
@@ -267,6 +271,7 @@ public class Level {
 
 	/**
 	 * Returns the remaining time from the {@link CountdownTimer} as an integer.
+	 *
 	 * @return the current time of the {@link CountdownTimer}
 	 */
 	public int getTimeInSec() {
@@ -287,7 +292,7 @@ public class Level {
 	 * Clears the level attributes at the end of the level.
 	 */
 	public void clearLevel() {
-		this.currentMultipleChoiceTask = 0;
+		System.out.println("Erfolgreich");
 		this.currentTime = this.timeInSec;
 		this.countdownTimer.cancelTimerTask();
 		this.currentTask = decryptionTask;
@@ -296,13 +301,8 @@ public class Level {
 				task.setTaskCompletedEnd();
 			}
 		}
+		System.out.println("Erfolgreich");
+		System.out.println("Erfolgreich");
 	}
 
-	/**
-	 * Returns the stored {@link Level#encryptionInput}.
-	 * @return {@link Level#encryptionInput} as a string.
-	 */
-	public String getEncryptionInput() {
-		return this.encryptionInput;
-	}
 }
