@@ -300,7 +300,6 @@ public class FrequencyAnalysisVigenereController {
     	}
     	return decodedText;
     }
-
     
     /**
      * 

@@ -168,9 +168,9 @@ public class MainController {
 	}
 	
 	/**
-	 * 
+	 * Unlocks all levels of the game.
 	 */
 	public void unlockAllLevels() {
-		this.clearedLevels = 100;
+		LevelSelectorController.unlockAllLevels();
 	}
 }

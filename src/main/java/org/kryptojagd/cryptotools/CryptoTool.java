@@ -80,7 +80,7 @@ public class CryptoTool extends Application {
     	char ss = 'ß';
     	char replace = 'ɞ';
     	text = text.replace(ss, replace);
-    	text = text.toUpperCase().replaceAll("Ä", "AE").replaceAll("Ü", "UE").replaceAll("Ö", "OE");
+    	text = text.toUpperCase();
     	return text.replace(replace, ss);
     }
 }

@@ -21,6 +21,8 @@ public class LevelSelectorController extends AbstractController {
      */
     @FXML
     private BorderPane borderBox;
+    
+    private static boolean unlockAllLevels = false;
 
     /**
      * Initializes the level selector screen. Only the next not played level can be clicked at most
@@ -39,7 +41,7 @@ public class LevelSelectorController extends AbstractController {
                     countClearedLevels));
                 mainController.startLevelByPosition(finalI);
             });
-            if (mainController.clearedLevelIndexes.contains(i - 1)) {
+            if (mainController.clearedLevelIndexes.contains(i - 1) || unlockAllLevels) {
                 button.setDisable(false);
             } else {
                 button.setDisable(true);
@@ -67,5 +69,9 @@ public class LevelSelectorController extends AbstractController {
     @FXML
     void clickBack(ActionEvent event) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
+    }
+    
+    static void unlockAllLevels() {
+    	unlockAllLevels = true;
     }
 }
