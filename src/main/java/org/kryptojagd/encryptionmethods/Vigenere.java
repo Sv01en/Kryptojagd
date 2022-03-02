@@ -87,8 +87,6 @@ public class Vigenere extends Encryption {
         }
 
 
-
-
         // Separate input text with spaces and special characters
         String tmp = "";
         for (int i = 0; i < inputText.length(); i++) {
@@ -163,9 +161,13 @@ public class Vigenere extends Encryption {
     public String decode(String text, String key) {
  
         String decodedText = "";
+        ArrayList<String> words = new ArrayList<>();
+        ArrayList<String> revWords = new ArrayList<>();
 
         String inputText = text.toUpperCase();
         String inputKey = key.toUpperCase();
+
+        int keyIndex = 0;
 
         if (inputKey.length() == 0) {
             return inputText.toUpperCase();
@@ -176,8 +178,62 @@ public class Vigenere extends Encryption {
                 return inputText.toUpperCase();
             }
         }
- 
+
+        // Separate input text with spaces and special characters
+        String tmp = "";
         for (int i = 0; i < inputText.length(); i++) {
+            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
+                tmp = tmp + inputText.charAt(i);
+            } else {
+                words.add(tmp);
+                tmp = "";
+                words.add("" + inputText.charAt(i));
+            }
+        }
+
+        words.add(tmp);
+
+        // Remove unnecessary empty words
+        for (int i = words.size() - 1; i >= 0; i--) {
+            if (words.get(i).equals("")) {
+                words.remove(i);
+            }
+        }
+
+        // Decode every word
+        for (int i = 0; i < words.size(); i++) {
+            if (words.get(i).length() == 1 && (words.get(i).charAt(0) < 'A' || words.get(i).charAt(0) > 'Z')) {
+                revWords.add(words.get(i));
+            } else {
+                String revWord = "";
+                for (int j = 0; j < words.get(i).length(); j++) {
+                    int result;
+                    if (getNormalAlphabetIndex(words.get(i).charAt(j))
+                            - getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length())) < 0) {
+                        result = NORMALALPHABET[getNormalAlphabetIndex(words.get(i).charAt(j))
+                                - getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length())) + 26];
+                    } else {
+                        result = NORMALALPHABET[getNormalAlphabetIndex(words.get(i).charAt(j))
+                                - getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
+                    }
+                    keyIndex++;
+                    revWord = revWord + (char) result;
+
+                }
+                revWords.add(revWord);
+            }
+
+        }
+
+        // Assemble the return string from individual words
+        for (int i = 0; i < revWords.size(); i++) {
+            decodedText = decodedText + revWords.get(i);
+        }
+
+        return decodedText;
+
+
+/*        for (int i = 0; i < inputText.length(); i++) {
             if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
                 int result;
                 if (getNormalAlphabetIndex(inputText.charAt(i))
@@ -195,7 +251,7 @@ public class Vigenere extends Encryption {
             
         }
  
-        return decodedText;
+        return decodedText;*/
  
     }
 
