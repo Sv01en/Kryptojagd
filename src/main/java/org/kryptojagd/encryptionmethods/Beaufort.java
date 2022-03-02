@@ -1,5 +1,7 @@
 package org.kryptojagd.encryptionmethods;
 
+import java.util.ArrayList;
+
 /**
 * Provides methods for encrypting and decrypting texts with Beaufort encryption
  *
@@ -63,7 +65,7 @@ public class Beaufort extends Encryption {
      */
     public String encode(String text, String key) {
  
-        String encodedText = "";
+/*        String encodedText = "";
 
         String inputKey = key.toUpperCase();
         String inputText = text.toUpperCase();
@@ -88,8 +90,74 @@ public class Beaufort extends Encryption {
             }
         }
  
-        return encodedText;
- 
+        return encodedText;*/
+
+        String encryptedText = "";
+        ArrayList<String> words = new ArrayList<>();
+        ArrayList<String> revWords = new ArrayList<>();
+
+        String inputText = text.toUpperCase();
+        String inputKey = key.toUpperCase();
+
+        int keyIndex = 0;
+
+        if (inputKey.length() == 0) {
+            return inputText.toUpperCase();
+        }
+
+        for (int i = 0; i < inputKey.length(); i++) {
+            if (inputKey.charAt(i) < 'A' || inputKey.charAt(i) > 'Z') {
+                return inputText.toUpperCase();
+            }
+        }
+
+
+        // Separate input text with spaces and special characters
+        String tmp = "";
+        for (int i = 0; i < inputText.length(); i++) {
+            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
+                tmp = tmp + inputText.charAt(i);
+            } else {
+                words.add(tmp);
+                tmp = "";
+                words.add("" + inputText.charAt(i));
+            }
+        }
+
+        words.add(tmp);
+
+        // Remove unnecessary empty words
+        for (int i = words.size() - 1; i >= 0; i--) {
+            if (words.get(i).equals("")) {
+                words.remove(i);
+            }
+        }
+
+
+        // Encode every word
+        for (int i = 0; i < words.size(); i++) {
+            if (words.get(i).length() == 1 && (words.get(i).charAt(0) < 'A' || words.get(i).charAt(0) > 'Z')) {
+                revWords.add(words.get(i));
+            } else {
+                String revWord = "";
+                for (int j = 0; j < words.get(i).length(); j++) {
+                    int result = ALPHABET[(words.get(i).charAt(j) + inputKey.charAt(keyIndex % inputKey.length())) % 26];
+                    revWord = revWord + (char) result;
+                    keyIndex++;
+                }
+                revWords.add(revWord);
+            }
+
+        }
+
+        // Assemble the return string from individual words
+        for (int i = 0; i < revWords.size(); i++) {
+            encryptedText = encryptedText + revWords.get(i);
+        }
+
+        return encryptedText;
+
+
     }
 
     /**
@@ -99,8 +167,79 @@ public class Beaufort extends Encryption {
      * @return Deciphered text
      */
     public String decode(String text, String key) {
- 
+
+
         String decodedText = "";
+        ArrayList<String> words = new ArrayList<>();
+        ArrayList<String> revWords = new ArrayList<>();
+
+        String inputText = text.toUpperCase();
+        String inputKey = key.toUpperCase();
+
+        int keyIndex = 0;
+
+        if (inputKey.length() == 0) {
+            return inputText.toUpperCase();
+        }
+
+        for (int i = 0; i < inputKey.length(); i++) {
+            if (inputKey.charAt(i) < 'A' || inputKey.charAt(i) > 'Z') {
+                return inputText.toUpperCase();
+            }
+        }
+
+        // Separate input text with spaces and special characters
+        String tmp = "";
+        for (int i = 0; i < inputText.length(); i++) {
+            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
+                tmp = tmp + inputText.charAt(i);
+            } else {
+                words.add(tmp);
+                tmp = "";
+                words.add("" + inputText.charAt(i));
+            }
+        }
+
+        words.add(tmp);
+
+        // Remove unnecessary empty words
+        for (int i = words.size() - 1; i >= 0; i--) {
+            if (words.get(i).equals("")) {
+                words.remove(i);
+            }
+        }
+
+        // Decode every word
+        for (int i = 0; i < words.size(); i++) {
+            if (words.get(i).length() == 1 && (words.get(i).charAt(0) < 'A' || words.get(i).charAt(0) > 'Z')) {
+                revWords.add(words.get(i));
+            } else {
+                String revWord = "";
+                for (int j = 0; j < words.get(i).length(); j++) {
+                    int result;
+                    if (getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length())) < 0) {
+                        result = NORMALALPHABET[26
+                                + getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
+                    } else {
+                        result = NORMALALPHABET[getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
+                    }
+                    keyIndex++;
+                    revWord = revWord + (char) result;
+
+                }
+                revWords.add(revWord);
+            }
+
+        }
+
+        // Assemble the return string from individual words
+        for (int i = 0; i < revWords.size(); i++) {
+            decodedText = decodedText + revWords.get(i);
+        }
+
+        return decodedText;
+
+        /*String decodedText = "";
 
         String inputText = text.toUpperCase();
         String inputKey = key.toUpperCase();
@@ -125,7 +264,6 @@ public class Beaufort extends Encryption {
                 } else {
                     result = NORMALALPHABET[charIndex - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length()))];
                 }
-                
                 decodedText = decodedText + (char) result;
             } else {
                 decodedText = decodedText + inputText.charAt(i);
@@ -133,7 +271,7 @@ public class Beaufort extends Encryption {
             
         }
  
-        return decodedText;
+        return decodedText;*/
  
     }
 
