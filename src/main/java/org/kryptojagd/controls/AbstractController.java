@@ -26,6 +26,7 @@ public abstract class AbstractController {
 		KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
 			timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
 			if (mainController.getCurrentLevel().getTimeInSec() <= 0) {
+				mainController.getCurrentLevel().setFirstTryTimer(false);
 				mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
 				time.stop();
 			}
