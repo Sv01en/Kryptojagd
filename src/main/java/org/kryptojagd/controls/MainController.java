@@ -2,6 +2,7 @@ package org.kryptojagd.controls;
 
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.presentation.PresentationManager;
 import java.util.ArrayList;
 
@@ -68,6 +69,8 @@ public class MainController {
 	public void setNextLevel() {
 		this.currentLevel = allLevels.get(clearedLevels);
 		this.currentLevelPosition++;
+		PointSystem.setCurrentLevel(currentLevelPosition);
+		PointSystem.setPlayedLevels(PointSystem.getPlayedLevels + 1);
 	}
 
 	/**

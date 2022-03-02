@@ -14,7 +14,7 @@ public class CountdownTimer {
     /**
      * Stores the current value as a long.
      */
-    private long actuelValue;
+    private long actualValue;
 
     /**
      * Stores the current value as a string.
@@ -37,21 +37,21 @@ public class CountdownTimer {
      * Initializes and executes a countdown timer.
      */
     private long countdownTimer(int setTime) {
-        actuelValue = setTime;
+        actualValue = setTime;
         this.task = new TimerTask() {
             @Override
             public void run() {
-                if (actuelValue > 0) {
-                    actuelValue--;
-                    setCurrentValue(actuelValue);
+                if (actualValue > 0) {
+                    actualValue--;
+                    setCurrentValue(actualValue);
                 }
-                if (actuelValue == 0) {
+                if (actualValue == 0) {
                     this.cancel();
                 }
             }
         };
         this.timer.schedule(task, 0, 1000);
-        return actuelValue;
+        return actualValue;
     }
 
     /**
@@ -68,7 +68,7 @@ public class CountdownTimer {
      */
     private void setCurrentValue(long givenValue) {
         String input = Long.toString(givenValue);
-        this.actuelValue = givenValue;
+        this.actualValue = givenValue;
         this.outputValue = input;
     }
 
@@ -77,8 +77,8 @@ public class CountdownTimer {
      * @param given time to be reduced in seconds
      */
     public void reduceTimer(int given) {
-        actuelValue = actuelValue - given;
-        this.outputValue = Long.toString(actuelValue);
+        actualValue = actualValue - given;
+        this.outputValue = Long.toString(actualValue);
     }
 
     /**

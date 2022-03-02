@@ -17,7 +17,7 @@ import org.kryptojagd.presentation.PresentationManager;
 /**
  * This is the main app of the software.
  *
- * @author Leah Schlimm, Amelie Reichert, Bartosz Treyde, Sven Strasser,      Michail Petermann, Sonja Kuklok
+ * @author Leah Schlimm, Amelie Reichert, Bartosz Treyde, Sven Strasser, Michail Petermann, Sonja Kuklok
  */
 public class MainApp extends Application {
 

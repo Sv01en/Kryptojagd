@@ -3,6 +3,7 @@ package org.kryptojagd.level.tasks;
 import org.kryptojagd.encryptionmethods.Encryption;
 import org.kryptojagd.level.hamming.HammingDistance;
 import org.kryptojagd.encryptionmethods.*;
+import org.kryptojagd.level.pointSystem.PointSystem;
 
 /**
  * The class describes a task, where you have to encrypt the given text
@@ -61,6 +62,8 @@ public class EncryptionTask implements Task {
     private int hammingDistanceValue;
 
     private String name = "EncryptionTask";
+
+    private final int pointsEncryptionTask = 25;
 
     /**
      * Creates a {@link EncryptionTask}
@@ -135,6 +138,10 @@ public class EncryptionTask implements Task {
         return key;
     }
 
+    /**
+     * Set name.
+     *@param name given as a String
+     */
     public void setName(String name) {
         this.name = name;
     }
@@ -144,12 +151,21 @@ public class EncryptionTask implements Task {
         return name;
     }
 
-    public void setScore(int score){
+    /**
+     * Set score.
+     *@param score given as an integer
+     */
+    public void setScore(int score) {
         pointSystem.setScore(score);
     }
 
+    /**
+     * Get score.
+     *
+     * @return the score
+     */
     public int getScore() {
-        return pointSystem.getScore();
+        return PointSystem.getScore();
     }
 
     /**
@@ -181,7 +197,7 @@ public class EncryptionTask implements Task {
         this.taskCompleted = upperAnswer.equals(realSolutionString);
         this.hammingDistanceValue = HammingDistance.calculateHammingDistance(realSolutionString, upperAnswer);
         if (upperAnswer.equals(realSolutionString)) {
-            pointSystem.setScore(pointSystem.getScore() + 25);
+            pointSystem.setScore(PointSystem.getScore() + pointsEncryptionTask);
             return true;
         } else if (studentSolution.length != realSolution.length) {
             this.mistakeMsg = WRONGCOUNTLETTER;

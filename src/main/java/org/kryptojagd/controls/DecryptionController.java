@@ -151,7 +151,7 @@ public class DecryptionController extends AbstractController {
      * Checks if the answer is correct.
      * @param procedure Button which is clicked on
      */
-    private void clickAnswer(Button procedure){
+    private void clickAnswer(Button procedure) {
         mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }

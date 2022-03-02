@@ -27,6 +27,8 @@ public class DecryptionTask implements Task {
 	private boolean taskCompleted = false;
 	private String name = "DecryptionTask";
 	private String key;
+	private final int pointsDecryptionTask = 25;
+	private final int pointsEncryptionType = 5;
 
 	/**
 	 * Contructor of a decryption task
@@ -143,8 +145,8 @@ public class DecryptionTask implements Task {
 	 */
 	public boolean proveEncryptionType(String answer) {
 		this.choseEncryption = answer.equals(this.encryptionType);
-		if ( choseEncryption){
-			pointSystem.setScore(pointSystem.getScore() + 5);
+		if (choseEncryption) {
+			pointSystem.setScore(PointSystem.getScore() + pointsEncryptionType);
 		}
 		return choseEncryption;
 	}
@@ -169,7 +171,7 @@ public class DecryptionTask implements Task {
 
 		this.taskCompleted = answer.toUpperCase().equals(decrypted.toString().toUpperCase());
 		if (taskCompleted) {
-			pointSystem.setScore(pointSystem.getScore() + 25);
+			pointSystem.setScore(PointSystem.getScore() + pointsDecryptionTask);
 		}
 		return taskCompleted;
 	}
@@ -230,12 +232,20 @@ public class DecryptionTask implements Task {
 
 	}
 
-	public void setScore(int score){
+	/**
+	 * Set score.
+	 *@param score given as an integer
+	 */
+	public void setScore(int score) {
 		pointSystem.setScore(score);
 	}
-
+	/**
+	 * Gets score.
+	 *
+	 * @return the score
+	 */
 	public int getScore() {
-		return pointSystem.getScore();
+		return PointSystem.getScore();
 	}
 
 	@Override
