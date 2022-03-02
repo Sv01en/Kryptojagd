@@ -70,7 +70,7 @@ public class DecryptionController extends AbstractController {
             question.setText(Messages.DECRYPTION_QUESTION);
             String[] possibleChoice = task.getPossibilities();
             String plaintext = task.getPlainText();
-            encryptedPuzzleText.setText(level.getEncryptionMethod().encode(plaintext, level.getKey()));
+            encryptedPuzzleText.setText(task.getEncryptionMethod().encode(plaintext));
             procedure1.setText(possibleChoice[0]);
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
@@ -150,19 +150,22 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     private void clickCrypto(ActionEvent event) {
+        String plaintext = task.getPlainText();
         if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
             try {
-                CryptoTool.caesar(new Stage(), task.getPlainText());
+                CryptoTool.caesar(new Stage(), task.getEncryptionMethod().encode(plaintext));
             } catch (IOException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace(); }
+                e.printStackTrace();
+            }
         } else {
             try {
-                CryptoTool.vigenere(new Stage(), task.getPlainText());
+                CryptoTool.vigenere(new Stage(), task.getEncryptionMethod().encode(plaintext));
             } catch (IOException e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
     }
+
 }

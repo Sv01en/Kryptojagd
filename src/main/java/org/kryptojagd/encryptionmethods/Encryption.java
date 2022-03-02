@@ -18,14 +18,6 @@ public abstract class Encryption {
 
 
     /**
-     * Sets key.
-     *
-     * @param key the key
-     */
-    public abstract void setKey(int key);
-
-
-    /**
      * Decode string.
      *
      * @param text the text
@@ -33,6 +25,10 @@ public abstract class Encryption {
      * @return the string
      */
     public abstract String decode(String text, String key);
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
 
     /**

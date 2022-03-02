@@ -57,8 +57,6 @@ public class EncryptionTask implements Task {
 
     private boolean taskCompleted;
 
-    private HammingDistance hammingDistance = new HammingDistance();
-
     private int hammingDistanceValue;
 
     private String name = "EncryptionTask";
@@ -79,18 +77,10 @@ public class EncryptionTask implements Task {
         this.task = task;
         this.text = text;
         this.key = key;
+        encryptionMethod.setKey(key);
         this.encryptionMethod = encryptionMethod;
         this.taskCompleted = false;
         this.mistakeMsg = "Standardfehler";
-    }
-
-    /**
-     * Set up the key for caesar encryption.
-     *
-     * @param key given as an integer
-     */
-    public void setCaaesarKey(int key) {
-        this.key = Integer.toString(key);
     }
 
     /**
@@ -125,17 +115,18 @@ public class EncryptionTask implements Task {
      *
      * @return the string
      */
-    public String getEncryption() {
-        return encryptionType;
+    public Encryption getEncryption() {
+        encryptionMethod.setKey(key);
+        return encryptionMethod;
     }
 
     /**
-     * Get key as a String.
+     * Get encryption as a String.
      *
      * @return the string
      */
-    public String getKey() {
-        return key;
+    public String getEncryptionType() {
+        return encryptionType;
     }
 
     /**
@@ -168,17 +159,9 @@ public class EncryptionTask implements Task {
         return PointSystem.getScore();
     }
 
-    /**
-     * Sets encryption method.
-     *
-     * @param encryptionMethod the encryption method
-     */
-    public void setEncryptionMethod(Encryption encryptionMethod) {
-        this.encryptionMethod = encryptionMethod;
-    }
-
     @Override
     public boolean proveAnswer(String answer) {
+        encryptionMethod.setKey(key);
         char[] origMsg = new char[this.text.length()];
         char[] studentSolution = new char[answer.length()];
         String realSolutionString = this.encryptionMethod.encode(this.text);
@@ -267,17 +250,12 @@ public class EncryptionTask implements Task {
         return this.taskCompleted;
     }
 
-    /**
-     * Returns the calculated hamming distance.
-     *
-     * @return hamming distance as an integer
-     */
-    public int getHammingDistanceValue() {
-        return this.hammingDistanceValue;
-    }
-
     @Override
     public void setTaskCompletedEnd() {
         this.taskCompleted = false;
+    }
+
+    public void setEncryptionMethod(Encryption encryption) {
+        this.encryptionMethod = encryption;
     }
 }

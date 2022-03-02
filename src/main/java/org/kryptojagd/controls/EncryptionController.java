@@ -50,9 +50,6 @@ public class EncryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        if (level.getEncryptionInput() != null) {
-            textField1.setText(level.getEncryptionInput());
-        }
         score.setText("Punktestand: " + Task.pointSystem.getScore());
         label1.setText(task.getTaskText());
         label2.setText(task.getText());

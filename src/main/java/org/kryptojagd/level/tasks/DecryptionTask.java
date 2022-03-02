@@ -1,6 +1,5 @@
 package org.kryptojagd.level.tasks;
 
-import com.sun.org.apache.xpath.internal.operations.String;
 import org.kryptojagd.encryptionmethods.Encryption;
 import org.kryptojagd.level.pointSystem.PointSystem;
 
@@ -89,8 +88,8 @@ public class DecryptionTask implements Task {
 	 * Getter for the encryption method
 	 * @return encryption method
 	 */
-	public String getEncryptionMethod() {
-		return encryptionMethod.toString();
+	public Encryption getEncryptionMethod() {
+		return encryptionMethod;
 	}
 
 	/**
@@ -158,7 +157,7 @@ public class DecryptionTask implements Task {
 	 * @param number the index of the first word
 	 * @return the last 3 words of the plaintext
 	 */
-	private StringBuilder lastWordsOfPlaintext(int number) {
+	private String lastWordsOfPlaintext(int number) {
 		String[] tokens = plainText.split(" ");
 		StringBuilder decrypted = new StringBuilder();
 		for (int i = tokens.length - number; i < tokens.length; i++) {
@@ -168,7 +167,7 @@ public class DecryptionTask implements Task {
 				decrypted.append(tokens[i]).deleteCharAt(decrypted.length() - 1);
 			}
 		}
-		return decrypted;
+		return decrypted.toString();
 	}
 
 	/**
@@ -181,8 +180,8 @@ public class DecryptionTask implements Task {
 	 */
 	@Override
 	public boolean proveAnswer(String answer) {
-		StringBuilder decrypted = lastWordsOfPlaintext(LAST_WORDS_NUMBER);
-		this.taskCompleted = answer.toUpperCase().equals(decrypted.toString().toUpperCase());
+		String decrypted = lastWordsOfPlaintext(LAST_WORDS_NUMBER);
+		this.taskCompleted = answer.toUpperCase().equals(decrypted.toUpperCase());
 		if (taskCompleted) {
 			pointSystem.setScore(PointSystem.getScore() + pointsDecryptionTask);
 		}
