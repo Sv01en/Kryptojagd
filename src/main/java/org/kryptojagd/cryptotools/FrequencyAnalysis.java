@@ -28,8 +28,8 @@ public class FrequencyAnalysis {
 	
 	/**
 	 * Returns the relative letter frequency of the given text.
-	 * @param text
-	 * @return
+	 * @param text whose relative letter frequency must be specified
+	 * @return the relative letter frequency of the given text as a linked hash map.
 	 */
 	public static LinkedHashMap<String,Double> relativeFrequency(String text) {
 		
@@ -37,7 +37,6 @@ public class FrequencyAnalysis {
 		text = removeCharacters(text);
 		double length = (double) text.length();
 		
-		char c = 'A';
 		for (char letter = 'A'; letter <= 'Z'; letter++) {
 			hashmap.put(String.valueOf(letter), 0.0);
 		}
@@ -53,7 +52,7 @@ public class FrequencyAnalysis {
 	
 	/**
 	 * Returns the relative letter frequency of German texts.
-	 * @return
+	 * @return the relative letter frequency of German texts as a hash map
 	 */
 	public static LinkedHashMap<String, Double> germanLetterFrequency() {
 		
@@ -92,8 +91,8 @@ public class FrequencyAnalysis {
 	
 	/**
 	 * Removes all characters that are not capital letters
-	 * @param text
-	 * @return
+	 * @param text in which the non alphabetic and non capital characters will be removed.
+	 * @return text with only capital characters
 	 */
 	private static String removeCharacters(String text) {
 		
@@ -101,21 +100,28 @@ public class FrequencyAnalysis {
 		return text;
 	}
 	
-	public static void barChartColumnsColor(BarChart barChart, String chart0, String chart1) {
+	/**
+	 * Changes the color of the first columns of the bar chart to color0 and the second
+	 * columns to color1.
+	 * @param barChart
+	 * @param chart0
+	 * @param chart1
+	 */
+	public static void barChartColumnsColor(BarChart barChart, String color0, String color1) {
 		   for(Node n: barChart.lookupAll(".default-color0.chart-bar")) {
-	            n.setStyle(chart0);
+	            n.setStyle(color0);
 	        }
 		 
 	   for(Node n: barChart.lookupAll(".default-color1.chart-bar")) {
-	            n.setStyle(chart1);
+	            n.setStyle(color1);
 	        }
 	}
 	
 	/**
 	 * Returns the series for the bar chart.
-	 * @param textLetterFrequency
-	 * @param germanLetterFrequency
-	 * @return
+	 * @param textLetterFrequency the letter frequency of the given text
+	 * @param germanLetterFrequency the letter frequency of the German texts
+	 * @return array of type series of length 2
 	 */
 	private static Series[] getSeries(LinkedHashMap<String, Double> textLetterFrequency, 
 			LinkedHashMap<String, Double> germanLetterFrequency, boolean xAxisTicksData1) {
@@ -157,32 +163,16 @@ public class FrequencyAnalysis {
 		Series[] series = {series1, series2};
 		return series;
 	}
-	
-    /**
-     * Sorts the given hash map in alphabetic or decreasing order.
-     * @param alphabetic Indicates whether the hash map should be sorted in alphabetic or decreasing order.
-     * @param hashmap that should be ordered 
-     * @return The sorted hash map
-     */
-    public static LinkedHashMap<String, Double> sortAlphabetic(boolean alphabetic, HashMap<String, Double> hashmap) {
-    	List<Entry<String, Double>> list = new LinkedList<>(hashmap.entrySet());
-
-        // Sorting the list based on values
-        list.sort((o1, o2) -> alphabetic ? 
-        		( o1.getKey().compareTo(o2.getKey()) == 0 ? 
-        				o1.getValue().compareTo(o2.getValue()) : o1.getKey().compareTo(o2.getKey()) ) 
-        		
-        		: ( o2.getValue().compareTo(o1.getValue()) == 0 ? 
-        				o2.getKey().compareTo(o1.getKey()) : o2.getValue().compareTo(o1.getValue())) );
-        
-        return list.stream().collect(Collectors.toMap(Entry::getKey, Entry::getValue, (a, b) -> b, LinkedHashMap::new));
-    }
     
-    /**
-     * 
-     * @param pane
-     * @param yStart
-     */
+	/**
+	 * Sets letter labels on the given pane that indicate the German letter frequency
+	 * of a particular letter.
+	 * @param pane where the labels will be placed
+	 * @param set of the letters that will be placed in the labels
+	 * @param xStart x-coordinate of the first label
+	 * @param yStart y-coordinate of the labels
+	 * @param distance between the labels
+	 */
     public static void lettersLabels(Pane pane, Set<String> set, int xStart, int yStart, double distance) {
     	
 		int count = 0;
@@ -198,12 +188,12 @@ public class FrequencyAnalysis {
     }
     
     /**
-     * 
-     * @param title
-     * @param xLabel
-     * @param ylabel
-     * @param textLetterFrequency
-     * @param germanLetterFrequency
+     * Return a bar chart.
+     * @param title of the bar chart
+     * @param xLabel label of the x-axis
+     * @param ylabel label of the y-axis
+     * @param textLetterFrequency the relative letter frequency of the given text
+     * @param germanLetterFrequency the relative letter frequency of German texts
      * @return
      */
     public static BarChart getChart(String title, String xLabel, String ylabel, 

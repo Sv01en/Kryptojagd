@@ -91,6 +91,7 @@ public class Vigenere extends Encryption {
             } else {
                 encodedText = encodedText + inputText.charAt(i);
             }
+            
         }
  
         return encodedText;

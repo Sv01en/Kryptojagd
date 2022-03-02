@@ -289,7 +289,7 @@ public class FrequencyAnalysisVigenereController {
     		if (m.matches()) {
     			if (count == n) {
         			decodedText = decodedText.substring(0, i) 
-        					+ caesar.decode(decodedText.substring(i, i+1), s.charAt(0) - 'A') 
+        					+ caesar.decode(text.substring(i, i+1), s.charAt(0) - 'A') 
         					+ decodedText.substring(i+1);
         		}
     			count++;
