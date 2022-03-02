@@ -29,7 +29,7 @@ public class CryptoTool extends Application {
     /**
      * 
      * @param stage
-     * @param text
+     * @param text verschlüsselter Text
      * @throws IOException
      */
     public static void caesar(Stage stage, String text) throws IOException {

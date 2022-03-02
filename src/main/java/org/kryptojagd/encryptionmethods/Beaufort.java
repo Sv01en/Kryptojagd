@@ -17,13 +17,6 @@ public class Beaufort extends Encryption {
         super.name = "Beaufort";
     }
 
-    private int key;
-
-    @Override
-    public void setKey(int key) {
-        this.key = key;
-    }
-
     /**
      * Generated a random number between 4 and 6
      * @return Random int value
@@ -49,14 +42,16 @@ public class Beaufort extends Encryption {
      * @return Encrypted text in uppercase
      */
     public String encode(String text) {
-        String key = "";
+        if (super.key.equals("0")) {
+            String key = "";
 
-        int keyLength = keyLength();
-        for (int i = 0; i < keyLength; i++) {
-            int symbolIndex = keySymbolIndex();
-            key = key + ALPHABET[symbolIndex];
+            int keyLength = keyLength();
+            for (int i = 0; i < keyLength; i++) {
+                int symbolIndex = keySymbolIndex();
+                key = key + ALPHABET[symbolIndex];
+            }
+            super.key = key;
         }
-
         return encode(text, key);
     }
     
