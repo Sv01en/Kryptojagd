@@ -71,7 +71,7 @@ public class Level {
 		this.timeInSec = timeInSec;
 		this.timePenalty = this.decryptionTask.getTimePenalty();
 		this.currentTime = this.timeInSec;
-		proveEncryptionMethod(this.encryptionTask.getEncryption());
+		initializeEncryptionMethod(this.encryptionTask.getEncryption());
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class Level {
 	 * Set up the correct encryption method
 	 * @param encryptionMethod name given as a string
 	 */
-	private void proveEncryptionMethod(String encryptionMethod) {
+	private void initializeEncryptionMethod(String encryptionMethod) {
 		switch (encryptionMethod) {
 			case "Backwards":
 				this.encryptionMethod = new Backwards();

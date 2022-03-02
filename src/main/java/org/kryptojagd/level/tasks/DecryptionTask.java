@@ -1,5 +1,6 @@
 package org.kryptojagd.level.tasks;
 
+import com.sun.org.apache.xpath.internal.operations.String;
 import org.kryptojagd.encryptionmethods.Encryption;
 import org.kryptojagd.level.pointSystem.PointSystem;
 
@@ -11,6 +12,7 @@ import org.kryptojagd.level.pointSystem.PointSystem;
 public class DecryptionTask implements Task {
 
 	private static final String FIRST_WORD = "Hallo, ";
+	private static final int LAST_WORDS_NUMBER = 3;
 
 	private MultipleChoiceTask cityTask;
 	private boolean choseEncryption = false;
@@ -26,7 +28,6 @@ public class DecryptionTask implements Task {
 	private int timePenalty;
 	private boolean taskCompleted = false;
 	private String name = "DecryptionTask";
-	private String key;
 	private final int pointsDecryptionTask = 25;
 	private final int pointsEncryptionType = 5;
 
@@ -152,40 +153,22 @@ public class DecryptionTask implements Task {
 	}
 
 	/**
-	 * Proves if the given text is the last 3 words of the plaintext
+	 * Gives the last words of the plaintext
 	 *
-	 * It also sets the boolean, if the task is completed (taskCompleted)
-	 * @param answer given answer, which is proved
-	 * @return true, if the answer is right
+	 * @param number the index of the first word
+	 * @return the last 3 words of the plaintext
 	 */
-	private boolean proveDecryptedText(String answer) {
+	private StringBuilder lastWordsOfPlaintext(int number) {
 		String[] tokens = plainText.split(" ");
 		StringBuilder decrypted = new StringBuilder();
-		for (int i = tokens.length - 3; i < tokens.length; i++) {
+		for (int i = tokens.length - number; i < tokens.length; i++) {
 			if (i < tokens.length - 1) {
 				decrypted.append(tokens[i]).append(" ");
 			} else {
 				decrypted.append(tokens[i]).deleteCharAt(decrypted.length() - 1);
 			}
 		}
-
-		this.taskCompleted = answer.toUpperCase().equals(decrypted.toString().toUpperCase());
-		if (taskCompleted) {
-			pointSystem.setScore(PointSystem.getScore() + pointsDecryptionTask);
-		}
-		return taskCompleted;
-	}
-
-	/**
-	 * Proves if the given String is the key, which was used to encrypt the plaintext
-	 *
-	 * It also sets the boolean, if the task is completed (taskCompleted)
-	 * @param answer given answer, which is proved
-	 * @return true, if the answer is right
-	 */
-	private boolean proveKey(String answer) {
-		this.taskCompleted = key.equals(answer);
-		return taskCompleted;
+		return decrypted;
 	}
 
 	/**
@@ -198,12 +181,12 @@ public class DecryptionTask implements Task {
 	 */
 	@Override
 	public boolean proveAnswer(String answer) {
-		if (encryptionType.startsWith("Cäsar") || encryptionType.startsWith("Rückwärts")) {
-			return proveDecryptedText(answer);
-		} else if (encryptionType.startsWith("Vigenère") || encryptionType.startsWith("Beaufort")) {
-			return proveKey(answer);
+		StringBuilder decrypted = lastWordsOfPlaintext(LAST_WORDS_NUMBER);
+		this.taskCompleted = answer.toUpperCase().equals(decrypted.toString().toUpperCase());
+		if (taskCompleted) {
+			pointSystem.setScore(PointSystem.getScore() + pointsDecryptionTask);
 		}
-		return false;
+		return taskCompleted;
 	}
 
 	@Override
