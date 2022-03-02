@@ -14,6 +14,7 @@ import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
+import org.kryptojagd.level.tasks.Task;
 
 import java.io.IOException;
 
@@ -54,12 +55,15 @@ public class DecryptionController extends AbstractController {
     @FXML
     private Button button1;
 
+    @FXML
+    private Label score;
+
     /**
      * Initializes a DecryptionController either with the city question or the decryption task
      */
     @FXML
     public void initialize() {
-        updateTimer();
+        updateTimer(timer);
         score.setText("Punktestand: " + Task.pointSystem.getScore());
         if (!task.getTaskCompleted()) {
             level.startCountdown();

@@ -2,25 +2,24 @@ package org.kryptojagd.cryptotool;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.kryptojagd.cryptotools.VigenereBreakController;
-import org.kryptojagd.encryptionmethods.Backwards;
+import org.kryptojagd.cryptotools.FrequencyAnalysisVigenereController;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class VigenereBreakControllerTest {
+public class FrequencyAnalysisVigenereControllerTest {
 
-    static VigenereBreakControllerTest v;
+    static FrequencyAnalysisVigenereControllerTest v;
 
     @BeforeAll
     static void init() {
-        v = new VigenereBreakControllerTest();
+        v = new FrequencyAnalysisVigenereControllerTest();
     }
 
     // ########## Tests for addSpaces() #############
 
     @Test
     void testAddSpacesEmptyString() {
-        assertEquals("", VigenereBreakController.addSpacesAs("", ""));
+        assertEquals("", FrequencyAnalysisVigenereController.addSpacesAs("", ""));
     }
 
     @Test
@@ -28,7 +27,7 @@ public class VigenereBreakControllerTest {
         String textWithSpaces = "Hallo Welt, ein schönen Tag heute!";
         String textWithoutSpaces = "ollaHtleW,nienenöhcsgaTetueh!";
         String expected = "ollaH tleW, nie nenöhcs gaT etueh!";
-        assertEquals(expected, VigenereBreakController.addSpacesAs(textWithSpaces, textWithoutSpaces));
+        assertEquals(expected, FrequencyAnalysisVigenereController.addSpacesAs(textWithSpaces, textWithoutSpaces));
     }
 
     @Test
@@ -36,7 +35,7 @@ public class VigenereBreakControllerTest {
         String textWithSpaces = "Hallo Welt ein schönen Tag heute";
         String textWithoutSpaces = "ollaHtleWnienenöhcsgaTetueh";
         String expected = "ollaH tleW nie nenöhcs gaT etueh";
-        assertEquals(expected, VigenereBreakController.addSpacesAs(textWithSpaces, textWithoutSpaces));
+        assertEquals(expected, FrequencyAnalysisVigenereController.addSpacesAs(textWithSpaces, textWithoutSpaces));
     }
 
 }
