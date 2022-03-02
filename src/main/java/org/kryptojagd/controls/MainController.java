@@ -70,7 +70,6 @@ public class MainController {
 		this.currentLevel = allLevels.get(clearedLevels);
 		this.currentLevelPosition++;
 		PointSystem.setCurrentLevel(currentLevelPosition);
-		PointSystem.setPlayedLevels(PointSystem.getPlayedLevels + 1);
 	}
 
 	/**
@@ -149,6 +148,7 @@ public class MainController {
 	 * @param id position in the list
 	 */
 	public void startLevelByPosition(int id) {
+		PointSystem.setPlayedLevels(id + 1);
 		this.currentLevelPosition = id;
 		this.currentLevel = this.allLevels.get(id);
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString()
