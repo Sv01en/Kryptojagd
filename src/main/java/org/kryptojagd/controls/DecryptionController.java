@@ -14,7 +14,6 @@ import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.DecryptionTask;
-import org.kryptojagd.level.tasks.Task;
 
 import java.io.IOException;
 
@@ -54,9 +53,6 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     private Button button1;
-
-    @FXML
-    private Label score;
 
     /**
      * Initializes a DecryptionController either with the city question or the decryption task
@@ -138,26 +134,6 @@ public class DecryptionController extends AbstractController {
     }
 
     /**
-     * Updates the {@link DecryptionController#timer} every second in the corresponding fxml-file.
-     */
-    @FXML
-    @Override
-    void updateTimer() {
-        Timeline time = new Timeline();
-        time.setCycleCount(Timeline.INDEFINITE);
-        time.stop();
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
-            if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
-                time.stop();
-            }
-        });
-        time.getKeyFrames().add(frame);
-        time.playFromStart();
-    }
-
-    /**
      * Click menu.
      *
      * @param actionEvent the action event
@@ -167,7 +143,7 @@ public class DecryptionController extends AbstractController {
         mainController.getCurrentLevel().clearLevel();
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
-    
+
     @FXML
     private void clickCrypto(ActionEvent event) {
 //        if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {

@@ -73,7 +73,7 @@ public class MultipleChoiceController extends AbstractController {
         answer3.setText("C");
         score.setText("Punktestand: " + Task.pointSystem.getScore());
         this.countdownTimer = new CountdownTimer(level.getTimeInSec());
-        updateTimer();
+        updateTimer(timer);
     }
 
     /**
@@ -125,28 +125,6 @@ public class MultipleChoiceController extends AbstractController {
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, css);
     }
 
-    /**
-     * Updates the {@link MultipleChoiceController#timer} every second in the corresponding fxml-file.
-     */
-    /**
-     * Updates the timer every second in the corresponding fxml-file.
-     */
-    @FXML
-    @Override
-    void updateTimer() {
-        Timeline time = new Timeline();
-        time.setCycleCount(Timeline.INDEFINITE);
-        time.stop();
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
-            if (level.getTimeInSec() <= 0) {
-                mainController.switchWindowWithCSS("TimeOver.fxml", ReadDirectory.CSS_FILE_START);
-                time.stop();
-            }
-        });
-        time.getKeyFrames().add(frame);
-        time.playFromStart();
-    }
 
     /**
      * Click menu.
