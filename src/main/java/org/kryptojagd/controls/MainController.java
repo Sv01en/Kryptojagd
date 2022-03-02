@@ -162,4 +162,11 @@ public class MainController {
 	public int getCurrentLevelPosition() {
 		return this.currentLevelPosition;
 	}
+	
+	/**
+	 * 
+	 */
+	public void unlockAllLevels() {
+		this.clearedLevels = 100;
+	}
 }

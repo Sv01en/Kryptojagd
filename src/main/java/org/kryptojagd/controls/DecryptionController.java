@@ -128,25 +128,6 @@ public class DecryptionController extends AbstractController {
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }
 
-    @FXML
-    private void clickCrypto(ActionEvent event) {
-        if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
-            try {
-                CryptoTool.caesar(new Stage());
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                CryptoTool.vigenere(new Stage());
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    }
-
     /**
      * Checks if the answer is correct.
      * @param procedure Button which is clicked on
@@ -185,5 +166,24 @@ public class DecryptionController extends AbstractController {
     public void clickMenu(ActionEvent actionEvent) {
         mainController.getCurrentLevel().clearLevel();
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
+    }
+    
+    @FXML
+    private void clickCrypto(ActionEvent event) {
+//        if (task.getPossibilities()[task.getCorrectAnswerEncryption()].startsWith("Cäsar")) {
+//            try {
+//                CryptoTool.caesar(new Stage());
+//            } catch (IOException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//        } else {
+//            try {
+//                CryptoTool.vigenere(new Stage());
+//            } catch (IOException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//        }
     }
 }

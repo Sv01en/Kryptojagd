@@ -72,44 +72,9 @@ public class StartWindowController extends AbstractController {
         System.out.println("Es wurde auf Kryptotool Cäsar Button geklickt!");
         mainController.startLevel();
     }
-
-    /**
-     * Handles press on start button
-     * @param event that is received
-     */
+    
     @FXML
-    void clickCryptoVigeniere(ActionEvent event) {
-        System.out.println("Es wurde auf Kryptotool Vigeniére Button geklickt!");
-        mainController.startLevel();
-    }
-
-    /**
-     * Caesar.
-     *
-     * @param event the event
-     */
-    @FXML
-    void caesar(ActionEvent event) {
-    	try {
-			CryptoTool.caesar(new Stage());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
-    /**
-     * Vigenere.
-     *
-     * @param event the event
-     */
-    @FXML
-    void vigenere(ActionEvent event) {
-    	try {
-			CryptoTool.vigenere(new Stage());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    void clickCryptoTool(ActionEvent event) {
+    	mainController.switchWindowWithCSS("CryptoTool.fxml", ReadDirectory.CSS_FILE_START);
     }
 }

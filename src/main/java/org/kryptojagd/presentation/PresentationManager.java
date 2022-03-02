@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -72,7 +73,9 @@ public class PresentationManager {
 				cssFile = css;
 			}
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-			BorderPane rootLayout = (BorderPane) loader.load();
+			System.out.println("Läuft");
+			Pane rootLayout = (Pane) loader.load();
+			System.out.println("Läuft");
 			Scene scene = new Scene(rootLayout);
 			scene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());
 			stage.setScene(scene);
@@ -87,9 +90,6 @@ public class PresentationManager {
 		}
 	}
 
-	/**
-	 * Toggle darkmode.
-	 */
 	public void toggleDarkmode() {
 		this.darkMode = !this.darkMode;
 	}

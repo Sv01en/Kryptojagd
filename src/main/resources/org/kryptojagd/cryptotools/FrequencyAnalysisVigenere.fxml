@@ -7,16 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1109.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.cryptotools.VigenereBreakController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1109.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.cryptotools.FrequencyAnalysisVigenereController">
    <children>
-      <Label fx:id="label1" layoutX="14.0" layoutY="49.0" lineSpacing="2.0" maxWidth="1000.0" text="kodierter Text" wrapText="true" />
-      <Label layoutX="14.0" layoutY="25.0" text="Kodierter Text:" />
+      <Label fx:id="encodedTextLabel" layoutX="14.0" layoutY="49.0" lineSpacing="2.0" maxWidth="1050.0" prefHeight="51.0" prefWidth="1050.0" text="HIER SOLLTE DER KODIERTE TEXT STEHEN." wrapText="true" />
+      <Label layoutX="14.0" layoutY="25.0" text="kodierter Text:" />
       <Label layoutX="271.0" layoutY="708.0" text="urspr. Schlüsselwort:" />
       <HBox fx:id="hboxKey" layoutX="417.0" layoutY="704.0" prefHeight="24.0" prefWidth="562.0" />
-      <Button fx:id="hintButton" layoutX="995.0" layoutY="704.0" mnemonicParsing="false" text="Hinweis" />
-      <Label layoutX="14.0" layoutY="748.0" text="Entschlüsselter Text" />
-      <Label fx:id="labelEncodedText" layoutX="14.0" layoutY="779.0" text="Label" />
+      <Button fx:id="explanationButton" layoutX="995.0" layoutY="704.0" mnemonicParsing="false" text="Erklärung" />
+      <Label layoutX="14.0" layoutY="748.0" text="entschlüsselter Text:" />
+      <Label fx:id="labelDecodedText" layoutX="14.0" layoutY="779.0" prefHeight="41.0" prefWidth="1050.0" text="HIER SOLLTE DER ENTSCHLÜSSELTE TEXT STEHEN." wrapText="true" />
       <ComboBox fx:id="lengthCodeComboBox" layoutX="178.0" layoutY="704.0" onAction="#lengthCodeChanged" prefHeight="24.0" prefWidth="75.0" />
       <Label layoutX="14.0" layoutY="708.0" text="Länge des Schlüssels:" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="16.0" layoutX="182.0" layoutY="662.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
@@ -24,5 +25,10 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="16.0" layoutX="537.0" layoutY="662.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
       <Label layoutX="566.0" layoutY="662.0" text="Buchstabenhäufigkeit in deutschsprachigen Texten" />
       <TabPane fx:id="tabPane" layoutX="14.0" layoutY="123.0" prefHeight="530.0" prefWidth="1050.0" tabClosingPolicy="UNAVAILABLE" />
+      <Label fx:id="hintLabel" layoutX="417.0" layoutY="730.0" prefHeight="16.0" prefWidth="401.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
