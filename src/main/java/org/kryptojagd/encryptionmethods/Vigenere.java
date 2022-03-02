@@ -1,5 +1,7 @@
 package org.kryptojagd.encryptionmethods;
 
+import java.util.ArrayList;
+
 /**
  * Provides methods for encrypting and decrypting texts with Vigenere encryption
  *
@@ -64,11 +66,15 @@ public class Vigenere extends Encryption {
      * @return encode method that accepts unencrypted text and keys
      */
     public String encode(String text, String key) {
-        
-        String encodedText = "";
+
+        String encryptedText = "";
+        ArrayList<String> words = new ArrayList<>();
+        ArrayList<String> revWords = new ArrayList<>();
 
         String inputText = text.toUpperCase();
         String inputKey = key.toUpperCase();
+
+        int keyIndex = 0;
 
         if (inputKey.length() == 0) {
             return inputText.toUpperCase();
@@ -80,6 +86,57 @@ public class Vigenere extends Encryption {
             }
         }
 
+
+
+
+        // Separate input text with spaces and special characters
+        String tmp = "";
+        for (int i = 0; i < inputText.length(); i++) {
+            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
+                tmp = tmp + inputText.charAt(i);
+            } else {
+                words.add(tmp);
+                tmp = "";
+                words.add("" + inputText.charAt(i));
+            }
+        }
+
+        words.add(tmp);
+
+        // Remove unnecessary empty words
+        for (int i = words.size() - 1; i >= 0; i--) {
+            if (words.get(i).equals("")) {
+                words.remove(i);
+            }
+        }
+
+
+        // Encode every word
+        for (int i = 0; i < words.size(); i++) {
+            if (words.get(i).length() == 1 && (words.get(i).charAt(0) < 'A' || words.get(i).charAt(0) > 'Z')) {
+                revWords.add(words.get(i));
+            } else {
+                String revWord = "";
+                for (int j = 0; j < words.get(i).length(); j++) {
+                    int result = (words.get(i).charAt(j) + getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length())));
+                    keyIndex++;
+                    if (result > 'Z') {
+                        result = result - 26;
+                    }
+                    revWord = revWord + (char) result;
+                }
+                revWords.add(revWord);
+            }
+
+        }
+
+        // Assemble the return string from individual words
+        for (int i = 0; i < revWords.size(); i++) {
+            encryptedText = encryptedText + revWords.get(i);
+        }
+
+        return encryptedText;
+/*
  
         for (int i = 0; i < inputText.length(); i++) {
             if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
@@ -93,7 +150,7 @@ public class Vigenere extends Encryption {
             }
         }
  
-        return encodedText;
+        return encodedText;*/
  
     }
 
