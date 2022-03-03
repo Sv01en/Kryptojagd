@@ -173,4 +173,8 @@ public class MainController {
 	public void unlockAllLevels() {
 		LevelSelectorController.unlockAllLevels();
 	}
+
+	public void resetLevels() throws Exception {
+		this.allLevels = ReadDirectory.initialize();
+	}
 }
