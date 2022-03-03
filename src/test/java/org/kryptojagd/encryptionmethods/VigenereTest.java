@@ -120,15 +120,15 @@ public class VigenereTest {
      */
     @Test
     void testTextValidKeyDecode(){
-        assertEquals("HALLO WELT!", v.decode("HBNOS XGOX!", "ABCDE"));
+        assertEquals("HALLO WELT!", v.decode("HBNOS WFNW!", "ABCDE"));
     }
 
     /**
-     * Tests whether the decryption method with "Hbnos Xgox!" and the key "ABCDE" provides the correct decryption in uppercase
+     * Tests whether the decryption method with "Hbnos Wfnw!" and the key "ABCDE" provides the correct decryption in uppercase
      */
     @Test
     void testTextValidKeyDecodeUppercase(){
-        assertEquals("HALLO WELT!", v.decode("Hbnos Xgox!", "ABCDE"));
+        assertEquals("HALLO WELT!", v.decode("Hbnos Wfnw!", "ABCDE"));
     }
 
     /**
@@ -148,11 +148,11 @@ public class VigenereTest {
     }
 
     /**
-     * Tests whether the decryption method with "Hbnos Xgox!" and the key "abCde" provides the correct decryption in uppercase
+     * Tests whether the decryption method with "Hbnos Wfnw!" and the key "abCde" provides the correct decryption in uppercase
      */
     @Test
     void testTextValidKeyDecodeNoUppercaseKey() {
-        assertEquals("HALLO WELT!", v.decode("Hbnos Xgox!", "abCde"));
+        assertEquals("HALLO WELT!", v.decode("Hbnos Wfnw!", "abCde"));
     }
 
     /**
@@ -160,7 +160,7 @@ public class VigenereTest {
      */
     @Test
     void testTextValidKeyDecodeLowercaseKey() {
-        assertEquals("HALLO WELT!", v.decode("Hbnos Xgox!", "abcde"));
+        assertEquals("HALLO WELT!", v.decode("Hbnos Wfnw!", "abcde"));
     }
 
     /**
@@ -168,7 +168,7 @@ public class VigenereTest {
      */
     @Test
     void testTextValidKeyDecodeOverflow(){
-        assertEquals("ZUM BEISPIEL:", v.decode("Awp Gfkvtnfn:", "BCDEF"));
+        assertEquals("ZUM BEISPIEL:", v.decode("Awp Fjjusmjm:", "BCDEF"));
     }
 
 
@@ -180,7 +180,7 @@ public class VigenereTest {
      */
     @Test
     void testTextValidKeyEncode(){
-        assertEquals("HBNOS XGOX!", v.encode("Hallo Welt!", "ABCDE"));
+        assertEquals("HBNOS WFNW!", v.encode("Hallo Welt!", "ABCDE"));
     }
 
     /**
@@ -188,7 +188,7 @@ public class VigenereTest {
      */
     @Test
     void testTextValidKeyEncodeUppercase(){
-        assertEquals("HBNOS XGOX!", v.encode("Hallo Welt!", "ABCDE"));
+        assertEquals("HBNOS WFNW!", v.encode("Hallo Welt!", "ABCDE"));
     }
 
     /**
@@ -212,7 +212,7 @@ public class VigenereTest {
      */
     @Test
     void testTextValidKeyEncodeNoUppercaseKey(){
-        assertEquals("HBNOS XGOX!", v.encode("Hallo Welt!", "abCde"));
+        assertEquals("HBNOS WFNW!", v.encode("Hallo Welt!", "abCde"));
     }
 
     /**
@@ -220,7 +220,7 @@ public class VigenereTest {
      */
     @Test
     void testTextValidKeyEncodeLowercaseKey(){
-        assertEquals("HBNOS XGOX!", v.encode("Hallo Welt!", "abcde"));
+        assertEquals("HBNOS WFNW!", v.encode("Hallo Welt!", "abcde"));
     }
 
     /**
@@ -228,7 +228,7 @@ public class VigenereTest {
      */
     @Test
     void testTextValidKeyEncodeOverflow(){
-        assertEquals("AWP GFKVTNFN:", v.encode("Zum Beispiel:", "BCDEF"));
+        assertEquals("AWP FJJUSMJM:", v.encode("Zum Beispiel:", "BCDEF"));
     }
 
 

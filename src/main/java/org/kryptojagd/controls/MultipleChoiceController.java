@@ -9,6 +9,7 @@ import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
+import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
 import org.kryptojagd.level.tasks.Task;
 
@@ -70,7 +71,7 @@ public class MultipleChoiceController extends AbstractController {
         answer1.setText("A");
         answer2.setText("B");
         answer3.setText("C");
-        score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
+        score.setText("Punktestand: " + PointSystem.getScore());
         this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer(timer);
     }
@@ -110,7 +111,7 @@ public class MultipleChoiceController extends AbstractController {
 
     /**
      * Checks if the answer is correct.
-     * @param answer
+     * @param answer the answer
      */
     private void clickAnswer(String answer) {
         mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer);
