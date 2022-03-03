@@ -20,6 +20,7 @@ public class PresentationManager {
 	
 	private Stage stage;
 	private boolean darkMode = false;
+	private boolean blindMode = false;
 
 	/**
 	 * Constructor of the PresentationManager
@@ -61,7 +62,9 @@ public class PresentationManager {
 	public void switchWindowWithCSS(String path, String css) {
 		try {
 			String cssFile = "";
-			if (darkMode) {
+			if (blindMode) {
+				cssFile = "/org/kryptojagd/css/startwindow_accessible.css";
+			} else if (darkMode) {
 				char[] cssArr = css.toCharArray();
 				String tmp = "";
 				for (int i = 0; i < cssArr.length - 4; i++) {
@@ -90,5 +93,9 @@ public class PresentationManager {
 
 	public void toggleDarkmode() {
 		this.darkMode = !this.darkMode;
+	}
+
+	public void toggleBlindMode() {
+		this.blindMode = !blindMode;
 	}
 }
