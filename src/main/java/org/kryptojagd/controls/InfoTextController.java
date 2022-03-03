@@ -17,8 +17,6 @@ public class InfoTextController extends AbstractController {
 	@FXML
 	private Label label;
 
-	@FXML
-	private Label score;
 
 	/**
 	 * Initializes a InfoTextController with the info text
@@ -27,7 +25,6 @@ public class InfoTextController extends AbstractController {
 	public void initialize() {
 		String text = Messages.START_TEXT;
 		label.setText(text);
-		score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
 	}
 
 	/**
