@@ -22,7 +22,7 @@
             <Insets left="10.0" right="10.0" />
          </padding>
          <center>
-            <Label fx:id="score" prefHeight="110.0" prefWidth="200.0" text="Label" BorderPane.alignment="CENTER" />
+            <Label fx:id="score" text="Label" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </top>
