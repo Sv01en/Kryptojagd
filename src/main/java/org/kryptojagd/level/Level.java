@@ -164,7 +164,7 @@ public class Level {
 		}
 		if (isLevelCompleted()) {
 			feedback = Messages.LEVEL_FINISHED;
-			if (this.firstTryTimer){
+			if (this.firstTryTimer) {
 				currentTask.setScore(currentTask.getScore() + currentTime);
 			}
 		}
