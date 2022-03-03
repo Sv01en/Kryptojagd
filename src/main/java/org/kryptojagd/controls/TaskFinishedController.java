@@ -17,11 +17,14 @@ public class TaskFinishedController extends AbstractController {
 	private final Level level = mainController.getCurrentLevel();
 	private static final String LEVEL_FINISHED = "LevelFinished.fxml";
 
-	@FXML
+    @FXML
 	private Label timer = new Label();
 
 	@FXML
 	private Label score;
+
+	@FXML
+	private Label translusentLabel;
 
 	@FXML
 	private Label feedbackText;
@@ -35,7 +38,9 @@ public class TaskFinishedController extends AbstractController {
 	public void initialize() {
 		updateTimer(timer);
 		feedbackText.setText(level.getFeedback());
-		score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
+		String text = "Punktestand: " + Task.POINT_SYSTEM.getScore();
+		score.setText(text);
+		translusentLabel.setText(text);
 	}
 
 	/**

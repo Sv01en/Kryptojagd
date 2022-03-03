@@ -148,6 +148,13 @@ public class MainController {
 	}
 
 	/**
+	 * Toggles blind mode on and off
+	 */
+	public void toggleBlindMode() {
+		fw.toggleBlindMode();
+	}
+
+	/**
 	 * Starts a level by the given position in the list.
 	 * @param id position in the list
 	 */

@@ -12,7 +12,6 @@
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="score" prefHeight="110.0" prefWidth="200.0" text="Label" />
                 <Label fx:id="label1" text="label1"/>
                 <Label fx:id="label2" text="label2"/>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
@@ -45,11 +44,25 @@
         </BorderPane>
     </top>
     <!--DO NOT TOUCH-->
+
+
     <bottom>
-        <Button fx:id="home" text="Menü" onAction="#clickMenu" BorderPane.alignment="BOTTOM_LEFT">
-            <BorderPane.margin>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </BorderPane.margin>
-        </Button>
+        <BorderPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <left>
+                <Button fx:id="home" text="Menü" onAction="#clickMenu" BorderPane.alignment="BOTTOM_LEFT">
+                    <BorderPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </BorderPane.margin>
+                </Button>
+            </left>
+
+            <right>
+                <Label fx:id="score" text="Label">
+                    <BorderPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </BorderPane.margin>
+                </Label>
+            </right>
+        </BorderPane>
     </bottom>
 </BorderPane>

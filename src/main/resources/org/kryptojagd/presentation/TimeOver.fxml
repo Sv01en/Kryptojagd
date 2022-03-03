@@ -34,6 +34,6 @@
    </bottom>
    <top>
       <Label fx:id="timer" alignment="TOP_RIGHT" text="timer" BorderPane.alignment="CENTER" />
-       <Label fx:id="score" prefHeight="110.0" prefWidth="200.0" text="Label" />
+       <Label fx:id="score" text="Label" />
    </top>
 </BorderPane>

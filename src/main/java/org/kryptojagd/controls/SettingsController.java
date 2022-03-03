@@ -17,6 +17,12 @@ public class SettingsController extends AbstractController {
     private Button darkLightToggle;
 
     /**
+     * The accessibility toggle.
+     */
+    @FXML
+    private Button blindToggle;
+
+    /**
      * Click dark light toggle.
      *
      * @param actionEvent the action event
@@ -35,5 +41,16 @@ public class SettingsController extends AbstractController {
     @FXML
     public void clickBack(ActionEvent actionEvent) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
+    }
+
+    /**
+     * Click accessibility toggle.
+     *
+     * @param event the action event
+     */
+    @FXML
+    public void clickBlindToggle(ActionEvent event) {
+        mainController.toggleBlindMode();
+        mainController.switchWindowWithCSS("Settings.fxml", ReadDirectory.CSS_FILE_START);
     }
 }
