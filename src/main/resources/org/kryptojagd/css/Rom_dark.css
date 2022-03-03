@@ -10,11 +10,11 @@
     -fx-text-alignment: left;
 }
 .label {
-    -fx-border-color: gainsboro;
+    -fx-border-color: #212121;
     -fx-border-radius: 10,10,10,10;
     -fx-label-padding: 10,10,10,10;
-    -fx-background-color: gainsboro;
-    -fx-text-fill: black;
+    -fx-background-color: #212121;
+    -fx-text-fill: white;
     -fx-background-radius: 10,10,10,10;
     -fx-font-family: monospace;
     -fx-font-size:17px;
@@ -23,10 +23,10 @@
     -fx-text-alignment: center;
 }
 #feedbackLabel {
-    -fx-border-color: gainsboro;
+    -fx-border-color: #212121;
         -fx-border-radius: 10,10,10,10;
         -fx-label-padding: 10,10,10,10;
-        -fx-background-color: gainsboro;
+        -fx-background-color: #212121;
         -fx-text-fill: #d7663b;
         -fx-background-radius: 10,10,10,10;
         -fx-font-family: monospace;
@@ -62,7 +62,7 @@
     -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
 }
 .text-field {
-  -fx-border-color: gainsboro;
+  -fx-border-color: #212121;
   -fx-border-width: 1 1 1 1; // top, right, bottom, left
   -fx-background-color: white;
   -fx-background-radius: 10,10,10,10;
