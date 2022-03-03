@@ -16,7 +16,7 @@ public class LevelFinished extends AbstractController {
 
     @FXML
     public Label text;
-    
+
     @FXML
     private Label timer;
 
