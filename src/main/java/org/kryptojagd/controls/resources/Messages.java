@@ -57,16 +57,19 @@ public final class Messages {
     /**
      * The constant CITY_HELP_TEXT.
      */
-    public static final String CITY_HELP_TEXT = "Das Punktesystem:\n"
+    public static final String CITY_HELP_TEXT = "Wie soll ich hier vorgehen?\n"
+        + "1. Überlege dir anhand des Infotextes und mit den 3 Vorschlägen A, B und C, in welche Stadt du als nächstes musst.\n"
+        + "2. Klicke dann auf den Knopf A, B oder C. Falls die Antwort falsch ist wiederhole Schritt 1 und 2.\n\n "
+            + "Das Punktesystem:\n"
             + "Oben kannst du deinen aktuellen Punktestand einsehen, "
-            + "für jede richtige Entschlüsselungsaufgabebekommst du 50, "
+            + "für jede richtige Entschlüsselungsaufgabe bekommst du 50, "
             + "für jede richtige Multiple Choice Aufgabe 10 und für jede richtige Verschlüsselungsaufgabe 50 Punkte. "
-            + "Am Ende wird dir die Zeit auf deinen Punktestand dazu addiert, "
-            + "wenn der Timer nicht bereits abgelaufen ist.\n\n"
+            + "Nach Abschluss jedes Levels wird dir die Zeit auf deinen Punktestand dazu addiert, "
+            + "wenn der Timer nicht bereits in diesem Level einmal abgelaufen ist.\n\n"
             + "Der Menü-Knopf:\n"
             + "Du kannst zurück zum Menü gehen, wenn du …\n"
-            + "… in ein anderes Level (sofern es freigeschalten ist) springen möchtest.\n"
-            + " …in den Einstellungen den Dark Mode aktivieren/deaktivieren möchtest.\n"
+            + "… in ein anderes Level (sofern es freigeschaltet ist) springen möchtest.\n"
+            + "… in den Einstellungen den Dark Mode aktivieren/deaktivieren möchtest.\n"
             + "… das Kryptotool für die Caesar- oder Vigenère Verschlüsselung benutzen möchtest.\n";
 
 
