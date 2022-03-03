@@ -58,8 +58,9 @@ public final class Messages {
      * The constant CITY_HELP_TEXT.
      */
     public static final String CITY_HELP_TEXT = "Wie soll ich hier vorgehen?\n"
-        + "1. Überlege dir anhand des Infotextes und mit den 3 Vorschlägen A, B und C, in welche Stadt du als nächstes musst.\n"
-        + "2. Klicke dann auf den Knopf A, B oder C. Falls die Antwort falsch ist wiederhole Schritt 1 und 2.\n\n "
+            + "1. Überlege dir anhand des Infotextes und mit den 3 Vorschlägen A, B und C, "
+            + "in welche Stadt du als nächstes musst.\n"
+            + "2. Klicke dann auf den Knopf A, B oder C. Falls die Antwort falsch ist wiederhole Schritt 1 und 2.\n\n "
             + "Das Punktesystem:\n"
             + "Oben kannst du deinen aktuellen Punktestand einsehen, "
             + "für jede richtige Entschlüsselungsaufgabe bekommst du 50, "
@@ -71,6 +72,28 @@ public final class Messages {
             + "… in ein anderes Level (sofern es freigeschaltet ist) springen möchtest.\n"
             + "… in den Einstellungen den Dark Mode aktivieren/deaktivieren möchtest.\n"
             + "… das Kryptotool für die Caesar- oder Vigenère Verschlüsselung benutzen möchtest.\n";
+
+    /**
+     * The constant VIGENERE_EXPLANATION.
+     */
+    public static final String VIGENERE_EXPLANATION = "Funktionsweise des Vigenère-Tools:\n\n\n"
+        + "1. Falls du das Tool für die Kryptojagd verwendest, wähle einen Schlüssel der Länge 4-6 aus, \n"
+        + "ansonsten wähle eine beliebige Schlüssellänge aus.\n\n"
+        + "2. Nun kannst du zwischen so vielen Diagrammen wechseln, wie die Länge deines Schlüssels groß ist. "
+        + "Hierbei kannst du das erste Diagramm nutzen,\n um den ersten Buchstaben des Schlüsselwortes zu knacken,"
+        + "das zweite Diagramm für den zweiten Buchstaben usw.\n\n"
+        + "3. Um bspw. den ersten Buchstaben zu knacken, kannst du versuchen das erste Diagramm so lange nach links und"
+        + " rechts zu schieben, bis sich die\nbeiden Balkendiagramme der Buchstabenhäufigkeiten möglichst ähnlich sind."
+        + "\nDer rote Buchstabe der nun über dem schwarzen Buchstaben steht, ist nun höchstwahrscheinlich der erste "
+        + "Buchstabe des Schlüsselwortes,\n falls die richtige Länge gewählt wurde.\n\n"
+        + "4. Diesen solltest du dann noch beim Tool an erster Stelle des Schlüsselwortes eintragen, indem du den "
+        + "bisherigen Buchstaben markierst und \nden neuen einfügst, um dir den Text Schritt für Schritt unten im Tool "
+        + "entschlüsseln zu lassen. \nFalls du das Tool für die Kryptojagd verwendest kannst du darauf achten, "
+        + "dass unten im Text an erster Stelle ein Hallo sichtbar werden sollte.\nWenn dies nicht der Fall ist "
+        + "überprüfe die Verschiebung der Diagramme oder ändere die Schlüssellänge.\n\n"
+        + "5. Nachdem du einen Schlüsselbuchstaben herausgefunden hast, wiederhole die Schritte 3 und 4 so oft, "
+        + "bis du das ganze Schlüsselwort hast.";
+
 
 
     /* private utility-class constructor */

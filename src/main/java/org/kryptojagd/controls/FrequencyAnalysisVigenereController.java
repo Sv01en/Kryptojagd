@@ -1,11 +1,16 @@
 package org.kryptojagd.controls;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.kryptojagd.cryptotools.FrequencyAnalysis;
 import org.kryptojagd.encryptionmethods.Caesar;
 import javafx.collections.FXCollections;
@@ -29,6 +34,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import org.kryptojagd.presentation.PresentationManager;
 
 /**
  * Controller of the frequency analysis of the Vigenere crypto tool.
@@ -89,6 +95,24 @@ public class FrequencyAnalysisVigenereController {
     initializeCharts();
     initializeOverview();
   }
+
+	/**
+	 * Click explanation.
+	 *
+	 * @param event the event
+	 * @throws IOException the io exception
+	 */
+	@FXML
+	void clickExplanation(ActionEvent event) throws IOException {
+		Stage stage = new Stage();
+		stage.setResizable(false);
+		stage.setTitle("Vigenère-Tool Funktionsweise");
+		Parent root = FXMLLoader.load(PresentationManager.class.getResource("CryptotoolExplanation.fxml"));
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+
+	}
 
   /**
    * Initializes all necessary elements of the window.
