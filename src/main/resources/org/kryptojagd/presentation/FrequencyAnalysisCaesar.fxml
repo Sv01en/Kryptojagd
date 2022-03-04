@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.FrequencyAnalysisCaesarController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.FrequencyAnalysisCaesarController">
    <children>
       <Label fx:id="label1" layoutX="14.0" layoutY="37.0" lineSpacing="2.0" maxWidth="1000.0" prefHeight="89.0" prefWidth="967.0" text="kodierter Text" wrapText="true" />
       <Label layoutX="14.0" layoutY="16.0" text="Kodierter Text:" />
