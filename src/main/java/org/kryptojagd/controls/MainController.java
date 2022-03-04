@@ -181,7 +181,7 @@ public class MainController {
 		LevelSelectorController.unlockAllLevels();
 	}
 
-	public void resetLevels() throws Exception {
-		this.allLevels = ReadDirectory.initialize();
+	public void setCurrentLevel(Level level) {
+		this.currentLevel = level;
 	}
 }

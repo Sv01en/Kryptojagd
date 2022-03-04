@@ -4,10 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.kryptojagd.fileprocessing.ReadDirectory;
+import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.Task;
 
+import java.util.ArrayList;
+
 /**
- * Controls the TimeOver file
+ * Controls the TimeOver window.
  *
  * @author Sven Strasser
  * @version 1.0
@@ -23,12 +26,14 @@ public class TimeOverController extends AbstractController {
      * @param e the e
      */
     @FXML
-    void restartAction(ActionEvent e) {
+    void restartAction(ActionEvent e) throws Exception {
+        int levelPos = mainController.getCurrentLevelPosition();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.getCurrentLevel().clearLevel();
-        mainController.getCurrentLevel().startCountdown();
+        ArrayList<Level> levels = ReadDirectory.initialize();
+        mainController.setCurrentLevel(levels.get(levelPos));
         mainController.switchWindowWithCSS("DecryptionTask.fxml", ReadDirectory.CSS_FILE_START);
     }
 
@@ -38,11 +43,14 @@ public class TimeOverController extends AbstractController {
      * @param e the e
      */
     @FXML
-    void menuAction(ActionEvent e) {
+    void menuAction(ActionEvent e) throws Exception {
+        int levelPos = mainController.getCurrentLevelPosition();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.getCurrentLevel().clearLevel();
+        ArrayList<Level> levels = ReadDirectory.initialize();
+        mainController.setCurrentLevel(levels.get(levelPos));
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
 
