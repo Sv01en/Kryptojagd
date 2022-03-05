@@ -33,7 +33,7 @@ public class TimeOverController extends AbstractController {
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.getCurrentLevel().clearLevel();
         ArrayList<Level> levels = ReadDirectory.initialize();
-        mainController.setCurrentLevel(levels.get(levelPos));
+        mainController.setRestartLevel(levels.get(levelPos));
         mainController.switchWindowWithCSS("DecryptionTask.fxml", ReadDirectory.CSS_FILE_START);
     }
 
@@ -50,7 +50,7 @@ public class TimeOverController extends AbstractController {
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.getCurrentLevel().clearLevel();
         ArrayList<Level> levels = ReadDirectory.initialize();
-        mainController.setCurrentLevel(levels.get(levelPos));
+        mainController.setRestartLevel(levels.get(levelPos));
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
 

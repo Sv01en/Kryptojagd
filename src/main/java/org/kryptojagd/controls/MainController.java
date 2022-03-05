@@ -19,7 +19,10 @@ public class MainController {
 
 	private ArrayList<Level> allLevels;
 
+	private ArrayList<Level> playedLevels = new ArrayList<>();
+
 	private int clearedLevels;
+
 	protected ArrayList<Integer> clearedLevelIndexes = new ArrayList();
 
 	protected boolean multipleChoiceTaskSucceeded;
@@ -41,7 +44,7 @@ public class MainController {
 
 
 	/**
-	 * Constractor of a MainController
+	 * Constructor of a MainController
 	 *
 	 * @param fw            the fw
 	 * @param currentLevel  the current Level, which is played
@@ -54,6 +57,7 @@ public class MainController {
 		this.currentLevelPosition = 0;
 		this.allLevels = allLevels;
 		this.clearedLevels = clearedLevels;
+		this.playedLevels.add(currentLevel);
 		AbstractController.setMainController(this);
 	}
 
@@ -61,16 +65,8 @@ public class MainController {
 	 * Starts the current level
 	 */
 	public void startLevel() {
+		addPlayableLevel(this.currentLevel.getId());
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", ReadDirectory.CSS_FILE_START);
-	}
-
-	/**
-	 * Sets the next level
-	 */
-	public void setNextLevel() {
-		this.currentLevel = allLevels.get(clearedLevels);
-		this.currentLevelPosition++;
-		PointSystem.setCurrentLevel(currentLevelPosition);
 	}
 
 	/**
@@ -79,14 +75,6 @@ public class MainController {
 	 */
 	public Level getCurrentLevel() {
 		return currentLevel;
-	}
-
-	/**
-	 * Switches windows
-	 * @param str Window to switch to
-	 */
-	public void switchWindow(String str) {
-		fw.switchWindow(str);
 	}
 
 	/**
@@ -107,22 +95,6 @@ public class MainController {
 	}
 
 	/**
-	 * Getter for the count of total levels in the game
-	 * @return level count
-	 */
-	public int getAllLevelCount() {
-		return allLevels.size();
-	}
-
-	/**
-	 * Getter for the list of levels
-	 * @return list of levels
-	 */
-	public ArrayList<Level> getAllLevels() {
-		return allLevels;
-	}
-
-	/**
 	 * Getter for the presentationManager
 	 * @return current presentationmanager
 	 */
@@ -135,8 +107,8 @@ public class MainController {
 	 */
 	public void setClearedLevels() {
 		this.clearedLevels++;
-		if (!clearedLevelIndexes.contains(currentLevel.getId())) {
-			clearedLevelIndexes.add(currentLevel.getId());
+		if (!clearedLevelIndexes.contains(getCurrentLevelPosition())) {
+			clearedLevelIndexes.add(getCurrentLevelPosition());
 		}
 	}
 
@@ -162,6 +134,7 @@ public class MainController {
 		PointSystem.setPlayedLevels(id + 1);
 		this.currentLevelPosition = id;
 		this.currentLevel = this.allLevels.get(id);
+		addPlayableLevel(this.currentLevel.getId());
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString()
 				+ ".fxml", ReadDirectory.CSS_FILE_START);
 	}
@@ -181,7 +154,55 @@ public class MainController {
 		LevelSelectorController.unlockAllLevels();
 	}
 
-	public void setCurrentLevel(Level level) {
+	/**
+	 * Sets a new current level by the given position in the list.
+	 * @param position the position in the list of the new level
+	 */
+	public void setCurrentLevel(int position) {
+		this.currentLevel = this.allLevels.get(position);
+	}
+
+	/**
+	 * Sets a new given current level
+	 * @param level given as a new initialize level
+	 */
+	public void setRestartLevel(Level level) {
 		this.currentLevel = level;
+	}
+
+	/**
+	 * Add a new level to the already playable levels.
+	 * @param id given level id
+	 */
+	public void addPlayableLevel(int id) {
+		for (int i = 0; i < this.playedLevels.size(); i++) {
+			if (this.playedLevels.get(i).getId() != id) {
+				this.playedLevels.add(this.currentLevel);
+				System.out.println("Erfolgreich");
+			}
+		}
+	}
+
+	/**
+	 * Checks if the given level id already playable.
+	 * @param id given id of an level
+	 * @return if level is playable.
+	 */
+	public boolean checkPlayable(int id) {
+		for (int i = 0; i < this.playedLevels.size(); i++) {
+			if (this.playedLevels.get(i).getId() == id) {
+				System.out.println("Erfolgreich");
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Resets all levels.
+	 * @param alllevels resets level list.
+	 */
+	public void setAllLevels (ArrayList<Level> alllevels) {
+		this.allLevels = alllevels;
 	}
 }

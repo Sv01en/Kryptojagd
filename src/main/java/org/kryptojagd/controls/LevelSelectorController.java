@@ -12,7 +12,9 @@ import java.util.ArrayList;
 
 /**
  * Controller for the level selector window
- * @author Leah Schlimm
+ *
+ * @author Leah Schlimm, Sven Strasser
+ * @version 1.0
  */
 public class LevelSelectorController extends AbstractController {
 
@@ -30,18 +32,19 @@ public class LevelSelectorController extends AbstractController {
     @FXML
     public void initialize() throws Exception {
         ArrayList<Level> levels = ReadDirectory.initialize();
+        mainController.setAllLevels(levels);
         ArrayList<Button> buttons = new ArrayList<>();
         for (int i = 0; i < levels.size(); i++) {
             Button button = new Button("Level " + (i + 1));
             int finalI = i;
             button.setOnAction(event -> {
                 int countClearedLevels = mainController.getClearedLevels();
-                setMainController(
+                /*setMainController(
                         new MainController(mainController.getPresentationManager(), levels.get(finalI), levels,
-                    countClearedLevels));
+                    countClearedLevels));*/
                 mainController.startLevelByPosition(finalI);
             });
-            if (mainController.clearedLevelIndexes.contains(i - 1) || unlockAllLevels) {
+            if (mainController.checkPlayable(levels.get(i).getId()) || unlockAllLevels) {
                 button.setDisable(false);
             } else {
                 button.setDisable(true);
