@@ -84,7 +84,7 @@ public final class Messages {
         + "das zweite Diagramm für den zweiten Buchstaben usw.\n\n"
         + "3. Um bspw. den ersten Buchstaben zu knacken, kannst du versuchen das erste Diagramm so lange nach links und"
         + " rechts zu schieben, bis sich die\nbeiden Balkendiagramme der Buchstabenhäufigkeiten möglichst ähnlich sind."
-        + "\nDer rote Buchstabe der nun über dem schwarzen Buchstaben steht, ist nun höchstwahrscheinlich der erste "
+        + "\nDer rote Buchstabe der nun über dem schwarzen A steht, ist nun höchstwahrscheinlich der erste "
         + "Buchstabe des Schlüsselwortes,\n falls die richtige Länge gewählt wurde.\n\n"
         + "4. Diesen solltest du dann noch beim Tool an erster Stelle des Schlüsselwortes eintragen, indem du den "
         + "bisherigen Buchstaben markierst und \nden neuen einfügst, um dir den Text Schritt für Schritt unten im Tool "
