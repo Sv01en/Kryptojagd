@@ -4,7 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.kryptojagd.fileprocessing.ReadDirectory;
+import org.kryptojagd.level.Level;
 import org.kryptojagd.level.tasks.Task;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -34,16 +37,18 @@ public class LevelFinished extends AbstractController {
      * @param e
      */
     @FXML
-    void menuAction(ActionEvent e) {
+    void menuAction(ActionEvent e) throws Exception {
         mainController.getCurrentLevel().clearLevel();
         if (mainController.getClearedLevels() == mainController.getCurrentLevelPosition()) {
             mainController.setClearedLevels();
         }
-        mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.cityTaskFinished = false;
+        int levelPos = mainController.getCurrentLevelPosition();
+        ArrayList<Level> levels = ReadDirectory.initialize();
+        mainController.setCurrentLevel(levels.get(levelPos + 1));
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
 
@@ -52,16 +57,18 @@ public class LevelFinished extends AbstractController {
      * @param e
      */
     @FXML
-    void nextLevelAction(ActionEvent e) {
+    void nextLevelAction(ActionEvent e) throws Exception {
         mainController.getCurrentLevel().clearLevel();
         if (mainController.getClearedLevels() == mainController.getCurrentLevelPosition()) {
             mainController.setClearedLevels();
         }
-        mainController.setNextLevel();
         mainController.encryptionTaskSucceeded = false;
         mainController.decryptionTaskSucceeded = false;
         mainController.multipleChoiceTaskSucceeded = false;
         mainController.cityTaskFinished = false;
+        int levelPos = mainController.getCurrentLevelPosition();
+        ArrayList<Level> levels = ReadDirectory.initialize();
+        mainController.setCurrentLevel(levels.get(levelPos + 1));
         mainController.startLevel();
     }
 
