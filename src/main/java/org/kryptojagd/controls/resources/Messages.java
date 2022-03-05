@@ -49,10 +49,9 @@ public final class Messages {
     /**
      * The constant DECRYPTION_QUESTION.
      */
-    public static final String DECRYPTION_QUESTION = "Du weißt, dass die Nachrichten immer mit einem 'Hallo' beginnen,"
-            + " finde zuerst heraus, um welches Verschlüsselungsverfahren es sich handelt."
-            + " Nachdem du das richtige Verfahren ausgewählt hast, entschlüssele die letzten 3 Worte des Textes"
-            + " und sende sie der NIV";
+    public static final String DECRYPTION_QUESTION = "Die Nachrichten beginnt mit 'Hallo'."
+            + " Wähle aus, um welches Verschlüsselungsverfahren es sich handelt und sende dann"
+            + " die letzten 3 Worte des Textes der NIV.";
 
     /**
      * The constant CITY_HELP_TEXT.
