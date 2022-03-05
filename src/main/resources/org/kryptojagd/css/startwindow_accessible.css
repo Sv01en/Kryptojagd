@@ -1,3 +1,8 @@
+.root{
+    -fx-font-size: 11pt;
+    -fx-font-family: "Arial";
+}
+
 #box{
     -fx-background-color: #000000;
 }

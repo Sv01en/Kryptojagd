@@ -16,7 +16,7 @@ public class ReadJson {
 
   private static Gson gson = new Gson();
   private static JSONParser parser = new JSONParser();
-  private static int time = 0;
+  private static int time;
 
   /**
    * Reads the files with the information for a MultipleChoiceTask and creates it.
@@ -87,7 +87,7 @@ try {
     time = Integer.parseInt(convertedObject.get("time").getAsString());
     return time;
 } catch (Exception e) {
-    return 0;
+    return 600;
 }
   }
 }
