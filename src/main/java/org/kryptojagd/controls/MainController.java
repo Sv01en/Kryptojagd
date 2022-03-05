@@ -1,5 +1,6 @@
 package org.kryptojagd.controls;
 
+import org.kryptojagd.controls.levels.LevelHandler;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.pointSystem.PointSystem;
@@ -42,6 +43,8 @@ public class MainController {
 	 */
 	public static final String TASK_FINISHED_FXML = "TaskFinished.fxml";
 
+	LevelHandler levelHandler;
+
 
 	/**
 	 * Constructor of a MainController
@@ -51,14 +54,22 @@ public class MainController {
 	 * @param allLevels     the levels
 	 * @param clearedLevels the cleared levels
 	 */
-	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels) {
+	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels)
+			throws Exception {
 		this.fw = fw;
-		this.currentLevel = currentLevel;
+		//this.currentLevel = currentLevel;
 		this.currentLevelPosition = 0;
 		this.allLevels = allLevels;
 		this.clearedLevels = clearedLevels;
 		this.playedLevels.add(currentLevel);
 		AbstractController.setMainController(this);
+
+		this.levelHandler = new LevelHandler(allLevels);
+		this.currentLevel = this.levelHandler.getLevel(0);
+	}
+
+	public LevelHandler getLevelHandler() {
+		return this.levelHandler;
 	}
 
 	/**
@@ -130,10 +141,10 @@ public class MainController {
 	 * Starts a level by the given position in the list.
 	 * @param id position in the list
 	 */
-	public void startLevelByPosition(int id) {
+	public void startLevelByPosition(int id) throws Exception {
 		PointSystem.setPlayedLevels(id + 1);
 		this.currentLevelPosition = id;
-		this.currentLevel = this.allLevels.get(id);
+		this.currentLevel = this.levelHandler.getLevel(id);
 		addPlayableLevel(this.currentLevel.getId());
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString()
 				+ ".fxml", ReadDirectory.CSS_FILE_START);
@@ -158,8 +169,9 @@ public class MainController {
 	 * Sets a new current level by the given position in the list.
 	 * @param position the position in the list of the new level
 	 */
-	public void setCurrentLevel(int position) {
-		this.currentLevel = this.allLevels.get(position);
+	public void setCurrentLevel(int position) throws Exception {
+		System.out.println("Level erfolreich geändert");
+		this.currentLevel = this.levelHandler.getLevel(position);
 	}
 
 	/**

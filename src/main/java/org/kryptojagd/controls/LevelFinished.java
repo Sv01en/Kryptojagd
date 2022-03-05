@@ -40,18 +40,8 @@ public class LevelFinished extends AbstractController {
      * @param e not used
      */
     @FXML
-    void menuAction(ActionEvent e) {
-        mainController.getCurrentLevel().clearLevel();
-        /*if (mainController.getCurrentLevelPosition() < mainController.getClearedLevels()) {
-            mainController.setClearedLevels();
-        }*/
-        mainController.encryptionTaskSucceeded = false;
-        mainController.decryptionTaskSucceeded = false;
-        mainController.multipleChoiceTaskSucceeded = false;
-        mainController.cityTaskFinished = false;
-        int levelPos = mainController.getCurrentLevelPosition();
-        mainController.setCurrentLevel(levelPos + 1);
-        mainController.addPlayableLevel(mainController.getCurrentLevel().getId());
+    void menuAction(ActionEvent e) throws Exception {
+        mainController.setCurrentLevel(mainController.getLevelHandler().getLevelPos() + 1);
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
 
@@ -60,18 +50,8 @@ public class LevelFinished extends AbstractController {
      * @param e not used
      */
     @FXML
-    void nextLevelAction(ActionEvent e) {
-        mainController.getCurrentLevel().clearLevel();
-        /*if (mainController.getCurrentLevelPosition() < mainController.getClearedLevels()) {
-            mainController.setClearedLevels();
-        }*/
-        mainController.encryptionTaskSucceeded = false;
-        mainController.decryptionTaskSucceeded = false;
-        mainController.multipleChoiceTaskSucceeded = false;
-        mainController.cityTaskFinished = false;
-        int levelPos = mainController.getCurrentLevelPosition();
-        mainController.setCurrentLevel(levelPos + 1);
-        mainController.addPlayableLevel(mainController.getCurrentLevel().getId());
+    void nextLevelAction(ActionEvent e) throws Exception {
+        mainController.setCurrentLevel(mainController.getLevelHandler().getLevelPos() + 1);
         mainController.startLevel();
     }
 

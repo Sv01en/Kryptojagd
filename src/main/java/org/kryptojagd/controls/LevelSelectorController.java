@@ -31,20 +31,19 @@ public class LevelSelectorController extends AbstractController {
      */
     @FXML
     public void initialize() throws Exception {
-        ArrayList<Level> levels = ReadDirectory.initialize();
-        mainController.setAllLevels(levels);
+        ArrayList<Level> levels = mainController.getLevelHandler().getAllLevels();
         ArrayList<Button> buttons = new ArrayList<>();
         for (int i = 0; i < levels.size(); i++) {
             Button button = new Button("Level " + (i + 1));
             int finalI = i;
             button.setOnAction(event -> {
-                int countClearedLevels = mainController.getClearedLevels();
-                /*setMainController(
-                        new MainController(mainController.getPresentationManager(), levels.get(finalI), levels,
-                    countClearedLevels));*/
-                mainController.startLevelByPosition(finalI);
+                try {
+                    mainController.startLevelByPosition(finalI);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             });
-            if (mainController.checkPlayable(levels.get(i).getId()) || unlockAllLevels) {
+            if (mainController.getLevelHandler().checkPlayable(levels.get(i)) || unlockAllLevels) {
                 button.setDisable(false);
             } else {
                 button.setDisable(true);
