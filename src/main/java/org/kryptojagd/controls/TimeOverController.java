@@ -35,6 +35,7 @@ public class TimeOverController extends AbstractController {
         mainController.getCurrentLevel().clearLevel();
         ArrayList<Level> levels = ReadDirectory.initialize();
         mainController.setRestartLevel(levels.get(levelPos));
+        mainController.getCurrentLevel().setFirstTryTimer(false);
         mainController.switchWindowWithCSS("DecryptionTask.fxml", ReadDirectory.CSS_FILE_START);
     }
 
