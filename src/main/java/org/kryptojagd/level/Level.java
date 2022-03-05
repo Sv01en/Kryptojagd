@@ -1,5 +1,6 @@
 package org.kryptojagd.level;
 
+import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.encryptionmethods.*;
 import org.kryptojagd.level.countdown.CountdownTimer;
@@ -44,6 +45,11 @@ public class Level {
 
 	private boolean firstTryTimer = true;
 
+	/**
+	 * Sets first try timer.
+	 *
+	 * @param firstTryTimer the first try timer
+	 */
 	public void setFirstTryTimer(boolean firstTryTimer) {
 		this.firstTryTimer = firstTryTimer;
 	}
@@ -241,6 +247,7 @@ public class Level {
 				encryption = new Vigenere();
 				break;
 			case("Beaufort"):
+				MainController.setBeaufortDecryption(true);
 				encryption = new Beaufort();
 				break;
 			default:
