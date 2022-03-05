@@ -70,6 +70,11 @@ public class MainController {
 		this.currentLevel = this.levelHandler.getLevel(0);
 	}
 
+	/**
+	 * Gets level handler.
+	 *
+	 * @return the level handler
+	 */
 	public LevelHandler getLevelHandler() {
 		return this.levelHandler;
 	}
@@ -79,6 +84,7 @@ public class MainController {
 	 */
 	public void startLevel() {
 		addPlayableLevel(this.currentLevel.getId());
+		decryptionTaskSucceeded = false;
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", ReadDirectory.CSS_FILE_START);
 	}
 
@@ -218,6 +224,7 @@ public class MainController {
 		}
 		return false;
 	}
+
 
 	/**
 	 * Resets all levels.
