@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  */
 public class CryptoToolController extends AbstractController {
 
-    private static boolean systemHacked = false;
+  private static boolean systemHacked = false;
 
   @FXML
   private TextArea textArea;

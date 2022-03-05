@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.kryptojagd.cryptotools.FrequencyAnalysis;
+import org.kryptojagd.encryptionmethods.Beaufort;
 import org.kryptojagd.encryptionmethods.Caesar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +40,7 @@ import org.kryptojagd.presentation.PresentationManager;
 /**
  * Controller of the frequency analysis of the Vigenere crypto tool.
  * 
- * @author Michail Petermann
+ * @author Michail Petermann, Bartosz Treyde
  *
  */
 public class FrequencyAnalysisVigenereController {
@@ -260,7 +261,11 @@ public class FrequencyAnalysisVigenereController {
    */
   private void updateDecodedText(int i) {
 	String s = ((TextField) hboxKey.getChildren().get(i)).getText();
+	if(!MainController.isBeaufortDecryption){
 	labelDecodedText.setText(decodeNthText(i, s));
+	} else {
+		labelDecodedText.setText(decodeNthTextBeaufort(i, s));
+	}
   }
 
   /**
@@ -291,6 +296,29 @@ public class FrequencyAnalysisVigenereController {
    }
    return decodedText;
 }
+	private String decodeNthTextBeaufort(int n, String s) {
+		Beaufort beaufort = new Beaufort();
+		final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
+		String key = "" + ALPHABET[s.charAt(0) - 'A'];
+		String decodedText = labelDecodedText.getText();
+		Pattern p = Pattern.compile("[A-Z]");
+		int count = 0;
+		for (int i = 0; i < decodedText.length(); i++) {
+			Matcher m = p.matcher(decodedText.subSequence(i, i+1));
+			if (m.matches()) {
+				if (count == n) {
+					decodedText = decodedText.substring(0, i)
+							+ beaufort.decode(text.substring(i, i+1), key)
+							+ decodedText.substring(i+1);
+				}
+				count++;
+				if (count == lengthCodeComboBox.getValue()) {
+					count = 0;
+				}
+			}
+		}
+		return decodedText;
+	}
     
   /**
    * Shifts columns of the i-th bar chart to to the right. 

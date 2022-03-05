@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * The class controls every kind of controller and puts them together
  *
- * @author Michail Petermann, Sonja Kuklok, Sven Strasser, Leah Schlimm
+ * @author Michail Petermann, Sonja Kuklok, Sven Strasser, Leah Schlimm, Bartosz Treyde
  */
 public class MainController {
 
@@ -35,6 +35,8 @@ public class MainController {
 	protected boolean encryptionTaskSucceeded;
 
 	protected boolean cityTaskFinished;
+
+	protected static boolean isBeaufortDecryption = false;
 
 	private int currentLevelPosition;
 
@@ -122,7 +124,14 @@ public class MainController {
 			clearedLevelIndexes.add(getCurrentLevelPosition());
 		}
 	}
-
+	/**
+	 * Sets beaufort decryption.
+	 *
+	 * @param beaufortDecryption the beaufort decryption
+	 */
+	public static void setBeaufortDecryption(boolean beaufortDecryption) {
+		isBeaufortDecryption = beaufortDecryption;
+	}
 	/**
 	 * Toggles dark mode on if its off and vice versa.
 	 */
@@ -214,7 +223,7 @@ public class MainController {
 	 * Resets all levels.
 	 * @param alllevels resets level list.
 	 */
-	public void setAllLevels (ArrayList<Level> alllevels) {
+	public void setAllLevels(ArrayList<Level> alllevels) {
 		this.allLevels = alllevels;
 	}
 }
