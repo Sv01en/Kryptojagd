@@ -12,13 +12,13 @@
    <center>
       <VBox fx:id="vBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="question" prefHeight="200.0" prefWidth="1050.0" text="Label" />
-            <Label fx:id="encryptedPuzzleText" prefHeight="219.0" prefWidth="1050.0" text="Label" />
+            <Label fx:id="question" prefHeight="250.0" prefWidth="1100.0" text="Label" />
+            <Label fx:id="encryptedPuzzleText" prefHeight="400.0" prefWidth="1100.0" text="Label" />
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button fx:id="procedure1" mnemonicParsing="false" onAction="#clickProcedure1" prefHeight="24.0" prefWidth="300.0" text="Verfahren 1" />
-                  <Button fx:id="procedure2" mnemonicParsing="false" onAction="#clickProcedure2" prefHeight="24.0" prefWidth="300.0" text="Verfahren 2" />
-                  <Button fx:id="procedure3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickProcedure3" prefHeight="24.0" prefWidth="300.0" text="Verfahren 3" />
+                  <Button fx:id="procedure1" mnemonicParsing="false" onAction="#clickProcedure1" prefHeight="24.0" prefWidth="340.0" text="Verfahren 1" />
+                  <Button fx:id="procedure2" mnemonicParsing="false" onAction="#clickProcedure2" prefHeight="24.0" prefWidth="340.0" text="Verfahren 2" />
+                  <Button fx:id="procedure3" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#clickProcedure3" prefHeight="24.0" prefWidth="340.0" text="Verfahren 3" />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
