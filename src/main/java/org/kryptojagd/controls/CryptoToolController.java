@@ -14,10 +14,12 @@ import javafx.stage.Stage;
 /**
  * Controller of the crypto tool.
  * 
- * @author Michail Petermann
+ * @author Michail Petermann, Bartosz Treyde
  *
  */
 public class CryptoToolController extends AbstractController {
+
+    private static boolean systemHacked = false;
 
   @FXML
   private TextArea textArea;
@@ -75,6 +77,7 @@ public class CryptoToolController extends AbstractController {
       messageLabel.setText("Gib einen Text ein.");
       return false;
     } else if (text.contentEquals("HACK THE SYSTEM")) {
+        systemHacked = true;
       messageLabel.setText("Du hast alle Level freigeschaltet!");
       mainController.unlockAllLevels();
       return false;
@@ -83,4 +86,12 @@ public class CryptoToolController extends AbstractController {
     }
   }
 
+    /**
+     * Is system hacked boolean.
+     *
+     * @return if system is hacked.
+     */
+    public static boolean isSystemHacked() {
+        return systemHacked;
+    }
 }

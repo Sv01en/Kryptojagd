@@ -11,6 +11,7 @@ import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.Task;
 
@@ -71,7 +72,11 @@ public class DecryptionController extends AbstractController {
     @FXML
     public void initialize() {
         updateTimer(timer);
-        score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
+        if (!CryptoToolController.isSystemHacked()) {
+            score.setText("Punktestand: " + PointSystem.getScore());
+        } else {
+            score.setManaged(false);
+        }
         if (!task.getTaskCompleted()) {
             level.startCountdown();
             question.setText(Messages.DECRYPTION_QUESTION);

@@ -71,7 +71,11 @@ public class MultipleChoiceController extends AbstractController {
         answer1.setText("A");
         answer2.setText("B");
         answer3.setText("C");
-        score.setText("Punktestand: " + PointSystem.getScore());
+        if (!CryptoToolController.isSystemHacked()) {
+            score.setText("Punktestand: " + PointSystem.getScore());
+        } else {
+            score.setManaged(false);
+        }
         this.countdownTimer = new CountdownTimer(level.getTimeInSec());
         updateTimer(timer);
     }

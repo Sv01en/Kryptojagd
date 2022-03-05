@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.level.tasks.Task;
 
 import java.util.ArrayList;
@@ -25,9 +26,13 @@ public class LevelFinished extends AbstractController {
 
     @FXML
     public void initialize() {
-        score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
-        text.setText("Super, du hast alle Aufgaben von diesem Level gelöst!\nMöchtest du das " +
-                "nächste Level spielen oder zum Menü zurück?");
+        if (!CryptoToolController.isSystemHacked()) {
+            score.setText("Punktestand: " + PointSystem.getScore());
+        } else {
+            score.setManaged(false);
+        }
+        text.setText("Super, du hast alle Aufgaben von diesem Level gelöst!\nMöchtest du das "
+                + "nächste Level spielen oder zum Menü zurück?");
     }
 
     /**

@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.Task;
 
@@ -47,7 +48,11 @@ public class EncryptionController extends AbstractController {
      */
     @FXML
     public void initialize() {
-        score.setText("Punktestand: " + Task.POINT_SYSTEM.getScore());
+        if (!CryptoToolController.isSystemHacked()) {
+            score.setText("Punktestand: " + PointSystem.getScore());
+        } else {
+            score.setManaged(false);
+        }
         label1.setText(task.getTaskText());
         label2.setText(task.getText());
         label3.setVisible(false);
