@@ -161,6 +161,7 @@ public class MainController {
 		this.currentLevelPosition = id;
 		this.currentLevel = this.levelHandler.getLevel(id);
 		addPlayableLevel(this.currentLevel.getId());
+		decryptionTaskSucceeded = false;
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString()
 				+ ".fxml", ReadDirectory.CSS_FILE_START);
 	}

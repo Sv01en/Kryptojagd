@@ -30,6 +30,7 @@ public class DecryptionTask implements Task {
 	private String name = "DecryptionTask";
 	private final int pointsDecryptionTask = 25;
 	private final int pointsEncryptionType = 5;
+	private  boolean receivedPoints;
 
 	/**
 	 * Contructor of a decryption task
@@ -61,6 +62,7 @@ public class DecryptionTask implements Task {
 		this.timeInSec = timeInSec;
 		this.timePenalty = timePenalty;
 		this.helpText = helpText;
+		receivedPoints = false;
 	}
 
 
@@ -187,8 +189,9 @@ public class DecryptionTask implements Task {
 	public boolean proveAnswer(String answer) {
 		String decrypted = lastWordsOfPlaintext(LAST_WORDS_NUMBER);
 		this.taskCompleted = answer.toUpperCase().equals(decrypted.toUpperCase());
-		if (taskCompleted) {
+		if (taskCompleted && !receivedPoints) {
 			POINT_SYSTEM.setScore(PointSystem.getScore() + pointsDecryptionTask);
+			receivedPoints = true;
 		}
 		return taskCompleted;
 	}

@@ -65,6 +65,8 @@ public class EncryptionTask implements Task {
 
     private final int pointsEncryptionTask = 25;
 
+    private  boolean receivedPoints;
+
     /**
      * Creates a {@link EncryptionTask}
      *
@@ -86,6 +88,7 @@ public class EncryptionTask implements Task {
         this.taskCompleted = false;
         this.mistakeMsg = "Standardfehler";
         this.helpText = helpText;
+        receivedPoints = false;
     }
 
     /**
@@ -199,7 +202,9 @@ public class EncryptionTask implements Task {
         this.taskCompleted = upperAnswer.equals(realSolutionString);
         this.hammingDistanceValue = HammingDistance.calculateHammingDistance(realSolutionString, upperAnswer);
         if (upperAnswer.equals(realSolutionString)) {
-            POINT_SYSTEM.setScore(PointSystem.getScore() + pointsEncryptionTask);
+            if (!receivedPoints) {
+                POINT_SYSTEM.setScore(PointSystem.getScore() + pointsEncryptionTask);
+            }
             return true;
         } else if (studentSolution.length != realSolution.length) {
             this.mistakeMsg = WRONGCOUNTLETTER;
