@@ -1,6 +1,6 @@
 {
     "question": "Was ist das Besondere an der Beaufort-Verschlüsselung gegenüber der Vigenère-Verschlüsselung?",
-    "answerOptions": ["Es gibt kein Unterschied, sie sind genau gleich.", "Abwechselnd den Schlüssel vorwärts und rückwärts benutzen.", "Die verwendeten Alphabete werden rückwärts eingesetzt."],
+    "answerOptions": ["Es gibt keinen Unterschied, sie sind genau gleich.", "Abwechselnd den Schlüssel vorwärts und rückwärts benutzen.", "Die verwendeten Alphabete werden rückwärts eingesetzt."],
     "correctAnswer": "Die verwendeten Alphabete werden rückwärts eingesetzt.",
     "helpText": "Wie soll ich hier vorgehen?\n1. Überlege dir welche der 3 genannten Antworten hier richtig ist.\n2. Klicke dann die entsprechende Antwort an. Falls sie nicht korrekt ist, wiederhole Schritt 1 und 2 mithilfe des Ausschlussverfahrens.\n\nDas Punktesystem:\nUnten kannst du deinen aktuellen Punktestand einsehen, für jede richtige Entschlüsselungsaufgabe bekommst du 50, für jede richtige Multiple Choice Aufgabe 10 und für jede richtige Verschlüsselungsaufgabe 50 Punkte. Nach Abschluss jedes Levels wird dir die Zeit auf deinen Punktestand dazu addiert, wenn der Timer nicht bereits in diesem Level einmal abgelaufen ist.\n\nDer Menü-Knopf:\nDu kannst zurück zum Menü gehen, wenn du …\n… in ein anderes Level (sofern es freigeschaltet ist) springen möchtest.\n … in den Einstellungen den Dark Mode aktivieren/deaktivieren möchtest.\n… das Kryptotool für die Caesar- oder Vigenère Verschlüsselung benutzen möchtest.\n"
 }
