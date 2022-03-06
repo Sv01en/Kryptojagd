@@ -26,6 +26,11 @@ public abstract class Encryption {
      */
     public abstract String decode(String text, String key);
 
+    /**
+     * Sets key.
+     *
+     * @param key the key
+     */
     public void setKey(String key) {
         this.key = key;
     }

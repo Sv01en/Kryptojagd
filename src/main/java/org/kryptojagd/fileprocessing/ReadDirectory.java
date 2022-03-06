@@ -40,7 +40,7 @@ public class ReadDirectory {
    */
   public static ArrayList<Level> initialize() throws Exception {
 
-  ArrayList<Level> allLevels = new ArrayList<Level>();
+  ArrayList<Level> allLevels = new ArrayList<>();
     
   boolean[] check = {true, true, true};
     
@@ -48,7 +48,7 @@ public class ReadDirectory {
 	
 	DecryptionTask decryptionTask = null;
 	EncryptionTask encryptionTask = null;
-	LinkedList<MultipleChoiceTask> multipleChoiceTasks = new LinkedList<MultipleChoiceTask>(); 
+	LinkedList<MultipleChoiceTask> multipleChoiceTasks = new LinkedList<>();
 	
 	for (String t : TASKS) {
 		
@@ -60,14 +60,14 @@ public class ReadDirectory {
     				InputStream configStream = ReadDirectory.class.getResourceAsStream(p);
     			    BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, "UTF-8"));
     			    
-    			    String content = "";
+    			    StringBuilder content = new StringBuilder();
     			    String line = configReader.readLine();
     			  	while (line != null) {
-    			  		content += line + "\n";
+    			  		content.append(line).append("\n");
     			  		line = configReader.readLine();
     			  	}
     			  	if (t.contains("question")) {
-    			  		multipleChoiceTasks.add(ReadJson.createMultipleChoiceTask(content));
+    			  		multipleChoiceTasks.add(ReadJson.createMultipleChoiceTask(content.toString()));
     				} 
     			    
     			} catch (Exception e) {
@@ -78,20 +78,20 @@ public class ReadDirectory {
     			}
     		}
 			
-		} else if(t.equals("time")) {
+		} else if (t.equals("time")) {
 			String p = PREFIX + LEVEL + i + "/" + t + ".json";
 			try {
 				InputStream configStream = ReadDirectory.class.getResourceAsStream(p);
 			    BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, "UTF-8"));
 			    
-			    String content = "";
+			    StringBuilder content = new StringBuilder();
 			    String line = configReader.readLine();
 			  	while (line != null) {
-			  		content += line + "\n";
+			  		content.append(line).append("\n");
 			  		line = configReader.readLine();
 			  	}
-			  	time = ReadJson.readTime(content);
-			} catch(Exception e) {
+			  	time = ReadJson.readTime(content.toString());
+			} catch (Exception e) {
 				time = 600;
 			}
 		} else {
@@ -135,7 +135,7 @@ public class ReadDirectory {
 	}
 }
 
-Collections.sort(allLevels, new LevelComparator());
+allLevels.sort(new LevelComparator());
 return allLevels;
   }
 }

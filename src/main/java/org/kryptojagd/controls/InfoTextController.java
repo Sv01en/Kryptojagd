@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.kryptojagd.controls.resources.Messages;
-import org.kryptojagd.level.tasks.Task;
 
 /**
  * @author Leah Schlimm, Bartosz Treyde

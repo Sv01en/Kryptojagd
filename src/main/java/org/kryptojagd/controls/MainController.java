@@ -22,17 +22,19 @@ public class MainController {
 
 	private final int clearedLevels;
 
-	public static boolean isBeaufortDecryption = false;
-
 	private final int currentLevelPosition;
+
+	LevelHandler levelHandler;
+
+	/**
+	 * The constant isBeaufortDecryption.
+	 */
+	public static boolean isBeaufortDecryption = false;
 
 	/**
 	 * The constant TASK_FINISHED_FXML.
 	 */
 	public static final String TASK_FINISHED_FXML = "TaskFinished.fxml";
-
-	LevelHandler levelHandler;
-
 
 	/**
 	 * Constructor of a MainController
@@ -53,6 +55,11 @@ public class MainController {
 		this.currentLevel = this.levelHandler.getLevel(0);
 	}
 
+	/**
+	 * Gets level handler.
+	 *
+	 * @return the level handler
+	 */
 	public LevelHandler getLevelHandler() {
 		return this.levelHandler;
 	}
@@ -67,6 +74,11 @@ public class MainController {
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", ReadDirectory.CSS_FILE_START);
 	}
 
+	/**
+	 * Add playable.
+	 *
+	 * @param level the level
+	 */
 	public void addPlayable(Level level) {
 		if (!this.playedLevels.contains(level)) {
 			this.playedLevels.add(level);

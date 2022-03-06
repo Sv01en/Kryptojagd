@@ -28,6 +28,11 @@ public class CryptoToolController extends AbstractController {
   @FXML
   private Label messageLabel;
 
+  /**
+   * Main menu.
+   *
+   * @param event the event
+   */
   @FXML
   void mainMenu(ActionEvent event) {
     mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);

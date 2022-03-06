@@ -180,10 +180,14 @@ public class EncryptionTask implements Task {
 
     @Override
     public boolean proveAnswer(String answer) {
+        if (encryptionType.equals("Beaufort")) {
+            Beaufort.setIsEncryptionTask(true);
+        }
         encryptionMethod.setKey(key);
         char[] origMsg = new char[this.text.length()];
         char[] studentSolution = new char[answer.length()];
-        String realSolutionString = this.encryptionMethod.encode(this.text);
+        //String realSolutionString = this.encryptionMethod.encode(this.text);
+        String realSolutionString = this.encryptionMethod.decode(this.text, key);
         char[] realSolution = new char[realSolutionString.length()];
 
         for (int i = 0; i < this.text.length(); i++) {

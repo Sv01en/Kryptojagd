@@ -120,7 +120,7 @@ public class BeaufortTest {
      */
     @Test
     void testTextValidKeyDecode(){
-        assertEquals("HALLO WELT!", b.decode("SYMLH DUMD!", "ABCDE"));
+        assertEquals("HALLO WELT!", b.decode("TBRSQ EXRK!", "ABCDE"));
     }
 
     /**
@@ -128,7 +128,7 @@ public class BeaufortTest {
      */
     @Test
     void testTextValidKeyDecodeUppercase(){
-        assertEquals("HALLO WELT!", b.decode("Symlh Dumd!", "ABCDE"));
+        assertEquals("HALLO WELT!", b.decode("Tbrsq Exrk!", "ABCDE"));
     }
 
     /**
@@ -138,6 +138,9 @@ public class BeaufortTest {
     void testTextUnvalidKeyDecode(){
         assertEquals("SYMLH CTLC!", b.decode("Symlh Ctlc!", "ABC%"));
     }
+
+    @Test
+    void testSomething(){assertEquals("Xuhyjza Pbozwn-Lkmk gyjrylor".toUpperCase(), b.decode("Fuenfte Floppy-Disk gefunden","Colloseum"));}
 
     /**
      * Tests whether the decryption method with "Symlh Ctlc!" and returns the encrypted input in uppercase to the empty key string
@@ -152,7 +155,7 @@ public class BeaufortTest {
      */
     @Test
     void testTextValidKeyDecodeNoUppercaseKey() {
-        assertEquals("HALLO WELT!", b.decode("Symll Ctlg!", "abCd"));
+        assertEquals("HALLO WELT!", b.decode("Tbrsm Fysh!", "abCd"));
     }
 
     /**
@@ -160,7 +163,7 @@ public class BeaufortTest {
      */
     @Test
     void testTextValidKeyDecodeLowercaseKey() {
-        assertEquals("HALLO WELT!", b.decode("Symll Ctlg!", "abcd"));
+        assertEquals("HALLO WELT!", b.decode("Tbrsm Fysh!", "abcd"));
     }
 
     /**
@@ -168,7 +171,7 @@ public class BeaufortTest {
      */
     @Test
     void testTextValidKeyDecodeOverflow(){
-        assertEquals("HALLO WELT!", b.decode("ZVWVS ZDVN!", "TEST"));
+        assertEquals("HALLO WELT!", b.decode("MEHIF IOIA!", "TEST"));
     }
 
 

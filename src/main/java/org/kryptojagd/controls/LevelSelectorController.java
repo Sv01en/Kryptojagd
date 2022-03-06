@@ -36,8 +36,8 @@ public class LevelSelectorController extends AbstractController {
         System.out.println("Level neu initialisiert!");
         ArrayList<Level> levels = ReadDirectory.initialize();
         ArrayList<Level> playedLevels = mainController.getLevelHandler().getPlayedLevels();
-        for (int i = 0; i < playedLevels.size(); i++) {
-            System.out.println(playedLevels.get(i).getId());
+        for (Level playedLevel : playedLevels) {
+            System.out.println(playedLevel.getId());
         }
         ArrayList<Button> buttons = new ArrayList<>();
         for (int i = 0; i < levels.size(); i++) {
@@ -48,7 +48,8 @@ public class LevelSelectorController extends AbstractController {
                     int countClearedLevels = mainController.getClearedLevels();
                     LevelHandler levelHandler = new LevelHandler(levels);
                     setMainController(
-                            new MainController(mainController.getPresentationManager(), levels.get(finalI), levelHandler,
+                            new MainController(mainController.getPresentationManager(), levels.get(finalI),
+                                    levelHandler,
                                     countClearedLevels));
                     mainController.getLevelHandler().setPlayedLevels(playedLevels);
                     mainController.startLevelByPosition(finalI);
@@ -57,12 +58,12 @@ public class LevelSelectorController extends AbstractController {
                 }
             });
             boolean isPlayable = false;
-            for (int j = 0; j < playedLevels.size(); j++) {
-                if (playedLevels.get(j).getId() == levels.get(i).getId()) {
+            for (Level playedLevel : playedLevels) {
+                if (playedLevel.getId() == levels.get(i).getId()) {
                     isPlayable = true;
                 }
             }
-            if ( unlockAllLevels) {
+            if (unlockAllLevels) {
                 button.setDisable(false);
             } else if (isPlayable) {
                 button.setDisable(false);
@@ -78,8 +79,8 @@ public class LevelSelectorController extends AbstractController {
         }
         VBox vbox = new VBox(10);
         vbox.setAlignment(Pos.CENTER);
-        for (int i = 0; i < buttons.size(); i++) {
-            vbox.getChildren().add(buttons.get(i));
+        for (Button button : buttons) {
+            vbox.getChildren().add(button);
         }
 
         borderBox.setCenter(vbox);
@@ -93,7 +94,10 @@ public class LevelSelectorController extends AbstractController {
     void clickBack(ActionEvent event) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
-    
+
+    /**
+     * Unlock all levels.
+     */
     static void unlockAllLevels() {
     	unlockAllLevels = true;
     }

@@ -1,12 +1,8 @@
 package org.kryptojagd.controls;
 
-import java.io.IOException;
-
-import org.kryptojagd.cryptotools.CryptoTool;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 
 /**
@@ -51,7 +47,12 @@ public class StartWindowController extends AbstractController {
     public void clickLevelSelector(ActionEvent event) {
         mainController.switchWindowWithCSS("LevelSelector.fxml", ReadDirectory.CSS_FILE_START);
     }
-    
+
+    /**
+     * Click crypto tool.
+     *
+     * @param event the event
+     */
     @FXML
     void clickCryptoTool(ActionEvent event) {
         mainController.beaufortEncryption(false);

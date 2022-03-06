@@ -33,19 +33,19 @@ public class DecryptionController extends AbstractController {
      * The Question.
      */
     @FXML
-    public Label question;
+    private Label question;
 
     /**
      * The Encrypted puzzle text.
      */
     @FXML
-    public Label encryptedPuzzleText;
+    private Label encryptedPuzzleText;
 
     /**
      * The Text field.
      */
     @FXML
-    public TextField textField;
+    private TextField textField;
 
     @FXML
     private Label timer = new Label();
@@ -60,7 +60,7 @@ public class DecryptionController extends AbstractController {
     private Button procedure3;
 
     @FXML
-    private Button Cryptotool;
+    private Button cryptoTool;
 
     @FXML
     private Button button1;
@@ -89,7 +89,7 @@ public class DecryptionController extends AbstractController {
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
 
-            Cryptotool.setDisable(true);
+            cryptoTool.setDisable(true);
 
             button1.setDisable(true);
 
@@ -100,7 +100,7 @@ public class DecryptionController extends AbstractController {
                 button1.setDisable(false);
 
                 if (level.getId() >= 1) {
-                    Cryptotool.setDisable(false);
+                    cryptoTool.setDisable(false);
                 }
             }
         }

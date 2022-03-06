@@ -36,7 +36,7 @@ public class FrequencyAnalysisCaesarController {
   private static LinkedHashMap<String, Double> textLetterFrequency;
   private static LinkedHashMap<String, Double> germanLetterFrequency = 
     		FrequencyAnalysis.germanLetterFrequency();
-  private BarChart<String,Number> barChart;
+  private BarChart<String, Number> barChart;
   private int positionBarChartX = 14;
   private int positionBarChartY = 130;
   private int widthBarChart = 1000;
@@ -80,8 +80,8 @@ public class FrequencyAnalysisCaesarController {
     * @param right if true, shifts to right, else to the left
     */
   private void shift(boolean right) {
-    ArrayList<String> listString = new ArrayList<String>(textLetterFrequency.keySet());
-    ArrayList<Double> listDouble = new ArrayList<Double>(textLetterFrequency.values());
+    ArrayList<String> listString = new ArrayList<>(textLetterFrequency.keySet());
+    ArrayList<Double> listDouble = new ArrayList<>(textLetterFrequency.values());
     	
     if (right) {
       Collections.rotate(listString, 1);
@@ -90,7 +90,7 @@ public class FrequencyAnalysisCaesarController {
       Collections.rotate(listString, -1);
       Collections.rotate(listDouble, -1);
     }
-    textLetterFrequency = new LinkedHashMap<String, Double>();
+    textLetterFrequency = new LinkedHashMap<>();
     
     for (int i = 0; i < listString.size(); i++) {
       textLetterFrequency.put(listString.get(i), listDouble.get(i));
