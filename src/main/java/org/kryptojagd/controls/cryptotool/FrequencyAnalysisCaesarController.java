@@ -1,4 +1,4 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.cryptotool;
 
 
 import java.util.ArrayList;
@@ -10,7 +10,6 @@ import org.kryptojagd.cryptotools.FrequencyAnalysis;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;

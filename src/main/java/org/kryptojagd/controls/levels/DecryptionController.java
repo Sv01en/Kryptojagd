@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.kryptojagd.controls.AbstractController;
-import org.kryptojagd.controls.CryptoToolController;
+import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.cryptotools.CryptoTool;

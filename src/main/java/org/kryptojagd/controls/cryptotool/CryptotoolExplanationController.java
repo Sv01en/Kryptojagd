@@ -1,4 +1,4 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.cryptotool;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

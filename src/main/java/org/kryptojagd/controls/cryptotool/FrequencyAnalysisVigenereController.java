@@ -1,4 +1,4 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.cryptotool;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.kryptojagd.controls.MainController;
 import org.kryptojagd.cryptotools.FrequencyAnalysis;
 import org.kryptojagd.encryptionmethods.Beaufort;
 import org.kryptojagd.encryptionmethods.Caesar;

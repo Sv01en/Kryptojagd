@@ -24,7 +24,7 @@ public class MainController {
 
 	protected boolean cityTaskFinished;
 
-	protected static boolean isBeaufortDecryption = false;
+	public static boolean isBeaufortDecryption = false;
 
 	private final int currentLevelPosition;
 

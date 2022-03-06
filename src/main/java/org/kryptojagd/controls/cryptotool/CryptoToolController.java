@@ -1,7 +1,8 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.cryptotool;
 
 import java.io.IOException;
 
+import org.kryptojagd.controls.AbstractController;
 import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 

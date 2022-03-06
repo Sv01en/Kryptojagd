@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.kryptojagd.controls.AbstractController;
-import org.kryptojagd.controls.CryptoToolController;
+import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.fileprocessing.ReadDirectory;
@@ -14,7 +14,6 @@ import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
-import org.kryptojagd.level.tasks.Task;
 
 /**
  * The class controls a window of a multiple choice task.
