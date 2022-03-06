@@ -60,7 +60,7 @@ public class DecryptionController extends AbstractController {
     private Button procedure3;
 
     @FXML
-    private Button cryptoTool;
+    private Button Cryptotool;
 
     @FXML
     private Button button1;
@@ -89,7 +89,7 @@ public class DecryptionController extends AbstractController {
             procedure2.setText(possibleChoice[1]);
             procedure3.setText(possibleChoice[2]);
 
-            cryptoTool.setDisable(true);
+            Cryptotool.setDisable(true);
 
             button1.setDisable(true);
 
@@ -100,7 +100,7 @@ public class DecryptionController extends AbstractController {
                 button1.setDisable(false);
 
                 if (level.getId() >= 1) {
-                    cryptoTool.setDisable(false);
+                    Cryptotool.setDisable(false);
                 }
             }
         }
