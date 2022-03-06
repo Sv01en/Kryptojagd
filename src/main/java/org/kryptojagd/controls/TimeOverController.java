@@ -29,9 +29,6 @@ public class TimeOverController extends AbstractController {
     @FXML
     void restartAction(ActionEvent e) throws Exception {
         int levelPos = mainController.getCurrentLevelPosition();
-        mainController.encryptionTaskSucceeded = false;
-        mainController.decryptionTaskSucceeded = false;
-        mainController.multipleChoiceTaskSucceeded = false;
         mainController.getCurrentLevel().clearLevel();
         ArrayList<Level> levels = ReadDirectory.initialize();
         mainController.setRestartLevel(levels.get(levelPos));
@@ -47,9 +44,6 @@ public class TimeOverController extends AbstractController {
     @FXML
     void menuAction(ActionEvent e) throws Exception {
         int levelPos = mainController.getCurrentLevelPosition();
-        mainController.encryptionTaskSucceeded = false;
-        mainController.decryptionTaskSucceeded = false;
-        mainController.multipleChoiceTaskSucceeded = false;
         mainController.getCurrentLevel().clearLevel();
         ArrayList<Level> levels = ReadDirectory.initialize();
         mainController.setRestartLevel(levels.get(levelPos));

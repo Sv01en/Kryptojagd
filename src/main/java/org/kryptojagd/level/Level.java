@@ -229,9 +229,8 @@ public class Level {
 	 * bad feedback, if the answer is wrong
 	 *
 	 * @param answer answer to check
-	 * @return true if the answer is correct else false
 	 */
-	public boolean proveEncryptionType(String answer) {
+	public void proveEncryptionType(String answer) {
 		if (!decryptionTask.proveEncryptionType(answer)) {
 			countdownTimer.reduceTimer(timePenalty);
 			feedback = Messages.STANDARD_FEEDBACK_BAD;
@@ -239,7 +238,6 @@ public class Level {
 			feedback = Messages.STANDARD_FEEDBACK_GOOD;
 		}
 		encryptionTypeSucceeded = decryptionTask.proveEncryptionType(answer);
-		return encryptionTypeSucceeded;
 	}
 
 	/**
@@ -313,6 +311,7 @@ public class Level {
 	public void clearLevel() {
 		//this.currentTime = this.timeInSec;
 		//this.countdownTimer.cancelTimerTask();
+		this.encryptionTypeSucceeded = false;
 		this.currentTask = decryptionTask;
 		for (Task task: tasks) {
 			if (task.getTaskCompleted()) {
