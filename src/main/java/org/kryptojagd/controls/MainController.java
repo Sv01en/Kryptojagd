@@ -44,15 +44,14 @@ public class MainController {
 	 * @param allLevels     the levels
 	 * @param clearedLevels the cleared levels
 	 */
-	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels)
+	public MainController(PresentationManager fw, Level currentLevel, LevelHandler allLevels, int clearedLevels)
 			throws Exception {
 		this.fw = fw;
 		this.currentLevelPosition = 0;
 		this.clearedLevels = clearedLevels;
 		this.playedLevels.add(currentLevel);
 		AbstractController.setMainController(this);
-
-		this.levelHandler = new LevelHandler(allLevels);
+		this.levelHandler = allLevels;
 		this.currentLevel = this.levelHandler.getLevel(0);
 	}
 
