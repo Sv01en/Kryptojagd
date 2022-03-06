@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import org.kryptojagd.controls.MainController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.LevelHandler;
 import org.kryptojagd.presentation.PresentationManager;
 
 /**
@@ -50,7 +51,8 @@ public class MainApp extends Application {
       stage.show();
       PresentationManager fw = new PresentationManager(stage);
       assert allLevels != null;
-      MainController hs = new MainController(fw, allLevels.get(0), allLevels, playableLevels);
+      LevelHandler levelHandler = new LevelHandler(allLevels);
+      MainController hs = new MainController(fw, allLevels.get(0), levelHandler, playableLevels);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
