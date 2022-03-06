@@ -121,6 +121,7 @@ public class MultipleChoiceController extends AbstractController {
      * @param answer the answer
      */
     private void clickAnswer(String answer) {
+        level.proveTask(answer);
         String city = level.getCity();
         String css;
         if (level.getTask("cityTask").getTaskCompleted()) {
