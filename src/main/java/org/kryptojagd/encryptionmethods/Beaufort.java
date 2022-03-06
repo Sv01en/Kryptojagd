@@ -12,6 +12,12 @@ public class Beaufort extends Encryption {
     private static final char[] ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA".toCharArray();
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
+    public static void setIsEncryptionTask(boolean isEncryptionTask) {
+        Beaufort.isEncryptionTask = isEncryptionTask;
+    }
+
+    private static boolean isEncryptionTask = false;
+
     /**
      * Instantiates a new Beaufort encryption.
      */
@@ -188,20 +194,40 @@ public class Beaufort extends Encryption {
                 revWords.add(words.get(i));
             } else {
                 String revWord = "";
+                if(!Beaufort.isEncryptionTask){
                 for (int j = 0; j < words.get(i).length(); j++) {
                     int result;
+                    char c = inputKey.charAt(keyIndex % inputKey.length());
                     if (getAlphabetIndex(words.get(i).charAt(j)) -
-                            getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length())) < 0) {
+                            getNormalAlphabetIndex(c) < 0) {
                         result = NORMALALPHABET[26
                                 + getAlphabetIndex(words.get(i).charAt(j)) -
-                                getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
+                                getNormalAlphabetIndex(c)];
                     } else {
                         result = NORMALALPHABET[getAlphabetIndex(words.get(i).charAt(j)) -
-                                getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
+                                getNormalAlphabetIndex(c)];
                     }
                     keyIndex++;
                     revWord = revWord + (char) result;
 
+                }
+                } else{
+                    for (int j = 0; j < words.get(i).length(); j++) {
+                        int result;
+                        char c = inputKey.charAt(keyIndex % inputKey.length());
+                        if (getAlphabetIndex(words.get(i).charAt(j)) -
+                                getAlphabetIndex(c) < 0) {
+                            result = NORMALALPHABET[26
+                                    + getAlphabetIndex(words.get(i).charAt(j)) -
+                                    getAlphabetIndex(c)];
+                        } else {
+                            result = NORMALALPHABET[getAlphabetIndex(words.get(i).charAt(j)) -
+                                    getAlphabetIndex(c)];
+                        }
+                        keyIndex++;
+                        revWord = revWord + (char) result;
+
+                    }
                 }
                 revWords.add(revWord);
             }
