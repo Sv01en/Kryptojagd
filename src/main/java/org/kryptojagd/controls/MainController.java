@@ -80,7 +80,6 @@ public class MainController {
 	 */
 	public void startLevel() {
 		addPlayableLevel(this.currentLevel.getId());
-		decryptionTaskSucceeded = false;
 		PointSystem.setEncryptionTaskedFinished(false);
 		PointSystem.setMultipleChoiceTaskFinished(0);
 		PointSystem.setDecryptionTaskFinished(0);
@@ -158,7 +157,6 @@ public class MainController {
 	public void startLevelByPosition(int id) throws Exception {
 		PointSystem.setPlayedLevels(id + 1);
 		this.currentLevel = this.levelHandler.getLevel(id);
-		decryptionTaskSucceeded = false;
 		switchWindowWithCSS(this.currentLevel.getCurrentTask().toString()
 				+ ".fxml", ReadDirectory.CSS_FILE_START);
 	}
