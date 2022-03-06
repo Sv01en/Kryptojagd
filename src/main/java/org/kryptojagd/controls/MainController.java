@@ -24,8 +24,6 @@ public class MainController {
 
 	private int clearedLevels;
 
-	protected ArrayList<Integer> clearedLevelIndexes = new ArrayList();
-
 	protected boolean cityTaskFinished;
 
 	protected static boolean isBeaufortDecryption = false;
@@ -51,7 +49,6 @@ public class MainController {
 	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels)
 			throws Exception {
 		this.fw = fw;
-		//this.currentLevel = currentLevel;
 		this.currentLevelPosition = 0;
 		this.allLevels = allLevels;
 		this.clearedLevels = clearedLevels;
@@ -60,15 +57,6 @@ public class MainController {
 
 		this.levelHandler = new LevelHandler(allLevels);
 		this.currentLevel = this.levelHandler.getLevel(0);
-	}
-
-	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels,
-						  LevelHandler levelHandler) throws Exception {
-		this.fw = fw;
-		this.allLevels = allLevels;
-		AbstractController.setMainController(this);
-		this.levelHandler = levelHandler;
-		this.currentLevel = currentLevel;
 	}
 
 	public LevelHandler getLevelHandler() {
@@ -89,10 +77,6 @@ public class MainController {
 		if (!this.playedLevels.contains(level)) {
 			this.playedLevels.add(level);
 		}
-	}
-
-	public boolean playedLevelContains(Level level) {
-		return this.playedLevels.contains(level);
 	}
 
 	/**
@@ -128,15 +112,6 @@ public class MainController {
 		return fw;
 	}
 
-	/**
-	 * Sets cleared levels plus one.
-	 */
-	public void setClearedLevels() {
-		this.clearedLevels++;
-		if (!clearedLevelIndexes.contains(getCurrentLevelPosition())) {
-			clearedLevelIndexes.add(getCurrentLevelPosition());
-		}
-	}
 	/**
 	 * Sets beaufort decryption.
 	 *

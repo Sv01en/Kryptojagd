@@ -310,8 +310,6 @@ public class Level {
 	 * Clears the level attributes at the end of the level.
 	 */
 	public void clearLevel() {
-		//this.currentTime = this.timeInSec;
-		//this.countdownTimer.cancelTimerTask();
 		this.encryptionTypeSucceeded = false;
 		this.currentTask = decryptionTask;
 		for (Task task: tasks) {

@@ -46,36 +46,11 @@ public class LevelHandler {
     }
 
     /**
-     * Returns the size of the list of all playable levels.
-     * @return size as an integer
-     */
-    public int getPlayableLevelSize() {
-        return this.playedLevels.size();
-    }
-
-    /**
      * Returns the position in the list of the current level
      * @return
      */
     public int getLevelPos() {
         return this.levelPos;
-    }
-
-    /**
-     * Returns the list of all levels
-     * @return arraylist
-     */
-    public ArrayList<Level> getAllLevels() {
-        return this.allLevels;
-    }
-
-    /**
-     * Checks if a level allready playable
-     * @param level given level for checking process
-     * @return true or false
-     */
-    public boolean checkPlayable(Level level) {
-       return this.playedLevels.contains(level);
     }
 
     /**
