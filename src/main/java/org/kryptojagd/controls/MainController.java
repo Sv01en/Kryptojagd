@@ -70,6 +70,15 @@ public class MainController {
 		this.currentLevel = this.levelHandler.getLevel(0);
 	}
 
+	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels,
+						  LevelHandler levelHandler) throws Exception {
+		this.fw = fw;
+		this.allLevels = allLevels;
+		AbstractController.setMainController(this);
+		this.levelHandler = levelHandler;
+		this.currentLevel = currentLevel;
+	}
+
 	public LevelHandler getLevelHandler() {
 		return this.levelHandler;
 	}
@@ -152,10 +161,8 @@ public class MainController {
 	 */
 	public void startLevelByPosition(int id) throws Exception {
 		PointSystem.setPlayedLevels(id + 1);
-		this.currentLevelPosition = id;
 		this.currentLevel = this.levelHandler.getLevel(id);
-		addPlayableLevel(this.currentLevel.getId());
-		switchWindowWithCSS(currentLevel.getCurrentTask().toString()
+		switchWindowWithCSS(this.currentLevel.getCurrentTask().toString()
 				+ ".fxml", ReadDirectory.CSS_FILE_START);
 	}
 
