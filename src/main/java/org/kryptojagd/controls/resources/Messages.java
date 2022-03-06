@@ -49,7 +49,7 @@ public final class Messages {
     /**
      * The constant DECRYPTION_QUESTION.
      */
-    public static final String DECRYPTION_QUESTION = "Die Nachrichten beginnt mit 'Hallo'."
+    public static final String DECRYPTION_QUESTION = "Die Nachrichten beginnen mit 'Hallo'."
             + " Wähle aus, um welches Verschlüsselungsverfahren es sich handelt und sende dann"
             + " die letzten 3 Worte des Textes der NIV.";
 
