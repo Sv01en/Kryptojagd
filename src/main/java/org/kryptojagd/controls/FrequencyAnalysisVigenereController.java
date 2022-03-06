@@ -194,7 +194,8 @@ public class FrequencyAnalysisVigenereController {
 		final int a = i;
 		TextField textFieldKey = new TextField("A");
 		textFieldKey.setMaxWidth(40);
-		textFieldKey.textProperty().addListener((observable, oldValue, newValue) -> changedTextFieldValue(a, oldValue, newValue));
+		textFieldKey.textProperty().addListener((observable, oldValue, newValue) ->
+				changedTextFieldValue(a, oldValue, newValue));
 		textFieldKey.setOnMouseClicked(new EventHandler() {
 			@Override
 			public void handle(Event event) {
@@ -373,10 +374,12 @@ public class FrequencyAnalysisVigenereController {
 	barCharts[i].setLegendVisible(false);
 	barCharts[i].setPrefSize(widthBarChartInTab, heightBarChartInTab);
 	FrequencyAnalysis.barChartColumnsColor(barCharts[i], "-fx-bar-fill: red;", "-fx-bar-fill: black;");
-	overviewBarCharts[i] = FrequencyAnalysis.getChart("", "", "", frequencies.get(i), germanLetterFrequency, false, Color.BLACK);
+	overviewBarCharts[i] = FrequencyAnalysis.getChart("", "", "", frequencies.get(i),
+			germanLetterFrequency, false, Color.BLACK);
 	overviewBarCharts[i].setLegendVisible(false);
 	overviewBarCharts[i].setPrefSize(515, 250);
-	FrequencyAnalysis.barChartColumnsColor(overviewBarCharts[i], "-fx-bar-fill: red;", "-fx-bar-fill: black;");
+	FrequencyAnalysis.barChartColumnsColor(overviewBarCharts[i], "-fx-bar-fill: red;",
+			"-fx-bar-fill: black;");
 	AnchorPane pane = new AnchorPane();
 	pane.setPrefSize(widthBarChartInTab + 10, heightBarChartInTab);
 	pane.getChildren().add(barCharts[i]);

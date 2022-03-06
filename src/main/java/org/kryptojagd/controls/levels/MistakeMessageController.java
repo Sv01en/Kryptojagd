@@ -28,14 +28,8 @@ public class MistakeMessageController extends AbstractController {
     private Label message1;
 
     @FXML
-    private Label timer;
-
-    @FXML
     private Label score;
 
-
-    @FXML
-    private Button nextButton;
 
     /**
      * Initializes a Controller for the mistake messages.

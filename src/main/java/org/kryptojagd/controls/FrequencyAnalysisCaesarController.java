@@ -32,13 +32,7 @@ public class FrequencyAnalysisCaesarController {
     
   @FXML
   private TabPane tabPane;
-    
-  @FXML
-  private Button buttonShiftLeft;
 
-  @FXML
-  private Button buttonShiftRight;
-    
   private static String text = "HIER SOLLTE DER KODIERTE TEXT STEHEN.";
   private static LinkedHashMap<String, Double> textLetterFrequency;
   private static LinkedHashMap<String, Double> germanLetterFrequency = 

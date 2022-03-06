@@ -28,9 +28,6 @@ public class EncryptionController extends AbstractController {
     private Label timer = new Label();
 
     @FXML
-    private Button button1;
-
-    @FXML
     private Label label1;
 
     @FXML
@@ -72,7 +69,6 @@ public class EncryptionController extends AbstractController {
     @FXML
     void checkEncryption(ActionEvent event) {
         level.proveTask(textField1.getText());
-        //mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
         String city = level.getCity();
         String css = ReadDirectory.CSS_FILES + city + ".css";
 
@@ -83,7 +79,6 @@ public class EncryptionController extends AbstractController {
             String hint = task.getMistakeMsg();
             label3.setText(hint);
             label3.setVisible(true);
-            //mainController.switchWindowWithCSS("MistakeMessage.fxml", css);
         }
     }
 

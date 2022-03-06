@@ -2,6 +2,7 @@ package org.kryptojagd.level.hamming;
 
 /**
  * Provides all functionalities for the hamming distance.
+ *
  * @author Sven Strasser
  * @version 1.0
  */

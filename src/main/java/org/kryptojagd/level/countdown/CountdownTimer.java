@@ -80,12 +80,4 @@ public class CountdownTimer {
         actualValue = actualValue - given;
         this.outputValue = Long.toString(actualValue);
     }
-
-    /**
-     * Cancel the running {@link TimerTask} and {@link Timer}.
-     */
-    public void cancelTimerTask() {
-        this.task.cancel();
-        this.timer.cancel();
-    }
 }

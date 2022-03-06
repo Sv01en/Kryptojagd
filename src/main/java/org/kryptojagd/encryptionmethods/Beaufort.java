@@ -217,11 +217,14 @@ public class Beaufort extends Encryption {
                 String revWord = "";
                 for (int j = 0; j < words.get(i).length(); j++) {
                     int result;
-                    if (getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length())) < 0) {
+                    if (getAlphabetIndex(words.get(i).charAt(j)) -
+                            getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length())) < 0) {
                         result = NORMALALPHABET[26
-                                + getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
+                                + getAlphabetIndex(words.get(i).charAt(j)) -
+                                getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
                     } else {
-                        result = NORMALALPHABET[getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
+                        result = NORMALALPHABET[getAlphabetIndex(words.get(i).charAt(j)) -
+                                getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
                     }
                     keyIndex++;
                     revWord = revWord + (char) result;

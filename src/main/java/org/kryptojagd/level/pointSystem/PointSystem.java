@@ -110,15 +110,6 @@ public class PointSystem {
     }
 
     /**
-     * Sets current level.
-     *
-     * @param currentLevel the current level
-     */
-    public static void setCurrentLevel(int currentLevel) {
-        PointSystem.currentLevel = currentLevel;
-    }
-
-    /**
      * Sets played levels.
      *
      * @param playedLevels the played levels

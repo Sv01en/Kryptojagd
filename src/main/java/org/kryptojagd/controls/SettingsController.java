@@ -11,18 +11,6 @@ import org.kryptojagd.fileprocessing.ReadDirectory;
 public class SettingsController extends AbstractController {
 
     /**
-     * The Dark light toggle.
-     */
-    @FXML
-    private Button darkLightToggle;
-
-    /**
-     * The accessibility toggle.
-     */
-    @FXML
-    private Button blindToggle;
-
-    /**
      * Click dark light toggle.
      *
      * @param actionEvent the action event
