@@ -203,8 +203,14 @@ public class FrequencyAnalysis {
 	Series[] series = FrequencyAnalysis.getSeries(textLetterFrequency, germanLetterFrequency, xAxisTicksData1);
     
 	barChart.getData().addAll(series[0], series[1]);
-	
-    return barChart;
+
+	barChart.setStyle("-fx-font-family: 'monospace'");
+
+	xAxis.setStyle("-fx-font-family: 'monospace'");
+
+	yAxis.setStyle("-fx-font-family: 'monospace'");
+
+	return barChart;
   }
 
 }
