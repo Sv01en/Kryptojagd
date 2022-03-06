@@ -2,15 +2,13 @@ package org.kryptojagd.controls.levels;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.kryptojagd.controls.AbstractController;
-import org.kryptojagd.controls.CryptoToolController;
+import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.level.tasks.EncryptionTask;
-import org.kryptojagd.level.tasks.Task;
 
 /**
  * The class controls a window of the messages if a student is doing a mistake
@@ -28,14 +26,8 @@ public class MistakeMessageController extends AbstractController {
     private Label message1;
 
     @FXML
-    private Label timer;
-
-    @FXML
     private Label score;
 
-
-    @FXML
-    private Button nextButton;
 
     /**
      * Initializes a Controller for the mistake messages.

@@ -116,7 +116,8 @@ public class Vigenere extends Encryption {
             } else {
                 String revWord = "";
                 for (int j = 0; j < words.get(i).length(); j++) {
-                    int result = (words.get(i).charAt(j) + getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length())));
+                    int result = (words.get(i).charAt(j) + getNormalAlphabetIndex(inputKey.charAt(keyIndex %
+                            inputKey.length())));
                     keyIndex++;
                     if (result > 'Z') {
                         result = result - 26;
@@ -134,23 +135,6 @@ public class Vigenere extends Encryption {
         }
 
         return encryptedText;
-/*
- 
-        for (int i = 0; i < inputText.length(); i++) {
-            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
-                int result = (inputText.charAt(i) + getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length())));
-                if (result > 'Z') {
-                    result = result - 26;
-                }
-                encodedText = encodedText + (char) result;
-            } else {
-                encodedText = encodedText + inputText.charAt(i);
-            }
-            
-        }
- 
-        return encodedText;*/
- 
     }
 
     /**
@@ -232,28 +216,6 @@ public class Vigenere extends Encryption {
         }
 
         return decodedText;
-
-
-/*        for (int i = 0; i < inputText.length(); i++) {
-            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
-                int result;
-                if (getNormalAlphabetIndex(inputText.charAt(i))
-                        - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length())) < 0) {
-                    result = NORMALALPHABET[getNormalAlphabetIndex(inputText.charAt(i))
-                            - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length())) + 26];
-                } else {
-                    result = NORMALALPHABET[getNormalAlphabetIndex(inputText.charAt(i))
-                            - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length()))];
-                }
-                decodedText = decodedText + (char) result;
-            } else {
-                decodedText = decodedText + inputText.charAt(i);
-            }
-            
-        }
- 
-        return decodedText;*/
- 
     }
 
     /**

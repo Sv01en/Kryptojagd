@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.kryptojagd.controls.AbstractController;
-import org.kryptojagd.controls.CryptoToolController;
+import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.pointSystem.PointSystem;

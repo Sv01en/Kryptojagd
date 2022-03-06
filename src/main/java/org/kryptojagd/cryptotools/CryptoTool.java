@@ -2,9 +2,8 @@ package org.kryptojagd.cryptotools;
 
 import java.io.IOException;
 
-import org.kryptojagd.controls.FrequencyAnalysisCaesarController;
-import org.kryptojagd.controls.FrequencyAnalysisVigenereController;
-import org.kryptojagd.controls.MainController;
+import org.kryptojagd.controls.cryptotool.FrequencyAnalysisCaesarController;
+import org.kryptojagd.controls.cryptotool.FrequencyAnalysisVigenereController;
 import org.kryptojagd.presentation.PresentationManager;
 
 import javafx.application.Application;

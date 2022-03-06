@@ -1,8 +1,5 @@
 package org.kryptojagd.encryptionmethods;
 
-import org.kryptojagd.controls.MainController;
-import org.kryptojagd.level.Level;
-
 import java.util.ArrayList;
 
 /**
@@ -67,33 +64,6 @@ public class Beaufort extends Encryption {
      * @return Encrypted text in uppercase
      */
     public String encode(String text, String key) {
- 
-/*        String encodedText = "";
-
-        String inputKey = key.toUpperCase();
-        String inputText = text.toUpperCase();
-
-        if (inputKey.length() == 0) {
-            return inputText.toUpperCase();
-        }
-
-        for (int i = 0; i < inputKey.length(); i++) {
-            if (inputKey.charAt(i) < 'A' || inputKey.charAt(i) > 'Z') {
-                return inputText.toUpperCase();
-            }
-        }
-
- 
-        for (int i = 0; i < inputText.length(); i++) {
-            if (inputText.charAt(i) >= 'A' && inputText.charAt(i) <= 'Z') {
-                int result = ALPHABET[(inputText.charAt(i) + inputKey.charAt(i % inputKey.length())) % 26];
-                encodedText = encodedText + (char) result;
-            } else {
-                encodedText = encodedText + inputText.charAt(i);
-            }
-        }
- 
-        return encodedText;*/
 
         String encryptedText = "";
         ArrayList<String> words = new ArrayList<>();
@@ -218,24 +188,25 @@ public class Beaufort extends Encryption {
                 revWords.add(words.get(i));
             } else {
                 String revWord = "";
-                    for (int j = 0; j < words.get(i).length(); j++) {
-                        int result;
-                        char c = inputKey.charAt(keyIndex % inputKey.length());
-                        if (getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(c) < 0) {
-                            result = NORMALALPHABET[26
-                                    + getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(c)];
-                        } else {
-                            result = NORMALALPHABET[getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(c)];
-                        }
-                        keyIndex++;
-                        revWord = revWord + (char) result;
-                        revWords.add(revWord);
+                for (int j = 0; j < words.get(i).length(); j++) {
+                    int result;
+                    if (getAlphabetIndex(words.get(i).charAt(j)) -
+                            getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length())) < 0) {
+                        result = NORMALALPHABET[26
+                                + getAlphabetIndex(words.get(i).charAt(j)) -
+                                getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
+                    } else {
+                        result = NORMALALPHABET[getAlphabetIndex(words.get(i).charAt(j)) -
+                                getNormalAlphabetIndex(inputKey.charAt(keyIndex % inputKey.length()))];
                     }
+                    keyIndex++;
+                    revWord = revWord + (char) result;
 
+                }
+                revWords.add(revWord);
             }
-            }
 
-
+        }
 
         // Assemble the return string from individual words
         for (int i = 0; i < revWords.size(); i++) {
@@ -243,41 +214,6 @@ public class Beaufort extends Encryption {
         }
 
         return decodedText;
-
-        /*String decodedText = "";
-
-        String inputText = text.toUpperCase();
-        String inputKey = key.toUpperCase();
-
-        if (inputKey.length() == 0) {
-            return inputText.toUpperCase();
-        }
-
-        for (int i = 0; i < inputKey.length(); i++) {
-            if (inputKey.charAt(i) < 'A' || inputKey.charAt(i) > 'Z') {
-                return inputText.toUpperCase();
-            }
-        }
-
-        for (int i = 0; i < inputText.length(); i++) {
-            int charIndex = getAlphabetIndex(inputText.charAt(i));
-            if (charIndex != -1) {
-                int result;
-                if (charIndex - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length())) < 0) {
-                    result = NORMALALPHABET[26
-                            + charIndex - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length()))];
-                } else {
-                    result = NORMALALPHABET[charIndex - getNormalAlphabetIndex(inputKey.charAt(i % inputKey.length()))];
-                }
-                decodedText = decodedText + (char) result;
-            } else {
-                decodedText = decodedText + inputText.charAt(i);
-            }
-            
-        }
- 
-        return decodedText;*/
- 
     }
 
     /**

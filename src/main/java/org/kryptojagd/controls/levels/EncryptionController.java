@@ -2,16 +2,14 @@ package org.kryptojagd.controls.levels;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.kryptojagd.controls.AbstractController;
-import org.kryptojagd.controls.CryptoToolController;
+import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.level.tasks.EncryptionTask;
-import org.kryptojagd.level.tasks.Task;
 
 /**
  * Encryption Controller for the corresponding fxml-file
@@ -26,9 +24,6 @@ public class EncryptionController extends AbstractController {
 
     @FXML
     private Label timer = new Label();
-
-    @FXML
-    private Button button1;
 
     @FXML
     private Label label1;
@@ -72,7 +67,6 @@ public class EncryptionController extends AbstractController {
     @FXML
     void checkEncryption(ActionEvent event) {
         level.proveTask(textField1.getText());
-        //mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
         String city = level.getCity();
         String css = ReadDirectory.CSS_FILES + city + ".css";
 
@@ -83,7 +77,6 @@ public class EncryptionController extends AbstractController {
             String hint = task.getMistakeMsg();
             label3.setText(hint);
             label3.setVisible(true);
-            //mainController.switchWindowWithCSS("MistakeMessage.fxml", css);
         }
     }
 

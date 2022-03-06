@@ -1,4 +1,4 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.cryptotool;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.kryptojagd.controls.MainController;
 import org.kryptojagd.cryptotools.FrequencyAnalysis;
 import org.kryptojagd.encryptionmethods.Beaufort;
 import org.kryptojagd.encryptionmethods.Caesar;
@@ -46,9 +47,6 @@ import org.kryptojagd.presentation.PresentationManager;
 public class FrequencyAnalysisVigenereController {
 
   @FXML
-  private AnchorPane pane;
-
-  @FXML
   private Label encodedTextLabel;
     
   @FXML 
@@ -56,10 +54,7 @@ public class FrequencyAnalysisVigenereController {
     
   @FXML
   private HBox hboxKey;
-    
-  @FXML
-  private Button explanationButton;
-    
+
   @FXML
   private Label labelDecodedText;
     
@@ -194,7 +189,8 @@ public class FrequencyAnalysisVigenereController {
 		final int a = i;
 		TextField textFieldKey = new TextField("A");
 		textFieldKey.setMaxWidth(40);
-		textFieldKey.textProperty().addListener((observable, oldValue, newValue) -> changedTextFieldValue(a, oldValue, newValue));
+		textFieldKey.textProperty().addListener((observable, oldValue, newValue) ->
+				changedTextFieldValue(a, oldValue, newValue));
 		textFieldKey.setOnMouseClicked(new EventHandler() {
 			@Override
 			public void handle(Event event) {
@@ -373,10 +369,12 @@ public class FrequencyAnalysisVigenereController {
 	barCharts[i].setLegendVisible(false);
 	barCharts[i].setPrefSize(widthBarChartInTab, heightBarChartInTab);
 	FrequencyAnalysis.barChartColumnsColor(barCharts[i], "-fx-bar-fill: red;", "-fx-bar-fill: black;");
-	overviewBarCharts[i] = FrequencyAnalysis.getChart("", "", "", frequencies.get(i), germanLetterFrequency, false, Color.BLACK);
+	overviewBarCharts[i] = FrequencyAnalysis.getChart("", "", "", frequencies.get(i),
+			germanLetterFrequency, false, Color.BLACK);
 	overviewBarCharts[i].setLegendVisible(false);
 	overviewBarCharts[i].setPrefSize(515, 250);
-	FrequencyAnalysis.barChartColumnsColor(overviewBarCharts[i], "-fx-bar-fill: red;", "-fx-bar-fill: black;");
+	FrequencyAnalysis.barChartColumnsColor(overviewBarCharts[i], "-fx-bar-fill: red;",
+			"-fx-bar-fill: black;");
 	AnchorPane pane = new AnchorPane();
 	pane.setPrefSize(widthBarChartInTab + 10, heightBarChartInTab);
 	pane.getChildren().add(barCharts[i]);
@@ -394,9 +392,6 @@ public class FrequencyAnalysisVigenereController {
     HBox hb = new HBox();
     hb.setAlignment(Pos.CENTER);
     hb.setSpacing(15);
-	//Label lbl1 = new Label("A");
-	//Label lbl2 = new Label("→");
-	//Label lbl3 = new Label("A");
 	final int a = i;
 	Button buttonShiftLeft = new Button("<<");
 	buttonShiftLeft.setOnMouseClicked(new EventHandler() {

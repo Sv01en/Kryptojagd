@@ -26,17 +26,6 @@ public class StartWindowController extends AbstractController {
     }
 
     /**
-     * Handles press on info button
-     * @param event that is received
-     */
-    @FXML
-    void clickInfo(ActionEvent event) {
-    	System.out.println("Es wurde auf Info geklickt!");
-        mainController.switchWindowWithCSS("Infotext.fxml", ReadDirectory.CSS_FILE_START);
-    	//mainController.switchWindow("Infotext.fxml");
-    }
-
-    /**
      * Handles press on start button
      * @param event that is received
      */

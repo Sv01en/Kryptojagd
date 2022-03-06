@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.kryptojagd.controls.AbstractController;
-import org.kryptojagd.controls.CryptoToolController;
+import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.fileprocessing.ReadDirectory;
@@ -14,7 +14,6 @@ import org.kryptojagd.level.Level;
 import org.kryptojagd.level.countdown.CountdownTimer;
 import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;
-import org.kryptojagd.level.tasks.Task;
 
 /**
  * The class controls a window of a multiple choice task.
@@ -31,8 +30,6 @@ public class MultipleChoiceController extends AbstractController {
      */
     @FXML
     private Label answers;
-
-    private CountdownTimer countdownTimer;
 
     @FXML
     private Label timer = new Label();
@@ -79,7 +76,7 @@ public class MultipleChoiceController extends AbstractController {
         } else {
             score.setManaged(false);
         }
-        this.countdownTimer = new CountdownTimer(level.getTimeInSec());
+        new CountdownTimer(level.getTimeInSec());
         updateTimer(timer);
     }
 
@@ -87,7 +84,7 @@ public class MultipleChoiceController extends AbstractController {
      * when you click on the button answer1,
      * it proves the answer and switches the window
      *
-     * @param event
+     * @param event the event
      */
     @FXML
     void clickAnswer1(ActionEvent event) {
@@ -98,7 +95,7 @@ public class MultipleChoiceController extends AbstractController {
      * when you click on the button answer2,
      * it proves the answer and switches the window
      *
-     * @param event
+     * @param event the event
      */
     @FXML
     void clickAnswer2(ActionEvent event) {
@@ -109,7 +106,7 @@ public class MultipleChoiceController extends AbstractController {
      * when you click on the button answer3,
      * it proves the answer and switches the window
      *
-     * @param event
+     * @param event the event
      */
     @FXML
     void clickAnswer3(ActionEvent event) {

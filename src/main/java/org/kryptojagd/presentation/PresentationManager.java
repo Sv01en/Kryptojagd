@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  */
 public class PresentationManager {
 	
-	private Stage stage;
+	private final Stage stage;
 	private boolean darkMode = false;
 	private boolean blindMode = false;
 
@@ -28,29 +28,6 @@ public class PresentationManager {
 	public PresentationManager(Stage primaryStage) {
 		primaryStage.setResizable(false);
 		this.stage = primaryStage;
-	}
-
-	/**
-	 * Switches the window without a style and exits program if window is closed
-	 * @param str window to switch to
-	 */
-	public void switchWindow(String str) {
-		Parent root;
-		try {
-
-			root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(str)));
-			// root = loader.load();
-			Scene scene = new Scene(root);	
-			stage.setScene(scene);
-			stage.show();
-			stage.setOnCloseRequest(event -> {
-				Platform.exit();
-				System.exit(0);
-			});
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -75,7 +52,7 @@ public class PresentationManager {
 				cssFile = css;
 			}
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-			Pane rootLayout = (Pane) loader.load();
+			Pane rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
 			scene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());
 			stage.setScene(scene);

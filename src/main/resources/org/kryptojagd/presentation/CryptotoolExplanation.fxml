@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane id="box" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.CryptotoolExplanationController">
+<BorderPane id="box" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kryptojagd.controls.cryptotool.CryptotoolExplanationController">
    <center>
       <Label fx:id="label" prefHeight="513.0" prefWidth="790.0" text="Infotext" textAlignment="CENTER" BorderPane.alignment="CENTER" />
    </center>

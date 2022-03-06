@@ -20,31 +20,17 @@ import java.util.LinkedList;
 public class Level {
 
 	private String feedback;
-
-	private DecryptionTask decryptionTask;
-
-	private EncryptionTask encryptionTask;
-
+	private final DecryptionTask decryptionTask;
+	private final EncryptionTask encryptionTask;
 	private CountdownTimer countdownTimer;
-
-	private LinkedList<MultipleChoiceTask> multipleChoiceTasks;
-
-	private int timeInSec;
-
+	private final LinkedList<MultipleChoiceTask> multipleChoiceTasks;
 	private int currentTime;
-
 	private int id;
-
 	private int indexTask = 1;
-
-	private int timePenalty;
-
-	private ArrayList<Task> tasks = new ArrayList<>();
-
+	private final int timePenalty;
+	private final ArrayList<Task> tasks = new ArrayList<>();
 	private Task currentTask;
-
 	private boolean firstTryTimer = true;
-
 	private boolean encryptionTypeSucceeded = false;
 
 	/**
@@ -74,9 +60,8 @@ public class Level {
 		this.tasks.add(decryptionTask.getCityTask());
 		this.tasks.addAll(multipleChoiceTasks);
 		this.tasks.add(encryptionTask);
-		this.timeInSec = timeInSec;
 		this.timePenalty = this.decryptionTask.getTimePenalty();
-		this.currentTime = this.timeInSec;
+		this.currentTime = timeInSec;
 		initializeEncryptionMethod(this.encryptionTask.getEncryptionType());
 	}
 
@@ -310,8 +295,6 @@ public class Level {
 	 * Clears the level attributes at the end of the level.
 	 */
 	public void clearLevel() {
-		//this.currentTime = this.timeInSec;
-		//this.countdownTimer.cancelTimerTask();
 		this.encryptionTypeSucceeded = false;
 		this.currentTask = decryptionTask;
 		for (Task task: tasks) {

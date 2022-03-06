@@ -1,7 +1,8 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.cryptotool;
 
 import java.io.IOException;
 
+import org.kryptojagd.controls.AbstractController;
 import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 
@@ -26,23 +27,6 @@ public class CryptoToolController extends AbstractController {
     
   @FXML
   private Label messageLabel;
-
-  /**
-   * Opens the perspective of the frequency analysis for the Caesar encryption.
-   * 
-   * @param event click on the frequency analysis button for Caesar encryption
-   */
-  @FXML
-  void caesar(ActionEvent event) {
-    String enteredText = textArea.getText();
-    if (checktInput(enteredText)) {
-	  try {
-		CryptoTool.caesar(new Stage(), enteredText);
-	  } catch (IOException e) {
-		e.printStackTrace();
-	  }
-    }
-  }
 
   @FXML
   void mainMenu(ActionEvent event) {

@@ -17,10 +17,6 @@ public class PointSystem {
     private static boolean encryptionTaskedFinished;
 
     /**
-     * The constant getPlayedLevels.
-     */
-    public static int getPlayedLevels;
-    /**
      * Instantiates a new Point system.
      *
      * @param score the score
@@ -107,15 +103,6 @@ public class PointSystem {
         } else {
             PointSystem.multipleChoiceTaskFinished = 0;
         }
-    }
-
-    /**
-     * Sets current level.
-     *
-     * @param currentLevel the current level
-     */
-    public static void setCurrentLevel(int currentLevel) {
-        PointSystem.currentLevel = currentLevel;
     }
 
     /**
