@@ -8,6 +8,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.LevelHandler;
+
 import java.util.ArrayList;
 
 /**
@@ -44,8 +46,9 @@ public class LevelSelectorController extends AbstractController {
             button.setOnAction(event -> {
                 try {
                     int countClearedLevels = mainController.getClearedLevels();
+                    LevelHandler levelHandler = new LevelHandler(levels);
                     setMainController(
-                            new MainController(mainController.getPresentationManager(), levels.get(finalI), levels,
+                            new MainController(mainController.getPresentationManager(), levels.get(finalI), levelHandler,
                                     countClearedLevels));
                     mainController.getLevelHandler().setPlayedLevels(playedLevels);
                     mainController.startLevelByPosition(finalI);
