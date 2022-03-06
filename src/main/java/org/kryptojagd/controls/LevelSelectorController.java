@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import org.kryptojagd.controls.levels.LevelHandler;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import java.util.ArrayList;
@@ -31,19 +32,30 @@ public class LevelSelectorController extends AbstractController {
      */
     @FXML
     public void initialize() throws Exception {
-        ArrayList<Level> levels = mainController.getLevelHandler().getAllLevels();
+        System.out.println("Level neu initialisiert!");
+        ArrayList<Level> levels = ReadDirectory.initialize();
+        ArrayList<Level> playedLevels = mainController.getLevelHandler().getPlayedLevels();
+        LevelHandler levelHandler = mainController.getLevelHandler();
+        for (int i = 0; i < playedLevels.size(); i++) {
+            System.out.println(playedLevels.get(i).getId());
+        }
         ArrayList<Button> buttons = new ArrayList<>();
         for (int i = 0; i < levels.size(); i++) {
             Button button = new Button("Level " + (i + 1));
             int finalI = i;
             button.setOnAction(event -> {
                 try {
+                    int countClearedLevels = mainController.getClearedLevels();
+                    setMainController(
+                            new MainController(mainController.getPresentationManager(), levels.get(finalI), levels,
+                                    countClearedLevels));
+                    mainController.getLevelHandler().setPlayedLevels(playedLevels);
                     mainController.startLevelByPosition(finalI);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             });
-            if (mainController.getLevelHandler().checkPlayable(levels.get(i)) || unlockAllLevels) {
+            if (playedLevels.size() > i || unlockAllLevels) {
                 button.setDisable(false);
             } else {
                 button.setDisable(true);

@@ -167,7 +167,8 @@ public class FrequencyAnalysis {
 	for (String key : set ) {
 		Label label = new Label(key);
 		label.setStyle("-fx-font-size: 8pt; "
-				+ "-fx-font-weight: bold}");
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-family: 'monospace'");
 		pane.getChildren().add(label);
 		label.relocate( xStart + distance * count, yStart );
 		count++;
@@ -202,8 +203,14 @@ public class FrequencyAnalysis {
 	Series[] series = FrequencyAnalysis.getSeries(textLetterFrequency, germanLetterFrequency, xAxisTicksData1);
     
 	barChart.getData().addAll(series[0], series[1]);
-	
-    return barChart;
+
+	barChart.setStyle("-fx-font-family: 'monospace'");
+
+	xAxis.setStyle("-fx-font-family: 'monospace'");
+
+	yAxis.setStyle("-fx-font-family: 'monospace'");
+
+	return barChart;
   }
 
 }
