@@ -18,7 +18,7 @@
          <content>
             <VBox prefHeight="100" alignment="CENTER" spacing="20">
                <children>
-                  <Label fx:id="encodedTextLabel" lineSpacing="2.0" maxWidth="1050.0" prefHeight="500.0" text="HIER SOLLTE DER KODIERTE TEXT STEHEN." wrapText="true" />
+                  <Label fx:id="encodedTextLabel" alignment="TOP_CENTER" lineSpacing="2.0" maxWidth="1050.0" minHeight="300.0" text="HIER SOLLTE DER KODIERTE TEXT STEHEN." wrapText="true" />
                </children>
             </VBox>
          </content>
@@ -32,7 +32,7 @@
          <content>
             <VBox prefHeight="100" alignment="CENTER" spacing="20">
                <children>
-                  <Label fx:id="labelDecodedText" prefHeight="500.0" prefWidth="1050.0" text="HIER SOLLTE DER ENTSCHLÜSSELTE TEXT STEHEN." wrapText="true" />
+                  <Label fx:id="labelDecodedText" alignment="TOP_CENTER" lineSpacing="2.0" maxWidth="1050.0" minHeight="300.0" text="HIER SOLLTE DER ENTSCHLÜSSELTE TEXT STEHEN." wrapText="true" />
                </children>
             </VBox>
          </content>
