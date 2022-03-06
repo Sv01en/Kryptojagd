@@ -1,5 +1,5 @@
 {
-	"task":"Verschlüssle den folgenden Text mit dem Beaufort Verfahren. Der Schlüssel lautet 'Colosseum':\n\nHinweis:\nVerschluessle jedes Wort einzeln, unabhaengig von den Sonderzeichen.\n",
+	"task":"Verschlüssle den folgenden Text mit dem Beaufort Verfahren. Der Schlüssel lautet 'Colosseum':\n\nHinweis:\nVerschlüssle jedes Wort einzeln, unabhängig von den Sonderzeichen.\n",
 	"text":"Fuenfte Floppy-Disk gefunden",
 	"encryptionType": "Beaufort",
 	"key": "Colosseum",
