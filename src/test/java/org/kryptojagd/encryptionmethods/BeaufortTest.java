@@ -163,6 +163,7 @@ public class BeaufortTest {
      */
     @Test
     void testTextValidKeyDecodeLowercaseKey() {
+        Beaufort.setIsEncryptionTask(true);
         assertEquals("HALLO WELT!", b.decode("Tbrsm Fysh!", "abcd"));
     }
 
