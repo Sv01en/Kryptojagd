@@ -1,6 +1,4 @@
-package org.kryptojagd.controls.levels;
-
-import org.kryptojagd.level.Level;
+package org.kryptojagd.level;
 
 import java.util.ArrayList;
 
@@ -12,7 +10,7 @@ import java.util.ArrayList;
  */
 public class LevelHandler {
 
-    private ArrayList<Level> allLevels;
+    private final ArrayList<Level> allLevels;
 
     private ArrayList<Level> playedLevels = new ArrayList<>();
 

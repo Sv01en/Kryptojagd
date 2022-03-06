@@ -1,6 +1,6 @@
 package org.kryptojagd.controls;
 
-import org.kryptojagd.controls.levels.LevelHandler;
+import org.kryptojagd.level.LevelHandler;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.pointSystem.PointSystem;
