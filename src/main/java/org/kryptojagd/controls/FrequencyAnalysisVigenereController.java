@@ -394,22 +394,15 @@ public class FrequencyAnalysisVigenereController {
     HBox hb = new HBox();
     hb.setAlignment(Pos.CENTER);
     hb.setSpacing(15);
-	Label lbl1 = new Label("A");
-	Label lbl2 = new Label("→");
-	Label lbl3 = new Label("A");
+	//Label lbl1 = new Label("A");
+	//Label lbl2 = new Label("→");
+	//Label lbl3 = new Label("A");
 	final int a = i;
 	Button buttonShiftLeft = new Button("<<");
 	buttonShiftLeft.setOnMouseClicked(new EventHandler() {
 	  @Override
 	  public void handle(Event event) {
 	    shiftRight(false, a);
-	    String s = lbl3.getText();
-	    char letter = s.charAt(0);
-	    if (letter == 'A') {
-	      lbl3.setText("Z");
-	    } else {
-	      lbl3.setText(Character.toString(--letter));
-	    }
 	  }
 	});
 	
@@ -418,16 +411,9 @@ public class FrequencyAnalysisVigenereController {
 	  @Override
 	  public void handle(Event event) {
 		shiftRight(true, a);		
-		String s = lbl3.getText();
-	    char letter = s.charAt(0);
-	    if (letter == 'Z') {
-	      lbl3.setText("A");
-	    } else {
-	      lbl3.setText(Character.toString(++letter));
-	    }
 	   }
 	});
-	hb.getChildren().addAll(buttonShiftLeft, lbl1, lbl2, lbl3, buttonShiftRight);
+	hb.getChildren().addAll(buttonShiftLeft, buttonShiftRight);
 	return hb;
 }
     
