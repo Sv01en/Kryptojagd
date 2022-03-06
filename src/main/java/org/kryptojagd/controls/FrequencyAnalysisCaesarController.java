@@ -39,9 +39,6 @@ public class FrequencyAnalysisCaesarController {
   @FXML
   private Button buttonShiftRight;
     
-  @FXML
-  private Label labelShift;
-    
   private static String text = "HIER SOLLTE DER KODIERTE TEXT STEHEN.";
   private static LinkedHashMap<String, Double> textLetterFrequency;
   private static LinkedHashMap<String, Double> germanLetterFrequency = 
@@ -73,13 +70,6 @@ public class FrequencyAnalysisCaesarController {
    */
   @FXML
   void shiftLeft(ActionEvent event) {
-    String s = labelShift.getText();
-    char letter = s.charAt(0);
-    if (letter == 'A') {
-        labelShift.setText("Z");
-    } else {
-        labelShift.setText(Character.toString(--letter));
-    }
     shift(false);
   }
     
@@ -89,13 +79,6 @@ public class FrequencyAnalysisCaesarController {
     */
   @FXML
   void shiftRight(ActionEvent event) {
-    String s = labelShift.getText();
-    char letter = s.charAt(0);
-    if (letter == 'Z') {
-      labelShift.setText("A");
-    } else {
-      labelShift.setText(Character.toString(++letter));
-    }
     shift(true);
   }
     

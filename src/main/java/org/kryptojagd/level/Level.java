@@ -254,6 +254,7 @@ public class Level {
 				encryption = new Caesar();
 				break;
 			case("Vigenere"):
+				MainController.setBeaufortDecryption(false);
 				encryption = new Vigenere();
 				break;
 			case("Beaufort"):
