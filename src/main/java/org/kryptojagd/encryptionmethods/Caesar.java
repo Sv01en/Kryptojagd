@@ -77,7 +77,6 @@ public class Caesar extends Encryption {
      * @return Deciphered text in uppercase
      */
     public String decode(String text, int key) {
-        //int key = Integer.parseInt(keyString);
         
         if (key < 0 || key > 26) {
             return text.toUpperCase();

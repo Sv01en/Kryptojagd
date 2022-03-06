@@ -1,4 +1,4 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.cryptotool;
 
 
 import java.util.ArrayList;
@@ -10,7 +10,6 @@ import org.kryptojagd.cryptotools.FrequencyAnalysis;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
@@ -32,21 +31,12 @@ public class FrequencyAnalysisCaesarController {
     
   @FXML
   private TabPane tabPane;
-    
-  @FXML
-  private Button buttonShiftLeft;
 
-  @FXML
-  private Button buttonShiftRight;
-    
-  @FXML
-  private Label labelShift;
-    
   private static String text = "HIER SOLLTE DER KODIERTE TEXT STEHEN.";
   private static LinkedHashMap<String, Double> textLetterFrequency;
   private static LinkedHashMap<String, Double> germanLetterFrequency = 
     		FrequencyAnalysis.germanLetterFrequency();
-  private BarChart<String,Number> barChart;
+  private BarChart<String, Number> barChart;
   private int positionBarChartX = 14;
   private int positionBarChartY = 130;
   private int widthBarChart = 1000;
@@ -73,13 +63,6 @@ public class FrequencyAnalysisCaesarController {
    */
   @FXML
   void shiftLeft(ActionEvent event) {
-    String s = labelShift.getText();
-    char letter = s.charAt(0);
-    if (letter == 'A') {
-        labelShift.setText("Z");
-    } else {
-        labelShift.setText(Character.toString(--letter));
-    }
     shift(false);
   }
     
@@ -89,13 +72,6 @@ public class FrequencyAnalysisCaesarController {
     */
   @FXML
   void shiftRight(ActionEvent event) {
-    String s = labelShift.getText();
-    char letter = s.charAt(0);
-    if (letter == 'Z') {
-      labelShift.setText("A");
-    } else {
-      labelShift.setText(Character.toString(++letter));
-    }
     shift(true);
   }
     
@@ -104,8 +80,8 @@ public class FrequencyAnalysisCaesarController {
     * @param right if true, shifts to right, else to the left
     */
   private void shift(boolean right) {
-    ArrayList<String> listString = new ArrayList<String>(textLetterFrequency.keySet());
-    ArrayList<Double> listDouble = new ArrayList<Double>(textLetterFrequency.values());
+    ArrayList<String> listString = new ArrayList<>(textLetterFrequency.keySet());
+    ArrayList<Double> listDouble = new ArrayList<>(textLetterFrequency.values());
     	
     if (right) {
       Collections.rotate(listString, 1);
@@ -114,7 +90,7 @@ public class FrequencyAnalysisCaesarController {
       Collections.rotate(listString, -1);
       Collections.rotate(listDouble, -1);
     }
-    textLetterFrequency = new LinkedHashMap<String, Double>();
+    textLetterFrequency = new LinkedHashMap<>();
     
     for (int i = 0; i < listString.size(); i++) {
       textLetterFrequency.put(listString.get(i), listDouble.get(i));

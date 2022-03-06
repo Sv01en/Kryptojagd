@@ -2,8 +2,8 @@ package org.kryptojagd.cryptotools;
 
 import java.io.IOException;
 
-import org.kryptojagd.controls.FrequencyAnalysisCaesarController;
-import org.kryptojagd.controls.FrequencyAnalysisVigenereController;
+import org.kryptojagd.controls.cryptotool.FrequencyAnalysisCaesarController;
+import org.kryptojagd.controls.cryptotool.FrequencyAnalysisVigenereController;
 import org.kryptojagd.presentation.PresentationManager;
 
 import javafx.application.Application;
@@ -51,7 +51,7 @@ public class CryptoTool extends Application {
    * @throws IOException
    */
    public static void vigenere(Stage stage, String text) throws IOException {
-    	
+
      text = modifyText(text);
      stage.setResizable(false);
      stage.setTitle("Häufigkeitsanalyse (Vigenere-Verschlüsselung)");

@@ -1,7 +1,7 @@
 package org.kryptojagd.level.tasks;
 
 import org.kryptojagd.encryptionmethods.Encryption;
-import org.kryptojagd.level.pointSystem.PointSystem;
+import org.kryptojagd.level.PointSystem;
 
 /**
  * The class describes a task, where you have to decrypt text
@@ -14,18 +14,17 @@ public class DecryptionTask implements Task {
 	private static final int LAST_WORDS_NUMBER = 3;
 
 	private MultipleChoiceTask cityTask;
-	private boolean choseEncryption = false;
-	private String plainText;
+	private final String plainText;
 	private String helpText;
-	private String encryptionType;
+	private final String encryptionType;
 	private Encryption encryptionMethod;
-	private String[] answerOptionsEncryption;
-	private int correctAnswerEncryption;
-	private String[] answerOptionsCity;
-	private int correctAnswerCity;
-	private String textAfterStart;
-	private int timeInSec;
-	private int timePenalty;
+	private final String[] answerOptionsEncryption;
+	private final int correctAnswerEncryption;
+	private final String[] answerOptionsCity;
+	private final int correctAnswerCity;
+	private final String textAfterStart;
+	private final int timeInSec;
+	private final int timePenalty;
 	private boolean taskCompleted = false;
 	private String name = "DecryptionTask";
 	private final int pointsDecryptionTask = 50;
@@ -149,7 +148,7 @@ public class DecryptionTask implements Task {
 	 * @return true, if the answer is right
 	 */
 	public boolean proveEncryptionType(String answer) {
-		this.choseEncryption = answer.equals(this.encryptionType);
+		boolean choseEncryption = answer.equals(this.encryptionType);
 		if (choseEncryption && PointSystem.getDecryptionTaskFinished() < 1) {
 			POINT_SYSTEM.setScore(PointSystem.getScore() + pointsEncryptionType);
 			PointSystem.setDecryptionTaskFinished(1);

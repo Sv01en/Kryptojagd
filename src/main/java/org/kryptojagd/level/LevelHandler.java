@@ -1,6 +1,4 @@
-package org.kryptojagd.controls.levels;
-
-import org.kryptojagd.level.Level;
+package org.kryptojagd.level;
 
 import java.util.ArrayList;
 
@@ -12,18 +10,24 @@ import java.util.ArrayList;
  */
 public class LevelHandler {
 
-    private ArrayList<Level> allLevels;
+    private final ArrayList<Level> allLevels;
 
     private ArrayList<Level> playedLevels = new ArrayList<>();
 
     private int levelPos;
 
+    /**
+     * Instantiates a new Level handler.
+     *
+     * @param levels the levels
+     */
     public LevelHandler(ArrayList<Level> levels) {
         this.allLevels = levels;
     }
 
     /**
      * Gets the requested level by the position in the list
+     *
      * @param pos position in the list given as an integer
      * @return the requested level
      * @throws Exception if the position not valid
@@ -45,36 +49,11 @@ public class LevelHandler {
     }
 
     /**
-     * Returns the size of the list of all playable levels.
-     * @return size as an integer
-     */
-    public int getPlayableLevelSize() {
-        return this.playedLevels.size();
-    }
-
-    /**
      * Returns the position in the list of the current level
-     * @return
+     * @return position in the list of the current level
      */
     public int getLevelPos() {
         return this.levelPos;
-    }
-
-    /**
-     * Returns the list of all levels
-     * @return arraylist
-     */
-    public ArrayList<Level> getAllLevels() {
-        return this.allLevels;
-    }
-
-    /**
-     * Checks if a level allready playable
-     * @param level given level for checking process
-     * @return true or false
-     */
-    public boolean checkPlayable(Level level) {
-       return this.playedLevels.contains(level);
     }
 
     /**

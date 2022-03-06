@@ -1,4 +1,4 @@
-package org.kryptojagd.level.pointSystem;
+package org.kryptojagd.level;
 
 
 /**
@@ -16,10 +16,6 @@ public class PointSystem {
     private static int multipleChoiceTaskFinished;
     private static boolean encryptionTaskedFinished;
 
-    /**
-     * The constant getPlayedLevels.
-     */
-    public static int getPlayedLevels;
     /**
      * Instantiates a new Point system.
      *
@@ -72,7 +68,8 @@ public class PointSystem {
      *
      * @return the encryption task finished
      */
-    public static boolean getEncryptionTaskFinished() {return encryptionTaskedFinished; }
+    public static boolean getEncryptionTaskFinished() {
+        return encryptionTaskedFinished; }
 
     /**
      * Set decryption task finished.
@@ -107,15 +104,6 @@ public class PointSystem {
         } else {
             PointSystem.multipleChoiceTaskFinished = 0;
         }
-    }
-
-    /**
-     * Sets current level.
-     *
-     * @param currentLevel the current level
-     */
-    public static void setCurrentLevel(int currentLevel) {
-        PointSystem.currentLevel = currentLevel;
     }
 
     /**

@@ -1,4 +1,4 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.cryptotool;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.kryptojagd.controls.MainController;
 import org.kryptojagd.cryptotools.FrequencyAnalysis;
 import org.kryptojagd.encryptionmethods.Beaufort;
 import org.kryptojagd.encryptionmethods.Caesar;
@@ -46,9 +47,6 @@ import org.kryptojagd.presentation.PresentationManager;
 public class FrequencyAnalysisVigenereController {
 
   @FXML
-  private AnchorPane pane;
-
-  @FXML
   private Label encodedTextLabel;
     
   @FXML 
@@ -56,10 +54,7 @@ public class FrequencyAnalysisVigenereController {
     
   @FXML
   private HBox hboxKey;
-    
-  @FXML
-  private Button explanationButton;
-    
+
   @FXML
   private Label labelDecodedText;
     
@@ -133,7 +128,7 @@ public class FrequencyAnalysisVigenereController {
   private void initializeOverview() {
     GridPane gridpane = new GridPane();
 		
-	for(int i = 0; i < lengthCodeComboBox.getValue(); i++) {   	
+	for (int i = 0; i < lengthCodeComboBox.getValue(); i++) {
 	  int row = i / 2;
 	  int column = i % 2;
 	  gridpane.add(overviewBarCharts[i], column, row);
@@ -154,8 +149,8 @@ public class FrequencyAnalysisVigenereController {
     int row = i / 2;
     int column = i % 2;
     Node result = null;
-    for (Node node : gridPane.getChildren() ) {
-      if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+    for (Node node : gridPane.getChildren()) {
+      if (gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
         result = node;           	
         break;
       }
@@ -179,7 +174,7 @@ public class FrequencyAnalysisVigenereController {
     	vbox.setPrefSize(widthVBoxInTab, heightVBoxInTab);
 		vbox.setSpacing(spacingVBoxInTab);
 		vbox.getChildren().addAll(updateChart(i), createShiftButtons(i));
-		Tab tab = new Tab( "Diagramm " + (i +1) );
+		Tab tab = new Tab("Diagramm " + (i + 1));
 		tab.setContent(vbox);
 		tabPane.getTabs().add(tab);
 	}		
@@ -194,7 +189,8 @@ public class FrequencyAnalysisVigenereController {
 		final int a = i;
 		TextField textFieldKey = new TextField("A");
 		textFieldKey.setMaxWidth(40);
-		textFieldKey.textProperty().addListener((observable, oldValue, newValue) -> changedTextFieldValue(a, oldValue, newValue));
+		textFieldKey.textProperty().addListener((observable, oldValue, newValue) ->
+				changedTextFieldValue(a, oldValue, newValue));
 		textFieldKey.setOnMouseClicked(new EventHandler() {
 			@Override
 			public void handle(Event event) {
@@ -214,14 +210,14 @@ public class FrequencyAnalysisVigenereController {
    * @return every n-th letter as one string
    */
   private String getEveryNthLetter(int n) {
-	String str = "";
+	StringBuilder str = new StringBuilder();
 	String codedText = text.replaceAll("[^A-Z]", "");
 	
 	for (int i = n; i < codedText.length(); i += lengthCodeComboBox.getValue()) {
-      str += codedText.substring(i, i+1);
+      str.append(codedText.substring(i, i + 1));
 	}
 	
-	return str;
+	return str.toString();
 }
     
   /**
@@ -261,7 +257,7 @@ public class FrequencyAnalysisVigenereController {
    */
   private void updateDecodedText(int i) {
 	String s = ((TextField) hboxKey.getChildren().get(i)).getText();
-	if(!MainController.isBeaufortDecryption){
+	if (!MainController.isBeaufortDecryption) {
 	labelDecodedText.setText(decodeNthText(i, s));
 	} else {
 		labelDecodedText.setText(decodeNthTextBeaufort(i, s));
@@ -281,12 +277,12 @@ public class FrequencyAnalysisVigenereController {
     Pattern p = Pattern.compile("[A-Z]");
     int count = 0;
     for (int i = 0; i < decodedText.length(); i++) {
-      Matcher m = p.matcher(decodedText.subSequence(i, i+1));
+      Matcher m = p.matcher(decodedText.subSequence(i, i + 1));
 	  if (m.matches()) {
 	    if (count == n) {
           decodedText = decodedText.substring(0, i) 
-    	  + caesar.decode(text.substring(i, i+1), s.charAt(0) - 'A') 
-    	  + decodedText.substring(i+1);
+    	  + caesar.decode(text.substring(i, i + 1), s.charAt(0) - 'A')
+    	  + decodedText.substring(i + 1);
         }
 	  count++;
 	  if (count == lengthCodeComboBox.getValue()) {
@@ -304,12 +300,12 @@ public class FrequencyAnalysisVigenereController {
 		Pattern p = Pattern.compile("[A-Z]");
 		int count = 0;
 		for (int i = 0; i < decodedText.length(); i++) {
-			Matcher m = p.matcher(decodedText.subSequence(i, i+1));
+			Matcher m = p.matcher(decodedText.subSequence(i, i + 1));
 			if (m.matches()) {
 				if (count == n) {
 					decodedText = decodedText.substring(0, i)
-							+ beaufort.decode(text.substring(i, i+1), key)
-							+ decodedText.substring(i+1);
+							+ beaufort.decode(text.substring(i, i + 1), key)
+							+ decodedText.substring(i + 1);
 				}
 				count++;
 				if (count == lengthCodeComboBox.getValue()) {
@@ -340,8 +336,8 @@ public class FrequencyAnalysisVigenereController {
    * @return rotated hashmap
    */
   private LinkedHashMap<String, Double> rotateHashMapRight(boolean shiftRight, LinkedHashMap<String, Double> map) {
-	ArrayList<String> listString = new ArrayList<String>(map.keySet());
-	ArrayList<Double> listDouble = new ArrayList<Double>(map.values());
+	ArrayList<String> listString = new ArrayList<>(map.keySet());
+	ArrayList<Double> listDouble = new ArrayList<>(map.values());
 	
 	if (shiftRight) {
 		Collections.rotate(listString, 1);
@@ -350,7 +346,7 @@ public class FrequencyAnalysisVigenereController {
 		Collections.rotate(listString, -1);
     	Collections.rotate(listDouble, -1);
 	}
-	LinkedHashMap<String, Double> newMap = new LinkedHashMap<String, Double>();
+	LinkedHashMap<String, Double> newMap = new LinkedHashMap<>();
     for (int i = 0; i < listString.size(); i++) {
 		newMap.put(listString.get(i), listDouble.get(i));
 	}
@@ -367,16 +363,18 @@ public class FrequencyAnalysisVigenereController {
     splittedText[i] = getEveryNthLetter(i);
     LinkedHashMap<String, Double> splittedTextFrequency = FrequencyAnalysis.relativeFrequency(splittedText[i]);
     frequencies.add(splittedTextFrequency);
-	barCharts[i] = FrequencyAnalysis.getChart("Häufigkeitsanalyse (" + (i+1) + ")", 
+	barCharts[i] = FrequencyAnalysis.getChart("Häufigkeitsanalyse (" + (i + 1) + ")",
 			"Buchstaben (ohne Umlaute und ß)", "relative Häufigkeit in %", 
 			frequencies.get(i), germanLetterFrequency, true, Color.RED);
 	barCharts[i].setLegendVisible(false);
 	barCharts[i].setPrefSize(widthBarChartInTab, heightBarChartInTab);
 	FrequencyAnalysis.barChartColumnsColor(barCharts[i], "-fx-bar-fill: red;", "-fx-bar-fill: black;");
-	overviewBarCharts[i] = FrequencyAnalysis.getChart("", "", "", frequencies.get(i), germanLetterFrequency, false, Color.BLACK);
+	overviewBarCharts[i] = FrequencyAnalysis.getChart("", "", "", frequencies.get(i),
+			germanLetterFrequency, false, Color.BLACK);
 	overviewBarCharts[i].setLegendVisible(false);
 	overviewBarCharts[i].setPrefSize(515, 250);
-	FrequencyAnalysis.barChartColumnsColor(overviewBarCharts[i], "-fx-bar-fill: red;", "-fx-bar-fill: black;");
+	FrequencyAnalysis.barChartColumnsColor(overviewBarCharts[i], "-fx-bar-fill: red;",
+			"-fx-bar-fill: black;");
 	AnchorPane pane = new AnchorPane();
 	pane.setPrefSize(widthBarChartInTab + 10, heightBarChartInTab);
 	pane.getChildren().add(barCharts[i]);
@@ -394,40 +392,18 @@ public class FrequencyAnalysisVigenereController {
     HBox hb = new HBox();
     hb.setAlignment(Pos.CENTER);
     hb.setSpacing(15);
-	Label lbl1 = new Label("A");
-	Label lbl2 = new Label("→");
-	Label lbl3 = new Label("A");
 	final int a = i;
 	Button buttonShiftLeft = new Button("<<");
 	buttonShiftLeft.setOnMouseClicked(new EventHandler() {
 	  @Override
 	  public void handle(Event event) {
 	    shiftRight(false, a);
-	    String s = lbl3.getText();
-	    char letter = s.charAt(0);
-	    if (letter == 'A') {
-	      lbl3.setText("Z");
-	    } else {
-	      lbl3.setText(Character.toString(--letter));
-	    }
 	  }
 	});
 	
 	Button buttonShiftRight = new Button(">>");
-	buttonShiftRight.setOnMouseClicked(new EventHandler() {
-	  @Override
-	  public void handle(Event event) {
-		shiftRight(true, a);		
-		String s = lbl3.getText();
-	    char letter = s.charAt(0);
-	    if (letter == 'Z') {
-	      lbl3.setText("A");
-	    } else {
-	      lbl3.setText(Character.toString(++letter));
-	    }
-	   }
-	});
-	hb.getChildren().addAll(buttonShiftLeft, lbl1, lbl2, lbl3, buttonShiftRight);
+	buttonShiftRight.setOnMouseClicked((EventHandler) event -> shiftRight(true, a));
+	hb.getChildren().addAll(buttonShiftLeft, buttonShiftRight);
 	return hb;
 }
     

@@ -3,10 +3,10 @@ package org.kryptojagd.controls;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
-import org.kryptojagd.level.pointSystem.PointSystem;
-import org.kryptojagd.level.tasks.Task;
+import org.kryptojagd.level.PointSystem;
 
 import java.util.ArrayList;
 

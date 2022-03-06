@@ -2,25 +2,12 @@ package org.kryptojagd.controls;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 
 /**
  * The type Settings controller.
  */
 public class SettingsController extends AbstractController {
-
-    /**
-     * The Dark light toggle.
-     */
-    @FXML
-    private Button darkLightToggle;
-
-    /**
-     * The accessibility toggle.
-     */
-    @FXML
-    private Button blindToggle;
 
     /**
      * Click dark light toggle.

@@ -1,9 +1,9 @@
 package org.kryptojagd.controls;
 
-import org.kryptojagd.controls.levels.LevelHandler;
+import org.kryptojagd.level.LevelHandler;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
-import org.kryptojagd.level.pointSystem.PointSystem;
+import org.kryptojagd.level.PointSystem;
 import org.kryptojagd.presentation.PresentationManager;
 import java.util.ArrayList;
 
@@ -14,31 +14,27 @@ import java.util.ArrayList;
  */
 public class MainController {
 
-	private PresentationManager fw;
+	private final PresentationManager fw;
 
 	private Level currentLevel;
 
-	private ArrayList<Level> allLevels;
+	private final ArrayList<Level> playedLevels = new ArrayList<>();
 
-	private ArrayList<Level> playedLevels = new ArrayList<>();
+	private final int clearedLevels;
 
-	private int clearedLevels;
+	private final int currentLevelPosition;
 
-	protected ArrayList<Integer> clearedLevelIndexes = new ArrayList();
+	LevelHandler levelHandler;
 
-	protected boolean cityTaskFinished;
-
-	protected static boolean isBeaufortDecryption = false;
-
-	private int currentLevelPosition;
+	/**
+	 * The constant isBeaufortDecryption.
+	 */
+	public static boolean isBeaufortDecryption = false;
 
 	/**
 	 * The constant TASK_FINISHED_FXML.
 	 */
 	public static final String TASK_FINISHED_FXML = "TaskFinished.fxml";
-
-	LevelHandler levelHandler;
-
 
 	/**
 	 * Constructor of a MainController
@@ -48,29 +44,22 @@ public class MainController {
 	 * @param allLevels     the levels
 	 * @param clearedLevels the cleared levels
 	 */
-	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels, int clearedLevels)
+	public MainController(PresentationManager fw, Level currentLevel, LevelHandler allLevels, int clearedLevels)
 			throws Exception {
 		this.fw = fw;
-		//this.currentLevel = currentLevel;
 		this.currentLevelPosition = 0;
-		this.allLevels = allLevels;
 		this.clearedLevels = clearedLevels;
 		this.playedLevels.add(currentLevel);
 		AbstractController.setMainController(this);
-
-		this.levelHandler = new LevelHandler(allLevels);
+		this.levelHandler = allLevels;
 		this.currentLevel = this.levelHandler.getLevel(0);
 	}
 
-	public MainController(PresentationManager fw, Level currentLevel, ArrayList<Level> allLevels,
-						  LevelHandler levelHandler) throws Exception {
-		this.fw = fw;
-		this.allLevels = allLevels;
-		AbstractController.setMainController(this);
-		this.levelHandler = levelHandler;
-		this.currentLevel = currentLevel;
-	}
-
+	/**
+	 * Gets level handler.
+	 *
+	 * @return the level handler
+	 */
 	public LevelHandler getLevelHandler() {
 		return this.levelHandler;
 	}
@@ -79,11 +68,21 @@ public class MainController {
 	 * Starts the current level
 	 */
 	public void startLevel() {
-		addPlayableLevel(this.currentLevel.getId());
 		PointSystem.setEncryptionTaskedFinished(false);
 		PointSystem.setMultipleChoiceTaskFinished(0);
 		PointSystem.setDecryptionTaskFinished(0);
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", ReadDirectory.CSS_FILE_START);
+	}
+
+	/**
+	 * Add playable.
+	 *
+	 * @param level the level
+	 */
+	public void addPlayable(Level level) {
+		if (!this.playedLevels.contains(level)) {
+			this.playedLevels.add(level);
+		}
 	}
 
 	/**
@@ -119,15 +118,6 @@ public class MainController {
 		return fw;
 	}
 
-	/**
-	 * Sets cleared levels plus one.
-	 */
-	public void setClearedLevels() {
-		this.clearedLevels++;
-		if (!clearedLevelIndexes.contains(getCurrentLevelPosition())) {
-			clearedLevelIndexes.add(getCurrentLevelPosition());
-		}
-	}
 	/**
 	 * Sets beaufort decryption.
 	 *
@@ -192,40 +182,13 @@ public class MainController {
 	public void setRestartLevel(Level level) {
 		this.currentLevel = level;
 	}
-
+	
 	/**
-	 * Add a new level to the already playable levels.
-	 * @param id given level id
+	 * Sets the Beaufort encryption.
+	 * 
+	 * @param beaufort true, if Beaufort encryption, else false
 	 */
-	public void addPlayableLevel(int id) {
-		for (int i = 0; i < this.playedLevels.size(); i++) {
-			if (this.playedLevels.get(i).getId() != id) {
-				this.playedLevels.add(this.currentLevel);
-				System.out.println("Erfolgreich");
-			}
-		}
-	}
-
-	/**
-	 * Checks if the given level id already playable.
-	 * @param id given id of an level
-	 * @return if level is playable.
-	 */
-	public boolean checkPlayable(int id) {
-		for (int i = 0; i < this.playedLevels.size(); i++) {
-			if (this.playedLevels.get(i).getId() == id) {
-				System.out.println("Erfolgreich");
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Resets all levels.
-	 * @param alllevels resets level list.
-	 */
-	public void setAllLevels(ArrayList<Level> alllevels) {
-		this.allLevels = alllevels;
+	public void beaufortEncryption(boolean beaufort) {
+		isBeaufortDecryption = beaufort;
 	}
 }

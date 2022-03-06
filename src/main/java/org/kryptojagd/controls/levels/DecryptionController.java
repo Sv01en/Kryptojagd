@@ -8,13 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.kryptojagd.controls.AbstractController;
-import org.kryptojagd.controls.CryptoToolController;
+import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
-import org.kryptojagd.level.pointSystem.PointSystem;
+import org.kryptojagd.level.PointSystem;
 import org.kryptojagd.level.tasks.DecryptionTask;
 
 import java.io.IOException;
@@ -33,19 +33,19 @@ public class DecryptionController extends AbstractController {
      * The Question.
      */
     @FXML
-    public Label question;
+    private Label question;
 
     /**
      * The Encrypted puzzle text.
      */
     @FXML
-    public Label encryptedPuzzleText;
+    private Label encryptedPuzzleText;
 
     /**
      * The Text field.
      */
     @FXML
-    public TextField textField;
+    private TextField textField;
 
     @FXML
     private Label timer = new Label();

@@ -1,6 +1,6 @@
 
 {
-	"task":"Verschluessle den folgenden Text mit dem Rueckwaertsverschluesselungsverfahren:\n\nHinweis:\nVerschluessle jedes Wort einzeln, unabhaengig von den Sonderzeichen.\n",
+	"task":"Verschlüssle den folgenden Text mit dem Rückwärtsverschlüsselungsverfahren:\n\nHinweis:\nVerschlüssle jedes Wort einzeln, unabhängig von den Sonderzeichen.\n",
 	"text":"Erste Floppy-Disk gefunden",
 	"encryptionType": "Backwards",
 	"timeInSec": 300,

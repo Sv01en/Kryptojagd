@@ -1,4 +1,4 @@
-package org.kryptojagd.level.countdown;
+package org.kryptojagd.level;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,8 +21,6 @@ public class CountdownTimer {
      */
     private String outputValue;
 
-    private TimerTask task;
-
     private Timer timer = new Timer();
 
     /**
@@ -38,7 +36,7 @@ public class CountdownTimer {
      */
     private long countdownTimer(int setTime) {
         actualValue = setTime;
-        this.task = new TimerTask() {
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 if (actualValue > 0) {
@@ -79,13 +77,5 @@ public class CountdownTimer {
     public void reduceTimer(int given) {
         actualValue = actualValue - given;
         this.outputValue = Long.toString(actualValue);
-    }
-
-    /**
-     * Cancel the running {@link TimerTask} and {@link Timer}.
-     */
-    public void cancelTimerTask() {
-        this.task.cancel();
-        this.timer.cancel();
     }
 }

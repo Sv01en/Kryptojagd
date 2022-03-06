@@ -27,8 +27,8 @@ public class FrequencyAnalysis {
    * @param text whose relative letter frequency must be specified
    * @return the relative letter frequency of the given text as a linked hash map.
    */
-  public static LinkedHashMap<String,Double> relativeFrequency(String text) {
-    LinkedHashMap<String,Double> hashmap = new LinkedHashMap<String, Double>();
+  public static LinkedHashMap<String, Double> relativeFrequency(String text) {
+    LinkedHashMap<String, Double> hashmap = new LinkedHashMap<>();
 	text = removeCharacters(text);
 	double length = (double) text.length();
 	
@@ -49,7 +49,7 @@ public class FrequencyAnalysis {
    * @return the relative letter frequency of German texts as a hash map
    */
   public static LinkedHashMap<String, Double> germanLetterFrequency() {
-	LinkedHashMap<String,Double> germanLetterFrequency = new LinkedHashMap<String, Double>();
+	LinkedHashMap<String, Double> germanLetterFrequency = new LinkedHashMap<>();
 	germanLetterFrequency.put("A", 6.51);
 	germanLetterFrequency.put("B", 1.89);
 	germanLetterFrequency.put("C", 3.06);
@@ -93,16 +93,16 @@ public class FrequencyAnalysis {
 	/**
 	 * Changes the color of the first columns of the bar chart to color0 and the second
 	 * columns to color1.
-	 * @param barChart
-	 * @param chart0
-	 * @param chart1
+	 * @param barChart barChart
+	 * @param color0 color
+	 * @param color1 color
 	 */
 	public static void barChartColumnsColor(BarChart barChart, String color0, String color1) {
-		   for(Node n: barChart.lookupAll(".default-color0.chart-bar")) {
+		   for (Node n: barChart.lookupAll(".default-color0.chart-bar")) {
 	            n.setStyle(color0);
 	        }
 		 
-	   for(Node n: barChart.lookupAll(".default-color1.chart-bar")) {
+	   for (Node n: barChart.lookupAll(".default-color1.chart-bar")) {
 	            n.setStyle(color1);
 	        }
 	}
@@ -122,16 +122,16 @@ public class FrequencyAnalysis {
     series1.setName("deutschsprachige Texte");
 	series2.setName("vorliegender Text");
 	
-	ArrayList<String> list1String = new ArrayList<String>();
-    ArrayList<Double> list1Double = new ArrayList<Double>();
+	ArrayList<String> list1String = new ArrayList<>();
+    ArrayList<Double> list1Double = new ArrayList<>();
 	
 	for (String key : textLetterFrequency.keySet()) {
 		list1String.add(key);
 		list1Double.add(textLetterFrequency.get(key));
     }
     
-    ArrayList<String> list2String = new ArrayList<String>();
-    ArrayList<Double> list2Double = new ArrayList<Double>();
+    ArrayList<String> list2String = new ArrayList<>();
+    ArrayList<Double> list2Double = new ArrayList<>();
     		
 	for (String key : germanLetterFrequency.keySet()) {
 		list2String.add(key);
@@ -164,35 +164,38 @@ public class FrequencyAnalysis {
    */
   public static void lettersLabels(Pane pane, Set<String> set, int xStart, int yStart, double distance) {
 	int count = 0;
-	for (String key : set ) {
+	for (String key : set) {
 		Label label = new Label(key);
 		label.setStyle("-fx-font-size: 8pt; "
 				+ "-fx-font-weight: bold;"
 				+ "-fx-font-family: 'monospace'");
 		pane.getChildren().add(label);
-		label.relocate( xStart + distance * count, yStart );
+		label.relocate(xStart + distance * count, yStart);
 		count++;
 	}
 	
   }
-    
-  /**
-   * Returns a bar chart.
-   * @param title of the bar chart
-   * @param xLabel label of the x-axis
-   * @param ylabel label of the y-axis
-   * @param textLetterFrequency the relative letter frequency of the given text
-   * @param germanLetterFrequency the relative letter frequency of German texts
-   * @return
-   */
-  public static BarChart getChart(String title, String xLabel, String ylabel, 
+
+	/**
+	 * Returns a bar chart.
+	 *
+	 * @param title                 of the bar chart
+	 * @param xLabel                label of the x-axis
+	 * @param ylabel                label of the y-axis
+	 * @param textLetterFrequency   the relative letter frequency of the given text
+	 * @param germanLetterFrequency the relative letter frequency of German texts
+	 * @param xAxisTicksData1       the x axis ticks data 1
+	 * @param tickColor             the tick color
+	 * @return BarChart chart
+	 */
+	public static BarChart getChart(String title, String xLabel, String ylabel,
 		LinkedHashMap<String, Double> textLetterFrequency, LinkedHashMap<String, 
 		Double> germanLetterFrequency, boolean xAxisTicksData1, Color tickColor) {
 
 	CategoryAxis xAxis = new CategoryAxis();
     NumberAxis yAxis = new NumberAxis();
 	
-    BarChart<String,Number> barChart = new BarChart<String,Number>(xAxis,yAxis);
+    BarChart<String, Number> barChart = new BarChart<String, Number>(xAxis, yAxis);
     
 	barChart.setTitle(title);
     xAxis.setLabel(xLabel); 

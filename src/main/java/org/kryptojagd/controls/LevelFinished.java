@@ -3,12 +3,9 @@ package org.kryptojagd.controls;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
-import org.kryptojagd.level.Level;
-import org.kryptojagd.level.pointSystem.PointSystem;
-import org.kryptojagd.level.tasks.Task;
-
-import java.util.ArrayList;
+import org.kryptojagd.level.PointSystem;
 
 /**
  * Controller for the level finished fxml file
@@ -18,12 +15,18 @@ import java.util.ArrayList;
  */
 public class LevelFinished extends AbstractController {
 
+    /**
+     * The Text.
+     */
     @FXML
-    public Label text;
+    private Label text;
 
     @FXML
     private Label score;
 
+    /**
+     * Initialize.
+     */
     @FXML
     public void initialize() {
         if (!CryptoToolController.isSystemHacked()) {
@@ -41,8 +44,7 @@ public class LevelFinished extends AbstractController {
      */
     @FXML
     void menuAction(ActionEvent e) throws Exception {
-        //mainController.getCurrentLevel().clearLevel();
-        mainController.cityTaskFinished = false;
+        mainController.addPlayable(mainController.getCurrentLevel());
         mainController.setCurrentLevel(mainController.getLevelHandler().getLevelPos() + 1);
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
@@ -54,7 +56,7 @@ public class LevelFinished extends AbstractController {
     @FXML
     void nextLevelAction(ActionEvent e) throws Exception {
         mainController.getCurrentLevel().clearLevel();
-        mainController.cityTaskFinished = false;
+        mainController.addPlayable(mainController.getCurrentLevel());
         mainController.setCurrentLevel(mainController.getLevelHandler().getLevelPos() + 1);
         mainController.startLevel();
     }

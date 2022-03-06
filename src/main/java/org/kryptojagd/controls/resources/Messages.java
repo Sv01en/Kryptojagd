@@ -31,11 +31,6 @@ public final class Messages {
     public static final String LEVEL_FINISHED = "Glückwunsch, du hast das Level erfolgreich beendet.";
 
     /**
-     * The constant GO_TO_START.
-     */
-    public static final String GO_TO_START = "Gehe zurück zum Startmenü!";
-
-    /**
      * The constant START_TEXT.
      */
     public static final String START_TEXT = "Du und deine Kollegen Bob und Alice wurdet von der Nationalen"

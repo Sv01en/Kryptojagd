@@ -6,9 +6,10 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import org.kryptojagd.controls.levels.LevelHandler;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
+import org.kryptojagd.level.LevelHandler;
+
 import java.util.ArrayList;
 
 /**
@@ -35,9 +36,8 @@ public class LevelSelectorController extends AbstractController {
         System.out.println("Level neu initialisiert!");
         ArrayList<Level> levels = ReadDirectory.initialize();
         ArrayList<Level> playedLevels = mainController.getLevelHandler().getPlayedLevels();
-        LevelHandler levelHandler = mainController.getLevelHandler();
-        for (int i = 0; i < playedLevels.size(); i++) {
-            System.out.println(playedLevels.get(i).getId());
+        for (Level playedLevel : playedLevels) {
+            System.out.println(playedLevel.getId());
         }
         ArrayList<Button> buttons = new ArrayList<>();
         for (int i = 0; i < levels.size(); i++) {
@@ -46,8 +46,10 @@ public class LevelSelectorController extends AbstractController {
             button.setOnAction(event -> {
                 try {
                     int countClearedLevels = mainController.getClearedLevels();
+                    LevelHandler levelHandler = new LevelHandler(levels);
                     setMainController(
-                            new MainController(mainController.getPresentationManager(), levels.get(finalI), levels,
+                            new MainController(mainController.getPresentationManager(), levels.get(finalI),
+                                    levelHandler,
                                     countClearedLevels));
                     mainController.getLevelHandler().setPlayedLevels(playedLevels);
                     mainController.startLevelByPosition(finalI);
@@ -55,7 +57,15 @@ public class LevelSelectorController extends AbstractController {
                     e.printStackTrace();
                 }
             });
-            if (playedLevels.size() > i || unlockAllLevels) {
+            boolean isPlayable = false;
+            for (Level playedLevel : playedLevels) {
+                if (playedLevel.getId() == levels.get(i).getId()) {
+                    isPlayable = true;
+                }
+            }
+            if (unlockAllLevels) {
+                button.setDisable(false);
+            } else if (isPlayable) {
                 button.setDisable(false);
             } else {
                 button.setDisable(true);
@@ -69,8 +79,8 @@ public class LevelSelectorController extends AbstractController {
         }
         VBox vbox = new VBox(10);
         vbox.setAlignment(Pos.CENTER);
-        for (int i = 0; i < buttons.size(); i++) {
-            vbox.getChildren().add(buttons.get(i));
+        for (Button button : buttons) {
+            vbox.getChildren().add(button);
         }
 
         borderBox.setCenter(vbox);
@@ -84,7 +94,10 @@ public class LevelSelectorController extends AbstractController {
     void clickBack(ActionEvent event) {
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
-    
+
+    /**
+     * Unlock all levels.
+     */
     static void unlockAllLevels() {
     	unlockAllLevels = true;
     }

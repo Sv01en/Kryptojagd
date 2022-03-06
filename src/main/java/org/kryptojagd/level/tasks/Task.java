@@ -1,6 +1,6 @@
 package org.kryptojagd.level.tasks;
 
-import org.kryptojagd.level.pointSystem.PointSystem;
+import org.kryptojagd.level.PointSystem;
 
 /**
  * The interface describes the form of a task in the game
@@ -46,7 +46,6 @@ public interface Task {
 
     /**
      * Set true or false if the task is completed
-     * ToDo Why???
      */
     void setTaskCompletedEnd();
 

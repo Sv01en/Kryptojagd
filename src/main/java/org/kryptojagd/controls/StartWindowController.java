@@ -1,12 +1,8 @@
 package org.kryptojagd.controls;
 
-import java.io.IOException;
-
-import org.kryptojagd.cryptotools.CryptoTool;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 
 /**
@@ -23,17 +19,6 @@ public class StartWindowController extends AbstractController {
     @FXML
     void clickSettings(ActionEvent event) {
         mainController.switchWindowWithCSS("Settings.fxml", ReadDirectory.CSS_FILE_START);
-    }
-
-    /**
-     * Handles press on info button
-     * @param event that is received
-     */
-    @FXML
-    void clickInfo(ActionEvent event) {
-    	System.out.println("Es wurde auf Info geklickt!");
-        mainController.switchWindowWithCSS("Infotext.fxml", ReadDirectory.CSS_FILE_START);
-    	//mainController.switchWindow("Infotext.fxml");
     }
 
     /**
@@ -64,17 +49,13 @@ public class StartWindowController extends AbstractController {
     }
 
     /**
-     * Handles press on start button
-     * @param event that is received
+     * Click crypto tool.
+     *
+     * @param event the event
      */
     @FXML
-    void clickCryptoCaesar(ActionEvent event) {
-        System.out.println("Es wurde auf Kryptotool Cäsar Button geklickt!");
-        mainController.startLevel();
-    }
-    
-    @FXML
     void clickCryptoTool(ActionEvent event) {
+        mainController.beaufortEncryption(false);
     	mainController.switchWindowWithCSS("CryptoTool.fxml", ReadDirectory.CSS_FILE_START);
     }
 }

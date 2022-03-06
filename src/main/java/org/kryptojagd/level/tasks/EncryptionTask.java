@@ -1,9 +1,9 @@
 package org.kryptojagd.level.tasks;
 
 import org.kryptojagd.encryptionmethods.Encryption;
-import org.kryptojagd.level.hamming.HammingDistance;
+import org.kryptojagd.level.HammingDistance;
 import org.kryptojagd.encryptionmethods.*;
-import org.kryptojagd.level.pointSystem.PointSystem;
+import org.kryptojagd.level.PointSystem;
 
 /**
  * The class describes a task, where you have to encrypt the given text
@@ -180,10 +180,14 @@ public class EncryptionTask implements Task {
 
     @Override
     public boolean proveAnswer(String answer) {
+        if (encryptionType.equals("Beaufort")) {
+            Beaufort.setIsEncryptionTask(true);
+        }
         encryptionMethod.setKey(key);
         char[] origMsg = new char[this.text.length()];
         char[] studentSolution = new char[answer.length()];
-        String realSolutionString = this.encryptionMethod.encode(this.text);
+        //String realSolutionString = this.encryptionMethod.encode(this.text);
+        String realSolutionString = this.encryptionMethod.decode(this.text, key);
         char[] realSolution = new char[realSolutionString.length()];
 
         for (int i = 0; i < this.text.length(); i++) {
@@ -252,7 +256,10 @@ public class EncryptionTask implements Task {
         return true;
     }
 
-    //ToDo default
+    /**
+     *
+     * @return default
+     */
     @Override
     public String[] getPossibilities() {
         return new String[0];
