@@ -10,7 +10,7 @@ import org.kryptojagd.level.pointSystem.PointSystem;
 /**
  * Gives the right feedback to a task and switches the window.
  *
- * @author Sonja Kuklok, Leah Schlimm
+ * @author Sonja Kuklok, Leah Schlimm, Bartosz Treyde
  */
 public class TaskFinishedController extends AbstractController {
 
