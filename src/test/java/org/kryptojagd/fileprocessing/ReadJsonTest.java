@@ -60,7 +60,7 @@ class ReadJsonTest {
     EncryptionTask enc = ReadJson.createEncryptionTask(pathToEncryption);
 
     if(enc != null) {
-      Assertions.assertEquals(enc.getEncryption(), encType);
+      Assertions.assertEquals(enc.getEncryption().toString(), encType);
       Assertions.assertEquals(enc.getTaskText(), task);
       Assertions.assertEquals(enc.getText(), text);
     }
@@ -97,7 +97,7 @@ class ReadJsonTest {
 
 if(dec != null) {
   Assertions.assertEquals(dec.getPlainText(), plainText);
-  Assertions.assertEquals(dec.getEncryptionMethod(), encryptionMethod);
+  Assertions.assertEquals(dec.getEncryptionMethod().toString(), encryptionMethod);
   Assertions.assertEquals(dec.getCorrectAnswerEncryption(), correctAnswerEncryption);
   Assertions.assertArrayEquals(dec.getCityTask().getPossibilities(), answerOptionsCity);
   Assertions.assertEquals(dec.getCityTask().getCorrectAnswer(), dec.getCityTask().getPossibilities()[correctAnswerCity]);
@@ -115,7 +115,7 @@ if(dec != null) {
   @Test
   void testReadTime() {
 
-    Assertions.assertTrue(ReadJson.readTime(path + "time.json") <= 500 && ReadJson.readTime(path + "time.json") >= 0);
+    Assertions.assertTrue(ReadJson.readTime(path + "time.json") <= 1200 && ReadJson.readTime(path + "time.json") >= 600);
   }
 
 
