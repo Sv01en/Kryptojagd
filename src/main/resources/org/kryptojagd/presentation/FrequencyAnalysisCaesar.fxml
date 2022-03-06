@@ -11,9 +11,9 @@
       <Label layoutX="14.0" layoutY="16.0" text="Kodierter Text:" />
       <Button fx:id="buttonShiftLeft" layoutX="462.0" layoutY="696.0" mnemonicParsing="false" onAction="#shiftLeft" text="&lt;&lt;" />
       <Button fx:id="buttonShiftRight" layoutX="520.0" layoutY="696.0" mnemonicParsing="false" onAction="#shiftRight" text="&gt;&gt;" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="16.0" layoutX="172.0" layoutY="634.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-      <Label layoutX="203.0" layoutY="634.0" text="Buchstabenhäufigkeit im vorliegenden Text" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="16.0" layoutX="527.0" layoutY="634.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-      <Label layoutX="556.0" layoutY="634.0" text="Buchstabenhäufigkeit in deutschsprachigen Texten" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="16.0" layoutX="161.0" layoutY="634.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+      <Label layoutX="188.0" layoutY="634.0" text="Buchstabenhäufigkeit im vorliegenden Text" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="16.0" layoutX="555.0" layoutY="634.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+      <Label layoutX="583.0" layoutY="634.0" text="Buchstabenhäufigkeit in deutschsprachigen Texten" />
    </children>
 </AnchorPane>
