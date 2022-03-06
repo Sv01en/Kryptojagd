@@ -1,6 +1,7 @@
 package org.kryptojagd.level.countdown;
 
 import org.junit.jupiter.api.Test;
+import org.kryptojagd.level.CountdownTimer;
 
 import static org.junit.jupiter.api.Assertions.*;
 

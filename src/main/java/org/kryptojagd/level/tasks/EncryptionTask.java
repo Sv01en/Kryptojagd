@@ -1,9 +1,9 @@
 package org.kryptojagd.level.tasks;
 
 import org.kryptojagd.encryptionmethods.Encryption;
-import org.kryptojagd.level.hamming.HammingDistance;
+import org.kryptojagd.level.HammingDistance;
 import org.kryptojagd.encryptionmethods.*;
-import org.kryptojagd.level.pointSystem.PointSystem;
+import org.kryptojagd.level.PointSystem;
 
 /**
  * The class describes a task, where you have to encrypt the given text
@@ -252,7 +252,10 @@ public class EncryptionTask implements Task {
         return true;
     }
 
-    //ToDo default
+    /**
+     *
+     * @return default
+     */
     @Override
     public String[] getPossibilities() {
         return new String[0];

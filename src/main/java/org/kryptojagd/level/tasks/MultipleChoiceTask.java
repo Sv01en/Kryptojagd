@@ -1,6 +1,6 @@
 package org.kryptojagd.level.tasks;
 
-import org.kryptojagd.level.pointSystem.PointSystem;
+import org.kryptojagd.level.PointSystem;
 
 /**
  * The class describes a task, where you have to answer multiple choice questions

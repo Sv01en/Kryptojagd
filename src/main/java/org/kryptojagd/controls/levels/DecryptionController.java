@@ -14,7 +14,7 @@ import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
-import org.kryptojagd.level.pointSystem.PointSystem;
+import org.kryptojagd.level.PointSystem;
 import org.kryptojagd.level.tasks.DecryptionTask;
 
 import java.io.IOException;

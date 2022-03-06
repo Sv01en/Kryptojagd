@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import org.kryptojagd.controls.cryptotool.CryptoToolController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
-import org.kryptojagd.level.pointSystem.PointSystem;
+import org.kryptojagd.level.PointSystem;
 
 import java.util.ArrayList;
 

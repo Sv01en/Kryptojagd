@@ -3,7 +3,6 @@ package org.kryptojagd.level;
 import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.encryptionmethods.*;
-import org.kryptojagd.level.countdown.CountdownTimer;
 import org.kryptojagd.level.tasks.DecryptionTask;
 import org.kryptojagd.level.tasks.EncryptionTask;
 import org.kryptojagd.level.tasks.MultipleChoiceTask;

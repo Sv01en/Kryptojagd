@@ -1,4 +1,4 @@
-package org.kryptojagd.level.pointSystem;
+package org.kryptojagd.level;
 
 
 /**

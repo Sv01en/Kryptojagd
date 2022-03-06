@@ -1,4 +1,4 @@
-package org.kryptojagd.level.hamming;
+package org.kryptojagd.level;
 
 /**
  * Provides all functionalities for the hamming distance.

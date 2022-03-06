@@ -1,4 +1,4 @@
-package org.kryptojagd.level.countdown;
+package org.kryptojagd.level;
 
 import java.util.Timer;
 import java.util.TimerTask;

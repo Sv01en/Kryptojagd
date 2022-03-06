@@ -1,6 +1,7 @@
 package org.kryptojagd.level.hamming;
 
 import org.junit.jupiter.api.Test;
+import org.kryptojagd.level.HammingDistance;
 
 import static org.junit.jupiter.api.Assertions.*;
 
