@@ -52,8 +52,7 @@ public class CryptoTool extends Application {
    * @throws IOException
    */
    public static void vigenere(Stage stage, String text) throws IOException {
-    	
-	 MainController.setBeaufortDecryption(false);
+
      text = modifyText(text);
      stage.setResizable(false);
      stage.setTitle("Häufigkeitsanalyse (Vigenere-Verschlüsselung)");
