@@ -16,17 +16,6 @@ public class Beaufort extends Encryption {
     private static final char[] NORMALALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
-     * Sets is encryption task.
-     *
-     * @param isEncryptionTask the is encryption task
-     */
-    public static void setIsEncryptionTask(boolean isEncryptionTask) {
-        Beaufort.isEncryptionTask = isEncryptionTask;
-    }
-
-    private static boolean isEncryptionTask = false;
-
-    /**
      * Instantiates a new Beaufort encryption.
      */
     public Beaufort() {
@@ -229,7 +218,6 @@ public class Beaufort extends Encryption {
                 revWords.add(words.get(i));
             } else {
                 String revWord = "";
-                if (!isEncryptionTask) {
                     for (int j = 0; j < words.get(i).length(); j++) {
                         int result;
                         char c = inputKey.charAt(keyIndex % inputKey.length());
@@ -243,21 +231,7 @@ public class Beaufort extends Encryption {
                         revWord = revWord + (char) result;
                         revWords.add(revWord);
                     }
-                } else {
-                    for (int j = 0; j < words.get(i).length(); j++) {
-                        int result;
-                        char c = inputKey.charAt(keyIndex % inputKey.length());
-                        if (getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(c) < 0) {
-                            result = NORMALALPHABET[26
-                                    + getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(c)];
-                        } else {
-                            result = NORMALALPHABET[getAlphabetIndex(words.get(i).charAt(j)) - getNormalAlphabetIndex(c)];
-                        }
-                        keyIndex++;
-                        revWord = revWord + (char) result;
-                    }
-                    revWords.add(revWord);
-                }
+
             }
             }
 
