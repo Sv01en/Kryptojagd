@@ -1,4 +1,4 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.levels;
 
 
 import javafx.event.ActionEvent;
@@ -7,13 +7,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.kryptojagd.controls.AbstractController;
+import org.kryptojagd.controls.CryptoToolController;
+import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.cryptotools.CryptoTool;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.pointSystem.PointSystem;
 import org.kryptojagd.level.tasks.DecryptionTask;
-import org.kryptojagd.level.tasks.Task;
 
 import java.io.IOException;
 
@@ -91,7 +93,7 @@ public class DecryptionController extends AbstractController {
 
             button1.setDisable(true);
 
-            if (mainController.decryptionTaskSucceeded) {
+            if (level.isEncryptionTypeSucceeded()) {
                 procedure1.setDisable(true);
                 procedure2.setDisable(true);
                 procedure3.setDisable(true);
@@ -136,7 +138,7 @@ public class DecryptionController extends AbstractController {
 
     @FXML
     private void clickSend(ActionEvent event) {
-        mainController.decryptionTextTaskSucceeded = level.proveTask(textField.getText());
+        level.proveTask(textField.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }
 
@@ -145,7 +147,7 @@ public class DecryptionController extends AbstractController {
      * @param procedure Button which is clicked on
      */
     private void clickAnswer(Button procedure) {
-        mainController.decryptionTaskSucceeded = level.proveEncryptionType(procedure.getText());
+        level.proveEncryptionType(procedure.getText());
         mainController.switchWindowWithCSS(MainController.TASK_FINISHED_FXML, ReadDirectory.CSS_FILE_START);
     }
 

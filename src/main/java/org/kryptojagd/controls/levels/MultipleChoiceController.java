@@ -1,10 +1,13 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.levels;
 
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.kryptojagd.controls.AbstractController;
+import org.kryptojagd.controls.CryptoToolController;
+import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
@@ -118,7 +121,6 @@ public class MultipleChoiceController extends AbstractController {
      * @param answer the answer
      */
     private void clickAnswer(String answer) {
-        mainController.multipleChoiceTaskSucceeded =  level.proveTask(answer);
         String city = level.getCity();
         String css;
         if (level.getTask("cityTask").getTaskCompleted()) {

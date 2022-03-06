@@ -1,10 +1,12 @@
-package org.kryptojagd.controls;
+package org.kryptojagd.controls.levels;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.kryptojagd.controls.AbstractController;
+import org.kryptojagd.controls.CryptoToolController;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 import org.kryptojagd.level.Level;
 import org.kryptojagd.level.pointSystem.PointSystem;

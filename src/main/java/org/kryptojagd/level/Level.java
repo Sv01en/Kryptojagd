@@ -45,6 +45,8 @@ public class Level {
 
 	private boolean firstTryTimer = true;
 
+	private boolean encryptionTypeSucceeded = false;
+
 	/**
 	 * Sets first try timer.
 	 *
@@ -85,6 +87,15 @@ public class Level {
 	 */
 	public String getFeedback() {
 		return feedback;
+	}
+
+	/**
+	 * Getter for EncryptionTypeTaskSucceeded
+	 *
+	 * @return true, if the right EncryptionType was answered
+	 */
+	public boolean isEncryptionTypeSucceeded() {
+		return encryptionTypeSucceeded;
 	}
 
 	/**
@@ -156,13 +167,13 @@ public class Level {
 	 * an alternative feedback, if a special task is over or the whole level
 	 *
 	 * @param answer string given by the GUI
-	 * @return true or false
 	 */
-	public boolean proveTask(String answer) {
+	public void proveTask(String answer) {
 		if (!this.currentTask.proveAnswer(answer)) {
 			this.countdownTimer.reduceTimer(this.timePenalty);
 			feedback = Messages.STANDARD_FEEDBACK_BAD;
-			return this.currentTask.proveAnswer(answer);
+			this.currentTask.proveAnswer(answer);
+			return;
 		}
 		if (this.currentTask.getTaskCompleted()) {
 			feedback = Messages.STANDARD_FEEDBACK_GOOD;
@@ -174,7 +185,7 @@ public class Level {
 				currentTask.setScore(currentTask.getScore() + currentTime);
 			}
 		}
-		return this.currentTask.proveAnswer(answer);
+		this.currentTask.proveAnswer(answer);
 	}
 
 	/**
@@ -227,7 +238,8 @@ public class Level {
 		} else {
 			feedback = Messages.STANDARD_FEEDBACK_GOOD;
 		}
-		return decryptionTask.proveEncryptionType(answer);
+		encryptionTypeSucceeded = decryptionTask.proveEncryptionType(answer);
+		return encryptionTypeSucceeded;
 	}
 
 	/**

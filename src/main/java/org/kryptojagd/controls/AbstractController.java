@@ -13,12 +13,12 @@ public abstract class AbstractController {
 	/**
 	 * The Main controller.
 	 */
-	static MainController mainController;
+	protected static MainController mainController;
 
 	/**
 	 * Updates the timer in the corresponding window.
 	 */
-	void updateTimer(Label timer) {
+	protected void updateTimer(Label timer) {
 		timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));
 		Timeline time = new Timeline();
 		time.setCycleCount(Timeline.INDEFINITE);

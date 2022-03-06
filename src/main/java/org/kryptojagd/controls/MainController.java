@@ -26,14 +26,6 @@ public class MainController {
 
 	protected ArrayList<Integer> clearedLevelIndexes = new ArrayList();
 
-	protected boolean multipleChoiceTaskSucceeded;
-
-	protected boolean decryptionTaskSucceeded;
-
-	protected boolean decryptionTextTaskSucceeded;
-
-	protected boolean encryptionTaskSucceeded;
-
 	protected boolean cityTaskFinished;
 
 	protected static boolean isBeaufortDecryption = false;
