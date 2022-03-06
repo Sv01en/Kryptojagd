@@ -35,7 +35,6 @@ public class LevelSelectorController extends AbstractController {
         System.out.println("Level neu initialisiert!");
         ArrayList<Level> levels = ReadDirectory.initialize();
         ArrayList<Level> playedLevels = mainController.getLevelHandler().getPlayedLevels();
-        LevelHandler levelHandler = mainController.getLevelHandler();
         for (int i = 0; i < playedLevels.size(); i++) {
             System.out.println(playedLevels.get(i).getId());
         }
@@ -55,7 +54,15 @@ public class LevelSelectorController extends AbstractController {
                     e.printStackTrace();
                 }
             });
-            if (playedLevels.size() > i || unlockAllLevels) {
+            boolean isPlayable = false;
+            for (int j = 0; j < playedLevels.size(); j++) {
+                if (playedLevels.get(j).getId() == levels.get(i).getId()) {
+                    isPlayable = true;
+                }
+            }
+            if ( unlockAllLevels) {
+                button.setDisable(false);
+            } else if (isPlayable) {
                 button.setDisable(false);
             } else {
                 button.setDisable(true);

@@ -24,6 +24,7 @@ public class LevelHandler {
 
     /**
      * Gets the requested level by the position in the list
+     *
      * @param pos position in the list given as an integer
      * @return the requested level
      * @throws Exception if the position not valid

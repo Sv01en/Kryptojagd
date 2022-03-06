@@ -41,8 +41,8 @@ public class LevelFinished extends AbstractController {
      */
     @FXML
     void menuAction(ActionEvent e) throws Exception {
-        //mainController.getCurrentLevel().clearLevel();
         mainController.cityTaskFinished = false;
+        mainController.addPlayable(mainController.getCurrentLevel());
         mainController.setCurrentLevel(mainController.getLevelHandler().getLevelPos() + 1);
         mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);
     }
@@ -55,6 +55,7 @@ public class LevelFinished extends AbstractController {
     void nextLevelAction(ActionEvent e) throws Exception {
         mainController.getCurrentLevel().clearLevel();
         mainController.cityTaskFinished = false;
+        mainController.addPlayable(mainController.getCurrentLevel());
         mainController.setCurrentLevel(mainController.getLevelHandler().getLevelPos() + 1);
         mainController.startLevel();
     }

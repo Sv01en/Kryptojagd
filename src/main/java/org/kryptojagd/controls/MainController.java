@@ -79,11 +79,20 @@ public class MainController {
 	 * Starts the current level
 	 */
 	public void startLevel() {
-		addPlayableLevel(this.currentLevel.getId());
 		PointSystem.setEncryptionTaskedFinished(false);
 		PointSystem.setMultipleChoiceTaskFinished(0);
 		PointSystem.setDecryptionTaskFinished(0);
 		switchWindowWithCSS(currentLevel.getCurrentTask().toString() + ".fxml", ReadDirectory.CSS_FILE_START);
+	}
+
+	public void addPlayable(Level level) {
+		if (!this.playedLevels.contains(level)) {
+			this.playedLevels.add(level);
+		}
+	}
+
+	public boolean playedLevelContains(Level level) {
+		return this.playedLevels.contains(level);
 	}
 
 	/**
@@ -191,42 +200,6 @@ public class MainController {
 	 */
 	public void setRestartLevel(Level level) {
 		this.currentLevel = level;
-	}
-
-	/**
-	 * Add a new level to the already playable levels.
-	 * @param id given level id
-	 */
-	public void addPlayableLevel(int id) {
-		for (int i = 0; i < this.playedLevels.size(); i++) {
-			if (this.playedLevels.get(i).getId() != id) {
-				this.playedLevels.add(this.currentLevel);
-				System.out.println("Erfolgreich");
-			}
-		}
-	}
-
-	/**
-	 * Checks if the given level id already playable.
-	 * @param id given id of an level
-	 * @return if level is playable.
-	 */
-	public boolean checkPlayable(int id) {
-		for (int i = 0; i < this.playedLevels.size(); i++) {
-			if (this.playedLevels.get(i).getId() == id) {
-				System.out.println("Erfolgreich");
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Resets all levels.
-	 * @param alllevels resets level list.
-	 */
-	public void setAllLevels(ArrayList<Level> alllevels) {
-		this.allLevels = alllevels;
 	}
 	
 	/**
