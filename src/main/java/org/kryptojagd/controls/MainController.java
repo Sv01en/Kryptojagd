@@ -228,4 +228,13 @@ public class MainController {
 	public void setAllLevels(ArrayList<Level> alllevels) {
 		this.allLevels = alllevels;
 	}
+	
+	/**
+	 * Sets the Beaufort encryption.
+	 * 
+	 * @param beaufort true, if Beaufort encryption, else false
+	 */
+	public void beaufortEncryption(boolean beaufort) {
+		isBeaufortDecryption = beaufort;
+	}
 }
