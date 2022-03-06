@@ -38,6 +38,7 @@ public class CryptoTool extends Application {
     FrequencyAnalysisCaesarController.setText(text);
     Parent root = FXMLLoader.load(PresentationManager.class.getResource("FrequencyAnalysisCaesar.fxml"));
     Scene scene = new Scene(root);
+    scene.getRoot().setStyle("-fx-font-family: 'monospace'");
     stage.setScene(scene);
     stage.show(); 	
   }
@@ -56,7 +57,8 @@ public class CryptoTool extends Application {
      stage.setTitle("Häufigkeitsanalyse (Vigenere-Verschlüsselung)");
      FrequencyAnalysisVigenereController.setText(text);
      Parent root = FXMLLoader.load(PresentationManager.class.getResource("FrequencyAnalysisVigenere.fxml"));
-     Scene scene = new Scene(root);   
+     Scene scene = new Scene(root);
+     scene.getRoot().setStyle("-fx-font-family: 'monospace'");
      stage.setScene(scene);
      stage.show();
     	
