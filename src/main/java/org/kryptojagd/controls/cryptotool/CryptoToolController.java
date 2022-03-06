@@ -34,6 +34,23 @@ public class CryptoToolController extends AbstractController {
   }
 
   /**
+   * Opens the perspective of the frequency analysis for the Caesar encryption.
+   *
+   * @param event click on the frequency analysis button for Caesar encryption
+   */
+  @FXML
+  void caesar(ActionEvent event) {
+    String enteredText = textArea.getText();
+    if (checktInput(enteredText)) {
+      try {
+        CryptoTool.caesar(new Stage(), enteredText);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  /**
    * Opens the perspective of the frequency analysis for the Vigenere encryption.
    * 
    * @param event click on the frequency analysis button for Caesar encryption
