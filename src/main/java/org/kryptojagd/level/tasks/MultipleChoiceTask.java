@@ -17,7 +17,6 @@ public class MultipleChoiceTask implements Task {
     private static final String TASK_NAME = "MultipleChoiceTask";
     private String name = TASK_NAME;
     private final int points = 5;
-    private  int receivedPoints;
 
     /**
      * Creates a {@link MultipleChoiceTask}
@@ -32,7 +31,6 @@ public class MultipleChoiceTask implements Task {
         this.correctAnswer = correctAnswer;
         this.answerOptions = answerOptions;
         this.helpText = helpText;
-        receivedPoints = 0;
     }
 
     /**
@@ -96,9 +94,9 @@ public class MultipleChoiceTask implements Task {
     @Override
     public boolean proveAnswer(String answer) {
         if (this.correctAnswer.equals(answer)) {
-            if (receivedPoints < 3) {
+            if (PointSystem.getMultipleChoiceTaskFinished() < 8) {
                 POINT_SYSTEM.setScore(PointSystem.getScore() + points);
-                receivedPoints++;
+                PointSystem.setMultipleChoiceTaskFinished(1);
             }
             taskCompleted = true;
             return true;
