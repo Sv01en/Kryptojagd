@@ -167,7 +167,8 @@ public class FrequencyAnalysis {
 	for (String key : set ) {
 		Label label = new Label(key);
 		label.setStyle("-fx-font-size: 8pt; "
-				+ "-fx-font-weight: bold}");
+				+ "-fx-font-weight: bold;"
+				+ "-fx-font-family: 'monospace'");
 		pane.getChildren().add(label);
 		label.relocate( xStart + distance * count, yStart );
 		count++;
