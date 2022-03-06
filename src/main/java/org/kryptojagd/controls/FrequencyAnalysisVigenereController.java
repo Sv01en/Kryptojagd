@@ -46,9 +46,6 @@ import org.kryptojagd.presentation.PresentationManager;
 public class FrequencyAnalysisVigenereController {
 
   @FXML
-  private AnchorPane pane;
-
-  @FXML
   private Label encodedTextLabel;
     
   @FXML 
@@ -56,10 +53,7 @@ public class FrequencyAnalysisVigenereController {
     
   @FXML
   private HBox hboxKey;
-    
-  @FXML
-  private Button explanationButton;
-    
+
   @FXML
   private Label labelDecodedText;
     
@@ -397,9 +391,6 @@ public class FrequencyAnalysisVigenereController {
     HBox hb = new HBox();
     hb.setAlignment(Pos.CENTER);
     hb.setSpacing(15);
-	//Label lbl1 = new Label("A");
-	//Label lbl2 = new Label("→");
-	//Label lbl3 = new Label("A");
 	final int a = i;
 	Button buttonShiftLeft = new Button("<<");
 	buttonShiftLeft.setOnMouseClicked(new EventHandler() {

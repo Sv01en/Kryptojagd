@@ -27,23 +27,6 @@ public class CryptoToolController extends AbstractController {
   @FXML
   private Label messageLabel;
 
-  /**
-   * Opens the perspective of the frequency analysis for the Caesar encryption.
-   * 
-   * @param event click on the frequency analysis button for Caesar encryption
-   */
-  @FXML
-  void caesar(ActionEvent event) {
-    String enteredText = textArea.getText();
-    if (checktInput(enteredText)) {
-	  try {
-		CryptoTool.caesar(new Stage(), enteredText);
-	  } catch (IOException e) {
-		e.printStackTrace();
-	  }
-    }
-  }
-
   @FXML
   void mainMenu(ActionEvent event) {
     mainController.switchWindowWithCSS("Startfenster.fxml", ReadDirectory.CSS_FILE_START);

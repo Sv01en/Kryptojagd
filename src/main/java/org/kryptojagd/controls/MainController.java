@@ -14,21 +14,19 @@ import java.util.ArrayList;
  */
 public class MainController {
 
-	private PresentationManager fw;
+	private final PresentationManager fw;
 
 	private Level currentLevel;
 
-	private ArrayList<Level> allLevels;
+	private final ArrayList<Level> playedLevels = new ArrayList<>();
 
-	private ArrayList<Level> playedLevels = new ArrayList<>();
-
-	private int clearedLevels;
+	private final int clearedLevels;
 
 	protected boolean cityTaskFinished;
 
 	protected static boolean isBeaufortDecryption = false;
 
-	private int currentLevelPosition;
+	private final int currentLevelPosition;
 
 	/**
 	 * The constant TASK_FINISHED_FXML.
@@ -50,7 +48,6 @@ public class MainController {
 			throws Exception {
 		this.fw = fw;
 		this.currentLevelPosition = 0;
-		this.allLevels = allLevels;
 		this.clearedLevels = clearedLevels;
 		this.playedLevels.add(currentLevel);
 		AbstractController.setMainController(this);

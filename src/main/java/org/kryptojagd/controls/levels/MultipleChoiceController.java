@@ -32,8 +32,6 @@ public class MultipleChoiceController extends AbstractController {
     @FXML
     private Label answers;
 
-    private CountdownTimer countdownTimer;
-
     @FXML
     private Label timer = new Label();
 
@@ -79,7 +77,7 @@ public class MultipleChoiceController extends AbstractController {
         } else {
             score.setManaged(false);
         }
-        this.countdownTimer = new CountdownTimer(level.getTimeInSec());
+        new CountdownTimer(level.getTimeInSec());
         updateTimer(timer);
     }
 
@@ -87,7 +85,7 @@ public class MultipleChoiceController extends AbstractController {
      * when you click on the button answer1,
      * it proves the answer and switches the window
      *
-     * @param event
+     * @param event the event
      */
     @FXML
     void clickAnswer1(ActionEvent event) {
@@ -98,7 +96,7 @@ public class MultipleChoiceController extends AbstractController {
      * when you click on the button answer2,
      * it proves the answer and switches the window
      *
-     * @param event
+     * @param event the event
      */
     @FXML
     void clickAnswer2(ActionEvent event) {
@@ -109,7 +107,7 @@ public class MultipleChoiceController extends AbstractController {
      * when you click on the button answer3,
      * it proves the answer and switches the window
      *
-     * @param event
+     * @param event the event
      */
     @FXML
     void clickAnswer3(ActionEvent event) {

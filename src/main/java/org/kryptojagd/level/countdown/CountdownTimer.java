@@ -21,8 +21,6 @@ public class CountdownTimer {
      */
     private String outputValue;
 
-    private TimerTask task;
-
     private Timer timer = new Timer();
 
     /**
@@ -38,7 +36,7 @@ public class CountdownTimer {
      */
     private long countdownTimer(int setTime) {
         actualValue = setTime;
-        this.task = new TimerTask() {
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 if (actualValue > 0) {

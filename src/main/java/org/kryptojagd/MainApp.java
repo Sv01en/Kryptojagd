@@ -20,9 +20,6 @@ import org.kryptojagd.presentation.PresentationManager;
  */
 public class MainApp extends Application {
 
-  private PresentationManager fw;
-  private MainController hs;
-
   private int playableLevels = 0;
 
   /**
@@ -51,9 +48,9 @@ public class MainApp extends Application {
       stage.getIcons().add(new Image("img/Icon.png"));
       stage.setScene(scene);
       stage.show();
-      fw = new PresentationManager(stage);
+      PresentationManager fw = new PresentationManager(stage);
       assert allLevels != null;
-      hs = new MainController(fw, allLevels.get(0), allLevels, playableLevels);
+      MainController hs = new MainController(fw, allLevels.get(0), allLevels, playableLevels);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

@@ -94,8 +94,8 @@ public class FrequencyAnalysis {
 	 * Changes the color of the first columns of the bar chart to color0 and the second
 	 * columns to color1.
 	 * @param barChart
-	 * @param chart0
-	 * @param chart1
+	 * @param color0
+	 * @param color1
 	 */
 	public static void barChartColumnsColor(BarChart barChart, String color0, String color1) {
 		   for(Node n: barChart.lookupAll(".default-color0.chart-bar")) {
