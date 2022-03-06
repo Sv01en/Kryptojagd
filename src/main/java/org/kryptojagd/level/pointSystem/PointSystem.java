@@ -68,7 +68,8 @@ public class PointSystem {
      *
      * @return the encryption task finished
      */
-    public static boolean getEncryptionTaskFinished() {return encryptionTaskedFinished; }
+    public static boolean getEncryptionTaskFinished() {
+        return encryptionTaskedFinished; }
 
     /**
      * Set decryption task finished.

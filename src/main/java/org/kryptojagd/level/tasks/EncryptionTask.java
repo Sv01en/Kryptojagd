@@ -180,7 +180,7 @@ public class EncryptionTask implements Task {
 
     @Override
     public boolean proveAnswer(String answer) {
-        if(encryptionType.equals("Beaufort")){
+        if (encryptionType.equals("Beaufort")) {
             Beaufort.setIsEncryptionTask(true);
         }
         encryptionMethod.setKey(key);

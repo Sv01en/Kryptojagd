@@ -16,6 +16,11 @@ public class LevelHandler {
 
     private int levelPos;
 
+    /**
+     * Instantiates a new Level handler.
+     *
+     * @param levels the levels
+     */
     public LevelHandler(ArrayList<Level> levels) {
         this.allLevels = levels;
     }
@@ -45,7 +50,7 @@ public class LevelHandler {
 
     /**
      * Returns the position in the list of the current level
-     * @return
+     * @return position in the list of the current level
      */
     public int getLevelPos() {
         return this.levelPos;

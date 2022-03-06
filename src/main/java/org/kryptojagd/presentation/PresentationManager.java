@@ -1,11 +1,9 @@
 package org.kryptojagd.presentation;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -23,7 +21,7 @@ public class PresentationManager {
 
 	/**
 	 * Constructor of the PresentationManager
-	 * @param primaryStage
+	 * @param primaryStage PresentationManager
 	 */
 	public PresentationManager(Stage primaryStage) {
 		primaryStage.setResizable(false);
@@ -67,10 +65,16 @@ public class PresentationManager {
 		}
 	}
 
+	/**
+	 * Toggle darkmode.
+	 */
 	public void toggleDarkmode() {
 		this.darkMode = !this.darkMode;
 	}
 
+	/**
+	 * Toggle blind mode.
+	 */
 	public void toggleBlindMode() {
 		this.blindMode = !blindMode;
 	}

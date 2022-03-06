@@ -2,7 +2,6 @@ package org.kryptojagd.controls;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import org.kryptojagd.fileprocessing.ReadDirectory;
 
 /**

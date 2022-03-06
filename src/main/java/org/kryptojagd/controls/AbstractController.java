@@ -17,6 +17,8 @@ public abstract class AbstractController {
 
 	/**
 	 * Updates the timer in the corresponding window.
+	 *
+	 * @param timer the timer
 	 */
 	protected void updateTimer(Label timer) {
 		timer.setText(setCountdownFormat(mainController.getCurrentLevel().getTimeInSec()));

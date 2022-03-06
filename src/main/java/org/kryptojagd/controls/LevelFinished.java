@@ -15,12 +15,18 @@ import org.kryptojagd.level.pointSystem.PointSystem;
  */
 public class LevelFinished extends AbstractController {
 
+    /**
+     * The Text.
+     */
     @FXML
-    public Label text;
+    private Label text;
 
     @FXML
     private Label score;
 
+    /**
+     * Initialize.
+     */
     @FXML
     public void initialize() {
         if (!CryptoToolController.isSystemHacked()) {
