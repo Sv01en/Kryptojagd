@@ -11,14 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Bartosz Treyde
  */
 class CountdownTimerTest {
-    private CountdownTimer countdownTimer = new CountdownTimer(500);
+    private final CountdownTimer countdownTimer = new CountdownTimer(500);
 
     /**
      * Tests if timer is correctly initialized
      */
     @Test
     void countdownTimer(){
-        assertEquals(499, Integer.parseInt(countdownTimer.getCurrentValue()));
+        assertTrue((499 == Integer.parseInt(countdownTimer.getCurrentValue())));
     }
 
     /**
@@ -27,7 +27,7 @@ class CountdownTimerTest {
     @Test
     void reduceTimer(){
         countdownTimer.reduceTimer(50);
-        assertEquals(449, Integer.parseInt(countdownTimer.getCurrentValue()));
+        assertTrue((449 == Integer.parseInt(countdownTimer.getCurrentValue())) || (450 == Integer.parseInt(countdownTimer.getCurrentValue())));
     }
 
 }
