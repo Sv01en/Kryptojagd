@@ -186,10 +186,12 @@ public class EncryptionTask implements Task {
         encryptionMethod.setKey(key);
         char[] origMsg = new char[this.text.length()];
         char[] studentSolution = new char[answer.length()];
+        String realSolutionString;
         if(encryptionType.equals("Beaufort")) {
-            String realSolutionString = this.encryptionMethod.decode(this.text, key);
+            realSolutionString = this.encryptionMethod.decode(this.text, key);
+        } else {
+            realSolutionString = this.encryptionMethod.encode(this.text);
         }
-        String realSolutionString = this.encryptionMethod.encode(this.text);
         char[] realSolution = new char[realSolutionString.length()];
 
         for (int i = 0; i < this.text.length(); i++) {
