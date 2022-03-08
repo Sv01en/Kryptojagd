@@ -147,6 +147,8 @@ public class MainController {
 	public void startLevelByPosition(int id) throws Exception {
 		PointSystem.setPlayedLevels(id + 1);
 		this.currentLevel = this.levelHandler.getLevel(id);
+		//setBeaufortDecryption(getLevelHandler().getLevel(id).getCity().equals("Rom"));
+		setBeaufortDecryption(id == 4);
 		switchWindowWithCSS(this.currentLevel.getCurrentTask().toString()
 				+ ".fxml", ReadDirectory.CSS_FILE_START);
 	}
