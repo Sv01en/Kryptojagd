@@ -1,6 +1,5 @@
 package org.kryptojagd.level;
 
-import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 import org.kryptojagd.encryptionmethods.*;
 import org.kryptojagd.level.tasks.DecryptionTask;
@@ -279,6 +278,15 @@ public class Level {
 			this.currentTime = Integer.parseInt(this.countdownTimer.getCurrentValue());
 		}
 		return this.currentTime;
+	}
+
+	/**
+	 * Gets encryption task.
+	 *
+	 * @return the encryption task
+	 */
+	public EncryptionTask getEncryptionTask() {
+		return encryptionTask;
 	}
 
 	/**
