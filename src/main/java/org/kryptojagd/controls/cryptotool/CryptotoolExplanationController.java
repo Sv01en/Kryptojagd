@@ -2,6 +2,7 @@ package org.kryptojagd.controls.cryptotool;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.kryptojagd.controls.MainController;
 import org.kryptojagd.controls.resources.Messages;
 
 /**
@@ -24,7 +25,12 @@ public class CryptotoolExplanationController  {
 	 */
 	@FXML
 	public void initialize() {
-		String text = Messages.VIGENERE_EXPLANATION;
+		String text;
+		if (MainController.isBeaufortDecryption) {
+			 text = Messages.BEAUFORT_EXPLANATION;
+		} else {
+			 text = Messages.VIGENERE_EXPLANATION;
+		}
 		label.setText(text);
 	}
 }

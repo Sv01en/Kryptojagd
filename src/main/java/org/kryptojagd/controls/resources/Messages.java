@@ -88,6 +88,31 @@ public final class Messages {
         + "5. Nachdem du einen Schlüsselbuchstaben herausgefunden hast, wiederhole die Schritte 3 und 4 so oft, "
         + "bis du das ganze Schlüsselwort hast.";
 
+    /**
+     * The constant BEAUFORT_EXPLANATION.
+     */
+    public static final String BEAUFORT_EXPLANATION = "Wenn du bis hierhin gekommen bist, hast du das Vigenère Level "
+            + "bereits gelöst, Glückwunsch erstmal!\n\n\n"
+            + "Die Beaufort-Verschlüsselung funktioniert recht ähnlich wie die Vigenère-Verschlüsselung, sie hat nur "
+            + "einen entscheidenden Kniff.\n"
+            + " Anstatt des normalen Alphabets wird das umgekehrte Alphabet benutzt, wobei "
+            + "das „A“ jedoch an erster Stelle bleibt.\n"
+            + " Also sieht das Alphabet wie folgt aus:\n\n"
+            + "AZYXWVUTSRQPONMLKJIHGFEDCB\n\n"
+            + "1. Tipp: Die Häufigkeitsanalyse ist immer noch der Weg zum Ziel. Probiere es erst einmal mit diesem "
+            + "etwas wagen Hinweis, falls du damit noch nicht zur Lösung kommst, werden dir in den \n"
+            + "nächsten Punkten noch weitere Hilfestellungen gegeben.\n\n\n"
+            + "2. Tipp: Am besten schreibst du dir das Beaufort-Alphabet und das normale Alphabet auf ein Blatt Papier "
+            + "so übereinander, dass du sehen kannst \n"
+            + "welcher Buchstabe im normalen Alphabet welchem Buchstaben im Beaufort-Alphabet entspricht.\n\n\n"
+            + "3.Tipp: Versuche Gemeinsamkeiten in den beiden Alphabeten zu finden (Steht ein Buchstabe in "
+            + "beiden Alphabeten an der selben Stelle?) Wie könnte dir das bei der Häufigkeitsanalyse helfen?\n\n\n"
+            + "4.Tipp: Durch die Verdrehung des Alphabets musst du nur die Wahrscheinlichkeitsverteilung an dem "
+            + "Buchstaben „N“ spiegeln. \n\n\n"
+            + "Der letzte Tipp führt dich hoffentlich zum Ziel: Verschiebe die Balken so, dass sie an der "
+            + "entsprechenden Stelle im Beaufort Alphabet liegen. Verwende hierbei deine Notizen aus Tipp 2.\n"
+            + "(also A --> A, B --> Z, …) \n";
+
 
 
     /* private utility-class constructor */
