@@ -1,4 +1,4 @@
-# Teamprojekt-Lehramt-Informatik-KIT (Kryptojagd)
+# Kryptojagd
 
 ## Projektbeschreibung
 
@@ -17,13 +17,4 @@ Jedoch hat sich auch die böse Eve auf den Weg gemacht, um die "Floppy-Disks" zu
 Verdeutlicht wird dies durch einen Timer pro Station. 
 Bei jeder Station der Weltreise müssen verschiedene Aufgaben zu jeweils einer Verschlüsselungstechnik gelöst werden. Diese Aufgaben umfassen das Ver- und Entschlüsseln gegebener Texte sowie das Beantworten von Fragen in Form von Multiple-Choice Aufgaben oder Lückentexten zum Thema "Datenschutz" und "Kryptographie".
 
-Das Programm ist eine Desktopanwendung, soll in Einzelarbeit bearbeitet werden und mit Java Version 11 laufen.
-
-## Regeln für die Nutzung unseres Github-Respotories
-
-1. Jeder neu eröffnete Branch gilt nur für eine spezifischen Userstory, welche im Miro-Board definiert ist.
-2. Jeder Merge in den main-Branch muss via Pull-Request überprüft werden.
-3. Die Paketstruktur darf nur im main-Branch geändert werden, nachdem dies in der Gruppe abgesprochen worden ist.
-4. Commit-Messages werden auf Englisch verfasst.
-5. CodeProbleme werden als Issues auf Github festgehalten.
-6. Die Branches werden nach den Userstorys benannt (kurze Beschreibung + Nummer der Userstory).
+Das Programm ist eine Desktopanwendung, soll in Einzelarbeit bearbeitet werden und läuft stabil (getestet) mit Java 11 auf ab Windows 10.
